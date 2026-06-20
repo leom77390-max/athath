@@ -9,12 +9,14 @@
       </h2>
     {% endif %}
 
-    <salla-products-slider
-      source="categories"
-      source-value="{{ c.store_products|json_encode }}"
-      slider-id="sk-slider-{{ position }}"
-      limit="12"
-    ></salla-products-slider>
+    <salla-slider
+      id="sk-slider-{{ position }}"
+      show-controls="true"
+    >
+      <div slot="items" id="sk-items-{{ position }}">
+        <!-- Products loaded via JS -->
+      </div>
+    </salla-slider>
 
   </div>
 </section>
@@ -29,4 +31,200 @@
   font-weight: 700;
   margin-bottom: 24px;
 }
+
+/* ===== CARD ===== */
+.sk-product-card {
+  display: flex !important;
+  align-items: stretch;
+  background: #f4f4f5;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.3s;
+}
+
+.sk-product-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+/* Image */
+.sk-product-card__img {
+  flex: 0 0 45%;
+  max-width: 45%;
+  overflow: hidden;
+  background: #e4e4e7;
+}
+
+.sk-product-card__img img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.sk-product-card:hover .sk-product-card__img img {
+  transform: scale(1.04);
+}
+
+/* Info */
+.sk-product-card__info {
+  flex: 1;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sk-product-card__cat {
+  font-size: 0.78rem;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+}
+
+.sk-product-card__name {
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  font-weight: 700;
+  color: #18181b;
+  line-height: 1.3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sk-product-card__price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.sk-product-card__desc {
+  font-size: 0.875rem;
+  color: #52525b;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.sk-product-card__btn {
+  margin-top: 8px;
+  display: inline-block;
+  align-self: flex-start;
+  padding: 11px 26px;
+  background: #18181b;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.sk-product-card__btn:hover {
+  opacity: 0.8;
+}
+
+/* Skeleton */
+.sk-skeleton {
+  background: #f4f4f5;
+  border-radius: 16px;
+  height: 280px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sk-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  background-size: 200% 100%;
+  animation: sk-shimmer 1.4s infinite;
+}
+
+@keyframes sk-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* RTL */
+[dir="rtl"] .sk-product-card {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 767px) {
+  .sk-product-card__img img { min-height: 180px; }
+  .sk-product-card__info    { padding: 18px 14px; }
+}
 </style>
+
+<script defer>
+(() => {
+
+  const POSITION  = "{{ position }}";
+  const LANG      = "{{ user.language.code }}";
+  const CAT_IDS   = {{ c.store_products|json_encode }};
+  const SHOP_LABEL = LANG === 'ar' ? 'ØªØ³ÙˆÙ‚ Ø§Ù„Ø¢Ù†' : 'Shop This Product';
+  const NO_PRODUCTS = LANG === 'ar' ? 'Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù†ØªØ¬Ø§Øª' : 'No products found';
+
+  function buildCard(product) {
+    const cat   = product.category?.name || '';
+    const img   = product.image?.url    || '';
+    const desc  = (product.description || '').replace(/<[^>]*>/g, '');
+    const price = (() => { try { return salla.money(product.price); } catch { return product.price; } })();
+
+    return `
+      <a href="${product.url}" class="sk-product-card">
+        <div class="sk-product-card__img">
+          <img src="${img}" alt="${product.name}" loading="lazy">
+        </div>
+        <div class="sk-product-card__info">
+          ${cat  ? `<span class="sk-product-card__cat">${cat}</span>`   : ''}
+          <h3 class="sk-product-card__name">${product.name}</h3>
+          <div class="sk-product-card__price">${price}</div>
+          ${desc ? `<p class="sk-product-card__desc">${desc}</p>`       : ''}
+          <span class="sk-product-card__btn">${SHOP_LABEL}</span>
+        </div>
+      </a>
+    `;
+  }
+
+  salla.onReady(async () => {
+
+    const slot = document.getElementById(`sk-items-${POSITION}`);
+    if (!slot) return;
+
+    // Show skeletons
+    slot.innerHTML = Array.from({ length: 4 }, () => `<div class="sk-skeleton"></div>`).join('');
+
+    const cards = [];
+
+    await Promise.all((CAT_IDS || []).map(async (catId) => {
+      try {
+        const res      = await salla.api.get(`/v1/products?source=categories&source_value=[${catId}]&limit=12`);
+        const products = res?.data?.products || res?.data || [];
+        products.forEach(p => cards.push(buildCard(p)));
+      } catch (e) {
+        console.error('SK Slider: category load failed', catId, e);
+      }
+    }));
+
+    slot.innerHTML = cards.length
+      ? cards.join('')
+      : `<p style="color:#71717a;padding:16px 0;">${NO_PRODUCTS}</p>`;
+
+  });
+
+})();
+</script>
