@@ -5471,70 +5471,6 @@
                             "required": true
                         },
                         {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "رابط الزر",
-                            "id": "card.btn_url",
-                            "value": [],
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
-                        },
-                        {
                             "id": "card.button_bg_color",
                             "type": "string",
                             "format": "color",
@@ -5583,7 +5519,6 @@
                             "card.content_color": "#18181b",
                             "card.button_bg_color": "#18181b",
                             "card.button_text_color": "#ffffff",
-                            "card.btn_url": "/collections/skincare"
                         },
                         {
                             "ar": {
@@ -5600,7 +5535,6 @@
                             "card.content_color": "#ffffff",
                             "card.button_bg_color": "#ffffff",
                             "card.button_text_color": "#18181b",
-                            "card.btn_url": "/collections/haircare"
                         },
                          {
                             "ar": {
@@ -5617,7 +5551,6 @@
                             "card.content_color": "#18181b",
                             "card.button_bg_color": "#18181b",
                             "card.button_text_color": "#ffffff",
-                            "card.btn_url": "/collections/skincare"
                         }
                     ]
                 }
