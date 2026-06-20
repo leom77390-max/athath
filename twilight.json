@@ -5371,6 +5371,262 @@
                     "format": "title",
                     "id": "header_faq",
                     "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'> اعدادات البطاقات </h3>"
+                },
+                {
+                    "id": "card",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات",
+                    "description": "أضف بطاقات تحتوي على محتوى وزر مع إمكانية تخصيص الخلفية والألوان.",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list-add",
+                    "minLength": "1",
+                    "maxLength": "15",
+                    "fields": [
+                        {
+                            "id": "card.bg_is_image",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "نوع الخلفية",
+                            "description": "فعّل لاستخدام صورة كخلفية، أو اتركه مغلقًا لاستخدام لون.",
+                            "icon": "sicon-toggle-off",
+                            "value": false
+                        },
+                        {
+                            "id": "card.bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون الخلفية",
+                            "icon": "sicon-format-fill",
+                            "value": "#ffffff",
+                            "conditions": [
+                                {
+                                    "id": "card.bg_is_image",
+                                    "operation": "=",
+                                    "value": false,
+                                    "collection_id": "card",
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.bg_image",
+                            "type": "image",
+                            "format": "image",
+                            "label": "صورة الخلفية",
+                            "icon": "sicon-image",
+                            "conditions": [
+                                {
+                                    "id": "card.bg_is_image",
+                                    "collection_id": "card",
+                                    "value_index": ".",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.corner_rounded",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "استدارة الزوايا",
+                            "icon": "sicon-pin",
+                            "value": "16",
+                            "step": "1",
+                            "minimum": "0",
+                            "maximum": "50"
+                        },
+                        {
+                            "id": "card.content",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "محتوى البطاقة",
+                            "description": "النص الداخلي للبطاقة.",
+                            "placeholder": "اكتب محتوى البطاقة هنا...",
+                            "icon": "sicon-chat-bubble",
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": "10",
+                            "maxLength": "500"
+                        },
+                        {
+                            "id": "card.content_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص",
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b"
+                        },
+                        {
+                            "id": "card.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "placeholder": "مثال: تسوق الآن",
+                            "icon": "sicon-shopping-bag",
+                            "multilanguage": true,
+                            "required": true
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط الزر",
+                            "id": "card.btn_url",
+                            "value": [],
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ],
+                            "conditions": [
+                                {
+                                    "id": "btn_opt",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.button_bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون خلفية الزر",
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b",
+                            "conditions": [
+                               {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                            ]
+                        },
+                        {
+                            "id": "card.button_text_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون نص الزر",
+                            "icon": "sicon-format-fill",
+                            "value": "#ffffff",
+                            "conditions": [
+                               {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "ar": {
+                                "card.content": "اكتشف أفضل منتجات العناية بالبشرة لدينا والمناسبة لجميع أنواع البشرة.",
+                                "card.button_text": "تسوق الآن"
+                            },
+                            "en": {
+                                "card.content": "Discover our best skincare products suitable for all skin types.",
+                                "card.button_text": "Shop Now"
+                            },
+                            "card.bg_is_image": false,
+                            "card.bg_color": "#f8f8f8",
+                            "card.corner_rounded": "16",
+                            "card.content_color": "#18181b",
+                            "card.button_bg_color": "#18181b",
+                            "card.button_text_color": "#ffffff",
+                            "card.btn_url": "/collections/skincare"
+                        },
+                        {
+                            "ar": {
+                                "card.content": "منتجات العناية بالشعر بتركيبات طبيعية تمنحك مظهرًا صحيًا ولامعًا.",
+                                "card.button_text": "اكتشف المزيد"
+                            },
+                            "en": {
+                                "card.content": "Haircare products with natural formulas for a healthy and shiny look.",
+                                "card.button_text": "Discover More"
+                            },
+                            "card.bg_is_image": true,
+                            "card.bg_image": "https://via.placeholder.com/600x400",
+                            "card.corner_rounded": "20",
+                            "card.content_color": "#ffffff",
+                            "card.button_bg_color": "#ffffff",
+                            "card.button_text_color": "#18181b",
+                            "card.btn_url": "/collections/haircare"
+                        },
+                         {
+                            "ar": {
+                                "card.content": "اكتشف أفضل منتجات العناية بالبشرة لدينا والمناسبة لجميع أنواع البشرة.",
+                                "card.button_text": "تسوق الآن"
+                            },
+                            "en": {
+                                "card.content": "Discover our best skincare products suitable for all skin types.",
+                                "card.button_text": "Shop Now"
+                            },
+                            "card.bg_is_image": false,
+                            "card.bg_color": "#f8f8f8",
+                            "card.corner_rounded": "16",
+                            "card.content_color": "#18181b",
+                            "card.button_bg_color": "#18181b",
+                            "card.button_text_color": "#ffffff",
+                            "card.btn_url": "/collections/skincare"
+                        }
+                    ]
                 }
             ]
         }
