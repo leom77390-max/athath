@@ -7,6 +7,48 @@
      three_column      → Col: [Text+CTA] [Image/Video] [FAQ]
    ================================================ #}
 
+{% macro faq_list(items) %}
+    {% for item in items %}
+    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+         style="background-color: {{ item.bg_color|default('#ffffff') }};
+                border-color: {{ item.hr_color|default('#e4e4e7') }};"
+         data-accordion-item>
+
+        <button type="button"
+                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                style="color: {{ item.question_color|default('#18181b') }};"
+                aria-expanded="false"
+                aria-controls="faq-panel-{{ loop.index }}">
+            <div class="flex items-center gap-3">
+                {% if item.icon %}
+                <i class="{{ item.icon }} text-xl pointer-events-none shrink-0"
+                   style="color: {{ item.icon_color|default('#18181b') }};"
+                   aria-hidden="true"></i>
+                {% endif %}
+                <span>{{ item.question }}</span>
+            </div>
+            <i class="sicon-add text-lg transition-transform duration-300 pointer-events-none shrink-0"
+               style="color: {{ item.icon_color|default('#18181b') }};"
+               data-icon
+               aria-hidden="true"></i>
+        </button>
+
+        <div id="faq-panel-{{ loop.index }}"
+             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+             role="region">
+            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                        color: {{ item.answer_color|default('#4b5563') }};">
+                {{ item.answer }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+{% endmacro %}
+
+{% import _self as helpers %}
+
 {% set mode = component.layout_mode|default('accordion_image') %}
 
 <section class="SK-faq-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
@@ -15,7 +57,10 @@
     {# ── Global Title (all modes) ── #}
     {% if component.main_title %}
     <div class="SK-faq-section__header text-center mb-10">
-        <h2 class="text-3xl font-bold">{{ component.main_title }}</h2>
+        <h2 class="text-3xl font-bold"
+            style="color: {{ component.customize_colors ? component.main_title_color|default('#18181b') : '#18181b' }};">
+            {{ component.main_title }}
+        </h2>
     </div>
     {% endif %}
 
@@ -25,7 +70,7 @@
     {% if mode == 'accordion_only' %}
 
     <div class="SK-faq-section__inner max-w-2xl mx-auto flex flex-col gap-4">
-        {% include 'partials/faq_items.twig' %}
+        {{ helpers.faq_list(component.faq_accordion) }}
     </div>
 
     {# ══════════════════════════════════════════════
@@ -37,7 +82,7 @@
 
         {# Left/Start: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
-            {% include 'partials/faq_items.twig' %}
+            {{ helpers.faq_list(component.faq_accordion) }}
         </div>
 
         {# Right/End: Image or Video #}
@@ -92,7 +137,7 @@
 
         {# Right/End: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
-            {% include 'partials/faq_items.twig' %}
+            {{ helpers.faq_list(component.faq_accordion) }}
         </div>
 
     </div>
@@ -147,7 +192,7 @@
 
         {# Col 3: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
-            {% include 'partials/faq_items.twig' %}
+            {{ helpers.faq_list(component.faq_accordion) }}
         </div>
 
     </div>
@@ -156,55 +201,7 @@
 
 </section>
 
-{# ══════════════════════════════════════════════
-   PARTIAL — faq_items.twig  (inline macro equivalent)
-   Since Salla Twig doesn't always support include partials,
-   the accordion markup is repeated per mode via a macro below.
-   Alternatively paste this block wherever {% include 'partials/faq_items.twig' %} appears.
-══════════════════════════════════════════════ #}
 
-{# ── Accordion Items Macro ── #}
-{% macro faq_list(items) %}
-    {% for item in items %}
-    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
-         style="background-color: {{ item.bg_color|default('#ffffff') }};
-                border-color: {{ item.hr_color|default('#e4e4e7') }};"
-         data-accordion-item>
-
-        <button type="button"
-                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
-                style="color: {{ item.question_color|default('#18181b') }};"
-                aria-expanded="false"
-                aria-controls="faq-panel-{{ loop.index }}">
-            <span>{{ item.question }}</span>
-            <i class="{{ item.icon|default('sicon-add') }} text-lg transition-transform duration-300 pointer-events-none"
-               style="color: {{ item.icon_color|default('#18181b') }};"
-               data-icon
-               aria-hidden="true"></i>
-        </button>
-
-        <div id="faq-panel-{{ loop.index }}"
-             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
-             role="region">
-            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
-                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
-                        color: {{ item.answer_color|default('#4b5563') }};">
-                {{ item.answer }}
-            </div>
-        </div>
-
-    </div>
-    {% endfor %}
-{% endmacro %}
-
-{% import _self as helpers %}
-
-{#
-  NOTE FOR SALLA DEVS:
-  Replace every {% include 'partials/faq_items.twig' %} above with:
-  {{ helpers.faq_list(component.faq_accordion) }}
-  OR copy-paste the for-loop directly into each grid column.
-#}
 
 {# ══════════════════════════════════════════════ STYLES ══════════════════════════════════════════════ #}
 <style>
