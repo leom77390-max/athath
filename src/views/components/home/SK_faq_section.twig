@@ -12,7 +12,12 @@
 {% set mode = component.layout_mode|default('accordion_image') %}
 
 <section class="SK-faq-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
-         style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;">
+         style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;
+                {% if component.background_is_image and component.background_image %}
+                    background-image: url('{{ component.background_image }}'); background-size: cover; background-position: center;
+                {% else %}
+                    background-color: {{ component.background_color|default('transparent') }};
+                {% endif %}">
 
     {# ── Global Title (all modes) ── #}
     {% if component.main_title %}
@@ -31,9 +36,10 @@
 
     <div class="SK-faq-section__inner max-w-2xl mx-auto flex flex-col gap-4">
         {% for item in component.faq_accordion %}
-    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+    <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
-                border-color: {{ item.hr_color|default('#e4e4e7') }};"
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
          data-accordion-item>
 
         <button type="button"
@@ -49,10 +55,12 @@
                 {% endif %}
                 <span>{{ item.question }}</span>
             </div>
-            <i class="sicon-add text-lg transition-transform duration-300 pointer-events-none shrink-0"
-               style="color: {{ item.icon_color|default('#18181b') }};"
-               data-icon
-               aria-hidden="true"></i>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
         </button>
 
         <div id="faq-panel-{{ loop.index }}"
@@ -79,9 +87,10 @@
         {# Left/Start: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
             {% for item in component.faq_accordion %}
-    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+    <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
-                border-color: {{ item.hr_color|default('#e4e4e7') }};"
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
          data-accordion-item>
 
         <button type="button"
@@ -97,10 +106,12 @@
                 {% endif %}
                 <span>{{ item.question }}</span>
             </div>
-            <i class="sicon-add text-lg transition-transform duration-300 pointer-events-none shrink-0"
-               style="color: {{ item.icon_color|default('#18181b') }};"
-               data-icon
-               aria-hidden="true"></i>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
         </button>
 
         <div id="faq-panel-{{ loop.index }}"
@@ -170,9 +181,10 @@
         {# Right/End: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
             {% for item in component.faq_accordion %}
-    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+    <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
-                border-color: {{ item.hr_color|default('#e4e4e7') }};"
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
          data-accordion-item>
 
         <button type="button"
@@ -188,10 +200,12 @@
                 {% endif %}
                 <span>{{ item.question }}</span>
             </div>
-            <i class="sicon-add text-lg transition-transform duration-300 pointer-events-none shrink-0"
-               style="color: {{ item.icon_color|default('#18181b') }};"
-               data-icon
-               aria-hidden="true"></i>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
         </button>
 
         <div id="faq-panel-{{ loop.index }}"
@@ -261,9 +275,10 @@
         {# Col 3: Accordion #}
         <div class="grid-col-faq flex flex-col gap-4">
             {% for item in component.faq_accordion %}
-    <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+    <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
-                border-color: {{ item.hr_color|default('#e4e4e7') }};"
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
          data-accordion-item>
 
         <button type="button"
@@ -279,10 +294,12 @@
                 {% endif %}
                 <span>{{ item.question }}</span>
             </div>
-            <i class="sicon-add text-lg transition-transform duration-300 pointer-events-none shrink-0"
-               style="color: {{ item.icon_color|default('#18181b') }};"
-               data-icon
-               aria-hidden="true"></i>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
         </button>
 
         <div id="faq-panel-{{ loop.index }}"
@@ -334,8 +351,35 @@
 .faq-accordion-item.is-active .faq-panel {
     max-height: 600px;
 }
-.faq-accordion-item.is-active [data-icon] {
-    transform: rotate(45deg);
+/* FAQ Animated Plus/Minus Icon */
+.faq-toggle-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.faq-toggle-icon span {
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
+}
+.faq-toggle-icon .horizontal {
+    width: 14px;
+    height: 2px;
+}
+.faq-toggle-icon .vertical {
+    width: 2px;
+    height: 14px;
+}
+.faq-accordion-item.is-active .faq-toggle-icon {
+    transform: rotate(180deg);
+}
+.faq-accordion-item.is-active .faq-toggle-icon .vertical {
+    transform: scaleY(0);
 }
 
 /* Mobile */
