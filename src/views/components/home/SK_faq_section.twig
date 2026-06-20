@@ -1,0 +1,483 @@
+{# ================================================
+   SK FAQ Section — 4 layout modes
+   layout_mode values:
+     accordion_only    → Col: [FAQ]
+     accordion_image   → Col: [FAQ] [Image/Video]
+     accordion_content → Col: [Text+CTA] [FAQ]
+     three_column      → Col: [Text+CTA] [Image/Video] [FAQ]
+   ================================================ #}
+
+
+
+{% set mode = component.layout_mode|default('accordion_image') %}
+
+<section class="SK-faq-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
+         style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;
+                {% if component.background_is_image and component.background_image %}
+                    background-image: url('{{ component.background_image }}'); background-size: cover; background-position: center;
+                {% else %}
+                    background-color: {{ component.background_color|default('transparent') }};
+                {% endif %}">
+
+    {# ── Global Title (all modes) ── #}
+    {% if component.main_title %}
+    <div class="SK-faq-section__header text-center mb-10">
+        <h2 class="text-3xl font-bold"
+            style="color: {{ component.customize_colors ? component.main_title_color|default('#18181b') : '#18181b' }};">
+            {{ component.main_title }}
+        </h2>
+    </div>
+    {% endif %}
+
+    {# ══════════════════════════════════════════════
+       MODE 1 — Accordion Only
+    ══════════════════════════════════════════════ #}
+    {% if mode == 'accordion_only' %}
+
+    <div class="SK-faq-section__inner max-w-2xl mx-auto flex flex-col gap-4">
+        {% for item in component.faq_accordion %}
+    <div class="faq-accordion-item border transition-all duration-300"
+         style="background-color: {{ item.bg_color|default('#ffffff') }};
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
+         data-accordion-item>
+
+        <button type="button"
+                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                style="color: {{ item.question_color|default('#18181b') }};"
+                aria-expanded="false"
+                aria-controls="faq-panel-{{ loop.index }}">
+            <div class="flex items-center gap-3">
+                {% if item.icon %}
+                <i class="{{ item.icon }} text-xl pointer-events-none shrink-0"
+                   style="color: {{ item.icon_color|default('#18181b') }};"
+                   aria-hidden="true"></i>
+                {% endif %}
+                <span>{{ item.question }}</span>
+            </div>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
+        </button>
+
+        <div id="faq-panel-{{ loop.index }}"
+             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+             role="region">
+            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                        color: {{ item.answer_color|default('#4b5563') }};">
+                {{ item.answer }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+    </div>
+
+    {# ══════════════════════════════════════════════
+       MODE 2 — Accordion + Image/Video
+    ══════════════════════════════════════════════ #}
+    {% elseif mode == 'accordion_image' %}
+
+    <div class="SK-faq-section__inner grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+        {# Left/Start: Accordion #}
+        <div class="grid-col-faq flex flex-col gap-4">
+            {% for item in component.faq_accordion %}
+    <div class="faq-accordion-item border transition-all duration-300"
+         style="background-color: {{ item.bg_color|default('#ffffff') }};
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
+         data-accordion-item>
+
+        <button type="button"
+                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                style="color: {{ item.question_color|default('#18181b') }};"
+                aria-expanded="false"
+                aria-controls="faq-panel-{{ loop.index }}">
+            <div class="flex items-center gap-3">
+                {% if item.icon %}
+                <i class="{{ item.icon }} text-xl pointer-events-none shrink-0"
+                   style="color: {{ item.icon_color|default('#18181b') }};"
+                   aria-hidden="true"></i>
+                {% endif %}
+                <span>{{ item.question }}</span>
+            </div>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
+        </button>
+
+        <div id="faq-panel-{{ loop.index }}"
+             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+             role="region">
+            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                        color: {{ item.answer_color|default('#4b5563') }};">
+                {{ item.answer }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+        </div>
+
+        {# Right/End: Image or Video #}
+        <div class="grid-col-media flex justify-center items-center">
+            {% if component.media_type == 'video' and component.banner_video %}
+                {% if 'youtube.com' in component.banner_video or 'youtu.be' in component.banner_video or 'vimeo.com' in component.banner_video %}
+                    <iframe src="{{ component.banner_video }}"
+                            class="SK-faq-section__media rounded-2xl w-full"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            title="{{ component.main_title|default('FAQ Video') }}"></iframe>
+                {% else %}
+                    <video src="{{ component.banner_video }}"
+                           class="SK-faq-section__media rounded-2xl w-full"
+                           controls
+                           playsinline></video>
+                {% endif %}
+            {% elseif component.banner_img %}
+                <img src="{{ component.banner_img }}"
+                     alt="{{ component.main_title|default('') }}"
+                     class="SK-faq-section__media max-w-full h-auto object-contain rounded-2xl" />
+            {% endif %}
+        </div>
+
+    </div>
+
+    {# ══════════════════════════════════════════════
+       MODE 3 — Accordion + Text Content & CTA
+    ══════════════════════════════════════════════ #}
+    {% elseif mode == 'accordion_content' %}
+
+    <div class="SK-faq-section__inner grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+        {# Left/Start: Promo text + button #}
+        <div class="grid-col-promo flex flex-col justify-center items-start text-left rtl:text-right">
+            {% if component.subtext %}
+            <p class="text-base leading-relaxed mb-6"
+               style="color: {{ component.customize_colors ? component.subtext_color|default('#18181b') : '#18181b' }};">
+                {{ component.subtext }}
+            </p>
+            {% endif %}
+            {% if component.button_text %}
+            <a href="{{ component.url|default('#') }}"
+               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200"
+               style="background-color: {{ component.customize_colors ? component.button_bg|default('#18181b') : '#18181b' }};
+                      color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
+                <span class="relative z-10">{{ component.button_text }}</span>
+            </a>
+            {% endif %}
+        </div>
+
+        {# Right/End: Accordion #}
+        <div class="grid-col-faq flex flex-col gap-4">
+            {% for item in component.faq_accordion %}
+    <div class="faq-accordion-item border transition-all duration-300"
+         style="background-color: {{ item.bg_color|default('#ffffff') }};
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
+         data-accordion-item>
+
+        <button type="button"
+                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                style="color: {{ item.question_color|default('#18181b') }};"
+                aria-expanded="false"
+                aria-controls="faq-panel-{{ loop.index }}">
+            <div class="flex items-center gap-3">
+                {% if item.icon %}
+                <i class="{{ item.icon }} text-xl pointer-events-none shrink-0"
+                   style="color: {{ item.icon_color|default('#18181b') }};"
+                   aria-hidden="true"></i>
+                {% endif %}
+                <span>{{ item.question }}</span>
+            </div>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
+        </button>
+
+        <div id="faq-panel-{{ loop.index }}"
+             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+             role="region">
+            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                        color: {{ item.answer_color|default('#4b5563') }};">
+                {{ item.answer }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+        </div>
+
+    </div>
+
+    {# ══════════════════════════════════════════════
+       MODE 4 — Three Column (Text + Image/Video + FAQ)
+    ══════════════════════════════════════════════ #}
+    {% elseif mode == 'three_column' %}
+
+    <div class="SK-faq-section__inner grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+
+        {# Col 1: Promo text + button #}
+        <div class="grid-col-promo flex flex-col justify-center items-start text-left rtl:text-right">
+            {% if component.subtext %}
+            <p class="text-base leading-relaxed mb-6"
+               style="color: {{ component.customize_colors ? component.subtext_color|default('#18181b') : '#18181b' }};">
+                {{ component.subtext }}
+            </p>
+            {% endif %}
+            {% if component.button_text %}
+            <a href="{{ component.url|default('#') }}"
+               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200"
+               style="background-color: {{ component.customize_colors ? component.button_bg|default('#18181b') : '#18181b' }};
+                      color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
+                <span class="relative z-10">{{ component.button_text }}</span>
+            </a>
+            {% endif %}
+        </div>
+
+        {# Col 2: Image or Video #}
+        <div class="grid-col-media flex justify-center items-center">
+            {% if component.media_type == 'video' and component.banner_video %}
+                {% if 'youtube.com' in component.banner_video or 'youtu.be' in component.banner_video or 'vimeo.com' in component.banner_video %}
+                    <iframe src="{{ component.banner_video }}"
+                            class="SK-faq-section__media rounded-2xl w-full"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                            title="{{ component.main_title|default('FAQ Video') }}"></iframe>
+                {% else %}
+                    <video src="{{ component.banner_video }}"
+                           class="SK-faq-section__media rounded-2xl w-full"
+                           controls
+                           playsinline></video>
+                {% endif %}
+            {% elseif component.banner_img %}
+                <img src="{{ component.banner_img }}"
+                     alt="{{ component.main_title|default('') }}"
+                     class="SK-faq-section__media max-w-full h-auto object-contain rounded-2xl" />
+            {% endif %}
+        </div>
+
+        {# Col 3: Accordion #}
+        <div class="grid-col-faq flex flex-col gap-4">
+            {% for item in component.faq_accordion %}
+    <div class="faq-accordion-item border transition-all duration-300"
+         style="background-color: {{ item.bg_color|default('#ffffff') }};
+                border-color: {{ item.hr_color|default('#e4e4e7') }};
+                border-radius: {{ component.corner_rounded|default(16) }}px;"
+         data-accordion-item>
+
+        <button type="button"
+                class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                style="color: {{ item.question_color|default('#18181b') }};"
+                aria-expanded="false"
+                aria-controls="faq-panel-{{ loop.index }}">
+            <div class="flex items-center gap-3">
+                {% if item.icon %}
+                <i class="{{ item.icon }} text-xl pointer-events-none shrink-0"
+                   style="color: {{ item.icon_color|default('#18181b') }};"
+                   aria-hidden="true"></i>
+                {% endif %}
+                <span>{{ item.question }}</span>
+            </div>
+            <div class="faq-toggle-icon pointer-events-none shrink-0"
+                 style="color: {{ item.icon_color|default('#18181b') }};"
+                 aria-hidden="true">
+                <span class="horizontal"></span>
+                <span class="vertical"></span>
+            </div>
+        </button>
+
+        <div id="faq-panel-{{ loop.index }}"
+             class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+             role="region">
+            <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                 style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                        color: {{ item.answer_color|default('#4b5563') }};">
+                {{ item.answer }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+        </div>
+
+    </div>
+
+    {% endif %}{# /layout switch #}
+
+</section>
+
+
+
+{# ══════════════════════════════════════════════ STYLES ══════════════════════════════════════════════ #}
+<style>
+.SK-faq-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Media block — desktop */
+.SK-faq-section__media {
+    max-height: var(--desktop-height, 90vh);
+    width: 100%;
+}
+
+/* iframe / video responsive ratio */
+.grid-col-media iframe,
+.grid-col-media video {
+    aspect-ratio: 16 / 9;
+    max-height: var(--desktop-height, 90vh);
+}
+
+/* Accordion */
+.faq-panel {
+    transition: max-height 0.35s ease-in-out;
+}
+.faq-accordion-item.is-active .faq-panel {
+    max-height: 600px;
+}
+/* FAQ Animated Plus/Minus Icon */
+.faq-toggle-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+.faq-toggle-icon span {
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.3s ease;
+    border-radius: 2px;
+}
+.faq-toggle-icon .horizontal {
+    width: 14px;
+    height: 2px;
+}
+.faq-toggle-icon .vertical {
+    width: 2px;
+    height: 14px;
+}
+.faq-accordion-item.is-active .faq-toggle-icon {
+    transform: rotate(180deg);
+}
+.faq-accordion-item.is-active .faq-toggle-icon .vertical {
+    transform: scaleY(0);
+}
+
+/* Mobile */
+@media (max-width: 1024px) {
+    .SK-faq-section__media,
+    .grid-col-media iframe,
+    .grid-col-media video {
+        max-height: var(--mobile-height, 70vh);
+    }
+    /* Stack columns on mobile for all modes */
+    .SK-layout--accordion_content .grid-col-faq,
+    .SK-layout--accordion_image .grid-col-faq {
+        order: 1;
+    }
+    .SK-layout--accordion_content .grid-col-promo,
+    .SK-layout--accordion_image .grid-col-media {
+        order: 2;
+    }
+}
+
+/* Button Swipe Hover */
+.SK-btn-swipe {
+    position: relative;
+    overflow: hidden;
+}
+.SK-btn-swipe::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.25);
+    transition: width 0.4s ease-in-out;
+    z-index: 1;
+}
+html[dir="rtl"] .SK-btn-swipe::before {
+    left: 0;
+    right: auto;
+}
+.SK-btn-swipe:hover::before {
+    width: 100%;
+}
+</style>
+
+{# ══════════════════════════════════════════════ SCRIPT ══════════════════════════════════════════════ #}
+<script>
+(function () {
+    if (window.SK_FAQ_INIT) return;
+    window.SK_FAQ_INIT = true;
+
+    function bindEvents() {
+        document.body.addEventListener("click", function(e) {
+            var btn = e.target.closest("button[aria-controls^='faq-panel-']");
+            if (!btn) return;
+            var item = btn.closest("[data-accordion-item]");
+            if (!item) return;
+
+            var panel = item.querySelector(".faq-panel");
+            var icon  = item.querySelector("[data-icon]");
+            if (!panel) return;
+
+            var isActive = item.classList.contains("is-active");
+
+            var section = item.closest('.SK-faq-section');
+            if (section) {
+                var siblings = section.querySelectorAll("[data-accordion-item]");
+                siblings.forEach(function (other) {
+                    if (other === item) return;
+                    other.classList.remove("is-active");
+                    var ob = other.querySelector("button");
+                    var op = other.querySelector(".faq-panel");
+                    var oi = other.querySelector("[data-icon]");
+                    if (ob) ob.setAttribute("aria-expanded", "false");
+                    if (op) op.style.maxHeight = null;
+                    if (oi) {
+                        oi.classList.replace("sicon-minus", "sicon-add");
+                        oi.style.transform = "";
+                    }
+                });
+            }
+
+            if (isActive) {
+                item.classList.remove("is-active");
+                btn.setAttribute("aria-expanded", "false");
+                panel.style.maxHeight = null;
+                if (icon) { icon.classList.replace("sicon-minus", "sicon-add"); icon.style.transform = ""; }
+            } else {
+                item.classList.add("is-active");
+                btn.setAttribute("aria-expanded", "true");
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                if (icon) { icon.classList.replace("sicon-add", "sicon-minus"); icon.style.transform = "rotate(45deg)"; }
+            }
+        });
+    }
+
+    document.readyState === "loading"
+        ? document.addEventListener("DOMContentLoaded", bindEvents)
+        : bindEvents();
+})();
+</script>

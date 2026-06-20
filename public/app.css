@@ -1095,6 +1095,9 @@ input:where([type='file']):focus{
 .-mt-62{
     margin-top: -248px;
 }
+.mb-0{
+    margin-bottom: 0px;
+}
 .mb-1{
     margin-bottom: 0.25rem;
 }
@@ -1530,6 +1533,9 @@ input:where([type='file']):focus{
 .max-w-16{
     max-width: 4rem;
 }
+.max-w-2xl{
+    max-width: 42rem;
+}
 .max-w-3xl{
     max-width: 48rem;
 }
@@ -1568,6 +1574,12 @@ input:where([type='file']):focus{
 }
 .max-w-xs{
     max-width: 20rem;
+}
+.max-w-2{
+    max-width: 0.5rem;
+}
+.max-w-xl{
+    max-width: 36rem;
 }
 .flex-1{
     flex: 1 1 0%;
@@ -1754,6 +1766,9 @@ input:where([type='file']):focus{
 }
 .flex-wrap{
     flex-wrap: wrap;
+}
+.flex-nowrap{
+    flex-wrap: nowrap;
 }
 .items-start{
     align-items: flex-start;
@@ -2509,6 +2524,9 @@ input:where([type='file']):focus{
 }
 .pt-8{
     padding-top: 2rem;
+}
+.text-left{
+    text-align: left;
 }
 .text-center{
     text-align: center;
@@ -34246,6 +34264,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-10{
         margin-bottom: 2.5rem;
     }
+    .md\:mb-16{
+        margin-bottom: 4rem;
+    }
     .md\:mb-20{
         margin-bottom: 5rem;
     }
@@ -34257,6 +34278,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:mt-0{
         margin-top: 0px;
+    }
+    .md\:block{
+        display: block;
     }
     .md\:flex{
         display: flex;
@@ -34615,6 +34639,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:grid-cols-4{
         grid-template-columns: repeat(4, minmax(0, 1fr));
