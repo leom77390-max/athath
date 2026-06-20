@@ -5532,13 +5532,6 @@
                                     "key": "custom",
                                     "value": "custom"
                                 }
-                            ],
-                            "conditions": [
-                                {
-                                    "id": "btn_opt",
-                                    "operation": "=",
-                                    "value": true
-                                }
                             ]
                         },
                         {
