@@ -1,0 +1,132 @@
+{{ set component = c }}
+{# c Container #}
+<section class="SK-faq-section s-blockfaq-grid-section {{ c.add_inside_container ? 'container' : '' }} {{ c.rm_margin ? 'mb-0' : 'mb-12' }}"
+         style="--desktop-height: {{ c.desktop_height|default(90) }}vh; --mobile-height: {{ c.mobile_height|default(70) }}vh;">
+    
+    {# Global Title #}
+    <div class="section-header text-center {{ c.grid.main_title ? 'mb-10' : 'hidden' }}">
+        <h2 class="text-3xl font-bold">{{ c.grid.main_title }}</h2>
+    </div>
+
+    {# The 3-Grid Wrapper #}
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+        
+        {# Grid 1: Promotion Text & Button #}
+        <div class="grid-col-promo flex flex-col justify-center items-start text-left rtl:text-right">
+            <p class="text-base leading-relaxed mb-6 {{ c.banner.subtext ? '' : 'hidden' }}" 
+               style="color: {{ c.customize_colors ? c.banner.subtext_color : '#18181b' }};">
+                {{ c.banner.subtext }}
+            </p>
+            
+            <a href="{{ c.banner.url|default('#') }}" 
+               class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200 hover:opacity-90 {{ c.banner.button_text ? '' : 'hidden' }}"
+               style="background-color: {{ c.customize_colors ? c.banner.button_bg : '#000000' }}; 
+                      color: {{ c.customize_colors ? c.banner.button_text_color : '#ffffff' }};">
+                {{ c.banner.button_text }}
+            </a>
+        </div>
+
+        {# Grid 2: Center Image Banner #}
+        <div class="grid-col-image flex justify-center items-center">
+            <img src="{{ c.banner_img }}" 
+                 alt="Promo Banner" 
+                 class="max-w-full h-auto object-contain dynamic-banner-img {{ c.banner_img ? '' : 'hidden' }}" />
+        </div>
+
+        {# Grid 3: Accordion FAQs Collection #}
+        <div class="grid-col-faq flex flex-col gap-4">
+            {% for item in c.faq_accordion %}
+                <div class="faq-accordion-item rounded-2xl border transition-all duration-300"
+                     style="background-color: {{ item.bg_color|default('#ffffff') }}; border-color: {{ item.hr_color|default('#e4e4e7') }};"
+                     data-accordion-item>
+                    
+                    {# Accordion Header trigger toggle #}
+                    <button class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                            style="color: {{ item.question_color|default('#18181b') }};"
+                            aria-expanded="false">
+                        <span>{{ item.question }}</span>
+                        <i class="{{ item.icon|default('sicon-add') }} text-lg transition-transform duration-300 pointer-events-none" 
+                           style="color: {{ item.icon_color|default('#18181b') }};" 
+                           data-icon></i>
+                    </button>
+                    
+                    {# Accordion Panel Body #}
+                    <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed"
+                             style="border-color: {{ item.hr_color|default('#e4e4e7') }}; color: {{ item.answer_color|default('#4b5563') }};">
+                            {{ item.answer }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+<style>
+.faq-grid-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.dynamic-banner-img {
+    max-height: var(--desktop-height, 90vh);
+}
+.faq-panel {
+    transition: max-height 0.3s ease-in-out;
+}
+.faq-accordion-item.is-active .faq-panel {
+    max-height: 500px;
+}
+.faq-accordion-item.is-active i.sicon-add {
+    transform: rotate(45deg);
+}
+@media (max-width: 1024px) {
+    .dynamic-banner-img {
+        max-height: var(--mobile-height, 70vh);
+    }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const accordionItems = document.querySelectorAll("[data-accordion-item]");
+    accordionItems.forEach((item) => {
+        const triggerButton = item.querySelector("button");
+        const panel = item.querySelector(".faq-panel");
+        const icon = item.querySelector("[data-icon]");
+
+        triggerButton.addEventListener("click", () => {
+            const isActive = item.classList.contains("is-active");
+
+            accordionItems.forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove("is-active");
+                    otherItem.querySelector("button").setAttribute("aria-expanded", "false");
+                    otherItem.querySelector(".faq-panel").style.maxHeight = null;
+                    const otherIcon = otherItem.querySelector("[data-icon]");
+                    if (otherIcon && otherIcon.classList.contains("sicon-minus")) {
+                        otherIcon.classList.replace("sicon-minus", "sicon-add");
+                    }
+                }
+            });
+
+            if (isActive) {
+                item.classList.remove("is-active");
+                triggerButton.setAttribute("aria-expanded", "false");
+                panel.style.maxHeight = null;
+                if (icon.classList.contains("sicon-minus")) {
+                    icon.classList.replace("sicon-minus", "sicon-add");
+                }
+            } else {
+                item.classList.add("is-active");
+                triggerButton.setAttribute("aria-expanded", "true");
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                if (icon.classList.contains("sicon-add")) {
+                    icon.classList.replace("sicon-add", "sicon-minus");
+                }
+            }
+        });
+    });
+});
+</script>

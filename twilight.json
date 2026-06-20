@@ -4167,7 +4167,7 @@
         "description": "العنوان الرئيسي الكبير الموحد الذي يظهر أعلى الشبكة (الجريد).",
         "placeholder": "مثال: مركز الدعم والمعلومات",
         "icon": "sicon-layout",
-        "value": null,
+        "value": "We're answerable!",
         "multilanguage": true,
         "required": false
     },
@@ -4230,7 +4230,7 @@
         "label": "العنوان الفرعي",
         "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
         "icon": "sicon-format-text-alt",
-        "value": null,
+        "value": "We create safe products that really work and are designed to make you feel good. Any question about our products? Check if you can find them here or Contact us",
         "multilanguage": true
     },
     {
@@ -4255,7 +4255,7 @@
         "format": "text",
         "label": "نص الزر",
         "icon": "sicon-format-text-alt",
-        "value": null,
+        "value": "Contact us",
         "multilanguage": true
     },
     {

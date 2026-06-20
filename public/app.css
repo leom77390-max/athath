@@ -1203,6 +1203,9 @@ input:where([type='file']):focus{
 .mt-auto{
     margin-top: auto;
 }
+.mb-0{
+    margin-bottom: 0px;
+}
 .line-clamp-1{
     overflow: hidden;
     display: -webkit-box;
@@ -2509,6 +2512,9 @@ input:where([type='file']):focus{
 }
 .pt-8{
     padding-top: 2rem;
+}
+.text-left{
+    text-align: left;
 }
 .text-center{
     text-align: center;
@@ -34624,6 +34630,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:flex-row{
         flex-direction: row;
