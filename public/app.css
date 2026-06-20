@@ -1095,6 +1095,9 @@ input:where([type='file']):focus{
 .-mt-62{
     margin-top: -248px;
 }
+.mb-0{
+    margin-bottom: 0px;
+}
 .mb-1{
     margin-bottom: 0.25rem;
 }
@@ -1202,9 +1205,6 @@ input:where([type='file']):focus{
 }
 .mt-auto{
     margin-top: auto;
-}
-.mb-0{
-    margin-bottom: 0px;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -34622,6 +34622,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .lg\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
     .lg\:grid-cols-4{
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
@@ -34630,9 +34633,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-    .lg\:grid-cols-3{
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:flex-row{
         flex-direction: row;
