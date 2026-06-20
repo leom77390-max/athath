@@ -4146,465 +4146,343 @@
             "icon": "sicon-books-pencil",
             "path": "home.SK_faq_section",
             "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+    {
+        "type": "static",
+        "format": "description",
+        "id": "static-desc",
+        "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "static-label2",
+        "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div {padding:10px; border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset >  div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+        "variant": "h6"
+    },
+    {
+        "id": "grid.main_title",
+        "type": "string",
+        "format": "text",
+        "label": "العنوان الرئيسي للقسم العام",
+        "description": "العنوان الرئيسي الكبير الموحد الذي يظهر أعلى الشبكة (الجريد).",
+        "placeholder": "مثال: مركز الدعم والمعلومات",
+        "icon": "sicon-layout",
+        "value": null,
+        "multilanguage": true,
+        "required": false
+    },
+    {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "وضع المكون داخل حاوية",
+        "id": "add_inside_container",
+        "format": "switch",
+        "value": false
+    },
+    {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "إزالة الهامش السفلي",
+        "id": "rm_margin",
+        "format": "switch",
+        "value": false
+    },
+    {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "تخصيص ألوان المكون",
+        "id": "customize_colors",
+        "format": "switch",
+        "value": false
+    },
+    {
+        "id": "desktop_height",
+        "type": "number",
+        "format": "integer",
+        "inputType": "number",
+        "label": "ارتفاع البانر في الشاشات الكبيرة",
+        "icon": "sicon-hashtag",
+        "value": 90,
+        "minimum": "20",
+        "maximum": "200"
+    },
+    {
+        "id": "mobile_height",
+        "type": "number",
+        "format": "integer",
+        "inputType": "number",
+        "label": "ارتفاع البانر في الشاشات الصغيرة",
+        "icon": "sicon-hashtag",
+        "value": 70,
+        "minimum": "20",
+        "maximum": "200"
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "grid1_header",
+        "value": "<h3 style='font-size:16px; font-weight:bold; color:#18181b; margin-top:20px; padding:8px; border-right:4px solid #18181b;'>العمود الأول: النصوص والأزرار الترويجية</h3>"
+    },
+    {
+        "id": "banner.subtext",
+        "type": "string",
+        "format": "text",
+        "label": "العنوان الفرعي",
+        "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+        "icon": "sicon-format-text-alt",
+        "value": null,
+        "multilanguage": true
+    },
+    {
+        "id": "banner.subtext_color",
+        "type": "string",
+        "format": "color",
+        "inputType": "color",
+        "label": "لون النص الفرعي",
+        "icon": "sicon-format-fill",
+        "value": "#FFFFFF",
+        "conditions": [
+            {
+                "id": "customize_colors",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "banner.button_text",
+        "type": "string",
+        "format": "text",
+        "label": "نص الزر",
+        "icon": "sicon-format-text-alt",
+        "value": null,
+        "multilanguage": true
+    },
+    {
+        "id": "banner.button_text_color",
+        "type": "string",
+        "format": "color",
+        "inputType": "color",
+        "label": "لون نص الزر",
+        "icon": "sicon-format-fill",
+        "value": "#FFFFFF",
+        "conditions": [
+            {
+                "id": "customize_colors",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "banner.button_bg",
+        "type": "string",
+        "format": "color",
+        "inputType": "color",
+        "label": "لون خلفية الزر",
+        "icon": "sicon-format-fill",
+        "value": "#f3eeea",
+        "conditions": [
+            {
+                "id": "customize_colors",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "type": "items",
+        "id": "banner.url",
+        "format": "variable-list",
+        "label": "رابط الزر",
+        "icon": "sicon-link",
+        "value": null,
+        "searchable": true,
+        "source": "custom",
+        "sources": [
+            {"label": "منتج", "key": "products", "value": "products"},
+            {"label": "تصنيف", "key": "categories", "value": "categories"},
+            {"label": "ماركة تجارية", "key": "brands", "value": "brands"},
+            {"label": "صفحة تعريفية", "key": "pages", "value": "pages"},
+            {"label": "مقالة", "key": "blog_articles", "value": "blog_articles"},
+            {"label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories"},
+            {"label": "التخفيضات", "key": "offers_link", "value": "offers_link"},
+            {"label": "الماركات التجارية", "key": "brands_link", "value": "brands_link"},
+            {"label": "المدونة", "key": "blog_link", "value": "blog_link"},
+            {"label": "رابط خارجي", "key": "custom", "value": "custom"}
+        ]
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "grid2_header",
+        "value": "<h3 style='font-size:16px; font-weight:bold; color:#18181b; margin-top:20px; padding:8px; border-right:4px solid #18181b;'>العمود الثاني: صورة البانر</h3>"
+    },
+    {
+        "id": "banner_img",
+        "type": "string",
+        "format": "image",
+        "label": "صورة البانر الجانبي للقسم",
+        "description": "قم بإضافة صورة جانبية مميزة تُكمل تصميم القسم.",
+        "icon": "sicon-image",
+        "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp"
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "grid3_header",
+        "value": "<h3 style='font-size:16px; font-weight:bold; color:#18181b; margin-top:20px; padding:8px; border-right:4px solid #18181b;'>العمود الثالث: الأسئلة الشائعة الأكورديون</h3>"
+    },
+    {
+        "id": "faq_accordion",
+        "type": "collection",
+        "format": "collection",
+        "label": "الأسئلة الشائعة (الأكورديون)",
+        "description": "قائمة بالأسئلة الشائعة والإجابات الخاصة بها مع إمكانية التخصيص.",
+        "item_label": "سؤال وجواب",
+        "icon": "sicon-list-add",
+        "fields": [
+            {
+                "id": "faq_accordion.bg_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون خلفية العنصر",
+                "description": "اختر لون خلفية كل سؤال وجواب في القائمة.",
+                "icon": "sicon-format-fill",
+                "value": "#ffffff"
+            },
+            {
+                "id": "faq_accordion.question",
+                "type": "string",
+                "format": "text",
+                "label": "نص السؤال",
+                "description": "اكتب السؤال الذي يطرحه العميل عادةً.",
+                "placeholder": "مثال: كم تستغرق مدة الشحن؟",
+                "icon": "sicon-help",
+                "multilanguage": true,
+                "required": true,
+                "minLength": "5",
+                "maxLength": "150"
+            },
+            {
+                "id": "faq_accordion.icon",
+                "type": "string",
+                "format": "icon",
+                "label": "أيقونة السؤال",
+                "icon": "sicon-user-circle",
+                "value": "sicon-store"
+            },
+            {
+                "id": "faq_accordion.icon_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون الأيقونة",
+                "icon": "sicon-format-fill",
+                "value": "#18181b"
+            },
+            {
+                "id": "faq_accordion.hr_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون الخط الفاصل",
+                "icon": "sicon-format-fill",
+                "value": "#e4e4e7"
+            },
+            {
+                "id": "faq_accordion.question_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون نص السؤال",
+                "icon": "sicon-format-fill",
+                "value": "#18181b"
+            },
+            {
+                "id": "faq_accordion.answer",
+                "type": "string",
+                "format": "text",
+                "label": "نص الإجابة",
+                "description": "اكتب الإجابة المفصلة على السؤال المحدد.",
+                "placeholder": "مثال: يستغرق الشحن من 3 إلى 5 أيام عمل...",
+                "icon": "sicon-chat-bubble",
+                "multilanguage": true,
+                "required": true,
+                "minLength": "10",
+                "maxLength": "1000"
+            },
+            {
+                "id": "faq_accordion.answer_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون نص الإجابة",
+                "icon": "sicon-format-fill",
+                "value": "#4b5563"
+            }
+        ],
+        "value": [
+            {
+                "ar": {
+                    "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
+                    "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
                 },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "static-label2",
-                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div {padding:10px; border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset >  div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-                    "variant": "h6"
+                "en": {
+                    "faq_accordion.question": "How long does shipping take?",
+                    "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and it might slightly vary for remote areas."
                 },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
-                    "description": null,
-                    "id": "add_inside_container",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
+                "faq_accordion.bg_color": "#ffffff",
+                "faq_accordion.icon": "sicon-shipping",
+                "faq_accordion.icon_color": "#18181b",
+                "faq_accordion.hr_color": "#e4e4e7",
+                "faq_accordion.question_color": "#18181b",
+                "faq_accordion.answer_color": "#4b5563",
+                "faq_accordion.question": "How long does shipping take?",
+                "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and it might slightly vary for remote areas."
+            },
+            {
+                "ar": {
+                    "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
+                    "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
                 },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزالة الهامش السفلي",
-                    "description": null,
-                    "id": "rm_margin",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
+                "en": {
+                    "faq_accordion.question": "Are the products original and skin-safe?",
+                    "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
                 },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "تخصيص ألوان المكون",
-                    "description": null,
-                    "id": "customize_colors",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
+                "faq_accordion.bg_color": "#ffffff",
+                "faq_accordion.icon": "sicon-shield-check",
+                "faq_accordion.icon_color": "#18181b",
+                "faq_accordion.hr_color": "#e4e4e7",
+                "faq_accordion.question_color": "#18181b",
+                "faq_accordion.answer_color": "#4b5563",
+                "faq_accordion.question": "Are the products original and skin-safe?",
+                "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
+            },
+            {
+                "ar": {
+                    "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع المتوفرة؟",
+                    "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من الاستلام، بشرط أن يكون المنتج بحالته الأصلية ولم يتم فتحه أو استخدامه."
                 },
-                {
-                    "id": "desktop_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع البانر في الشاشات الكبيرة",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-hashtag",
-                    "value": 90,
-                    "required": false,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "auto_height",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
+                "en": {
+                    "faq_accordion.question": "What is the return and exchange policy?",
+                    "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
                 },
-                {
-                    "id": "mobile_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع البانر في الشاشات الصغيرة",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-hashtag",
-                    "value": 70,
-                    "required": false,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "auto_height",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "dropdown_list",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "Dropdown List",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [
-                        {
-                            "label": null,
-                            "value": "Value 1",
-                            "key": "0b602aae-cc24-4fbf-b6ab-fb86e945628f"
-                        },
-                        {
-                            "label": null,
-                            "value": "Value 2",
-                            "key": "125906ea-f2a8-4acd-b8fb-c5326cc90e7d"
-                        },
-                        {
-                            "label": null,
-                            "value": "Value 3",
-                            "key": "6bfd1488-981b-4963-85b2-d62157bbb970"
-                        }
-                    ],
-                    "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false
-                },
-                {
-                    "id": "banner.subtext",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي",
-                    "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
-                    "labelHTML": null,
-                    "placeholder": "",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "banner.subtext_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص الفرعي ",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#FFFFFF",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "banner.button_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "banner.button_text_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#FFFFFF",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "banner.button_bg",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#f3eeea",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط الزر",
-                    "id": "banner.url",
-                    "value": null,
-                    "description": null,
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "ماركة تجارية",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "مقالة",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "تصنيف ضمن المدونة",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "الماركات التجارية",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "المدونة",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "id": "banner_img",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة البانر الجانبي للقسم",
-                    "description": "قم بإضافة صورة جانبية مميزة تُكمل تصميم القسم.",
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://hostname.com/image.png",
-                    "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "is_video",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "faq_accordion",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الأسئلة الشائعة (الأكورديون)",
-                    "description": "قائمة بالأسئلة الشائعة والإجابات الخاصة بها مع إمكانية التخصيص.",
-                    "labelHTML": null,
-                    "item_label": "سؤال وجواب",
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "faq_accordion.bg_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون خلفية العنصر",
-                            "description": "اختر لون خلفية كل سؤال وجواب في القائمة.",
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#ffffff",
-                            "required": false
-                        },
-                        {
-                            "id": "faq_accordion.question",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص السؤال",
-                            "description": "اكتب السؤال الذي يطرحه العميل عادةً.",
-                            "labelHTML": null,
-                            "placeholder": "مثال: كم تستغرق مدة الشحن؟",
-                            "icon": "sicon-help",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "5",
-                            "maxLength": "150"
-                        },
-                        {
-                            "id": "faq_accordion.icon",
-                            "type": "string",
-                            "format": "icon",
-                            "label": "أيقونة السؤال",
-                            "description": "اختر أيقونة مناسبة تظهر بجانب السؤال.",
-                            "labelHTML": null,
-                            "icon": "sicon-user-circle",
-                            "value": "sicon-store",
-                            "required": false
-                        },
-                        {
-                            "id": "faq_accordion.icon_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون الأيقونة",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#18181b",
-                            "required": false
-                        },
-                        {
-                            "id": "faq_accordion.hr_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون الخط الفاصل",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#e4e4e7",
-                            "required": false
-                        },
-                        {
-                            "id": "faq_accordion.question_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون نص السؤال",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#18181b",
-                            "required": false
-                        },
-                        {
-                            "id": "faq_accordion.answer",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص الإجابة",
-                            "description": "اكتب الإجابة المفصلة على السؤال المحدد.",
-                            "labelHTML": null,
-                            "placeholder": "مثال: يستغرق الشحن من 3 إلى 5 أيام عمل...",
-                            "icon": "sicon-chat-bubble",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "10",
-                            "maxLength": "1000"
-                        },
-                        {
-                            "id": "faq_accordion.answer_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون نص الإجابة",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#4b5563",
-                            "required": false
-                        }
-                    ],
-                    "value": [
-                        {
-                            "ar": {
-                                "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
-                                "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
-                            },
-                            "en": {
-                                "faq_accordion.question": "How long does shipping take?",
-                                "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and it might slightly vary for remote areas."
-                            },
-                            "faq_accordion.bg_color": "#ffffff",
-                            "faq_accordion.icon": "sicon-shipping",
-                            "faq_accordion.icon_color": "#18181b",
-                            "faq_accordion.hr_color": "#e4e4e7",
-                            "faq_accordion.question_color": "#18181b",
-                            "faq_accordion.answer_color": "#4b5563",
-                            "faq_accordion.question": "How long does shipping take?",
-                            "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and it might slightly vary for remote areas."
-                        },
-                        {
-                            "ar": {
-                                "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
-                                "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
-                            },
-                            "en": {
-                                "faq_accordion.question": "Are the products original and skin-safe?",
-                                "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
-                            },
-                            "faq_accordion.bg_color": "#ffffff",
-                            "faq_accordion.icon": "sicon-shield-check",
-                            "faq_accordion.icon_color": "#18181b",
-                            "faq_accordion.hr_color": "#e4e4e7",
-                            "faq_accordion.question_color": "#18181b",
-                            "faq_accordion.answer_color": "#4b5563",
-                            "faq_accordion.question": "Are the products original and skin-safe?",
-                            "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
-                        },
-                        {
-                            "ar": {
-                                "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع المتوفرة؟",
-                                "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من الاستلام، بشرط أن يكون المنتج بحالته الأصلية ولم يتم فتحه أو استخدامه."
-                            },
-                            "en": {
-                                "faq_accordion.question": "What is the return and exchange policy?",
-                                "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
-                            },
-                            "faq_accordion.bg_color": "#ffffff",
-                            "faq_accordion.icon": "sicon-refresh",
-                            "faq_accordion.icon_color": "#18181b",
-                            "faq_accordion.hr_color": "#e4e4e7",
-                            "faq_accordion.question_color": "#18181b",
-                            "faq_accordion.answer_color": "#4b5563",
-                            "faq_accordion.question": "What is the return and exchange policy?",
-                            "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
-                        }
-                    ],
-                    "minLength": "1",
-                    "maxLength": "15"
-                }
-            ]
+                "faq_accordion.bg_color": "#ffffff",
+                "faq_accordion.icon": "sicon-refresh",
+                "faq_accordion.icon_color": "#18181b",
+                "faq_accordion.hr_color": "#e4e4e7",
+                "faq_accordion.question_color": "#18181b",
+                "faq_accordion.answer_color": "#4b5563",
+                "faq_accordion.question": "What is the return and exchange policy?",
+                "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
+            }
+        ],
+        "minLength": "1",
+        "maxLength": "15"
+    }
+]
         },
         {
             "key": "70c52858-8963-478e-a0de-4c24597ee44f",
