@@ -6,9 +6,9 @@
          style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;">
 
     {# ── Global Title ── #}
-    {% if component.grid.main_title %}
+    {% if component.main_title %}
     <div class="section-header text-center mb-10">
-        <h2 class="text-3xl font-bold">{{ component.grid.main_title }}</h2>
+        <h2 class="text-3xl font-bold">{{ component.main_title }}</h2>
     </div>
     {% endif %}
 
@@ -20,17 +20,17 @@
 
             {% if component.banner.subtext %}
             <p class="text-base leading-relaxed mb-6"
-               style="color: {{ component.customize_colors ? component.banner.subtext_color|default('#18181b') : '#18181b' }};">
-                {{ component.banner.subtext }}
+               style="color: {{ component.customize_colors ? component.subtext_color|default('#18181b') : '#18181b' }};">
+                {{ component.subtext }}
             </p>
             {% endif %}
 
-            {% if component.banner.button_text %}
-            <a href="{{ component.banner.url|default('#') }}"
+            {% if component.button_text %}
+            <a href="{{ component.url|default('#') }}"
                class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200 hover:opacity-90"
-               style="background-color: {{ component.customize_colors ? component.banner.button_bg|default('#000000') : '#000000' }};
-                      color: {{ component.customize_colors ? component.banner.button_text_color|default('#ffffff') : '#ffffff' }};">
-                {{ component.banner.button_text }}
+               style="background-color: {{ component.customize_colors ? component.button_bg|default('#000000') : '#000000' }};
+                      color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
+                {{ component.button_text }}
             </a>
             {% endif %}
 
@@ -40,7 +40,7 @@
         <div class="grid-col-image flex justify-center items-center">
             {% if component.banner_img %}
             <img src="{{ component.banner_img }}"
-                 alt="{{ component.grid.main_title|default('Promo Banner') }}"
+                 alt="{{ component.main_title|default('Promo Banner') }}"
                  class="dynamic-banner-img max-w-full h-auto object-contain" />
             {% endif %}
         </div>

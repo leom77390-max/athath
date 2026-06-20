@@ -4160,18 +4160,6 @@
       "variant": "h6"
     },
     {
-      "id": "grid.main_title",
-      "type": "string",
-      "format": "text",
-      "label": "العنوان الرئيسي للقسم",
-      "description": "العنوان الكبير الذي يظهر أعلى الشبكة بالكامل.",
-      "placeholder": "مثال: مركز الدعم والمعلومات",
-      "icon": "sicon-layout",
-      "value": "لديك سؤال؟ نحن هنا للإجابة!",
-      "multilanguage": true,
-      "required": false
-    },
-    {
       "type": "boolean",
       "icon": "sicon-toggle-off",
       "label": "وضع المكون داخل حاوية",
@@ -4228,8 +4216,20 @@
       "id": "grid1_header",
       "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>العمود الأول — النصوص والأزرار الترويجية</h3>"
     },
+      {
+      "id": "main_title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي للقسم",
+      "description": "العنوان الكبير الذي يظهر أعلى الشبكة بالكامل.",
+      "placeholder": "مثال: مركز الدعم والمعلومات",
+      "icon": "sicon-layout",
+      "value": "لديك سؤال؟ نحن هنا للإجابة!",
+      "multilanguage": true,
+      "required": false
+    },
     {
-      "id": "banner.subtext",
+      "id": "subtext",
       "type": "string",
       "format": "textarea",
       "label": "النص الترويجي",
@@ -4240,7 +4240,7 @@
       "multilanguage": true
     },
     {
-      "id": "banner.subtext_color",
+      "id": "subtext_color",
       "type": "string",
       "format": "color",
       "inputType": "color",
@@ -4256,7 +4256,7 @@
       ]
     },
     {
-      "id": "banner.button_text",
+      "id": "button_text",
       "type": "string",
       "format": "text",
       "label": "نص زر الدعوة للتصرف (CTA)",
@@ -4267,7 +4267,7 @@
       "multilanguage": true
     },
     {
-      "id": "banner.button_text_color",
+      "id": "button_text_color",
       "type": "string",
       "format": "color",
       "inputType": "color",
@@ -4283,7 +4283,7 @@
       ]
     },
     {
-      "id": "banner.button_bg",
+      "id": "button_bg",
       "type": "string",
       "format": "color",
       "inputType": "color",
@@ -4300,7 +4300,7 @@
     },
     {
       "type": "items",
-      "id": "banner.url",
+      "id": "url",
       "format": "variable-list",
       "label": "رابط زر الدعوة للتصرف",
       "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الزر.",
