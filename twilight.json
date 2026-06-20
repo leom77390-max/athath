@@ -5124,6 +5124,16 @@
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
             "fields": []
+        },
+        {
+            "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
+            "title": {
+                "en": "about-us",
+                "ar": "نبذه عنا"
+            },
+            "icon": "sicon-airplay-audio",
+            "path": "home.SK_about_us",
+            "fields": []
         }
     ],
     "support_url": null,
