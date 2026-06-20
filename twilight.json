@@ -4194,10 +4194,10 @@
                     "description": "اختر الطريقة التي تريد عرض قسم الأسئلة الشائعة بها.",
                     "icon": "sicon-layout",
                     "selected": [
-                        {
-                            "label": "أكورديون + صورة / فيديو",
-                            "value": "accordion_image",
-                            "key": "layout-accordion-image"
+                       {
+                            "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
+                            "value": "three_column",
+                            "key": "layout-three-column"
                         }
                     ],
                     "options": [
@@ -4207,12 +4207,12 @@
                             "key": "layout-accordion-only"
                         },
                         {
-                            "label": "أكورديون + صورة / فيديو في المنتصف",
+                            "label": "أكورديون + صورة / فيديو ",
                             "value": "accordion_image",
                             "key": "layout-accordion-image"
                         },
                         {
-                            "label": "أكورديون + محتوى نصي وزر",
+                            "label": "أكورديون + محتوى",
                             "value": "accordion_content",
                             "key": "layout-accordion-content"
                         },
