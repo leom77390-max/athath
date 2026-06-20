@@ -4145,16 +4145,13 @@
             },
             "icon": "sicon-books-pencil",
             "path": "home.SK_faq_section",
-  {
-  "fields": [
-
+   "fields": [
     {
       "type": "static",
       "format": "description",
       "id": "static-desc",
       "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
     },
-
     {
       "type": "static",
       "format": "title",
@@ -4162,7 +4159,6 @@
       "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div {padding:10px; border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
       "variant": "h6"
     },
-
     {
       "id": "grid.main_title",
       "type": "string",
@@ -4175,7 +4171,6 @@
       "multilanguage": true,
       "required": false
     },
-
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
@@ -4185,7 +4180,6 @@
       "format": "switch",
       "value": false
     },
-
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
@@ -4195,7 +4189,6 @@
       "format": "switch",
       "value": false
     },
-
     {
       "type": "boolean",
       "icon": "sicon-format-fill",
@@ -4205,7 +4198,6 @@
       "format": "switch",
       "value": false
     },
-
     {
       "id": "desktop_height",
       "type": "number",
@@ -4218,7 +4210,6 @@
       "minimum": "20",
       "maximum": "200"
     },
-
     {
       "id": "mobile_height",
       "type": "number",
@@ -4231,14 +4222,12 @@
       "minimum": "20",
       "maximum": "200"
     },
-
     {
       "type": "static",
       "format": "title",
       "id": "grid1_header",
       "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>العمود الأول — النصوص والأزرار الترويجية</h3>"
     },
-
     {
       "id": "banner.subtext",
       "type": "string",
@@ -4250,7 +4239,6 @@
       "value": "نصنع منتجات آمنة وفعّالة مصمَّمة لتشعرك بأفضل حال. هل لديك سؤال حول منتجاتنا؟ تحقق مما إذا كان بإمكانك إيجاد إجابتك هنا أو تواصل معنا مباشرةً.",
       "multilanguage": true
     },
-
     {
       "id": "banner.subtext_color",
       "type": "string",
@@ -4260,10 +4248,13 @@
       "icon": "sicon-format-fill",
       "value": "#18181b",
       "conditions": [
-        { "id": "customize_colors", "operation": "=", "value": true }
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
       ]
     },
-
     {
       "id": "banner.button_text",
       "type": "string",
@@ -4275,7 +4266,6 @@
       "value": "تواصل معنا",
       "multilanguage": true
     },
-
     {
       "id": "banner.button_text_color",
       "type": "string",
@@ -4285,10 +4275,13 @@
       "icon": "sicon-format-fill",
       "value": "#ffffff",
       "conditions": [
-        { "id": "customize_colors", "operation": "=", "value": true }
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
       ]
     },
-
     {
       "id": "banner.button_bg",
       "type": "string",
@@ -4298,10 +4291,13 @@
       "icon": "sicon-format-fill",
       "value": "#18181b",
       "conditions": [
-        { "id": "customize_colors", "operation": "=", "value": true }
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
       ]
     },
-
     {
       "type": "items",
       "id": "banner.url",
@@ -4313,26 +4309,64 @@
       "searchable": true,
       "source": "custom",
       "sources": [
-        { "label": "منتج",                   "key": "products",        "value": "products" },
-        { "label": "تصنيف",                  "key": "categories",      "value": "categories" },
-        { "label": "ماركة تجارية",           "key": "brands",          "value": "brands" },
-        { "label": "صفحة تعريفية",           "key": "pages",           "value": "pages" },
-        { "label": "مقالة",                  "key": "blog_articles",   "value": "blog_articles" },
-        { "label": "تصنيف ضمن المدونة",      "key": "blog_categories", "value": "blog_categories" },
-        { "label": "التخفيضات",              "key": "offers_link",     "value": "offers_link" },
-        { "label": "صفحة الماركات",          "key": "brands_link",     "value": "brands_link" },
-        { "label": "المدونة",                "key": "blog_link",       "value": "blog_link" },
-        { "label": "رابط خارجي مخصص",       "key": "custom",          "value": "custom" }
+        {
+          "label": "منتج",
+          "key": "products",
+          "value": "products"
+        },
+        {
+          "label": "تصنيف",
+          "key": "categories",
+          "value": "categories"
+        },
+        {
+          "label": "ماركة تجارية",
+          "key": "brands",
+          "value": "brands"
+        },
+        {
+          "label": "صفحة تعريفية",
+          "key": "pages",
+          "value": "pages"
+        },
+        {
+          "label": "مقالة",
+          "key": "blog_articles",
+          "value": "blog_articles"
+        },
+        {
+          "label": "تصنيف ضمن المدونة",
+          "key": "blog_categories",
+          "value": "blog_categories"
+        },
+        {
+          "label": "التخفيضات",
+          "key": "offers_link",
+          "value": "offers_link"
+        },
+        {
+          "label": "صفحة الماركات",
+          "key": "brands_link",
+          "value": "brands_link"
+        },
+        {
+          "label": "المدونة",
+          "key": "blog_link",
+          "value": "blog_link"
+        },
+        {
+          "label": "رابط خارجي مخصص",
+          "key": "custom",
+          "value": "custom"
+        }
       ]
     },
-
     {
       "type": "static",
       "format": "title",
       "id": "grid2_header",
       "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>العمود الثاني — صورة البانر الوسطى</h3>"
     },
-
     {
       "id": "banner_img",
       "type": "string",
@@ -4342,14 +4376,12 @@
       "icon": "sicon-image",
       "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp"
     },
-
     {
       "type": "static",
       "format": "title",
       "id": "grid3_header",
       "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>العمود الثالث — الأسئلة الشائعة (أكورديون)</h3>"
     },
-
     {
       "id": "faq_accordion",
       "type": "collection",
@@ -4360,7 +4392,6 @@
       "icon": "sicon-list-add",
       "minLength": "1",
       "maxLength": "15",
-
       "fields": [
         {
           "id": "faq_accordion.bg_color",
@@ -4445,7 +4476,6 @@
           "value": "#4b5563"
         }
       ],
-
       "value": [
         {
           "ar": {
@@ -4539,9 +4569,7 @@
         }
       ]
     }
-
   ]
-}
         },
         {
             "key": "70c52858-8963-478e-a0de-4c24597ee44f",
