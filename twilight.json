@@ -4186,7 +4186,49 @@
                     "format": "switch",
                     "value": false
                 },
-             {
+                {
+                    "type": "boolean",
+                    "icon": "sicon-format-fill",
+                    "label": "صورة الخلفية",
+                    "description": "فعل هذا الخيار لوضع صورة خلفية في هذا المكون بدلا من اللون الافتراضي",
+                    "id": "background_is_image",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "id": "background_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "اللون الافتراضي للخلفية",
+                    "description": "اختر لون خلفية المكون .",
+                    "icon": "sicon-format-fill",
+                    "value": "#f3eeea",
+                    "conditions": [
+                        {
+                            "id": "background_is_image",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "id": "background_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الخلفية",
+                    "description": "أضف صورة مميزة تُكمل القسم بشكل بصري متناسق.",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/686931608/a0950d11-007e-4b8f-9483-b213c3baf62a_890x900.webp",
+                    "conditions": [
+                        {
+                            "id": "background_is_image",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "id": "layout_mode",
                     "type": "items",
                     "format": "dropdown-list",
@@ -4194,7 +4236,7 @@
                     "description": "اختر الطريقة التي تريد عرض قسم الأسئلة الشائعة بها.",
                     "icon": "sicon-layout",
                     "selected": [
-                       {
+                        {
                             "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
                             "value": "three_column",
                             "key": "layout-three-column"
@@ -4241,7 +4283,7 @@
                         }
                     ]
                 },
-                    {
+                {
                     "id": "main_title",
                     "type": "string",
                     "format": "text",
@@ -4252,7 +4294,7 @@
                     "value": "لديك سؤال؟ نحن هنا للإجابة!",
                     "multilanguage": true,
                     "required": false,
-                        "conditions": [
+                    "conditions": [
                         {
                             "id": "layout_mode",
                             "operation": "=",
@@ -4263,7 +4305,7 @@
                         }
                     ]
                 },
-                 {
+                {
                     "id": "main_title_color",
                     "type": "string",
                     "format": "color",
@@ -4659,7 +4701,29 @@
                             "label": "لون خلفية بطاقة السؤال",
                             "description": "اختر لون خلفية الحاوية لهذا السؤال والجواب.",
                             "icon": "sicon-format-fill",
-                            "value": "#ffffff"
+                            "value": "#ffffff",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "corner_rounded",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "حدد مدى استدارة الزوايا للبطاقات",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-pin",
+                            "value": "16",
+                            "required": false,
+                            "step": "1",
+                            "minimum": "0",
+                            "maximum": "100"
                         },
                         {
                             "id": "faq_accordion.question",
@@ -4681,7 +4745,14 @@
                             "inputType": "color",
                             "label": "لون نص السؤال",
                             "icon": "sicon-format-fill",
-                            "value": "#18181b"
+                            "value": "#18181b",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "id": "faq_accordion.icon",
@@ -4699,7 +4770,14 @@
                             "inputType": "color",
                             "label": "لون الأيقونة",
                             "icon": "sicon-format-fill",
-                            "value": "#18181b"
+                            "value": "#18181b",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "id": "faq_accordion.hr_color",
@@ -4709,7 +4787,14 @@
                             "label": "لون الخط الفاصل والحدود",
                             "description": "يؤثر على حدود البطاقة والخط الفاصل بين السؤال والإجابة.",
                             "icon": "sicon-format-fill",
-                            "value": "#e4e4e7"
+                            "value": "#e4e4e7",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "id": "faq_accordion.answer",
@@ -4731,7 +4816,14 @@
                             "inputType": "color",
                             "label": "لون نص الإجابة",
                             "icon": "sicon-format-fill",
-                            "value": "#4b5563"
+                            "value": "#4b5563",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         }
                     ],
                     "value": [
