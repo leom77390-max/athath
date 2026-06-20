@@ -4176,6 +4176,17 @@
                     "multichoice": true,
                     "searchable": true,
                     "required": false
+                },
+                {
+                    "id": "icon_picker",
+                    "type": "string",
+                    "format": "icon",
+                    "label": "Icon Picker",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-user-circle",
+                    "value": "sicon-store",
+                    "required": false
                 }
             ]
         },
