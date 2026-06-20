@@ -3,11 +3,12 @@
 <section class="sk-slider-product s-block" id="sk-slider-product-{{ position }}">
   <div class="container">
 
-    {% if c.product_title %}
-      <h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
-        {{ c.product_title }}
-      </h2>
-    {% endif %}
+      {% if c.product_title %}
+        <h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
+          {{ c.product_title }}
+        </h2>
+      {% endif %}
+  </div>
 
     <salla-slider
       id="sk-slider-{{ position }}"
@@ -53,14 +54,14 @@
       </div>
     </salla-slider>
 
-  </div>
+
 </section>
 
 <style>
 #sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav {
-  left: 3rem !important;  
+  left: 6rem !important;  
   top: -2rem !important;
-  width: 8% !important;
+  width: 4% !important;
 }
 #sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button,
 #sk-slider-product-{{ position }} .s-slider-nav-arrow {
