@@ -3,11 +3,12 @@
 <section class="sk-slider-product s-block" id="sk-slider-product-{{ position }}">
   <div class="container">
 
-    {% if c.product_title %}
-      <h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
-        {{ c.product_title }}
-      </h2>
-    {% endif %}
+      {% if c.product_title %}
+        <h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
+          {{ c.product_title }}
+        </h2>
+      {% endif %}
+  </div>
 
     <salla-slider
       id="sk-slider-{{ position }}"
@@ -53,7 +54,7 @@
       </div>
     </salla-slider>
 
-  </div>
+
 </section>
 
 <style>
