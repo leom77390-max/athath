@@ -5504,54 +5504,7 @@
                         }
                     ],
                     "value": [
-                        {
-                            "ar": {
-                                "card.content": "اكتشف أفضل منتجات العناية بالبشرة لدينا والمناسبة لجميع أنواع البشرة.",
-                                "card.button_text": "تسوق الآن"
-                            },
-                            "en": {
-                                "card.content": "Discover our best skincare products suitable for all skin types.",
-                                "card.button_text": "Shop Now"
-                            },
-                            "card.bg_is_image": false,
-                            "card.bg_color": "#f8f8f8",
-                            "card.corner_rounded": "16",
-                            "card.content_color": "#18181b",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                        },
-                        {
-                            "ar": {
-                                "card.content": "منتجات العناية بالشعر بتركيبات طبيعية تمنحك مظهرًا صحيًا ولامعًا.",
-                                "card.button_text": "اكتشف المزيد"
-                            },
-                            "en": {
-                                "card.content": "Haircare products with natural formulas for a healthy and shiny look.",
-                                "card.button_text": "Discover More"
-                            },
-                            "card.bg_is_image": true,
-                            "card.bg_image": "https://via.placeholder.com/600x400",
-                            "card.corner_rounded": "20",
-                            "card.content_color": "#ffffff",
-                            "card.button_bg_color": "#ffffff",
-                            "card.button_text_color": "#18181b",
-                        },
-                         {
-                            "ar": {
-                                "card.content": "اكتشف أفضل منتجات العناية بالبشرة لدينا والمناسبة لجميع أنواع البشرة.",
-                                "card.button_text": "تسوق الآن"
-                            },
-                            "en": {
-                                "card.content": "Discover our best skincare products suitable for all skin types.",
-                                "card.button_text": "Shop Now"
-                            },
-                            "card.bg_is_image": false,
-                            "card.bg_color": "#f8f8f8",
-                            "card.corner_rounded": "16",
-                            "card.content_color": "#18181b",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                        }
+                 
                     ]
                 }
             ]
