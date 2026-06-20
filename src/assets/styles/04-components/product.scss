@@ -1,7 +1,7 @@
   
 // Wishlist Product entry
 .product-entry {
-  @apply h-full transition-shadow duration-300 bg-white hover:shadow-default rounded-lg justify-between flex relative;
+  @apply h-full transition-shadow duration-300 bg-background hover:shadow-default rounded-lg justify-between flex relative;
 
   &--wishlist {
     @apply justify-between p-4 flex-col sm:flex-row;
@@ -32,7 +32,7 @@
 
 // share list
 .share-btns-list{
-  @apply absolute z-10 overflow-hidden opacity-0 top-12 bg-white flex items-center flex-col shadow-huge rounded-3xl;
+  @apply absolute z-10 overflow-hidden opacity-0 top-12 bg-background flex items-center flex-col shadow-huge rounded-3xl;
 
   a{
     @apply block p-3 hover:text-primary;
@@ -217,8 +217,8 @@
   font-family: arial, serif;
 }
 
-.s-toggle .s-toggle-input:checked+div.s-toggle-switcher-bg-white:before {
-  @apply text-gray-600 border-white bg-white;
+.s-toggle .s-toggle-input:checked+div.s-toggle-switcher-bg-background:before {
+  @apply text-gray-600 border-white bg-background;
 }
 
 // product options file upload component
@@ -232,7 +232,7 @@
     }
     .filepond--drop-label {
       min-height: 120px !important;
-      @apply bg-white cursor-pointer border-dashed rounded-md border border-gray-200;
+      @apply bg-background cursor-pointer border-dashed rounded-md border border-gray-200;
     }
     .product-option-uploader-placholder{
       @apply flex flex-col justify-center items-center;
@@ -258,7 +258,7 @@
 .s-product{
     &-card{
       &-full-image salla-add-product-button {
-        @apply bg-white rounded;
+        @apply bg-background rounded;
       }
     
       &-wishlist-added i {
@@ -414,7 +414,7 @@
 
 // cart options
 .cart-options {
-  @apply bg-white border-dashed border border-gray-400 rounded-md;
+  @apply bg-background border-dashed border border-gray-400 rounded-md;
   salla-product-options {
     @apply mb-0 pt-0;
   

@@ -26,7 +26,7 @@ class DigitalFilesSettings extends HTMLElement {
       : this.settings.formats || "-";
 
     this.innerHTML = `
-            <section class="bg-white p-5 rounded-md mb-5 last:mb-0">
+            <section class="bg-background rounded-md mb-4 last:mb-0">
                 <ul class="space-y-4">
                     <li class="flex items-center justify-between">
                         <div class="flex items-center gap-3">

@@ -300,7 +300,7 @@
   Main Links Block
 */
 .slide--cat-entry {
-  @apply bg-white rounded-md h-36 p-3 text-center flex flex-col items-center justify-center transition duration-500 hover:shadow-default hover:text-gray-500 border border-gray-100;
+  @apply bg-background rounded-md h-36 p-3 text-center flex flex-col items-center justify-center transition duration-500 hover:shadow-default hover:text-gray-500 border border-gray-100;
 
   i {
     @apply inline-block text-primary text-icon-lg mb-4;
@@ -315,7 +315,7 @@
   offers slider
 */
 .slide--offer-entry {
-  @apply bg-white rounded-md h-36 text-center flex flex-col items-center justify-between text-gray-600 transition duration-500 hover:shadow-default border border-gray-200;
+  @apply bg-background rounded-md h-36 text-center flex flex-col items-center justify-between text-gray-600 transition duration-500 hover:shadow-default border border-gray-200;
 }
 
 
@@ -357,7 +357,7 @@
 
   &--features{
     &__item{
-      @apply cursor-pointer bg-white transition-shadow duration-500 hover:shadow-default rounded-md flex-grow flex flex-col items-center px-4 py-8 md:px-8 text-center;
+      @apply cursor-pointer bg-background transition-shadow duration-500 hover:shadow-default rounded-md flex-grow flex flex-col items-center px-4 py-8 md:px-8 text-center;
 
       &:first-child{
         @apply col-span-2 md:col-span-1;

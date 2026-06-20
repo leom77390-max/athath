@@ -1,0 +1,224 @@
+<div class="reviews-wrapper relative container" id="reviews-wrapper">
+
+  <!-- =========================
+    TOP SECTION
+  ========================= -->
+  <div class="flex items-start justify-between gap-4 mb-8">
+
+    <!-- SUMMARY -->
+    <div class="grow min-w-0">
+
+      <salla-reviews-summary
+        item-id="{{product.id}}">
+      </salla-reviews-summary>
+
+    </div>
+
+    <!-- BUTTON -->
+    <div class="shrink-0">
+
+      <button
+        id="open-comment-modal"
+        type="button"
+        class="border border-gray-900 px-5 py-3 hover:bg-gray-900 hover:text-background transition-all duration-300"
+      >
+        Leave a Comment
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+    COMMENTS
+  ========================= -->
+  <div class="comments-wrapper">
+
+    <salla-comments
+      item-id="{{product.id}}"
+      type="product"
+      class="custom-comments">
+    </salla-comments>
+
+  </div>
+
+</div>
+
+<!-- =========================
+  COMMENT MODAL
+========================= -->
+<div
+  id="comment-modal"
+  class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 opacity-0 invisible transition-all duration-300 p-4"
+>
+
+  <!-- MODAL BOX -->
+  <div
+    id="comment-modal-box"
+    class="relative w-full max-w-[650px] bg-background rounded-2xl p-5 lg:p-8 translate-y-10 scale-95 opacity-0 transition-all duration-300 max-h-[90vh] overflow-y-auto"
+  >
+
+    <!-- CLOSE -->
+    <button
+      id="close-comment-modal"
+      type="button"
+      class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-xl hover:bg-gray-100 rounded-full transition"
+    >
+      ✕
+    </button>
+
+    <!-- TITLE -->
+    <h3 class="text-2xl font-semibold mb-6">
+      Add Your Review
+    </h3>
+
+    <!-- FORM -->
+    <div class="mt-4 lg:mt-5">
+
+      <salla-comment-form
+        item-id="{{product.id}}"
+        type="product">
+      </salla-comment-form>
+
+    </div>
+
+  </div>
+
+</div>
+
+<style>
+
+/* =========================
+  HIDE DUPLICATED CONTENT
+========================= */
+
+.custom-comments salla-comment-form,
+.custom-comments salla-reviews-summary,
+.custom-comments .s-comments-title {
+  display: none !important;
+}
+
+/* =========================
+  FIX COMMENTS WIDTH
+========================= */
+
+.comments-wrapper,
+.custom-comments,
+.custom-comments .s-comments,
+.custom-comments .s-comments-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* =========================
+  MODAL ACTIVE
+========================= */
+
+#comment-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#comment-modal.active #comment-modal-box {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* =========================
+  BODY LOCK
+========================= */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* =========================
+  MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .reviews-wrapper > div:first-child {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #open-comment-modal {
+    width: 100%;
+  }
+
+}
+</style>
+
+<script>
+Salla.onReady(() => {
+
+  const modal =
+    document.getElementById("comment-modal");
+
+  const openBtn =
+    document.getElementById("open-comment-modal");
+
+  const closeBtn =
+    document.getElementById("close-comment-modal");
+
+  /* =========================
+    OPEN
+  ========================= */
+
+  openBtn?.addEventListener("click", () => {
+
+    modal.classList.add("active");
+
+    document.body.classList.add("modal-open");
+
+  });
+
+  /* =========================
+    CLOSE
+  ========================= */
+
+  function closeModal() {
+
+    modal.classList.remove("active");
+
+    document.body.classList.remove("modal-open");
+
+  }
+
+  /* =========================
+    CLOSE BUTTON
+  ========================= */
+
+  closeBtn?.addEventListener("click", closeModal);
+
+  /* =========================
+    OUTSIDE CLICK
+  ========================= */
+
+  modal?.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+
+      closeModal();
+
+    }
+
+  });
+
+  /* =========================
+    ESC KEY
+  ========================= */
+
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+      closeModal();
+
+    }
+
+  });
+
+});
+</script>

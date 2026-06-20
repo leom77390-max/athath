@@ -1,0 +1,191 @@
+/* ====================== COMMENTS & REVIEWS ====================== */
+
+.s-comments.s-comments-product {
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.single {
+  .s-comments-item-content-container {
+    @apply font-medium text-[16px] leading-[22px] tracking-normal 
+           md:text-[18px] md:leading-[32px] text-[#525D46];
+  }
+}
+
+/* ==================== Comments Section ==================== */
+.comments {
+  salla-comment-form {
+    display: none;
+  }
+
+  .s-comments-count-label {
+    color: var(--color-primary);
+  }
+
+  .s-comments-title {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    margin-bottom: 24px;
+  }
+
+  /* Comment Item Styles */
+  .s-comments-item {
+    padding-bottom: 3rem;
+
+    &-wrapper { }
+    &-inner { }
+
+    /* Avatar */
+    &-avatar {
+      &-img { }
+    }
+
+    /* User Info */
+    &-user-wrapper { }
+    &-user-info {
+      &-name {
+        font-size: 16px;
+      }
+    }
+
+    /* Timestamp */
+    &-timestamp {
+      .s-comments-item-time { }
+    }
+
+    /* Comment Content */
+    &-content {
+      p {
+        font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
+        line-height: 100%;
+        font-weight: 400;
+        color: var(--color-font);
+      }
+    }
+
+    &.animated { }
+  }
+}
+
+/* ==================== Comment Form ==================== */
+.comment-form {
+  salla-rating-stars {
+    padding-block: 16px;
+    background-color: var(--color-font);
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 10px !important;
+
+    @media (min-width: 768px) {
+      margin-top: 50px;
+      margin-bottom: 0px !important;
+    }
+
+    margin-top: 20px;
+    margin-bottom: 0px !important;
+  }
+
+  .s-rating-stars-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .s-rating-stars-reviews {
+    flex-basis: 100%;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  .s-comment-form-action salla-button {
+    flex-basis: 100%;
+
+    button {
+      width: 100%;
+      height: 56px;
+      border-radius: 10px;
+    }
+  }
+
+  .s-comment-form-content textarea {
+    border: 1px solid #acbabf80;
+    border-radius: 0;
+  }
+}
+
+/* Additional Comments Styling */
+.s-comments-product {
+  background-color: var(--color-background);
+  margin-bottom: 0;
+  padding-block: 0;
+  padding-inline: 0 !important;
+}
+
+/* Reviews Summary */
+.s-reviews-summary-recommendation-percentage {
+  display: none;
+}
+
+.s-reviews-summary-header-section:last-child {
+  display: none !important;
+}
+
+.s-rating-stars-selected {
+  fill: #f4b300 !important;
+}
+
+.s-reviews-summary-count {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.s-reviews-summary-average {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.s-progress-bar-wrapper {
+  height: 20px !important;
+}
+
+.s-progress-bar-progress {
+  background-color: #b94430 !important;
+}
+
+.s-reviews-summary-wrapper {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .s-reviews-summary-wrapper {
+    flex-direction: column;
+  }
+
+  .s-reviews-summary-count {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .s-reviews-summary-average {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  .s-progress-bar-wrapper {
+    height: 14px !important;
+  }
+}

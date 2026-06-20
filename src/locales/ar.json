@@ -32,7 +32,8 @@
     },
     "products": {
       "calculated_at_checkout": "يتم حسابها عند الدفع",
-      "view_full_details": "عرض التفاصيل الكاملة"
+      "view_full_details": "عرض التفاصيل الكاملة",
+      "discription": "وصف المنتج "
     },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",

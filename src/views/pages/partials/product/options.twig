@@ -37,7 +37,7 @@
 {% endif %}
 
 {% if product.weight or product.has_size_guide %}
-    <section class="bg-white p-5 rounded-md mb-5">
+    <section class="bg-background rounded-md mb-4 ">
         {% if product.weight %}
             <div class="center-between {% if product.has_size_guide %} pb-5 mb-5 border-b-[1px] {% endif %}">
                 <b class="form-label rtl:space-x-reverse space-x-1"><i class="sicon-luggage-cart"></i>
@@ -65,14 +65,14 @@
 
 
 {% if product.can_add_note or product.can_upload_file %}
-    <section class="bg-white p-5 rounded-md mb-5">
-        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
+    <section class="bg-background mt-4 rounded-md mb-4">
+        <div class="flex flex-col gap-2 sm:gap-4 sm:items-start">
             <label class="form-label">
                 <b class="block">
                     {{ trans('pages.products.attachments') }}
                 </b>
             </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2 text-end">
+            <div class="mt-1 sm:mt-0 sm:col-span-2 text-end w-full">
                 <div class="flex rtl:space-x-reverse space-x-3">
                     {% if product.can_add_note %}
                         <button class="btn-tab btn--collapse"

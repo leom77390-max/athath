@@ -1,0 +1,205 @@
+
+  .s-product-options-colors-item {
+    label {
+      div {
+        display: none;
+      }
+    }
+  }
+  .s-product-options-wrapper {
+    height: 100%;
+    margin-bottom: 0;
+    padding: 0;
+    background: transparent;
+    border-bottom: none;
+  }
+  .s-product-options-option-container {
+    margin-bottom: 8px;
+  }
+
+  @media (min-width: 640px) {
+    .s-product-options-option {
+      // grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      align-items: flex-start;
+    }
+    .s-product-options-option-content {
+      grid-column: span 3 / span 3;
+      margin-top: 0px;
+      overflow: unset !important;
+    }
+  }
+
+  /* عنوان الخيار (المقاس – اللون...) */
+  .custom-option-title,
+  .s-product-options-option-label {
+    color: var(--color-font);
+    margin-bottom: 8px;
+  }
+
+  /* ================== Radio Options Grid ================== */
+
+  .radio-option {
+    position: relative;
+    display: block;
+  }
+
+  .radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .radio-option span {
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--color-background);
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--color-font);
+    user-select: none;
+  }
+  /* الدرجة – اختيارات كتير */
+  .option-multiple .radio-option span {
+    min-width: 35px !important;
+  }
+
+  /* الكمية – اختيار واحد */
+  .option-single .radio-option span {
+    padding: 4px 16px !important;
+    border-radius: 54px !important;
+    font-weight: 500;
+  }
+
+  /* عند التحديد */
+  .radio-option input[type="radio"]:checked + span {
+    border-color: var(--color-primary);
+    color: var(--color-primary) !important;
+  }
+
+  /* الخيار المعطل */
+  .radio-placeholder span {
+    background: #f3f4f6;
+    color: #9ca3af;
+    cursor: not-allowed;
+    border-style: dashed;
+  }
+
+  /* ================== Custom Radio Options ================== */
+
+  .custom-radio-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .custom-radio-options > label {
+
+    background-color: var(--color-background);
+    color: var(--color-font);
+    font-size: 16px;
+    padding: 6px 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid color-mix(in srgb, var(--color-font) 15%, transparent);
+    border-radius: 32px;
+    transition: all 0.3s;
+  }
+
+  .custom-radio-options label.label_active {
+    border-color: var(--color-font);
+    background-color: var(--color-font);
+    color: var(--color-background);
+    border-radius: 32px;
+    opacity: 1;
+  }
+
+  .single-product{
+      .s-add-product-button-mini-checkout-content {
+            color: var(--color-font);
+        }
+
+  .s-add-product-button-main .s-add-product-button-mini-checkout {
+    --color-primary: var(--color-font);
+    --salla-fast-checkout-button-border-radius: 32px;
+    // --salla-fast-checkout-button-height: 2.625rem;
+    --salla-fast-checkout-button-width: 100%;
+  }
+      salla-add-product-button {
+    button {
+      border-radius: 9999px;
+      position: relative;
+      overflow: hidden;
+
+      background: var(--color-font);
+      color: var(--color-background);
+      border: 1px solid var(--color-font);
+      z-index: 1;
+      transition:
+        color 0.4s ease,
+        transform 0.3s ease;
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        width: 0%;
+        background: var(--color-background);
+
+        transition: width 0.4s ease;
+
+        z-index: -1;
+      }
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: -100%;
+
+        width: 50%;
+        height: 100%;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+
+        transform: skewX(-25deg);
+
+        transition: left 0.7s ease;
+
+        z-index: 2;
+      }
+
+      &:hover {
+        background-color: var(--color-font);
+        color: var(--color-font);
+        transform: translateY(-2px);
+
+        &::after {
+          width: 100%;
+        }
+
+        &::before {
+          left: 150%;
+        }
+      }
+    }
+  }
+  }
