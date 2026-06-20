@@ -4420,26 +4420,22 @@
                     "required": false
                 },
                 {
-                    "type": "items",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "label": "  حدد التصنيفات",
                     "id": "store_products",
+                    "type": "items",
                     "format": "dropdown-list",
-                    "description": null,
+                    "label": "إضافة المنتج المميز",
+                    "description": "حدد منتجًا لإبرازه داخل هذا القسم.",
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
                     "selected": [],
                     "options": [],
-                    "required": false,
-                    "multichoice": false,
-                    "source": "categories",
+                    "source": "Products",
+                    "multichoice": true,
                     "searchable": true,
+                    "required": true,
                     "value": [],
-                    "conditions": [
-                        {
-                            "id": "source",
-                            "operation": "=",
-                            "value": "store"
-                        }
-                    ]
+                    "minLength": "3",
+                    "maxLength": "20"
                 }
             ]
         }
