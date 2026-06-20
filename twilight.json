@@ -5220,17 +5220,7 @@
                     "type": "static",
                     "format": "title",
                     "id": "header_content",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>",
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
-                        }
-                    ]
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>"
                 },
                 {
                     "id": "main_title",
@@ -5242,17 +5232,7 @@
                     "icon": "sicon-layout",
                     "value": "لديك سؤال؟ نحن هنا للإجابة!",
                     "multilanguage": true,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
-                        }
-                    ]
+                    "required": false
                 },
                 {
                     "id": "main_title_color",
@@ -5267,14 +5247,6 @@
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
-                        },
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
                         }
                     ]
                 },
@@ -5287,17 +5259,7 @@
                     "placeholder": "مثال: تواصل معنا",
                     "icon": "sicon-format-text-alt",
                     "value": "تواصل معنا",
-                    "multilanguage": true,
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
-                        }
-                    ]
+                    "multilanguage": true
                 },
                 {
                     "id": "button_text_color",
@@ -5312,14 +5274,6 @@
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
-                        },
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
                         }
                     ]
                 },
@@ -5336,14 +5290,6 @@
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
-                        },
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_content",
-                                "three_column"
-                            ]
                         }
                     ]
                 },
@@ -5424,19 +5370,7 @@
                     "type": "static",
                     "format": "title",
                     "id": "header_faq",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الأسئلة الشائعة — الأكورديون</h3>",
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_only",
-                                "accordion_image",
-                                "accordion_content",
-                                "three_column"
-                            ]
-                        }
-                    ]
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'> اعدادات البطاقات </h3>"
                 },
                 {
                     "id": "card",
