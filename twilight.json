@@ -4711,7 +4711,7 @@
                             ]
                         },
                         {
-                            "id": "corner_rounded",
+                            "id": "faq_accordion.corner_rounded",
                             "type": "number",
                             "format": "slider",
                             "inputType": "range",
@@ -4837,6 +4837,7 @@
                                 "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and may vary slightly for remote areas."
                             },
                             "faq_accordion.bg_color": "#ffffff",
+                            "faq_accordion.corner_rounded": "16",
                             "faq_accordion.icon": "sicon-shipping",
                             "faq_accordion.icon_color": "#18181b",
                             "faq_accordion.hr_color": "#e4e4e7",
@@ -4855,6 +4856,7 @@
                                 "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
                             },
                             "faq_accordion.bg_color": "#ffffff",
+                            "faq_accordion.corner_rounded": "16",
                             "faq_accordion.icon": "sicon-shield-check",
                             "faq_accordion.icon_color": "#18181b",
                             "faq_accordion.hr_color": "#e4e4e7",
@@ -4891,6 +4893,7 @@
                                 "faq_accordion.answer": "Once your order is shipped, you will receive an SMS or email with a tracking number. You can also follow up on your order through your store account."
                             },
                             "faq_accordion.bg_color": "#ffffff",
+                            "faq_accordion.corner_rounded": "16",
                             "faq_accordion.icon": "sicon-location",
                             "faq_accordion.icon_color": "#18181b",
                             "faq_accordion.hr_color": "#e4e4e7",
@@ -4909,6 +4912,7 @@
                                 "faq_accordion.answer": "Yes, we use advanced encryption protocols to secure all payments. We support trusted payment methods such as Mada, Visa, Mastercard, and Apple Pay."
                             },
                             "faq_accordion.bg_color": "#ffffff",
+                            "faq_accordion.corner_rounded": "16",
                             "faq_accordion.icon": "sicon-shield-check",
                             "faq_accordion.icon_color": "#18181b",
                             "faq_accordion.hr_color": "#e4e4e7",
