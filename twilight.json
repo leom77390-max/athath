@@ -4296,7 +4296,7 @@
                         },
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4317,7 +4317,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4341,7 +4341,7 @@
                         },
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4365,7 +4365,7 @@
                         },
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4438,7 +4438,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4454,7 +4454,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
@@ -4493,7 +4493,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
@@ -4537,7 +4537,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
@@ -4564,7 +4564,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
@@ -4586,7 +4586,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
