@@ -4233,7 +4233,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4626,7 +4626,19 @@
                     "type": "static",
                     "format": "title",
                     "id": "header_faq",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الأسئلة الشائعة — الأكورديون</h3>"
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الأسئلة الشائعة — الأكورديون</h3>",
+                    "conditions": [
+                        {
+                            "id": "layout_mode",
+                            "operation": "=",
+                            "value": [
+                                "accordion_only",
+                                "accordion_image",
+                                "accordion_content",
+                                "three_column"
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "faq_accordion",
