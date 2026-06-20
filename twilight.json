@@ -4387,7 +4387,7 @@
                 "ar": "Choose Product - Sleek"
             },
             "icon": "sicon-store",
-            "path": "SK_Slider_Product",
+            "path": "home.SK_Slider_Product",
             "fields": []
         }
     ],
