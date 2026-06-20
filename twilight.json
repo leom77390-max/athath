@@ -4145,7 +4145,39 @@
             },
             "icon": "sicon-books-pencil",
             "path": "home.SK_faq_section",
-            "fields": []
+            "fields": [
+                {
+                    "id": "dropdown_list",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "Dropdown List",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": null,
+                            "value": "Value 1",
+                            "key": "0b602aae-cc24-4fbf-b6ab-fb86e945628f"
+                        },
+                        {
+                            "label": null,
+                            "value": "Value 2",
+                            "key": "125906ea-f2a8-4acd-b8fb-c5326cc90e7d"
+                        },
+                        {
+                            "label": null,
+                            "value": "Value 3",
+                            "key": "6bfd1488-981b-4963-85b2-d62157bbb970"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                }
+            ]
         }
     ],
     "support_url": null,
