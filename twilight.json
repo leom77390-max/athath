@@ -4189,18 +4189,6 @@
             "path": "home.sl_moving",
             "fields": [
                 {
-                    "type": "static",
-                    "format": "description",
-                    "id": "with-bg",
-                    "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #ebebeb;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.salla.sa/form-builder/woHdV4P62yWe7WGpZbzCIsOTcvT2C6AfsQZ8W9ac.png'></div>"
-                },
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "moving-categories-section",
-                    "value": "<div dir='rtl' style='width:100%;padding:16px 20px;margin-bottom:24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);background:#faf3f0;color:#000000;font-size:15px;font-weight:500;line-height:1.6;'><strong style='font-weight:600;display:block;margin-bottom:12px;'>📂 شريط الأقسام المتحرك</strong> قسم يعرض جميع أقسام متجرك بطريقة متحركة وجذابة، مما يسهل على العملاء تصفح المنتجات بسرعة ويجعل تجربة التسوق أكثر تفاعلية.</div>"
-                },
-                {
                     "id": "margin_switch",
                     "type": "boolean",
                     "format": "switch",
@@ -4243,7 +4231,7 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://l.top4top.io/p_3365r9teg1.png",
+                            "value": "",
                             "required": false
                         },
                         {
@@ -4255,7 +4243,7 @@
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
                             "icon": "sicon-format-text-alt",
-                            "value": "كتب عربية",
+                            "value": "",
                             "multilanguage": true,
                             "required": false,
                             "minLength": 6,
@@ -4270,7 +4258,7 @@
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-format-fill",
-                            "value": "#000000",
+                            "value": "",
                             "required": false
                         },
                         {
@@ -4338,7 +4326,32 @@
                             ]
                         }
                     ],
-                    "value": [],
+                    "value": [
+                            {
+                                "add_sectionbar.bar_img": "https://b.top4top.io/p_3823e63xp1.jpg",
+                                "add_sectionbar.bar_title": "اعتني ببشرتك",
+                                "add_sectionbar.bar_title_color": "#000000",
+                                "add_sectionbar.bar_url": null
+                            },
+                            {
+                                "add_sectionbar.bar_img": "https://i.top4top.io/p_3823qk8o21.jpg",
+                                "add_sectionbar.bar_title": "أساسيات الموسم الجديد",
+                                "add_sectionbar.bar_title_color": "#000000",
+                                "add_sectionbar.bar_url": null
+                            },
+                            {
+                                "add_sectionbar.bar_img": "https://j.top4top.io/p_3823vcqty1.jpg",
+                                "add_sectionbar.bar_title": "صنع بالحب",
+                                "add_sectionbar.bar_title_color": "#000000",
+                                "add_sectionbar.bar_url": null
+                            },
+                            {
+                                "add_sectionbar.bar_img": "https://g.top4top.io/p_38231vj1s1.jpg",
+                                "add_sectionbar.bar_title": "أنقذ بشرتك",
+                                "add_sectionbar.bar_title_color": "#000000",
+                                "add_sectionbar.bar_url": null
+                            }
+                    ],
                     "minLength": "4",
                     "maxLength": "20"
                 },
