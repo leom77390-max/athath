@@ -4,7 +4,7 @@
              style="--width: 200px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 72px;">  
             <div class="dynamic-slider-container flex flex-nowrap">
                 {% for bar in component.add_sectionbar %}
-                    <a href="{{ bar.bar_url}}" class="dynamic-slider-image" style="--position: {{loop.index}} pb-4" >
+                    <a href="{{ bar.bar_url}}" class="dynamic-slider-image pb-4" style="--position: {{loop.index}}" >
                         <img loading="lazy" src="{{ bar.bar_img }}" alt="{{ bar.name }}" />
                         <h2 style="color:{{bar.bar_title_color}}">{{bar.bar_title}}</h2>
                     </a>
