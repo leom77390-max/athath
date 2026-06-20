@@ -4388,7 +4388,62 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
-            "fields": []
+            "fields": [
+                 {
+                    "id": "product_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "المنتجات الأساسية",
+                        "en": "The core products"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
+                    "id": "product_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "  حدد التصنيفات",
+                    "id": "store_products",
+                    "format": "dropdown-list",
+                    "description": null,
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "source": "categories",
+                    "searchable": true,
+                    "maxLength": 20,
+                    "minLength": 4,
+                    "value": [],
+                    "conditions": [
+                        {
+                            "id": "source",
+                            "operation": "=",
+                            "value": "store"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": null,
