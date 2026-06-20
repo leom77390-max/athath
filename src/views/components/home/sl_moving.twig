@@ -14,3 +14,57 @@
         </div>
     </div>
 </section>
+
+<style>
+  .dynamic-slider-wrapper {
+      width: 100%;
+      margin: auto;
+  }
+  .dynamic-slider-track {
+      width: 100%;
+      height: var(--height);
+      overflow: hidden;
+  }
+  .dynamic-slider-container {
+      min-width: calc(var(--width) * var(--quantity));
+      display: flex;
+      gap: 0;
+      width: 100%;
+      position: relative;
+  }
+  .dynamic-slider-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 100%;
+      width: var(--width);
+      height: var(--height);
+      animation: slideLeftt var(--speed) linear infinite;
+      animation-delay: calc((var(--speed) / var(--quantity)) * (var(--position) - 1) - var(--speed));
+      padding: 4px 0;
+      gap: 10px;  
+  }
+  .dynamic-slider-image img {
+      width: 43px;
+      height: 62px;
+      object-fit: cover;
+  }
+  .dynamic-slider-image h2 {
+      margin: 0; 
+      font-weight: 380;
+      font-size: 16px;
+  }
+  @keyframes slideLeftt {
+      from {
+          left: 100%;
+      }
+      to {
+          left: calc(var(--width) * -1);
+      }
+  }
+  .dynamic-slider-wrapper:hover .dynamic-slider-image {
+      animation-play-state: paused;
+  }
+
+</style>
