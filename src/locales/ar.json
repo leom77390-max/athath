@@ -12,7 +12,19 @@
     },
     "appBanner": {
       "download_now": "حمله الان"
-    }
+    },
+      "side_search": {
+    "placeholder": "ابحث عن منتج...",
+    "popular_searches": "عمليات البحث الشائعة",
+    "most_searched_products": "المنتجات الأكثر بحثًا",
+    "search_dialog": "البحث",
+    "clear_search": "مسح البحث",
+    "search_results": "نتائج البحث",
+    "default_search_suggestions": "اقتراحات البحث",
+    "loading": "جاري التحميل",
+    "try_different_keywords": "جرّب كلمات بحث مختلفة"
+  }
+
   },
    "footer": {
     "account": "حسابي",

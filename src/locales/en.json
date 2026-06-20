@@ -12,6 +12,17 @@
     },
     "appBanner": {
       "download_now": "download now"
+    },
+     "side_search": {
+      "placeholder": "Search for a product...",
+      "popular_searches": "Popular Searches",
+      "most_searched_products": "Most Searched Products",
+      "search_dialog": "Search",
+      "clear_search": "Clear Search",
+      "search_results": "Search Results",
+      "default_search_suggestions": "Default Search Suggestions",
+      "loading": "Loading",
+      "try_different_keywords": "Try Different Keywords"
     }
   },
   "footer": {
