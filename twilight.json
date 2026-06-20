@@ -4432,8 +4432,6 @@
                     "multichoice": false,
                     "source": "categories",
                     "searchable": true,
-                    "maxLength": 20,
-                    "minLength": 4,
                     "value": [],
                     "conditions": [
                         {
