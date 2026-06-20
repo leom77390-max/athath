@@ -1,8 +1,7 @@
-<section class="dynamic-sections dynamic-sections-{{position}} mb-10 md:mb-16 {{component.mob_show ? "hidden md:block" : ""}} {{component.lapTop_show ? "md:hidden" : ""}}" data-sal="slide-left"
-    data-sal-duration="1000" data-sal-delay="100" data-sal-easing="ease-out">   
-    <div class="dynamic-slider-wrapper {% include 'components.custom.component_margin.twig' %}" style="background:{{component.bar_bac}}">
-        <div class="dynamic-slider-track container" 
-             style="--width: 200px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 72px;">  
+<section class="dynamic-sections dynamic-sections-{{position}} mb-10 md:mb-16 {{component.mob_show ? "hidden md:block" : ""}} {{component.lapTop_show ? "md:hidden" : ""}}">   
+    <div class="dynamic-slider-wrapper" style="background:{{component.bar_bac}}">
+        <div class="dynamic-slider-track" 
+             style="--width: 320px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 120px;">  
             <div class="dynamic-slider-container flex flex-nowrap">
                 {% for bar in component.add_sectionbar %}
                     <a href="{{ bar.bar_url}}" class="dynamic-slider-image" style="--position: {{loop.index}}" >
@@ -14,3 +13,58 @@
         </div>
     </div>
 </section>
+
+<style>
+  .dynamic-slider-wrapper {
+      width: 100%;
+      margin: auto;
+      border: 1px solid #000000;
+  }
+  .dynamic-slider-track {
+      width: 100%;
+      height: var(--height);
+      overflow: hidden;
+  }
+  .dynamic-slider-container {
+      min-width: calc(var(--width) * var(--quantity));
+      display: flex;
+      gap: 0;
+      width: 100%;
+      position: relative;
+  }
+  .dynamic-slider-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 100%;
+      width: var(--width);
+      height: var(--height);
+      animation: slideLeftt var(--speed) linear infinite;
+      animation-delay: calc((var(--speed) / var(--quantity)) * (var(--position) - 1) - var(--speed));
+      padding: 4px 0;
+      gap: 10px;  
+  }
+  .dynamic-slider-image img {
+      height: 62px;
+      object-fit: cover;
+      border-radius: 50%;
+  }
+  .dynamic-slider-image h2 {
+      margin: 0; 
+      font-weight: 700;
+      font-size: 25px;
+  }
+  @keyframes slideLeftt {
+      from {
+          left: 100%;
+      }
+      to {
+          left: calc(var(--width) * -1);
+      }
+  }
+  .dynamic-slider-wrapper:hover .dynamic-slider-image {
+      animation-play-state: paused;
+  }
+
+</style>

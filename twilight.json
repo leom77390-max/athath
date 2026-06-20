@@ -4200,18 +4200,6 @@
             "path": "home.sl_moving",
             "fields": [
                 {
-                    "id": "margin_switch",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إلغاء المسافة السفلية  ",
-                    "description": "فعِّل هذا الخيار لدمج القسم مع القسم الذي يليه بشكل متناسق. ",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
                     "id": "bar_bac",
                     "type": "string",
                     "format": "color",
@@ -4399,7 +4387,7 @@
                 "ar": "Choose Product - Sleek"
             },
             "icon": "sicon-store",
-            "path": "SK_Slider_Product",
+            "path": "home.SK_Slider_Product",
             "fields": []
         }
     ],
