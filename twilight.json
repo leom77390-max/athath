@@ -4160,6 +4160,33 @@
                     "variant": "h6"
                 },
                 {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "وضع المكون داخل حاوية",
+                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
+                    "id": "add_inside_container",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "إزالة الهامش السفلي",
+                    "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
+                    "id": "rm_margin",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-format-fill",
+                    "label": "تخصيص ألوان المكون يدويًا",
+                    "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
+                    "id": "customize_colors",
+                    "format": "switch",
+                    "value": false
+                },
+             {
                     "id": "layout_mode",
                     "type": "items",
                     "format": "dropdown-list",
@@ -4199,39 +4226,22 @@
                     "required": true
                 },
                 {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
-                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
-                    "id": "add_inside_container",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزالة الهامش السفلي",
-                    "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
-                    "id": "rm_margin",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-format-fill",
-                    "label": "تخصيص ألوان المكون يدويًا",
-                    "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
-                    "id": "customize_colors",
-                    "format": "switch",
-                    "value": false
-                },
-                {
                     "type": "static",
                     "format": "title",
-                    "id": "header_global",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات العنوان العام</h3>"
+                    "id": "header_content",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>",
+                    "conditions": [
+                        {
+                            "id": "layout_mode",
+                            "operation": "in",
+                            "value": [
+                                "accordion_content",
+                                "three_column"
+                            ]
+                        }
+                    ]
                 },
-                {
+                    {
                     "id": "main_title",
                     "type": "string",
                     "format": "text",
@@ -4241,17 +4251,35 @@
                     "icon": "sicon-layout",
                     "value": "لديك سؤال؟ نحن هنا للإجابة!",
                     "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "header_content",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>",
-                    "conditions": [
+                    "required": false,
+                        "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
+                            "value": [
+                                "accordion_content",
+                                "three_column"
+                            ]
+                        }
+                    ]
+                },
+                 {
+                    "id": "main_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص الرئيسي للقسم",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "layout_mode",
+                            "operation": "=",
                             "value": [
                                 "accordion_content",
                                 "three_column"
@@ -4512,7 +4540,7 @@
                     "conditions": [
                         {
                             "id": "layout_mode",
-                            "operation": "in",
+                            "operation": "=",
                             "value": [
                                 "accordion_image",
                                 "three_column"
