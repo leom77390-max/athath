@@ -12,12 +12,44 @@
     <salla-slider
       id="sk-slider-{{ position }}"
       show-controls="true"
+      type="carousel"
+      slider-config='{
+        "slidesPerView": 1.1,
+        "spaceBetween": 16,
+        "breakpoints": {
+          "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
+          "1024": { "slidesPerView": 2, "spaceBetween": 24 }
+        }
+      }'
     >
-      <div slot="items" id="sk-items-{{ position }}">
-        <!-- skeleton -->
-        <div class="sk-skeleton"></div>
-        <div class="sk-skeleton"></div>
-        <div class="sk-skeleton"></div>
+      <div slot="items">
+        {% for product in c.store_products %}
+          <a href="{{ product.url }}" class="sk-product-card">
+            <div class="sk-product-card__img">
+              <img src="{{ product.images[0].url }}" alt="{{ product.name }}" loading="lazy">
+            </div>
+            <div class="sk-product-card__info">
+              {% if product.category %}
+                <span class="sk-product-card__cat">{{ product.category.name }}</span>
+              {% endif %}
+              <h3 class="sk-product-card__name">{{ product.name }}</h3>
+              <div class="sk-product-card__price">
+                {% if product.is_on_sale %}
+                  <span class="sk-price-sale">{{ product.sale_price | money }}</span>
+                  <span class="sk-price-old">{{ product.regular_price | money }}</span>
+                {% else %}
+                  <span>{{ product.price | money }}</span>
+                {% endif %}
+              </div>
+              {% if product.description %}
+                <p class="sk-product-card__desc">{{ product.description | striptags }}</p>
+              {% endif %}
+              <span class="sk-product-card__btn">
+                {{ user.language.code == 'ar' ? 'ØªØ³ÙˆÙ‚ Ø§Ù„Ø¢Ù†' : 'Shop This Product' }}
+              </span>
+            </div>
+          </a>
+        {% endfor %}
       </div>
     </salla-slider>
 
@@ -25,7 +57,9 @@
 </section>
 
 <style>
-#sk-slider-product-{{ position }} { padding: 40px 0; }
+#sk-slider-product-{{ position }} {
+  padding: 40px 0;
+}
 
 .sk-slider-title {
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -45,14 +79,19 @@
   height: 100%;
   transition: box-shadow 0.3s;
 }
-.sk-product-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
 
+.sk-product-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+}
+
+/* Image */
 .sk-product-card__img {
   flex: 0 0 45%;
   max-width: 45%;
   overflow: hidden;
   background: #e4e4e7;
 }
+
 .sk-product-card__img img {
   width: 100%;
   height: 100%;
@@ -61,8 +100,12 @@
   display: block;
   transition: transform 0.4s ease;
 }
-.sk-product-card:hover .sk-product-card__img img { transform: scale(1.04); }
 
+.sk-product-card:hover .sk-product-card__img img {
+  transform: scale(1.04);
+}
+
+/* Info */
 .sk-product-card__info {
   flex: 1;
   padding: 28px 24px;
@@ -71,6 +114,7 @@
   justify-content: center;
   gap: 10px;
 }
+
 .sk-product-card__cat {
   font-size: 0.78rem;
   color: #71717a;
@@ -78,6 +122,7 @@
   letter-spacing: 0.07em;
   font-weight: 500;
 }
+
 .sk-product-card__name {
   font-size: clamp(1.1rem, 1.4vw, 1.4rem);
   font-weight: 700;
@@ -89,11 +134,19 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .sk-product-card__price {
   font-size: 1.05rem;
   font-weight: 700;
   color: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+.sk-price-sale { color: #18181b; }
+.sk-price-old  { color: #a1a1aa; font-size: 0.875rem; font-weight: 400; text-decoration: line-through; }
+
 .sk-product-card__desc {
   font-size: 0.875rem;
   color: #52525b;
@@ -104,6 +157,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .sk-product-card__btn {
   margin-top: 8px;
   display: inline-block;
@@ -114,109 +168,20 @@
   border-radius: 999px;
   font-size: 0.875rem;
   font-weight: 600;
-  text-decoration: none;
   transition: opacity 0.2s;
 }
-.sk-product-card__btn:hover { opacity: 0.8; }
 
-/* Skeleton */
-.sk-skeleton {
-  background: #f4f4f5;
-  border-radius: 16px;
-  height: 280px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-.sk-skeleton::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-  background-size: 200% 100%;
-  animation: sk-shimmer 1.4s infinite;
-}
-@keyframes sk-shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
+.sk-product-card:hover .sk-product-card__btn {
+  opacity: 0.8;
 }
 
-[dir="rtl"] .sk-product-card { flex-direction: row-reverse; }
+/* RTL */
+[dir="rtl"] .sk-product-card {
+  flex-direction: row-reverse;
+}
 
 @media (max-width: 767px) {
   .sk-product-card__img img { min-height: 180px; }
   .sk-product-card__info    { padding: 18px 14px; }
 }
 </style>
-
-<script defer>
-(() => {
-
-  const POSITION    = "{{ position }}";
-  const LANG        = "{{ user.language.code }}";
-  const CAT_IDS     = {{ c.store_products | json_encode }};
-  const SHOP_LABEL  = LANG === 'ar' ? 'ØªØ³ÙˆÙ‚ Ø§Ù„Ø¢Ù†' : 'Shop This Product';
-  const NO_PRODUCTS = LANG === 'ar' ? 'Ù„Ø§ ØªÙˆØ¬Ø¯ Ù…Ù†ØªØ¬Ø§Øª' : 'No products found';
-
-  function buildCard(product) {
-    const cat   = product.category?.name || '';
-    const img   = product.thumbnail      || product.image?.url || '';
-    const desc  = (product.description   || '').replace(/<[^>]*>/g, '');
-    let price   = product.price;
-    try { price = salla.money(product.price); } catch {}
-
-    return `
-      <a href="${product.url}" class="sk-product-card">
-        <div class="sk-product-card__img">
-          <img src="${img}" alt="${product.name}" loading="lazy">
-        </div>
-        <div class="sk-product-card__info">
-          ${cat  ? `<span class="sk-product-card__cat">${cat}</span>` : ''}
-          <h3 class="sk-product-card__name">${product.name}</h3>
-          <div class="sk-product-card__price">${price}</div>
-          ${desc ? `<p class="sk-product-card__desc">${desc}</p>`     : ''}
-          <span class="sk-product-card__btn">${SHOP_LABEL}</span>
-        </div>
-      </a>`;
-  }
-
-  async function fetchProducts(catId) {
-    // Ø³Ù„Ù‡ API Ø§Ù„ØµØ­ÙŠØ­ Ù„Ø¬Ù„Ø¨ Ù…Ù†ØªØ¬Ø§Øª ØªØµÙ†ÙŠÙ Ù…Ø¹ÙŠÙ†
-    const res = await salla.api.product.list({ category_id: catId, limit: 12 });
-    return res?.data?.products || res?.data || [];
-  }
-
-  salla.onReady(async () => {
-
-    const slot = document.getElementById(`sk-items-${POSITION}`);
-    if (!slot || !CAT_IDS?.length) return;
-
-    const cards = [];
-
-    for (const catId of CAT_IDS) {
-      try {
-        const products = await fetchProducts(catId);
-        products.forEach(p => cards.push(buildCard(p)));
-      } catch (e) {
-        console.warn('SK Slider: failed catId', catId, e);
-      }
-    }
-
-    if (!cards.length) {
-      slot.innerHTML = `<p style="color:#71717a;padding:16px 0;">${NO_PRODUCTS}</p>`;
-      return;
-    }
-
-    // ÙƒÙ„ ÙƒØ§Ø±Ø¯ ÙÙŠ div Ù…Ø³ØªÙ‚Ù„ Ø¹Ø´Ø§Ù† salla-slider ÙŠØ¹Ø§Ù…Ù„Ù‡Ø§ ÙƒÙ€ slides Ù…Ù†ÙØµÙ„Ø©
-    slot.innerHTML = cards.map(c => `<div class="sk-slide-item">${c}</div>`).join('');
-
-    // Ø¥Ø¹Ø§Ø¯Ø© ØªÙ‡ÙŠØ¦Ø© Ø§Ù„Ø³Ù„Ø§ÙŠØ¯Ø± Ø¨Ø¹Ø¯ Ø¥Ø¶Ø§ÙØ© Ø§Ù„Ø¹Ù†Ø§ØµØ±
-    const sliderEl = document.getElementById(`sk-slider-${POSITION}`);
-    if (sliderEl && typeof sliderEl.reinit === 'function') {
-      sliderEl.reinit();
-    }
-
-  });
-
-})();
-</script>
