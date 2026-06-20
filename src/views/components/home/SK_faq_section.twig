@@ -1,0 +1,182 @@
+{# ================================================
+SK FAQ Grid Section — Fixed & Aligned with twilight.json
+================================================ #}
+
+<section
+    class="SK-faq-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }}"
+    style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;">
+
+    {# ── Global Title ── #}
+    {# {% if component.main_title %} #}
+    <div class="section-header text-center mb-10">
+    </div>
+    {# {% endif %} #}
+
+    {# ── 3-Column Grid Wrapper ── #}
+    <div class="faq-grid-inner grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+
+        {# ── Col 1 : Promo Text & CTA Button ── #}
+        <div class="grid-col-promo flex flex-col justify-center items-start text-left rtl:text-right">
+
+            {# {% if component.banner.subtext %} #}
+            <h2 class="text-3xl font-bold">{{ component.main_title }}</h2>
+
+            <p class="text-base leading-relaxed mb-6"
+                style="color: {{ component.customize_colors ? component.subtext_color|default('#18181b') : '#18181b' }};">
+                {{ component.subtext }}
+            </p>
+            {# {% endif %} #}
+
+            {% if component.button_text %}
+            <a href="{{ component.url|default('#') }}"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200 hover:opacity-90"
+                style="background-color: {{ component.customize_colors ? component.button_bg|default('#000000') : '#000000' }};
+                      color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
+                {{ component.button_text }}
+            </a>
+            {% endif %}
+
+        </div>
+
+        {# ── Col 2 : Center Banner Image ── #}
+        <div class="grid-col-image flex justify-center items-center">
+            {% if component.banner_img %}
+            <img src="{{ component.banner_img }}" alt="{{ component.main_title|default('Promo Banner') }}"
+                class="dynamic-banner-img max-w-full h-auto object-contain" />
+            {% endif %}
+        </div>
+
+        {# ── Col 3 : FAQ Accordion ── #}
+        <div class="grid-col-faq flex flex-col gap-4">
+            {% for item in component.faq_accordion %}
+            <div class="faq-accordion-item rounded-2xl border transition-all duration-300" style="background-color: {{ item.bg_color|default('#ffffff') }};
+                        border-color: {{ item.hr_color|default('#e4e4e7') }};" data-accordion-item>
+
+                {# Accordion Trigger #}
+                <button type="button"
+                    class="w-full flex items-center justify-between p-5 text-base font-semibold text-left rtl:text-right transition-colors"
+                    style="color: {{ item.question_color|default('#18181b') }};" aria-expanded="false"
+                    aria-controls="faq-panel-{{ loop.index }}">
+                    <span>{{ item.question }}</span>
+                    <i class="{{ item.icon|default('sicon-add') }} text-lg transition-transform duration-300 pointer-events-none"
+                        style="color: {{ item.icon_color|default('#18181b') }};" data-icon aria-hidden="true"></i>
+                </button>
+
+                {# Accordion Panel #}
+                <div id="faq-panel-{{ loop.index }}"
+                    class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out" role="region">
+                    <div class="px-5 pb-5 pt-1 border-t text-sm leading-relaxed" style="border-color: {{ item.hr_color|default('#e4e4e7') }};
+                                color: {{ item.answer_color|default('#4b5563') }};">
+                        {{ item.answer }}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>{# /grid #}
+</section>
+
+{# ══════════════ STYLES ══════════════ #}
+<style>
+    /* Section base */
+    .SK-faq-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Banner image — respects CSS custom props set via component fields */
+    .dynamic-banner-img {
+        max-height: var(--desktop-height, 90vh);
+    }
+
+    /* Accordion panel animation */
+    .faq-panel {
+        transition: max-height 0.35s ease-in-out;
+    }
+
+    /* Active state — panel open */
+    .faq-accordion-item.is-active .faq-panel {
+        max-height: 600px;
+        /* generous cap; JS also sets scrollHeight */
+    }
+
+    /* Icon rotation when open */
+    .faq-accordion-item.is-active [data-icon].sicon-add,
+    .faq-accordion-item.is-active [data-icon] {
+        transform: rotate(45deg);
+    }
+
+    /* Mobile image height */
+    @media (max-width: 1024px) {
+        .dynamic-banner-img {
+            max-height: var(--mobile-height, 70vh);
+        }
+    }
+</style>
+
+{# ══════════════ SCRIPT ══════════════ #}
+<script>
+    (function () {
+        "use strict";
+
+        function initAccordion() {
+            const items = document.querySelectorAll("[data-accordion-item]");
+            if (!items.length) return;
+
+            items.forEach(function (item) {
+                const btn = item.querySelector("button");
+                const panel = item.querySelector(".faq-panel");
+                const icon = item.querySelector("[data-icon]");
+                if (!btn || !panel) return;
+
+                btn.addEventListener("click", function () {
+                    const isActive = item.classList.contains("is-active");
+
+                    /* Close all siblings */
+                    items.forEach(function (other) {
+                        if (other === item) return;
+                        other.classList.remove("is-active");
+                        const otherBtn = other.querySelector("button");
+                        const otherPanel = other.querySelector(".faq-panel");
+                        const otherIcon = other.querySelector("[data-icon]");
+                        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+                        if (otherPanel) otherPanel.style.maxHeight = null;
+                        if (otherIcon) {
+                            otherIcon.classList.replace("sicon-minus", "sicon-add");
+                            otherIcon.style.transform = "";
+                        }
+                    });
+
+                    if (isActive) {
+                        /* Collapse */
+                        item.classList.remove("is-active");
+                        btn.setAttribute("aria-expanded", "false");
+                        panel.style.maxHeight = null;
+                        if (icon) {
+                            icon.classList.replace("sicon-minus", "sicon-add");
+                            icon.style.transform = "";
+                        }
+                    } else {
+                        /* Expand */
+                        item.classList.add("is-active");
+                        btn.setAttribute("aria-expanded", "true");
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        if (icon) {
+                            icon.classList.replace("sicon-add", "sicon-minus");
+                            icon.style.transform = "rotate(45deg)";
+                        }
+                    }
+                });
+            });
+        }
+
+        /* Run after DOM is ready */
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initAccordion);
+        } else {
+            initAccordion();
+        }
+    }());
+</script>
