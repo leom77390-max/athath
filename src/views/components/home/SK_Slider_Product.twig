@@ -18,7 +18,7 @@
         "spaceBetween": 16,
         "breakpoints": {
           "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
-          "1024": { "slidesPerView": 2, "spaceBetween": 24 }
+          "1024": { "slidesPerView": 1.8, "spaceBetween": 24 }
         }
       }'
     >
@@ -45,7 +45,7 @@
                 <p class="sk-product-card__desc">{{ product.description | striptags }}</p>
               {% endif %}
               <span class="sk-product-card__btn">
-                {{ user.language.code == 'ar' ? 'ØªØ³ÙˆÙ‚ Ø§Ù„Ø¢Ù†' : 'Shop This Product' }}
+                {{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}
               </span>
             </div>
           </a>
@@ -67,7 +67,6 @@
   margin-bottom: 24px;
 }
 
-/* ===== CARD ===== */
 .sk-product-card {
   display: flex !important;
   align-items: stretch;
@@ -84,7 +83,6 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
 
-/* Image */
 .sk-product-card__img {
   flex: 0 0 45%;
   max-width: 45%;
@@ -105,7 +103,6 @@
   transform: scale(1.04);
 }
 
-/* Info */
 .sk-product-card__info {
   flex: 1;
   padding: 28px 24px;
@@ -175,7 +172,6 @@
   opacity: 0.8;
 }
 
-/* RTL */
 [dir="rtl"] .sk-product-card {
   flex-direction: row-reverse;
 }
