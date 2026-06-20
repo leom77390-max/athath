@@ -3,11 +3,11 @@ salla-slider{
   
   &.details-slider{
     .s-slider-container{ 
-      @apply bg-white border-[1px] rounded-md;
+      @apply bg-background border-[1px] rounded-md;
     }
 
     .swiper-slide{
-      @apply relative rounded-md bg-white ring-1 ring-inset ring-gray-100;
+      @apply relative rounded-md bg-background ring-1 ring-inset ring-gray-100;
     }
 
     salla-button.btn--wishlist{

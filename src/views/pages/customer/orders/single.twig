@@ -92,7 +92,7 @@
         {# Order Details #}
         <table class="min-w-full rounded-md overflow-hidden">
             <tbody>
-            <tr class="bg-white overflow-hidden flex md:table-row flex-row md:flex-row flex-wrap md:flex-no-wrap py-1.5 md:py-0">
+            <tr class="bg-background overflow-hidden flex md:table-row flex-row md:flex-row flex-wrap md:flex-no-wrap py-1.5 md:py-0">
                 <td class="single-order-header-item w-full md:w-auto  px-3 md:px-6 py-2 md:py-4 md:h-20 whitespace-nowrap text-sm ">
                     <div class="rtl:ml-2 ltr:mr-2 font-normal text-gray-400">{{ trans('pages.orders.date') }}</div>
                     <b>{{ order.created_at|date|number }}</b>
@@ -154,7 +154,7 @@
 
         {% if order.refund_message %}
           <div class="min-w-full rounded-md overflow-hidden">
-            <div class="bg-white flex items-center gap-1 rounded-md px-3 py-5 md:px-5">
+            <div class="bg-background flex items-center gap-1 rounded-md px-3 py-5 md:px-5">
                <i class="sicon-refund h-6 w-6"></i> 
                 <p class="font-medium text-base">{{order.refund_message|raw}}</p>
             </div>
@@ -185,7 +185,7 @@
                 <div class="shipping-orders">
                     {# Shipping Title #}
                     {% if package.shipping_company %}
-                    <div class="flex flex-col md:flex-row justify-between md:items-center bg-white px-5 py-3 border-b border-gray-100 rounded-t-md text-sm space-y-4 md:space-y-0">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center bg-background px-5 py-3 border-b border-gray-100 rounded-t-md text-sm space-y-4 md:space-y-0">
                         <div class="flex items-center space-x-2 rtl:space-x-reverse">
                             {% if package.shipping_company.logo %}
                                 <img src="{{ package.shipping_company.logo }}" class="max-w-16 max-h-8"
@@ -226,7 +226,7 @@
                     {% endif %}
 
                     {% for item in package.items %}
-                        <div data-order-item-id="{{ item.id }}" data-order-item-product-id="{{ item.product.id }}" class="order-item bg-white p-5 border-b border-gray-100 first:rounded-t-md last:rounded-b-md last:border-none">
+                        <div data-order-item-id="{{ item.id }}" data-order-item-product-id="{{ item.product.id }}" class="order-item bg-background p-5 border-b border-gray-100 first:rounded-t-md last:rounded-b-md last:border-none">
 
                             <div class="mb-5 last:mb-0">
                                 {% if item.product %}
@@ -403,7 +403,7 @@
             {% endfor %}
 
             {% if order.options|length %}
-              <div class="bg-white p-5 rounded-md">
+              <div class="bg-background p-5 rounded-md">
                 <h2 class="mb-3.5 text-sm font-bold">{{ trans('pages.cart.cart_options') }}</h2>
                 <table class="table-fixed w-full border border-gray-200">
                   <thead>
@@ -445,7 +445,7 @@
      
         {# Reorder & Cancel #}
         {% if order.can_reorder or order.can_cancel or order.is_pending_payment %}
-            <div class="bg-white rounded-md p-5 divide-y divide-border-color space-y-4">
+            <div class="bg-background rounded-md p-5 divide-y divide-border-color space-y-4">
                 {% if order.can_reorder or order.is_pending_payment %}
                     <div class="{{order.is_pending_payment ? 'flex-center': 'center-between'}}">
                         {% if order.is_pending_payment %}
@@ -521,7 +521,7 @@
 
         {# Store Rating #}
         {% if order.rating.store.stars %}
-            <section class="flex justify-between items-start bg-white p-5 rounded-md">
+            <section class="flex justify-between items-start bg-background p-5 rounded-md">
                 <div>
                     <h2 class="text-lg font-bold mb-5">{{ trans('pages.rating.rate_the_store') }}</h2>
                     <p class="mb-2">{{ order.rating.store.content|raw }}</p>
@@ -576,7 +576,7 @@
 
         {# Shipping Rating #}
         {% if order.rating.shipping.stars %}
-            <section class="flex justify-between items-start bg-white p-5 rounded-md">
+            <section class="flex justify-between items-start bg-background p-5 rounded-md">
                 <div>
                     <h2 class="text-lg font-bold mb-5">{{ trans('pages.rating.rate_shipping') }}</h2>
                     <p class="mb-2">{{ order.rating.shipping.content|raw }}</p>

@@ -60,7 +60,7 @@
     }
     .filepond--drop-label {
       min-height: 120px !important;
-      @apply bg-white cursor-pointer border-dashed rounded-md border border-gray-200;
+      @apply bg-background cursor-pointer border-dashed rounded-md border border-gray-200;
     }
     .profile-filepond-placholder{
       @apply flex flex-col justify-center items-center;
@@ -81,7 +81,7 @@
 * thank you page 
 */
 .thankyou-block{
-  @apply duration-500 hover:shadow-default flex-1 bg-white p-8 rounded-md mb-6 md:mb-8 flex flex-col items-center justify-center;
+  @apply duration-500 hover:shadow-default flex-1 bg-background p-8 rounded-md mb-6 md:mb-8 flex flex-col items-center justify-center;
 
   &.sent{
     @apply text-green-500 font-bold;

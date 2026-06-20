@@ -24,7 +24,7 @@
 
 						.swal2-success-line-tip,
 						.swal2-success-line-long {
-							@apply bg-white;
+							@apply bg-background;
 						}
 					}
 				}
@@ -59,7 +59,7 @@
 
 				.swal2-x-mark-line-right,
 				.swal2-x-mark-line-left {
-					@apply bg-white;
+					@apply bg-background;
 				}
 			}
 

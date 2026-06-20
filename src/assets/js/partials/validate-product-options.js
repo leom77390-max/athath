@@ -132,7 +132,7 @@ function createLoadingOverlay() {
     overlay.classList.add('loading-overlay', 'absolute', 'inset-0', 'z-50', 'flex', 'justify-center', 'items-center');
 
     const background = document.createElement('div');
-    background.classList.add('absolute', 'inset-0', 'bg-white', 'opacity-40');
+    background.classList.add('absolute', 'inset-0', 'bg-background', 'opacity-40');
 
     const loader = document.createElement('div');
     loader.innerHTML = '<salla-loading size="32"></salla-loading>';

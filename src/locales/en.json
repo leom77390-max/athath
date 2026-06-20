@@ -31,7 +31,8 @@
     },
     "products": {
       "calculated_at_checkout": "calculated at checkout",
-      "view_full_details": "View Full Details"
+      "view_full_details": "View Full Details",
+      "discription": "Product Description"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",

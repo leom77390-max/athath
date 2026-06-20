@@ -25,7 +25,7 @@
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
         <div class="md:flex items-start">
-            <div class="main-content blog-category md:w-96 flex-1 bg-white lg:p-8 rounded-md mb-10 md:mb-0">
+            <div class="main-content blog-category md:w-96 flex-1 bg-background lg:p-8 rounded-md mb-10 md:mb-0">
                 <h1 class="font-bold text-3xl mb-5 leading-10">{{ article.title }}</h1>
                 <div class="mb-10 text-gray-500 rounded-md inline-flex text-sm rtl:space-x-reverse space-x-5">
                     <div class=" flex items-center">
@@ -81,7 +81,7 @@
                     {% hook 'blog:single.items.start' %}
 
                     {% for article in related %}
-                        <div class="mt-5 flex items-center bg-white p-5 rounded-md">
+                        <div class="mt-5 flex items-center bg-background p-5 rounded-md">
                             <div class="shrink-0">
                                 <a href="{{ article.url }}"
                                    class="bg-border-color h-24 w-24 rounded-md overflow-hidden flex items-center justify-center">
