@@ -30,9 +30,9 @@
             </div>
             <div class="sk-product-card__info">
               {% if product.category %}
-                <span class="sk-product-card__cat text-3xl">{{ product.category.name }}</span>
+                <span class="sk-product-card__cat">{{ product.category.name }}</span>
               {% endif %}
-              <h3 class="sk-product-card__name text-2xl">{{ product.name }}</h3>
+              <h3 class="sk-product-card__name">{{ product.name }}</h3>
               <div class="sk-product-card__price">
                 {% if product.is_on_sale %}
                   <span class="sk-price-sale">{{ product.sale_price | money }}</span>
@@ -42,7 +42,7 @@
                 {% endif %}
               </div>
               {% if product.description %}
-                <p class="sk-product-card__desc text-xl">{{ product.description | striptags }}</p>
+                <p class="sk-product-card__desc">{{ product.description | striptags }}</p>
               {% endif %}
               <span class="sk-product-card__btn">
                 {{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}
@@ -151,7 +151,7 @@
 }
 
 .sk-product-card__cat {
-  font-size: 0.78rem;
+  font-size: 1.25rem;
   color: #71717a;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -159,7 +159,7 @@
 }
 
 .sk-product-card__name {
-  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  font-size: clamp(1.1rem, 1.4vw, 4rem);
   font-weight: 700;
   color: #18181b;
   line-height: 1.3;
@@ -183,7 +183,7 @@
 .sk-price-old  { color: #a1a1aa; font-size: 0.875rem; font-weight: 400; text-decoration: line-through; }
 
 .sk-product-card__desc {
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   color: #52525b;
   line-height: 1.6;
   margin: 0;
