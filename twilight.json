@@ -4326,30 +4326,30 @@
                         }
                     ],
                     "value": [
-                            {
-                                "add_sectionbar.bar_img": "https://b.top4top.io/p_3823e63xp1.jpg",
-                                "add_sectionbar.bar_title": "اعتني ببشرتك",
-                                "add_sectionbar.bar_title_color": "#000000",
-                                "add_sectionbar.bar_url": null
-                            },
-                            {
-                                "add_sectionbar.bar_img": "https://i.top4top.io/p_3823qk8o21.jpg",
-                                "add_sectionbar.bar_title": "أساسيات الموسم الجديد",
-                                "add_sectionbar.bar_title_color": "#000000",
-                                "add_sectionbar.bar_url": null
-                            },
-                            {
-                                "add_sectionbar.bar_img": "https://j.top4top.io/p_3823vcqty1.jpg",
-                                "add_sectionbar.bar_title": "صنع بالحب",
-                                "add_sectionbar.bar_title_color": "#000000",
-                                "add_sectionbar.bar_url": null
-                            },
-                            {
-                                "add_sectionbar.bar_img": "https://g.top4top.io/p_38231vj1s1.jpg",
-                                "add_sectionbar.bar_title": "أنقذ بشرتك",
-                                "add_sectionbar.bar_title_color": "#000000",
-                                "add_sectionbar.bar_url": null
-                            }
+                        {
+                            "add_sectionbar.bar_img": "https://b.top4top.io/p_3823e63xp1.jpg",
+                            "add_sectionbar.bar_title": "اعتني ببشرتك",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
+                        },
+                        {
+                            "add_sectionbar.bar_img": "https://i.top4top.io/p_3823qk8o21.jpg",
+                            "add_sectionbar.bar_title": "أساسيات الموسم الجديد",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
+                        },
+                        {
+                            "add_sectionbar.bar_img": "https://j.top4top.io/p_3823vcqty1.jpg",
+                            "add_sectionbar.bar_title": "صنع بالحب",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
+                        },
+                        {
+                            "add_sectionbar.bar_img": "https://g.top4top.io/p_38231vj1s1.jpg",
+                            "add_sectionbar.bar_title": "أنقذ بشرتك",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
+                        }
                     ],
                     "minLength": "4",
                     "maxLength": "20"
@@ -4379,6 +4379,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
+            "title": {
+                "en": "منتجات مختارة بعناية - سليك",
+                "ar": "Choose Product - Sleek"
+            },
+            "icon": "sicon-store",
+            "path": "SK_Slider_Product",
+            "fields": []
         }
     ],
     "support_url": null,
