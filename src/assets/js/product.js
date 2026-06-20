@@ -22,6 +22,8 @@ class Product extends BasePage {
             // listen to screen resizing
             window.addEventListener('resize', () => this.initImagesZooming());
         }
+            this.initSizeOptionSingle();
+    this.observeSizeOptionSingle();
     }
 
     initProductOptionValidations() {
@@ -95,6 +97,99 @@ class Product extends BasePage {
         div.style = `max-height:${div.scrollHeight}px`;
       }) || e.target.remove());
     }
+        initSizeOptionSingle() {
+    // Find all containers with the exact data-option-type we want
+    const containers = document.querySelectorAll(
+      '.product-single .s-product-options-wrapper [data-option-type="single-option"]'
+    );
+
+    if (!containers.length) {
+      console.warn("No container with data-option-type='single-option' found.");
+      return;
+    }
+
+    containers.forEach((container) => {
+      const select = container.querySelector("select");
+
+      if (!select) {
+        console.warn("No <select> found inside single-option container.");
+        return;
+      }
+
+      const options = Array.from(select.options).filter(
+        (opt) => opt.value.trim() !== ""
+      );
+      const radioContainer = document.createElement("div");
+      radioContainer.classList.add("custom-radio-options");
+
+      const radioButtons = [];
+
+      options.forEach((option) => {
+        const id = `option_${option.value}`;
+
+        const label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.classList.add("radio-label");
+        label.style.display = "block";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = select.name;
+        radio.value = option.value;
+        radio.id = id;
+        radio.required = select.required;
+        radio.classList.add("sr-only");
+
+        label.appendChild(radio);
+        label.append(` ${option.text}`);
+        radioContainer.appendChild(label);
+
+        radioButtons.push({ radio, label });
+
+        radio.addEventListener("change", () => {
+          radioButtons.forEach(({ label: lbl }) =>
+            lbl.classList.remove("label_active")
+          );
+          label.classList.add("label_active");
+        });
+      });
+
+      select.parentNode.replaceChild(radioContainer, select);
+    });
+  }
+  observeSizeOptionSingle() {
+    const target = document.querySelector("salla-product-options");
+    if (!target) {
+      console.warn("No <salla-product-options> element found.");
+      return;
+    }
+
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class"
+        ) {
+          if (target.classList.contains("hydrated")) {
+            observer.disconnect(); // stop observing
+            this.initSizeOptionSingle(); // run after hydration
+          }
+        }
+      }
+    });
+
+    observer.observe(target, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    // If already hydrated, trigger immediately
+    if (target.classList.contains("hydrated")) {
+      this.initSizeOptionSingle();
+      observer.disconnect();
+    }
+  }
+    
 }
 
 Product.initiateWhenReady(['product.single']);

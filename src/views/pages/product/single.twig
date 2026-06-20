@@ -205,7 +205,7 @@
                           <model-viewer style="" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
                         {% else %}
                           <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
-                            class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+                            class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-[32px] overflow-hidden">
                             {% if loop.first %}
                               <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full   {{ image.three_d_image_url ? 'model-poster' : '' }}"
                               style="object-fit: {{ theme.settings.get('slider_background_size') }};"
@@ -236,7 +236,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
+                <h1 class="text-xl md:text-2xl leading-10 font-bold mb-4 text-font">{{ product.name }}</h1>
 
                 {% if product.subtitle %}
                     <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
@@ -296,8 +296,8 @@
                 {% endif %}
 
                 <div class="flex rtl:space-x-reverse space-x-3">
-                    <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
-
+                    {# <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share> #}
+                    {% include 'pages.partials.social_icon.twig' %}
                     <salla-button
                             class="btn--wishlist animated hidden sm:inline-flex"
                             data-id="{{ product.id }}"
@@ -338,7 +338,39 @@
                 {% endif %}
                 {% hook 'product:single.description' %}
 
-                {# Installment Methods #}
+                         <style>
+                            .desc-accordion-grid {
+                                display: grid;
+                                grid-template-rows: 0fr;
+                                transition: grid-template-rows 300ms ease-in-out, opacity 300ms ease-in-out;
+                                opacity: 0;
+                            }
+                            .desc-accordion.is-open .desc-accordion-grid {
+                                grid-template-rows: 1fr;
+                                opacity: 1;
+                            }
+                            .desc-accordion.is-open .desc-accordion-icon {
+                                transform: rotate(180deg);
+                            }
+                        </style>
+                        <div class="product__description mb-3 desc-accordion is-open">
+                            {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
+                            <div class="overflow-hidden">
+                                <button type="button" onclick="this.closest('.desc-accordion').classList.toggle('is-open')" class="border-b border-[#E4E4E7] w-full flex items-center justify-between bg-background hover:bg-gray-50 transition-colors select-none focus:outline-none pb-3 mb-3">
+                                    <span class="font-semibold text-base text-font">{{ trans('pages.single.description') }}</span>
+                                    <svg class="desc-accordion-icon w-5 h-5 text-gray-500 transition-transform duration-300 transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="desc-accordion-grid">
+                                    <div class="overflow-hidden">
+                                        <article class="article--main  leading-8 text-sm text-gray-700">
+                                            {{ product_desc|raw }}
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 <salla-installment price="{{ product.price }}"></salla-installment>
                 {% if product.has_metadata %}
                 <salla-metadata></salla-metadata>
@@ -472,7 +504,7 @@
     <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
 
     {# Comments Area #}
-    {% if store.settings.rating.show_on_product %}
+    {% if store.settings.rating.show_on_product and user.type == 'user' %}
     {% include "pages.product.coments" with { productid: product.id } %}
     {% endif %}
 

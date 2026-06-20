@@ -1,0 +1,131 @@
+<button
+  id="openShareModal"
+  class="inline-flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-full hover:border-black transition-all duration-300">
+
+  <i class="sicon-share-alt"></i>
+  <span class="text-sm font-medium">Share</span>
+</button>
+
+<!-- Modal -->
+<div
+  id="shareModal"
+  class="fixed inset-0 z-[9999] hidden items-center justify-center">
+
+  <!-- Backdrop -->
+  <div
+    id="shareBackdrop"
+    class="absolute inset-0 bg-black/40 backdrop-blur-sm">
+  </div>
+
+  <!-- Dialog -->
+  <div
+    class="relative bg-white w-[92vw] max-w-md rounded-3xl p-6 shadow-2xl">
+
+    <button
+      id="closeShareModal"
+      class="absolute top-5 right-5 text-xl text-gray-500 hover:text-black">
+      ✕
+    </button>
+
+    <h3 class="text-xl font-semibold mb-5">
+      Share this product
+    </h3>
+
+    <!-- Copy Link -->
+    <div
+      class="flex items-center overflow-hidden border border-gray-200 rounded-full">
+
+      <input
+        id="shareUrl"
+        readonly
+        value="{{ product.url }}"
+        class="flex-1 px-4 py-3 text-sm bg-transparent outline-none truncate">
+
+      <button
+        id="copyShareLink"
+        class="px-5 py-3 text-sm font-medium hover:bg-gray-50 transition">
+        Copy
+      </button>
+    </div>
+
+    <!-- Social Icons -->
+    <div class="flex items-center gap-3 mt-6">
+
+      <a
+        href="https://www.facebook.com/sharer/sharer.php?u={{ product.url|url_encode }}"
+        target="_blank"
+        class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:-translate-y-0.5 transition-all">
+
+        <i class="sicon-facebook"></i>
+      </a>
+
+      <a
+        href="https://twitter.com/intent/tweet?url={{ product.url|url_encode }}"
+        target="_blank"
+        class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:-translate-y-0.5 transition-all">
+
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26L22.827 21.75H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/>
+        </svg>
+      </a>
+
+      <a
+        href="https://wa.me/?text={{ product.url|url_encode }}"
+        target="_blank"
+        class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:-translate-y-0.5 transition-all">
+
+        <i class="sicon-whatsapp"></i>
+      </a>
+
+      <button
+        id="copyIconBtn"
+        class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:-translate-y-0.5 transition-all">
+
+        <i class="sicon-link"></i>
+      </button>
+
+    </div>
+  </div>
+</div>
+<script>
+const modal = document.getElementById('shareModal');
+
+document.getElementById('openShareModal')
+  .addEventListener('click', () => {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+
+document.getElementById('closeShareModal')
+  .addEventListener('click', closeModal);
+
+document.getElementById('shareBackdrop')
+  .addEventListener('click', closeModal);
+
+function closeModal() {
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(
+    document.getElementById('shareUrl').value
+  );
+
+  const btn = document.getElementById('copyShareLink');
+
+  btn.innerText = 'Copied ✓';
+
+  setTimeout(() => {
+    btn.innerText = 'Copy';
+  }, 1500);
+}
+
+document
+  .getElementById('copyShareLink')
+  .addEventListener('click', copyLink);
+
+document
+  .getElementById('copyIconBtn')
+  .addEventListener('click', copyLink);
+</script>
