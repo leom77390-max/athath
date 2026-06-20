@@ -62,14 +62,30 @@
   top: -2rem !important;
   width: 8% !important;
 }
-#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button {
+#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button,
+#sk-slider-product-{{ position }} .s-slider-nav-arrow {
   border: 1px solid #000000 !important;
   background: transparent !important;
+  transition: all .3s ease;
 }
-#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button.swiper-button-disabled svg,
+
+#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button svg,
 #sk-slider-product-{{ position }} .s-slider-nav-arrow svg {
   fill: #000000 !important;
+  transition: fill .3s ease;
 }
+
+/* Hover */
+#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button:hover,
+#sk-slider-product-{{ position }} .s-slider-nav-arrow:hover {
+  background: #000000 !important;
+}
+
+#sk-slider-product-{{ position }} .s-slider-v-centered .s-slider-block__title-nav button:hover svg,
+#sk-slider-product-{{ position }} .s-slider-nav-arrow:hover svg {
+  fill: #ffffff !important;
+}
+
 #sk-slider-product-{{ position }} {
   padding: 40px 0;
 }
