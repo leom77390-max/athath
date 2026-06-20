@@ -4178,6 +4178,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "70c52858-8963-478e-a0de-4c24597ee44f",
+            "title": {
+                "en": "scrolling strip - sleek",
+                "ar": "شريط متحرك - سليك"
+            },
+            "icon": "sicon-store",
+            "path": "home.sl_moving",
+            "fields": []
         }
     ],
     "support_url": null,
