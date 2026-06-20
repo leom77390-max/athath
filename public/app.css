@@ -1758,6 +1758,9 @@ input:where([type='file']):focus{
 .flex-wrap{
     flex-wrap: wrap;
 }
+.flex-nowrap{
+    flex-wrap: nowrap;
+}
 .items-start{
     align-items: flex-start;
 }
@@ -34263,6 +34266,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:mt-0{
         margin-top: 0px;
+    }
+    .md\:mb-16{
+        margin-bottom: 4rem;
+    }
+    .md\:block{
+        display: block;
     }
     .md\:flex{
         display: flex;
