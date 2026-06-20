@@ -1,0 +1,187 @@
+.store-footer {
+  .s-payments-list-item {
+    border-radius: 2px !important;
+    height: 42px;
+    width: 55px;
+    background-color: transparent;
+  }
+  .s-contacts-item {
+    .s-contacts-icon {
+      display: none;
+    }
+  }
+  .s-menu-footer-item {
+    @apply mb-4 font-normal text-[14px] leading-[14px] tracking-normal;
+  }
+  .copyright-text {
+    p {
+      color: var(--color-secondary);
+    }
+  }
+  .footer-is-light & {
+    .s-user-menu-dropdown-item-link {
+      padding: 0 !important;
+      color: var(--color-font) !important;
+      margin-bottom: 12px;
+    }
+  }
+  .s-user-menu-dropdown-item-link {
+    padding: 0 !important;
+    color: var(--color-secondary);
+    margin-bottom: 12px;
+  }
+  .s-user-menu-dropdown-item-link:hover {
+    @apply bg-transparent;
+  }
+  .s-apps-icons-list {
+    flex-direction: column;
+  }
+  @apply relative bg-darker text-background mt-8 sm:mt-16;
+
+  a {
+    @apply transition-opacity hover:opacity-75 leading-[125%];
+  }
+
+  &__inner {
+    @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
+  }
+
+  h3 {
+    @apply font-semibold text-[18px] leading-[18px] tracking-normal md:text-[24px] md:leading-[24px] mb-4;
+  }
+
+  .social-link {
+    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm;
+  }
+
+  .contact-social {
+    @apply mt-5 pt-5 border-t border-white/10;
+
+    ul {
+      @apply mb-0;
+    }
+  }
+
+  .store-footer__inner {
+    background-color: black !important;
+    @apply py-6 lg:py-12;
+  }
+  .footer-is-light & {
+    @apply bg-gray-50 text-gray-700;
+    .under-footer {
+      background-color: var(--color-background);
+      color: var(--color-font);
+    }
+    .store-footer__inner {
+      color: var(--color-font) !important;
+      background-color: var(--color-primary) !important;
+      @apply py-6 lg:py-12;
+    }
+
+    .social-link {
+      @apply border-gray-300;
+    }
+
+    .contact-social {
+      @apply border-gray-100;
+    }
+  }
+}
+
+.copyright-text p {
+  @apply text-gray-700;
+}
+
+/* ===== Font Colors ===== */
+
+.store-footer {
+  /* روابط السوشيال */
+  .s-social-link {
+    a {
+      background-color: #262626;
+      border-radius: 6px;
+      color: var(--color-background);
+      border: 1px solid #404040;
+    }
+  }
+}
+
+/* الكوبي رايت */
+.copyright-text {
+  p {
+    @apply text-font;
+
+    a {
+      @apply text-font;
+
+      &:hover {
+        @apply text-font;
+      }
+    }
+  }
+}
+
+/* ===== Font Colors ===== */
+
+.store-footer {
+  .footer-is-light & {
+    * {
+      color: var(--color-font) !important;
+    }
+    /* روابط الفوتر */
+    a {
+      color: var(--color-font);
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+
+    /* روابط السوشيال */
+    .s-social-link {
+      a {
+        background-color: #c4c4c4;
+        border-radius: 6px;
+        color: var(--color-font);
+      }
+    }
+    .copyright-text {
+      p {
+        @apply text-font;
+
+        a {
+          @apply text-font;
+
+          &:hover {
+            @apply text-font;
+          }
+        }
+      }
+    }
+  }
+
+  /* الكوبي رايت */
+  .copyright-text {
+    p {
+      @apply text-background;
+
+      a {
+        @apply text-background;
+
+        &:hover {
+          @apply text-background;
+        }
+      }
+    }
+  }
+}
+.under-footer {
+  background-color: var(--color-background);
+  color: var(--color-font) !important;
+}
+
+.footer-buttons{
+  .s-localization-modal-trigger-btn{
+    background-color: transparent !important;
+  }
+}

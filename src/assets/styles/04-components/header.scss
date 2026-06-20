@@ -1,0 +1,224 @@
+/* =====================================================
+   🧱 HEADER BASE + Sleek THEME (MERGED)
+   Structure + Theme + Components
+   Animation rules kept untouched at bottom
+===================================================== */
+
+
+/* ===============================
+   GLOBAL HEADER WRAPPER
+=============================== */
+.Sleek-header {
+  .main-menu li span{
+    @apply text-background text-lg font-medium;
+
+  }
+  .absolute-header .fixed-header  .main-menu li span{
+    @apply text-font ;
+
+  }
+  .main-menu .sub-menu span{
+    @apply text-font;
+
+  }
+    .main-menu .sub-menu ul{
+    @apply bg-background;
+
+  }
+  .main-menu .sub-menu{
+    @apply z-50 fixed;
+  }
+.main-menu li a::after{
+    @apply text-inherit pb-1 !important;
+
+  }
+    .absolute-header .fixed-header  .main-menu li a::after{
+    @apply text-font;
+
+  }
+
+  /* ---------- Icons ---------- */
+  svg {
+    @apply stroke-background lg:w-5 lg:h-5 w-4 h-4;
+  }
+  .absolute-header .fixed-header  svg {
+    @apply stroke-font;
+  }
+
+  .icons a.active + i,
+  .icons a.active i.text-xl {
+    @apply text-primary;
+  }
+
+  .button-style {
+    @apply lg:w-5 lg:h-5 w-4 h-4 flex items-center justify-center;
+
+    i { @apply lg:text-2xl text-lg text-background; }
+  }
+
+
+  /* ---------- User Menu ---------- */
+  .s-user-menu-dropdown{
+    @apply h-fit top-full
+  }
+
+  .s-user-menu-trigger {
+    @apply p-0 rounded-full;
+  }
+
+  .s-user-menu-trigger-avatar {
+    @apply w-7 h-7;
+  }
+
+  .s-user-menu-dropdown-item a svg * { @apply stroke-primary; }
+  .s-user-menu-dropdown-item-logout svg * { @apply stroke-red-600; }
+
+  /* ---------- Cart Summary ---------- */
+  salla-cart-summary {
+    @apply flex items-center gap-1 shrink-0;
+    font-size: clamp(0.625rem, 0.43rem + 0.8vw, 1.25rem);
+    line-height: 1em;
+  }
+
+  .s-cart-summary-total {
+    @apply text-background font-normal;
+  }
+
+  .s-cart-summary-count {
+    @apply absolute bg-red-800 text-sm font-light p-2 -top-5;
+    width: clamp(1rem, 0.9rem + 0.37vw, 1.25rem);
+    height: clamp(1rem, 0.9rem + 0.37vw, 1.25rem);
+  }
+
+  #nav-cart {
+    @apply flex items-center rtl:mr-4 ltr:ml-4 relative whitespace-nowrap;
+
+    .icon { @apply rtl:ml-2 ltr:mr-2; }
+    span  { @apply absolute top-1 rtl:-right-2 ltr:-left-2; }
+  }
+
+  /* ---------- Search ---------- */
+  .header-search {
+    max-width: 416px;
+
+    .s-search-results { @apply z-10; }
+  }
+}
+
+
+/* ===============================
+   TOP NAVBAR
+=============================== */
+.top-navbar {
+  @apply flex lg:min-h-12 min-h-8 items-center;
+
+  @screen lg { @apply py-1.5; }
+
+
+  @media (max-width: 640px) {
+    .s-search-results {
+      @apply w-screen max-w-[100vw] rtl:-left-2.5 ltr:-right-2.5;
+    }
+  }
+  salla-contacts :is(a, span){
+    @apply text-xs lg:text-base ;
+  }
+  salla-contacts .s-contacts-topnav-link{
+     @apply px-2 lg:px-3 shrink-0;
+  }
+
+}
+
+
+/* Top Navbar Links */
+.topnav-link-item {
+  @apply inline-block transition duration-300 px-4 py-px text-sm leading-none
+         ltr:border-r rtl:border-l border-gray-200
+         ltr:last:border-0 rtl:last:border-0
+         rtl:last:pl-0 ltr:last:pr-0 hover:opacity-80;
+
+  &.right-side {
+    @apply rtl:first:pr-0 ltr:first:pl-0;
+  }
+}
+
+
+/* ===============================
+   MAIN NAVIGATION
+=============================== */
+.main-nav-container {
+  @apply min-h-12;
+
+  .has-bg &,
+  .has-bg & .sub-menu {
+    @apply bg-[color:var(--mainnav-bg)];
+  }
+
+  .has-text-color & {
+    @apply text-[color:var(--mainnav-text-color)];
+  }
+}
+
+.menu-item {
+  @apply flex items-center px-6 py-2.5 sm:text-sm text-gray-500 transition-colors duration-300 hover:bg-gray-200/30;
+
+  &.logout     { @apply text-red-400; }
+  &.is-active  { @apply text-primary bg-gray-200/20; }
+}
+
+
+/* ===============================
+   BRANDING + BUTTONS
+=============================== */
+.navbar-brand {
+  @apply flex items-center;
+
+  img {
+    @apply w-auto max-h-12 max-w-[100px] xs:max-w-[170px];
+  }
+}
+
+.header-btn {
+  @apply border-none outline-none transition-opacity hover:opacity-80;
+
+  &__icon {
+    @apply text-xl lg:w-5 lg:h-5 w-4 h-4 rounded-full border border-gray-200 flex items-center justify-center text-gray-700;
+
+    &.icon {
+      @apply mr-[9px] rtl:ml-[9px] rtl:mr-[unset];
+    }
+  }
+}
+
+
+/* =====================================================
+   🎞 STICKY HEADER / ANIMATION (UNTOUCHED)
+   Do not mix visual styles here
+===================================================== */
+.main-nav-container .inner {
+  transition: transform 0.5s ease, opacity 0.4s ease;
+  will-change: transform;
+}
+
+.main-nav-container.fixed-pinned .inner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 29;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, -100%, 0);
+}
+
+.main-nav-container.fixed-header .inner {
+  transform: translate3d(0, 0, 0);
+}
+.s-search-input{
+  background-color: #ffffff12;
+}
+.s-search-icon *{
+  stroke-width: 0;
+  stroke: #fff;
+}
+

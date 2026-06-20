@@ -1,0 +1,51 @@
+<section id="featured-products" data-component='{{ component|json_encode|raw }}'
+    class="w-full py-16 bg-background">
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+        <!-- TOP HEADER -->
+        <div class="mb-10 text-center ">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 leading-tight mx-auto lg:mx-0 ">
+                Customers enjoy their journey everyday
+            </h2>
+            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Photos & Videos</p>
+        </div>
+
+        <!-- MOBILE: Dropdown + Description -->
+        <div class="block lg:hidden mb-6" id="mobile-tab-selector">
+            <div class="relative">
+                <select id="mobile-tab-select"
+                    class="w-full appearance-none bg-background border border-gray-200 rounded-xl px-4 py-3 pr-10 text-sm font-semibold text-gray-800 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-300">
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </div>
+            </div>
+            <p id="mobile-tab-desc" class="text-xs text-gray-400 mt-3 px-1 leading-relaxed"></p>
+        </div>
+
+        <div class="flex gap-10 items-start">
+
+            <!-- LEFT: Sticky Tabs (Desktop only) -->
+            <div class="hidden lg:flex lg:flex-col w-1/4 shrink-0 self-start sticky top-24">
+                <div id="tabs-container" class="space-y-1 border-l-2 border-gray-100 pl-4">
+                    <!-- Tabs injected by JS -->
+                </div>
+            </div>
+
+            <!-- RIGHT: Flex layout on desktop (staggered), slider on mobile -->
+            <div class="w-full lg:w-3/4">
+                <div id="tab-content" class="flex gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:flex-wrap lg:items-start pb-4 lg:pb-0" style="scrollbar-width: none;">
+                    <!-- Dynamic content -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+</style>
+

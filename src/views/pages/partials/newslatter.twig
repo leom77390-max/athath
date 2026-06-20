@@ -1,0 +1,130 @@
+<div 
+								class="{{class}}" 
+								data-sal="slide-up" 
+								data-sal-duration="600" 
+								data-sal-delay="350" 
+								>
+
+								
+									<div class="flex flex-col gap-2 md:gap-4 w-full">
+
+										<div>
+											<h2 class="leading-[16px] tracking-[0px] font-medium md:font-semibold mb-1 
+											{% if theme.settings.get('footer_is_center') %} text-center ltr:md:text-start rtl:md:text-end {% else %} ltr:md:text-start rtl:md:text-end  {% endif %}
+											">
+											{{ trans('footer.newsletter_title') }}
+											</h2>
+											<p class=" text-[16px] leading-[24px] tracking-[0px] font-medium md:font-normal
+											{% if theme.settings.get('footer_is_center') %} text-center ltr:md:text-start rtl:md:text-end {% else %} ltr:md:text-start rtl:md:text-end  {% endif %}
+											">
+											{{ trans('footer.newsletter_sub_title') }}
+											</h2>
+										</div>
+
+										<form 
+											action="{{ theme.settings.get('newsletter_url') }}" 
+											method="post"
+											id="mc-embedded-subscribe-form"
+											name="mc-embedded-subscribe-form"
+											class="mc-embedded-subscribe-form flex-grow validate flex flex-col md:flex-row justify-between items-start md:items-center leading-none rounded-[3.35px]"
+											target="_blank"
+											novalidate
+											>
+											<div class="flex items-center gap-2 w-full relative">
+
+												<input
+												type="email"
+												autocomplete="email"
+												name="EMAIL"
+												id="mce-EMAIL"
+												class="
+												
+												mce-EMAIL w-full rtl:text-right ltr:text-left text-[clamp(0.75rem,0.7141rem+0.1609vw,0.875rem)] rounded-full border border-primary font-normal outline-none placeholder placeholder:text-font  backdrop-blur-md focus:border-primary focus:placeholder-transparent h-[52px] bg-background !text-font"
+												placeholder="{{ trans('footer.newsletter_input_placeholder') }}"
+												/>
+
+
+												<button 
+													name="subscribe"
+													id="mc-embedded-subscribe"
+													type="submit"
+													class="absolute ltr:right-2 rtl:left-2 top-1/2 -translate-y-1/2 rounded-full mc-embedded-subscribe border flex items-center justify-center px-5 py-2 hover:opacity-90 transition-all  font-normal text-[14px] leading-[14px] tracking-[0px] bg-primary text-background"
+												>
+													{{ trans('footer.newsletter_button') }}
+												</button>
+
+											</div>
+										</form>
+
+									</div>
+
+
+							</div>
+                            <script>
+	salla.onReady(function () {
+		// Use querySelectorAll to get all forms on the page
+		const forms = document.querySelectorAll('.mc-embedded-subscribe-form');
+		if (!forms.length) return;
+
+		const isRTL = document.documentElement.dir === 'rtl';
+
+		const messages = {
+			required: isRTL ? 'الرجاء إدخال بريد إلكتروني صحيح' : 'Please enter a valid email',
+			invalid: isRTL ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format',
+			success: isRTL ? 'تم الاشتراك بنجاح! شكراً لك' : 'Subscription successful! Thank you',
+			sending: isRTL ? 'جاري الإرسال...' : 'Sending...'
+		};
+
+		// Loop through all forms on the page
+		forms.forEach(form => {
+			// Find elements within each form
+			const emailInput = form.querySelector('.mce-EMAIL');
+			const submitBtn = form.querySelector('.mc-embedded-subscribe');
+			
+			if (!emailInput || !submitBtn) return;
+
+			emailInput.addEventListener('input', function () {
+				this.setCustomValidity('');
+			});
+
+			emailInput.addEventListener('invalid', function () {
+				this.setCustomValidity(messages.required);
+				salla.notify.error(messages.required);
+			});
+
+			form.addEventListener('submit', function (e) {
+				e.preventDefault();
+
+				const emailValue = emailInput.value.trim();
+				const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+				if (!emailRegex.test(emailValue)) {
+					salla.notify.error(messages.invalid);
+					return;
+				}
+
+				submitBtn.disabled = true;
+				const originalText = submitBtn.textContent;
+				submitBtn.textContent = messages.sending;
+
+				fetch(form.action, {
+					method: 'POST',
+					body: new FormData(form),
+					mode: 'no-cors'
+				})
+				.then(() => {
+					salla.notify.success(messages.success);
+					form.reset();
+				})
+				.catch(error => {
+					console.error('Subscription error:', error);
+					salla.notify.error(isRTL ? 'حدث خطأ أثناء الاشتراك' : 'An error occurred during subscription');
+				})
+				.finally(() => {
+					submitBtn.disabled = false;
+					submitBtn.textContent = originalText;
+				});
+			});
+		});
+	});
+</script>

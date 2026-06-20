@@ -1,0 +1,106 @@
+  [dir="rtl"] .qv-gallery {
+  padding-right: 16px;
+}
+
+[dir="ltr"] .qv-gallery {
+  padding-left: 16px;
+}
+.quick-view {
+      .s-product-options-option {
+        display: flex;
+        gap: .5rem;
+        flex-direction: column;
+    }
+  .s-product-options-wrapper{
+    background: var(--color-background);
+    padding: 0px !important;
+  }
+  .s-slider-block__title-nav {
+    display: none;
+  }
+  .swiper {
+    height: 100%;
+  }
+
+  .qv-gallery {
+    padding-top: 16px;
+    .swiper-slide {
+      max-height: 360px !important;
+      img {
+        max-height: 360px !important;
+        border-radius: 32px !important;
+      }
+    }
+  }
+  .s-quantity-input-container{
+    border-radius: 9999px;
+    height: 48px;
+  }
+    salla-add-product-button {
+    button {
+      height: 48px;
+      border-radius: 9999px;
+      position: relative;
+      overflow: hidden;
+      background: #f6f6f6;
+      color: var(--color-font);
+      border: none;
+      z-index: 1;
+      transition:
+        color 0.4s ease,
+        transform 0.3s ease;
+
+      &::after {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        width: 0%;
+        background: var(--color-font);
+
+        transition: width 0.4s ease;
+
+        z-index: -1;
+      }
+
+      &::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: -100%;
+
+        width: 50%;
+        height: 100%;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+
+        transform: skewX(-25deg);
+
+        transition: left 0.7s ease;
+
+        z-index: 2;
+      }
+
+      &:hover {
+        background-color: #f6f6f6;
+        color: #f6f6f6;
+        transform: translateY(-2px);
+
+        &::after {
+          width: 100%;
+        }
+
+        &::before {
+          left: 150%;
+        }
+      }
+    }
+  }
+}

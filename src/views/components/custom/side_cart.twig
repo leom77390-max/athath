@@ -1,0 +1,83 @@
+{% if theme.settings.get('enable_side_cart') %}
+<aside id="sidecart-panel" class="side-panel bg-white side-panel--left fixed top-0 h-full bg-background z-[101] max-w-100 w-[calc(100vw-40px)] md:w-[420px] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
+    <div class="side-panel__top flex items-center relative z-[2]">
+        <button class="menu-close bg-red-500 text-white absolute top-0 rtl:-left-10 ltr:-right-10 w-10 h-10 flex items-center justify-center" aria-label="إغلاق">
+            <i class="sicon-cancel text-xl"></i>
+        </button>
+    </div>
+
+    <div class="side-panel__content grow overflow-auto px-5 pt-5 pb-5 opacity-0 translate-x-10 rtl:-translate-x-10 transition-all duration-500">
+        <h2 class="mb-8 text-xl font-semibold flex items-center gap-2">
+            {{ trans('pages.checkout.cart') }}
+            <span class="sidecart-products-count text-gray-500 text-sm"></span>
+        </h2>
+        <div id="sidecart-items">
+        <div id="sidecart-empty-state" class="empty-cart-state py-8"></div>
+        </div>
+    </div>
+
+    <div id="sidecart-footer" class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary" style="display:none;">
+        <div class="flex justify-between text-sm">
+            <span class="text-gray-500">{{ trans('pages.cart.items_total') }}</span>
+            <b id="sidecart-subtotal"></b>
+        </div>
+
+        <div id="sidecart-coupon-wrap" style="display:none;">
+            <p class="text-graytext text-base">{{ trans('pages.cart.coupon_field_label') }}</p>
+            <div class="flex items-stretch gap-2 pt-1">
+                <input id="sidecart-coupon-input"
+                       class="flex-1 rounded-[32px] text-sm placeholder:opacity-100 focus:placeholder:opacity-0 transition-opacity duration-200"
+                       placeholder="{{ trans('pages.cart.coupon_placeholder') }}"
+                       aria-label="{{ trans('pages.cart.have_coupon') }}"
+                       type="text">
+                <button type="button" id="sidecart-coupon-btn"
+                        class="sidecart-coupon-btn shrink-0 px-4 md text-sm font-semibold bg-background border border-font  text-font hover:bg-font transition hover:text-background rounded-[32px] ">
+                    <span class="coupon-text">{{ trans('pages.cart.save_coupon') }}</span>
+                    <i class="sicon-cancel text-lg hidden"></i>
+                </button>
+            </div>
+            <span class="text-xs text-red-700 -mt-4" id="sidecart-coupon-error"></span>
+        </div>
+
+        <div class="flex justify-between text-sm">
+            <span class="text-gray-500">{{ trans('pages.cart.discount') }}</span>
+            <b id="sidecart-total-discount"></b>
+        </div>
+
+        <div class="cart-subtotal flex justify-between items-center border-t border-font-secondary pt-3">
+            <div>
+                <h5 class="font-semibold">{{ trans('pages.cart.final_total') }}</h5>
+                {% if store.settings.tax.taxable_prices_enabled %}
+                    <small class="opacity-70">
+                        <span class="text-red-600">*</span>
+                        {{ trans('pages.products.tax_included') }}
+                    </small>
+                {% endif %}
+            </div>
+            <strong id="sidecart-total" class="total-value text-lg"></strong>
+        </div>
+        
+
+
+        <div class="flex items-stretch justify-start h-11">
+            <a href="{{ store.url }}/cart" class=" !py-3 go-to-cart w-full flex items-center justify-center gap-2 bg-button text-background  hover:text-button hover:bg-secondary transition">
+                <i class="smticon-cart text-lg"></i>
+                <span>{{ trans('blocks.header.go_to_cart') }}</span>
+            </a>
+            
+            {% if theme.settings.get('after_img') %}
+                <img class="ltr:-scale-100" src="{{ theme.settings.get('after_img') }}" alt="decor">
+            {% endif %}
+        </div>
+        <button type="button" id="sidecart-submit" class="w-full flex items-center justify-center gap-2 bg-background  border-font text-font py-3   transition-colors border cursor-pointer
+        text-background rounded-full  font-semibold
+        ">
+            <i class="sicon-shopping-bag text-lg"></i>
+            <span>{{ trans('pages.cart.complete_order') }}</span>
+        </button>
+    </div>
+    
+</aside>
+
+<div id="sidecart-overlay" class="fixed inset-0 bg-black/50 z-[100] hidden opacity-0 transition-opacity duration-300"></div>
+{% endif %}

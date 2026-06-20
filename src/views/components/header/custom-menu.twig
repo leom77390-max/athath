@@ -1,0 +1,177 @@
+<!-- Mega Menu Overlay -->
+<div class="mega-overlay fixed inset-0 z-[61] hidden bg-[#D9D9D999]" aria-hidden="true"></div>
+
+<!-- Mega Menu -->
+<nav
+  id="custom-menu"
+  class="hidden fixed z-[100]"
+  aria-label="Site navigation"
+  aria-hidden="true"
+  inert
+>
+  <div id="mega-inner" class="relative w-full h-full bg-background rounded-[14px] shadow-2xl overflow-hidden">
+    <div id="col-1" class="h-full flex flex-col p-4 pb-20 overflow-y-auto" role="list">
+    <div class="pb-2.5 border-b-[0.5px]  border-[#E4E4E7] mb-5">
+      <button class="self-start group size-6 bg-[#F7F7F8text-[clamp(0.875rem,0.6204rem+0.9259vw,1.5rem)] font-medium text-start pb-3 top-0 rtl:right-0 ltr:left-0] rounded-full flex items-center justify-center" onclick="MegaMenu.close()" aria-label="Close menu">
+        <i class="sicon-cancel text-graytext text-xl transition-colors group-hover:text-red-600" aria-hidden="true"></i>
+      </button>
+    </div>
+      <div id="col-1-list" class="space-y-1"></div>
+      <div class="py-4 mt-auto lg:hidden">
+          {% if user.type != 'user' %}
+          <button class="header-btn button-style w-full bg-[#b94430] h-10 text-white text-lg" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+            <p>{{trans('blocks.header.login')}}</p>
+          </button>
+          {% endif %}
+        <div class="flex items-center justify-start mt-6">
+          <salla-social class="block"></salla-social>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+const MegaMenu = (() => {
+  let data = [];
+  const el = {};
+
+  const isRTL  = () => (typeof direction !== 'undefined' ? direction : document.documentElement.dir) === 'rtl';
+  const isOpen = () => !el.panel.classList.contains('hidden');
+  const viewAllLabel = () => document.documentElement.lang?.startsWith('en') ? 'View All' : 'عرض الكل';
+
+  // ─── Accordion row ────────────────────────────────────────────────────────
+  function makeRow({ title, url, children, image }, depth = 0) {
+    const hasSubs = children?.length > 0;
+    const row = document.createElement('div');
+    row.className = 'menu-row mb-9';
+    row.setAttribute('role', 'listitem');
+
+    const img = image
+      ? `<img loading="lazy" src="${image}" alt="${title}" class="w-8 h-8 rounded-full object-cover flex-shrink-0" />`
+      : '';
+
+    if (!hasSubs) {
+      row.innerHTML = `<a href="${url || '#'}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-font mb-9 text-lg">${title}</a>`;
+      return row;
+    }
+
+    const panelId = `acc-${Math.random().toString(36).slice(2)}`;
+    row.innerHTML = `
+      <button class="row-btn  w-full flex items-center justify-between pb-3  px-1 border-b border-font text-lg" aria-expanded="false" aria-controls="${panelId}">
+        <span class="flex items-center gap-2 text-lg">${title}</span>
+<i class="acc-icon size-8  flex items-center justify-center sicon-add text-white bg-black text-lg p-1 transition-transform duration-200" aria-hidden="true"></i>      </button>
+      <div id="${panelId}" class="accordion-panel overflow-hidden transition-[height] duration-300 ease-out" style="height:0">
+        <div class="accordion-inner pt-4 pb-2">
+          <a href="${url || '#'}" class="flex items-center gap-2 py-2 px-1 text-font font-medium text-lg mb-4">
+            <span>${viewAllLabel()}</span>
+            <i class="sicon-arrow-left ltr:-scale-x-100 text-lg"></i>
+          </a>
+        </div>
+      </div>`;
+
+    // Build children inside the panel
+    const inner = row.querySelector('.accordion-inner');
+    children.forEach(child => inner.appendChild(makeRow(child, depth + 1)));
+
+    const btn   = row.querySelector('.row-btn');
+    const panel = row.querySelector('.accordion-panel');
+    const icon  = row.querySelector('.acc-icon');
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close siblings at same level
+      row.parentElement?.querySelectorAll(':scope > .menu-row > .row-btn[aria-expanded="true"]')
+        .forEach(b => {
+          if (b === btn) return;
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.style.height = '0';
+          b.querySelector('.acc-icon')?.classList.replace('sicon-minus', 'sicon-add');
+        });
+
+      if (open) {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.style.height = '0';
+        icon.classList.replace('sicon-minus', 'sicon-add');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.style.height = panel.scrollHeight + 'px';
+        icon.classList.replace('sicon-add', 'sicon-minus');
+      }
+    });
+
+    return row;
+  }
+
+  // ─── Open / Close ─────────────────────────────────────────────────────────
+  function open() {
+    el.overlay.classList.remove('hidden');
+    el.panel.classList.remove('hidden');
+    el.closeBtn?.classList.remove('opacity-0', 'hidden');
+    el.panel.removeAttribute('inert');
+    el.panel.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      el.panel.classList.add('is-open');
+      el.overlay.classList.add('is-open');
+      el.closeBtn?.classList.remove('translate-y-4');
+    }));
+  }
+
+  function close() {
+    el.panel.classList.remove('is-open');
+    el.overlay.classList.remove('is-open');
+    el.closeBtn?.classList.add('opacity-0', 'translate-y-4');
+    el.panel.setAttribute('aria-hidden', 'true');
+    el.panel.setAttribute('inert', '');
+    setTimeout(() => {
+      el.panel.classList.add('hidden');
+      el.overlay.classList.add('hidden');
+      el.closeBtn?.classList.add('hidden');
+    }, 500);
+  }
+
+
+
+
+  // ─── Init ─────────────────────────────────────────────────────────────────
+  async function init() {
+    Object.assign(el, {
+      panel:    document.getElementById('custom-menu'),
+      overlay:  document.querySelector('.mega-overlay'),
+      closeBtn: document.getElementById('mega-close-mobile'),
+      col1List: document.getElementById('col-1-list'),
+    });
+
+  try {
+    const res = await salla.api.component.getMenus();
+    data = res?.data || [];
+    document.dispatchEvent(new CustomEvent('menus:ready', { detail: data }));
+
+    const homeRow = document.createElement('div');
+    homeRow.className = 'menu-row mb-9';
+    homeRow.innerHTML = `
+      <a href="{{ store.url }}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-font mb-9 text-lg">
+        {{ trans('blocks.header.home') }}
+      </a>`;
+
+    el.col1List.replaceChildren(homeRow, ...data.map(menu => makeRow(menu, 0)));
+  } catch (err) {
+    console.error('MegaMenu init failed:', err);
+    el.col1List.innerHTML = `
+      <div class="text-center p-8 text-red-500" role="alert">
+        Failed to load categories.
+        <button onclick="MegaMenu.init()" class="block mx-auto mt-4 text-primary underline">Retry</button>
+      </div>`;
+  }
+
+    document.getElementById('custom-menu-trigger')?.addEventListener('click', open);
+    el.overlay.addEventListener('click', close);
+    document.addEventListener('keydown', e => e.key === 'Escape' && isOpen() && close());
+  }
+
+  return { init, open, close };
+})();
+
+salla.onReady().then(MegaMenu.init);
+</script>

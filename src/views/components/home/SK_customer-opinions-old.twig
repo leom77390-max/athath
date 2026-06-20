@@ -1,0 +1,133 @@
+{{component}}
+{% set home_mb = component.rm_bottom_margin|default(false) ? 'home-section--no-bottom-spacing' : (theme.settings.get('customize_section_bottom_spacing', false) ? 'home-section-bottom-spacing' : '') %}
+{% set slider_speed = component.slider_speed|default(3) %}
+<section class="SK-testimonials SK-testimonials-{{position}} {{ home_mb }} bg-primary py-[20px] md:py-[40px]">
+	<div class="wrapper text-font">
+		<div class="heading mb-[clamp(1.2rem,0.7509rem+1.7963vw,1.667rem)] text-center">
+			<p style="color:{{component.blocktitle_color}}" class="block-title mb-[clamp(0.533rem,0.3695rem+0.6539vw,1.067rem)] text-[clamp(1.333rem,1.1695rem+0.6539vw,1.867rem)] font-semibold">{{component.block_title}}</p>
+			<p style="color:{{component.subtext_color}}" class="subtext text-[clamp(0.933rem,0.8106rem+0.4898vw,1.333rem)] font-medium">{{component.subtext}}</p>
+		</div>
+		<div class="relative testimonials-wrapper w-full md:w-[95%] lg:w-[90%]">
+			<salla-slider dir="rtl" id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
+    "slidesPerView": 1.5,
+    "spaceBetween": 16,
+    "speed": {{ slider_speed }}000,
+    "autoplay": {
+        "delay": 0,
+        "disableOnInteraction": false,
+        "pauseOnMouseEnter": false,
+        "stopOnLastSlide": false
+    },
+    "loop": true,
+    "freeMode": true,
+    "breakpoints": {
+        "400": {
+            "slidesPerView": 1.5,
+            "spaceBetween": 19,
+            "slidesPerGroup": 1
+        },
+        "640": {
+            "slidesPerView": 3,
+            "spaceBetween": 21
+        },
+        "860": {
+            "slidesPerView": 3.25,
+            "spaceBetween": 30
+        }
+    }
+}' show-controls="false" type="thumbs">
+				<div slot="items">
+					{% for item in component.testimonials %}
+					<a href="#" class="testimonial-card-link block testimonials testimonials-{{loop.index}} overflow-hidden bg-background rounded-[32px] transition hover:shadow-lg" data-product-ids="{{ item.products|json_encode }}" data-item-index="{{ loop.index }}">                 
+							<div class="h-[clamp(16.067rem,14.8425rem+4.8980vw,20.067rem)]">
+								<img src="{{ item.image }}" class="h-full w-full object-cover" alt="{{ item.product_name }}">
+							</div>
+							<div class="testimonials-data mt-3 flex flex-col items-start px-8 py-12">
+								<div class="flex items-center gap-2">
+									<salla-rating-stars name="rating" size="medium" value="{{ item.review }}"></salla-rating-stars>
+									{% set review_num = item.review_num|default(item['testimonials.review_num']) %}
+									{% if review_num %}
+										<span class="testimonials-review-num text-base font-medium leading-none">{{ review_num }}</span>
+									{% endif %}
+								</div>
+								{% if item.product_name %}
+									<p style="color:{{item.product_name_color}}" class="product-name text-base font-semibold">{{ item.product_name }}</p>
+								{% endif %}
+								{% if item.testimonial %} 
+									<p style="color:{{item.testimonial_color}}" class="testimonial-text text-sm font-medium mt-0.5">“{{ item.testimonial }}”</p>
+								{% endif %}								<div class="product-info mt-6 pt-6 border-t border-gray-200 w-full">
+									<div class="flex items-center gap-3">
+										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover rounded" loading="lazy">
+										<div class="flex-1 min-w-0">
+											<p class="product-title text-xs font-semibold truncate text-gray-900"></p>
+											<span class="text-xs text-primary font-medium">View Product →</span>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+						</a>
+					{% endfor %}
+                    {% for item in component.testimonials %}
+						<div class="testimonials testimonials-{{loop.index}} overflow-hidden bg-background rounded-[32px] ">                 
+							<div class="h-[clamp(16.067rem,14.8425rem+4.8980vw,20.067rem)]">
+								<img src="{{ item.image }}" class="h-full w-full object-cover" alt="{{ item.product_name }}">
+							</div>
+							<div class="testimonials-data mt-3 flex flex-col items-start px-8 py-12">
+								<div class="flex items-center gap-2">
+									<salla-rating-stars name="rating" size="medium" value="{{ item.review }}"></salla-rating-stars>
+									{% set review_num = item.review_num|default(item['testimonials.review_num']) %}
+									{% if review_num %}
+										<span class="testimonials-review-num text-base font-medium leading-none">{{ review_num }}</span>
+									{% endif %}
+								</div>
+								{% if item.product_name %}
+									<p style="color:{{item.product_name_color}}" class="product-name text-lg font-semibold">{{ item.product_name }}</p>
+								{% endif %}
+								{% if item.testimonial %} 
+									<p style="color:{{item.testimonial_color}}" class="testimonial-text text-base font-medium mt-0.5">“{{ item.testimonial }}”</p>
+								{% endif %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</salla-slider>
+		</div>
+	</div>
+</section>
+
+<style>
+.SK-testimonials .testimonials-slider .s-rating-stars-selected {
+	fill: #1E1E1E;
+}
+.SK-testimonials .swiper-free-mode > .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const cards = document.querySelectorAll('.testimonial-card-link');
+  
+  cards.forEach(async (card) => {
+    const productIds = JSON.parse(card.dataset.productIds);
+    if (!productIds?.length) return;
+    
+    try {
+      const product = await salla.product.getDetails(productIds[0], ['images']);
+      const productInfo = card.querySelector('.product-info');
+      if (productInfo && product?.data) {
+        const thumb = productInfo.querySelector('.product-thumb');
+        const title = productInfo.querySelector('.product-title');
+        const url = product.data.url || '#';
+        
+        thumb.src = product.data.image?.url || '';
+        title.textContent = product.data.name || '';
+        card.href = url;
+      }
+    } catch (e) {
+      console.warn('Failed to load product details:', e);
+    }
+  });
+});
+</script>

@@ -1,0 +1,50 @@
+{
+  "blocks": {
+   "header": {
+      "cart": "السلة",
+      "search": "بحث",
+      "account": "الحساب",
+      "language": "اللغة",
+      "تسجيل": "تسجيل",
+      "home": "الرئيسية",
+      "wishlist": "المفضلة",
+      "go_to_cart": "اذهب إلى السلة"
+    },
+    "appBanner": {
+      "download_now": "حمله الان"
+    }
+  },
+   "footer": {
+    "account": "حسابي",
+    "newsletter_title": "النشرة البريدية ",
+    "newsletter_sub_title": "سجل لتلقي خصم 10% على طلبك الأول",
+    "newsletter_input_placeholder": "أدخل بريدك الالكتروني",
+    "newsletter_button": "اشتراك"
+  },
+  "pages": {
+    "cart": {
+      "verification": "موثّق لدى منصة الأعمال",
+      "cart_options": "خيارات السلة",
+      "shipping": "الشحن",
+      "buy_now": "اشتري الآن",
+      "empty_carrt": "لا يوجد منتجات ",
+      "coupon_field_label": "كود الخصم"
+    },
+    "products": {
+      "calculated_at_checkout": "يتم حسابها عند الدفع",
+      "view_full_details": "عرض التفاصيل الكاملة"
+    },
+    "order": {
+      "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
+      "edit_period_ended": "تم انتهاء المدة المحددة لتعديل التقييم",
+      "delete_period_ended": "تم انتهاء المدة المحددة لحذف التقييم",
+      "days_since_added": "أيام من إضافته",
+      "option_name": "الخيار",
+      "option_content": "المحتوى"
+    }
+  },
+  "common": {
+    "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
+    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة "
+  }
+}

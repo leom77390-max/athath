@@ -1,0 +1,455 @@
+<footer class="store-footer mt-[clamp(5.133rem,2.3965rem+9.3288vw,11.8rem)]">
+  <div aria-label="footer" class="store-footer__inner !border-0">
+    <div class="container grid grid-col-1 lg:grid-cols-8 gap-0 lg:gap-6">
+
+      {# =========================
+        Footer Brand Section
+      ========================== #}
+      <div
+        class="lg:col-span-3  h-fit"
+        
+      >
+      <div class="mb-5"
+      >
+        <a
+          href="{{ link('/') }}"
+          class="flex m-0
+          {% if theme.settings.get('footer_is_center') %}
+            items-center justify-center
+          {% else %}
+            items-start justify-start
+          {% endif %}
+          lg:justify-start"
+        >
+
+<div
+  class="mb-3 lg:mb-5 footer_logo_size h-auto
+
+  {{ theme.settings.get('footer_logo_size') == 'small'
+    ? 'max-w-[70px] lg:max-w-[220px]'
+    : '' }}
+
+  {{ theme.settings.get('footer_logo_size') == 'medium'
+    or not theme.settings.get('footer_logo_size')
+    ? 'max-w-[100px] lg:max-w-[280px]'
+    : '' }}
+
+  {{ theme.settings.get('footer_logo_size') == 'large'
+    ? 'max-w-[130px] lg:max-w-[360px]'
+    : '' }}"
+>
+
+            <img
+              loading="lazy"
+              src="{{ theme.settings.get('logo_dark') ? theme.settings.get('logo_dark') : store.logo }}"
+              class="w-full h-full"
+              alt="{{ store.name }}"
+            >
+          </div>
+        </a>
+        {% if store.description %}
+          <div class="font-medium text-[clamp(0.875rem,0.8338rem+0.1759vw,1rem)] leading-[20px] tracking-normal lg:leading-[24px] mb-8 lg:mb-5">
+            {{ store.description|raw }}
+          </div>
+        {% endif %}
+        {# =========================
+          Social Icons
+        ========================== #}
+        {% if theme.settings.get('use_colored_social_icons') %}
+
+          <div class="custom-social-links flex gap-3
+            {% if theme.settings.get('footer_is_center') %}
+              items-center justify-center
+            {% else %}
+              items-start justify-start
+            {% endif %}
+            lg:items-start lg:justify-start"
+          >
+            {# {% include 'pages.partials.social_icon.twig' %} #}
+          <salla-social class="block lg:mb-6"></salla-social>
+          </div>
+
+        {% else %}
+          <salla-social class="block lg:mb-6"></salla-social>
+        {% endif %}
+      </div>
+      <div>
+          {% if theme.settings.get('newsletter_view') %}
+            {% include 'pages.partials.newslatter.twig' with {
+              class: "justify-center items-start hidden lg:flex flex-col-reverse flex-col gap-3  max-w-[480px]"
+            } %}
+          {% endif %}
+      </div>
+      </div>
+
+      {# =========================
+        Footer Links
+      ========================== #}
+      <div class="flex items-start flex-col lg:flex-row justify-around lg:col-span-5 gap-4 footer_links">
+
+        <div>
+          <h3>{{ trans('blocks.footer.pages_links') }}</h3>
+          <salla-menu source="footer"></salla-menu>
+        </div>
+
+        <div class="footeracount {{ user.type == 'user' ? 'block' : 'hidden' }}">
+          <h3>{{ trans('footer.account') }}</h3>
+          <salla-user-menu inline></salla-user-menu>
+        </div>
+
+        <div>
+          <salla-contacts></salla-contacts>
+        </div>
+              <div>
+                  {% if theme.settings.get('newsletter_view') %}
+                    {% include 'pages.partials.newslatter.twig' with {
+                      class: "justify-center items-start lg:hidden flex flex-col-reverse flex-col gap-3 mt-4"
+                    } %}
+                  {% endif %}
+              </div>
+
+        {# <salla-apps-icons></salla-apps-icons> #}
+
+        {# =========================
+          VAT + Trust Badges Mobile
+        ========================== #}
+      </div>
+    </div>
+	
+  </div>
+
+  {# =========================
+    Footer Bottom
+  ========================== #}
+  <div class="under-footer">
+
+	  <div class="container">
+		<div class="hidden lg:flex lg:flex-row flex-col items-center justify-between lg:pb-2 ">
+		  <salla-payments></salla-payments>
+			<div class="flex gap-4 VAT_center mt-3">
+	
+			  <salla-trust-badges
+				{% if theme.settings.get('footer_is_dark') %}
+				  dark
+				{% endif %}
+			  ></salla-trust-badges>
+						<div class="verification gap-1">
+							<li class="block !bg-transparent flex-col text-center">
+								<a target="_blank" class="flex gap-2 flex-row-reverse " href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ store.settings.certificate.id }}">
+									<img class="!object-cover w-[27px] h-auto" src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" data-src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" alt="SBC" loading="lazy">
+                  <div class="flex flex-col items-end">
+                    <p class="font-light text-[8px] leading-4 tracking-normal ">
+                      {{ trans('pages.cart.verification') }}
+                    </p>
+                    <p class="font-medium text-[7.38px] leading-[9.23px] tracking-normal">
+                      {{ store.settings.certificate.id }}
+                    </p>
+                  </div>
+								</a>
+							</li>
+						</div>
+			  {% if store.settings.tax.number %}
+				<div class="flex gap-2 flex-row-reverse ">
+	
+				  {% if store.settings.tax.certificate %}
+					<a
+					  class="load-img-onclick w-[27px] h-auto"
+					  data-modal-id="modal-value-tax"
+					  href="#/"
+					  alt="{{ store.settings.tax.number }}"
+					>
+					  <img
+						loading="lazy"
+						width="21"
+						height="27"
+						src="{{ 'images/s-empty.png' | cdn }}"
+						data-src="{{ 'images/tax.png' | cdn(70,70) }}"
+						class="lazy w-10 rounded-sm hover:opacity-80 transition-opacity"
+						alt="value added tax"
+					  >
+					</a>
+				  {% endif %}
+	
+				  <div class="flex flex-col items-end">
+					<p class="font-light text-[8px] leading-4 tracking-normal ">
+					  {{ trans('common.elements.tax_number') }}
+					</p>
+	
+					<b class="font-medium text-[7.38px] leading-[9.23px] tracking-normal">
+					  {{ store.settings.tax.number }}
+					</b>
+				  </div>
+				</div>
+	
+				{% if store.settings.tax.certificate %}
+				  <salla-modal
+					sub-title-first
+					sub-title="{{ trans('common.elements.tax_number') }}"
+					modal-title="{{ store.settings.tax.number }}"
+					id="modal-value-tax"
+				  >
+					<div class="flex justify-center max-w-full">
+					  <img
+						class="w-full"
+						loading="lazy"
+						src="{{ 'images/s-empty.png' | cdn }}"
+						data-src="{{ store.settings.tax.certificate }}"
+						alt="{{ store.settings.tax.number }}"
+					  />
+					</div>
+				  </salla-modal>
+				{% endif %}
+	
+			  {% endif %}
+			</div>
+	
+		</div>
+	  </div>
+	  <div class=" py-4 flex lg:flex-row  flex-col gap-3   items-center justify-between container border-t-0 lg:border-t border-t-[#FFFFFF33] pt-2">
+      <div class="footer-buttons hidden lg:block">
+              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+                <salla-localization-modal show-trigger></salla-localization-modal>
+              {% endif %}
+      </div>
+      <div class="lg:flex items-center justify-between w-fit text-center 
+        {{ theme.settings.get('enable_bottom_nav')
+        ? '!pb-6 mb-14 lg:!py-4 lg:mb-0'
+        : ''
+        }}"
+      >
+    
+        <span class="text-sm copyright-text">
+        {% hook copyright %}
+        </span>
+      </div>
+      <span class="lg:block hidden"></span>
+      <div class="lg:hidden block">
+        <salla-payments></salla-payments>
+      </div>
+	  </div>
+  </div>
+</footer>
+
+{% if theme.settings.get('footer_is_centerlize') %}
+
+  <style>
+    @media (max-width: 768px) {
+
+      .VAT_center {
+        justify-content: center;
+      }
+
+      .footer_links {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .store-footer__inner {
+        text-align: center;
+      }
+
+      .store-footer__inner a {
+        justify-content: center !important;
+      }
+
+      .store-footer__inner .container {
+        justify-items: center;
+      }
+
+      .store-footer__inner img {
+        margin: auto;
+      }
+
+      .store-footer__inner .s-social-list {
+        justify-content: center;
+      }
+
+      .store-footer__inner .s-contacts-list {
+        align-items: start;
+      }
+
+      .store-footer__inner .s-apps-icons-list {
+        justify-content: center;
+      }
+
+      .store-footer__inner .s-menu-footer-list {
+        align-items: center;
+      }
+    }
+  </style>
+
+{% endif %}
+<style>
+				salla-payments .s-payments-list-item:last-child {
+				display: none !important;
+			}
+</style>
+<style>
+@media (max-width: 991px) {
+
+  .footer_links {
+    width: 100%;
+  }
+
+  .footer_links > div {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  .footer_links > div > h3,
+  .footer_links > div > salla-contacts .s-contacts-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 16px 0;
+    margin: 0;
+    position: relative;
+  }
+
+  .footer_links > div > h3::after,
+  .footer_links > div > salla-contacts .s-contacts-title::after {
+    content: "+";
+    font-size: 20px;
+    transition: .3s ease;
+  }
+
+  .footer_links > div.active > h3::after,
+  .footer_links > div.active > salla-contacts .s-contacts-title::after {
+    transform: rotate(45deg);
+  }
+
+  /* content */
+  .footer_links > div .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-height .35s ease,
+      opacity .25s ease;
+  }
+
+  .footer_links > div.active .accordion-content {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  //if (window.innerWidth > 991) return;
+
+  const footer = document.querySelector(".footer_links");
+  if (!footer) return;
+
+  const items = footer.querySelectorAll(":scope > div");
+
+  const activateItem = (item) => {
+    items.forEach(el => {
+      if (el !== item) {
+        el.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  };
+
+const initAccordion = (item, index) => {
+
+  if (item.dataset.accordionInitialized) return;
+
+  let trigger = null;
+  let content = null;
+
+  // =========================
+  // salla-contacts FIRST
+  // =========================
+  const contacts = item.querySelector("salla-contacts");
+
+  if (contacts) {
+
+    const title = contacts.querySelector(".s-contacts-title");
+    const list = contacts.querySelector(".s-contacts-list");
+
+    if (title && list) {
+
+      trigger = title;
+      content = list;
+
+      content.classList.add("accordion-content");
+    }
+  }
+
+  // =========================
+  // Normal Block
+  // =========================
+  else {
+
+    const heading = item.querySelector("h3");
+
+    if (heading) {
+
+      trigger = heading;
+
+      const existingContent = item.querySelector(".accordion-content");
+
+      if (!existingContent) {
+
+        const elements = [...item.children].filter(el => el !== trigger);
+
+        content = document.createElement("div");
+        content.className = "accordion-content";
+
+        elements.forEach(el => content.appendChild(el));
+
+        item.appendChild(content);
+
+      } else {
+        content = existingContent;
+      }
+    }
+  }
+
+  if (!trigger || !content) return false;
+
+  if (index === 0) {
+    item.classList.add("active");
+  }
+
+  trigger.addEventListener("click", () => {
+    activateItem(item);
+  });
+
+  item.dataset.accordionInitialized = "true";
+
+  return true;
+};
+
+  // =========================
+  // أول Init
+  // =========================
+  items.forEach((item, index) => {
+    initAccordion(item, index);
+  });
+
+  // =========================
+  // Mutation Observer
+  // =========================
+  const observer = new MutationObserver(() => {
+
+    items.forEach((item, index) => {
+      initAccordion(item, index);
+    });
+
+  });
+
+  observer.observe(footer, {
+    childList: true,
+    subtree: true
+  });
+
+});
+</script>

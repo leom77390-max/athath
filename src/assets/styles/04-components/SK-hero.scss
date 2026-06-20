@@ -1,0 +1,315 @@
+// ============================================================
+// Custom Shopify-style Peek Slider — matches the video design
+// ============================================================
+
+.custom-shopify-style-slider {
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .swiper-wrapper {
+    align-items: stretch;
+    padding: 20px 0 50px;
+  }
+
+  // RTL
+  [dir="rtl"] {
+    .slide-content-wrapper.h-align-start .slide-title {
+      text-align: right;
+    }
+
+    .slide-content-wrapper.h-align-center .slide-title {
+      text-align: center;
+    }
+
+    .slide-content-wrapper.h-align-end .slide-title {
+      text-align: left;
+    }
+  }
+
+  // LTR
+  [dir="ltr"] {
+    .slide-content-wrapper.h-align-start .slide-title {
+      text-align: left;
+    }
+
+    .slide-content-wrapper.h-align-center .slide-title {
+      text-align: center;
+    }
+
+    .slide-content-wrapper.h-align-end .slide-title {
+      text-align: right;
+    }
+  }
+
+  // كل slide: عرض أصغر من 100% لإظهار الـ slides المجاورة (peek)
+  .swiper-slide {
+    width: 68% !important;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 0.5;
+    transform: scale(0.95);
+
+    &.swiper-slide-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  // ─── Slide Item ────────────────────────────────────────────
+
+  .custom-slide-item {
+    position: relative;
+    width: 100%;
+    height: var(--desktop-height);
+    min-height: 380px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 16px;
+
+    // Background Image
+    .slide-bg-picture {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: scale(1.5);
+        will-change: transform;
+      }
+
+      &.blur-effect img {
+        filter: blur(3px);
+        transform: scale(1.5);
+      }
+    }
+
+    // Overlay
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: #000;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    // Content Wrapper
+    .slide-content-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      padding: 3rem 8%;
+      display: flex;
+      box-sizing: border-box;
+
+      &.v-align-center {
+        align-items: center;
+      }
+
+      &.v-align-start {
+        align-items: flex-start;
+        padding-top: 4rem;
+      }
+
+      &.v-align-end {
+        align-items: flex-end;
+        padding-bottom: 4rem;
+      }
+
+      &.h-align-center {
+        justify-content: center;
+        text-align: center;
+
+        .inner-content {
+          align-items: center;
+        }
+      }
+
+      &.h-align-start {
+        justify-content: flex-start;
+        text-align: left;
+
+        .inner-content {
+          align-items: flex-start;
+        }
+      }
+
+      &.h-align-end {
+        justify-content: flex-end;
+        text-align: right;
+
+        .inner-content {
+          align-items: flex-end;
+        }
+      }
+    }
+
+    // ─── Content Container ───────────────────────────────────
+    .inner-content {
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    // الحالة الابتدائية
+    .slide-subtext,
+    .slide-title,
+    .slide-btn {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    // Slide Subtext
+    .slide-subtext {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    // Slide Title
+    .slide-title {
+      font-size: clamp(1.6rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    // Slide Button
+    .slide-btn {
+      display: inline-flex;
+      padding: 0.75rem 2rem;
+      border-radius: 100px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      }
+
+      &.btn-transparent {
+        background: transparent !important;
+        border: 1.5px solid currentColor;
+      }
+    }
+
+    .h-align-start .slide-btn {
+      align-self: flex-start;
+    }
+
+    .h-align-center .slide-btn {
+      align-self: center;
+    }
+
+    .h-align-end .slide-btn {
+      align-self: flex-end;
+    }
+
+    // ─── Active Slide Animation ──────────────────────────────
+    &.swiper-slide-active {
+
+      .slide-bg-picture img {
+        transform: scale(1.04);
+      }
+
+      .slide-subtext {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.1s;
+      }
+
+      .slide-title {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.25s;
+      }
+
+      .slide-btn {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.4s;
+      }
+    }
+  }
+
+  // ─── Pagination ───────────────────────────────────────────
+  .swiper-pagination {
+    bottom: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    z-index: 10;
+
+    .swiper-pagination-bullet {
+      width: 28px;
+      height: 5px;
+      border-radius: 100px;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 1;
+      transition: background 0.3s ease, width 0.3s ease;
+      cursor: pointer;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: rgba(0, 0, 0, 0.75);
+      width: 40px;
+    }
+  }
+
+  // Hide Arrows
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+
+  // ─── Responsive ───────────────────────────────────────────
+  @media (max-width: 767px) {
+    .swiper-wrapper {
+      padding: 12px 0 44px;
+    }
+
+    .swiper-slide {
+      width: 84% !important;
+    }
+
+    .custom-slide-item {
+      height: var(--mobile-height);
+      min-height: 260px;
+    }
+
+    .slide-title {
+      font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+    }
+  }
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+
+  .custom-slide-item .slide-subtext,
+  .custom-slide-item .slide-title,
+  .custom-slide-item .slide-btn,
+  .custom-slide-item .slide-bg-picture img {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

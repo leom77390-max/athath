@@ -1,0 +1,178 @@
+<section class="SK-products-section s-block" id="SK-products-categories-{{ position }}">
+	<div class="container py-5 md:py-10">
+		<salla-tabs>
+			<div class="flex items-center flex-col justify-center gap-7 md:gap-14">
+				<!-- Tabs Titles -->
+				<div class="flex items-center gap-4 justify-between w-full flex-col md:flex-row">
+
+					<div class="SK-categories flex items-center flex-wrap justify-center gap-4 md:gap-8">
+						{% for cat in component.categories %}
+							<salla-tab-header slot="header" name="category-{{ loop.index }}">
+								<div class="SK-tab-item flex flex-col cursor-pointer group">
+									<span class="SK-tab-text text-[1.2rem] md:text-[1.6rem] font-bold text-font group-[active]:text-primary" style="color:{{ component.tab_title_color }}">
+										{{ cat.name }}
+									</span>
+									<span class="h-[2px] w-0 bg-primary group-[active]:w-full transition-all"></span>
+								</div>
+							</salla-tab-header>
+						{% endfor %}
+					</div>
+						<a
+						style="color:{{ component.block_title_color }};"
+						href="{{vomponent.display_all_url}}"
+						class="group relative inline-block text-[1.2rem] md:text-[1.6rem] leading-[1.625]"
+						>
+						{{ component.block_title }}
+
+						<span
+							class="absolute left-0 bottom-0 h-[1px] w-full bg-black
+							origin-right scale-x-100
+							transition-transform duration-500
+							group-hover:scale-x-0"
+						></span>
+
+						<span
+							class="absolute left-0 bottom-0 h-[1px] w-full bg-black
+							origin-left scale-x-0
+							transition-transform duration-500 delay-500
+							group-hover:scale-x-100"
+						></span>
+						</a>
+				</div>
+
+				<!-- Products Section -->
+				<div class="SK-products flex flex-col w-full overflow-hidden">
+					<div class="SK-products-list">
+
+						{% for cat in component.categories %}
+							<salla-tab-content slot="content" name="category-{{ loop.index }}">
+
+								<div class="SK-category-products products-from-category" id="cat-{{ cat.id }}">
+
+									{% if component.is_moving %}
+
+										<salla-products-slider slider-config='{
+																							"slidesPerView": {{ component.mobile_products_count }},
+																							"spaceBetween": 16,
+																							"speed": 1000,
+																							"effect": "slide",
+																							"breakpoints": {
+																								"768": {
+																									"slidesPerView": {{ component.tablet_products_count }},
+																									"spaceBetween": 16
+																								},
+																								"1024": {
+																									"slidesPerView": {{ component.desktop_products_count }},
+																									"spaceBetween": 16
+																								}
+																							}
+																							{% if component.isp_autoPlay %}
+																							,
+																							"autoplay": {
+																								"delay": 2500,
+																								"disableOnInteraction": false,
+																								"pauseOnMouseEnter": true
+																							}
+																							{% endif %}
+																						}' source="categories" slider-id="SK-slider-{{ position }}-{{ loop.index }}" source-value="[{{ cat.id }}]"></salla-products-slider>
+
+									{% else %}
+
+										<salla-products-list class="products-fixed-slider-{{ position }}" source="categories" limit="12" source-value="[{{ cat.id }}]"></salla-products-list>
+
+									{% endif %}
+
+								</div>
+
+							</salla-tab-content>
+						{% endfor %}
+
+					</div>
+				</div>
+
+			</div>
+		</salla-tabs>
+	</div>
+</section>
+
+<style>
+
+
+	#SK-products-categories-{{position}}salla-tab-header:not(:first-child)::after {
+		background: {{component.tab_title_color}}
+		;
+	}
+
+	#SK-products-categories-{{position}}.s-tabs-active {
+		color: {{component.tab_title_color}}
+		;
+	}
+
+	#SK-products-categories-{{position}}salla-tab-header .s-tabs-header-item.s-tabs-active::before {
+		color: {{component.tab_title_color}}
+		!important;
+	}
+	
+</style>
+
+{% if not component.is_moving %}
+	<style>
+		.products-fixed-slider-{{position}}.s-products-list-vertical-cards {
+			display: grid !important;
+			gap: 16px;
+		}
+
+		@media(max-width: 767px) {
+			#SK-products-categories-{{ position }} .s-products-list-vertical-cards {
+				grid-template-columns: repeat({{ component.mobile_grid_products_count }}, minmax(0, 1fr)) !important;
+			}
+		}
+
+		@media(min-width:768px ) and (max-width: 1023px) {
+			#SK-products-categories-{{ position }} .s-products-list-vertical-cards {
+				grid-template-columns: repeat({{ component.tablet_grid_products_count }}, minmax(0, 1fr)) !important;
+			}
+		}
+
+		@media(min-width:1024px) {
+			#SK-products-categories-{{ position }} .s-products-list-vertical-cards {
+				grid-template-columns: repeat({{ component.desktop_grid_products_count }}, minmax(0, 1fr)) !important;
+			}
+		}
+	</style>
+{% endif %}
+<style>
+.s-tabs-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  filter: blur(6px);
+  transition: 
+    grid-template-rows .55s cubic-bezier(.22,.61,.36,1),
+    opacity .4s ease,
+    transform .55s cubic-bezier(.22,.61,.36,1),
+    filter .55s ease;
+  overflow: hidden;
+}
+
+.s-tabs-content > * {
+  overflow: hidden;
+}
+
+/* ACTIVE STATE */
+.s-tabs-content.s-tabs-content-selected {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* responsive tweak */
+@media (max-width: 376px) {
+  .s-tabs-content.s-tabs-content-selected {
+    min-height: 300px;
+  }
+}
+</style>
+

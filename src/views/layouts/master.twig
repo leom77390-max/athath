@@ -1,0 +1,224 @@
+{# ############## Shared Variables in all views ################
+| Variable                                           | Type     | Description                                                                                              |
+|----------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------|
+| store                                              | Store    |                                                                                                          |
+| store.id                                           | int      |                                                                                                          |
+| store.name                                         | string   |                                                                                                          |
+| store.username                                     | string   |                                                                                                          |
+| store.description                                  | string   |                                                                                                          |
+| store.slogan                                       | ?string  | * if feature in twilight.json                                                                            |
+| store.logo                                         | string   |                                                                                                          |
+| store.url                                          | string   |                                                                                                          |
+| store.api                                          | string   | the api url for current store                                                                            |
+| store.icon                                         | string   | *fav icon url                                                                                            |
+| store.contacts                                     | object   | [mobile, phone, email, whatsapp, telegram], ex. store.contacts.email                                     |
+| store.social                                       | object   | [instagram, snapchat, twitter, youtube, facebook, pinterest, maroof, whatsapp], ex. store.social.twitter |
+| store.settings                                     | object   |                                                                                                          |
+| store.settings.auth.email_allowed                  | bool     |                                                                                                          |
+| store.settings.auth.mobile_allowed                 | bool     |                                                                                                          |
+| store.settings.auth.is_email_required              | bool     |                                                                                                          |
+| store.settings.cart.apply_coupon_enabled           | bool     | Does visitor allowed to applay coupon in cart page                                                       |
+| store.settings.product.total_sold_enabled          | bool     |                                                                                                          |
+| store.settings.product.fit_type                    | ?string  | null when equal product card size is off, or ['cover', 'contain']                                        |
+| store.settings.category.testimonial_enabled        | bool     | Show random testimonials in category page                                                                |
+| store.settings.tax.number                          | ?string  |                                                                                                          |
+| store.settings.tax.certificate                     | ?string  | certificate image url                                                                                    |
+| store.settings.tax.taxable_prices_enabled          | bool     | Does tax included in the prices ex product_price 100 & tax is 15, price will be 115                      |
+| store.settings.rating_enabled                      | bool     | Is one of: store_enabled or shipping_enabled or products_enabled                                         |
+| store.settings.arabic_numbers_enabled              | bool     | Does the merchant wants the numbers to be shown as Arabic format                                         |
+| store.settings.is_multilingual                     | bool     |                                                                                                          |
+| store.settings.currencies_enabled                  | bool     |     
+| theme                                              | Theme    |                                                                                                          |
+| theme.id                                           | int      |                                                                                                          |
+| theme.name                                         | string   |                                                                                                          |
+| theme.mode                                         | string   | `live`, `preview`                                                                                        |
+| theme.is_rtl                                       | bool     |                                                                                                          |
+| theme.translations_hash                            | int      | to be used in case merchant updated frontend store translations                                          |
+| theme.color                                        | object   |                                                                                                          |
+| theme.color.primary                                | string   |                                                                                                          |
+| theme.color.text                                   | string   | suitable text color comparing to `theme.primary.color`, #000000, #FFFFFF                                 |
+| theme.color.reverse_primary                        | string   |                                                                                                          |
+| theme.color.reverse_text                           | string   | if `theme.text_color=#000000` means that `theme.reverse_text_color=#FFFFFF`                              |
+| theme.color.is_dark                                | bool     | Does main store color `theme.primary.color` considered as dim color?                                     |
+| theme.color.darker(float alpha, ?string hexColor)  | string   | get darker color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0             |
+| theme.color.lighter(float alpha, ?string hexColor) | string   | get lighter color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0            |
+| theme.font                                         | ?object  | Salla predefined font, null when the theme doesn't have `fonts` feature                                  |
+| theme.font.name                                    | string   | DINNextLTArabic-Regular, Amazon-Ember, Apple, Dubai, Estedad                                             |
+| theme.font.url                                     | string   | css full url ex: 'https://my_store.test/dist/fonts/default.css'                                          |
+| theme.settings                                     | object   | dynamic object with values of the `settings` in twilight.json ex. `theme.settings.topnav_is_dark`        |
+| theme.settings.set(settingName, value)             | string   | set global var, then get it {{theme.settings.get('my_var','fallback') }}                                 |
+| theme.settings.get(settingName, default=null)      | mixed    | get theme setting ex `theme.settings.get('my_var', 'fallback')`                                          |
+#}
+<!DOCTYPE html>
+<html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<!-- بسم الله الرحمن الرحيم -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
+
+    <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
+    <script defer src="{{ 'main-menu.js'|asset }}"></script>
+    {% if theme.settings.get('enable_add_product_toast', true) %}
+        <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
+    {% endif %}
+
+    {% block head_scripts %}{% endblock %}
+
+
+    <script data-cfasync="false">
+        window.header_is_sticky = "{{theme.settings.get('header_is_sticky', 'Default Value')}}"
+        window.imageZoom = "{{theme.settings.get('imageZoom')}}"
+        window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
+        window.enable_more_menu = "{{ theme.settings.get('enable_more_menu', true) }}"
+        window.enable_add_product_toast = "{{ theme.settings.get('enable_add_product_toast', true) }}"
+        window.notify_when_available_in_card = "{{ theme.settings.get('notify_when_available_in_card', true) }}"
+        window.enable_side_cart = "{{ theme.settings.get('enable_side_cart', true) }}";
+        window.categories_sidecart = {{ theme.settings.get('categories_sidecart') | json_encode |raw  }}
+    </script>
+
+    {% hook 'head:start' %}
+    {% hook head %}
+    {% block styles %}{% endblock %}
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
+    <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
+    
+    <style>
+        :root {
+            --font-main: '{{theme.font.name}}';
+            --color-primary: {{ theme.color.primary }};
+            --color-primary-dark: {{ theme.color.darker(0.15) }};
+            --color-primary-light: {{ theme.color.lighter(0.15) }};
+            --color-primary-reverse: {{ theme.color.reverse_text }};
+            --color-font: {{theme.settings.get('text_color')}}
+			;
+			--color-secondary: {{theme.settings.get('secondary_color')}}
+			;
+			--color-background: {{theme.settings.get('main_bg_color')}}
+			;
+        }
+    </style>
+    {# tracking services, custom css feature. #}
+    {% hook 'head:end' %}
+</head>
+<body id="app" class="theme-raed overflow-x-hidden bg-background {% hook 'body:classes' %}
+  {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
+  {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
+  {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
+  ">
+<noscript>
+    To get full functionality of this site you need to enable JavaScript. Here is how
+    <a href="https://www.enable-javascript.com/" rel="noreferrer"
+       target="_blank">To enable JavaScript on webpage</a>.
+</noscript>
+{% include "components.header.custom-menu.twig" %}
+<div class="app-inner flex flex-col min-h-full bg-background">
+    {% hook 'body:start' %}
+    {% component 'header.header' %}
+    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
+
+    {% block content %}
+<pre>
+{{ theme.settings.get('categories_sidecart')|json_encode(constant('JSON_PRETTY_PRINT')) }}
+</pre>
+    {# {% include "custom.quickview.twig" %} #}
+    {% endblock %}
+    </main>
+    {% component 'footer.footer' %}
+</div>
+{% hook 'body:end' %}
+{% if theme.settings.get('enable_add_product_toast', true) %}
+    <salla-add-product-toast></salla-add-product-toast>
+{% endif %}
+<script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
+
+{# Twilight Components #}
+{# Twilight Components #}
+<div class="quick-view-overlay fixed inset-0 bg-black/40 opacity-0 invisible transition duration-300 z-[9998]"></div>
+
+<aside class="quick-view fixed top-1/2 -translate-y-1/2 right-0 rounded-[32px] w-full sm:w-[460px] max-w-full h-full bg-background translate-x-full transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] z-[9999] flex flex-col overflow-hidden">
+
+  <button class="quick-view-close absolute top-4 end-4 w-9 h-9 flex items-center justify-center rounded-full bg-background text-font shadow ring-1 ring-gray-100 z-10" aria-label="Close">
+    &#120;
+  </button>
+
+  <div class="qv-loading hidden absolute inset-0 bg-background w-full sm:w-[460px] max-w-full/70 items-center justify-center z-20">
+    <span class="qv-spinner w-8 h-8 border-2 border-gray-300 border-t-black rounded-full animate-spin"></span>
+  </div>
+
+  <div class="qv-content flex-1 flex flex-col overflow-y-auto pb-4">
+
+    {# ---------- Gallery (Swiper) ---------- #}
+    <div class="qv-gallery relative bg-gray-50 flex-shrink-0">
+      <div class="qv-slider-wrapper"></div>
+    </div>
+
+    {# ---------- Info ---------- #}
+    <div class="qv-info flex flex-col gap-3 p-5 sm:p-6 flex-1">
+      <h2 class="qv-title text-2xl font-bold text-gray-900"></h2>
+
+      <div class="qv-price-wrapper flex items-center gap-2"></div>
+
+      <p class="text-sm text-gray-500">
+        <a href="{{ link('shipping') }}" class="underline">{{ trans('pages.cart.shipping') }}</a>
+        {{ trans('pages.products.calculated_at_checkout') }}
+      </p>
+
+      <div class="qv-stock flex items-center gap-2 text-sm font-medium"></div>
+
+      <p class="qv-description text-sm text-gray-600 leading-relaxed"></p>
+
+      <form class="qv-form form form--add-to-cart" onsubmit="return salla.form.onSubmit('cart.addItem', event)">
+        {# هتتملى ديناميكيًا بـ salla-product-options #}
+        <div class="qv-options flex flex-col gap-4"></div>
+
+        <div class="flex items-center gap-3 mt-2">
+          <input type="hidden" name="id" class="qv-product-id" value="">
+          <salla-quantity-input class="qv-quantity shrink-0" name="quantity" value="1" min="1"></salla-quantity-input>
+          <salla-add-product-button type="submit" class="qv-add-btn grow" width="wide" fill="outline"></salla-add-product-button>
+        </div>
+        <button type="button" class="qv-buy-now w-full bg-font text-background rounded-full py-3 font-semibold  transition mt-3">
+          {{ trans('pages.cart.buy_now') }}
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <a
+  href="#"
+  class="qv-full-details relative flex-shrink-0 flex items-center justify-between
+  bg-background w-full sm:w-[460px] max-w-full border-t border-font px-4 py-4 text-sm font-medium hover:text-background text-font
+  overflow-hidden group transition-all z-50"
+>
+  
+  <!-- text -->
+  <span class="relative z-10">
+    {{ trans('pages.products.view_full_details') }}
+  </span>
+
+  <!-- icon -->
+  <i class="sicon-arrow-{{ direction == 'rtl' ? 'left' : 'right' }} relative z-10"></i>
+
+  <!-- hover fill layer -->
+  <span
+    class="absolute inset-0 w-0 bg-font transition-all duration-500 group-hover:w-full"
+  ></span>
+</a>
+
+</aside>
+
+<salla-offer-modal></salla-offer-modal>
+<salla-search></salla-search>
+<salla-login-modal></salla-login-modal>
+{% if store.scope %}
+    <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+{% endif %}
+{% block scripts %}{% endblock %}
+</body>
+</html>

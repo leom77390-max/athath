@@ -1,0 +1,49 @@
+{
+  "blocks": {
+   "header": {
+      "cart": "Cart",
+      "language": "Language",
+      "account": "Account",
+      "search": "Search",
+      "login": "Login",
+      "home": "Home",
+      "wishlist": "Wishlist",
+      "go_to_cart": "Go to Cart"
+    },
+    "appBanner": {
+      "download_now": "download now"
+    }
+  },
+  "footer": {
+    "account": "My Account",
+    "newsletter_title": "Newsletter",
+    "newsletter_sub_title": "Sign up to receive 10% off your first order",
+    "newsletter_input_placeholder": "Enter your email",
+    "newsletter_button": "Subscribe"
+  },
+  "pages": {
+    "cart": {
+       "verification": "Verified by Salla",
+      "cart_options": "Cart Options",
+      "shipping": "Shipping",
+      "buy_now": "Buy Now",
+      "coupon_field_label": "Coupon code"
+    },
+    "products": {
+      "calculated_at_checkout": "calculated at checkout",
+      "view_full_details": "View Full Details"
+    },
+    "order": {
+      "can_edit_or_delete_your_review_within": "You can edit or delete your review within",
+      "edit_period_ended": "The period to edit the review has ended",
+      "delete_period_ended": "The period to delete the review has ended",
+      "days_since_added": "days since it was added",
+      "option_name": "Option name",
+      "option_content": "Content"
+    }
+  },
+  "common": {
+    "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
+    "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount"
+  }
+}

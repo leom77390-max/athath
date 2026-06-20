@@ -1,0 +1,30 @@
+.SK-products-section{
+.s-tabs-active {
+  background-color: transparent;
+  color: var(--color-primary);
+  --tw-text-opacity: 1;
+  padding: 0;
+}
+
+.s-tabs-header-item {
+  border: none;
+  --tw-bg-opacity: 0.5;
+  --tw-text-opacity: 0.5;
+  opacity: 0.5;
+  background-color: transparent;
+  background-color: transparent;
+  padding: 0;
+}
+
+.s-tabs-header-item.s-tabs-active {
+  --tw-text-opacity: 1;
+  opacity: 1;
+}
+
+
+
+
+.s-tabs-header{
+  border: none;
+}
+}

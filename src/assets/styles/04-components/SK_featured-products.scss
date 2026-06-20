@@ -1,0 +1,272 @@
+
+/* ─── min-height to prevent layout jump on tab switch ─── */
+#tab-content {
+    min-height: 520px;
+}
+
+/* ─── Media cards ─── */
+#tab-content .media-card {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    position: relative;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+#tab-content .media-card img,
+#tab-content .media-card video {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    min-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
+    max-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
+}
+
+/* ─── Product overlay ─── */
+#tab-content .product-overlay {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    background: white;
+    border-radius: 0.875rem;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+#tab-content .product-overlay img {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: cover;
+    min-height: unset;
+}
+
+#tab-content .product-overlay .add-btn {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+#tab-content .product-overlay .add-btn:hover {
+    background: #e0e0e0;
+}
+
+/* ─── Desktop Tab buttons ─── */
+.tab-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0 10px 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+/* Active left-bar indicator with spring animation */
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 2px;
+    height: 55%;
+    background: #111827;
+    border-radius: 2px;
+    opacity: 0;
+    transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+
+.tab-btn.active::before {
+    transform: translateY(-50%) scaleY(1);
+    opacity: 1;
+}
+
+.tab-btn .tab-title {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s, font-size 0.2s, font-weight 0.2s;
+}
+
+/* Animated checkmark badge on active tab */
+.tab-btn .tab-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #111827;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: scale(0) rotate(-30deg);
+    transition: opacity 0.22s ease, transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tab-btn .tab-check svg {
+    width: 10px;
+    height: 10px;
+    stroke: #fff;
+    stroke-width: 2.5;
+    fill: none;
+}
+
+.tab-btn.active .tab-check {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+.tab-btn .tab-desc {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    margin-top: 4px;
+    display: none;
+    line-height: 1.5;
+}
+
+.tab-btn.active .tab-title {
+    color: #111827;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.tab-btn.active .tab-desc {
+    display: block;
+    color: #9ca3af;
+}
+
+#tabs-container {
+    position: relative;
+}
+
+/* ─── Tab switch animations ─── */
+@keyframes fpFadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes fpFadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#tab-content.is-leaving {
+    pointer-events: none;
+    animation: fpFadeOut 0.18s ease forwards;
+}
+
+/* Cards stagger in */
+#tab-content .media-card {
+    opacity: 0;
+}
+
+#tab-content.is-entering .media-card {
+    animation: fpFadeIn 0.32s ease forwards;
+}
+
+#tab-content.is-entering .media-card:nth-child(1) { animation-delay: 0.00s; }
+#tab-content.is-entering .media-card:nth-child(2) { animation-delay: 0.06s; }
+#tab-content.is-entering .media-card:nth-child(3) { animation-delay: 0.12s; }
+#tab-content.is-entering .media-card:nth-child(4) { animation-delay: 0.18s; }
+#tab-content.is-entering .media-card:nth-child(5) { animation-delay: 0.24s; }
+#tab-content.is-entering .media-card:nth-child(6) { animation-delay: 0.30s; }
+
+/* Keep card visible after animation */
+#tab-content .media-card.done {
+    opacity: 1;
+}
+
+/* ─── Cart button states ─── */
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ddd;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.add-btn.loading .btn-icon { display: none; }
+
+.add-btn.loading .btn-loader {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-success { display: none; }
+
+.add-btn.success .btn-icon,
+.add-btn.success .btn-loader { display: none !important; }
+
+.add-btn.success .btn-success { display: block; }
+
+/* ─── Mobile dropdown styling ─── */
+#mobile-tab-select {
+    font-family: inherit;
+    background-image: none;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    #tab-content.is-leaving,
+    #tab-content.is-entering .media-card {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .tab-btn::before,
+    .tab-btn .tab-check {
+        transition: none !important;
+    }
+}
+
+/* ─── Mobile: slider 1.2 ─── */
+@media (max-width: 1023px) {
+    #tab-content::-webkit-scrollbar {
+        display: none;
+    }
+    #tab-content .media-card {
+        flex: 0 0 83.333%;
+        scroll-snap-align: start;
+        margin-bottom: 0;
+    }
+    #tab-content {
+        min-height: 400px;
+    }
+}
+
+/* ─── Desktop: Staggered flex ─── */
+@media (min-width: 1024px) {
+    #tab-content .media-card {
+        flex: 0 0 calc(50% - 8px); /* 2 items per row considering 16px gap */
+        margin-bottom: 0;
+    }
+    #tab-content .media-card:nth-child(even) {
+        margin-top: 3rem; /* Push the right column down */
+    }
+}
