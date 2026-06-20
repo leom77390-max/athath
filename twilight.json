@@ -4383,8 +4383,8 @@
         {
             "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
             "title": {
-                "en": "منتجات مختارة بعناية - سليك",
-                "ar": "Choose Product - Sleek"
+                "en": "Choose Product - Sleek", 
+                "ar": "منتجات مختارة بعناية - سليك"
             },
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
@@ -4429,7 +4429,7 @@
                     "selected": [],
                     "options": [],
                     "required": false,
-                    "multichoice": true,
+                    "multichoice": false,
                     "source": "categories",
                     "searchable": true,
                     "maxLength": 20,
