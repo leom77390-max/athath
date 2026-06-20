@@ -1,10 +1,10 @@
 <section class="dynamic-sections dynamic-sections-{{position}} mb-10 md:mb-16 {{component.mob_show ? "hidden md:block" : ""}} {{component.lapTop_show ? "md:hidden" : ""}}">   
     <div class="dynamic-slider-wrapper" style="background:{{component.bar_bac}}">
         <div class="dynamic-slider-track" 
-             style="--width: 250px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 120px;">  
+             style="--width: 320px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 120px;">  
             <div class="dynamic-slider-container flex flex-nowrap">
                 {% for bar in component.add_sectionbar %}
-                    <a href="{{ bar.bar_url}}" class="dynamic-slider-image pb-4" style="--position: {{loop.index}}" >
+                    <a href="{{ bar.bar_url}}" class="dynamic-slider-image`" style="--position: {{loop.index}}" >
                         <img loading="lazy" src="{{ bar.bar_img }}" alt="{{ bar.name }}" />
                         <h2 style="color:{{bar.bar_title_color}}">{{bar.bar_title}}</h2>
                     </a>
@@ -52,8 +52,8 @@
   }
   .dynamic-slider-image h2 {
       margin: 0; 
-      font-weight: 380;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 25px;
   }
   @keyframes slideLeftt {
       from {
