@@ -1377,6 +1377,9 @@ input:where([type='file']):focus{
 .h-px{
     height: 1px;
 }
+.h-\[450px\]{
+    height: 450px;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -33996,6 +33999,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:opacity-90:hover{
     opacity: 0.9;
 }
+.hover\:opacity-85:hover{
+    opacity: 0.85;
+}
 .hover\:shadow-default:hover{
     --tw-shadow: 5px 10px 30px #2B2D340D;;
     --tw-shadow-colored: 5px 10px 30px var(--tw-shadow-color);
@@ -34305,6 +34311,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[clamp\(25rem\2c 12\.0188rem\+27\.0442vw\2c 39\.063rem\)\]{
         height: clamp(25rem, 12.0188rem + 27.0442vw, 39.063rem);
+    }
+    .md\:h-\[550px\]{
+        height: 550px;
     }
     .md\:min-h-\[500px\]{
         min-height: 500px;
