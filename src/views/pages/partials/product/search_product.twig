@@ -56,7 +56,7 @@
         type="search"
         id="search-input"
         class="w-full h-[52px] bg-font/5 border border-transparent border-b-1 border-b-[#8B8B8B]  text-sm text-font transition-[border-color,background] duration-300 appearance-none focus:outline-none focus:bg-background focus:border-primary placeholder:text-font/40 ltr:pl-11 ltr:pr-10 rtl:pr-11 rtl:pl-10 [&::-webkit-search-cancel-button]:hidden"
-        placeholder="ابحث عن منتج..."
+        placeholder="{{trans('blocks.side_search.placeholder')}}"
         autocomplete="off"
         autocorrect="off"
         spellcheck="false"
@@ -116,7 +116,7 @@
       <!-- Popular Searches -->
       <div id="popular-searches-section" class="mb-7 last:mb-0" hidden>
         <h2 class="font-normal text-[18px] leading-[18px] tracking-[0px] text-font mt-0 mb-3">
-          Popular Searches
+          {{trans('blocks.side_search.popular_searches')}}
         </h2>
         <nav id="popular-tags" class="flex flex-wrap gap-2" aria-label="Popular searches"></nav>
       </div>
@@ -124,7 +124,7 @@
       <!-- Featured Products -->
       <div id="featured-products-section" class="mb-7 last:mb-0" hidden>
         <h2 class="font-normal text-[18px] leading-[18px] tracking-[0px] text-font mt-0 mb-3">
-          Most Searched Products
+          {{trans('blocks.side_search.most_searched_products')}}
         </h2>
         <div id="featured-products-list" class="flex flex-col gap-0.5" role="list"></div>
       </div>
@@ -177,7 +177,7 @@
     <p class="text-[15px] font-semibold text-font m-0" id="search-empty-text"></p>
 
     <p class="text-[13px] text-font/40 m-0">
-      Try different keywords
+      {{trans('blocks.side_search.try_different_keywords')}}
     </p>
 
   </div>
