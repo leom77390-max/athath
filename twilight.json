@@ -5357,54 +5357,54 @@
                     "minLength": "1",
                     "maxLength": "6",
                     "fields": [
-                        {
-                            "type": "boolean",
-                            "icon": "sicon-toggle-off",
-                            "label": "هل خلفية البطاقة صورة ام لون",
-                            "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
-                            "id": "card.background_is_image",
-                            "format": "switch",
-                            "required": false,
-                            "value": true,
-                            "selected": true
-                        },
-                        {
-                            "id": "card.bg_image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة خلفية البطاقة",
-                            "description": "تملأ الجزء العلوي من البطاقة.",
-                            "icon": "sicon-image",
-                            "value": "",
-                            "conditions": [
-                                {
-                                    "id": "background_is_image",
-                                    "operation": "=",
-                                    "value": true,
-                                    "value_index": ".",
-                                    "collection_id": "card"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "card.bg_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون خلفية البطاقة",
-                            "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
-                            "icon": "sicon-format-fill",
-                            "value": "#f5f0eb",
-                            "conditions": [
-                                {
-                                    "id": "background_is_image",
-                                    "operation": "=",
-                                    "value": false,
-                                    "value_index": ".",
-                                    "collection_id": "card"
-                                }
-                            ]
-                        },
+                      {
+  "type": "boolean",
+  "icon": "sicon-toggle-off",
+  "label": "هل خلفية البطاقة صورة ام لون",
+  "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
+  "id": "card.background_is_image",
+  "format": "switch",
+  "required": false,
+  "value": true,
+  "selected": true
+},
+{
+  "id": "card.bg_image",
+  "type": "string",
+  "format": "image",
+  "label": "صورة خلفية البطاقة",
+  "description": "تملأ الجزء العلوي من البطاقة.",
+  "icon": "sicon-image",
+  "value": "",
+  "conditions": [
+    {
+      "id": "card.background_is_image",
+      "operation": "=",
+      "value": true,
+      "value_index": ".",
+      "collection_id": "card"
+    }
+  ]
+},
+{
+  "id": "card.bg_color",
+  "type": "string",
+  "format": "color",
+  "inputType": "color",
+  "label": "لون خلفية البطاقة",
+  "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
+  "icon": "sicon-format-fill",
+  "value": "#f5f0eb",
+  "conditions": [
+    {
+      "id": "card.background_is_image",
+      "operation": "=",
+      "value": false,
+      "value_index": ".",
+      "collection_id": "card"
+    }
+  ]
+},
                         {
                             "id": "card.corner_rounded",
                             "type": "number",
