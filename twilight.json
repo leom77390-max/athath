@@ -5134,439 +5134,468 @@
             "icon": "sicon-airplay-audio",
             "path": "home.SK_about_us",
             "fields": [
-    {
-      "type": "static",
-      "format": "description",
-      "id": "static-desc",
-      "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
-    },
-    {
-      "type": "static",
-      "format": "title",
-      "id": "static-style",
-      "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-      "variant": "h6"
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
-      "label": "وضع المكون داخل حاوية",
-      "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
-      "id": "add_inside_container",
-      "format": "switch",
-      "value": false
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
-      "label": "إزالة الهامش السفلي",
-      "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
-      "id": "rm_margin",
-      "format": "switch",
-      "value": false
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-format-fill",
-      "label": "تخصيص ألوان المكون يدويًا",
-      "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
-      "id": "customize_colors",
-      "format": "switch",
-      "value": false
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-image",
-      "label": "صورة الخلفية للقسم",
-      "description": "فعّل هذا الخيار لوضع صورة خلفية للقسم بدلاً من اللون الافتراضي.",
-      "id": "background_is_image",
-      "format": "switch",
-      "value": false
-    },
-    {
-      "id": "background_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون خلفية القسم",
-      "description": "اختر لون خلفية المكون.",
-      "icon": "sicon-format-fill",
-      "value": "#ffffff",
-      "conditions": [
-        {
-          "id": "background_is_image",
-          "operation": "=",
-          "value": false
-        }
-      ]
-    },
-    {
-      "id": "background_image",
-      "type": "string",
-      "format": "image",
-      "label": "صورة خلفية القسم",
-      "description": "أضف صورة خلفية للقسم بالكامل.",
-      "icon": "sicon-image",
-      "value": "",
-      "conditions": [
-        {
-          "id": "background_is_image",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "type": "static",
-      "format": "title",
-      "id": "header_section_text",
-      "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم والزر</h3>"
-    },
-    {
-      "id": "main_title",
-      "type": "string",
-      "format": "textarea",
-      "label": "العنوان الرئيسي للقسم",
-      "description": "يظهر أعلى القسم بخط كبير وعريض.",
-      "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
-      "icon": "sicon-layout",
-      "value": "Spring styles to wear together or apart, whatever the weather.",
-      "multilanguage": true,
-      "required": false
-    },
-    {
-      "id": "main_title_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون العنوان الرئيسي",
-      "icon": "sicon-format-fill",
-      "value": "#18181b",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "cta_text",
-      "type": "string",
-      "format": "text",
-      "label": "نص رابط الدعوة للتصرف (CTA)",
-      "description": "النص الذي يظهر كرابط تحته خط أسفل العنوان الرئيسي.",
-      "placeholder": "مثال: About Us",
-      "icon": "sicon-link",
-      "value": "About Us",
-      "multilanguage": true
-    },
-    {
-      "id": "cta_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون نص رابط CTA",
-      "icon": "sicon-format-fill",
-      "value": "#18181b",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "type": "items",
-      "id": "cta_url",
-      "format": "variable-list",
-      "label": "رابط زر الدعوة للتصرف",
-      "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الرابط.",
-      "icon": "sicon-link",
-      "value": null,
-      "searchable": true,
-      "source": "custom",
-      "sources": [
-        {
-          "label": "منتج",
-          "key": "products",
-          "value": "products"
-        },
-        {
-          "label": "تصنيف",
-          "key": "categories",
-          "value": "categories"
-        },
-        {
-          "label": "ماركة تجارية",
-          "key": "brands",
-          "value": "brands"
-        },
-        {
-          "label": "صفحة تعريفية",
-          "key": "pages",
-          "value": "pages"
-        },
-        {
-          "label": "مقالة",
-          "key": "blog_articles",
-          "value": "blog_articles"
-        },
-        {
-          "label": "تصنيف ضمن المدونة",
-          "key": "blog_categories",
-          "value": "blog_categories"
-        },
-        {
-          "label": "التخفيضات",
-          "key": "offers_link",
-          "value": "offers_link"
-        },
-        {
-          "label": "صفحة الماركات",
-          "key": "brands_link",
-          "value": "brands_link"
-        },
-        {
-          "label": "المدونة",
-          "key": "blog_link",
-          "value": "blog_link"
-        },
-        {
-          "label": "رابط خارجي مخصص",
-          "key": "custom",
-          "value": "custom"
-        }
-      ]
-    },
-    {
-      "type": "static",
-      "format": "title",
-      "id": "header_cards",
-      "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات البطاقات</h3>"
-    },
-    {
-      "id": "card",
-      "type": "collection",
-      "format": "collection",
-      "label": "البطاقات",
-      "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أفقية.",
-      "item_label": "بطاقة",
-      "icon": "sicon-list-add",
-      "minLength": "1",
-      "maxLength": "6",
-      "fields": [
-        {
-          "id": "card.bg_image",
-          "type": "string",
-          "format": "image",
-          "label": "صورة خلفية البطاقة",
-          "description": "تملأ الجزء العلوي من البطاقة.",
-          "icon": "sicon-image",
-          "value": ""
-        },
-        {
-          "id": "card.bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية البطاقة",
-          "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
-          "icon": "sicon-format-fill",
-          "value": "#f5f0eb"
-        },
-        {
-          "id": "card.corner_rounded",
-          "type": "number",
-          "format": "slider",
-          "inputType": "range",
-          "label": "استدارة زوايا البطاقة",
-          "icon": "sicon-pin",
-          "value": "16",
-          "step": "1",
-          "minimum": "0",
-          "maximum": "40"
-        },
-        {
-          "id": "card.title",
-          "type": "string",
-          "format": "text",
-          "label": "عنوان البطاقة",
-          "description": "يظهر أسفل الصورة بخط واضح.",
-          "placeholder": "مثال: News, tips, reviews",
-          "icon": "sicon-layout",
-          "multilanguage": true,
-          "required": true,
-          "minLength": "2",
-          "maxLength": "80"
-        },
-        {
-          "id": "card.title_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون عنوان البطاقة",
-          "icon": "sicon-format-fill",
-          "value": "#18181b"
-        },
-        {
-          "id": "card.button_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص زر البطاقة",
-          "description": "يظهر في أسفل البطاقة كزر بارز.",
-          "placeholder": "مثال: View Our Blog",
-          "icon": "sicon-shopping-bag",
-          "multilanguage": true,
-          "required": true,
-          "minLength": "2",
-          "maxLength": "40"
-        },
-        {
-          "id": "card.button_bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية زر البطاقة",
-          "icon": "sicon-format-fill",
-          "value": "#18181b"
-        },
-        {
-          "id": "card.button_text_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نص زر البطاقة",
-          "icon": "sicon-format-fill",
-          "value": "#ffffff"
-        },
-        {
-          "type": "items",
-          "id": "card.btn_url",
-          "format": "variable-list",
-          "label": "رابط زر البطاقة",
-          "description": "اختر الصفحة أو المنتج الذي يتجه إليه زر هذه البطاقة.",
-          "icon": "sicon-link",
-          "value": null,
-          "required": false,
-          "searchable": true,
-          "source": "custom",
-          "sources": [
-            {
-              "label": "منتج",
-              "key": "products",
-              "value": "products"
-            },
-            {
-              "label": "تصنيف",
-              "key": "categories",
-              "value": "categories"
-            },
-            {
-              "label": "ماركة تجارية",
-              "key": "brands",
-              "value": "brands"
-            },
-            {
-              "label": "صفحة تعريفية",
-              "key": "pages",
-              "value": "pages"
-            },
-            {
-              "label": "مقالة",
-              "key": "blog_articles",
-              "value": "blog_articles"
-            },
-            {
-              "label": "تصنيف ضمن المدونة",
-              "key": "blog_categories",
-              "value": "blog_categories"
-            },
-            {
-              "label": "التخفيضات",
-              "key": "offers_link",
-              "value": "offers_link"
-            },
-            {
-              "label": "الماركات التجارية",
-              "key": "brands_link",
-              "value": "brands_link"
-            },
-            {
-              "label": "المدونة",
-              "key": "blog_link",
-              "value": "blog_link"
-            },
-            {
-              "label": "رابط خارجي",
-              "key": "custom",
-              "value": "custom"
-            }
-          ]
-        }
-      ],
-      "value": [
-        {
-          "ar": {
-            "card.title": "أخبار، نصائح، ومراجعات",
-            "card.button_text": "اقرأ مدونتنا"
-          },
-          "en": {
-            "card.title": "News, tips, reviews",
-            "card.button_text": "View Our Blog"
-          },
-          "card.bg_image": "",
-          "card.bg_color": "#f0ebe5",
-          "card.corner_rounded": "16",
-          "card.title": "أخبار، نصائح، ومراجعات",
-          "card.title_color": "#18181b",
-          "card.button_text": "اقرأ مدونتنا",
-          "card.button_bg_color": "#18181b",
-          "card.button_text_color": "#ffffff",
-          "card.btn_url": null
-        },
-        {
-          "ar": {
-            "card.title": "متاجرنا القريبة منك",
-            "card.button_text": "اعثر على متجر"
-          },
-          "en": {
-            "card.title": "Stores near you",
-            "card.button_text": "Find A Store"
-          },
-          "card.bg_image": "",
-          "card.bg_color": "#e8e0d8",
-          "card.corner_rounded": "16",
-          "card.title": "متاجرنا القريبة منك",
-          "card.title_color": "#18181b",
-          "card.button_text": "اعثر على متجر",
-          "card.button_bg_color": "#18181b",
-          "card.button_text_color": "#ffffff",
-          "card.btn_url": null
-        },
-        {
-          "ar": {
-            "card.title": "تابعونا على الإنستغرام",
-            "card.button_text": "@Glossy_store"
-          },
-          "en": {
-            "card.title": "On the gram",
-            "card.button_text": "@Glossy_store"
-          },
-          "card.bg_image": "",
-          "card.bg_color": "#ede8e3",
-          "card.corner_rounded": "16",
-          "card.title": "تابعونا على الإنستغرام",
-          "card.title_color": "#18181b",
-          "card.button_text": "@Glossy_store",
-          "card.button_bg_color": "#18181b",
-          "card.button_text_color": "#ffffff",
-          "card.btn_url": null
-        }
-      ]
-    }
-  ]
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "static-style",
+                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+                    "variant": "h6"
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "وضع المكون داخل حاوية",
+                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
+                    "id": "add_inside_container",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "إزالة الهامش السفلي",
+                    "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
+                    "id": "rm_margin",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-format-fill",
+                    "label": "تخصيص ألوان المكون يدويًا",
+                    "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
+                    "id": "customize_colors",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-image",
+                    "label": "صورة الخلفية للقسم",
+                    "description": "فعّل هذا الخيار لوضع صورة خلفية للقسم بدلاً من اللون الافتراضي.",
+                    "id": "background_is_image",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "id": "background_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "description": "اختر لون خلفية المكون.",
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "conditions": [
+                        {
+                            "id": "background_is_image",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "id": "background_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة خلفية القسم",
+                    "description": "أضف صورة خلفية للقسم بالكامل.",
+                    "icon": "sicon-image",
+                    "value": "",
+                    "conditions": [
+                        {
+                            "id": "background_is_image",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_section_text",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم والزر</h3>"
+                },
+                {
+                    "id": "main_title",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "العنوان الرئيسي للقسم",
+                    "description": "يظهر أعلى القسم بخط كبير وعريض.",
+                    "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
+                    "icon": "sicon-layout",
+                    "value": "Spring styles to wear together or apart, whatever the weather.",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "main_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "cta_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص رابط الدعوة للتصرف (CTA)",
+                    "description": "النص الذي يظهر كرابط تحته خط أسفل العنوان الرئيسي.",
+                    "placeholder": "مثال: About Us",
+                    "icon": "sicon-link",
+                    "value": "About Us",
+                    "multilanguage": true
+                },
+                {
+                    "id": "cta_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص رابط CTA",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "items",
+                    "id": "cta_url",
+                    "format": "variable-list",
+                    "label": "رابط زر الدعوة للتصرف",
+                    "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الرابط.",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "صفحة الماركات",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي مخصص",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_cards",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات البطاقات</h3>"
+                },
+                {
+                    "id": "card",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات",
+                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أفقية.",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list-add",
+                    "minLength": "1",
+                    "maxLength": "6",
+                    "fields": [
+                        {
+                            "type": "boolean",
+                            "icon": "sicon-toggle-off",
+                            "label": "هل خلفية البطاقة صورة ام لون",
+                            "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
+                            "id": "card.background_is_image",
+                            "format": "switch",
+                            "required": false,
+                            "value": true,
+                            "selected": true
+                        },
+                        {
+                            "id": "card.bg_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة خلفية البطاقة",
+                            "description": "تملأ الجزء العلوي من البطاقة.",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "conditions": [
+                                {
+                                    "id": "background_is_image",
+                                    "operation": "=",
+                                    "value": true,
+                                    "value_index": ".",
+                                    "collection_id": "card"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون خلفية البطاقة",
+                            "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
+                            "icon": "sicon-format-fill",
+                            "value": "#f5f0eb",
+                            "conditions": [
+                                {
+                                    "id": "background_is_image",
+                                    "operation": "=",
+                                    "value": false,
+                                    "value_index": ".",
+                                    "collection_id": "card"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.corner_rounded",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "استدارة زوايا البطاقة",
+                            "icon": "sicon-pin",
+                            "value": "16",
+                            "step": "1",
+                            "minimum": "0",
+                            "maximum": "40"
+                        },
+                        {
+                            "id": "card.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "عنوان البطاقة",
+                            "description": "يظهر أسفل الصورة بخط واضح.",
+                            "placeholder": "مثال: News, tips, reviews",
+                            "icon": "sicon-layout",
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": "2",
+                            "maxLength": "80"
+                        },
+                        {
+                            "id": "card.title_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون عنوان البطاقة",
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b"
+                        },
+                        {
+                            "id": "card.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص زر البطاقة",
+                            "description": "يظهر في أسفل البطاقة كزر بارز.",
+                            "placeholder": "مثال: View Our Blog",
+                            "icon": "sicon-shopping-bag",
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": "2",
+                            "maxLength": "40"
+                        },
+                        {
+                            "id": "card.button_bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون خلفية زر البطاقة",
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b"
+                        },
+                        {
+                            "id": "card.button_text_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون نص زر البطاقة",
+                            "icon": "sicon-format-fill",
+                            "value": "#ffffff"
+                        },
+                        {
+                            "type": "items",
+                            "id": "card.btn_url",
+                            "format": "variable-list",
+                            "label": "رابط زر البطاقة",
+                            "description": "اختر الصفحة أو المنتج الذي يتجه إليه زر هذه البطاقة.",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "ar": {
+                                "card.title": "أخبار، نصائح، ومراجعات",
+                                "card.button_text": "اقرأ مدونتنا"
+                            },
+                            "en": {
+                                "card.title": "News, tips, reviews",
+                                "card.button_text": "View Our Blog"
+                            },
+                            "card.bg_image": "",
+                            "card.bg_color": "#f0ebe5",
+                            "card.corner_rounded": "16",
+                            "card.title": "أخبار، نصائح، ومراجعات",
+                            "card.title_color": "#18181b",
+                            "card.button_text": "اقرأ مدونتنا",
+                            "card.button_bg_color": "#18181b",
+                            "card.button_text_color": "#ffffff",
+                            "card.btn_url": null
+                        },
+                        {
+                            "ar": {
+                                "card.title": "متاجرنا القريبة منك",
+                                "card.button_text": "اعثر على متجر"
+                            },
+                            "en": {
+                                "card.title": "Stores near you",
+                                "card.button_text": "Find A Store"
+                            },
+                            "card.bg_image": "",
+                            "card.bg_color": "#e8e0d8",
+                            "card.corner_rounded": "16",
+                            "card.title": "متاجرنا القريبة منك",
+                            "card.title_color": "#18181b",
+                            "card.button_text": "اعثر على متجر",
+                            "card.button_bg_color": "#18181b",
+                            "card.button_text_color": "#ffffff",
+                            "card.btn_url": null
+                        },
+                        {
+                            "ar": {
+                                "card.title": "تابعونا على الإنستغرام",
+                                "card.button_text": "@Glossy_store"
+                            },
+                            "en": {
+                                "card.title": "On the gram",
+                                "card.button_text": "@Glossy_store"
+                            },
+                            "card.bg_image": "",
+                            "card.bg_color": "#ede8e3",
+                            "card.corner_rounded": "16",
+                            "card.title": "تابعونا على الإنستغرام",
+                            "card.title_color": "#18181b",
+                            "card.button_text": "@Glossy_store",
+                            "card.button_bg_color": "#18181b",
+                            "card.button_text_color": "#ffffff",
+                            "card.btn_url": null
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": null,
