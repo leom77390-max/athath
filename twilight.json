@@ -5174,7 +5174,6 @@
                     "format": "switch",
                     "value": false
                 },
-                [
                     {
                         "id": "enable_slider",
                         "type": "boolean",
@@ -5299,8 +5298,7 @@
                                 "value": true
                             }
                         ]
-                    }
-                ],
+                    },
                 {
                     "type": "boolean",
                     "icon": "sicon-image",
