@@ -1551,6 +1551,9 @@ input:where([type='file']):focus{
 .max-w-\[480px\]{
     max-width: 480px;
 }
+.max-w-\[500px\]{
+    max-width: 500px;
+}
 .max-w-\[650px\]{
     max-width: 650px;
 }
