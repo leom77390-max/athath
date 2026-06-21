@@ -1346,6 +1346,9 @@ input:where([type='file']):focus{
 .h-\[380px\]{
     height: 380px;
 }
+.h-\[450px\]{
+    height: 450px;
+}
 .h-\[52px\]{
     height: 52px;
 }
@@ -1376,9 +1379,6 @@ input:where([type='file']):focus{
 }
 .h-px{
     height: 1px;
-}
-.h-\[450px\]{
-    height: 450px;
 }
 .max-h-0{
     max-height: 0px;
@@ -1583,9 +1583,6 @@ input:where([type='file']):focus{
 }
 .flex-none{
     flex: none;
-}
-.flex-shrink{
-    flex-shrink: 1;
 }
 .flex-shrink-0{
     flex-shrink: 0;
@@ -33996,11 +33993,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:opacity-80:hover{
     opacity: 0.8;
 }
-.hover\:opacity-90:hover{
-    opacity: 0.9;
-}
 .hover\:opacity-85:hover{
     opacity: 0.85;
+}
+.hover\:opacity-90:hover{
+    opacity: 0.9;
 }
 .hover\:shadow-default:hover{
     --tw-shadow: 5px 10px 30px #2B2D340D;;
@@ -34309,11 +34306,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[400px\]{
         height: 400px;
     }
-    .md\:h-\[clamp\(25rem\2c 12\.0188rem\+27\.0442vw\2c 39\.063rem\)\]{
-        height: clamp(25rem, 12.0188rem + 27.0442vw, 39.063rem);
-    }
     .md\:h-\[550px\]{
         height: 550px;
+    }
+    .md\:h-\[clamp\(25rem\2c 12\.0188rem\+27\.0442vw\2c 39\.063rem\)\]{
+        height: clamp(25rem, 12.0188rem + 27.0442vw, 39.063rem);
     }
     .md\:min-h-\[500px\]{
         min-height: 500px;
