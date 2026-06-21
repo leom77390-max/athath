@@ -5680,12 +5680,7 @@
                             "card.button_text": "تسوق الآن",
                             "card.button_bg_color": "#18181b",
                             "card.button_text_color": "#ffffff",
-                            "card.btn_url": [
-                                {
-                                    "type": "custom",
-                                    "value": "/collections/skincare"
-                                }
-                            ]
+                            "card.btn_url": ""
                         },
                         {
                             "ar": {
@@ -5700,12 +5695,7 @@
                             "card.button_text": "شاهد العروض",
                             "card.button_bg_color": "#ffffff",
                             "card.button_text_color": "#18181b",
-                            "card.btn_url": [
-                                {
-                                    "type": "custom",
-                                    "value": "/offers"
-                                }
-                            ]
+                            "card.btn_url": ""
                         },
                         {
                             "ar": {
@@ -5720,12 +5710,7 @@
                             "card.button_text": "اكتشف المزيد",
                             "card.button_bg_color": "#18181b",
                             "card.button_text_color": "#ffffff",
-                            "card.btn_url": [
-                                {
-                                    "type": "custom",
-                                    "value": "/collections/haircare"
-                                }
-                            ]
+                            "card.btn_url": ""
                         }
                     ]
                 }
