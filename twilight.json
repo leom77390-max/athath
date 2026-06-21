@@ -5357,54 +5357,54 @@
                     "minLength": "1",
                     "maxLength": "6",
                     "fields": [
-                      {
-  "type": "boolean",
-  "icon": "sicon-toggle-off",
-  "label": "هل خلفية البطاقة صورة ام لون",
-  "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
-  "id": "card.background_is_image",
-  "format": "switch",
-  "required": false,
-  "value": true,
-  "selected": true
-},
-{
-  "id": "card.bg_image",
-  "type": "string",
-  "format": "image",
-  "label": "صورة خلفية البطاقة",
-  "description": "تملأ الجزء العلوي من البطاقة.",
-  "icon": "sicon-image",
-  "value": "",
-  "conditions": [
-    {
-      "id": "card.background_is_image",
-      "operation": "=",
-      "value": true,
-      "value_index": ".",
-      "collection_id": "card"
-    }
-  ]
-},
-{
-  "id": "card.bg_color",
-  "type": "string",
-  "format": "color",
-  "inputType": "color",
-  "label": "لون خلفية البطاقة",
-  "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
-  "icon": "sicon-format-fill",
-  "value": "#f5f0eb",
-  "conditions": [
-    {
-      "id": "card.background_is_image",
-      "operation": "=",
-      "value": false,
-      "value_index": ".",
-      "collection_id": "card"
-    }
-  ]
-},
+                        {
+                            "type": "boolean",
+                            "icon": "sicon-toggle-off",
+                            "label": "هل خلفية البطاقة صورة ام لون",
+                            "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
+                            "id": "card.background_is_image",
+                            "format": "switch",
+                            "required": false,
+                            "value": true,
+                            "selected": true
+                        },
+                        {
+                            "id": "card.bg_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة خلفية البطاقة",
+                            "description": "تملأ الجزء العلوي من البطاقة.",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "conditions": [
+                                {
+                                    "id": "card.background_is_image",
+                                    "operation": "=",
+                                    "value": true,
+                                    "value_index": ".",
+                                    "collection_id": "card"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "card.bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون خلفية البطاقة",
+                            "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
+                            "icon": "sicon-format-fill",
+                            "value": "#f5f0eb",
+                            "conditions": [
+                                {
+                                    "id": "card.background_is_image",
+                                    "operation": "=",
+                                    "value": false,
+                                    "value_index": ".",
+                                    "collection_id": "card"
+                                }
+                            ]
+                        },
                         {
                             "id": "card.corner_rounded",
                             "type": "number",
@@ -5535,65 +5535,68 @@
                             ]
                         }
                     ],
-                    "value": [
-                        {
-                            "ar": {
-                                "card.title": "أخبار، نصائح، ومراجعات",
-                                "card.button_text": "اقرأ مدونتنا"
-                            },
-                            "en": {
-                                "card.title": "News, tips, reviews",
-                                "card.button_text": "View Our Blog"
-                            },
-                            "card.bg_image": "",
-                            "card.bg_color": "#f0ebe5",
-                            "card.corner_rounded": "16",
-                            "card.title": "أخبار، نصائح، ومراجعات",
-                            "card.title_color": "#18181b",
-                            "card.button_text": "اقرأ مدونتنا",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                            "card.btn_url": null
-                        },
-                        {
-                            "ar": {
-                                "card.title": "متاجرنا القريبة منك",
-                                "card.button_text": "اعثر على متجر"
-                            },
-                            "en": {
-                                "card.title": "Stores near you",
-                                "card.button_text": "Find A Store"
-                            },
-                            "card.bg_image": "",
-                            "card.bg_color": "#e8e0d8",
-                            "card.corner_rounded": "16",
-                            "card.title": "متاجرنا القريبة منك",
-                            "card.title_color": "#18181b",
-                            "card.button_text": "اعثر على متجر",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                            "card.btn_url": null
-                        },
-                        {
-                            "ar": {
-                                "card.title": "تابعونا على الإنستغرام",
-                                "card.button_text": "@Glossy_store"
-                            },
-                            "en": {
-                                "card.title": "On the gram",
-                                "card.button_text": "@Glossy_store"
-                            },
-                            "card.bg_image": "",
-                            "card.bg_color": "#ede8e3",
-                            "card.corner_rounded": "16",
-                            "card.title": "تابعونا على الإنستغرام",
-                            "card.title_color": "#18181b",
-                            "card.button_text": "@Glossy_store",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                            "card.btn_url": null
-                        }
-                    ]
+                  "value": [
+  {
+    "ar": {
+      "card.title": "اكتشف منتجات العناية بالبشرة",
+      "card.button_text": "تسوق الآن"
+    },
+     "card.background_is_image": true,
+    "card.bg_image": "https://cdn.files.salla.network/homepage/686931608…900.webp?_s_uploader_cache_bust=preview-o9kja1n5z",
+    "card.corner_rounded": "16",
+    "card.title": "اكتشف منتجات العناية بالبشرة",
+    "card.title_color": "#18181b",
+    "card.button_text": "تسوق الآن",
+    "card.button_bg_color": "#18181b",
+    "card.button_text_color": "#ffffff",
+    "card.btn_url": [
+      {
+        "type": "custom",
+        "value": "/collections/skincare"
+      }
+    ]
+  },
+  {
+    "ar": {
+      "card.title": "أفضل العروض والخصومات الحصرية",
+      "card.button_text": "شاهد العروض"
+    },
+    "card.background_is_image": true,
+    "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/adc95a74-42d5-499a-9077-acaca71e6ead_637x900.webp?_s_uploader_cache_bust=preview-t8rbrf1hr",
+    "card.corner_rounded": "16",
+    "card.title": "أفضل العروض والخصومات الحصرية",
+    "card.title_color": "#ffffff",
+    "card.button_text": "شاهد العروض",
+    "card.button_bg_color": "#ffffff",
+    "card.button_text_color": "#18181b",
+    "card.btn_url": [
+      {
+        "type": "custom",
+        "value": "/offers"
+      }
+    ]
+  },
+  {
+    "ar": {
+      "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
+      "card.button_text": "اكتشف المزيد"
+    },
+     "card.background_is_image": true,
+    "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/7989e93b-a133-4397-9472-d54a4b5ad498_637x900.webp?_s_uploader_cache_bust=preview-3km71stih",
+    "card.corner_rounded": "16",
+    "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
+    "card.title_color": "#18181b",
+    "card.button_text": "اكتشف المزيد",
+    "card.button_bg_color": "#18181b",
+    "card.button_text_color": "#ffffff",
+    "card.btn_url": [
+      {
+        "type": "custom",
+        "value": "/collections/haircare"
+      }
+    ]
+  }
+]
                 }
             ]
         }
