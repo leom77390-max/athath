@@ -5147,6 +5147,12 @@
                     "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
                     "variant": "h6"
                 },
+                  {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_cards",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
+                },
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
