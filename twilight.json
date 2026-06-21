@@ -5174,6 +5174,133 @@
                     "format": "switch",
                     "value": false
                 },
+                [
+                    {
+                        "id": "enable_slider",
+                        "type": "boolean",
+                        "format": "switch",
+                        "label": "تفعيل عرض البطاقات كسلايدر",
+                        "description": "فعّل هذا الخيار لعرض البطاقات داخل شريط تمرير أفقي بدلاً من الشبكة الثابتة.",
+                        "icon": "sicon-toggle-off",
+                        "value": true,
+                        "selected": true,
+                        "required": false
+                    },
+                    {
+                        "id": "desktop_slides_per_view",
+                        "type": "number",
+                        "format": "integer",
+                        "inputType": "number",
+                        "label": "عدد البطاقات في الشاشات الكبيرة",
+                        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة الكمبيوتر.",
+                        "icon": "sicon-hashtag",
+                        "value": 4,
+                        "required": true,
+                        "minimum": "1",
+                        "maximum": "4",
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "laptop_slides_per_view",
+                        "type": "number",
+                        "format": "integer",
+                        "inputType": "number",
+                        "label": "عدد البطاقات في الشاشات المتوسطة",
+                        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة اللابتوب والأجهزة اللوحية.",
+                        "icon": "sicon-hashtag",
+                        "value": 3,
+                        "required": true,
+                        "minimum": "1",
+                        "maximum": "3",
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "mobile_slides_per_view",
+                        "type": "number",
+                        "format": "integer",
+                        "inputType": "number",
+                        "label": "عدد البطاقات في الشاشات الصغيرة",
+                        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على الهواتف المحمولة.",
+                        "icon": "sicon-hashtag",
+                        "value": 1,
+                        "required": true,
+                        "minimum": "1",
+                        "maximum": "2",
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "enable_controls",
+                        "type": "boolean",
+                        "format": "switch",
+                        "label": "إظهار أسهم التنقل",
+                        "description": "فعّل هذا الخيار لإظهار الأسهم التي تساعد الزائر على التنقل بين البطاقات داخل السلايدر.",
+                        "icon": "sicon-toggle-off",
+                        "value": true,
+                        "selected": true,
+                        "required": false,
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "enable_autoplay",
+                        "type": "boolean",
+                        "format": "switch",
+                        "label": "تفعيل التشغيل التلقائي",
+                        "description": "عند التفعيل، سيتم تمرير البطاقات تلقائيًا داخل السلايدر.",
+                        "icon": "sicon-toggle-off",
+                        "value": false,
+                        "selected": false,
+                        "required": false,
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    },
+                    {
+                        "id": "enable_loop",
+                        "type": "boolean",
+                        "format": "switch",
+                        "label": "تفعيل التكرار اللانهائي",
+                        "description": "فعّل هذا الخيار لجعل السلايدر يعيد عرض البطاقات بشكل مستمر بدون توقف.",
+                        "icon": "sicon-toggle-off",
+                        "value": true,
+                        "selected": false,
+                        "required": false,
+                        "conditions": [
+                            {
+                                "id": "enable_slider",
+                                "operation": "=",
+                                "value": true
+                            }
+                        ]
+                    }
+                ],
                 {
                     "type": "boolean",
                     "icon": "sicon-image",

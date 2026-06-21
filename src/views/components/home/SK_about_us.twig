@@ -34,61 +34,115 @@
     </div>
     {% endif %}
 
-    {# ── Cards Slider ── #}
-    <salla-slider
-        type="carousel"
-        controls="none"
-        pagination="none"
-        slider-config='{
-            "slidesPerView": 1.1,
-            "spaceBetween": 16,
-            "breakpoints": {
-                "640": { "slidesPerView": 2.2, "spaceBetween": 20 },
-                "1024": { "slidesPerView": 3, "spaceBetween": 24 }
-            }
-        }'
-        class="SK-cards-section__slider">
-        <div slot="items">
-        {% for card in component.card %}
-        <div class="swiper-slide h-auto">
-            <div class="SK-card relative w-full h-[450px] md:h-[550px] flex flex-col justify-end overflow-hidden group"
-                 style="border-radius: {{ card.corner_rounded|default(16) }}px;">
-                 
-                {# Background Layer #}
-                <div class="absolute inset-0 w-full h-full transition-transform duration-500 group-hover:scale-105"
-                     style="
-                     {% if card.background_is_image and card.bg_image %}
-                         background-image: url('{{ card.bg_image }}'); background-size: cover; background-position: center;
-                     {% else %}
-                         background-color: {{ card.bg_color|default('#f5f0eb') }};
-                     {% endif %}
-                     "></div>
+    {% if component.enable_slider|default(true) %}
+        {# ── Cards Slider ── #}
+        {% set ds = component.desktop_slides_per_view|default(4) %}
+        {% set ls = component.laptop_slides_per_view|default(3) %}
+        {% set ms = component.mobile_slides_per_view|default(1.1) %}
+        {% set controls = component.enable_controls|default(true) ? 'outer' : 'none' %}
+        {% set loop = component.enable_loop|default(false) ? 'true' : 'false' %}
 
-                {# Card body — positioned at bottom #}
-                <div class="relative z-10 w-full p-6 md:p-8 flex flex-col items-center text-center">
+        <salla-slider
+            type="carousel"
+            controls="{{ controls }}"
+            pagination="none"
+            id="cards-slider-{{ component.id }}"
+            slider-config='{
+                {% if component.enable_autoplay %}"autoplay": {"delay": 3000, "disableOnInteraction": false},{% endif %}
+                "loop": {{ loop }},
+                "slidesPerView": {{ ms }},
+                "spaceBetween": 16,
+                "breakpoints": {
+                    "640": { "slidesPerView": 2.2, "spaceBetween": 20 },
+                    "1024": { "slidesPerView": {{ ls }}, "spaceBetween": 24 },
+                    "1280": { "slidesPerView": {{ ds }}, "spaceBetween": 24 }
+                }
+            }'
+            class="SK-cards-section__slider">
+            <div slot="items">
+            {% for card in component.card %}
+            <div class="swiper-slide h-auto">
+                <div class="SK-card relative w-full h-[450px] md:h-[550px] flex flex-col justify-end overflow-hidden group"
+                     style="border-radius: {{ card.corner_rounded|default(16) }}px;">
+                     
+                    {# Background Layer #}
+                    <div class="absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
+                         style="
+                         {% if card.background_is_image and card.bg_image %}
+                             background-image: url('{{ card.bg_image }}'); background-size: cover; background-position: center;
+                         {% else %}
+                             background-color: {{ card.bg_color|default('#f5f0eb') }};
+                         {% endif %}
+                         "></div>
 
-                    {% if card.title %}
-                    <h3 class="text-xl md:text-2xl font-semibold mb-6"
-                        style="color: {{ card.title_color|default('#18181b') }};">
-                        {{ card.title }}
-                    </h3>
-                    {% endif %}
+                    {# Card body — positioned at bottom #}
+                    <div class="relative z-10 w-full p-6 md:p-8 flex flex-col items-center text-center">
 
-                    {% if card.button_text %}
-                    <a href="{{ card.btn_url|default('#') }}"
-                       class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-medium transition duration-200 hover:opacity-85"
-                       style="background-color: {{ card.button_bg_color|default('#18181b') }};
-                              color: {{ card.button_text_color|default('#ffffff') }};">
-                        {{ card.button_text }}
-                    </a>
-                    {% endif %}
+                        {% if card.title %}
+                        <h3 class="text-xl md:text-2xl font-semibold mb-6 line-clamp-2"
+                            style="color: {{ card.title_color|default('#18181b') }};">
+                            {{ card.title }}
+                        </h3>
+                        {% endif %}
 
+                        {% if card.button_text %}
+                        <a href="{{ card.btn_url|default('#') }}"
+                           class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95"
+                           style="background-color: {{ card.button_bg_color|default('#18181b') }};
+                                  color: {{ card.button_text_color|default('#ffffff') }};">
+                            {{ card.button_text }}
+                        </a>
+                        {% endif %}
+
+                    </div>
                 </div>
             </div>
+            {% endfor %}
+            </div>
+        </salla-slider>
+    {% else %}
+        {# ── Cards Grid ── #}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for card in component.card %}
+            <div class="h-auto">
+                <div class="SK-card relative w-full h-[450px] md:h-[550px] flex flex-col justify-end overflow-hidden group"
+                     style="border-radius: {{ card.corner_rounded|default(16) }}px;">
+                     
+                    {# Background Layer #}
+                    <div class="absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
+                         style="
+                         {% if card.background_is_image and card.bg_image %}
+                             background-image: url('{{ card.bg_image }}'); background-size: cover; background-position: center;
+                         {% else %}
+                             background-color: {{ card.bg_color|default('#f5f0eb') }};
+                         {% endif %}
+                         "></div>
+
+                    {# Card body — positioned at bottom #}
+                    <div class="relative z-10 w-full p-6 md:p-8 flex flex-col items-center text-center">
+
+                        {% if card.title %}
+                        <h3 class="text-xl md:text-2xl font-semibold mb-6 line-clamp-2"
+                            style="color: {{ card.title_color|default('#18181b') }};">
+                            {{ card.title }}
+                        </h3>
+                        {% endif %}
+
+                        {% if card.button_text %}
+                        <a href="{{ card.btn_url|default('#') }}"
+                           class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95"
+                           style="background-color: {{ card.button_bg_color|default('#18181b') }};
+                                  color: {{ card.button_text_color|default('#ffffff') }};">
+                            {{ card.button_text }}
+                        </a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        </div>
-    </salla-slider>
+    {% endif %}
 
 </section>
 
