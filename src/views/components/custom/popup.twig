@@ -231,6 +231,58 @@
   width: 100vw !important;
   height: 100vh !important;
   z-index: 999999 !important;
+  backdrop-filter: blur(3px);
 }
 
+.full-screen-popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.full-screen-popup.show .pop-up {
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.newsletter-form #newsletter-email-popup::placeholder {
+  font-size: 12px;
+  color: var(--color-primary);
+  opacity: 0;
+}
+
+.newsletter-form #newsletter-email-popup:not(:placeholder-shown) + label {
+  top: 0;
+}
+
+#coupon-code {
+  position: relative;
+  user-select: all;
+}
+
+#coupon-code:hover {
+  filter: brightness(0.95);
+}
+
+#coupon-code:active {
+  transform: scale(0.98) !important;
+}
+
+.coupon-code-container p {
+  font-size: 0.75rem;
+  color: var(--color-font-color);
+  opacity: 0.7;
+}
 </style>
