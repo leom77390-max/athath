@@ -1,0 +1,225 @@
+{% if theme.settings.get("show_popup") %}
+<section
+  class="full-screen-popup w-screen h-screen fixed top-0 left-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[100] opacity-0 invisible transition-all duration-300">
+  <div
+    class="pop-up pop-up-{{ position }} max-w-[520px] px-[clamp(1.75rem,0.449rem+5.551vw,6rem)] py-[clamp(2rem,1.7704rem+0.9796vw,2.75rem)] rounded-2xl text-center relative mx-auto z-[150] shadow-2xl transform translate-y-full transition-all duration-500 ease-out"
+    style="background-color: {{ theme.settings.get('popup_bg') }};">
+    <button id="popup-close"
+      class="absolute top-5 right-5 border-2 border-primary w-8 h-8 rounded-full text-xl cursor-pointer transition-all duration-300 flex items-center justify-center">
+      <i class="sicon-cancel text-primary"></i>
+    </button>
+
+    <div class="content w-[288px] md:w-[328px] mx-auto">
+    {% if theme.settings.get('popup_img')  %}
+      <img src="{{ theme.settings.get('popup_img') }}" alt="Coffee Machine" class="w-[180px] block mx-auto mb-4 animate-float"
+        loading="lazy" />
+      
+    {% endif %}
+
+      <h2 class="text-lg font-bold mb-3 text-font-color"
+        style="color: {{ theme.settings.get('promotional_header_color') }};">
+        {{ theme.settings.get("promotional_header") }}
+      </h2>
+
+      <p class="text-sm text-font-color mb-4 font-normal leading-relaxed" style="color: {{ theme.settings.get("main_header_color") }};">
+        {{ theme.settings.get("main_header") }}
+      </p>
+
+      {% if theme.settings.get('code_switch') %}
+      <div class="coupon-code-container">
+        <div id="coupon-code"
+          class="w-full py-3 px-6 border-2 border-dashed rounded-xl text-xl font-bold cursor-pointer relative transition-all hover:scale-105 active:scale-95 shadow-md"
+          style="color: {{
+            theme.settings.get('code_text_color')
+          }}; background-color: {{
+            theme.settings.get('code_text_bg')
+          }}; border-color: {{ theme.settings.get('code_text_color') }};"
+          data-code="{{ theme.settings.get('code_text') }}" title="{{ trans('blocks.popup.click_to_copy') }}">
+          {{ theme.settings.get("code_text") }}
+          <i class="sicon-copy absolute left-4 top-1/2 -translate-y-1/2 text-lg"></i>
+        </div>
+        <p class="text-xs mt-2 text-font-color opacity-70">
+          {{ trans('blocks.popup.click_to_copy') }}
+        </p>
+      </div>
+      {% else %}
+      <form id="newsletter-form-popup" action="{{ theme.settings.get('newsletter_url') }}" method="POST">
+        <div class="newsletter-form relative mb-4 group">
+          <input placeholder="{{ trans('blocks.popup.email_address') }}" id="newsletter-email-popup" name="email"
+            class="peer w-full py-4 px-6 border border-[#E0E6E8] bg-transparent rounded-xl font-normal focus:outline-none text-primary focus:border-primary transition-all"
+            style="color: {{
+              theme.settings.get('input_text_color')
+            }}; border: 1px solid {{ theme.settings.get('input_text_bg') }};" required />
+
+          <label style="background-color: {{ theme.settings.get('popup_bg') }}; color: {{ theme.settings.get('switch_color') ? theme.settings.get('placeholder_text_color') : '#7a7676' }};"
+            class="absolute top-1/2 -translate-y-1/2 rtl:right-2 ltr:left-2 transition-all group-hover:top-0 peer-focus:top-0 peer-not-placeholder-shown:top-0 px-2 text-sm"
+            for="newsletter-email-popup">{{ trans('blocks.popup.email_address') }}</label>
+        </div>
+
+        <button type="submit" id="newsletter-submit-popup"
+          class="btn__primary w-full py-4 text-white border-0 rounded-xl text-lg font-bold cursor-pointer bg-primary hover:opacity-90 active:scale-95 transition-all shadow-lg"
+          style="--btn-clr:{{ theme.settings.get('btn_text_color') }};--btn-bg: {{ theme.settings.get('btn_text_bg') }}">
+          <span>{{ theme.settings.get("btn_text") }}</span>
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .full-screen-popup.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .full-screen-popup.show .pop-up {
+    transform: translateY(0);
+  }
+
+</style>
+
+<script>
+  const closeBtn = document.getElementById("popup-close");
+  const popup = document.querySelector(".full-screen-popup");
+  const popupBox = document.querySelector(".pop-up");
+
+  if (closeBtn && popup && popupBox) {
+    const hasSeenPopup = sessionStorage.getItem("popupShown");
+
+    if (!hasSeenPopup) {
+      setTimeout(() => {
+        popup.classList.add("show");
+        sessionStorage.setItem("popupShown", "true");
+      }, 5000); 
+    }
+
+    closeBtn.addEventListener("click", function () {
+      popup.classList.remove("show");
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 300);
+    });
+
+    popup.addEventListener("click", function (e) {
+      if (!popupBox.contains(e.target)) {
+        popup.classList.remove("show");
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 300);
+      }
+    });
+  }
+
+  const couponCode = document.getElementById("coupon-code");
+  if (couponCode) {
+    const isRTL = document.documentElement.dir === "rtl";
+
+    couponCode.addEventListener("click", function () {
+      const code = this.dataset.code;
+
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+          const successMessage = isRTL
+            ? "تم نسخ الكود بنجاح!"
+            : "Code copied successfully!";
+          salla.notify.success(successMessage);
+
+          this.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            this.style.transform = "scale(1)";
+          }, 100);
+        })
+        .catch(() => {
+          const errorMessage = isRTL ? "فشل نسخ الكود" : "Failed to copy code";
+          salla.notify.error(errorMessage);
+        });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("newsletter-form-popup");
+    if (!form) return;
+
+    const emailInput = document.getElementById("newsletter-email-popup");
+    const submitBtn = document.getElementById("newsletter-submit-popup");
+    const isRTL = document.documentElement.dir === "rtl";
+
+    const messages = {
+      required: isRTL
+        ? "الرجاء إدخال بريد إلكتروني صحيح"
+        : "Please enter a valid email",
+      invalid: isRTL
+        ? "صيغة البريد الإلكتروني غير صحيحة"
+        : "Invalid email format",
+      sending: isRTL ? "جاري الإرسال..." : "Sending...",
+      success: isRTL
+        ? "تم الاشتراك بنجاح! شكراً لك"
+        : "Subscription successful! Thank you",
+      error: isRTL
+        ? "حدث خطأ ما. حاول مرة أخرى"
+        : "Something went wrong. Please try again",
+    };
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const emailValue = emailInput.value.trim();
+
+      if (!emailValue) {
+        salla.notify.error(messages.required);
+        emailInput.focus();
+        return;
+      }
+
+      if (!emailRegex.test(emailValue)) {
+        salla.notify.error(messages.invalid);
+        emailInput.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      salla.notify.info(messages.sending);
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        mode: "no-cors",
+      })
+        .then(() => {
+          salla.notify.success(messages.success);
+          emailInput.value = "";
+          form.reset();
+          if (popup) {
+            popup.classList.remove("show");
+            setTimeout(() => {
+              popup.style.display = "none";
+            }, 300);
+          }
+        })
+        .catch(() => {
+          salla.notify.error(messages.error);
+        })
+        .finally(() => {
+          submitBtn.disabled = false;
+        });
+    });
+  });
+</script>
+{% endif %}

@@ -728,6 +728,482 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "static-label6",
+            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات النافذه</h6></div>",
+            "variant": "h6"
+        },
+                {
+            "id": "show_popup",
+            "type": "boolean",
+            "format": "switch",
+            "label": "تفعيل ظهور النافذة المنبثقة",
+            "description": "قم بتفعيل هذا الخيار لعرض النافذة المنبثقة للزوار.",
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": false,
+            "required": false
+        },
+        {
+            "id": "switch_color",
+            "type": "boolean",
+            "format": "switch",
+            "label": "تفعيل الألوان المخصصة للنافذة",
+            "description": "استخدم هذا الخيار لتحديد ألوان خاصة لعناصر النافذة المنبثقة.",
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": false,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "popup_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية النافذة",
+            "description": "اختر اللون الخلفي للنافذة المنبثقة ليتناسب مع تصميم متجرك.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#f2f2f2",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "popup_img",
+            "type": "string",
+            "format": "image",
+            "label": "صورة خلفية النافذة",
+            "description": "أضِف صورة خلفية للنافذة المنبثقة لتحسين مظهرها وجذب الانتباه.",
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": "https://cdn.files.salla.network/homepage/481463064/97b34c4e-2a27-4b78-a856-ce3aac5cf5a6.webp",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "promotional_header",
+            "type": "string",
+            "format": "text",
+            "label": "عنوان العرض الترويجي",
+            "description": "اكتب عنوانًا قصيرًا يظهر أعلى النافذة لشد انتباه الزائر.",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": "خصم 10% لأول طلب لك",
+            "multilanguage": false,
+            "required": false,
+            "minLength": "2",
+            "maxLength": "100",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "promotional_header_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون عنوان العرض الترويجي",
+            "description": "اختر لون النص الخاص بعنوان العرض بما يناسب الخلفية.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#202020",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "main_header",
+            "type": "string",
+            "format": "text",
+            "label": "العنوان الرئيسي للنافذة",
+            "description": "أضِف عبارة رئيسية تُعرّف الزائر بهدف النافذة أو ميزة الاشتراك.",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": "ادخل بريدك الإلكتروني واستمتع بتجربة قهوة فريدة",
+            "multilanguage": false,
+            "required": false,
+            "minLength": "2",
+            "maxLength": "200",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "main_header_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون العنوان الرئيسي",
+            "description": "اختر لون النص للعنوان الرئيسي لتنسيقه مع التصميم.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#202020",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "code_switch",
+            "type": "boolean",
+            "format": "switch",
+            "label": " وضع كود الخصم  ",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": false,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "newsletter_url",
+            "type": "string",
+            "format": "url",
+            "inputType": "url",
+            "label": "رابط الاشتراك في النشرة البريدية",
+            "description": "أدخل الرابط المباشر الذي سيتم إرسال البريد إليه عند اشتراك الزائر.",
+            "labelHTML": null,
+            "placeholder": "مثال: https://salla.sa",
+            "icon": "sicon-link",
+            "value": "https://s.salla.sa",
+            "required": false,
+            "minLength": 6,
+            "maxLength": "300000000",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "input_text_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية حقل الإدخال",
+            "description": "حدد لون الخلفية لحقل كتابة البريد داخل النافذة.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#e0e6e8",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "input_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص حقل الإدخال",
+            "description": "اختر لون النص الذي يظهر أثناء كتابة البريد الإلكتروني.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#005366",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "placeholder_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص العنصر النائب في حقل الإدخال",
+            "description": "اختر لون النص الذي يظهر كعنصر نائب داخل حقل كتابة البريد الإلكتروني قبل أن يبدأ الزائر بالكتابة.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#005366",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "btn_text",
+            "type": "string",
+            "format": "text",
+            "label": "نص الزر",
+            "description": "النص الذي سيظهر داخل زر الإرسال في النافذة المنبثقة.",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": "إستكشف الآن",
+            "multilanguage": false,
+            "required": false,
+            "minLength": "2",
+            "maxLength": "100",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "btn_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص الزر",
+            "description": "اختر لون النص داخل زر الاشتراك.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "btn_text_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الزر",
+            "description": "حدد لون الخلفية للزر داخل النافذة المنبثقة.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#00809d",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "id": "code_text",
+            "type": "string",
+            "format": "text",
+            "label": "اضف كود الخصم ",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": "1111 ",
+            "multilanguage": false,
+            "required": false,
+            "minLength": "2",
+            "maxLength": "20",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "code_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون الكود ",
+            "description": "اختر لون النص داخل زر الاشتراك.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "code_text_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الكود",
+            "description": "حدد لون الخلفية للزر داخل النافذة المنبثقة.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#00809d",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "switch_color",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                },
+                {
+                    "id": "code_switch",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
         }
     ],
     "components": [
