@@ -423,7 +423,7 @@
         .writeText(code)
         .then(() => {
           const successMessage = isRTL
-            ? "ØªÙ… Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯ Ø¨Ù†Ø¬Ø§Ø­!"
+            ? "تم نسخ الكود بنجاح!"
             : "Code copied successfully!";
           salla.notify.success(successMessage);
 
@@ -433,7 +433,7 @@
           }, 100);
         })
         .catch(() => {
-          const errorMessage = isRTL ? "ÙØ´Ù„ Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯" : "Failed to copy code";
+          const errorMessage = isRTL ? "فشل نسخ الكود" : "Failed to copy code";
           salla.notify.error(errorMessage);
         });
     });
@@ -449,17 +449,17 @@
 
     const messages = {
       required: isRTL
-        ? "Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø¥Ø¯Ø®Ø§Ù„ Ø¨Ø±ÙŠØ¯ Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ØµØ­ÙŠØ­"
+        ? "الرجاء إدخال بريد إلكتروني صحيح"
         : "Please enter a valid email",
       invalid: isRTL
-        ? "ØµÙŠØºØ© Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ØºÙŠØ± ØµØ­ÙŠØ­Ø©"
+        ? "صيغة البريد الإلكتروني غير صحيحة"
         : "Invalid email format",
-      sending: isRTL ? "Ø¬Ø§Ø±ÙŠ Ø§Ù„Ø¥Ø±Ø³Ø§Ù„..." : "Sending...",
+      sending: isRTL ? "جاري الإرسال..." : "Sending...",
       success: isRTL
-        ? "ØªÙ… Ø§Ù„Ø§Ø´ØªØ±Ø§Ùƒ Ø¨Ù†Ø¬Ø§Ø­! Ø´ÙƒØ±Ø§Ù‹ Ù„Ùƒ"
+        ? "تم الاشتراك بنجاح! شكراً لك"
         : "Subscription successful! Thank you",
       error: isRTL
-        ? "Ø­Ø¯Ø« Ø®Ø·Ø£ Ù…Ø§. Ø­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰"
+        ? "حدث خطأ ما. حاول مرة أخرى"
         : "Something went wrong. Please try again",
     };
 
