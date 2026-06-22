@@ -132,6 +132,11 @@
     </main>
     {% component 'footer.footer' %}
 </div>
+
+{# include custom components #}
+{% include 'components.custom.scroll_to_top' %}
+
+
 {% hook 'body:end' %}
 {% if theme.settings.get('enable_add_product_toast', true) %}
     <salla-add-product-toast></salla-add-product-toast>

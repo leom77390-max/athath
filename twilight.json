@@ -339,6 +339,17 @@
             ]
         },
         {
+            "id": "scrolltotopbtn",
+            "label": "تفعيل سهم التمرير إلى أعلى",
+            "description": "فعل الخيار لإضافة زر تفاعلي يساعد الزائر على العودة إلى أعلى.",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
             "id": "header_is_sticky",
             "label": "تثبت القائمة الرئيسية أعلى الصفحة عند التمرير لأسفل",
             "description": "يُنصح بالغاء تفعيلها في حالة وجود عناصر كثيرة في القائمة المنسدلة",

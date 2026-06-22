@@ -1,0 +1,262 @@
+{% if theme.settings.get('scrolltotopbtn') %}
+<button
+    id="scrollToTopBtn"
+    {# class="{{ theme.settings.get('enable_bottom_nav') ? '!bottom-[90px] md:!bottom-[65px]' : '' }}" #}
+    aria-label="Scroll to top"
+>
+    <div class="scroll-btn-inner">
+        <i class="sicon-caret-up-double plane-icon"></i>
+    </div>
+
+    <div class="scroll-btn-particles"></div>
+
+    <div class="scroll-btn-circle">
+        <svg width="100%" height="100%" viewBox="0 0 60 60">
+            <circle
+                class="scroll-progress"
+                cx="30"
+                cy="30"
+                r="26"
+            />
+        </svg>
+    </div>
+</button>
+{% endif %}
+
+
+
+<style>
+  :root {
+    --scroll-btn-size: 60px;
+}
+
+/* Mobile */
+@media (max-width: 425px) {
+    :root {
+        --scroll-btn-size: 40px;
+    }
+}
+
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    width: var(--scroll-btn-size);
+    height: var(--scroll-btn-size);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity .4s ease, transform .3s ease;
+}
+
+#scrollToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Flying animation */
+#scrollToTopBtn.flying .plane-icon {
+    animation: planeFlyUp 1.2s ease-out forwards;
+}
+
+@keyframes planeFlyUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-200px) scale(.4); opacity: 0; }
+}
+
+.scroll-btn-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: color-mix(
+        in srgb,
+        var(--color-primary) 20%,
+        white 80%
+    );
+    border: 2px solid var(--second-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Liquid wave */
+.scroll-btn-inner::before {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: var(--color-primary);
+    opacity: .1;
+    border-radius: 40%;
+    animation: wave-rotate 6s linear infinite;
+}
+
+@keyframes wave-rotate {
+    to { transform: rotate(360deg); }
+}
+
+.plane-icon {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* SVG progress */
+.scroll-btn-circle {
+    position: absolute;
+    inset: 0;
+    transform: rotate(-90deg);
+}
+
+.scroll-btn-circle svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.scroll-progress {
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset .2s linear;
+}
+
+/* Particles */
+.scroll-btn-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.mist-particle {
+    position: absolute;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    filter: blur(1px);
+    opacity: 0;
+}
+
+.sparkle-particle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--second-color);
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+        50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+    );
+}
+
+/* Mobile tweaks */
+@media (max-width: 425px) {
+    .scroll-progress { stroke-width: 3; }
+    .scroll-btn-inner { border-width: 1.5px; }
+    .plane-icon { font-size: 1rem; }
+}
+</style>
+
+<script>
+ const btn = document.getElementById("scrollToTopBtn");
+const progressCircle = document.querySelector(".scroll-progress");
+const particleContainer = document.querySelector(".scroll-btn-particles");
+
+/* Auto circumference */
+let circumference = progressCircle.getTotalLength();
+progressCircle.style.strokeDasharray = circumference;
+progressCircle.style.strokeDashoffset = circumference;
+
+/* Particles */
+function createMist() {
+    for (let i = 0; i < 12; i++) {
+        const m = document.createElement("div");
+        m.className = "mist-particle";
+        const size = Math.random() * 5 + 2;
+        m.style.width = size + "px";
+        m.style.height = size + "px";
+        m.style.left = "50%";
+        m.style.top = "50%";
+        m.style.transform = "translate(-50%, -50%)";
+
+        m.animate(
+            [
+                { opacity: .6, transform: "translate(-50%, -50%) scale(1)" },
+                {
+                    opacity: 0,
+                    transform: `translate(${(Math.random() - .5) * 150}px, ${(Math.random() - .5) * 150}px) scale(3)`
+                }
+            ],
+            { duration: 700, easing: "ease-out" }
+        );
+
+        particleContainer.appendChild(m);
+        setTimeout(() => m.remove(), 800);
+    }
+}
+
+function createSparkles() {
+    for (let i = 0; i < 8; i++) {
+        const s = document.createElement("div");
+        s.className = "sparkle-particle";
+        s.style.left = "50%";
+        s.style.top = "50%";
+        s.style.transform = "translate(-50%, -50%)";
+
+        s.animate(
+            [
+                { opacity: 1, transform: "translate(-50%, -50%) scale(0)" },
+                {
+                    opacity: 0,
+                    transform: `translate(${(Math.random() - .5) * 200}px, ${(Math.random() - .5) * 200}px) rotate(180deg) scale(1.5)`
+                }
+            ],
+            { duration: 900, easing: "ease-out" }
+        );
+
+        particleContainer.appendChild(s);
+        setTimeout(() => s.remove(), 1000);
+    }
+}
+
+/* Click */
+btn.addEventListener("click", () => {
+    btn.classList.add("flying");
+    createMist();
+    createSparkles();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => btn.classList.remove("flying"), 1200);
+});
+
+/* Scroll progress */
+function updateProgress() {
+    const scrollTop = window.scrollY;
+    const height =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress = Math.min(1, scrollTop / height);
+
+    progressCircle.style.strokeDashoffset =
+        circumference - progress * circumference;
+
+    btn.classList.toggle("show", scrollTop > 300);
+}
+
+window.addEventListener("scroll", updateProgress);
+window.addEventListener("resize", () => {
+    circumference = progressCircle.getTotalLength();
+    progressCircle.style.strokeDasharray = circumference;
+    updateProgress();
+});
+
+</script>
