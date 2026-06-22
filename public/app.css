@@ -1206,6 +1206,9 @@ input:where([type='file']):focus{
 .mt-auto{
     margin-top: auto;
 }
+.\!mb-0{
+    margin-bottom: 0px !important;
+}
 .line-clamp-1{
     overflow: hidden;
     display: -webkit-box;

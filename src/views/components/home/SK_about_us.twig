@@ -1,24 +1,25 @@
 {# ================================================
-   SK Cards Section — matches design in screenshot
-   Header: big title (center) + underlined CTA link
-   Body:   responsive grid of image-bg cards
-           each card: image top + title + pill button
+   SK Cards Section — matches design in screenshots
+   Desktop: 3-column grid of tall image cards
+   Mobile:  horizontal slider, 1.2 cards visible
+   Card:    full-height bg image + title + pill CTA
    ================================================ #}
 
 {% set bg_style = component.background_is_image and component.background_image
     ? 'background-image:url(' ~ component.background_image ~ ');background-size:cover;background-position:center;'
     : 'background-color:' ~ component.background_color|default('#ffffff') ~ ';' %}
 
-<section class="SK-cards-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }}"
-         style="{{ bg_style }}">
+<section
+    class="SK-cards-section SK-cards-section-{{position}} {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? '!mb-0' : '' }}"
+    style="{{ bg_style }}">
 
     {# ── Section Header ── #}
     {% if component.main_title or component.cta_text %}
-    <div class="SK-cards-section__header text-center mb-12">
+    <div class="SK-cards-section__header">
 
         {% if component.main_title %}
         <h2 class="SK-cards-section__title"
-            style="color: {{ component.customize_colors ? component.main_title_color|default('#18181b') : '#18181b' }};">
+            style="color:{{ component.customize_colors ? component.main_title_color|default('#18181b') : '#18181b' }};">
             {{ component.main_title }}
         </h2>
         {% endif %}
@@ -26,7 +27,7 @@
         {% if component.cta_text %}
         <a href="{{ component.cta_url|default('#') }}"
            class="SK-cards-section__cta-link"
-           style="color: {{ component.customize_colors ? component.cta_color|default('#18181b') : '#18181b' }};">
+           style="color:{{ component.customize_colors ? component.cta_color|default('#18181b') : '#18181b' }};">
             {{ component.cta_text }}
         </a>
         {% endif %}
@@ -34,156 +35,246 @@
     </div>
     {% endif %}
 
+    {# ── Cards ── #}
     {% if component.enable_slider|default(true) %}
-        {# ── Cards Slider ── #}
+
+        {# Slider mode #}
         {% set ds = component.desktop_slides_per_view|default(4) %}
         {% set ls = component.laptop_slides_per_view|default(3) %}
-        {% set ms = component.mobile_slides_per_view|default(1.1) %}
+        {% set ms = component.mobile_slides_per_view|default(1) %}
+        {% set mob_peek = ms ~ '.15' %}
         {% set controls = component.enable_controls|default(true) ? 'outer' : 'none' %}
-        {% set loop = component.enable_loop|default(false) ? 'true' : 'false' %}
+        {% set loop_val = component.enable_loop|default(false) ? 'true' : 'false' %}
 
         <salla-slider
             type="carousel"
             controls="{{ controls }}"
             pagination="none"
-            id="cards-slider-{{ component.id }}"
+            id="sk-cards-{{ component.id }}"
             slider-config='{
-                {% if component.enable_autoplay %}"autoplay": {"delay": 3000, "disableOnInteraction": false},{% endif %}
-                "loop": {{ loop }},
-                "slidesPerView": {{ ms }},
+                {% if component.enable_autoplay %}"autoplay":{"delay":3000,"disableOnInteraction":false},{% endif %}
+                "loop": {{ loop_val }},
+                "slidesPerView": {{ mob_peek }},
                 "spaceBetween": 16,
                 "breakpoints": {
-                    "640": { "slidesPerView": 2.2, "spaceBetween": 20 },
-                    "1024": { "slidesPerView": {{ ls }}, "spaceBetween": 24 },
-                    "1280": { "slidesPerView": {{ ds }}, "spaceBetween": 24 }
+                    "640":  {"slidesPerView": 2.1,  "spaceBetween": 20},
+                    "1024": {"slidesPerView": {{ ls }}, "spaceBetween": 24},
+                    "1280": {"slidesPerView": {{ ds }}, "spaceBetween": 24}
                 }
             }'
             class="SK-cards-section__slider">
             <div slot="items">
-            {% for card in component.card %}
-            <div class="swiper-slide h-auto">
-                <div class="SK-card relative w-full h-[450px] md:h-[550px] flex flex-col justify-end overflow-hidden group"
-                     style="border-radius: {{ card.corner_rounded|default(16) }}px;">
-                     
-                    {# Background Layer #}
-                    <div class="absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
-                         style="
-                         {% if card.background_is_image and card.bg_image %}
-                             background-image: url('{{ card.bg_image }}'); background-size: cover; background-position: center;
-                         {% else %}
-                             background-color: {{ card.bg_color|default('#f5f0eb') }};
-                         {% endif %}
-                         "></div>
-
-                    {# Card body — positioned at bottom #}
-                    <div class="relative z-10 w-full p-6 md:p-8 flex flex-col items-center text-center">
-
-                        {% if card.title %}
-                        <h3 class="text-xl md:text-2xl font-semibold mb-6 line-clamp-2"
-                            style="color: {{ card.title_color|default('#18181b') }};">
-                            {{ card.title }}
-                        </h3>
-                        {% endif %}
-
-                        {% if card.button_text %}
-                        <a href="{{ card.btn_url|default('#') }}"
-                           class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95"
-                           style="background-color: {{ card.button_bg_color|default('#18181b') }};
-                                  color: {{ card.button_text_color|default('#ffffff') }};">
-                            {{ card.button_text }}
-                        </a>
-                        {% endif %}
-
-                    </div>
+                {% for card in component.card %}
+                <div class="swiper-slide h-auto">
+                    {{ _self.render_card(card) }}
                 </div>
-            </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </salla-slider>
+
     {% else %}
-        {# ── Cards Grid ── #}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+        {# Grid mode #}
+        <div class="SK-cards-section__grid">
             {% for card in component.card %}
-            <div class="h-auto">
-                <div class="SK-card relative w-full h-[450px] md:h-[550px] flex flex-col justify-end overflow-hidden group"
-                     style="border-radius: {{ card.corner_rounded|default(16) }}px;">
-                     
-                    {# Background Layer #}
-                    <div class="absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105"
-                         style="
-                         {% if card.background_is_image and card.bg_image %}
-                             background-image: url('{{ card.bg_image }}'); background-size: cover; background-position: center;
-                         {% else %}
-                             background-color: {{ card.bg_color|default('#f5f0eb') }};
-                         {% endif %}
-                         "></div>
-
-                    {# Card body — positioned at bottom #}
-                    <div class="relative z-10 w-full p-6 md:p-8 flex flex-col items-center text-center">
-
-                        {% if card.title %}
-                        <h3 class="text-xl md:text-2xl font-semibold mb-6 line-clamp-2"
-                            style="color: {{ card.title_color|default('#18181b') }};">
-                            {{ card.title }}
-                        </h3>
-                        {% endif %}
-
-                        {% if card.button_text %}
-                        <a href="{{ card.btn_url|default('#') }}"
-                           class="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-lg active:scale-95"
-                           style="background-color: {{ card.button_bg_color|default('#18181b') }};
-                                  color: {{ card.button_text_color|default('#ffffff') }};">
-                            {{ card.button_text }}
-                        </a>
-                        {% endif %}
-
-                    </div>
-                </div>
-            </div>
+                {{ _self.render_card(card) }}
             {% endfor %}
         </div>
+
     {% endif %}
 
 </section>
 
+{# ── Card macro ── #}
+{% macro render_card(card) %}
+<div class="SK-card"
+     style="border-radius:{{ card.corner_rounded|default(16) }}px; overflow:hidden;">
+
+    {# Full-bleed background #}
+    <div class="SK-card__bg"
+         style="
+         {% if card.background_is_image and card.bg_image %}
+             background-image:url('{{ card.bg_image }}');
+             background-size:cover;
+             background-position:center top;
+         {% else %}
+             background-color:{{ card.bg_color|default('#f5f0eb') }};
+         {% endif %}
+         "></div>
+
+    {# Bottom gradient overlay so text is always readable #}
+    <div class="SK-card__overlay"></div>
+
+    {# Card content — sits above the overlay #}
+    <div class="SK-card__body">
+
+        {% if card.title %}
+        <h3 class="SK-card__title"
+            style="color:{{ card.title_color|default('#18181b') }};">
+            {{ card.title }}
+        </h3>
+        {% endif %}
+
+        {% if card.button_text %}
+        <a href="{{ card.btn_url|default('#') }}"
+           class="SK-card__btn"
+           style="background-color:{{ card.button_bg_color|default('#18181b') }};
+                  color:{{ card.button_text_color|default('#ffffff') }};">
+            {{ card.button_text }}
+        </a>
+        {% endif %}
+
+    </div>
+</div>
+{% endmacro %}
+
 <style>
-/* ── Section ── */
+/* ═══════════════════════════════════════════
+   SK Cards Section
+═══════════════════════════════════════════ */
+
 .SK-cards-section {
     padding: 4rem 1.5rem;
 }
 
 /* ── Header ── */
 .SK-cards-section__header {
-    max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 680px;
+    margin: 0 auto 3rem;
+    text-align: center;
 }
 
 .SK-cards-section__title {
     font-size: clamp(1.75rem, 3.5vw, 2.75rem);
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 1.5rem;
     letter-spacing: -0.01em;
+    margin-bottom: 1.25rem;
 }
 
 .SK-cards-section__cta-link {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 500;
     text-decoration: none;
     padding-bottom: 3px;
     border-bottom: 1.5px solid currentColor;
     transition: opacity 0.2s;
 }
-.SK-cards-section__cta-link:hover {
-    opacity: 0.7;
+.SK-cards-section__cta-link:hover { opacity: 0.65; }
+
+/* ── Grid (when slider disabled) ── */
+.SK-cards-section__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.25rem;
+}
+@media (min-width: 640px) {
+    .SK-cards-section__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+    .SK-cards-section__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1280px) {
+    .SK-cards-section__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* ── Responsive ── */
-@media (max-width: 640px) {
+/* ── Card ── */
+.SK-card {
+    position: relative;
+    width: 100%;
+    /* Tall portrait ratio matching the screenshot */
+    aspect-ratio: 9 / 14;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+/* Background layer */
+.SK-card__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s ease;
+}
+.SK-card:hover .SK-card__bg {
+    transform: scale(1.04);
+}
+
+/* Gradient overlay — fades image into a readable bottom zone */
+.SK-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(255,255,255,0.55) 70%,
+        rgba(255,255,255,0.92) 100%
+    );
+    pointer-events: none;
+}
+
+/* Content block */
+.SK-card__body {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 1.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.SK-card__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.SK-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 2rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.25s, box-shadow 0.25s;
+    white-space: nowrap;
+}
+.SK-card__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+.SK-card__btn:active { transform: scale(0.97); }
+
+/* ── Slider overrides ── */
+.SK-cards-section__slider {
+    --salla-slider-padding: 0;
+    overflow: visible; /* let peek card show */
+}
+.SK-cards-section__slider .swiper {
+    overflow: visible;
+}
+.SK-cards-section__slider .swiper-slide {
+    height: auto;
+}
+
+/* ── Mobile ── */
+@media (max-width: 639px) {
     .SK-cards-section {
         padding: 2.5rem 1rem;
     }
+    .SK-card__title { font-size: 1.05rem; }
+    .SK-card__btn   { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
 }
 </style>
