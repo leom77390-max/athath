@@ -10,6 +10,12 @@
       "wishlist": "المفضلة",
       "go_to_cart": "اذهب إلى السلة"
     },
+    "popup": {  
+      "email_address": "ادخل البريد الإلكتروني",
+      "click_to_copy": "انقر على الكود لنسخه",
+      "try_again": "حاول مرة أخرى",
+      "code": "الكود"
+    },
     "appBanner": {
       "download_now": "حمله الان"
     },
@@ -24,7 +30,6 @@
     "loading": "جاري التحميل",
     "try_different_keywords": "جرّب كلمات بحث مختلفة"
   }
-
   },
    "footer": {
     "account": "حسابي",
