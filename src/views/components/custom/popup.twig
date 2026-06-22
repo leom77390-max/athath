@@ -5,7 +5,7 @@
     style="background-color: {{ theme.settings.get('popup_bg') }};">
 
     <button id="popup-close">
-      <i class="sicon-cancel text-primary"></i>
+      <i class="sicon-cancel"></i>
     </button>
 
     <div class="popup-layout">
@@ -21,77 +21,90 @@
 
       <div class="popup-content">
 
-        <h2
-          style="color: {{ theme.settings.get('promotional_header_color') }};">
-          {{ theme.settings.get("promotional_header") }}
-        </h2>
+        {# Store Logo #}
+        <div class="popup-logo">
+          <img src="{{ store.logo }}" alt="{{ store.name }} logo">
+        </div>
 
-        <p
-          style="color: {{ theme.settings.get("main_header_color") }};">
+        {# Promotional badge #}
+        <div class="popup-badge">
+          <span style="color: {{ theme.settings.get('promotional_header_color') }};">
+            {{ theme.settings.get("promotional_header") }}
+          </span>
+        </div>
+
+        {# Main header #}
+        <p class="popup-main-header"
+          style="color: {{ theme.settings.get('main_header_color') }};">
           {{ theme.settings.get("main_header") }}
         </p>
 
         {% if theme.settings.get('code_switch') %}
 
-        <div class="coupon-code-container">
-          <div
-            id="coupon-code"
-            data-code="{{ theme.settings.get('code_text') }}"
-            title="{{ trans('blocks.popup.click_to_copy') }}"
-            style="
-              color: {{ theme.settings.get('code_text_color') }};
-              background-color: {{ theme.settings.get('code_text_bg') }};
-              border-color: {{ theme.settings.get('code_text_color') }};
-            ">
-            {{ theme.settings.get("code_text") }}
-
-            <i class="sicon-copy"></i>
+          {# Coupon only mode #}
+          <div class="popup-divider">
+            <span>{{ trans('blocks.popup.click_to_copy') }}</span>
           </div>
 
-          <p>{{ trans('blocks.popup.click_to_copy') }}</p>
-        </div>
+          <div class="coupon-code-container">
+            <div
+              id="coupon-code"
+              data-code="{{ theme.settings.get('code_text') }}"
+              title="{{ trans('blocks.popup.click_to_copy') }}"
+              style="
+                color: {{ theme.settings.get('code_text_color') }};
+                background-color: {{ theme.settings.get('code_text_bg') }};
+                border-color: var(--color-secondary);
+              ">
+              <i class="sicon-copy"></i>
+              {{ theme.settings.get("code_text") }}
+            </div>
+            <p class="coupon-hint">{{ trans('blocks.popup.click_to_copy') }}</p>
+          </div>
 
         {% else %}
 
-        <form
-          id="newsletter-form-popup"
-          action="{{ theme.settings.get('newsletter_url') }}"
-          method="POST">
+          {# Newsletter form #}
+          <form
+            id="newsletter-form-popup"
+            action="{{ theme.settings.get('newsletter_url') }}"
+            method="POST">
 
-          <div class="newsletter-form">
+            <div class="newsletter-form">
+              <span class="email-icon"><i class="sicon-envelope"></i></span>
+              <input
+                placeholder="{{ trans('blocks.popup.email_address') }}"
+                id="newsletter-email-popup"
+                name="email"
+                required
+                style="
+                  color: {{ theme.settings.get('input_text_color') }};
+                  border-color: {{ theme.settings.get('input_text_bg') }};
+                ">
+              <label
+                for="newsletter-email-popup"
+                style="
+                  background-color: {{ theme.settings.get('popup_bg') }};
+                  color: {{ theme.settings.get('switch_color') ? theme.settings.get('placeholder_text_color') : '#7a7676' }};
+                ">
+                {{ trans('blocks.popup.email_address') }}
+              </label>
+            </div>
 
-            <input
-              placeholder="{{ trans('blocks.popup.email_address') }}"
-              id="newsletter-email-popup"
-              name="email"
-              required
-              style="
-                color: {{ theme.settings.get('input_text_color') }};
-                border-color: {{ theme.settings.get('input_text_bg') }};
-              ">
+            <button
+              type="submit"
+              id="newsletter-submit-popup"
+              class="popup-submit-btn">
+              <span>{{ theme.settings.get("btn_text") }}</span>
+              <i class="sicon-arrow-right"></i>
+            </button>
 
-            <label
-              for="newsletter-email-popup"
-              style="
-                background-color: {{ theme.settings.get('popup_bg') }};
-                color: {{ theme.settings.get('switch_color') ? theme.settings.get('placeholder_text_color') : '#7a7676' }};
-              ">
-              {{ trans('blocks.popup.email_address') }}
-            </label>
+          </form>
 
-          </div>
-
-          <button
-            type="submit"
-            id="newsletter-submit-popup"
-            style="
-              --btn-clr: {{ theme.settings.get('btn_text_color') }};
-              --btn-bg: {{ theme.settings.get('btn_text_bg') }};
-            ">
-            <span>{{ theme.settings.get("btn_text") }}</span>
-          </button>
-
-        </form>
+          <p class="popup-privacy">
+            <i class="sicon-lock"></i>
+            Ù†Ø­Ù† Ù†Ø­ØªØ±Ù… Ø®ØµÙˆØµÙŠØªÙƒ ÙˆÙ„Ù† Ù†Ø´Ø§Ø±Ùƒ Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø¹ Ø£ÙŠ Ø·Ø±Ù Ø«Ø§Ù„Ø«
+          </p>
 
         {% endif %}
 
@@ -101,6 +114,7 @@
 </section>
 
 <style>
+  /* â”€â”€ Overlay â”€â”€ */
   .full-screen-popup {
     position: fixed !important;
     inset: 0 !important;
@@ -110,10 +124,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.55);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
   }
 
   .full-screen-popup.show {
@@ -121,32 +135,33 @@
     visibility: visible;
   }
 
+  /* â”€â”€ Card â”€â”€ */
   .pop-up {
     position: relative;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
-    max-width: 860px;
-    width: 90%;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-    transform: translateY(30px);
-    transition: transform 0.3s ease;
+    max-width: 900px;
+    width: 92%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
+    transform: translateY(28px);
+    transition: transform 0.35s ease;
   }
 
   .full-screen-popup.show .pop-up {
     transform: translateY(0);
   }
 
-  /* Layout: image on LEFT, content on RIGHT */
+  /* â”€â”€ Layout: image LEFT Â· content RIGHT â”€â”€ */
   .popup-layout {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    min-height: 400px;
+    min-height: 480px;
   }
 
   .popup-image {
-    flex: 0 0 45%;
-    max-width: 45%;
+    flex: 0 0 46%;
+    max-width: 46%;
     overflow: hidden;
   }
 
@@ -157,21 +172,196 @@
     display: block;
   }
 
+  /* â”€â”€ Content side â”€â”€ */
   .popup-content {
     flex: 1;
-    padding: 40px 36px;
+    padding: 44px 40px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
+    text-align: center;
   }
 
+  /* â”€â”€ Logo â”€â”€ */
+  .popup-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2px;
+  }
+
+  .popup-logo img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* â”€â”€ Badge â”€â”€ */
+  .popup-badge {
+    display: inline-block;
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    padding: 5px 18px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* â”€â”€ Main header â”€â”€ */
+  .popup-main-header {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+    max-width: 320px;
+  }
+
+  /* â”€â”€ Divider â”€â”€ */
+  .popup-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    color: #aaa;
+    font-size: 13px;
+  }
+
+  .popup-divider::before,
+  .popup-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
+  }
+
+  /* â”€â”€ Newsletter form â”€â”€ */
+  #newsletter-form-popup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newsletter-form {
+    position: relative;
+    width: 100%;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    padding: 14px 44px 14px 16px;
+    border: 1.5px solid;
+    border-radius: 10px;
+    font-size: 14px;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .newsletter-form input:focus {
+    border-color: var(--color-secondary) !important;
+  }
+
+  .email-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .newsletter-form label {
+    display: none;
+  }
+
+  /* â”€â”€ Submit button â”€â”€ */
+  .popup-submit-btn {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-secondary);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+
+  .popup-submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .popup-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* â”€â”€ Privacy note â”€â”€ */
+  .popup-privacy {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  /* â”€â”€ Coupon â”€â”€ */
+  .coupon-code-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #coupon-code {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px dashed;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.15s, opacity 0.15s;
+    box-sizing: border-box;
+  }
+
+  #coupon-code:hover {
+    opacity: 0.85;
+  }
+
+  .coupon-hint {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+  }
+
+  /* â”€â”€ Close button â”€â”€ */
   #popup-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    left: 14px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.9);
     border: none;
     border-radius: 50%;
     width: 36px;
@@ -180,24 +370,27 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    font-size: 14px;
+    color: #555;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   }
 
   #popup-close:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: scale(1.1);
+    background: #fff;
+    transform: scale(1.08);
   }
 
-  /* Responsive */
+  /* â”€â”€ Responsive â”€â”€ */
   @media (max-width: 640px) {
     .popup-layout {
       flex-direction: column;
     }
 
     .popup-image {
-      flex: 0 0 220px;
+      flex: 0 0 200px;
       max-width: 100%;
-      height: 220px;
+      height: 200px;
     }
 
     .popup-content {
@@ -218,14 +411,14 @@
       setTimeout(() => {
         popup.classList.add("show");
         sessionStorage.setItem("popupShown", "true");
-      }, 5000); 
+      }, 5000);
     }
 
     closeBtn.addEventListener("click", function () {
       popup.classList.remove("show");
       setTimeout(() => {
         popup.style.display = "none";
-      }, 300);
+      }, 350);
     });
 
     popup.addEventListener("click", function (e) {
@@ -233,7 +426,7 @@
         popup.classList.remove("show");
         setTimeout(() => {
           popup.style.display = "none";
-        }, 300);
+        }, 350);
       }
     });
   }
@@ -324,7 +517,7 @@
             popup.classList.remove("show");
             setTimeout(() => {
               popup.style.display = "none";
-            }, 300);
+            }, 350);
           }
         })
         .catch(() => {

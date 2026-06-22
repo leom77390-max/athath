@@ -736,7 +736,7 @@
             "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات النافذه</h6></div>",
             "variant": "h6"
         },
-                {
+        {
             "id": "show_popup",
             "type": "boolean",
             "format": "switch",
@@ -800,7 +800,7 @@
             "labelHTML": null,
             "placeholder": "e.g. https://hostname.com/image.png",
             "icon": "sicon-image",
-            "value": "https://cdn.files.salla.network/homepage/686931608/7d077904-3735-468e-b2bb-4356d76b805b_750x750.webp",
+            "value": "https://cdn.files.salla.network/homepage/686931608/9f47ea4f-157e-42c5-a4c7-f85b156f5f5e_600x900.webp",
             "required": false,
             "conditions": [
                 {
