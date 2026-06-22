@@ -39,7 +39,7 @@
     {% if component.enable_slider|default(true) %}
 
         {# Slider mode #}
-        {% set ds = component.desktop_slides_per_view|default(4) %}
+        {% set ds = component.desktop_slides_per_view|default(3) %}
         {% set ls = component.laptop_slides_per_view|default(3) %}
         {% set ms = component.mobile_slides_per_view|default(1) %}
         {% set mob_peek = ms ~ '.15' %}
