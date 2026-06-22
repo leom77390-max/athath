@@ -800,7 +800,7 @@
             "labelHTML": null,
             "placeholder": "e.g. https://hostname.com/image.png",
             "icon": "sicon-image",
-            "value": "https://cdn.files.salla.network/homepage/481463064/97b34c4e-2a27-4b78-a856-ce3aac5cf5a6.webp",
+            "value": "https://cdn.files.salla.network/homepage/686931608/7d077904-3735-468e-b2bb-4356d76b805b_750x750.webp",
             "required": false,
             "conditions": [
                 {
@@ -819,7 +819,7 @@
             "labelHTML": null,
             "placeholder": "Placeholder text ..",
             "icon": "sicon-format-text-alt",
-            "value": "خصم 10% لأول طلب لك",
+            "value": "احصل على خصم ١٠٪ ابقَ على اطلاع",
             "multilanguage": false,
             "required": false,
             "minLength": "2",
