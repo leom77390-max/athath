@@ -101,17 +101,19 @@
 </section>
 
 <style>
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
+  .full-screen-popup {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .full-screen-popup.show {
@@ -119,10 +121,89 @@
     visibility: visible;
   }
 
+  .pop-up {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 860px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    transform: translateY(30px);
+    transition: transform 0.3s ease;
+  }
+
   .full-screen-popup.show .pop-up {
     transform: translateY(0);
   }
 
+  /* Layout: image on LEFT, content on RIGHT */
+  .popup-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 400px;
+  }
+
+  .popup-image {
+    flex: 0 0 45%;
+    max-width: 45%;
+    overflow: hidden;
+  }
+
+  .popup-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .popup-content {
+    flex: 1;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #popup-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  #popup-close:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .popup-layout {
+      flex-direction: column;
+    }
+
+    .popup-image {
+      flex: 0 0 220px;
+      max-width: 100%;
+      height: 220px;
+    }
+
+    .popup-content {
+      padding: 28px 24px;
+    }
+  }
 </style>
 
 <script>
@@ -168,7 +249,7 @@
         .writeText(code)
         .then(() => {
           const successMessage = isRTL
-            ? "تم نسخ الكود بنجاح!"
+            ? "ØªÙ… Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯ Ø¨Ù†Ø¬Ø§Ø­!"
             : "Code copied successfully!";
           salla.notify.success(successMessage);
 
@@ -178,7 +259,7 @@
           }, 100);
         })
         .catch(() => {
-          const errorMessage = isRTL ? "فشل نسخ الكود" : "Failed to copy code";
+          const errorMessage = isRTL ? "ÙØ´Ù„ Ù†Ø³Ø® Ø§Ù„ÙƒÙˆØ¯" : "Failed to copy code";
           salla.notify.error(errorMessage);
         });
     });
@@ -194,17 +275,17 @@
 
     const messages = {
       required: isRTL
-        ? "الرجاء إدخال بريد إلكتروني صحيح"
+        ? "Ø§Ù„Ø±Ø¬Ø§Ø¡ Ø¥Ø¯Ø®Ø§Ù„ Ø¨Ø±ÙŠØ¯ Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ØµØ­ÙŠØ­"
         : "Please enter a valid email",
       invalid: isRTL
-        ? "صيغة البريد الإلكتروني غير صحيحة"
+        ? "ØµÙŠØºØ© Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ ØºÙŠØ± ØµØ­ÙŠØ­Ø©"
         : "Invalid email format",
-      sending: isRTL ? "جاري الإرسال..." : "Sending...",
+      sending: isRTL ? "Ø¬Ø§Ø±ÙŠ Ø§Ù„Ø¥Ø±Ø³Ø§Ù„..." : "Sending...",
       success: isRTL
-        ? "تم الاشتراك بنجاح! شكراً لك"
+        ? "ØªÙ… Ø§Ù„Ø§Ø´ØªØ±Ø§Ùƒ Ø¨Ù†Ø¬Ø§Ø­! Ø´ÙƒØ±Ø§Ù‹ Ù„Ùƒ"
         : "Subscription successful! Thank you",
       error: isRTL
-        ? "حدث خطأ ما. حاول مرة أخرى"
+        ? "Ø­Ø¯Ø« Ø®Ø·Ø£ Ù…Ø§. Ø­Ø§ÙˆÙ„ Ù…Ø±Ø© Ø£Ø®Ø±Ù‰"
         : "Something went wrong. Please try again",
     };
 
@@ -256,167 +337,3 @@
   });
 </script>
 {% endif %}
-
-<style>
-.full-screen-popup {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all .3s ease;
-}
-
-.full-screen-popup.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.pop-up {
-  position: relative;
-  width: min(900px, calc(100vw - 32px));
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.15);
-  transform: translateY(100%);
-  transition: transform .5s ease;
-}
-
-.full-screen-popup.show .pop-up {
-  transform: translateY(0);
-}
-
-.popup-layout {
-  display: flex;
-  align-items: center;
-}
-
-.popup-image {
-  width: 40%;
-  flex-shrink: 0;
-}
-
-.popup-image img {
-  width: 100%;
-  display: block;
-  height: 100%;
-  object-fit: cover;
-}
-
-.popup-content {
-  width: 60%;
-  padding: 40px;
-  text-align: right;
-}
-
-.popup-content h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.popup-content p {
-  font-size: 15px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-#popup-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 36px;
-  height: 36px;
-  border: 2px solid var(--color-primary);
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  z-index: 5;
-}
-
-.newsletter-form {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.newsletter-form input {
-  width: 100%;
-  padding: 16px 20px;
-  border: 1px solid;
-  border-radius: 12px;
-  background: transparent;
-  outline: none;
-}
-
-.newsletter-form label {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 0 8px;
-  transition: .3s;
-}
-
-.newsletter-form input:focus + label,
-.newsletter-form input:not(:placeholder-shown) + label {
-  top: 0;
-}
-
-#newsletter-submit-popup {
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  padding: 16px;
-  cursor: pointer;
-  background: var(--btn-bg);
-  color: var(--btn-clr);
-  font-weight: 700;
-}
-
-#coupon-code {
-  position: relative;
-  padding: 14px;
-  border: 2px dashed;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-#coupon-code .sicon-copy {
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.coupon-code-container p {
-  margin-top: 10px;
-  font-size: 12px;
-  opacity: .7;
-}
-
-@media (max-width: 768px) {
-  .popup-layout {
-    flex-direction: column;
-  }
-
-  .popup-image,
-  .popup-content {
-    width: 100%;
-  }
-
-  .popup-content {
-    padding: 24px;
-    text-align: center;
-  }
-}
-
-</style>
