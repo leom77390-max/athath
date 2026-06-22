@@ -11,7 +11,7 @@
 
 {% set mode = component.layout_mode|default('accordion_image') %}
 
-<section class="SK-faq-section {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
+<section class="SK-faq-section SK-faq-section-{{position}} {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
          style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;
                 {% if component.background_is_image and component.background_image %}
                     background-image: url('{{ component.background_image }}'); background-size: cover; background-position: center;
