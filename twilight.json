@@ -6126,7 +6126,14 @@
                             "inputType": "color",
                             "label": "لون عنوان البطاقة",
                             "icon": "sicon-format-fill",
-                            "value": "#18181b"
+                            "value": "#18181b",
+                            "conditions":[
+                                {
+                                    "id":"customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "id": "card.button_text",
@@ -6148,7 +6155,14 @@
                             "inputType": "color",
                             "label": "لون خلفية زر البطاقة",
                             "icon": "sicon-format-fill",
-                            "value": "#18181b"
+                            "value": "#18181b",
+                            "conditions":[
+                                {
+                                    "id":"customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "id": "card.button_text_color",
@@ -6157,7 +6171,14 @@
                             "inputType": "color",
                             "label": "لون نص زر البطاقة",
                             "icon": "sicon-format-fill",
-                            "value": "#ffffff"
+                            "value": "#ffffff",
+                            "conditions":[
+                                {
+                                    "id":"customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
                         },
                         {
                             "type": "items",
