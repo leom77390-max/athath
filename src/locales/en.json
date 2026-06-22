@@ -10,6 +10,12 @@
       "wishlist": "Wishlist",
       "go_to_cart": "Go to Cart"
     },
+    "popup": {
+      "email_address": "Enter Your Email Address",
+      "click_to_copy": "Click to copy",
+      "try_again": "Try Again",
+      "code": "Code"
+    },
     "appBanner": {
       "download_now": "download now"
     },
