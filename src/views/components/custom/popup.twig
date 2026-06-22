@@ -21,19 +21,16 @@
 
       <div class="popup-content">
 
-        {# Store Logo #}
         <div class="popup-logo">
           <img src="{{ store.logo }}" alt="{{ store.name }} logo">
         </div>
 
-        {# Promotional badge #}
         <div class="popup-badge">
           <span style="color: {{ theme.settings.get('promotional_header_color') }};">
             {{ theme.settings.get("promotional_header") }}
           </span>
         </div>
 
-        {# Main header #}
         <p class="popup-main-header"
           style="color: {{ theme.settings.get('main_header_color') }};">
           {{ theme.settings.get("main_header") }}
@@ -41,7 +38,6 @@
 
         {% if theme.settings.get('code_switch') %}
 
-          {# Coupon only mode #}
           <div class="popup-divider">
             <span>{{ trans('blocks.popup.click_to_copy') }}</span>
           </div>
@@ -64,7 +60,6 @@
 
         {% else %}
 
-          {# Newsletter form #}
           <form
             id="newsletter-form-popup"
             action="{{ theme.settings.get('newsletter_url') }}"
@@ -103,7 +98,7 @@
 
           <p class="popup-privacy">
             <i class="sicon-lock"></i>
-            Ù†Ø­Ù† Ù†Ø­ØªØ±Ù… Ø®ØµÙˆØµÙŠØªÙƒ ÙˆÙ„Ù† Ù†Ø´Ø§Ø±Ùƒ Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø¹ Ø£ÙŠ Ø·Ø±Ù Ø«Ø§Ù„Ø«
+            {{ theme.settings.get("privacy_note") }}
           </p>
 
         {% endif %}
@@ -114,7 +109,6 @@
 </section>
 
 <style>
-  /* â”€â”€ Overlay â”€â”€ */
   .full-screen-popup {
     position: fixed !important;
     inset: 0 !important;
@@ -135,7 +129,6 @@
     visibility: visible;
   }
 
-  /* â”€â”€ Card â”€â”€ */
   .pop-up {
     position: relative;
     border-radius: 20px;
@@ -151,7 +144,6 @@
     transform: translateY(0);
   }
 
-  /* â”€â”€ Layout: image LEFT Â· content RIGHT â”€â”€ */
   .popup-layout {
     display: flex;
     flex-direction: row;
@@ -172,7 +164,6 @@
     display: block;
   }
 
-  /* â”€â”€ Content side â”€â”€ */
   .popup-content {
     flex: 1;
     padding: 44px 40px;
@@ -184,7 +175,6 @@
     text-align: center;
   }
 
-  /* â”€â”€ Logo â”€â”€ */
   .popup-logo {
     display: flex;
     justify-content: center;
@@ -197,7 +187,6 @@
     object-fit: contain;
   }
 
-  /* â”€â”€ Badge â”€â”€ */
   .popup-badge {
     display: inline-block;
     background-color: #f4f4f4;
@@ -207,7 +196,6 @@
     font-weight: 600;
   }
 
-  /* â”€â”€ Main header â”€â”€ */
   .popup-main-header {
     font-size: 15px;
     line-height: 1.7;
@@ -216,7 +204,6 @@
     max-width: 320px;
   }
 
-  /* â”€â”€ Divider â”€â”€ */
   .popup-divider {
     display: flex;
     align-items: center;
@@ -234,7 +221,6 @@
     background: #e0e0e0;
   }
 
-  /* â”€â”€ Newsletter form â”€â”€ */
   #newsletter-form-popup {
     width: 100%;
     display: flex;
@@ -279,7 +265,6 @@
     display: none;
   }
 
-  /* â”€â”€ Submit button â”€â”€ */
   .popup-submit-btn {
     width: 100%;
     padding: 14px 20px;
@@ -308,7 +293,6 @@
     transform: none;
   }
 
-  /* â”€â”€ Privacy note â”€â”€ */
   .popup-privacy {
     font-size: 12px;
     color: #999;
@@ -319,7 +303,6 @@
     gap: 5px;
   }
 
-  /* â”€â”€ Coupon â”€â”€ */
   .coupon-code-container {
     width: 100%;
     display: flex;
@@ -355,7 +338,6 @@
     margin: 0;
   }
 
-  /* â”€â”€ Close button â”€â”€ */
   #popup-close {
     position: absolute;
     top: 14px;
@@ -381,7 +363,6 @@
     transform: scale(1.08);
   }
 
-  /* â”€â”€ Responsive â”€â”€ */
   @media (max-width: 640px) {
     .popup-layout {
       flex-direction: column;

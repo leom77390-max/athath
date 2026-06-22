@@ -857,6 +857,28 @@
             ]
         },
         {
+            "id": "privacy_note",
+            "type": "string",
+            "format": "text",
+            "label": "ملاحظة الخصوصية",
+            "description": "أضِف عبارة تُعرّف الزائر بالسياسة الخاصة بخصوصية البيانات.",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": "نحن نحترم خصوصيتك ولن نشارك بريدك الإلكتروني مع أي طرف آخر.",
+            "multilanguage": false,
+            "required": false,
+            "minLength": "2",
+            "maxLength": "200",
+            "conditions": [
+                {
+                    "id": "show_popup",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "id": "main_header",
             "type": "string",
             "format": "text",
