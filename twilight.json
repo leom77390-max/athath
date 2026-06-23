@@ -741,7 +741,7 @@
             "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة التحميل</h6></div>",
             "variant": "h6"
         },
-                {
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تفعيل صفحة التحميل",
@@ -824,7 +824,7 @@
             "label": "صورة اللودر المخصص",
             "placeholder": "https://hostname.com/image.png",
             "icon": "sicon-image",
-            "value": "https://cdn.files.salla.network/homepage/481463064/1dd5c55b-ff68-477c-8e4f-cf42c63dd642.webp",
+            "value": "https://cdn.files.salla.network/theme/686931608/c87b5b7b-0f46-46d2-ba1e-a2c920f00fdb_80x24.png",
             "conditions": [
                 {
                     "id": "loader_type",
