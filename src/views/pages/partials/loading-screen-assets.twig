@@ -96,65 +96,6 @@
 				to { transform: translate(-50%, -50%) rotate(360deg); }
 			}
 			
-			/* جسيمات العناية (مثل الفقاعات أو القطرات) */
-			.particles {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				z-index: 1;
-			}
-			
-			.particle {
-				position: absolute;
-				border-radius: 50%;
-				background: radial-gradient(circle at 30% 30%, rgba(33, 99, 109, 0.3), rgba(33, 99, 109, 0.1));
-				animation: float 4s ease-in-out infinite;
-			}
-			
-			.particle:nth-child(1) {
-				width: 12px;
-				height: 12px;
-				top: 5%;
-				left: 15%;
-				animation-delay: 0s;
-			}
-			.particle:nth-child(2) {
-				width: 8px;
-				height: 8px;
-				bottom: 10%;
-				right: 10%;
-				animation-delay: 1s;
-			}
-			.particle:nth-child(3) {
-				width: 10px;
-				height: 10px;
-				top: 20%;
-				right: 5%;
-				animation-delay: 2s;
-			}
-			.particle:nth-child(4) {
-				width: 6px;
-				height: 6px;
-				bottom: 25%;
-				left: 5%;
-				animation-delay: 0.5s;
-			}
-			.particle:nth-child(5) {
-				width: 14px;
-				height: 14px;
-				top: 50%;
-				left: -5%;
-				animation-delay: 1.5s;
-			}
-			.particle:nth-child(6) {
-				width: 7px;
-				height: 7px;
-				top: 60%;
-				right: -5%;
-				animation-delay: 2.5s;
-			}
 			
 			@keyframes float {
 				0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
@@ -205,14 +146,6 @@
 					<div class="ring ring-3"></div>
 				</div>
 				
-				<div class="particles">
-					<div class="particle"></div>
-					<div class="particle"></div>
-					<div class="particle"></div>
-					<div class="particle"></div>
-					<div class="particle"></div>
-					<div class="particle"></div>
-				</div>
 				
 				<div class="logo-wrapper">
 					{% if theme.settings.get('change_loder') %}
