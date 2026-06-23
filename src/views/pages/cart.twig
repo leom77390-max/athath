@@ -49,226 +49,666 @@
 
 {% extends "layouts.master" %}
 {% block content %}
-    <div class="container">
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5">
-            <salla-breadcrumb></salla-breadcrumb>
-        </nav>
-        <h1 class="sr-only">{{ trans('blocks.header.cart') }}</h1>
-        <salla-conditional-offer></salla-conditional-offer>
-        <div class="pt-5 flex flex-col items-start lg:flex-row pb-6 lg:pb-20">
-            <div class="main-content w-full lg:w-[calc(100%-384px)]">
-                {% hook 'cart:items.start' %}
+<style>
+    /* ===== Cart Page Styles ===== */
+    .cart-page-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+    }
 
-                {% for item in cart.items %}
-                    <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
-                        <section class="cart-item bg-background p-5 xs:p-7 rounded-md mb-5 relative">
-                            <input type="hidden" name="id" value="{{ item.id }}">
-                                <!-- product -->
-                                <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
-                                    <div class="flex flex-1 rtl:space-x-reverse space-x-4">
-                                        <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
-                                            {% if loop.first %}
-												<img src="{{ item.product_image }}"
-													alt="{{ item.product_name }}"
-                                                    loading="eager"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
-											{% else %}
-												<img src="{{ item.product_image }}"
-													alt="{{ item.product_name }}"
-                                                    loading="lazy"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
-											{% endif %}
+    /* Title */
+    .cart-page-title {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 12px;
+    }
 
-                                            <!-- free product ribbon -->
-                                            <div class="free-ribbon absolute top-[11px] right-[-38px] w-32 bg-red-600 text-white text-xs font-bold text-center py-1 rotate-45 shadow-md {{ (item.price.getMoney().amount == 0 and item.has_discount) ? '' : 'hidden' }}">
-                                                {{ trans('pages.loyalty_program.free_product') }}
-                                            </div>
-                                            <!-- end free product ribbon -->
-                                            
-                                        </a>
-                                        <div class="space-y-1">
-                                            <h1 class="text-gray-900 leading-6 text-lg">
-                                                <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
-                                            </h1>
+    /* Free Shipping Progress Bar (top, centered) */
+    .cart-top-free-shipping {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+    .cart-top-free-shipping p {
+        font-size: 0.85rem;
+        color: #555;
+        margin-bottom: 6px;
+    }
+    .cart-top-free-shipping p strong {
+        color: #111;
+    }
+    .cart-top-shipping-bar-track {
+        max-width: 420px;
+        margin: 0 auto;
+        height: 5px;
+        background: #e5e7eb;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+    .cart-top-shipping-bar-fill {
+        height: 100%;
+        background: #111;
+        border-radius: 999px;
+        transition: width 0.5s;
+    }
 
-                                            <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                            <span class="inline-flex gap-1 leading-4 text-sm text-gray-500 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                            <span class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                            
-                                            <p class="text-sm text-gray-500 item-weight-row {{ item.weight_label ? '' : 'hidden' }}"> {{ trans('pages.products.weight') }}
-                                             <span class="item-weight">{{ item.weight_label }}</span>
-                                            </p>
-                                            <span class="old-offers flex items-center gap-1 mx-1.5  {{ item.detailed_offers ? 'hidden' : '' }}">
-                                                <i class="sicon-discount-calculator text-gray-500 offer-icon {{ item.offer?'':'hidden' }}"></i>
-                                                <span class="text-sm text-gray-500 offer-name {{ item.offer ?  '' : 'hidden' }}">{{ item.offer.names }}</span>
-                                            </span>
-                                            {# Cart Item Offers #}
-                                            <salla-cart-item-offers
-                                                quantity="{{ item.quantity }}"
-                                                item-id="{{ item.id }}"
-                                                product-price="{{ item.product_price }}"
-                                                offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
-                                            {# End Cart Item offers #}
+    /* Table Layout */
+    .cart-table-layout {
+        display: flex;
+        gap: 48px;
+        align-items: flex-start;
+    }
 
-                                        </div>
-                                    </div>
+    /* Left: Items Table */
+    .cart-items-table {
+        flex: 1;
+        min-width: 0;
+    }
 
-                                    <div class="border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex gap-8 justify-between items-center md:items-start">
-                                        {% if item.type == 'donating' %}
-                                            <span></span>
-                                        {% elseif item.is_hidden_quantity %}
-                                            <input type="hidden" value="{{ item.quantity }}" name="quantity" aria-label="Quantity"/>
-                                            <span class="w-10 text-center">{{ item.quantity }}</span>
-                                        {% else %}
-                                            <salla-quantity-input cart-item-id="{{ item.id }}"  max="{{ item.max_quantity }}"
-                                                class="transtion transition-color duration-300"
-												aria-label="Quantity"
-                                                value="{{ item.quantity }}" name="quantity">
-                                            </salla-quantity-input>
-                                        {% endif %}
-                                        {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                        <p class="text-primary flex-none font-bold text-sm rtl:md:pl-12 ltr:md:pr-12">
-                                            <span>{{ trans('pages.cart.total') }}:</span>
-                                            <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
-                                        </p>
-                                    </div>
-                                </div>
+    /* Table Header Row */
+    .cart-table-header {
+        display: grid;
+        grid-template-columns: 1fr 120px 160px 100px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 4px;
+    }
+    .cart-table-header span {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #555;
+        text-transform: capitalize;
+        letter-spacing: 0.02em;
+    }
+    .cart-table-header .col-price,
+    .cart-table-header .col-qty,
+    .cart-table-header .col-total {
+        text-align: center;
+    }
 
-                                {% include 'pages.partials.product.options' with {product:item} %}
-                            <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5 rtl:xs:left-5 ltr:xs:right-5 xs:top-5">
-                                <salla-button type="button" shape="icon" size="small" color="danger" class="btn--delete" aria-label="Remove from the cart"
-                                        onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
-                                    <i class="sicon-cancel"></i>
-                                </salla-button>
-                            </span>
-                        </section>
-                    </form>
-                {% else %}
-                    <div class="no-content-placeholder">
-                        <i class="sicon-shopping-bag icon"></i>
-                        <p>{{ trans('pages.cart.empty_cart') }}</p>
-                        <a href="{{ link('/') }}"
-                           class="btn btn--outline-primary btn--rounded-full">{{ trans('common.elements.back_home') }}</a>
-                    </div>
-                {% endfor %}
+    /* Each Item Row */
+    .cart-item-row {
+        display: grid;
+        grid-template-columns: 1fr 120px 160px 100px;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #e5e7eb;
+        position: relative;
+    }
 
-                {% if cart.options|length %}
-                  <div class="cart-options">
-                    {% for product_option in cart.options %}
-                      <form class="first:pt-5 relative" onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ product_option.id }}">
-                        <input type="hidden" name="id" value="{{ product_option.id }}">
-                        <input type="hidden" name="quantity" value="{{ product_option.quantity }}">
-                        {% include 'pages.partials.product.options' with { product: product_option } %}
-                      </form>                   
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                    
-                <salla-offer></salla-offer>
-                
-                {% hook 'cart:items.end' %}
-            </div>
+    /* Product Cell */
+    .cart-item-product {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .cart-item-img {
+        width: 72px;
+        height: 72px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 6px;
+        border: 1px solid #e5e7eb;
+        background: #f3f4f6;
+        flex-shrink: 0;
+    }
+    .cart-item-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .cart-item-name {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #111;
+        line-height: 1.4;
+        text-decoration: none;
+    }
+    .cart-item-name:hover { text-decoration: underline; }
+    .cart-item-variant {
+        font-size: 0.8rem;
+        color: #888;
+    }
+    .cart-item-remove {
+        font-size: 0.78rem;
+        color: #555;
+        text-decoration: underline;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        display: inline-block;
+        margin-top: 2px;
+    }
+    .cart-item-remove:hover { color: #e53e3e; }
 
-            {% hook 'cart:summary.start' %}
+    /* Free ribbon */
+    .free-ribbon {
+        position: absolute;
+        top: 11px;
+        right: -38px;
+        width: 128px;
+        background: #dc2626;
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-align: center;
+        padding: 2px 0;
+        transform: rotate(45deg);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
 
-            <!-- sidebar -->
+    /* Price / Total cells */
+    .cart-item-price,
+    .cart-item-total {
+        text-align: center;
+        font-size: 0.95rem;
+        color: #111;
+        font-weight: 500;
+    }
+    .cart-item-price .line-through {
+        text-decoration: line-through;
+        color: #aaa;
+        font-size: 0.8rem;
+        display: block;
+    }
+    .cart-item-total {
+        font-weight: 600;
+        color: #e05c00;
+    }
+
+    /* Quantity cell */
+    .cart-item-qty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Offer & weight lines */
+    .item-offer-name {
+        font-size: 0.78rem;
+        color: #888;
+        margin-top: 2px;
+    }
+
+    /* Empty Cart */
+    .no-content-placeholder {
+        text-align: center;
+        padding: 80px 20px;
+        color: #888;
+    }
+    .no-content-placeholder .icon {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 16px;
+        color: #ccc;
+    }
+    .no-content-placeholder p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    /* Cart Options section */
+    .cart-options {
+        margin-top: 16px;
+    }
+
+    /* ===== Right Sidebar (Summary) ===== */
+    .cart-sidebar {
+        width: 320px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 88px;
+    }
+
+    /* Gift wrapping checkbox row */
+    .cart-extra-options {
+        margin-bottom: 12px;
+    }
+    .cart-gift-wrap-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.82rem;
+        color: #555;
+        cursor: pointer;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        padding: 10px 14px;
+        margin-bottom: 8px;
+    }
+    .cart-gift-wrap-label input[type="checkbox"] {
+        accent-color: #111;
+        width: 14px;
+        height: 14px;
+    }
+    .cart-gift-wrap-label a {
+        color: #e05c00;
+        text-decoration: underline;
+    }
+
+    /* Order note & Estimate Shipping accordions */
+    .cart-accordion {
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+    .cart-accordion-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 14px;
+        font-size: 0.85rem;
+        color: #333;
+        cursor: pointer;
+        user-select: none;
+        background: #fff;
+    }
+    .cart-accordion-header .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .cart-accordion-header i {
+        color: #888;
+        font-size: 1rem;
+    }
+    .cart-accordion-chevron {
+        font-size: 0.7rem;
+        color: #aaa;
+        transition: transform 0.2s;
+    }
+
+    /* Summary Box */
+    .cart-summary-box {
+        margin-top: 24px;
+    }
+    .cart-summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.88rem;
+        color: #555;
+        margin-bottom: 4px;
+    }
+    .cart-summary-row b {
+        color: #111;
+        font-weight: 600;
+    }
+    .cart-summary-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 14px;
+        margin-bottom: 4px;
+    }
+    .cart-summary-total-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #111;
+    }
+    .cart-summary-total-value {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #111;
+    }
+    .cart-summary-tax-note {
+        font-size: 0.75rem;
+        color: #888;
+        margin-bottom: 16px;
+    }
+    .cart-summary-tax-note a {
+        color: #888;
+        text-decoration: underline;
+    }
+
+    /* Checkout Button */
+    .cart-checkout-btn {
+        display: block;
+        width: 100%;
+        background: #111;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 14px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .cart-checkout-btn:hover { background: #333; }
+
+    /* Coupon inside summary */
+    .cart-coupon-row {
+        padding: 10px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+        margin: 8px 0;
+    }
+
+    /* Loyalty panel spacing */
+    salla-loyalty-panel { display: block; margin-bottom: 8px; }
+    salla-tiered-offer  { display: block; margin-top: 16px; }
+    salla-offer         { display: block; margin-top: 8px; }
+</style>
+
+<div class="cart-page-wrapper">
+    <nav class="breadcrumbs w-full py-5" style="display:none;">
+        <salla-breadcrumb></salla-breadcrumb>
+    </nav>
+    <h1 class="cart-page-title">{{ trans('blocks.header.cart') }}</h1>
+
+    {# â”€â”€ Free Shipping Progress Bar (top, centered) â”€â”€ #}
+    {% if cart.free_shipping_bar %}
+    <div class="cart-top-free-shipping" id="free-shipping-top">
+        {% set is_free = cart.free_shipping_bar.has_free_shipping %}
+        <p id="free-shipping-msg-top">
+            {% if is_free %}
+                {{ trans('pages.cart.has_free_shipping') | raw }} ðŸŽ‰
+            {% else %}
+                {{ trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}) | raw }}
+            {% endif %}
+        </p>
+        {% if not is_free %}
+        <div class="cart-top-shipping-bar-track">
+            <div class="cart-top-shipping-bar-fill" style="width:{{ cart.free_shipping_bar.percent }}%"></div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <salla-conditional-offer></salla-conditional-offer>
+
+    <div class="cart-table-layout">
+
+        {# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           LEFT â€” Items Table
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• #}
+        <div class="cart-items-table">
+
+            {% hook 'cart:items.start' %}
+
             {% if cart.items|length %}
-                <div class="sticky top-24 w-full lg:w-96 rtl:lg:mr-8 ltr:lg:ml-8">
-                    <div class="shadow-default bg-background p-5 xs:p-7 rounded-md mb-5 relative {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
-                        <div class="flex rtl:space-x-reverse space-x-3 items-center">
-                            <i class="bg-primary text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            {% set is_free=cart.free_shipping_bar.has_free_shipping %}
-                            <div class="flex-1">
-                                <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
-                                <p class="shipping-item text-sm font- text-gray-500">
-                                        <span id="free-shipping-msg">{{ (is_free
-                                            ?trans('pages.cart.has_free_shipping')
-                                            :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
-                                            | raw }}</span>
-                                    <span class="emoji {{ is_free?'':'hidden' }}" id="free-shipping-applied">🎉</span>
+            {# Table Header #}
+            <div class="cart-table-header">
+                <span class="col-product">{{ trans('pages.cart.product') ?? 'Product' }}</span>
+                <span class="col-price">{{ trans('pages.cart.price') ?? 'Price' }}</span>
+                <span class="col-qty">{{ trans('pages.cart.quantity') ?? 'Quantity' }}</span>
+                <span class="col-total">{{ trans('pages.cart.total') ?? 'Total' }}</span>
+            </div>
+            {% endif %}
+
+            {% for item in cart.items %}
+                <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
+                    <input type="hidden" name="id" value="{{ item.id }}">
+
+                    <div class="cart-item-row">
+
+                        {# â”€â”€ Product Cell â”€â”€ #}
+                        <div class="cart-item-product">
+                            <a href="{{ item.url }}" class="relative overflow-hidden shrink-0" style="position:relative;">
+                                {% if loop.first %}
+                                    <img src="{{ item.product_image }}"
+                                         alt="{{ item.product_name }}"
+                                         loading="eager"
+                                         class="cart-item-img">
+                                {% else %}
+                                    <img src="{{ item.product_image }}"
+                                         alt="{{ item.product_name }}"
+                                         loading="lazy"
+                                         class="cart-item-img">
+                                {% endif %}
+
+                                {# Free ribbon #}
+                                <div class="free-ribbon {{ (item.price.getMoney().amount == 0 and item.has_discount) ? '' : 'hidden' }}">
+                                    {{ trans('pages.loyalty_program.free_product') }}
+                                </div>
+                            </a>
+
+                            <div class="cart-item-info">
+                                <a href="{{ item.url }}" class="cart-item-name">{{ item.product_name }}</a>
+
+                                {# Variant / options label if any #}
+                                {% if item.options is defined and item.options|length %}
+                                    <span class="cart-item-variant">
+                                        {% for opt in item.options %}{{ opt.name }}: {{ opt.value }}{% if not loop.last %}, {% endif %}{% endfor %}
+                                    </span>
+                                {% endif %}
+
+                                {# Weight #}
+                                <p class="cart-item-variant item-weight-row {{ item.weight_label ? '' : 'hidden' }}">
+                                    {{ trans('pages.products.weight') }}: <span class="item-weight">{{ item.weight_label }}</span>
                                 </p>
+
+                                {# Offer name #}
+                                <span class="old-offers item-offer-name {{ item.detailed_offers ? 'hidden' : '' }}">
+                                    <i class="sicon-discount-calculator {{ item.offer ? '' : 'hidden' }}"></i>
+                                    <span class="offer-name {{ item.offer ? '' : 'hidden' }}">{{ item.offer.names }}</span>
+                                </span>
+
+                                {# Cart Item Offers component #}
+                                <salla-cart-item-offers
+                                    quantity="{{ item.quantity }}"
+                                    item-id="{{ item.id }}"
+                                    product-price="{{ item.product_price }}"
+                                    offers="{{ item.detailed_offers|json_encode }}">
+                                </salla-cart-item-offers>
+
+                                {# Remove button #}
+                                <button type="button"
+                                        class="cart-item-remove"
+                                        aria-label="Remove from the cart"
+                                        onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').closest('.cart-item-row').remove())">
+                                    {{ trans('pages.cart.remove') ?? 'Remove' }}
+                                </button>
                             </div>
                         </div>
-                        <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
-                                 style="width:{{ cart.free_shipping_bar.percent }}%">
-                                <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            </div>
-                        </div>
-                    </div>
-                    {% if loyalty %}
-                        <salla-loyalty-panel
-                            prize-points='{{ loyalty.prize.points }}'
-                            prize-title='{{ loyalty.prize.title }}'>
-                        </salla-loyalty-panel>
-                    {% endif %}
 
-                    <div id="cart-gifting" class="shadow-default bg-background xs:p-2 rounded-md mb-5 relative  {{gift.enabled ? '' : 'hidden' }}">
-                        <salla-gifting id="salla-gifting" class="mt-5" widget-title="{{ trans("pages.cart.gift_widget_title") }}"  widget-subtitle="{{ gift.text }}" class="mt-5" {{gift.type}}-products  vertical></salla-gifting>
-                    </div>
-
-                    <div class="shadow-default bg-background p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
-                        <h2 class="font-bold text-sm mb-5">{{ trans('pages.cart.summary') }}</h2>
-
-                        <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500"> {{ trans(cart.tax_amount ? "pages.cart.items_total_without_tax" : "pages.cart.items_total") }} </span>
-                            <b id="sub-total">{{ cart.sub_total|money }}</b>
+                        {# â”€â”€ Price Cell â”€â”€ #}
+                        <div class="cart-item-price">
+                            <span class="line-through item-regular-price {{ item.offer ? '' : 'hidden' }}">{{ item.product_price|money }}</span>
+                            <span class="inline-flex gap-1 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}">{{ item.original_price|money }}</span>
+                            <span class="item-price {{ item.has_discount ? 'text-red-800' : '' }}">{{ item.price|money }}</span>
                         </div>
 
-                        {% if cart.options|length %}
-                          <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.order_options_total') }}</span>
-                            <b id="cart-options-total">{{ cart.options_total|money }}</b>
-                          </div>
-                        {% endif %}
-
-                        <div id="shipping-cost"
-                             class="flex justify-between text-sm mb-5 {{ cart.has_shipping ? '' : 'hidden' }}">
-                            <span class="text-gray-500">{{ trans('pages.cart.shipping_cost') }}</span>
-                            <b>{{ cart.real_shipping_cost|money }}</b>
+                        {# â”€â”€ Quantity Cell â”€â”€ #}
+                        <div class="cart-item-qty">
+                            {% if item.type == 'donating' %}
+                                <span></span>
+                            {% elseif item.is_hidden_quantity %}
+                                <input type="hidden" value="{{ item.quantity }}" name="quantity" aria-label="Quantity"/>
+                                <span class="w-10 text-center">{{ item.quantity }}</span>
+                            {% else %}
+                                <salla-quantity-input
+                                    cart-item-id="{{ item.id }}"
+                                    max="{{ item.max_quantity }}"
+                                    class="transtion transition-color duration-300"
+                                    aria-label="Quantity"
+                                    value="{{ item.quantity }}"
+                                    name="quantity">
+                                </salla-quantity-input>
+                            {% endif %}
                         </div>
 
-                        {% if store.settings.cart.apply_coupon_enabled %}
-                            <div class="py-5 mb-5">
-                                <salla-cart-coupons></salla-cart-coupons>
-                            </div>
-                        {% endif %}
-
-                        <!-- coupon discount -->
-                        <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
-                            <span class="text-gray-500 block  h-10">{{ trans('pages.cart.discount') }}</span>
-                            <b>- {{ cart.total_discount|money }}</b>
+                        {# â”€â”€ Total Cell â”€â”€ #}
+                        <div class="cart-item-total">
+                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money %}
+                            <span class="item-total">{{ item.is_available ? item_total : trans('pages.cart.out_of_stock') }}</span>
                         </div>
 
-                        {% if cart.tax_amount %}
-                            <div class="flex justify-between text-sm mb-5">
-                                <span class="text-gray-500">{{ trans('pages.cart.VAT_tax_amount') }}</span>
-                                <b id="tax-amount">{{ cart.tax_amount|money }}</b>
-                            </div>
-                        {% endif %}
+                    </div>{# end cart-item-row #}
 
-                        <div class="flex justify-between text-lg mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.final_total') }}</span>
-                            <b data-cart-total>{{ cart.total|money }}</b>
-                        </div>
+                    {% include 'pages.partials.product.options' with {product: item} %}
 
-                        <div class="cart-submit-wrap">
-                            {% hook 'cart:submit.start' %}
-                            <salla-button id="cart-submit" loader-position="center" width="wide">
-                                {{ trans('pages.cart.complete_order') }}
-                            </salla-button>
-                            {% hook 'cart:submit.end' %}
-                        </div>
-                        {% hook 'cart:summary.end' %}
-                    </div>
+                </form>
+            {% else %}
+                <div class="no-content-placeholder">
+                    <i class="sicon-shopping-bag icon"></i>
+                    <p>{{ trans('pages.cart.empty_cart') }}</p>
+                    <a href="{{ link('/') }}" class="btn btn--outline-primary btn--rounded-full">
+                        {{ trans('common.elements.back_home') }}
+                    </a>
+                </div>
+            {% endfor %}
 
-                     <!-- Tiered Offer Component -->
-                    <salla-tiered-offer></salla-tiered-offer>
+            {# Cart Options #}
+            {% if cart.options|length %}
+                <div class="cart-options">
+                    {% for product_option in cart.options %}
+                        <form class="first:pt-5 relative"
+                              onchange="salla.form.onChange('cart.updateItem', event)"
+                              id="item-{{ product_option.id }}">
+                            <input type="hidden" name="id" value="{{ product_option.id }}">
+                            <input type="hidden" name="quantity" value="{{ product_option.quantity }}">
+                            {% include 'pages.partials.product.options' with { product: product_option } %}
+                        </form>
+                    {% endfor %}
                 </div>
             {% endif %}
-        </div>
-    </div>
+
+            <salla-offer></salla-offer>
+
+            {% hook 'cart:items.end' %}
+        </div>{# end cart-items-table #}
+
+        {% hook 'cart:summary.start' %}
+
+        {# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+           RIGHT â€” Sidebar Summary
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• #}
+        {% if cart.items|length %}
+        <div class="cart-sidebar">
+
+            {# Loyalty #}
+            {% if loyalty %}
+                <salla-loyalty-panel
+                    prize-points='{{ loyalty.prize.points }}'
+                    prize-title='{{ loyalty.prize.title }}'>
+                </salla-loyalty-panel>
+            {% endif %}
+
+            {# Gifting widget #}
+            <div id="cart-gifting" class="mb-2 {{ gift.enabled ? '' : 'hidden' }}">
+                <salla-gifting id="salla-gifting"
+                    widget-title="{{ trans('pages.cart.gift_widget_title') }}"
+                    widget-subtitle="{{ gift.text }}"
+                    {{ gift.type }}-products vertical>
+                </salla-gifting>
+            </div>
+
+            {# â”€â”€ Extra Options: Gift wrap + Order note + Estimate Shipping â”€â”€ #}
+            <div class="cart-extra-options">
+
+                {# Gift Wrap Checkbox â€” shown when available #}
+                <label class="cart-gift-wrap-label">
+                    <input type="checkbox" name="gift_wrap" value="1">
+                    {{ trans('pages.cart.gift_wrap_label') ?? 'For $1.00, please' }}
+                    <a href="#">{{ trans('pages.cart.wrap_products') ?? 'wrap the products in this order.' }}</a>
+                </label>
+
+                {# Order Note Accordion #}
+                <div class="cart-accordion">
+                    <div class="cart-accordion-header">
+                        <span class="acc-left">
+                            <i class="sicon-edit"></i>
+                            {{ trans('pages.cart.order_note') ?? 'Order note' }}
+                        </span>
+                        <i class="sicon-arrow-down cart-accordion-chevron"></i>
+                    </div>
+                </div>
+
+                {# Estimate Shipping Accordion #}
+                <div class="cart-accordion">
+                    <div class="cart-accordion-header">
+                        <span class="acc-left">
+                            <i class="sicon-clock"></i>
+                            {{ trans('pages.cart.estimate_shipping') ?? 'Estimate Shipping' }}
+                        </span>
+                        <i class="sicon-arrow-down cart-accordion-chevron"></i>
+                    </div>
+                </div>
+
+            </div>{# end cart-extra-options #}
+
+            {# â”€â”€ Summary totals â”€â”€ #}
+            <div class="cart-summary-box">
+
+                {# Subtotal #}
+                <div class="cart-summary-row">
+                    <span>{{ trans(cart.tax_amount ? 'pages.cart.items_total_without_tax' : 'pages.cart.items_total') }}</span>
+                    <b id="sub-total">{{ cart.sub_total|money }}</b>
+                </div>
+
+                {# Options total #}
+                {% if cart.options|length %}
+                    <div class="cart-summary-row">
+                        <span>{{ trans('pages.cart.order_options_total') }}</span>
+                        <b id="cart-options-total">{{ cart.options_total|money }}</b>
+                    </div>
+                {% endif %}
+
+                {# Shipping cost #}
+                <div id="shipping-cost" class="cart-summary-row {{ cart.has_shipping ? '' : 'hidden' }}">
+                    <span>{{ trans('pages.cart.shipping_cost') }}</span>
+                    <b>{{ cart.real_shipping_cost|money }}</b>
+                </div>
+
+                {# Coupon #}
+                {% if store.settings.cart.apply_coupon_enabled %}
+                    <div class="cart-coupon-row">
+                        <salla-cart-coupons></salla-cart-coupons>
+                    </div>
+                {% endif %}
+
+                {# Discount #}
+                <div id="total-discount" class="cart-summary-row {{ cart.total_discount ? '' : 'hidden' }}">
+                    <span>{{ trans('pages.cart.discount') }}</span>
+                    <b>- {{ cart.total_discount|money }}</b>
+                </div>
+
+                {# VAT #}
+                {% if cart.tax_amount %}
+                    <div class="cart-summary-row">
+                        <span>{{ trans('pages.cart.VAT_tax_amount') }}</span>
+                        <b id="tax-amount">{{ cart.tax_amount|money }}</b>
+                    </div>
+                {% endif %}
+
+                {# â”€â”€ Estimated Total â”€â”€ #}
+                <div class="cart-summary-total-row">
+                    <span class="cart-summary-total-label">{{ trans('pages.cart.final_total') ?? 'Estimated total' }}</span>
+                    <span class="cart-summary-total-value" data-cart-total>{{ cart.total|money }}</span>
+                </div>
+                <p class="cart-summary-tax-note">
+                    {{ trans('pages.cart.taxes_shipping_note') ?? 'Taxes and' }}
+                    <a href="#">{{ trans('pages.cart.shipping') ?? 'Shipping' }}</a>
+                    {{ trans('pages.cart.calculated_at_checkout') ?? 'calculated at checkout' }}
+                </p>
+
+                {# â”€â”€ Checkout Button â”€â”€ #}
+                <div class="cart-submit-wrap">
+                    {% hook 'cart:submit.start' %}
+                    <salla-button id="cart-submit" loader-position="center" width="wide" class="cart-checkout-btn">
+                        {{ trans('pages.cart.complete_order') }}
+                    </salla-button>
+                    {% hook 'cart:submit.end' %}
+                </div>
+
+                {% hook 'cart:summary.end' %}
+            </div>
+
+            {# Tiered Offer #}
+            <salla-tiered-offer></salla-tiered-offer>
+
+        </div>{# end cart-sidebar #}
+        {% endif %}
+
+    </div>{# end cart-table-layout #}
+</div>{# end cart-page-wrapper #}
 {% endblock %}
 
 {% block scripts %}
