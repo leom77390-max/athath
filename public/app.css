@@ -1004,6 +1004,9 @@ input:where([type='file']):focus{
 .top-full{
     top: 100%;
 }
+.start-2{
+    left: 0.5rem;
+}
 .-z-1{
     z-index: -1;
 }
@@ -1046,6 +1049,9 @@ input:where([type='file']):focus{
 .col-span-2{
     grid-column: span 2 / span 2;
 }
+.\!m-0{
+    margin: 0px !important;
+}
 .m-0{
     margin: 0px;
 }
@@ -1054,9 +1060,6 @@ input:where([type='file']):focus{
 }
 .m-auto{
     margin: auto;
-}
-.\!m-0{
-    margin: 0px !important;
 }
 .\!mx-0{
     margin-left: 0px !important;
@@ -2272,6 +2275,9 @@ input:where([type='file']):focus{
 .bg-transparent{
     background-color: transparent;
 }
+.bg-black\/20{
+    background-color: rgba(0, 0, 0, 0.2);
+}
 .bg-gradient-to-t{
     background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -2539,6 +2545,9 @@ input:where([type='file']):focus{
 }
 .text-end{
     text-align: right;
+}
+.align-middle{
+    vertical-align: middle;
 }
 .text-2xl{
     font-size: 1.5rem;
@@ -8573,12 +8582,25 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.flatpickr-day.\!selected{
+    background: #414042 !important;
+    background: var(--color-primary) !important;
+    border-color: #414042 !important;
+    border-color: var(--color-primary) !important;
+}
 .flatpickr-day.selected:hover{
     background: #414042;
     background: var(--color-primary);
     border-color: #414042;
     border-color: var(--color-primary);
     opacity: 0.8;
+}
+.flatpickr-day.\!selected:hover{
+    background: #414042 !important;
+    background: var(--color-primary) !important;
+    border-color: #414042 !important;
+    border-color: var(--color-primary) !important;
+    opacity: 0.8 !important;
 }
 .flatpickr-months{
     position: relative;
