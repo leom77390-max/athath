@@ -895,6 +895,9 @@ input:where([type='file']):focus{
 .invisible{
     visibility: hidden;
 }
+.\!static{
+    position: static !important;
+}
 .static{
     position: static;
 }
@@ -1003,6 +1006,9 @@ input:where([type='file']):focus{
 }
 .top-full{
     top: 100%;
+}
+.left-6{
+    left: 1.5rem;
 }
 .-z-1{
     z-index: -1;
@@ -1208,6 +1214,9 @@ input:where([type='file']):focus{
 }
 .mt-8{
     margin-top: 2rem;
+}
+.mt-\[clamp\(0\.875rem\2c 0\.5306rem\+1\.4694vw\2c 2rem\)\]{
+    margin-top: clamp(0.875rem, 0.5306rem + 1.4694vw, 2rem);
 }
 .mt-\[clamp\(5\.133rem\2c 2\.3965rem\+9\.3288vw\2c 11\.8rem\)\]{
     margin-top: clamp(5.133rem, 2.3965rem + 9.3288vw, 11.8rem);
@@ -1526,6 +1535,9 @@ input:where([type='file']):focus{
 .w-full{
     width: 100%;
 }
+.w-1{
+    width: 0.25rem;
+}
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
     min-width: fit-content !important;
@@ -1571,6 +1583,10 @@ input:where([type='file']):focus{
 }
 .max-w-\[70px\]{
     max-width: 70px;
+}
+.max-w-fit{
+    max-width: -moz-fit-content;
+    max-width: fit-content;
 }
 .max-w-full{
     max-width: 100%;
@@ -35714,6 +35730,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .placeholder\:opacity-100::placeholder{
     opacity: 1;
 }
+.before\:font-medium::before{
+    content: var(--tw-content);
+    font-weight: 500;
+}
 .before\:text-orange-300::before{
     content: var(--tw-content);
     --tw-text-opacity: 1;
@@ -36664,6 +36684,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:left-2:where([dir="ltr"], [dir="ltr"] *){
     left: 0.5rem;
 }
+.ltr\:left-4:where([dir="ltr"], [dir="ltr"] *){
+    left: 1rem;
+}
 .ltr\:right-0:where([dir="ltr"], [dir="ltr"] *){
     right: 0px;
 }
@@ -36778,6 +36801,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
+    .ltr\:md\:left-9:where([dir="ltr"], [dir="ltr"] *){
+        left: 2.25rem;
+    }
     .ltr\:md\:pr-10:where([dir="ltr"], [dir="ltr"] *){
         padding-right: 2.5rem;
     }
@@ -36839,6 +36865,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:right-2:where([dir="rtl"], [dir="rtl"] *){
     right: 0.5rem;
+}
+.rtl\:right-4:where([dir="rtl"], [dir="rtl"] *){
+    right: 1rem;
 }
 .rtl\:ml-0:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0px;
@@ -36940,6 +36969,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
+    .rtl\:md\:right-9:where([dir="rtl"], [dir="rtl"] *){
+        right: 2.25rem;
+    }
     .rtl\:md\:pl-10:where([dir="rtl"], [dir="rtl"] *){
         padding-left: 2.5rem;
     }
