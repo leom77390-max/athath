@@ -388,11 +388,13 @@
   if (closeBtn && popup && popupBox) {
     const hasSeenPopup = sessionStorage.getItem("popupShown");
 
-    if (!hasSeenPopup) {
-      setTimeout(() => {
-        popup.classList.add("show");
-        sessionStorage.setItem("popupShown", "true");
-      }, 5000);
+   if (!hasSeenPopup) {
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          popup.classList.add("show");
+          sessionStorage.setItem("popupShown", "true");
+        }, 5000);
+      });
     }
 
     closeBtn.addEventListener("click", function () {
