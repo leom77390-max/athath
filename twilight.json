@@ -828,6 +828,115 @@
     {
       "type": "static",
       "format": "title",
+      "id": "static-label4",
+      "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة التحميل</h6></div>",
+      "variant": "h6"
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "تفعيل صفحة التحميل",
+      "description": "فعّل هذا الخيار لاختيار شكل صفحة التحميل بما يناسب متجرك.",
+      "id": "enable_loader_screen",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "loader_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "خيارات صفحة التحميل",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-list",
+      "selected": [
+        {
+          "label": "استخدام لودر اللوجو الخاص بالثيم",
+          "value": "logo_loader",
+          "key": "e9v8eejf-c8c6-437e-9d45-3vce269afde5"
+        }
+      ],
+      "options": [
+        {
+          "label": "استخدام اللودر الافتراضي",
+          "value": "salla_loader",
+          "key": "f4afecf3-6efc-433b-n148-b5807935ced9"
+        },
+        {
+          "label": "استخدام اللودر المخصص",
+          "value": "custom_loader",
+          "key": "f4rfecf3-6efc-433b-n148-b5807935ced9"
+        },
+        {
+          "label": "استخدام لودر اللوجو الخاص بالثيم",
+          "value": "logo_loader",
+          "key": "e9v8eejf-c8c6-437e-9d45-3vce269afde5"
+        }
+      ],
+      "conditions": [
+        {
+          "id": "enable_loader_screen",
+          "operation": "=",
+          "value": true
+        }
+      ],
+      "source": "Manual",
+      "required": false
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "تفعيل تغيير اللودر",
+      "description": null,
+      "id": "change_loder",
+      "format": "switch",
+      "required": false,
+      "value": false,
+      "selected": false,
+      "conditions": [
+        {
+          "id": "loader_type",
+          "operation": "=",
+          "value": "logo_loader"
+        },
+        {
+          "id": "enable_loader_screen",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "custom_loader_image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة اللودر المخصص",
+      "placeholder": "https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": "https://cdn.files.salla.network/theme/686931608/c87b5b7b-0f46-46d2-ba1e-a2c920f00fdb_80x24.png",
+      "conditions": [
+        {
+          "id": "loader_type",
+          "operation": "=",
+          "value": "logo_loader"
+        },
+        {
+          "id": "change_loder",
+          "operation": "=",
+          "value": true
+        },
+        {
+          "id": "enable_loader_screen",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "type": "static",
+      "format": "title",
       "id": "static-label6",
       "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات النافذه</h6></div>",
       "variant": "h6"
@@ -3523,7 +3632,7 @@
               "searchable": true,
               "required": false
             },
-            
+
             {
               "id": "banner.items_alignment_vertical",
               "type": "items",
@@ -3562,64 +3671,65 @@
               "required": false
             },
             {
-  "id": "banner.mobile_items_alignment_horizontal",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "محاذاة العناصر أفقياً (موبايل)",
-  "icon": "sicon-keyboard_arrow_down",
-  "selected": [
-    {
-      "label": "منتصف",
-      "value": "center"
-    }
-  ],
-  "options": [
-    {
-      "label": "بداية",
-      "value": "start"
-    },
-    {
-      "label": "منتصف",
-      "value": "center"
-    },
-    {
-      "label": "نهاية",
-      "value": "end"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": true
-},{
-  "id": "banner.mobile_items_alignment_vertical",
-  "type": "items",
-  "format": "dropdown-list",
-  "label": "محاذاة العناصر رأسياً (موبايل)",
-  "icon": "sicon-keyboard_arrow_down",
-  "selected": [
-    {
-      "label": "منتصف",
-      "value": "center"
-    }
-  ],
-  "options": [
-    {
-      "label": "بداية",
-      "value": "start"
-    },
-    {
-      "label": "منتصف",
-      "value": "center"
-    },
-    {
-      "label": "نهاية",
-      "value": "end"
-    }
-  ],
-  "source": "Manual",
-  "multichoice": false,
-  "searchable": true
-},
+              "id": "banner.mobile_items_alignment_horizontal",
+              "type": "items",
+              "format": "dropdown-list",
+              "label": "محاذاة العناصر أفقياً (موبايل)",
+              "icon": "sicon-keyboard_arrow_down",
+              "selected": [
+                {
+                  "label": "منتصف",
+                  "value": "center"
+                }
+              ],
+              "options": [
+                {
+                  "label": "بداية",
+                  "value": "start"
+                },
+                {
+                  "label": "منتصف",
+                  "value": "center"
+                },
+                {
+                  "label": "نهاية",
+                  "value": "end"
+                }
+              ],
+              "source": "Manual",
+              "multichoice": false,
+              "searchable": true
+            },
+            {
+              "id": "banner.mobile_items_alignment_vertical",
+              "type": "items",
+              "format": "dropdown-list",
+              "label": "محاذاة العناصر رأسياً (موبايل)",
+              "icon": "sicon-keyboard_arrow_down",
+              "selected": [
+                {
+                  "label": "منتصف",
+                  "value": "center"
+                }
+              ],
+              "options": [
+                {
+                  "label": "بداية",
+                  "value": "start"
+                },
+                {
+                  "label": "منتصف",
+                  "value": "center"
+                },
+                {
+                  "label": "نهاية",
+                  "value": "end"
+                }
+              ],
+              "source": "Manual",
+              "multichoice": false,
+              "searchable": true
+            },
             {
               "id": "banner.block_title",
               "type": "string",
