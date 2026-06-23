@@ -1,0 +1,124 @@
+{% if theme.settings.get('purchased_together_switch') %}
+    <div class="side_products pt-6 ">
+            {% set purchased_together = theme.settings.get('purchased_together') ?? [] %}
+            {% for item in purchased_together %}
+                {% set main_product = item.main_product[0] ?? null %}
+                {% if main_product and main_product.id == productid %}
+                    <section class="purchased-together-section ">
+
+                        <section class="bundle-products-section">
+                        <div class="bundle-header flex items-center justify-between mb-3">
+                            <h2 class="bundle-title">
+                                {{ theme.settings.get('purchased_together_title')}}
+                            </h2>
+                            <div class="bundle-arrows flex items-center gap-2 mt-4">
+                                <button
+                                class="bundle-prev flex items-center justify-center border border-primary p-2 rounded-sm"
+                                aria-label="Previous"
+                                >
+                                <i class="sicon-caret-right ltr:-scale-x-100"></i>
+                                </button>
+                                <button
+                                class="bundle-next flex items-center justify-center border border-primary p-2 rounded-sm"
+                                aria-label="Next"
+                                >
+                                <i class="sicon-caret-left ltr:-scale-x-100"></i>
+                                </button>
+                            </div>
+                        </div>
+                          
+
+
+                            <div class="bundle-products" data-products='{{ item.products_purchased_together|json_encode }}'>
+                                {{ trans('pages.single.loading') }}
+                            </div>
+                        </section>
+
+                    {% endif %}
+
+			{% endfor %}
+	</div>
+<script>
+salla.onReady(() => {
+
+  const wrappers = document.querySelectorAll(".bundle-products");
+
+  wrappers.forEach((wrapper) => {
+
+    const rawProducts = wrapper.dataset.products || "[]";
+
+    let selectedProducts = [];
+
+    try {
+      selectedProducts = JSON.parse(rawProducts);
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
+    if (!selectedProducts.length) return;
+
+    const ids = selectedProducts.map((p) => p.id);
+
+    salla.product.fetch({
+      source: "selected",
+      source_value: ids,
+    })
+    .then((response) => {
+
+      const products = response.data || [];
+
+      if (!products.length) return;
+
+      const sliderId = `bundle-slider-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+      let html = `
+        <div class="bundle-wrapper">
+
+            <salla-slider
+            id="${sliderId}"
+            type="thumbs"
+            show-controls="false"
+            slider-config='{
+            "slidesPerView": 1,
+            "spaceBetween": 12,
+            "loop": false,
+            "navigation": {
+                "nextEl": ".bundle-next",
+                "prevEl": ".bundle-prev"
+            }
+            }'
+        >
+            <div slot="items">
+      `;
+
+      products.forEach((product) => {
+
+        html += `
+          <custom-salla-product-card
+            product='${JSON.stringify(product)}'
+            horizontal
+          >
+          </custom-salla-product-card>
+        `;
+
+      });
+
+        html += `
+            </div>
+        </salla-slider>
+        </div>
+        `;
+
+      wrapper.innerHTML = html;
+
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  });
+
+});
+</script>
+{% endif %}
