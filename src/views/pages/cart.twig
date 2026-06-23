@@ -267,29 +267,6 @@
     .cart-extra-options {
         margin-bottom: 12px;
     }
-    .cart-gift-wrap-label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.82rem;
-        color: #555;
-        cursor: pointer;
-        border: 1px solid #e5e7eb;
-        border-radius: 6px;
-        padding: 10px 14px;
-        margin-bottom: 8px;
-    }
-    .cart-gift-wrap-label input[type="checkbox"] {
-        accent-color: #111;
-        width: 14px;
-        height: 14px;
-    }
-    .cart-gift-wrap-label a {
-        color: #e05c00;
-        text-decoration: underline;
-    }
-
-    /* Order note & Estimate Shipping accordions */
     .cart-accordion {
         border: 1px solid #e5e7eb;
         border-radius: 6px;
@@ -600,62 +577,13 @@
                 </salla-gifting>
             </div>
 
-            {# â”€â”€ Extra Options: Gift wrap + Order note + Estimate Shipping â”€â”€ #}
-            <div class="cart-extra-options">
-
-                {# Gift Wrap Checkbox â€” shown when available #}
-                <label class="cart-gift-wrap-label">
-                    <input type="checkbox" name="gift_wrap" value="1">
-                    {{ trans('blocks.cart.gift_wrap_label') }}
-                    <a href="#">{{ trans('blocks.cart.gift_wrap_subtitle') }}</a>
-                </label>
-
-                {# Order Note Accordion #}
-                <div class="cart-accordion">
-                    <div class="cart-accordion-header">
-                        <span class="acc-left">
-                            <i class="sicon-edit"></i>
-                            {{ trans('blocks.cart.order_note') }}
-                        </span>
-                        <i class="sicon-arrow-down cart-accordion-chevron"></i>
-                    </div>
-                </div>
-
-                {# Estimate Shipping Accordion #}
-                <div class="cart-accordion">
-                    <div class="cart-accordion-header">
-                        <span class="acc-left">
-                            <i class="sicon-clock"></i>
-                            {{ trans('blocks.cart.estimate_shipping') }}
-                        </span>
-                        <i class="sicon-arrow-down cart-accordion-chevron"></i>
-                    </div>
-                </div>
-
-            </div>{# end cart-extra-options #}
-
-            {# â”€â”€ Summary totals â”€â”€ #}
             <div class="cart-summary-box">
 
-                {# Subtotal #}
                 <div class="cart-summary-row">
                     <span>{{ trans(cart.tax_amount ? 'blocks.cart.items_total_without_tax' : 'blocks.cart.items_total') }}</span>
                     <b id="sub-total">{{ cart.sub_total|money }}</b>
                 </div>
 
-                {# Options total #}
-                {% if cart.options|length %}
-                    <div class="cart-summary-row">
-                        <span>{{ trans('blocks.cart.order_options_total') }}</span>
-                        <b id="cart-options-total">{{ cart.options_total|money }}</b>
-                    </div>
-                {% endif %}
-
-                {# Shipping cost #}
-                <div id="shipping-cost" class="cart-summary-row {{ cart.has_shipping ? '' : 'hidden' }}">
-                    <span>{{ trans('blocks.cart.shipping_cost') }}</span>
-                    <b>{{ cart.real_shipping_cost|money }}</b>
-                </div>
 
                 {# Coupon #}
                 {% if store.settings.cart.apply_coupon_enabled %}
@@ -664,21 +592,7 @@
                     </div>
                 {% endif %}
 
-                {# Discount #}
-                <div id="total-discount" class="cart-summary-row {{ cart.total_discount ? '' : 'hidden' }}">
-                    <span>{{ trans('blocks.cart.total_discount') }}</span>
-                    <b>- {{ cart.total_discount|money }}</b>
-                </div>
 
-                {# VAT #}
-                {% if cart.tax_amount %}
-                    <div class="cart-summary-row">
-                        <span>{{ trans('blocks.cart.VAT_tax_amount') }}</span>
-                        <b id="tax-amount">{{ cart.tax_amount|money }}</b>
-                    </div>
-                {% endif %}
-
-                {# â”€â”€ Estimated Total â”€â”€ #}
                 <div class="cart-summary-total-row">
                     <span class="cart-summary-total-label">{{ trans('blocks.cart.final_total') }}</span>
                     <span class="cart-summary-total-value" data-cart-total>{{ cart.total|money }}</span>
