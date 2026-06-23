@@ -47,55 +47,71 @@
 				50% { transform: scale(1.05); }
 			}
 			
-			/* حلقات العناية - مستوحاة من منتجات البشرة */
-			.skincare-rings {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 280px;
-				height: 280px;
-				z-index: 1;
-			}
-			
-			.ring {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				border-radius: 50%;
-				border: 2px solid transparent;
-				transform: translate(-50%, -50%);
-			}
-			
-			.ring-1 {
-				width: 100%;
-				height: 100%;
-				border-top-color: #21636d;
-				border-right-color: #21636d;
-				animation: spin 3s linear infinite;
-			}
-			
-			.ring-2 {
-				width: 70%;
-				height: 70%;
-				border-bottom-color: #f57328;
-				border-left-color: #f57328;
-				animation: spin 2.5s linear infinite reverse;
-			}
-			
-			.ring-3 {
-				width: 40%;
-				height: 40%;
-				border-top-color: #e8a87c;
-				border-left-color: #e8a87c;
-				animation: spin 2s linear infinite;
-			}
 			
 			@keyframes spin {
 				from { transform: translate(-50%, -50%) rotate(0deg); }
 				to { transform: translate(-50%, -50%) rotate(360deg); }
 			}
 			
+			/* جسيمات العناية (مثل الفقاعات أو القطرات) */
+			.particles {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			
+			.particle {
+				position: absolute;
+				border-radius: 50%;
+				background: radial-gradient(circle at 30% 30%, rgba(33, 99, 109, 0.3), rgba(33, 99, 109, 0.1));
+				animation: float 4s ease-in-out infinite;
+			}
+			
+			.particle:nth-child(1) {
+				width: 12px;
+				height: 12px;
+				top: 5%;
+				left: 15%;
+				animation-delay: 0s;
+			}
+			.particle:nth-child(2) {
+				width: 8px;
+				height: 8px;
+				bottom: 10%;
+				right: 10%;
+				animation-delay: 1s;
+			}
+			.particle:nth-child(3) {
+				width: 10px;
+				height: 10px;
+				top: 20%;
+				right: 5%;
+				animation-delay: 2s;
+			}
+			.particle:nth-child(4) {
+				width: 6px;
+				height: 6px;
+				bottom: 25%;
+				left: 5%;
+				animation-delay: 0.5s;
+			}
+			.particle:nth-child(5) {
+				width: 14px;
+				height: 14px;
+				top: 50%;
+				left: -5%;
+				animation-delay: 1.5s;
+			}
+			.particle:nth-child(6) {
+				width: 7px;
+				height: 7px;
+				top: 60%;
+				right: -5%;
+				animation-delay: 2.5s;
+			}
 			
 			@keyframes float {
 				0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
@@ -104,7 +120,7 @@
 			
 			/* نص العلامة التجارية أسفل اللودر */
 			.brand-text {
-				position: relative;  
+				position: relative;
 				z-index: 2;
 				color: #21636d;
 				font-size: 13px;
@@ -140,12 +156,14 @@
 			<div class="loader-container">
 				<div class="glow-bg"></div>
 				
-				<div class="skincare-rings">
-					<div class="ring ring-1"></div>
-					<div class="ring ring-2"></div>
-					<div class="ring ring-3"></div>
+				<div class="particles">
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
 				</div>
-				
 				
 				<div class="logo-wrapper">
 					{% if theme.settings.get('change_loder') %}
