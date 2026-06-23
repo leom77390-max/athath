@@ -261,7 +261,7 @@ class ProductCard extends HTMLElement {
             </div>
 
             <div class="s-product-card-actions">
-             ${!this.hideAddBtn ?
+             ${!this.horizontal && !this.hideAddBtn ?
             `<div class="s-product-card-content-footer gap-2 absolute transition-all duration-700 md:bottom-2 md:opacity-0 group-hover:opacity-100 bottom-6 group-hover:bottom-6 left-1/2 -translate-x-1/2 w-full px-4">
               <salla-add-product-button width="wide"
                 product-id="${this.product.id}"
@@ -337,15 +337,36 @@ class ProductCard extends HTMLElement {
               : ``}
           </div>`
             : ''}
-          <div class="s-product-card-content-sub ${this.isSpecial ? 's-product-card-content-extra-padding' : ''}">
+            <div class=" flex items-center justify-between gap-2">
+            <div class="s-product-card-content-sub ${this.isSpecial ? 's-product-card-content-extra-padding' : ''}">
             ${this.product?.donation?.can_donate ? '' : this.getProductPrice()}
             ${this.product?.rating?.stars ?
-              `<div class="s-product-card-rating">
-                <i class="sicon-star2 before:text-orange-300"></i>
-                <span>${this.product.rating.stars}</span>
-              </div>`
-               : ``}
-          </div>
+            `<div class="s-product-card-rating">
+            <i class="sicon-star2 before:text-orange-300"></i>
+            <span>${this.product.rating.stars}</span>
+            </div>`
+            : ``}
+            </div>
+            ${this.horizontal ? `
+              <salla-add-product-button 
+                  shape="icon"
+                  product-id="${this.product.id}"
+                  product-status="${this.effectiveStatus}"
+                  product-type="${this.product.type}">
+                  
+                  ${
+                    this.product.status === 'sale'
+                      ? `<i class="text-base sicon-${
+                          this.product.type === 'booking'
+                            ? 'calendar-time'
+                            : 'shopping-bag'
+                        }"></i>`
+                      : ''
+                  }
+              </salla-add-product-button>
+            ` : ''}
+                
+            </div>
 
           ${this.isSpecial && this.product.discount_ends
             ? `<salla-count-down date="${this.formatDate(this.product.discount_ends)}" end-of-day=${true} boxed=${true}

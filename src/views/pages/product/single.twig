@@ -101,7 +101,7 @@
 
     <div class="container container--product-details single-product">
         <div class="flex flex-col items-start md:flex-row" id="product-{{ product.id }}">
-                <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 mb-5 md:mb-0 overflow-hidden shrink-0">
+                <div class="sidebar md:sticky top-24 w-full md:!w-2/4 rtl:ml-8 ltr:mr-8 mb-3 md:mb-0 overflow-hidden shrink-0">
                     {# ====================== MOBILE SLIDER ====================== #}
                     <div class="block md:hidden">
                         <salla-slider
@@ -226,7 +226,7 @@
                 {% hook 'product:single.description.start' %}
 
                 {% if product.brand.name %}
-                    <div class="product-brand mb-5 w-12">
+                    <div class="product-brand mb-3 w-12">
                         <a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
                             <img width="100%" height="100%" class="max-h-full object-contain"
                                  src="{{ product.brand.logo }}"
@@ -296,7 +296,7 @@
                 {% endif %}
 
                 <div class="flex rtl:space-x-reverse space-x-3">
-                    {# <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share> #}
+                    {# <salla-social-share class="inline-flex mb-3" aria-label="social share"></salla-social-share> #}
                     <button id="openShareModal"
                     class="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 rounded-full hover:border-gray-400 hover:shadow-sm transition-all duration-300 text-sm font-medium">
                     <i class="sicon-share-alt"></i>
@@ -315,7 +315,7 @@
                 </div>
 
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
-                    <div class="bg-background py-2.5 mb-5 rounded-md inline-flex text-sm">
+                    <div class="bg-background py-2.5 mb-3 rounded-md inline-flex text-sm">
                         {% if product.sold_quantity %}
                             <div class="px-4 !text-red-800">
                                 <i class="sicon-fire rtl:ml-1.5 ltr:mr-1.5"></i> {{ trans('pages.products.sold') }}
@@ -375,6 +375,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% include "pages.product.pursh_prod" with { productid: product.id } %}
                 <salla-installment price="{{ product.price }}"></salla-installment>
                 {% if product.has_metadata %}
                 <salla-metadata></salla-metadata>
@@ -450,27 +451,16 @@
                         </section>
                     {% endif %}
 
-                    <section class="sticky-product-bar bg-background my-3 rounded-md rounded-b-none">
-                        {# Quantity #}
-                        {% if product.is_hidden_quantity or product.type == 'booking' %}
-                            <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
-                        {% else %}
-                            <div class="sticky-product-bar__quantity center-between mb-5">
-                                <label class="form-label font-bold">
-                                    {{ trans('pages.products.quantity') }}
-                                </label>
-                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity"
-                                  class="border-gray-200 flex justify-end"></salla-quantity-input>
-                            </div>
-                        {% endif %}
-                        {# Add to cart #}
+                    <section class="sticky-product-bar bg-background my-3 flex flex-col gap-2 items-center rounded-md rounded-b-none">
+                    {# Add to cart #}
+                    <div class="flex items-center justify-between w-full gap-2">
                         <salla-add-product-button
                                 {{product.can_quick_buy ? 'quick-buy' : ''}}
                                 {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
                                 {{product.is_require_shipping ? 'required-shipping' : ''}}
                                 {{product.has_preorder_campaign ? 'has-pre-order' : ''}}
                                 amount="{{ product.base_currency_price }}"
-                                class="mt-5 w-full sticky-product-bar__btn"
+                                class="w-full sticky-product-bar__btn first-btn"
                                 product-status="{{ product.status }}"
                                 product-type="{{ product.type }}"
                                 product-id="{{ product.id }}"
@@ -487,6 +477,41 @@
 
                             {{ product.add_to_cart_label }}
                         </salla-add-product-button>
+                        {# Quantity #}
+                        {% if product.is_hidden_quantity or product.type == 'booking' %}
+                            <input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
+                        {% else %}
+                            <div class="sticky-product-bar__quantity center-between">
+                                <salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity"
+                                  class="border-gray-200 flex justify-end"></salla-quantity-input>
+                            </div>
+                        {% endif %}
+                    </div>
+                                            <salla-add-product-button
+                                {{product.can_quick_buy ? 'quick-buy' : ''}}
+                                {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}}
+                                {{product.is_require_shipping ? 'required-shipping' : ''}}
+                                {{product.has_preorder_campaign ? 'has-pre-order' : ''}}
+                                amount="{{ product.base_currency_price }}"
+                                class="w-full sticky-product-bar__btn second-btn"
+                                product-status="{{ product.status }}"
+                                product-type="{{ product.type }}"
+                                product-id="{{ product.id }}"
+                                loader-position="end"
+                                type="submit"
+                                width="wide"
+                                {# Notify availability props#}
+                                {% if product.notify_availability %}
+                                    {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
+                                    channels="{{ product.notify_availability.channels|join(',') }}"
+                                    subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}"
+                                    {{ product.notify_availability.options ? 'notify-options-availability' : '' }}
+                                {% endif %}>
+
+                            {{ product.add_to_cart_label }}
+                        </salla-add-product-button>
+                        
+                        
                     </section>
                     {% if product.is_giftable %}
                         <salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}" {{ product.is_require_shipping ? 'physical-products' : ''  }}></salla-gifting>
@@ -521,7 +546,7 @@
     <div class="s-blocks-wrapper s-before-related">{% hook 'product.single.before_product_recommendations' %}</div>
 
     {# Similar Products Area #}
-    <div class="container mb-5 sm:mb-8">
+    <div class="container mb-3 sm:mb-8">
         <salla-products-slider source="related" source-value="{{product.id}}" block-title="{{trans('pages.products.similar_products')}}" display-all-url></salla-products-slider>
     </div>
     

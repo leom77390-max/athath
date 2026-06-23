@@ -3523,6 +3523,7 @@
               "searchable": true,
               "required": false
             },
+            
             {
               "id": "banner.items_alignment_vertical",
               "type": "items",
@@ -3560,6 +3561,65 @@
               "searchable": true,
               "required": false
             },
+            {
+  "id": "banner.mobile_items_alignment_horizontal",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "محاذاة العناصر أفقياً (موبايل)",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "منتصف",
+      "value": "center"
+    }
+  ],
+  "options": [
+    {
+      "label": "بداية",
+      "value": "start"
+    },
+    {
+      "label": "منتصف",
+      "value": "center"
+    },
+    {
+      "label": "نهاية",
+      "value": "end"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": true
+},{
+  "id": "banner.mobile_items_alignment_vertical",
+  "type": "items",
+  "format": "dropdown-list",
+  "label": "محاذاة العناصر رأسياً (موبايل)",
+  "icon": "sicon-keyboard_arrow_down",
+  "selected": [
+    {
+      "label": "منتصف",
+      "value": "center"
+    }
+  ],
+  "options": [
+    {
+      "label": "بداية",
+      "value": "start"
+    },
+    {
+      "label": "منتصف",
+      "value": "center"
+    },
+    {
+      "label": "نهاية",
+      "value": "end"
+    }
+  ],
+  "source": "Manual",
+  "multichoice": false,
+  "searchable": true
+},
             {
               "id": "banner.block_title",
               "type": "string",

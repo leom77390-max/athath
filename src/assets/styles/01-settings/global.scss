@@ -113,3 +113,30 @@ $main-text-color: var(--main-text-color);
 .empty-cart-state .sicon-arrow-left {
   transition: transform 0.3s ease;
 }
+
+.swiper-pagination-bullet {
+  @apply relative bg-white/30 w-2 h-1 rounded-full overflow-hidden transition-all duration-300;
+}
+
+.swiper-pagination-bullet-active {
+  @apply w-10 bg-white/20;
+}
+
+.swiper-pagination-bullet-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0;
+  border-radius: inherit;
+  background: white;
+  animation: heroBulletProgress var(--slider-delay, 3000ms) linear forwards;
+}
+
+@keyframes heroBulletProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

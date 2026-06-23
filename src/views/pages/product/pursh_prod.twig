@@ -3,13 +3,31 @@
             {% set purchased_together = theme.settings.get('purchased_together') ?? [] %}
             {% for item in purchased_together %}
                 {% set main_product = item.main_product[0] ?? null %}
-                {% if main_product and main_product.id == product.id %}
+                {% if main_product and main_product.id == productid %}
                     <section class="purchased-together-section ">
 
                         <section class="bundle-products-section">
+                        <div class="bundle-header flex items-center justify-between mb-3">
                             <h2 class="bundle-title">
                                 {{ theme.settings.get('purchased_together_title')}}
                             </h2>
+                            <div class="bundle-arrows flex items-center gap-2 mt-4">
+                                <button
+                                class="bundle-prev flex items-center justify-center border border-primary p-2 rounded-sm"
+                                aria-label="Previous"
+                                >
+                                <i class="sicon-caret-right ltr:-scale-x-100"></i>
+                                </button>
+                                <button
+                                class="bundle-next flex items-center justify-center border border-primary p-2 rounded-sm"
+                                aria-label="Next"
+                                >
+                                <i class="sicon-caret-left ltr:-scale-x-100"></i>
+                                </button>
+                            </div>
+                        </div>
+                          
+
 
                             <div class="bundle-products" data-products='{{ item.products_purchased_together|json_encode }}'>
                                 {{ trans('pages.single.loading') }}
@@ -20,295 +38,87 @@
 
 			{% endfor %}
 	</div>
-	<script>
-		salla.onReady(() => {
-		
-		  const wrappers = document.querySelectorAll(".bundle-products");
-		
-		  wrappers.forEach((wrapper) => {
-		
-		    const rawProducts = wrapper.dataset.products || "[]";
-		
-		    let selectedProducts = [];
-		
-		    try {
-		      selectedProducts = JSON.parse(rawProducts);
-		    } catch (e) {
-		      console.error(e);
-		      return;
-		    }
-		
-		    if (!selectedProducts.length) return;
-		
-		    const ids = selectedProducts.map((p) => p.id);
-		
-		    salla.product.fetch({
-		      source: "selected",
-		      source_value: ids,
-		    })
-		    .then((response) => {
-		
-		      const products = response.data || [];
-		
-		      if (!products.length) return;
-		
-		      let html = `
-		        <div class="bundle-wrapper">
-		
-		          <div class="bundle-grid">
-		      `;
-		
-		      products.forEach((product, index) => {
-		
-		        // sold out check
-		        const isSoldOut =
-		          product.is_out_of_stock;
-		
-		        html += `
-		
-		          <div 
-		            class="bundle-item ${
-		              isSoldOut
-		                ? 'opacity-50 pointer-events-none'
-		                : 'is-selected'
-		            }"
-		            data-product-id="${product.id}"
-		            data-disabled="${isSoldOut}"
-		          >
-		
-		            <div class="bundle-image">
-		
-		              <img 
-		                src="${product.image?.url || ''}" 
-		                alt="${product.name}"
-		              >
-		
-		              ${
-		                isSoldOut
-		                  ? `
-		                    <div class="absolute inset-0 bg-black/20"></div>
-		
-		                    <div class="
-		                      absolute top-2 start-2
-		                      bg-red-600 text-white
-		                      text-xs font-bold
-		                      px-2 py-1 rounded-md
-		                    ">
-		                      ${
-		                        document.documentElement.lang === 'ar'
-		                          ? 'نفدت الكمية'
-		                          : 'Sold Out'
-		                      }
-		                    </div>
-		                  `
-		                  : `
-		                    <button 
-		                      type="button"
-		                      class="bundle-check"
-		                    >
-		                      ✓
-		                    </button>
-		                  `
-		              }
-		
-		            </div>
-		
-		            <div class="bundle-name">
-		              ${product.name}
-		            </div>
-		
-		            <div class="bundle-desc">
-		              ${product.description || ''}
-		            </div>
-		
-		            <div class="bundle-price">
-		              ${product.price} ${product.currency}
-		            </div>
-		
-		          </div>
-		        `;
-		
-		        if (index !== products.length - 1) {
-		          html += `
-		            <div class="bundle-plus">
-		              +
-		            </div>
-		          `;
-		        }
-		
-		      });
-		
-		      html += `
-		          </div>
-		
-		          <div class="bundle-footer">
-		
-		            <button class="bundle-btn py-3">
-		
-		              <span class="bundle-btn-text font-medium text-base leading-6 tracking-normal text-center align-middle ">
-		                ${
-		                  document.documentElement.lang === 'ar'
-		                    ? 'أضف المجموعة للسلة'
-		                    : 'Add bundle to cart'
-		                }
-		              </span>
-		
-		              <span class="bundle-loader hidden-bundle"></span>
-		
-		            </button>
-		
-		          </div>
-		
-		        </div>
-		      `;
-		
-		      wrapper.innerHTML = html;
-		
-		      /* =========================
-		         التحكم في التحديد
-		      ========================= */
-		
-		      const bundleItems = wrapper.querySelectorAll(".bundle-item");
-		
-		      bundleItems.forEach((item) => {
-		
-		        // تجاهل المنتجات المعطلة
-		        if (item.dataset.disabled === "true") {
-		          return;
-		        }
-		
-		        const checkBtn = item.querySelector(".bundle-check");
-		
-		        if (!checkBtn) return;
-		
-		        checkBtn.addEventListener("click", () => {
-		
-		          item.classList.toggle("is-selected");
-		
-		          updateBundleState();
-		        });
-		
-		      });
-		
-		      /* =========================
-		         تحديث السعر
-		      ========================= */
-		
-		      function updateBundleState() {
-		
-		        const selected = wrapper.querySelectorAll(
-		          ".bundle-item.is-selected"
-		        );
-		
-		        let total = 0;
-		        let regular = 0;
-		        let currency = "";
-		
-		        selected.forEach((item) => {
-		
-		          const id = item.dataset.productId;
-		
-		          const product = products.find(
-		            (p) => String(p.id) === String(id)
-		          );
-		
-		          if (!product) return;
-		
-		          total += Number(product.price || 0);
-		
-		          regular += Number(
-		            product.regular_price || product.price || 0
-		          );
-		
-		          currency = product.currency || "";
-		
-		        });
-		
-		        const btnText = wrapper.querySelector(".bundle-btn-text");
-		
-		        btnText.innerHTML = `
-		          ${
-		            document.documentElement.lang === 'ar'
-		              ? `أضف المجموعة للسلة بـ ${total} ${currency}`
-		              : `Add bundle for ${total} ${currency}`
-		          }
-		
-		          ${
-		            regular > total
-		              ? `
-		                <span class="bundle-old-price">
-		                  ${regular} ${currency}
-		                </span>
-		              `
-		              : ''
-		          }
-		        `;
-		      }
-		
-		      updateBundleState();
-		
-		      /* =========================
-		         Add Bundle To Cart
-		      ========================= */
-		
-		      const addBtn = wrapper.querySelector(".bundle-btn");
-		      const loader = wrapper.querySelector(".bundle-loader");
-		
-		      addBtn.addEventListener("click", async () => {
-		
-		        const selected = wrapper.querySelectorAll(
-		          ".bundle-item.is-selected"
-		        );
-		
-		        if (!selected.length) return;
-		
-		        addBtn.disabled = true;
-		
-		        loader.classList.remove("hidden-bundle");
-		
-		        try {
-		
-		          for (const item of selected) {
-		
-		            const productId = item.dataset.productId;
-		
-		            await salla.cart.quickAdd(productId);
-		
-		          }
-		
-		          salla.notify.success(
-		            document.documentElement.lang === 'ar'
-		              ? 'تمت إضافة المنتجات للسلة'
-		              : 'Products added to cart'
-		          );
-		
-		        } catch (err) {
-		
-		          console.error(err);
-		
-		          salla.notify.error(
-		            document.documentElement.lang === 'ar'
-		              ? 'حدث خطأ'
-		              : 'Something went wrong'
-		          );
-		
-		        } finally {
-		
-		          addBtn.disabled = false;
-		
-		          loader.classList.add("hidden-bundle");
-		
-		        }
-		
-		      });
-		
-		    })
-		    .catch((err) => {
-		      console.error(err);
-		    });
-		
-		  });
-		
-		});
-	</script>
+<script>
+salla.onReady(() => {
+
+  const wrappers = document.querySelectorAll(".bundle-products");
+
+  wrappers.forEach((wrapper) => {
+
+    const rawProducts = wrapper.dataset.products || "[]";
+
+    let selectedProducts = [];
+
+    try {
+      selectedProducts = JSON.parse(rawProducts);
+    } catch (e) {
+      console.error(e);
+      return;
+    }
+
+    if (!selectedProducts.length) return;
+
+    const ids = selectedProducts.map((p) => p.id);
+
+    salla.product.fetch({
+      source: "selected",
+      source_value: ids,
+    })
+    .then((response) => {
+
+      const products = response.data || [];
+
+      if (!products.length) return;
+
+      const sliderId = `bundle-slider-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+      let html = `
+        <div class="bundle-wrapper">
+
+            <salla-slider
+            id="${sliderId}"
+            type="thumbs"
+            show-controls="false"
+            slider-config='{
+            "slidesPerView": 1,
+            "spaceBetween": 12,
+            "loop": false,
+            "navigation": {
+                "nextEl": ".bundle-next",
+                "prevEl": ".bundle-prev"
+            }
+            }'
+        >
+            <div slot="items">
+      `;
+
+      products.forEach((product) => {
+
+        html += `
+          <custom-salla-product-card
+            product='${JSON.stringify(product)}'
+            horizontal
+          >
+          </custom-salla-product-card>
+        `;
+
+      });
+
+        html += `
+            </div>
+        </salla-slider>
+        </div>
+        `;
+
+      wrapper.innerHTML = html;
+
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+  });
+
+});
+</script>
 {% endif %}
