@@ -16,6 +16,12 @@
       "try_again": "Try Again",
       "code": "Code"
     },
+    "cart": {
+      "product": "Product",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total"
+    },
     "appBanner": {
       "download_now": "download now"
     },

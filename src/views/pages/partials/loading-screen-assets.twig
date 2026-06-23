@@ -1,0 +1,315 @@
+{% if theme.settings.get('enable_loader_screen') %}
+	{% if theme.settings.get('loader_type') == 'logo_loader' %}
+		<style>
+			.loader-init {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				backdrop-filter: blur(15px);
+				transition: opacity 0.75s, visibility 0.75s;
+				z-index: 9999;
+			}
+			.loader-init--hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+			.loader-container {
+				position: relative;
+				width: 300px;
+				height: 300px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 20px;
+			}
+			
+			/* حاوية اللوجو مع تأثير النبض */
+			.logo-wrapper {
+				position: relative;
+				z-index: 2;
+				animation: logoPulse 2s ease-in-out infinite;
+			}
+			
+			.logo-wrapper img {
+				max-height: 80px;
+				width: auto;
+				filter: drop-shadow(0 0 20px rgba(33, 99, 109, 0.3));
+			}
+			
+			@keyframes logoPulse {
+				0%, 100% { transform: scale(1); }
+				50% { transform: scale(1.05); }
+			}
+			
+			
+			@keyframes spin {
+				from { transform: translate(-50%, -50%) rotate(0deg); }
+				to { transform: translate(-50%, -50%) rotate(360deg); }
+			}
+			
+			.particles {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 1;
+			}
+			
+			.particle {
+				position: absolute;
+				border-radius: 50%;
+				background: radial-gradient(circle at 30% 30%, rgba(33, 99, 109, 0.3), rgba(33, 99, 109, 0.1));
+				animation: float 4s ease-in-out infinite;
+			}
+			
+			.particle:nth-child(1) {
+				width: 12px;
+				height: 12px;
+				top: 5%;
+				left: 15%;
+				animation-delay: 0s;
+			}
+			.particle:nth-child(2) {
+				width: 8px;
+				height: 8px;
+				bottom: 10%;
+				right: 10%;
+				animation-delay: 1s;
+			}
+			.particle:nth-child(3) {
+				width: 10px;
+				height: 10px;
+				top: 20%;
+				right: 5%;
+				animation-delay: 2s;
+			}
+			.particle:nth-child(4) {
+				width: 6px;
+				height: 6px;
+				bottom: 25%;
+				left: 5%;
+				animation-delay: 0.5s;
+			}
+			.particle:nth-child(5) {
+				width: 14px;
+				height: 14px;
+				top: 50%;
+				left: -5%;
+				animation-delay: 1.5s;
+			}
+			.particle:nth-child(6) {
+				width: 7px;
+				height: 7px;
+				top: 60%;
+				right: -5%;
+				animation-delay: 2.5s;
+			}
+			
+			@keyframes float {
+				0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+				50% { transform: translateY(-15px) scale(1.2); opacity: 1; }
+			}
+			
+			/* نص العلامة التجارية أسفل اللودر */
+			.brand-text {
+				position: relative;
+				z-index: 2;
+				color: #21636d;
+				font-size: 13px;
+				font-weight: 300;
+				letter-spacing: 3px;
+				opacity: 0;
+				animation: fadeInText 1.5s ease-in-out 0.5s forwards;
+			}
+			
+			@keyframes fadeInText {
+				from { opacity: 0; transform: translateY(10px); }
+				to { opacity: 0.7; transform: translateY(0); }
+			}
+			
+			/* توهج الخلفية */
+			.glow-bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(circle, rgba(33, 99, 109, 0.08) 0%, transparent 70%);
+				border-radius: 50%;
+				z-index: 0;
+				animation: glowPulse 3s ease-in-out infinite;
+			}
+			
+			@keyframes glowPulse {
+				0%, 100% { transform: scale(1); opacity: 0.5; }
+				50% { transform: scale(1.1); opacity: 1; }
+			}
+		</style>
+		
+		<div class="loader-init" id="page-loader">
+			<div class="loader-container">
+				<div class="glow-bg"></div>
+				
+				<div class="particles">
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+					<div class="particle"></div>
+				</div>
+				
+				<div class="logo-wrapper">
+					{% if theme.settings.get('change_loder') %}
+						{% if theme.settings.get('custom_loader_image') %}
+							<img src="{{ theme.settings.get('custom_loader_image') }}" alt="{{ store.name }}" />
+						{% else %}
+							{% if store.logo %}
+								<img src="{{ store.logo }}" alt="{{ store.name }}" />
+							{% endif %}
+						{% endif %}
+					{% else %}
+						{% if store.logo %}
+							<img src="{{ store.logo }}" alt="{{ store.name }}" />
+						{% endif %}
+					{% endif %}
+				</div>
+      </div>
+		</div>
+		
+	{% elseif theme.settings.get('loader_type') == 'custom_loader' %}
+		<style>
+    .loader-init{position:fixed;inset:0;display:flex;align-items:center;
+      justify-content:center;background:#f9f6f2;z-index:999999;
+      transition:opacity .8s,visibility .8s}
+    .lc{display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;z-index:2}
+    .ring{position:absolute;border-radius:50%;border:1px solid rgba(126,184,163,.25);
+      animation:rEx 3.2s ease-out infinite}
+    .ring:nth-child(1){width:120px;height:120px;animation-delay:0s}
+    .ring:nth-child(2){width:168px;height:168px;animation-delay:.8s}
+    .ring:nth-child(3){width:220px;height:220px;animation-delay:1.6s}
+    @keyframes rEx{0%{opacity:.6;transform:scale(.6)}100%{opacity:0;transform:scale(1)}}
+    .sb{position:relative;width:64px;height:90px}
+    .s-cap{position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:28px;height:22px;background:#8a7a68;border-radius:4px 4px 2px 2px;
+      animation:cB 3s ease-in-out infinite}
+    @keyframes cB{0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(-5px)}}
+    .s-neck{position:absolute;top:18px;left:50%;transform:translateX(-50%);
+      width:20px;height:18px;background:#b8a590;border-radius:3px 3px 0 0}
+    .s-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+      width:44px;height:64px;background:linear-gradient(160deg,#e8ddd2,#c9b89e);
+      border-radius:8px 8px 14px 14px;overflow:hidden}
+    .s-shine{position:absolute;top:8px;left:8px;width:10px;height:28px;
+      background:rgba(255,255,255,.35);border-radius:5px}
+    .s-fill{position:absolute;bottom:0;left:0;right:0;
+      background:linear-gradient(to top,#7eb8a3,#a2cfc0);
+      border-radius:0 0 14px 14px;animation:fR 3s ease-in-out infinite}
+    @keyframes fR{0%{height:10%;opacity:.7}50%{height:65%;opacity:1}100%{height:10%;opacity:.7}}
+    .drop{position:absolute;width:7px;height:10px;
+      background:radial-gradient(ellipse at 35% 30%,rgba(162,207,192,.9),rgba(126,184,163,.6));
+      border-radius:50% 50% 60% 60%;opacity:0;animation:dA 4s ease-in-out infinite}
+    .drop:nth-child(1){left:18%;top:20%;animation-delay:0s}
+    .drop:nth-child(2){right:16%;top:30%;animation-delay:1.3s}
+    .drop:nth-child(3){left:12%;bottom:22%;animation-delay:2.1s}
+    .drop:nth-child(4){right:14%;bottom:28%;animation-delay:.7s}
+    @keyframes dA{0%{opacity:0;transform:translateY(-12px) scale(.6)}
+      25%{opacity:1;transform:translateY(0) scale(1)}
+      75%{opacity:1;transform:translateY(0) scale(1)}
+      100%{opacity:0;transform:translateY(16px) scale(.7)}}
+    .brand-name{font-size:22px;font-weight:500;letter-spacing:6px;color:#4a3f35;
+      text-transform:uppercase;animation:nP 3s ease-in-out infinite}
+    .tagline{font-size:11px;letter-spacing:3px;color:#8a7a6a;text-transform:uppercase;
+      animation:nP 3s ease-in-out infinite .5s}
+    .prog{width:120px;height:2px;background:rgba(126,184,163,.2);border-radius:2px;overflow:hidden}
+    .prog-f{height:100%;width:0;background:linear-gradient(90deg,#7eb8a3,#b2d4c8);
+      border-radius:2px;animation:pF 3s ease-in-out infinite}
+    @keyframes nP{0%,100%{opacity:.7}50%{opacity:1}}
+    @keyframes pF{0%{width:0}60%{width:100%}100%{width:100%;opacity:0}}
+    </style>
+
+    <div class="loader-init" id="page-loader">
+      <div style="position:relative;display:flex;align-items:center;justify-content:center">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+        <div class="lc">
+          <div class="sb">
+            <div class="s-cap"></div>
+            <div class="s-neck"></div>
+            <div class="s-body">
+              <div class="s-shine"></div>
+              <div class="s-fill"></div>
+              <div class="drop"></div>
+              <div class="drop"></div>
+              <div class="drop"></div>
+              <div class="drop"></div>
+            </div>
+          </div>
+          <div style="text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
+            <div class="brand-name">{{store.name}}</div>
+            <div class="prog"><div class="prog-f"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+		
+	{% else %}
+		<style>
+			.loader-init {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: white;
+				transition: opacity 0.75s, visibility 0.75s;
+				z-index: 9999;
+			}
+			.loader-init--hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+			.loader-init::after {
+				content: "";
+				width: 36px;
+				height: 36px;
+				border: 3px solid #eee;
+				border-top-color: var(--color-primary);
+				border-radius: 50%;
+				animation: loading 0.75s ease infinite;
+			}
+			@keyframes loading {
+				from {
+					transform: rotate(0turn);
+				}
+				to {
+					transform: rotate(1turn);
+				}
+			}
+		</style>
+		
+		<div class="loader-init" id="page-loader"></div>
+	{% endif %}
+
+	<script>
+		window.addEventListener("load", () => {
+			const loader = document.getElementById("page-loader");
+			if (loader) {
+				loader.style.opacity = '0';
+				loader.style.visibility = 'hidden';
+				loader.addEventListener("transitionend", () => {
+					if (loader.parentNode) {
+						loader.parentNode.removeChild(loader);
+					}
+				});
+			}
+		});
+	</script>
+{% endif %}
