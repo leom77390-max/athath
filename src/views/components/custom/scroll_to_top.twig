@@ -1,282 +1,572 @@
 {% if theme.settings.get('scrolltotopbtn') %}
-<button
-    id="scrollToTopBtn"
-    {# class="{{ theme.settings.get('enable_bottom_nav') ? '!bottom-[90px] md:!bottom-[65px]' : '' }}" #}
-    aria-label="Scroll to top"
->
-    <div class="scroll-btn-inner">
-        <i class="sicon-caret-up-double plane-icon"></i>
-    </div>
-
-    <div class="scroll-btn-particles"></div>
-
-    <div class="scroll-btn-circle">
-        <svg width="100%" height="100%" viewBox="0 0 60 60">
-            <circle
-                class="scroll-progress"
-                cx="30"
-                cy="30"
-                r="26"
-            />
-        </svg>
-    </div>
-</button>
+<!-- ثقب المفتاح السحري -->
+<div id="keyholePortal">
+    <!-- الغلاف المعتم -->
+    <div class="portal-overlay"></div>
+    
+    <!-- ثقب المفتاح -->
+    <button id="keyholeBtn" aria-label="العودة للأعلى">
+        <div class="keyhole-shape">
+            <!-- الدائرة العلوية -->
+            <div class="keyhole-circle"></div>
+            <!-- الجزء السفلي -->
+            <div class="keyhole-body"></div>
+            <!-- البوابة الداخلية -->
+            <div class="inner-portal">
+                <div class="portal-view"></div>
+            </div>
+        </div>
+        
+        <!-- وميض الضوء -->
+        <div class="light-sparkle"></div>
+        
+        <!-- الجسيمات السحرية -->
+        <div class="magical-particles"></div>
+    </button>
+</div>
 {% endif %}
 
-
-
 <style>
-  :root {
-    --scroll-btn-size: 60px;
+/* ============ المتغيرات ============ */
+:root {
+    --portal-size: 80px;
+    --portal-color: #c9a84c; /* ذهبي */
+    --portal-glow: #f4d03f;
+    --overlay-opacity: 0.4;
 }
 
 @media (max-width: 425px) {
     :root {
-        --scroll-btn-size: 40px;
+        --portal-size: 55px;
     }
 }
 
-#scrollToTopBtn {
+/* ============ البوابة الرئيسية ============ */
+#keyholePortal {
     position: fixed;
-    bottom: 50px;
-    right: 20px;
-    width: var(--scroll-btn-size);
-    height: var(--scroll-btn-size);
+    bottom: 40px;
+    right: 30px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+#keyholePortal.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* الغلاف المعتم */
+.portal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at var(--mouse-x, 85%) var(--mouse-y, 85%),
+        transparent 0%,
+        transparent 40%,
+        rgba(0, 0, 0, 0.3) 60%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 999;
+}
+
+#keyholePortal.show .portal-overlay {
+    opacity: 1;
+}
+
+/* ============ زر ثقب المفتاح ============ */
+#keyholeBtn {
+    position: relative;
+    width: var(--portal-size);
+    height: calc(var(--portal-size) * 1.6);
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 30;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-    transition: opacity .4s ease, transform .3s ease;
+    padding: 0;
+    transition: transform 0.3s ease;
 }
 
-#scrollToTopBtn.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+#keyholeBtn:hover {
+    transform: scale(1.1);
 }
 
-#scrollToTopBtn.flying .plane-icon {
-    animation: planeFlyUp 1.2s ease-out forwards;
-}
-
-@keyframes planeFlyUp {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-200px) scale(.4); opacity: 0; }
-}
-
-.scroll-btn-inner {
+/* شكل ثقب المفتاح */
+.keyhole-shape {
+    position: relative;
     width: 100%;
     height: 100%;
+}
+
+/* الدائرة العلوية */
+.keyhole-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--portal-size);
+    height: var(--portal-size);
     border-radius: 50%;
-    background-color: color-mix(
-        in srgb,
-        var(--color-primary) 20%,
-        white 80%
+    background: transparent;
+    border: 3px solid var(--portal-color);
+    box-shadow: 
+        0 0 15px var(--portal-glow),
+        0 0 30px rgba(201, 168, 76, 0.3),
+        inset 0 0 15px rgba(244, 208, 63, 0.1);
+    transition: all 0.4s ease;
+    animation: portalPulse 3s ease-in-out infinite;
+}
+
+/* الجسم السفلي */
+.keyhole-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--portal-size) * 0.45);
+    height: calc(var(--portal-size) * 0.8);
+    background: transparent;
+    border: 3px solid var(--portal-color);
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 
+        0 0 15px var(--portal-glow),
+        0 0 30px rgba(201, 168, 76, 0.3);
+    transition: all 0.4s ease;
+}
+
+/* ============ البوابة الداخلية (العالم المصغر) ============ */
+.inner-portal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--portal-size) * 0.7);
+    height: calc(var(--portal-size) * 0.7);
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    border: 2px solid rgba(201, 168, 76, 0.5);
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.portal-view {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        #1a1a2e 0%,
+        #16213e 50%,
+        #0f3460 100%
     );
-    border: 2px solid var(--color-primary);
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
 }
 
-.scroll-btn-inner::before {
-    content: "";
+/* النجوم داخل البوابة */
+.portal-view::before {
+    content: '';
     position: absolute;
-    bottom: -50%;
-    left: -50%;
-    width: 200%;
+    width: 100%;
     height: 200%;
-    background: var(--color-secondary);
-    opacity: .1;
-    border-radius: 40%;
-    animation: wave-rotate 6s linear infinite;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, white, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40% 70%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50% 50%, white, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 80% 20%, white, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 30% 80%, white, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 70% 60%, white, rgba(0,0,0,0));
+    background-size: 100% 100%;
+    animation: starField 10s linear infinite;
+    opacity: 0.8;
 }
 
-@keyframes wave-rotate {
-    to { transform: rotate(360deg); }
-}
-
-.plane-icon {
-    color: var(--color-secondary);
-    font-size: 1.5rem;
-    position: relative;
-    z-index: 2;
-}
-
-.scroll-btn-circle {
+/* الضباب السحري */
+.portal-view::after {
+    content: '';
     position: absolute;
-    inset: 0;
-    transform: rotate(-90deg);
-}
-
-.scroll-btn-circle svg {
     width: 100%;
     height: 100%;
-    overflow: visible;
+    background: 
+        radial-gradient(circle at 50% 50%, 
+            rgba(244, 208, 63, 0.2) 0%,
+            transparent 70%);
+    animation: magicalMist 4s ease-in-out infinite;
 }
 
-.scroll-progress {
-    fill: none;
-    stroke: var(--color-secondary);
-    stroke-width: 4;
-    stroke-linecap: round;
-    transition: stroke-dashoffset .2s linear;
+@keyframes starField {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
 }
 
-.scroll-btn-particles {
+@keyframes magicalMist {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+@keyframes portalPulse {
+    0%, 100% { 
+        box-shadow: 
+            0 0 15px var(--portal-glow),
+            0 0 30px rgba(201, 168, 76, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 25px var(--portal-glow),
+            0 0 50px rgba(201, 168, 76, 0.5),
+            0 0 75px rgba(244, 208, 63, 0.2);
+    }
+}
+
+/* ============ وميض الضوء ============ */
+.light-sparkle {
     position: absolute;
-    inset: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* ============ الجسيمات السحرية ============ */
+.magical-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.magic-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--portal-glow);
+    border-radius: 50%;
     pointer-events: none;
 }
 
-.energy-ring {
-    position: absolute;
-    border: 2px solid var(--color-secondary);
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    opacity: .8;
+/* ============ حالة فتح البوابة ============ */
+#keyholeBtn.opening .keyhole-circle {
+    animation: portalOpen 1.2s ease-in-out forwards;
 }
 
-.floating-cube {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: var(--color-secondary);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    border-radius: 2px;
+#keyholeBtn.opening .keyhole-body {
+    animation: portalBodyOpen 1.2s ease-in-out forwards;
 }
 
-/* Mobile tweaks */
+#keyholeBtn.opening .inner-portal {
+    animation: portalExpand 1.2s ease-in-out forwards;
+}
+
+@keyframes portalOpen {
+    0% { 
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.3);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(-50%) scale(50);
+        opacity: 0;
+    }
+}
+
+@keyframes portalBodyOpen {
+    0% { 
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(50);
+        opacity: 0;
+    }
+}
+
+@keyframes portalExpand {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        border-radius: 50%;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(100);
+        border-radius: 0;
+        opacity: 0;
+    }
+}
+
+/* ============ تحسينات للأجهزة المحمولة ============ */
 @media (max-width: 425px) {
-    .scroll-progress { stroke-width: 3; }
-    .scroll-btn-inner { border-width: 1.5px; }
-    .plane-icon { font-size: 1rem; }
+    #keyholePortal {
+        bottom: 30px;
+        right: 20px;
+    }
+    
+    .keyhole-circle {
+        border-width: 2px;
+    }
+    
+    .keyhole-body {
+        border-width: 2px;
+    }
+    
+    .inner-portal {
+        width: calc(var(--portal-size) * 0.65);
+        height: calc(var(--portal-size) * 0.65);
+    }
 }
 </style>
 
 <script>
- const btn = document.getElementById("scrollToTopBtn");
-const progressCircle = document.querySelector(".scroll-progress");
-const particleContainer = document.querySelector(".scroll-btn-particles");
-
-let circumference = progressCircle.getTotalLength();
-progressCircle.style.strokeDasharray = circumference;
-progressCircle.style.strokeDashoffset = circumference;
-
-function createEnergyRings() {
-    for (let i = 0; i < 3; i++) {
-        const ring = document.createElement("div");
-        ring.className = "energy-ring";
-
-        const size = 20 + (i * 15);
-
-        ring.style.width = size + "px";
-        ring.style.height = size + "px";
-
-        ring.animate(
-            [
+(function() {
+    const portal = document.getElementById('keyholePortal');
+    const keyholeBtn = document.getElementById('keyholeBtn');
+    const overlay = document.querySelector('.portal-overlay');
+    const sparkle = document.querySelector('.light-sparkle');
+    const particlesContainer = document.querySelector('.magical-particles');
+    
+    let ticking = false;
+    
+    // تحديث موضع تأثير الضوء على الغلاف
+    document.addEventListener('mousemove', (e) => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const x = (e.clientX / window.innerWidth) * 100;
+                const y = (e.clientY / window.innerHeight) * 100;
+                document.documentElement.style.setProperty('--mouse-x', x + '%');
+                document.documentElement.style.setProperty('--mouse-y', y + '%');
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // إنشاء تأثير الوميض
+    function createSparkle(x, y) {
+        sparkle.style.left = x + 'px';
+        sparkle.style.top = y + 'px';
+        sparkle.style.opacity = '1';
+        sparkle.style.transform = 'translate(-50%, -50%) scale(0)';
+        
+        sparkle.animate([
+            { transform: 'translate(-50%, -50%) scale(0)', opacity: 1 },
+            { transform: 'translate(-50%, -50%) scale(3)', opacity: 0 }
+        ], {
+            duration: 800,
+            easing: 'ease-out'
+        });
+        
+        setTimeout(() => {
+            sparkle.style.opacity = '0';
+        }, 800);
+    }
+    
+    // إنشاء جسيمات سحرية
+    function createMagicalParticles() {
+        const count = 30;
+        const btnRect = keyholeBtn.getBoundingClientRect();
+        const centerX = btnRect.width / 2;
+        const centerY = btnRect.height / 2;
+        
+        for (let i = 0; i < count; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'magic-particle';
+            
+            const angle = (Math.PI * 2 * i) / count;
+            const velocity = 2 + Math.random() * 4;
+            const delay = i * 20;
+            
+            particle.style.left = centerX + 'px';
+            particle.style.top = centerY + 'px';
+            
+            particlesContainer.appendChild(particle);
+            
+            particle.animate([
                 {
-                    width: size + "px",
-                    height: size + "px",
-                    opacity: .8
+                    transform: 'translate(-50%, -50%) scale(0) rotate(0deg)',
+                    opacity: 1
                 },
                 {
-                    width: size + 80 + "px",
-                    height: size + 80 + "px",
+                    transform: `translate(
+                        ${Math.cos(angle) * 100 * velocity}px, 
+                        ${Math.sin(angle) * 100 * velocity}px
+                    ) scale(1.5) rotate(360deg)`,
                     opacity: 0
                 }
-            ],
-            {
-                duration: 1000,
-                delay: i * 120,
-                easing: "ease-out"
-            }
-        );
-
-        particleContainer.appendChild(ring);
-
-        setTimeout(() => ring.remove(), 1200);
+            ], {
+                duration: 1000 + Math.random() * 500,
+                delay: delay,
+                easing: 'cubic-bezier(0, 0.9, 0.57, 1)'
+            });
+            
+            setTimeout(() => particle.remove(), 2000);
+        }
     }
-}
-
-function createFloatingCubes() {
-    for (let i = 0; i < 12; i++) {
-        const cube = document.createElement("div");
-        cube.className = "floating-cube";
-
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 70 + Math.random() * 50;
-
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-
-        cube.animate(
-            [
+    
+    // إنشاء موجات سحرية
+    function createMagicalRipples() {
+        const btnRect = keyholeBtn.getBoundingClientRect();
+        const centerX = btnRect.width / 2;
+        const centerY = btnRect.height / 2;
+        
+        for (let i = 0; i < 5; i++) {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                width: 20px;
+                height: 20px;
+                border: 2px solid var(--portal-color);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 3;
+                transform: translate(-50%, -50%);
+            `;
+            
+            particlesContainer.appendChild(ripple);
+            
+            ripple.animate([
                 {
+                    width: '20px',
+                    height: '20px',
                     opacity: 1,
-                    transform: "translate(-50%, -50%) rotate(45deg) scale(0)"
+                    borderWidth: '3px'
                 },
                 {
+                    width: '200px',
+                    height: '200px',
                     opacity: 0,
-                    transform: `translate(${x}px, ${y}px) rotate(405deg) scale(1.5)`
+                    borderWidth: '1px'
                 }
-            ],
-            {
-                duration: 900,
-                easing: "cubic-bezier(.17,.67,.25,1)"
-            }
-        );
-
-        particleContainer.appendChild(cube);
-
-        setTimeout(() => cube.remove(), 1000);
+            ], {
+                duration: 1500,
+                delay: i * 150,
+                easing: 'ease-out'
+            });
+            
+            setTimeout(() => ripple.remove(), 2000);
+        }
     }
-}
-
-btn.addEventListener("click", () => {
-    btn.classList.add("flying");
-
-    createEnergyRings();
-    createFloatingCubes();
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    
+    // معالج الضغط على الزر
+    keyholeBtn.addEventListener('click', (e) => {
+        const rect = keyholeBtn.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // إضافة تأثيرات بصرية
+        createSparkle(x, y);
+        createMagicalParticles();
+        createMagicalRipples();
+        
+        // بدء أنيميشن الفتح
+        keyholeBtn.classList.add('opening');
+        
+        // صوت سحري (اختياري)
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.5);
+            
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+            
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + 0.5);
+        } catch (err) {
+            // المتصفح لا يدعم الصوت
+        }
+        
+        // التمرير للأعلى
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // إعادة تعيين الأنيميشن
+        setTimeout(() => {
+            keyholeBtn.classList.remove('opening');
+        }, 1200);
     });
-
-    setTimeout(() => {
-        btn.classList.remove("flying");
-    }, 1200);
-});
-
-function updateProgress() {
-    const scrollTop = window.scrollY;
-    const height =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-    const progress = Math.min(1, scrollTop / height);
-
-    progressCircle.style.strokeDashoffset =
-        circumference - progress * circumference;
-
-    btn.classList.toggle("show", scrollTop > 300);
-}
-
-window.addEventListener("scroll", updateProgress);
-window.addEventListener("resize", () => {
-    circumference = progressCircle.getTotalLength();
-    progressCircle.style.strokeDasharray = circumference;
-    updateProgress();
-});
-
+    
+    // تأثير التمرير - إظهار وإخفاء البوابة
+    function updatePortalVisibility() {
+        const scrollTop = window.scrollY;
+        const shouldShow = scrollTop > 300;
+        
+        portal.classList.toggle('show', shouldShow);
+        
+        // تحديث البوابة الداخلية بناءً على التمرير
+        const scrollPercent = Math.min(1, scrollTop / (document.documentElement.scrollHeight - window.innerHeight));
+        const portalView = document.querySelector('.portal-view');
+        
+        if (portalView) {
+            // تغيير سرعة النجوم بناءً على التمرير
+            const animationDuration = 10 - (scrollPercent * 8); // من 10s إلى 2s
+            portalView.style.setProperty('--star-speed', animationDuration + 's');
+            
+            // تغيير شدة الضوء
+            const glowIntensity = 0.2 + (scrollPercent * 0.6);
+            portalView.style.background = `
+                radial-gradient(circle at 50% 50%, 
+                    rgba(244, 208, 63, ${glowIntensity}) 0%,
+                    transparent 70%)
+            `;
+        }
+    }
+    
+    // تحسين الأداء مع التمرير
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updatePortalVisibility();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // تأثير التحويم على البوابة الداخلية
+    keyholeBtn.addEventListener('mouseenter', () => {
+        const innerPortal = document.querySelector('.inner-portal');
+        if (innerPortal) {
+            innerPortal.style.transform = 'translate(-50%, -50%) scale(1.1)';
+            innerPortal.style.transition = 'transform 0.3s ease';
+        }
+    });
+    
+    keyholeBtn.addEventListener('mouseleave', () => {
+        const innerPortal = document.querySelector('.inner-portal');
+        if (innerPortal) {
+            innerPortal.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+    });
+    
+    // التهيئة الأولية
+    updatePortalVisibility();
+})();
 </script>
