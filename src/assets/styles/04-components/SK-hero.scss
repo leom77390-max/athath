@@ -3,6 +3,7 @@
 // ============================================================
 
 .custom-shopify-style-slider {
+  
 
   position: relative;
   width: 100%;
@@ -306,58 +307,58 @@
   /* Vertical */
 
   .slide-content-wrapper.mobile-v-align-start {
-    align-items: flex-start;
+    align-items: flex-start !important;
     padding-top: 2rem;
   }
 
   .slide-content-wrapper.mobile-v-align-center {
-    align-items: center;
+    align-items: center !important;
   }
 
   .slide-content-wrapper.mobile-v-align-end {
-    align-items: flex-end;
+    align-items: flex-end !important;
     padding-bottom: 2rem;
   }
 
   /* Horizontal */
 
   .slide-content-wrapper.mobile-h-align-start {
-    justify-content: flex-start;
-    text-align: start;
+    justify-content: flex-start !important;
+    text-align: start !important;
 
     .inner-content {
-      align-items: flex-start;
+      align-items: flex-start !important;
     }
   }
 
   .slide-content-wrapper.mobile-h-align-center {
-    justify-content: center;
-    text-align: center;
+    justify-content: center !important;
+    text-align: center !important;
 
     .inner-content {
-      align-items: center;
+      align-items: center !important;
     }
   }
 
   .slide-content-wrapper.mobile-h-align-end {
-    justify-content: flex-end;
-    text-align: end;
+    justify-content: flex-end !important;
+    text-align: end !important;
 
     .inner-content {
-      align-items: flex-end;
+      align-items: flex-end !important;
     }
   }
 
   .mobile-h-align-start .slide-btn {
-    align-self: flex-start;
+    align-self: flex-start !important;
   }
 
   .mobile-h-align-center .slide-btn {
-    align-self: center;
+    align-self: center !important;
   }
 
   .mobile-h-align-end .slide-btn {
-    align-self: flex-end;
+    align-self: flex-end !important;
   }
 }
 }

@@ -3634,20 +3634,6 @@
               "required": false
             },
             {
-              "id": "banner.highlighted_word_order",
-              "type": "number",
-              "format": "slider",
-              "inputType": "range",
-              "label": "حدد ترتيب الكلمة المميزة",
-              "description": "حدد ترتيب الكلمة المميزة داخل العنوان الرئيسي.",
-              "icon": "sicon-pin",
-              "value": "2",
-              "required": false,
-              "step": "1",
-              "minimum": "0",
-              "maximum": "50"
-            },
-            {
               "id": "banner.highlighted_word_color",
               "type": "string",
               "format": "color",
@@ -3831,18 +3817,6 @@
                   "value": "custom"
                 }
               ]
-            },
-            {
-              "id": "banner.add_countdown",
-              "type": "boolean",
-              "format": "switch",
-              "label": "إضافة عداد تنازلي",
-              "description": null,
-              "labelHTML": null,
-              "icon": "sicon-toggle-off",
-              "value": true,
-              "selected": true,
-              "required": false
             },
             {
               "id": "banner.countdown",

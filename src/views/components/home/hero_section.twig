@@ -34,11 +34,14 @@
     "pagination": {
       "el": ".hero-pagination-{{ position }}",
       "clickable": true
-    },
+    }
+    {% if component.enable_autoplay %},
     "autoplay": {
       "delay": {{ component.delay_time | default(3) }}000,
-      "disableOnInteraction": false
+      "disableOnInteraction": false,
+      "pauseOnMouseEnter": true 
     }
+    {% endif %}
   }'
 >
     <div slot="items">
@@ -52,6 +55,24 @@
 
         <div class="custom-slide-item">
 
+        {% if slide.vid and slide.vid_url %}
+
+          <div class="slide-bg-media">
+            <video
+              class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="{{ slide.desktop_bg }}"
+            >
+              <source src="{{ slide.vid_url }}" type="video/mp4">
+            </video>
+          </div>
+
+        {% else %}
+
           <picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
             <source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
             <img
@@ -61,6 +82,8 @@
               fetchpriority="{{ loop.first ? 'high' : 'auto' }}"
             >
           </picture>
+
+        {% endif %}
 
           {% if slide.overlay > 0 %}
             <div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
@@ -111,7 +134,19 @@
     padding: 10px 16px !important;
 }
 .shopify-hero-{{ position }} .carousel-slider .swiper{
-  padding:0 !important;
+  padding:0px 12px !important;
   margin:0 !important;
+}
+.shopify-hero-{{ position }} .slide-bg-video,
+.shopify-hero-{{ position }} .slide-bg-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.shopify-hero-{{ position }} .slide-bg-media {
+  position: absolute;
+  inset: 0;
 }
 </style>

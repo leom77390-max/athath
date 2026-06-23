@@ -34611,48 +34611,52 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     /* Vertical */
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-v-align-start {
-    align-items: flex-start;
+    align-items: flex-start !important;
+  }
+  .custom-shopify-style-slider .slide-content-wrapper.mobile-v-align-start {
     padding-top: 2rem;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-v-align-center {
-    align-items: center;
+    align-items: center !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-v-align-end {
-    align-items: flex-end;
+    align-items: flex-end !important;
+  }
+  .custom-shopify-style-slider .slide-content-wrapper.mobile-v-align-end {
     padding-bottom: 2rem;
   }
   .custom-shopify-style-slider {
     /* Horizontal */
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-start {
-    justify-content: flex-start;
-    text-align: left;
+    justify-content: flex-start !important;
+    text-align: left !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-start .inner-content {
-    align-items: flex-start;
+    align-items: flex-start !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-center {
-    justify-content: center;
-    text-align: center;
+    justify-content: center !important;
+    text-align: center !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-center .inner-content {
-    align-items: center;
+    align-items: center !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-end {
-    justify-content: flex-end;
-    text-align: right;
+    justify-content: flex-end !important;
+    text-align: right !important;
   }
   .custom-shopify-style-slider .slide-content-wrapper.mobile-h-align-end .inner-content {
-    align-items: flex-end;
+    align-items: flex-end !important;
   }
   .custom-shopify-style-slider .mobile-h-align-start .slide-btn {
-    align-self: flex-start;
+    align-self: flex-start !important;
   }
   .custom-shopify-style-slider .mobile-h-align-center .slide-btn {
-    align-self: center;
+    align-self: center !important;
   }
   .custom-shopify-style-slider .mobile-h-align-end .slide-btn {
-    align-self: flex-end;
+    align-self: flex-end !important;
   }
 }
 @media (prefers-reduced-motion: reduce) {
