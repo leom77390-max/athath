@@ -53,7 +53,6 @@
 				to { transform: translate(-50%, -50%) rotate(360deg); }
 			}
 			
-			/* جسيمات العناية (مثل الفقاعات أو القطرات) */
 			.particles {
 				position: absolute;
 				width: 100%;
@@ -180,261 +179,84 @@
 						{% endif %}
 					{% endif %}
 				</div>
-				
-				<div class="brand-text">✨ العناية ببشرتك تبدأ من هنا ✨</div>
-			</div>
+      </div>
 		</div>
 		
 	{% elseif theme.settings.get('loader_type') == 'custom_loader' %}
 		<style>
-			.loader-init {
-				position: fixed;
-				inset: 0;
-				width: 100vw;
-				height: 100vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: linear-gradient(135deg, #f8f4f0 0%, #ffffff 50%, #f8f4f0 100%);
-				z-index: 999999;
-				transition: opacity 0.8s ease, visibility 0.8s ease;
-			}
-			
-			.skincare-loader {
-				position: relative;
-				width: 220px;
-				height: 220px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-			}
-			
-			/* زهرة اللوتس - رمز الجمال والعناية */
-			.lotus-flower {
-				position: relative;
-				width: 180px;
-				height: 180px;
-				animation: lotusFloat 4s ease-in-out infinite;
-			}
-			
-			.lotus-petal {
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				transform-origin: bottom center;
-				width: 40px;
-				height: 70px;
-				border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-				background: linear-gradient(to top, #e8a87c, #f57328);
-				opacity: 0;
-				transform: translateX(-50%) rotate(0deg);
-				animation: petalGrow 3s ease-in-out infinite;
-			}
-			
-			.lotus-petal:nth-child(1) { transform: translateX(-50%) rotate(0deg); animation-delay: 0s; }
-			.lotus-petal:nth-child(2) { transform: translateX(-50%) rotate(45deg); animation-delay: 0.2s; }
-			.lotus-petal:nth-child(3) { transform: translateX(-50%) rotate(90deg); animation-delay: 0.4s; }
-			.lotus-petal:nth-child(4) { transform: translateX(-50%) rotate(135deg); animation-delay: 0.6s; }
-			.lotus-petal:nth-child(5) { transform: translateX(-50%) rotate(180deg); animation-delay: 0.8s; }
-			.lotus-petal:nth-child(6) { transform: translateX(-50%) rotate(225deg); animation-delay: 1s; }
-			.lotus-petal:nth-child(7) { transform: translateX(-50%) rotate(270deg); animation-delay: 1.2s; }
-			.lotus-petal:nth-child(8) { transform: translateX(-50%) rotate(315deg); animation-delay: 1.4s; }
-			
-			/* الطبقة الداخلية من البتلات */
-			.lotus-petal-inner {
-				position: absolute;
-				bottom: 15px;
-				left: 50%;
-				transform-origin: bottom center;
-				width: 25px;
-				height: 45px;
-				border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-				background: linear-gradient(to top, #f5cba7, #f57328);
-				opacity: 0;
-				transform: translateX(-50%) rotate(0deg);
-				animation: petalGrow 3s ease-in-out infinite;
-				animation-delay: 1.6s;
-			}
-			
-			.lotus-petal-inner:nth-child(9) { transform: translateX(-50%) rotate(0deg); animation-delay: 1.6s; }
-			.lotus-petal-inner:nth-child(10) { transform: translateX(-50%) rotate(60deg); animation-delay: 1.8s; }
-			.lotus-petal-inner:nth-child(11) { transform: translateX(-50%) rotate(120deg); animation-delay: 2s; }
-			.lotus-petal-inner:nth-child(12) { transform: translateX(-50%) rotate(180deg); animation-delay: 2.2s; }
-			.lotus-petal-inner:nth-child(13) { transform: translateX(-50%) rotate(240deg); animation-delay: 2.4s; }
-			.lotus-petal-inner:nth-child(14) { transform: translateX(-50%) rotate(300deg); animation-delay: 2.6s; }
-			
-			@keyframes petalGrow {
-				0%, 100% { opacity: 0; transform: translateX(-50%) rotate(var(--rotation, 0deg)) scale(0.8); }
-				20% { opacity: 1; transform: translateX(-50%) rotate(var(--rotation, 0deg)) scale(1); }
-				80% { opacity: 1; transform: translateX(-50%) rotate(var(--rotation, 0deg)) scale(1); }
-			}
-			
-			@keyframes lotusFloat {
-				0%, 100% { transform: translateY(0px) rotate(-2deg); }
-				50% { transform: translateY(-10px) rotate(2deg); }
-			}
-			
-			/* مركز الزهرة */
-			.lotus-center {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				width: 30px;
-				height: 30px;
-				background: radial-gradient(circle, #f5cba7, #e8a87c);
-				border-radius: 50%;
-				z-index: 5;
-				box-shadow: 0 0 30px rgba(245, 115, 40, 0.3);
-				animation: centerPulse 2s ease-in-out infinite;
-			}
-			
-			@keyframes centerPulse {
-				0%, 100% { transform: translate(-50%, -50%) scale(1); }
-				50% { transform: translate(-50%, -50%) scale(1.1); }
-			}
-			
-			/* قطرات الماء المتلألئة */
-			.water-droplets {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				z-index: 10;
-				pointer-events: none;
-			}
-			
-			.droplet {
-				position: absolute;
-				width: 8px;
-				height: 12px;
-				background: linear-gradient(to bottom, rgba(33, 99, 109, 0.6), rgba(33, 99, 109, 0.1));
-				border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-				animation: dropletFall 4s ease-in-out infinite;
-				opacity: 0;
-			}
-			
-			.droplet:nth-child(1) { top: 5%; left: 20%; animation-delay: 0s; }
-			.droplet:nth-child(2) { top: 10%; right: 15%; animation-delay: 1s; }
-			.droplet:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 2s; }
-			.droplet:nth-child(4) { bottom: 5%; right: 20%; animation-delay: 3s; }
-			.droplet:nth-child(5) { top: 30%; left: 0%; animation-delay: 0.5s; }
-			.droplet:nth-child(6) { top: 25%; right: 0%; animation-delay: 1.5s; }
-			.droplet:nth-child(7) { bottom: 30%; left: 0%; animation-delay: 2.5s; }
-			.droplet:nth-child(8) { bottom: 25%; right: 0%; animation-delay: 3.5s; }
-			
-			@keyframes dropletFall {
-				0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-				20% { opacity: 1; }
-				80% { opacity: 1; }
-				100% { transform: translateY(30px) rotate(180deg); opacity: 0; }
-			}
-			
-			/* النص المتحرك */
-			.loader-text {
-				margin-top: 25px;
-				font-size: 16px;
-				font-weight: 300;
-				letter-spacing: 2px;
-				color: #21636d;
-				position: relative;
-				z-index: 15;
-				animation: textGlow 2s ease-in-out infinite;
-			}
-			
-			.loader-text span {
-				display: inline-block;
-				animation: textLetter 3s ease-in-out infinite;
-			}
-			
-			@keyframes textGlow {
-				0%, 100% { opacity: 0.6; }
-				50% { opacity: 1; }
-			}
-			
-			@keyframes textLetter {
-				0%, 100% { transform: translateY(0); }
-				50% { transform: translateY(-3px); }
-			}
-			
-			/* نقاط التحميل */
-			.loading-dots {
-				display: flex;
-				gap: 8px;
-				margin-top: 5px;
-				position: relative;
-				z-index: 15;
-			}
-			
-			.loading-dot {
-				width: 8px;
-				height: 8px;
-				background: #21636d;
-				border-radius: 50%;
-				animation: dotBounce 1.5s ease-in-out infinite;
-			}
-			
-			.loading-dot:nth-child(1) { animation-delay: 0s; }
-			.loading-dot:nth-child(2) { animation-delay: 0.3s; }
-			.loading-dot:nth-child(3) { animation-delay: 0.6s; }
-			
-			@keyframes dotBounce {
-				0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
-				40% { transform: scale(1); opacity: 1; }
-			}
-		</style>
-		
-		<div class="loader-init" id="page-loader">
-			<div class="skincare-loader">
-				<div class="water-droplets">
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-					<div class="droplet"></div>
-				</div>
-				
-				<div class="lotus-flower">
-					<!-- البتلات الخارجية -->
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					<div class="lotus-petal"></div>
-					
-					<!-- البتلات الداخلية -->
-					<div class="lotus-petal-inner"></div>
-					<div class="lotus-petal-inner"></div>
-					<div class="lotus-petal-inner"></div>
-					<div class="lotus-petal-inner"></div>
-					<div class="lotus-petal-inner"></div>
-					<div class="lotus-petal-inner"></div>
-					
-					<!-- مركز الزهرة -->
-					<div class="lotus-center"></div>
-				</div>
-				
-				<div class="loader-text">
-					{% for letter in store.name|split('') %}
-						<span>{{ letter }}</span>
-					{% endfor %}
-				</div>
-				
-				<div class="loading-dots">
-					<div class="loading-dot"></div>
-					<div class="loading-dot"></div>
-					<div class="loading-dot"></div>
-				</div>
-			</div>
-		</div>
+.loader-init{position:fixed;inset:0;display:flex;align-items:center;
+  justify-content:center;background:#f9f6f2;z-index:999999;
+  transition:opacity .8s,visibility .8s}
+.lc{display:flex;flex-direction:column;align-items:center;gap:20px;position:relative;z-index:2}
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(126,184,163,.25);
+  animation:rEx 3.2s ease-out infinite}
+.ring:nth-child(1){width:120px;height:120px;animation-delay:0s}
+.ring:nth-child(2){width:168px;height:168px;animation-delay:.8s}
+.ring:nth-child(3){width:220px;height:220px;animation-delay:1.6s}
+@keyframes rEx{0%{opacity:.6;transform:scale(.6)}100%{opacity:0;transform:scale(1)}}
+.sb{position:relative;width:64px;height:90px}
+.s-cap{position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:28px;height:22px;background:#8a7a68;border-radius:4px 4px 2px 2px;
+  animation:cB 3s ease-in-out infinite}
+@keyframes cB{0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(-5px)}}
+.s-neck{position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  width:20px;height:18px;background:#b8a590;border-radius:3px 3px 0 0}
+.s-body{position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:44px;height:64px;background:linear-gradient(160deg,#e8ddd2,#c9b89e);
+  border-radius:8px 8px 14px 14px;overflow:hidden}
+.s-shine{position:absolute;top:8px;left:8px;width:10px;height:28px;
+  background:rgba(255,255,255,.35);border-radius:5px}
+.s-fill{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,#7eb8a3,#a2cfc0);
+  border-radius:0 0 14px 14px;animation:fR 3s ease-in-out infinite}
+@keyframes fR{0%{height:10%;opacity:.7}50%{height:65%;opacity:1}100%{height:10%;opacity:.7}}
+.drop{position:absolute;width:7px;height:10px;
+  background:radial-gradient(ellipse at 35% 30%,rgba(162,207,192,.9),rgba(126,184,163,.6));
+  border-radius:50% 50% 60% 60%;opacity:0;animation:dA 4s ease-in-out infinite}
+.drop:nth-child(1){left:18%;top:20%;animation-delay:0s}
+.drop:nth-child(2){right:16%;top:30%;animation-delay:1.3s}
+.drop:nth-child(3){left:12%;bottom:22%;animation-delay:2.1s}
+.drop:nth-child(4){right:14%;bottom:28%;animation-delay:.7s}
+@keyframes dA{0%{opacity:0;transform:translateY(-12px) scale(.6)}
+  25%{opacity:1;transform:translateY(0) scale(1)}
+  75%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(16px) scale(.7)}}
+.brand-name{font-size:22px;font-weight:500;letter-spacing:6px;color:#4a3f35;
+  text-transform:uppercase;animation:nP 3s ease-in-out infinite}
+.tagline{font-size:11px;letter-spacing:3px;color:#8a7a6a;text-transform:uppercase;
+  animation:nP 3s ease-in-out infinite .5s}
+.prog{width:120px;height:2px;background:rgba(126,184,163,.2);border-radius:2px;overflow:hidden}
+.prog-f{height:100%;width:0;background:linear-gradient(90deg,#7eb8a3,#b2d4c8);
+  border-radius:2px;animation:pF 3s ease-in-out infinite}
+@keyframes nP{0%,100%{opacity:.7}50%{opacity:1}}
+@keyframes pF{0%{width:0}60%{width:100%}100%{width:100%;opacity:0}}
+</style>
+
+<div class="loader-init" id="page-loader">
+  <div style="position:relative;display:flex;align-items:center;justify-content:center">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+    <div class="lc">
+      <div class="sb">
+        <div class="s-cap"></div>
+        <div class="s-neck"></div>
+        <div class="s-body">
+          <div class="s-shine"></div>
+          <div class="s-fill"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+        </div>
+      </div>
+      <div style="text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div class="brand-name">SLEEK</div>
+        <div class="tagline">Skin Care</div>
+        <div class="prog"><div class="prog-f"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
 		
 	{% else %}
 		<style>
