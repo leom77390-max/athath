@@ -1,0 +1,54 @@
+
+<section class="NG-Why-choose-us NG-Why-choose-us-{{position}} 
+{% if component.margin_bottom_rm %} !mb-0  {% else %} ng-s-block {% endif %}
+"
+>
+<div class="NG-Why-choose-us-wrapper bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]">
+	<div class="container md:py-10 py-5">
+		<div class="pros-grid lg:flex items-start grid md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-2 gap-5 justify-between lg:gap-11">
+			{% for pro in component.store_pros %}
+				<div data-sal="slide-left" data-sal-duration="900" data-sal-delay="{{ loop.index * 200 }}" data-sal-easing="ease-out-cubic"  class="pro  flex flex-col md:flex-row h-full gap-2 items-start  lg:flex-1">
+					{% if pro.icon_list == ["image_icon"] and pro.img_icon %}
+						<img loading="lazy" class="aspect-square md:w-16 w-14 object-contain " src="{{pro.img_icon}}" alt="تعذر تحميل الصورة">
+					{% elseif pro.icon_list == ["salla_icon"] and pro.salla_icon %}
+						<i class="{{pro.salla_icon}} text-primary bg-transparent md:text-5xl text-4xl" style="color:{{pro.icon_color}};"></i>
+					{% elseif pro.icon_list == ["animated_icon"] and pro.animated_icon_id  %}
+						<div class="aspect-square md:w-14 w-10">
+							<lord-icon class="h-[40px] w-[40px] my-icon_features" src="https://cdn.lordicon.com/{{ pro.animated_icon_id }}.json" trigger="loop" stroke="bold" state="loop-roll" colors="primary:var(--color-primary)"></lord-icon>
+						</div>
+					{% endif %}
+					<div class="ltr:text-left rtl:text-right leading-normal">
+						<p class="text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)] text-font pb-2 font-normal text-wrap" {% if component.use_custom_colors %} style="color:{{pro.blocktitle_color}};" {% endif %}>{{pro.block_title}}</p>
+						<p class="text-[clamp(0.75rem,0.7117rem+0.1633vw,0.875rem)] text-graytext opacity-90 font-light" {% if component.use_custom_colors %} style="color: {{pro.subtext_color}};" {% endif %}>{{pro.subtext}}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	</div>
+</section>
+<style>
+{% if component.use_custom_colors %}
+.NG-Why-choose-us-{{position}} .NG-Why-choose-us-wrapper{
+ background: {{component.section_bg}};
+}
+{% endif %}
+</style>
+{% for pro in component.store_pros %}
+					{% if pro.icon_list == ["animated_icon"] and pro.animated_icon_id  %}
+		
+<script>
+	// Wait for the element to load
+	document.addEventListener("DOMContentLoaded", () => {
+		const icon = document.getElementById("my-icon_features");
+		const color = getComputedStyle(document.documentElement)
+		.getPropertyValue("--color-primary")
+		.trim();
+		// Apply dynamic color using JS
+		icon.setAttribute("colors", `primary:${color},secondary:${color}`);
+	});
+</script>
+					{% endif %}
+
+			{% endfor %}
+

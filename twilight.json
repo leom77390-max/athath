@@ -1434,6 +1434,379 @@
         }
     ],
     "components": [
+                {
+            "key": "b0df1b57-d477-4cfb-8ba7-6b0b9eba9edf",
+            "title": {
+                "en": "Sleek - store Features",
+                "ar": "ميزات المتجر - سلييك"
+            },
+            "icon": "sicon-gold-badge",
+            "path": "home.GL_features",
+            "is_default": true,
+            "image": "",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src=''></div>"
+                },
+                {
+                    "id": "margin_bottom_rm",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "حذف المسافة السفلية",
+                    "description": "فعّل هذا الخيار، لحذف المسافة السفلية للقسم.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "use_custom_colors",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "استخدام ألوان مخصصة",
+                    "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالقسم بدلًا من ألوان الثيم الأساسية.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "section_bg",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "description": "اختر اللون الذي سيظهر كخلفية لهذا القسم.",
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#F5DEE1",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "store_pros",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "مميزات المتجر",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": "ميزة",
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "store_pros.icon_list",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "أختر نوع الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-list",
+                            "selected": [
+                                {
+                                    "label": "صورة",
+                                    "value": "image_icon",
+                                    "key": "530b0e1c-0e62-4a0e-bd30-391b171bdba5"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "أيقونة سلة",
+                                    "value": "salla_icon",
+                                    "key": "7f6d9d2b-5a59-4546-9c50-2cac98f51a3d"
+                                },
+                                {
+                                    "label": "صورة",
+                                    "value": "image_icon",
+                                    "key": "530b0e1c-0e62-4a0e-bd30-391b171bdba5"
+                                },
+                                {
+                                    "label": "أيقونة متحركة",
+                                    "value": "animated_icon",
+                                    "key": "b9f27027-80de-4b65-87b4-6a4540ff12af"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": true
+                        },
+                        {
+                            "id": "store_pros.img_icon",
+                            "type": "string",
+                            "format": "image",
+                            "label": "إضافة صورة كأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true,
+                            "conditions": [
+                                {
+                                    "id": "store_pros.icon_list",
+                                    "operation": "=",
+                                    "value": "image_icon",
+                                    "value_index": ".",
+                                    "collection_id": "store_pros"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.icon_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون الأيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#000000",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "store_pros.icon_list",
+                                    "operation": "=",
+                                    "value": "salla_icon",
+                                    "value_index": ".",
+                                    "collection_id": "store_pros"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.salla_icon",
+                            "type": "string",
+                            "format": "icon",
+                            "label": "اختيار أيقونة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-user-circle",
+                            "value": "sicon-store",
+                            "required": true,
+                            "conditions": [
+                                {
+                                    "id": "store_pros.icon_list",
+                                    "operation": "=",
+                                    "value": "salla_icon",
+                                    "value_index": ".",
+                                    "collection_id": "store_pros"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.animated_icon_title",
+                            "type": "static",
+                            "format": "title",
+                            "label": "رابط مكتبة الأيقونات المتحركة",
+                            "value": "<span ><span >اختيار الأيقونة<a style='color:blue; text-decoration:underline;' href='https://lordicon.com/icons/wired/outline' target='_blank'> : مـن هنــا</a></span></span>",
+                            "variant": "p",
+                            "icon": "sicon-format-text",
+                            "conditions": [
+                                {
+                                    "id": "store_pros.icon_list",
+                                    "operation": "=",
+                                    "value": "animated_icon",
+                                    "value_index": ".",
+                                    "collection_id": "store_pros"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.animated_icon_id",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رمز الايقونة المتحركة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "jeuxydnh",
+                            "icon": "sicon-format-text-alt",
+                            "value": "jeuxydnh",
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": 6,
+                            "maxLength": 200,
+                            "conditions": [
+                                {
+                                    "id": "store_pros.icon_list",
+                                    "operation": "=",
+                                    "value": "animated_icon",
+                                    "value_index": ".",
+                                    "collection_id": "store_pros"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.block_title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الرئيسي",
+                            "description": "أدخل عنوانًا واضحًا وجذابًا يعبّر عن محتوى القسم.",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": {
+                                "ar": "منتجات أصلية 100%",
+                                "en": "100% Natural"
+                            },
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "500"
+                        },
+                        {
+                            "id": "store_pros.blocktitle_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون العنوان الرئيسي ",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#000000",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "use_custom_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "store_pros.subtext",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الفرعي",
+                            "description": "أدخل نصًا توضيحيًا يكمّل العنوان الرئيسي.",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": {
+                                "ar": "منتجاتنا مصنوعة من مستخلصات نباتية نقية وآمنة للبشرة",
+                                "en": "Our products are made with pure plant extracts that are safe for your skin."
+                            },
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "1000"
+                        },
+                        {
+                            "id": "store_pros.subtext_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص الفرعي  ",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#333333",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "use_custom_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "store_pros.block_title": {
+                                "ar": "منتجات أصلية 100%",
+                                "en": "100% Natural"
+                            },
+                            "store_pros.subtext": {
+                                "ar": "منتجاتنا مصنوعة من مستخلصات نباتية نقية منتجات تجميل أصلية من العلامات التجارية العالمية الموثوقة",
+                                "en": "Our products are made with pure plant extracts that are safe for your skin."
+                            },
+                            "store_pros.animated_icon_id": "jeuxydnh",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/9761f332-8ebd-4392-8abb-fbc26d48939c.webp",
+                            "store_pros.icon_list": [
+                                "image_icon"
+                            ],
+                            "store_pros.icon_color": "#000000",
+                            "store_pros.salla_icon": "sicon-store",
+                            "store_pros.subtext_color": "#333333",
+                            "store_pros.blocktitle_color": "#000000",
+                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
+                        },
+                        {
+                            "store_pros.block_title": {
+                                "ar": "تجربة تسوّق سهلة وسريعة",
+                                "en": "Fragrance-Free"
+                            },
+                            "store_pros.subtext": {
+                                "ar": "منتجات تجميل أصلية من العلامات التجارية العالمية الموثوقة.",
+                                "en": "Carefully formulated for sensitive skin to provide complete comfort."
+                            },
+                            "store_pros.animated_icon_id": "jeuxydnh",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/1da8ce84-a1d4-4f9e-a75a-2dd4e970c370.webp",
+                            "store_pros.icon_list": [
+                                "image_icon"
+                            ],
+                            "store_pros.icon_color": "#000000",
+                            "store_pros.salla_icon": "sicon-shipping-fast",
+                            "store_pros.subtext_color": "#333333",
+                            "store_pros.blocktitle_color": "#000000",
+                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
+                        },
+                        {
+                            "store_pros.block_title": {
+                                "ar": "شحن سريع وآمن",
+                                "en": "Dermatologist Tested"
+                            },
+                            "store_pros.subtext": {
+                                "ar": "منتجات تجميل أصلية من العلامات التجارية العالمية الموثوقة",
+                                "en": "Clinically tested to ensure compatibility with all skin types."
+                            },
+                            "store_pros.animated_icon_id": "jeuxydnh",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/7870177b-2a38-465b-acb6-6e319862eeeb.webp",
+                            "store_pros.icon_list": [
+                                "image_icon"
+                            ],
+                            "store_pros.icon_color": "#000000",
+                            "store_pros.salla_icon": "sicon-store",
+                            "store_pros.subtext_color": "#333333",
+                            "store_pros.blocktitle_color": "#000000",
+                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
+                        },
+                        {
+                            "store_pros.block_title": {
+                                "ar": "دعم عملاء مميز",
+                                "en": "Premium Customer Support"
+                            },
+                            "store_pros.subtext": {
+                                "ar": "فريق جلوي متاح للرد على استفساراتك 24/7",
+                                "en": "The Glowy team is available to answer your inquiries 24/7."
+                            },
+                            "store_pros.animated_icon_id": "jeuxydnh",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/fdc8f252-49a0-4e63-ba80-28e38f22f94f.webp",
+                            "store_pros.icon_list": [
+                                "image_icon"
+                            ],
+                            "store_pros.icon_color": "#000000",
+                            "store_pros.salla_icon": "sicon-store",
+                            "store_pros.subtext_color": "#333333",
+                            "store_pros.blocktitle_color": "#000000",
+                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
+                        }
+                    ],
+                    "minLength": 1,
+                    "maxLength": "4"
+                }
+            ]
+        },
         {
             "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
             "title": {
@@ -4453,7 +4826,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#CE5A67",
+                    "value": "#000000",
                     "required": false,
                     "conditions": [
                         {
