@@ -1495,6 +1495,42 @@
                     ]
                 },
                 {
+                            "id": "block_title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الرئيسي",
+                            "description": "أدخل عنوانًا واضحًا وجذابًا يعبّر عن محتوى القسم.",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": {
+                                "ar": "Featured by Press",
+                                "en": "Featured by Press"
+                            },
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "500"
+                        },{
+                            "id": "blocktitle_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون العنوان الرئيسي ",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#000000",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "use_custom_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                {
                     "id": "store_pros",
                     "type": "collection",
                     "format": "collection",

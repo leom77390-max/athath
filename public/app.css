@@ -1386,6 +1386,12 @@ input:where([type='file']):focus{
 .h-px{
     height: 1px;
 }
+.h-\[82x\]{
+    height: 82x;
+}
+.h-\[82px\]{
+    height: 82px;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -1528,6 +1534,12 @@ input:where([type='file']):focus{
 }
 .w-full{
     width: 100%;
+}
+.w-\[80\]{
+    width: 80;
+}
+.w-\[80px\]{
+    width: 80px;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
@@ -2650,6 +2662,12 @@ input:where([type='file']):focus{
 }
 .text-xxs{
     font-size: 10px;
+}
+.text-\[clamp\(1rem\2c 0\.7526rem\+1\.0554vw\2c 1\.75rem\)\]{
+    font-size: clamp(1rem, 0.7526rem + 1.0554vw, 1.75rem);
+}
+.text-\[clamp\(1\.25rem\2c 0\.7526rem\+1\.0554vw\2c 2rem\)\]{
+    font-size: clamp(1.25rem, 0.7526rem + 1.0554vw, 2rem);
 }
 .font-bold{
     font-weight: 700;
@@ -36240,6 +36258,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-\[\]{
+        width: ;
+    }
+    .md\:w-\[150px\]{
+        width: 150px;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));

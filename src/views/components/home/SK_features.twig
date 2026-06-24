@@ -1,25 +1,33 @@
 
-<section class="NG-Why-choose-us NG-Why-choose-us-{{position}} 
-{% if component.margin_bottom_rm %} !mb-0  {% else %} ng-s-block {% endif %}
-"
+<section class="SK-Why-choose-us SK-Why-choose-us-{{position}} 
+{% if component.margin_bottom_rm %} !mb-0  {% else %} SK-s-block {% endif %}"
 >
-<div class="NG-Why-choose-us-wrapper bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]">
+<div class="SK-Why-choose-us-wrapper bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]">
 	<div class="container md:py-10 py-5">
+	<div class="flex items-center justify-center mb-4 md:mb-8">
+		{% if pro.block_title %}
+						<p class="text-[clamp(1.25rem,0.7526rem+1.0554vw,2rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{blocktitle_color}};" {% endif %}>{{block_title}}</p>
+					{% endif %}
+	</div>
 		<div class="pros-grid lg:flex items-start grid md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-2 gap-5 justify-between lg:gap-11">
 			{% for pro in component.store_pros %}
-				<div data-sal="slide-left" data-sal-duration="900" data-sal-delay="{{ loop.index * 200 }}" data-sal-easing="ease-out-cubic"  class="pro  flex flex-col md:flex-row h-full gap-2 items-start  lg:flex-1">
+				<div data-sal="slide-left" data-sal-duration="900" data-sal-delay="{{ loop.index * 200 }}" data-sal-easing="ease-out-cubic"  class="pro items-center justify-center  flex flex-col  h-full gap-2 text-center lg:flex-1">
 					{% if pro.icon_list == ["image_icon"] and pro.img_icon %}
-						<img loading="lazy" class="aspect-square md:w-16 w-14 object-contain " src="{{pro.img_icon}}" alt="تعذر تحميل الصورة">
+						<img loading="lazy" class=" md:w-[150px] w-[80px] object-contain " src="{{pro.img_icon}}" alt="تعذر تحميل الصورة">
 					{% elseif pro.icon_list == ["salla_icon"] and pro.salla_icon %}
 						<i class="{{pro.salla_icon}} text-primary bg-transparent md:text-5xl text-4xl" style="color:{{pro.icon_color}};"></i>
 					{% elseif pro.icon_list == ["animated_icon"] and pro.animated_icon_id  %}
-						<div class="aspect-square md:w-14 w-10">
-							<lord-icon class="h-[40px] w-[40px] my-icon_features" src="https://cdn.lordicon.com/{{ pro.animated_icon_id }}.json" trigger="loop" stroke="bold" state="loop-roll" colors="primary:var(--color-primary)"></lord-icon>
+						<div class=" md:w-[150px] w-[80px]">
+							<lord-icon class="h-[82px] md:w-[150px] w-[80px]] my-icon_features" src="https://cdn.lordicon.com/{{ pro.animated_icon_id }}.json" trigger="loop" stroke="bold" state="loop-roll" colors="primary:var(--color-primary)"></lord-icon>
 						</div>
 					{% endif %}
 					<div class="ltr:text-left rtl:text-right leading-normal">
-						<p class="text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)] text-font pb-2 font-normal text-wrap" {% if component.use_custom_colors %} style="color:{{pro.blocktitle_color}};" {% endif %}>{{pro.block_title}}</p>
-						<p class="text-[clamp(0.75rem,0.7117rem+0.1633vw,0.875rem)] text-graytext opacity-90 font-light" {% if component.use_custom_colors %} style="color: {{pro.subtext_color}};" {% endif %}>{{pro.subtext}}</p>
+					{% if pro.block_title %}
+						<p class="text-[clamp(1rem,0.7526rem+1.0554vw,1.75rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{pro.blocktitle_color}};" {% endif %}>{{pro.block_title}}</p>
+					{% endif %}
+					{% if pro.subtext %}
+						<p class="text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)] text-graytext opacity-90 font-light text-center" {% if component.use_custom_colors %} style="color: {{pro.subtext_color}};" {% endif %}>{{pro.subtext}}</p>
+					{% endif %}
 					</div>
 				</div>
 			{% endfor %}
@@ -29,7 +37,7 @@
 </section>
 <style>
 {% if component.use_custom_colors %}
-.NG-Why-choose-us-{{position}} .NG-Why-choose-us-wrapper{
+.SK-Why-choose-us-{{position}} .SK-Why-choose-us-wrapper{
  background: {{component.section_bg}};
 }
 {% endif %}
