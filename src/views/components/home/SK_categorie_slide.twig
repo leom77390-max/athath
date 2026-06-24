@@ -2,183 +2,186 @@
 <section class="categories-slide" id="categories-section-{{position}}">
 	<div class="categories-slide-wrapper">
 
-    <div class="content_cat flex flex-col gap-4 justify-start">
-      <div class="categories-slide__header">
-        {% if c.block_top_brand %}
-          <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
-        {% endif %}
+		<div class="content_cat">
+			<div class="categories-slide__header">
+				{% if c.block_top_brand %}
+					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+				{% endif %}
 
-        {% if c.categories_list_title %}
-          <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
-        {% endif %}
+				{% if c.categories_list_title %}
+					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
+				{% endif %}
 
-        {% if c.categories_list_subtitle %}
-          <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
-        {% endif %}
-      </div>
-    </div>
+				{% if c.categories_list_subtitle %}
+					<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
+				{% endif %}
+			</div>
 
+			<div class="categories-slide__nav">
+				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').previous()">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="15 18 9 12 15 6"/>
+					</svg>
+				</button>
+				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').next()">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="9 18 15 12 9 6"/>
+					</svg>
+				</button>
+			</div>
+		</div>
 
 		<div class="categories-slide__content">
-
-			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="true" loop="true" slider-config='{
-					"slidesPerView":1.2,
-					"spaceBetween":20,
-					"breakpoints":{
+			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
+				"slidesPerView":1.2,
+				"spaceBetween":20,
+				"breakpoints":{
 					"640":{"slidesPerView":1.5},
 					"1024":{"slidesPerView":2.2},
 					"1280":{"slidesPerView":2.5}
-					}
-					}'>
-
+				}
+			}'>
 				<div slot="items" class="swiper-wrapper">
-
 					{% for category in c.categories_list %}
-
 						<div class="swiper-slide categories-slide__item">
-
 							<a href="{{category.url}}" class="categories-slide__item-link">
-
 								<div class="categories-slide__image-wrapper">
 									<img src="{{category.image}}" class="categories-slide__item-image">
 								</div>
-
 								<div class="categories-slide__item-info">
-
 									<div>
 										<h3 class="categories-slide__item-title">{{category.name}}</h3>
 										<span class="categories-slide__item-count">
-											{{category.products_count|default(category.items_count)}}
-											items
+											{{category.products_count|default(category.items_count)}} items
 										</span>
 									</div>
-
 									<span class="categories-slide__arrow">
-                    <i class="sicon-arrow-up-right"></i>
-                  </span>
-
+										<i class="sicon-arrow-up-right"></i>
+									</span>
 								</div>
-
 							</a>
-
 						</div>
-
 					{% endfor %}
-
 				</div>
-
 			</salla-slider>
-
 		</div>
 
 	</div>
 </section>
 
-
 <style>
 	.categories-slide {
-		padding: 40px 0
+		padding: 40px 0;
 	}
 	.categories-slide-wrapper {
 		display: flex;
 		align-items: center;
-		gap: 40px
+		gap: 40px;
+	}
+	.content_cat {
+		flex: 0 0 220px;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
 	}
 	.categories-slide__header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 0 0.5rem;
+	}
+	.categories-slide__header-top {
+		font-size: 13px;
+		font-weight: 500;
 	}
 	.categories-slide__header-title {
 		font-size: 32px;
-		font-weight: 600
-    line-height: 1.2;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	.categories-slide__header-subtitle {
+		font-size: 13px;
+		line-height: 1.65;
+	}
+	.categories-slide__nav {
+		display: flex;
+		gap: 10px;
+		padding: 0 0.5rem;
+	}
+	.categories-slide__nav-btn {
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 1.5px solid #111;
+		background: transparent;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #111;
+		transition: background 0.25s, color 0.25s;
+	}
+	.categories-slide__nav-btn:hover {
+		background: #111;
+		color: #fff;
 	}
 	.categories-slide__content {
-		width: 75%
+		flex: 1;
+		overflow: hidden;
 	}
 	.categories-slide__item {
 		background: #fff;
 		border-radius: 18px;
-		overflow: hidden
+		overflow: hidden;
 	}
 	.categories-slide__item-link {
 		display: block;
-		color: inherit
+		color: inherit;
+		text-decoration: none;
 	}
 	.categories-slide__image-wrapper {
 		height: 300px;
-		overflow: hidden
+		overflow: hidden;
 	}
 	.categories-slide__item-image {
 		width: 100%;
 		height: 100%;
-		object-fit: cover
+		object-fit: cover;
 	}
 	.categories-slide__item-info {
 		padding: 18px;
 		display: flex;
 		justify-content: space-between;
-		align-items: center
+		align-items: center;
 	}
 	.categories-slide__item-title {
-		font-size: 16px
+		font-size: 16px;
+		font-weight: 600;
 	}
 	.categories-slide__item-count {
 		font-size: 13px;
-		color: #777
+		color: #777;
 	}
-    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav {
-      left: 80rem !important;
-      width: 10% !important;
-      top: 22rem !important;
-    }
-    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button,
-    #categories-section-{{position}} .s-slider-nav-arrow {
-      border: 1px solid #000000 !important;
-      background: transparent !important; 
-      transition: all .3s ease;
-    }
-
-    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button svg,
-    #categories-section-{{position}} .s-slider-nav-arrow svg {
-      fill: #000000 !important;
-      transition: fill .3s ease;
-    }
-
-    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover,
-    #categories-section-{{position}} .s-slider-nav-arrow:hover {
-      background: #000000 !important;
-    }
-
-    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover svg,
-    #categories-section-{{position}} .s-slider-nav-arrow:hover svg {
-      fill: #ffffff !important;
-    }
-
-    #categories-section-{{position}} .swiper-button-disabled {
-      opacity: .35 !important;
-      cursor: not-allowed;
-    }
-
-    #categories-section-{{position}} .swiper-button-disabled svg {
-      fill: #000000 !important;
-      opacity: .35 !important;
-    }
-
-
-	@media(max-width:768px) {
+	.categories-slide__arrow {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border: 1px solid #ddd;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+	@media (max-width: 768px) {
 		.categories-slide-wrapper {
-			flex-direction: column
+			flex-direction: column;
 		}
-		.categories-slide__header,
+		.content_cat,
 		.categories-slide__content {
-			width: 100%
+			width: 100%;
 		}
 		.categories-slide__image-wrapper {
-			height: 220px
+			height: 220px;
 		}
 	}
 </style>
