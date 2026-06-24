@@ -6584,37 +6584,25 @@
                     "id": "categories_display_mode",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": {
-                        "ar": "طريقة عرض التصنيفات",
-                        "en": "Categories Display Mode"
-                    },
+                    "label": "طريقة عرض التصنيفات",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-layout-grid",
                     "selected": [
                         {
-                            "label": {
-                                "ar": "شبكة",
-                                "en": "Grid"
-                            },
+                            "label": "شبكة (Grid)",
                             "value": "grid",
                             "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
                         }
                     ],
                     "options": [
                         {
-                            "label": {
-                                "ar": "شبكة",
-                                "en": "Grid"
-                            },
+                            "label": "شبكة (Grid)",
                             "value": "grid",
                             "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
                         },
                         {
-                            "label": {
-                                "ar": "سلايدر",
-                                "en": "Slider"
-                            },
+                            "label": "سلايدر (Slider)",
                             "value": "slider",
                             "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901"
                         }
@@ -6626,37 +6614,25 @@
                     "id": "categories_is_manual",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": {
-                        "ar": "طريقة عرض التصنيفات",
-                        "en": "Categories Display Mode"
-                    },
-                    "description": null,
+                    "label": "مصدر التصنيفات",
+                    "description": "اختر إذا كنت تريد إدخال البطاقات يدوياً أو جلب التصنيفات من المتجر.",
                     "labelHTML": null,
-                    "icon": "sicon-layout-grid",
+                    "icon": "sicon-category",
                     "selected": [
-                       {
-                            "label": {
-                                "ar": "يدوي",
-                                "en": "Manual"
-                            },
+                        {
+                            "label": "يدوي",
                             "value": "manual",
                             "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567894"
                         }
                     ],
                     "options": [
                         {
-                            "label": {
-                                "ar": "يدوي",
-                                "en": "Manual"
-                            },
+                            "label": "يدوي",
                             "value": "manual",
                             "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567894"
                         },
                         {
-                            "label": {
-                                "ar": "تصنيفات ",
-                                "en": "Slider Categories"
-                            },
+                            "label": "تصنيفات من المتجر",
                             "value": "categories",
                             "key": "b2c3d4e5-f6a7-8901-bcde-f12345678902"
                         }
@@ -6669,24 +6645,22 @@
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "قائمة التصنيفات",
-                    "description": "اختر التصنيفات التي تظهر في القائمة.",
+                    "description": "اختر التصنيفات التي تظهر في القسم.",
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [],
                     "source": "categories",
                     "multichoice": true,
                     "searchable": true,
-                    "required": false
-                },
-                {
-                    "id": "enable_slider",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل عرض البطاقات كسلايدر",
-                    "description": "فعّل هذا الخيار لعرض البطاقات داخل شريط تمرير أفقي بدلاً من الشبكة الثابتة.",
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
                 },
                 {
                     "id": "desktop_slides_per_view",
@@ -6702,9 +6676,11 @@
                     "maximum": "4",
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6722,9 +6698,11 @@
                     "maximum": "3",
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6742,9 +6720,11 @@
                     "maximum": "2",
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6760,9 +6740,11 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6778,9 +6760,11 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6796,9 +6780,11 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "enable_slider",
+                            "id": "categories_display_mode",
                             "operation": "=",
-                            "value": true
+                            "value": [
+                                "slider"
+                            ]
                         }
                     ]
                 },
@@ -6814,9 +6800,9 @@
                     "format": "textarea",
                     "label": "العنوان الرئيسي للقسم",
                     "description": "يظهر أعلى القسم بخط كبير وعريض.",
-                    "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
+                    "placeholder": "مثال: اكتشف أحدث التصنيفات",
                     "icon": "sicon-layout",
-                    "value": "Spring styles to wear together or apart, whatever the weather.",
+                    "value": "اكتشف أحدث التصنيفات",
                     "multilanguage": true,
                     "required": false
                 },
@@ -6840,11 +6826,11 @@
                     "id": "main_description",
                     "type": "string",
                     "format": "textarea",
-                    "label": "وصف  القسم",
-                    "description": "يظهر أعلى القسم بخط كبير وعريض.",
-                    "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
+                    "label": "وصف القسم",
+                    "description": "يظهر أسفل العنوان الرئيسي كنص توضيحي.",
+                    "placeholder": "مثال: تصفح أبرز التصنيفات واعثر على ما يناسبك",
                     "icon": "sicon-layout",
-                    "value": "Spring styles to wear together or apart, whatever the weather.",
+                    "value": "تصفح أبرز التصنيفات واعثر على ما يناسبك",
                     "multilanguage": true,
                     "required": false
                 },
@@ -6853,7 +6839,7 @@
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
+                    "label": "لون نص وصف القسم",
                     "icon": "sicon-format-fill",
                     "value": "#18181b",
                     "conditions": [
@@ -6869,17 +6855,26 @@
                     "type": "collection",
                     "format": "collection",
                     "label": "البطاقات",
-                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أفقية.",
+                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أو سلايدر.",
                     "item_label": "بطاقة",
                     "icon": "sicon-list-add",
                     "minLength": "1",
                     "maxLength": "6",
+                    "conditions": [
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "manual"
+                            ]
+                        }
+                    ],
                     "fields": [
                         {
                             "type": "boolean",
                             "icon": "sicon-toggle-off",
-                            "label": "هل خلفية البطاقة صورة ام لون",
-                            "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
+                            "label": "خلفية البطاقة صورة أم لون؟",
+                            "description": "فعّل الخيار لاستخدام صورة كخلفية، أو أوقفه لاختيار لون.",
                             "id": "card.background_is_image",
                             "format": "switch",
                             "required": false,
@@ -6891,7 +6886,7 @@
                             "type": "string",
                             "format": "image",
                             "label": "صورة خلفية البطاقة",
-                            "description": "تملأ الجزء العلوي من البطاقة.",
+                            "description": "تملأ مساحة البطاقة بالكامل كخلفية.",
                             "icon": "sicon-image",
                             "value": "",
                             "conditions": [
@@ -6910,7 +6905,7 @@
                             "format": "color",
                             "inputType": "color",
                             "label": "لون خلفية البطاقة",
-                            "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
+                            "description": "يُستخدم عند اختيار اللون بدلاً من الصورة.",
                             "icon": "sicon-format-fill",
                             "value": "#f5f0eb",
                             "conditions": [
@@ -6940,8 +6935,8 @@
                             "type": "string",
                             "format": "text",
                             "label": "عنوان البطاقة",
-                            "description": "يظهر أسفل الصورة بخط واضح.",
-                            "placeholder": "مثال: News, tips, reviews",
+                            "description": "يظهر فوق زر البطاقة بخط واضح.",
+                            "placeholder": "مثال: العناية بالبشرة",
                             "icon": "sicon-layout",
                             "multilanguage": true,
                             "required": true,
@@ -6985,7 +6980,7 @@
                             "type": "number",
                             "format": "slider",
                             "inputType": "range",
-                            "label": "مقدار الظل",
+                            "label": "مقدار تمدد الظل",
                             "icon": "sicon-pin",
                             "value": "16",
                             "step": "1",
