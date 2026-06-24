@@ -6645,31 +6645,18 @@
                 },
                 {
                     "id": "categories_list",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "التصنيفات",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر التصنيفات المراد ظهورها",
                     "description": null,
                     "labelHTML": null,
-                    "item_label": "تصنيف",
-                    "icon": "sicon-store",
-                    "minLength": "1",
-                    "maxLength": "6",
-                    "fields": [
-                        {
-                            "id": "category_id",
-                            "type": "string",
-                            "format": "select",
-                            "label": "اختر التصنيف",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": null,
-                            "icon": null,
-                            "value": "",
-                            "required": true,
-                            "searchable": true,
-                            "source": null
-                        }
-                    ],
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
                     "value": []
                 }
             ]
