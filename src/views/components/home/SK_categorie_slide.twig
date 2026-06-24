@@ -1,41 +1,305 @@
 {% set c = component %}
 
 <section class="categories-slide" id="categories-slider-{{position}}">
-    <div class="flex items-center gap-4 flex-row-reverse w-[70%]">
+
+    <div class="categories-slide-wrapper">
+
+        <!-- Header -->
         <div class="categories-slide__header">
-            {% if c.block_top_brand is not empty %}
-                <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h5>
+
+            {% if c.block_top_brand %}
+                <h5 class="categories-slide__header-top"
+                    style="color: {{ c.block_top_brand_color }}">
+                    {{ c.block_top_brand }}
+                </h5>
             {% endif %}
-            {% if c.categories_list_title is not empty %}
-                <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }};">{{ c.categories_list_title }}</h2>
+
+
+            {% if c.categories_list_title %}
+                <h2 class="categories-slide__header-title"
+                    style="color: {{ c.categories_list_title_color }}">
+                    {{ c.categories_list_title }}
+                </h2>
             {% endif %}
-            {% if c.categories_list_subtitle is not empty %}
-                <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
+
+
+            {% if c.categories_list_subtitle %}
+                <p class="categories-slide__header-subtitle"
+                   style="color: {{ c.categories_list_subtitle_color }}">
+                    {{ c.categories_list_subtitle }}
+                </p>
             {% endif %}
+
+
         </div>
+
+
+        <!-- Slider -->
         <div class="categories-slide__content">
-          <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" 
-            show-controls="true"
-            type="carousel"
-            slider-config='{
-              "slidesPerView": 1.1,
-              "spaceBetween": 16,
-              "breakpoints": {
-                "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
-                "1024": { "slidesPerView": 2, "spaceBetween": 24 }
-              }
-            }'>
-          <div slot="items">
-                {% for category in c.categories_list %}
-                    <div class="categories-slide__item">
-                        <a href="{{ category.url }}" class="categories-slide__item-link">
-                            <img src="{{ category.image }}" alt="{{ category.name }}" class="categories-slide__item-image">
-                            <h3 class="categories-slide__item-title">{{ category.name }}</h3>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-          </salla-slider>
+
+
+            <salla-slider
+                id="categories-slider-{{position}}"
+                class="categories-slider"
+                dir="rtl"
+                type="carousel"
+                show-controls="true"
+                loop="true"
+                slider-config='{
+                    "slidesPerView": 1.2,
+                    "spaceBetween": 20,
+                    "breakpoints": {
+                        "640": {
+                            "slidesPerView": 1.5
+                        },
+                        "1024": {
+                            "slidesPerView": 2.2
+                        },
+                        "1280": {
+                            "slidesPerView": 2.5
+                        }
+                    }
+                }'
+            >
+
+
+                <div slot="items">
+
+
+                    {% for category in c.categories_list %}
+
+
+                        <div class="categories-slide__item">
+
+
+                            <a href="{{ category.url }}"
+                               class="categories-slide__item-link">
+
+
+                                <!-- Image -->
+                                <div class="categories-slide__image-wrapper">
+
+                                    <img
+                                      src="{{ category.image }}"
+                                      alt="{{ category.name }}"
+                                      class="categories-slide__item-image"
+                                    >
+
+                                </div>
+
+
+
+                                <!-- Info -->
+                                <div class="categories-slide__item-info">
+
+
+                                    <div>
+
+                                        <h3 class="categories-slide__item-title">
+                                            {{ category.name }}
+                                        </h3>
+
+
+                                        <span class="categories-slide__item-count">
+                                            {{ category.products_count|default(category.items_count) }}
+                                            items
+                                        </span>
+
+
+                                    </div>
+
+
+
+                                    <span class="categories-slide__arrow">
+
+                                        ↗
+
+                                    </span>
+
+
+
+                                </div>
+
+
+                            </a>
+
+
+                        </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            </salla-slider>
+
+
         </div>
+
+
     </div>
+
+
 </section>
+
+<style>
+.categories-slide{
+    padding:40px 0;
+}
+
+
+.categories-slide-wrapper{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+
+.categories-slide__header{
+    width:25%;
+    flex-shrink:0;
+}
+
+
+.categories-slide__header-top{
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+
+.categories-slide__header-title{
+    font-size:32px;
+    line-height:1.2;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+
+.categories-slide__header-subtitle{
+    font-size:14px;
+    line-height:1.8;
+}
+
+
+
+.categories-slide__content{
+    width:75%;
+}
+
+
+
+.categories-slide__item{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+
+
+.categories-slide__item-link{
+    display:block;
+    color:inherit;
+}
+
+
+
+.categories-slide__image-wrapper{
+    height:300px;
+    overflow:hidden;
+    background:#eee;
+}
+
+
+
+.categories-slide__item-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.3s;
+}
+
+
+
+.categories-slide__item:hover img{
+    transform:scale(1.05);
+}
+
+
+
+.categories-slide__item-info{
+    padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+
+.categories-slide__item-title{
+    font-size:16px;
+    font-weight:500;
+    margin-bottom:8px;
+}
+
+
+
+.categories-slide__item-count{
+    color:#777;
+    font-size:13px;
+}
+
+
+
+.categories-slide__arrow{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+
+
+.categories-slide .swiper-button-next,
+.categories-slide .swiper-button-prev{
+
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:white;
+    border:1px solid #ddd;
+
+}
+
+
+
+@media(max-width:768px){
+
+    .categories-slide-wrapper{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+
+    .categories-slide__header,
+    .categories-slide__content{
+        width:100%;
+    }
+
+
+    .categories-slide__header-title{
+        font-size:26px;
+    }
+
+
+    .categories-slide__image-wrapper{
+        height:220px;
+    }
+
+}
+</style>
