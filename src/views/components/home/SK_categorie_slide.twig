@@ -8,8 +8,8 @@
 				"spaceBetween":20,
 				"breakpoints":{
 					"640":{"slidesPerView":1.5},
-					"1024":{"slidesPerView":2.2},
-					"1280":{"slidesPerView":2.5}
+					"1024":{"slidesPerView":1.8},
+					"1280":{"slidesPerView":2}
 				}
 			}'>
 				<div slot="items" class="swiper-wrapper">
@@ -68,12 +68,15 @@
 </section>
 
 <style>
+  #categories-section-{{position}} {
+    width: 90%;
+  }
 	.categories-slide {
 		padding: 40px 0;
 	}
 	.categories-slide-wrapper {
 		display: flex;
-		flex-direction: row;
+		flex-direction: row-reverse;
 		align-items: center;
 		gap: 40px;
 		direction: ltr;
