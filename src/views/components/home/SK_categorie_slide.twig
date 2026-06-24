@@ -1,44 +1,41 @@
 {% set c = component %}
 
 <section class="categories-slide" id="categories-slider-{{position}}">
-    <div class="container">
-      <div class="flex items-center gap-4 flex-row-reverse">
-          <div class="categories-slide__header">
-              {% if c.block_top_brand is not empty %}
-                  <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h5>
-              {% endif %}
-              {% if c.categories_list_title is not empty %}
-                  <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }};">{{ c.categories_list_title }}</h2>
-              {% endif %}
-              {% if c.categories_list_subtitle is not empty %}
-                  <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
-              {% endif %}
-          </div>
-          <div class="categories-slide__content w-full md:w-[75%] lg:w-[70%]">
-            <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" 
-              show-controls="true"
-              type="carousel"
-              slider-config='{
-                "slidesPerView": 1.1,
-                "spaceBetween": 16,
-                "breakpoints": {
-                  "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
-                  "1024": { "slidesPerView": 2, "spaceBetween": 24 }
-                }
-              }'>
-            <div slot="items">
-                  {% for category in c.categories_list %}
-                      <div class="categories-slide__item">
-                          <a href="{{ category.url }}" class="categories-slide__item-link">
-                              <img src="{{ category.image }}" alt="{{ category.name }}" class="categories-slide__item-image">
-                              <h3 class="categories-slide__item-title">{{ category.name }}</h3>
-                          </a>
-                      </div>
-                  {% endfor %}
-              </div>
-            </salla-slider>
-          </div>
-      </div>
+    <div class="flex items-center gap-4 flex-row-reverse">
+        <div class="categories-slide__header">
+            {% if c.block_top_brand is not empty %}
+                <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h5>
+            {% endif %}
+            {% if c.categories_list_title is not empty %}
+                <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }};">{{ c.categories_list_title }}</h2>
+            {% endif %}
+            {% if c.categories_list_subtitle is not empty %}
+                <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
+            {% endif %}
+        </div>
+        <div class="categories-slide__content w-full md:w-[75%] lg:w-[70%]">
+          <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" 
+            show-controls="true"
+            type="carousel"
+            slider-config='{
+              "slidesPerView": 1.1,
+              "spaceBetween": 16,
+              "breakpoints": {
+                "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
+                "1024": { "slidesPerView": 2, "spaceBetween": 24 }
+              }
+            }'>
+          <div slot="items">
+                {% for category in c.categories_list %}
+                    <div class="categories-slide__item">
+                        <a href="{{ category.url }}" class="categories-slide__item-link">
+                            <img src="{{ category.image }}" alt="{{ category.name }}" class="categories-slide__item-image">
+                            <h3 class="categories-slide__item-title">{{ category.name }}</h3>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+          </salla-slider>
+        </div>
     </div>
-
 </section>
