@@ -2,19 +2,21 @@
 <section class="categories-slide" id="categories-section-{{position}}">
 	<div class="categories-slide-wrapper">
 
-		<div class="categories-slide__header">
-			{% if c.block_top_brand %}
-				<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
-			{% endif %}
+    <div class="content_cat flex flex-col gap-4 justify-start">
+      <div class="categories-slide__header">
+        {% if c.block_top_brand %}
+          <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+        {% endif %}
 
-			{% if c.categories_list_title %}
-				<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
-			{% endif %}
+        {% if c.categories_list_title %}
+          <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
+        {% endif %}
 
-			{% if c.categories_list_subtitle %}
-				<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
-			{% endif %}
-		</div>
+        {% if c.categories_list_subtitle %}
+          <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
+        {% endif %}
+      </div>
+    </div>
 
 
 		<div class="categories-slide__content">
@@ -83,12 +85,16 @@
 		gap: 40px
 	}
 	.categories-slide__header {
-		width: 25%;
-		flex-shrink: 0
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0 2rem;
 	}
 	.categories-slide__header-title {
 		font-size: 32px;
 		font-weight: 600
+    line-height: 1.2;
 	}
 	.categories-slide__content {
 		width: 75%
@@ -124,40 +130,44 @@
 		font-size: 13px;
 		color: #777
 	}
-	.categories-slide__arrow {
-		width: 34px;
-		height: 34px;
-		border-radius: 50%;
-		background: #eee;
-		display: flex;
-		align-items: center;
-		justify-content: center
-	}
+    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav {
+      left: 80rem !important;
+      width: 10% !important;
+      top: 22rem !important;
+    }
+    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button,
+    #categories-section-{{position}} .s-slider-nav-arrow {
+      border: 1px solid #000000 !important;
+      background: transparent !important; 
+      transition: all .3s ease;
+    }
 
-	#categories-slider-{{position}}.s-slider-block__title-nav {
-		right: 6rem !important;
-		top: -2rem !important;
-	}
+    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button svg,
+    #categories-section-{{position}} .s-slider-nav-arrow svg {
+      fill: #000000 !important;
+      transition: fill .3s ease;
+    }
 
-	#categories-slider-{{position}}.s-slider-nav-arrow {
-		width: 36px !important;
-		height: 36px !important;
-		border-radius: 50% !important;
-		border: 1px solid #000 !important;
-		background: transparent !important;
-	}
+    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover,
+    #categories-section-{{position}} .s-slider-nav-arrow:hover {
+      background: #000000 !important;
+    }
 
-	#categories-slider-{{position}}.s-slider-nav-arrow svg {
-		fill: #000 !important;
-	}
+    #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover svg,
+    #categories-section-{{position}} .s-slider-nav-arrow:hover svg {
+      fill: #ffffff !important;
+    }
 
-	#categories-slider-{{position}}.s-slider-nav-arrow:hover {
-		background: #000 !important;
-	}
+    #categories-section-{{position}} .swiper-button-disabled {
+      opacity: .35 !important;
+      cursor: not-allowed;
+    }
 
-	#categories-slider-{{position}}.s-slider-nav-arrow:hover svg {
-		fill: #fff !important;
-	}
+    #categories-section-{{position}} .swiper-button-disabled svg {
+      fill: #000000 !important;
+      opacity: .35 !important;
+    }
+
 
 	@media(max-width:768px) {
 		.categories-slide-wrapper {
