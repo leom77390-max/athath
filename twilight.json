@@ -6543,6 +6543,16 @@
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
             "fields": []
+        },
+        {
+            "key": "f996b1d0-95e1-410a-88a2-8f50aa448d04",
+            "title": {
+                "en": "categories - sleek",
+                "ar": "تصنيفات - سليك"
+            },
+            "icon": "sicon-store",
+            "path": "home.SK_categorie_slide",
+            "fields": []
         }
     ],
     "support_url": null,
