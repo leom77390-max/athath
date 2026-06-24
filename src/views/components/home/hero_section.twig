@@ -1,89 +1,160 @@
 {# ============================================================ #}
 {# Peek/Coverflow Hero Slider — يطابق تصميم الفيديو             #}
 {# ============================================================ #}
-<section class="{% if component.rm_margin %}no-margin{% endif %}"
+<section class="shopify-hero-{{ position }} {% if component.rm_margin %}no-margin{% endif %}"
  style="
     --desktop-height: {{ component.desktop_height | default(90) }}vh;
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
   "
 >
+    <salla-slider
+        id="shopify-hero-{{ position }}"
+        type="carousel"
+        auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}"
+        auto-height="{{ component.auto_height ? 'true' : 'false' }}"
+        show-controls="false"
+        pagination="{{ component.show_pagination ? 'true' : 'false' }}"
+        slides-per-view="auto"
+        centered="true"
+        space-between="5"
+        speed="700"
+        class="custom-shopify-style-slider"
+        data-delay="{{ component.delay_time | default(3) }}000"
+        slider-config='{
+          "slidesPerView": "auto",
+          "centeredSlides": true,
+          "spaceBetween": 5,
+          "speed": 700,
+          "loop": true,
+          "navigation": {
+            "nextEl": ".hero-next-{{ position }}",
+            "prevEl": ".hero-prev-{{ position }}"
+          },
+          "pagination": {
+            "el": ".hero-pagination-{{ position }}",
+            "clickable": true
+          }
+          {% if component.enable_autoplay %},
+          "autoplay": {
+            "delay": {{ component.delay_time | default(3) }}000,
+            "disableOnInteraction": false,
+            "pauseOnMouseEnter": true 
+          }
+          {% endif %}
+        }'
+      >
+      <div slot="items">
 
-  <salla-slider
-    id="shopify-hero-{{ position }}"
-    type="carousel"
-    auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}"
-    auto-height="{{ component.auto_height ? 'true' : 'false' }}"
-    show-controls="false"
-    pagination="{{ component.show_pagination ? 'true' : 'false' }}"
-    {# loop="true" #}
-    slides-per-view="auto"
-    centered="true"
-    space-between="16"
-    speed="700"
-    class="custom-shopify-style-slider"
-    data-delay="{{ component.delay_time | default(3) }}000"
-  >
-    <div slot="items">
+        {% for slide in component.banner %}
 
-      {% for slide in component.banner %}
+          {% set v_align = slide.items_alignment_vertical[0] | default('center') %}
+          {% set h_align = slide.items_alignment_horizontal[0] | default('start') %}
+          {% set mobile_v_align = slide.mobile_items_alignment_vertical[0] | default(v_align) %}
+          {% set mobile_h_align = slide.mobile_items_alignment_horizontal[0] | default(h_align) %}
 
-        {% set v_align = slide.items_alignment_vertical[0] | default('center') %}
-        {% set h_align = slide.items_alignment_horizontal[0] | default('start') %}
+          <div class="custom-slide-item">
 
-        <div class="custom-slide-item">
+          {% if slide.vid and slide.vid_url %}
 
-          <picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
-            <source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
-            <img
-              src="{{ slide.desktop_bg }}"
-              alt="{{ slide.block_title }}"
-              loading="{{ loop.first ? 'eager' : 'lazy' }}"
-              fetchpriority="{{ loop.first ? 'high' : 'auto' }}"
-            >
-          </picture>
+            <div class="slide-bg-media">
+              <video
+                class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="{{ slide.desktop_bg }}"
+              >
+                <source src="{{ slide.vid_url }}" type="video/mp4">
+              </video>
+            </div>
 
-          {% if slide.overlay > 0 %}
-            <div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
+          {% else %}
+
+            <picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
+              <source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
+              <img
+                src="{{ slide.desktop_bg }}"
+                alt="{{ slide.block_title }}"
+                loading="{{ loop.first ? 'eager' : 'lazy' }}"
+                fetchpriority="{{ loop.first ? 'high' : 'auto' }}"
+              >
+            </picture>
+
           {% endif %}
 
-          <div class="slide-content-wrapper v-align-{{ v_align }} h-align-{{ h_align }}">
-            <div class="inner-content">
+            {% if slide.overlay > 0 %}
+              <div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
+            {% endif %}
 
-              {% if slide.subtext %}
-                <p class="slide-subtext" style="color: {{ slide.subtext_color }}">
-                  {{ slide.subtext }}
-                </p>
-              {% endif %}
+            <div class="  slide-content-wrapper
+                      v-align-{{ v_align }}
+                      h-align-{{ h_align }}
+                      mobile-v-align-{{ mobile_v_align }}
+                      mobile-h-align-{{ mobile_h_align }}">
+              <div class="inner-content">
 
-              {% if slide.block_title %}
-                <h2 class="slide-title" style="color: {{ slide.blocktitle_color }}">
-                  {{ slide.block_title }}
-                </h2>
-              {% endif %}
+                {% if slide.subtext %}
+                  <p class="slide-subtext" style="color: {{ slide.subtext_color }}">
+                    {{ slide.subtext }}
+                  </p>
+                {% endif %}
 
-              {% if slide.button_text %}
-                <a
-                  href="{{ slide.url }}"
-                  class="slide-btn{% if slide.transparent_button %} btn-transparent{% endif %}"
-                  style="background-color: {{ slide.button_bg }}; color: {{ slide.button_text_color }}"
-                >
-                  {{ slide.button_text }}
-                </a>
-              {% endif %}
+                {% if slide.block_title %}
+                  <h2 class="slide-title" style="color: {{ slide.blocktitle_color }}">
+                    {{ slide.block_title }}
+                  </h2>
+                {% endif %}
 
+                {% if slide.button_text %}
+                  <a
+                    href="{{ slide.url }}"
+                    class="slide-btn{% if slide.transparent_button %} btn-transparent{% endif %}"
+                    style="background-color: {{ slide.button_bg }}; color: {{ slide.button_text_color }}"
+                  >
+                    {{ slide.button_text }}
+                  </a>
+                {% endif %}
+
+              </div>
             </div>
+
           </div>
 
-        </div>
+        {% endfor %}
 
-      {% endfor %}
-
-    </div>
-  </salla-slider>
-
+      </div>
+    </salla-slider>
 </section>
 <style>
+.shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet::before,
+ .shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet::after,
+.shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet {
+	background-color:white;
+}
+/* Apply animation */
+.AU-hero-section-{{position}} .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
+    animation: afterWidthExpand 5s ease-in-out forwards;
+    animation-delay: 0.7s;
+}
     #shopify-hero-{{ position }} .carousel-slider .swiper {
     padding: 10px 16px !important;
+}
+.shopify-hero-{{ position }} .carousel-slider .swiper{
+  padding:0px 12px !important;
+  margin:0 !important;
+}
+.shopify-hero-{{ position }} .slide-bg-video,
+.shopify-hero-{{ position }} .slide-bg-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.shopify-hero-{{ position }} .slide-bg-media {
+  position: absolute;
+  inset: 0;
 }
 </style>

@@ -115,7 +115,7 @@
     width: 100vw !important;
     height: 100vh !important;
     z-index: 999999 !important;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.55);
@@ -388,11 +388,14 @@
   if (closeBtn && popup && popupBox) {
     const hasSeenPopup = sessionStorage.getItem("popupShown");
 
-    if (!hasSeenPopup) {
-      setTimeout(() => {
-        popup.classList.add("show");
-        sessionStorage.setItem("popupShown", "true");
-      }, 5000);
+   if (!hasSeenPopup) {
+      window.addEventListener("load", function () {
+        setTimeout(() => {
+          popup.style.display = "flex";
+          popup.classList.add("show");
+          sessionStorage.setItem("popupShown", "true");
+        }, 5000);
+      });
     }
 
     closeBtn.addEventListener("click", function () {

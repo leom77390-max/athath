@@ -16,6 +16,12 @@
       "try_again": "حاول مرة أخرى",
       "code": "الكود"
     },
+    "cart": {
+      "product": "المنتج",
+      "price": "السعر",
+      "quantity": "الكمية",
+      "total": "المجموع"
+    },
     "appBanner": {
       "download_now": "حمله الان"
     },

@@ -276,3 +276,20 @@
       min-height: clamp(13.75rem, 11.6454rem + 8.9796vw, 20.625rem);
       max-height: clamp(13.75rem, 11.6454rem + 8.9796vw, 20.625rem);
     }
+    .s-product-card-vertical .s-product-card-promotion-title {
+  position: absolute;
+  top: 0rem;
+  left: 0px;
+  z-index: 5;
+  border-radius: 0;
+  background-color: #C70036 ;
+  color: var(--color-background);
+  font-weight: 400;
+  font-size: 12px;
+}
+.s-product-card-vertical
+  .s-product-card-promotion-title:where([dir="rtl"], [dir="rtl"] *) {
+  left: 0px !important;
+  right: auto;
+  border-radius:0;
+}

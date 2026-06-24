@@ -27,11 +27,11 @@
         },
         "768": {
             "slidesPerView": 2.5,
-            "spaceBetween": 21
+            "spaceBetween": 12
         },
         "991": {
-            "slidesPerView": 3.25,
-            "spaceBetween": 30
+            "slidesPerView": 3,
+            "spaceBetween": 16
         }
     }
 }' show-controls="false" type="thumbs">
@@ -41,7 +41,7 @@
 							<div class="h-[clamp(16.067rem,14.8425rem+4.8980vw,20.067rem)] overflow-hidden">
 								<img src="{{ item.image }}" class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" alt="{{ item.product_name }}">
 							</div>
-							<div class="testimonials-data mt-3 flex flex-col items-start px-2 py-3 md:px-8 md:py-9">
+							<div class="testimonials-data mt-3 flex flex-col items-start px-4 py-4 md:px-6 md:py-6 lg:px-8 lg:py-9">
 								<div class="flex items-center gap-2">
 									<salla-rating-stars name="rating" size="medium" value="{{ item.review }}"></salla-rating-stars>
 									{% set review_num = item.review_num|default(item['testimonials.review_num']) %}
@@ -115,7 +115,6 @@
 
 <script>
 salla.onReady(() => {
-document.addEventListener('DOMContentLoaded', async () => {
   const cards = document.querySelectorAll('.testimonial-card-link');
   
   cards.forEach(async (card) => {
@@ -139,5 +138,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 });
-})
 </script>

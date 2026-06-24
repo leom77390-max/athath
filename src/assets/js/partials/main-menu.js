@@ -1,7 +1,5 @@
 class NavigationMenu extends HTMLElement {
     connectedCallback() {
-        // Seed a skeleton placeholder shown until the menu data is fetched
-        // and render() replaces this innerHTML with the real menu.
         this.innerHTML = `
             <div class="main-menu-skel" aria-hidden="true">
                 <span class="header-skel-item header-skel-item--menu" style="width:80px"></span>
@@ -10,6 +8,9 @@ class NavigationMenu extends HTMLElement {
                 <span class="header-skel-item header-skel-item--menu" style="width:70px"></span>
                 <span class="header-skel-item header-skel-item--menu" style="width:80px"></span>
             </div>`;
+
+        // Cache للمنتجات عشان منطلبش أكتر من مرة
+        this.productsCache = {};
 
         salla.onReady()
             .then(() => salla.lang.onLoaded())
@@ -21,50 +22,29 @@ class NavigationMenu extends HTMLElement {
                 this.overflowMenus = [];
 
                 return salla.api.component.getMenus()
-                .then(({ data }) => {
-                    this.menus = data;
-                    return this.render()
-                }).then(() => {
-                    this.initializeResponsiveMenu();
-                }).catch((error) => salla.logger.error('salla-menu::Error fetching menus', error));
+                    .then(({ data }) => {
+                        this.menus = data;
+                        return this.render();
+                    }).then(() => {
+                        this.initializeResponsiveMenu();
+                        this.initializeMegaMenu(); // 👈 هنا بنشغل الميجا منيو
+                    }).catch((error) => salla.logger.error('salla-menu::Error fetching menus', error));
             });
     }
 
-    /** 
-    * Check if the menu has children
-    * @param {Object} menu
-    * @returns {Boolean}
-    */
     hasChildren(menu) {
         return menu?.children?.length > 0;
     }
 
-    /**
-    * Check if the menu has products
-    * @param {Object} menu
-    * @returns {Boolean}
-    */
     hasProducts(menu) {
         return menu?.products?.length > 0;
     }
 
-    /**
-    * Get the classes for desktop menu
-    * @param {Object} menu
-    * @param {Boolean} isRootMenu
-    * @returns {String}
-    */
     getDesktopClasses(menu, isRootMenu) {
         return `!hidden lg:!block ${isRootMenu ? 'root-level lg:!inline-block' : 'relative'} ${menu.products ? ' mega-menu' : ''}
-        ${this.hasChildren(menu) ? ' has-children' : ''}`
+        ${this.hasChildren(menu) ? ' has-children' : ''}`;
     }
 
-    /**
-    * Get the mobile menu
-    * @param {Object} menu
-    * @param {String} displayAllText
-    * @returns {String}
-    */
     getMobileMenu(menu, displayAllText) {
         const menuImage = menu.image ? `<img src="${menu.image}" class="rounded-full" width="48" height="48" alt="${menu.title}" />` : '';
 
@@ -75,7 +55,7 @@ class NavigationMenu extends HTMLElement {
                     ${menuImage}
                     <span>${menu.title || ''}</span>
                 </a>` :
-                `
+            `
                 <span class="${menu.image ? '!py-3' : ''}">
                     ${menuImage}
                     ${menu.title}
@@ -90,16 +70,15 @@ class NavigationMenu extends HTMLElement {
         </li>`;
     }
 
-    /**
-    * Get the desktop menu
-    * @param {Object} menu
-    * @param {Boolean} isRootMenu
-    * @param {String} additionalClasses
-    * @returns {String}
-    */
     getDesktopMenu(menu, isRootMenu, additionalClasses = '') {
+        // استخراج الـ category ID من الـ URL
+        const categoryId = this.extractCategoryId(menu.url);
+
         return `
-        <li class="${this.getDesktopClasses(menu, isRootMenu)} ${additionalClasses}" ${menu.attrs} data-menu-item>
+        <li class="${this.getDesktopClasses(menu, isRootMenu)} ${additionalClasses}" 
+            ${menu.attrs} 
+            data-menu-item
+            ${isRootMenu && categoryId ? `data-category-id="${categoryId}" data-category-url="${menu.url}"` : ''}>
             <a href="${menu.url}" aria-label="${menu.title || 'category'}" ${menu.link_attrs}>
                 <span>${menu.title}</span>
             </a>
@@ -110,17 +89,23 @@ class NavigationMenu extends HTMLElement {
                     </ul>
                     ${this.hasProducts(menu) ? `
                     <salla-products-list
-                    source="selected"
-                    shadow-on-hover
-                    source-value="[${menu.products}]" />` : ''}
+                        source="selected"
+                        shadow-on-hover
+                        source-value="[${menu.products}]" />` : ''}
                 </div>` : ''}
         </li>`;
     }
 
     /**
-    * Get the menus
-    * @returns {String}
-    */
+     * استخراج الـ Category ID من الـ URL
+     */
+    extractCategoryId(url) {
+        if (!url) return null;
+        // بيجيب الـ ID من آخر الـ URL زي c145655181
+        const match = url.match(/c(\d+)$/);
+        return match ? match[1] : null;
+    }
+
     getMenus() {
         return this.menus.map((menu) => `
             ${this.getMobileMenu(menu, this.displayAllText)}
@@ -128,10 +113,6 @@ class NavigationMenu extends HTMLElement {
         `).join('\n');
     }
 
-    /**
-    * Create More dropdown menu
-    * @returns {String}
-    */
     createMoreDropdown() {
         if (this.overflowMenus.length === 0) return '';
 
@@ -148,25 +129,225 @@ class NavigationMenu extends HTMLElement {
         </li>`;
     }
 
-    /*
-    * Initialize responsive menu functionality
-    */
+    /**
+     * تهيئة الميجا منيو على كل item في الهيدر
+     */
+    initializeMegaMenu() {
+        if (window.innerWidth < 1024) return;
+
+        const menuItems = this.querySelectorAll('.root-level[data-menu-item][data-category-id]');
+
+        menuItems.forEach(item => {
+            const categoryId = item.getAttribute('data-category-id');
+            const categoryUrl = item.getAttribute('data-category-url');
+            if (!categoryId) return;
+
+            let hoverTimeout;
+            let leaveTimeout;
+
+            item.addEventListener('mouseenter', () => {
+                clearTimeout(leaveTimeout);
+                hoverTimeout = setTimeout(() => {
+                    this.showMegaDropdown(item, categoryId, categoryUrl);
+                }, 150); // تأخير بسيط عشان مش يفتح بالغلط
+            });
+
+            item.addEventListener('mouseleave', (e) => {
+                clearTimeout(hoverTimeout);
+                // نشوف لو الماوس راح على الـ dropdown نفسه
+                const dropdown = item.querySelector('.mega-products-dropdown');
+                if (dropdown && dropdown.contains(e.relatedTarget)) return;
+
+                leaveTimeout = setTimeout(() => {
+                    this.hideMegaDropdown(item);
+                }, 200);
+            });
+        });
+    }
+
+    /**
+     * عرض الـ dropdown بالمنتجات
+     */
+    async showMegaDropdown(item, categoryId, categoryUrl) {
+        // لو موجود خليه يظهر بس
+        let dropdown = item.querySelector('.mega-products-dropdown');
+        if (dropdown) {
+            dropdown.classList.add('active');
+            return;
+        }
+
+        // إنشاء الـ dropdown أول مرة مع loader
+        dropdown = document.createElement('div');
+        dropdown.className = 'mega-products-dropdown';
+        dropdown.innerHTML = `
+            <div class="mega-dropdown-inner">
+                <div class="mega-loader">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>`;
+        item.appendChild(dropdown);
+
+        // نمنع الـ dropdown من يقفل لو الماوس جوه
+        dropdown.addEventListener('mouseenter', () => {
+            item.querySelector('.mega-products-dropdown')?.classList.add('active');
+        });
+        dropdown.addEventListener('mouseleave', () => {
+            this.hideMegaDropdown(item);
+        });
+
+        // نطلب المنتجات
+        const products = await this.fetchCategoryProducts(categoryId);
+
+        if (!products || products.length === 0) {
+            item.removeChild(dropdown);
+            return;
+        }
+
+        // نبني الـ slider
+        dropdown.innerHTML = this.buildProductsSlider(products, categoryUrl);
+        dropdown.classList.add('active');
+        this.initSlider(dropdown);
+    }
+
+    /**
+     * إخفاء الـ dropdown
+     */
+    hideMegaDropdown(item) {
+        const dropdown = item.querySelector('.mega-products-dropdown');
+        if (dropdown) {
+            dropdown.classList.remove('active');
+        }
+    }
+
+    /**
+     * جلب منتجات التصنيف من الـ API مع Cache
+     */
+    async fetchCategoryProducts(categoryId) {
+        if (this.productsCache[categoryId]) {
+            return this.productsCache[categoryId];
+        }
+
+        try {
+            const response = await salla.api.product.list({
+                category: categoryId,
+                limit: 8,
+                page: 1
+            });
+            const products = response?.data || [];
+            this.productsCache[categoryId] = products;
+            return products;
+        } catch (error) {
+            salla.logger.error('mega-menu::Error fetching products', error);
+            return [];
+        }
+    }
+
+    /**
+     * بناء HTML الـ slider
+     */
+    buildProductsSlider(products, categoryUrl) {
+        const currency = salla.money.getCurrency()?.symbol || '';
+
+        const cards = products.map(product => {
+            const image = product.thumbnail || product.image?.url || '';
+            const price = product.price?.amount || product.price || 0;
+            const oldPrice = product.sale_price?.amount || product.regular_price?.amount || null;
+            const formattedPrice = salla.money.format(price);
+            const formattedOldPrice = oldPrice ? salla.money.format(oldPrice) : null;
+
+            return `
+            <div class="mega-product-card">
+                <a href="${product.url}" class="mega-product-link">
+                    <div class="mega-product-img-wrap">
+                        <img src="${image}" alt="${product.name}" loading="lazy" />
+                    </div>
+                    <div class="mega-product-info">
+                        <p class="mega-product-name">${product.name}</p>
+                        <div class="mega-product-price">
+                            <span class="mega-price-current">${formattedPrice}</span>
+                            ${formattedOldPrice ? `<span class="mega-price-old">${formattedOldPrice}</span>` : ''}
+                        </div>
+                    </div>
+                </a>
+            </div>`;
+        }).join('');
+
+        return `
+        <div class="mega-dropdown-inner">
+            <div class="mega-slider-wrapper">
+                <button class="mega-slider-btn mega-slider-prev" aria-label="prev">&#8249;</button>
+                <div class="mega-slider-track-wrap">
+                    <div class="mega-slider-track">
+                        ${cards}
+                    </div>
+                </div>
+                <button class="mega-slider-btn mega-slider-next" aria-label="next">&#8250;</button>
+            </div>
+            ${categoryUrl ? `<a href="${categoryUrl}" class="mega-view-all">عرض الكل</a>` : ''}
+        </div>`;
+    }
+
+    /**
+     * تشغيل الـ slider
+     */
+    initSlider(dropdown) {
+        const track = dropdown.querySelector('.mega-slider-track');
+        const prevBtn = dropdown.querySelector('.mega-slider-prev');
+        const nextBtn = dropdown.querySelector('.mega-slider-next');
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let currentIndex = 0;
+        const visibleCount = 4; // كام card يظهر في نفس الوقت
+
+        const getCardWidth = () => {
+            const card = track.querySelector('.mega-product-card');
+            return card ? card.offsetWidth + 16 : 200; // 16 = gap
+        };
+
+        const totalCards = track.querySelectorAll('.mega-product-card').length;
+        const maxIndex = Math.max(0, totalCards - visibleCount);
+
+        const slideTo = (index) => {
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+            const offset = currentIndex * getCardWidth();
+            // RTL support
+            const isRtl = document.documentElement.dir === 'rtl';
+            track.style.transform = isRtl
+                ? `translateX(${offset}px)`
+                : `translateX(-${offset}px)`;
+
+            prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+            nextBtn.style.opacity = currentIndex >= maxIndex ? '0.3' : '1';
+        };
+
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isRtl = document.documentElement.dir === 'rtl';
+            slideTo(isRtl ? currentIndex + 1 : currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isRtl = document.documentElement.dir === 'rtl';
+            slideTo(isRtl ? currentIndex - 1 : currentIndex + 1);
+        });
+
+        slideTo(0);
+    }
+
     initializeResponsiveMenu() {
-        if (window.innerWidth < 1024) return; // Only for desktop
+        if (window.innerWidth < 1024) return;
 
         const mainMenu = this.querySelector('.main-menu');
         if (!mainMenu) return;
 
-        // Check if more menu is enabled from global window variable set in master.twig
         const isMoreMenuEnabled = window.enable_more_menu;
-        if (!isMoreMenuEnabled) {
-            // If disabled, keep the menu behavior as original (no More dropdown / overflow handling)
-            return;
-        }
+        if (!isMoreMenuEnabled) return;
 
         this.checkMenuOverflow();
 
-        // Re-check on window resize
         const resizeHandler = this.debounce(() => {
             this.checkMenuOverflow();
         }, 250);
@@ -174,9 +355,6 @@ class NavigationMenu extends HTMLElement {
         window.addEventListener('resize', resizeHandler);
     }
 
-    /**
-    * Check if menu items overflow and move them to More dropdown
-    */
     checkMenuOverflow() {
         const mainMenu = this.querySelector('.main-menu');
         if (!mainMenu) return;
@@ -184,69 +362,45 @@ class NavigationMenu extends HTMLElement {
         const container = mainMenu.closest('.container');
         if (!container) return;
 
-        // Reset menus
         this.visibleMenus = [...this.menus];
         this.overflowMenus = [];
 
-        // Remove existing more dropdown
         const existingMore = mainMenu.querySelector('#more-menu-dropdown');
-        if (existingMore) {
-            existingMore.remove();
-        }
+        if (existingMore) existingMore.remove();
 
-        // Show all menu items first
         const menuItems = mainMenu.querySelectorAll('.root-level[data-menu-item]');
-        menuItems.forEach(item => {
-            item.style.display = '';
-        });
+        menuItems.forEach(item => { item.style.display = ''; });
 
-        // Calculate available width
         const containerWidth = container.offsetWidth;
         const otherElements = container.querySelector('.flex').children;
         let usedWidth = 0;
 
-        // Calculate width used by logo and other elements
         Array.from(otherElements).forEach(element => {
-            if (!element.contains(mainMenu)) {
-                usedWidth += element.offsetWidth;
-            }
+            if (!element.contains(mainMenu)) usedWidth += element.offsetWidth;
         });
 
-        const availableWidth = containerWidth - usedWidth - 300; // 300px buffer for More dropdown
+        const availableWidth = containerWidth - usedWidth - 300;
         let currentWidth = 0;
         let visibleCount = 0;
 
-        // Check each menu item
         menuItems.forEach((item, index) => {
             const itemWidth = item.offsetWidth;
-
             if (currentWidth + itemWidth <= availableWidth && index < this.menus.length) {
                 currentWidth += itemWidth;
                 visibleCount++;
             } else {
-                // Hide overflow items
                 item.style.setProperty('display', 'none', 'important');
-                if (index < this.menus.length) {
-                    this.overflowMenus.push(this.menus[index]);
-                }
+                if (index < this.menus.length) this.overflowMenus.push(this.menus[index]);
             }
         });
 
-        // Update visible menus
         this.visibleMenus = this.menus.slice(0, visibleCount);
 
-        // Add More dropdown if needed
         if (this.overflowMenus.length > 0) {
             mainMenu.insertAdjacentHTML('beforeend', this.createMoreDropdown());
         }
     }
 
-    /**
-    * Debounce function to limit resize event calls
-    * @param {Function} func
-    * @param {Number} wait
-    * @returns {Function}
-    */
     debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -259,11 +413,8 @@ class NavigationMenu extends HTMLElement {
         };
     }
 
-    /**
-    * Render the header menu
-    */
     render() {
-        this.innerHTML =  `
+        this.innerHTML = `
         <nav id="mobile-menu" class="mobile-menu">
             <ul class="main-menu">${this.getMenus()}</ul>
             <button class="btn--close close-mobile-menu sicon-cancel lg:hidden"></button>
