@@ -6552,7 +6552,127 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_categorie_slide",
-            "fields": []
+            "fields": [
+                {
+                    "id": "block_top_brand",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الترويجي أعلى القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "تسوق مجموعة العناية بالبشرة",
+                        "en": "Shop skincare set"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
+                    "id": "block_top_brand_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الترويجي أعلى القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "categories_list_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "تسوق مجموعة العناية بالبشرة",
+                        "en": "Shop skincare set"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
+                    "id": "categories_list_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "categories_list_subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "ارتقِ بروتين العناية بالبشرة مع هذه الباقة",
+                        "en": "Level up skincare routine with the bundle"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "120"
+                },
+                {
+                    "id": "categories_list_subtitle_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "categories_list",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "التصنيفات",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": "تصنيف",
+                    "icon": "sicon-store",
+                    "minLength": "1",
+                    "maxLength": "6",
+                    "fields": [
+                        {
+                            "id": "category_id",
+                            "type": "string",
+                            "format": "select",
+                            "label": "اختر التصنيف",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": null,
+                            "icon": null,
+                            "value": "",
+                            "required": true,
+                            "searchable": true,
+                            "source": null
+                        }
+                    ],
+                    "value": []
+                }
+            ]
         }
     ],
     "support_url": null,
