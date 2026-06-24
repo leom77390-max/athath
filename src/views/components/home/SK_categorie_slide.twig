@@ -3,7 +3,7 @@
 	<div class="categories-slide-wrapper">
 
 		<div class="categories-slide__content">
-			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
+			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="true" loop="true" slider-config='{
 				"slidesPerView":1.2,
 				"spaceBetween":20,
 				"breakpoints":{
@@ -49,20 +49,6 @@
 					<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
 				{% endif %}
 			</div>
-
-			<div class="categories-slide__nav">
-				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').next()">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="15 18 9 12 15 6"/>
-					</svg>
-				</button>
-				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').previous()">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="9 18 15 12 9 6"/>
-					</svg>
-				</button>
-			</div>
-		</div>
 
 	</div>
 </section>
@@ -167,16 +153,45 @@
 		font-size: 13px;
 		color: #777;
 	}
-	.categories-slide__arrow {
-		width: 36px;
-		height: 36px;
-		border-radius: 50%;
-		border: 1px solid #ddd;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-	}
+
+  #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav {
+  left: 6rem !important;  
+  top: -2rem !important;
+  width: 5% !important;
+}
+#categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button,
+#categories-section-{{position}} .s-slider-nav-arrow {
+  border: 1px solid #000000 !important;
+  background: transparent !important;
+  transition: all .3s ease;
+}
+
+  #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button svg,
+  #categories-section-{{position}} .s-slider-nav-arrow svg {
+    fill: #000000 !important;
+    transition: fill .3s ease;
+  }
+
+  #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover,
+  #categories-section-{{position}} .s-slider-nav-arrow:hover {
+    background: #000000 !important;
+  }
+
+  #categories-section-{{position}} .s-slider-v-centered .s-slider-block__title-nav button:hover svg,
+  #categories-section-{{position}} .s-slider-nav-arrow:hover svg {
+    fill: #ffffff !important;
+  }
+
+  #categories-section-{{position}} .swiper-button-disabled {
+    opacity: .35 !important;
+    cursor: not-allowed;
+  }
+
+  #categories-section-{{position}} .swiper-button-disabled svg {
+    fill: #000000 !important;
+    opacity: .35 !important;
+  }
+
 	@media (max-width: 768px) {
 		.categories-slide-wrapper {
 			flex-direction: column !important;
