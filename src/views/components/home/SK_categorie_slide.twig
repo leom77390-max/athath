@@ -1,7 +1,7 @@
 {% set c = component %}
 
 <section class="categories-slide" id="categories-slider-{{position}}">
-    <div class="flex items-center gap-4 flex-row-reverse">
+    <div class="flex items-center gap-4 flex-row-reverse w-[70%]">
         <div class="categories-slide__header">
             {% if c.block_top_brand is not empty %}
                 <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h5>
@@ -13,7 +13,7 @@
                 <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
             {% endif %}
         </div>
-        <div class="categories-slide__content w-[70%]">
+        <div class="categories-slide__content">
           <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" 
             show-controls="true"
             type="carousel"
