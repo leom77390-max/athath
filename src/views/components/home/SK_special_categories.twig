@@ -13,9 +13,9 @@
 
   {# ===== عدد الأعمدة أوتوماتيك ===== #}
   {% if source_mode == 'categories' %}
-    {% set item_count   = component.categories_list | length %}
+    {% set item_count = component.categories_list | length %}
   {% else %}
-    {% set item_count   = component.card | length %}
+    {% set item_count = component.card | length %}
   {% endif %}
   {% set grid_columns = item_count > 0 ? item_count : 4 %}
   {% if grid_columns > 6 %}{% set grid_columns = 6 %}{% endif %}
@@ -25,10 +25,40 @@
   {% set slides_laptop  = component.laptop_slides_per_view  | default(3) %}
   {% set slides_mobile  = component.mobile_slides_per_view  | default(1) %}
   {% set autoplay       = component.enable_autoplay         | default(false) %}
-  {% set loop           = component.enable_loop             | default(true) %}
+  {% set loop           = component.enable_loop             | default(false) %}
   {% set controls       = component.enable_controls         | default(true) %}
   {% set autoplay_speed = component.autoplay_speed          | default(3000) %}
   {% set space_between  = component.space_between           | default(16) %}
+
+  {# ===== بناء slider-config كـ JSON ===== #}
+  {% set slider_config = {
+    "slidesPerView": slides_desktop,
+    "spaceBetween": space_between,
+    "loop": loop,
+    "breakpoints": {
+      "0": {
+        "slidesPerView": slides_mobile,
+        "spaceBetween": space_between
+      },
+      "768": {
+        "slidesPerView": slides_laptop,
+        "spaceBetween": space_between
+      },
+      "1024": {
+        "slidesPerView": slides_desktop,
+        "spaceBetween": space_between
+      }
+    }
+  } %}
+
+  {% if autoplay %}
+    {% set slider_config = slider_config | merge({
+      "autoplay": {
+        "delay": autoplay_speed,
+        "disableOnInteraction": false
+      }
+    }) %}
+  {% endif %}
 
   {% if main_title or main_description %}
     <div class="sk-header">
@@ -99,12 +129,10 @@
       <salla-slider
         type="carousel"
         slides-per-view="{{ slides_desktop }}"
-        slides-per-view-tablet="{{ slides_laptop }}"
-        slides-per-view-mobile="{{ slides_mobile }}"
-        space-between="{{ space_between }}"
-        {% if autoplay %}autoplay autoplay-delay="{{ autoplay_speed }}"{% endif %}
+        show-controls="{{ controls ? 'true' : 'false' }}"
+        {% if autoplay %}auto-play{% endif %}
         {% if loop %}loop{% endif %}
-        {% if controls %}show-arrows{% endif %}
+        slider-config='{{ slider_config | json_encode }}'
       >
 
         {% if source_mode == 'manual' %}
@@ -228,7 +256,7 @@
     z-index: 1;
   }
 
-  /* ===== Shadow/Overlay مبني على CSS vars ===== */
+  /* ===== Overlay بالـ CSS vars ===== */
   .SK_special_categories_{{position}} .sk-card-overlay {
     position: absolute;
     inset: 0;
@@ -266,23 +294,22 @@
     padding: 0 12px;
   }
 
-  /* ===== Slider cards need height ===== */
+  /* ===== Slider card height ===== */
   .SK_special_categories_{{position}} salla-slider .sk-card {
     height: 140px;
-    display: flex;
     width: 100%;
   }
 
   /* ===== Responsive Grid ===== */
-  @media (max-width: 950px) {
+  @media (max-width: 767px) {
     .SK_special_categories_{{position}} .sk-grid {
-      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-columns: 1fr !important;
     }
   }
 
-  @media (max-width: 500px) {
+  @media (min-width: 768px) and (max-width: 1023px) {
     .SK_special_categories_{{position}} .sk-grid {
-      grid-template-columns: 1fr !important;
+      grid-template-columns: repeat(2, 1fr) !important;
     }
   }
 </style>
