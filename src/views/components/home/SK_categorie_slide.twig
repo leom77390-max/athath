@@ -14,33 +14,17 @@
             {% endif %}
         </div>
         <div class="categories-slide__content w-full md:w-[95%] lg:w-[90%]">
-        <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" slider-config='{
-          "slidesPerView": 1.5,
+        <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" 
+        show-controls="true"
+        type="carousel"
+        slider-config='{
+          "slidesPerView": 1.1,
           "spaceBetween": 16,
-          "autoplay": {
-              "delay": 0,
-              "disableOnInteraction": false,
-              "pauseOnMouseEnter": false,
-              "stopOnLastSlide": false
-          },
-          "loop": true,
-          "freeMode": true,
           "breakpoints": {
-              "400": {
-                  "slidesPerView": 1.5,
-                  "spaceBetween": 19,
-                  "slidesPerGroup": 1
-              },
-              "640": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 21
-              },
-              "860": {
-                  "slidesPerView": 3.25,
-                  "spaceBetween": 30
-              }
+            "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
+            "1024": { "slidesPerView": 2, "spaceBetween": 24 }
           }
-      }' show-controls="true" type="thumbs">
+        }'>
       <div slot="items">
             {% for category in c.categories_list %}
                 <div class="categories-slide__item">
