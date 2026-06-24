@@ -1352,6 +1352,9 @@ input:where([type='file']):focus{
 .h-\[380px\]{
     height: 380px;
 }
+.h-\[40px\]{
+    height: 40px;
+}
 .h-\[52px\]{
     height: 52px;
 }
@@ -1382,9 +1385,6 @@ input:where([type='file']):focus{
 }
 .h-px{
     height: 1px;
-}
-.h-\[40px\]{
-    height: 40px;
 }
 .max-h-0{
     max-height: 0px;
@@ -1510,6 +1510,9 @@ input:where([type='file']):focus{
 .w-\[27px\]{
     width: 27px;
 }
+.w-\[40px\]{
+    width: 40px;
+}
 .w-\[420px\]{
     width: 420px;
 }
@@ -1525,9 +1528,6 @@ input:where([type='file']):focus{
 }
 .w-full{
     width: 100%;
-}
-.w-\[40px\]{
-    width: 40px;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
@@ -2203,6 +2203,14 @@ input:where([type='file']):focus{
     background-color: rgba(185, 68, 48, 1);
     background-color: rgba(185, 68, 48, var(--tw-bg-opacity, 1));
 }
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
+    background-color: rgba(65, 64, 66, 0.15);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 15%,transparent);
+    }
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2277,14 +2285,6 @@ input:where([type='file']):focus{
 }
 .bg-transparent{
     background-color: transparent;
-}
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
-    background-color: rgba(65, 64, 66, 0.15);
-}
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
-        background-color: color-mix(in srgb,var(--color-primary) 15%,transparent);
-    }
 }
 .bg-gradient-to-t{
     background-image: linear-gradient(to top, var(--tw-gradient-stops));
@@ -2607,8 +2607,14 @@ input:where([type='file']):focus{
 .text-\[clamp\(\.725rem\2c 1\.1939rem\+1\.3061vw\2c 1\.5rem\)\]{
     font-size: clamp(.725rem, 1.1939rem + 1.3061vw, 1.5rem);
 }
+.text-\[clamp\(0\.75rem\2c 0\.7117rem\+0\.1633vw\2c 0\.875rem\)\]{
+    font-size: clamp(0.75rem, 0.7117rem + 0.1633vw, 0.875rem);
+}
 .text-\[clamp\(0\.75rem\2c 0\.7141rem\+0\.1609vw\2c 0\.875rem\)\]{
     font-size: clamp(0.75rem, 0.7141rem + 0.1609vw, 0.875rem);
+}
+.text-\[clamp\(0\.875rem\2c 0\.7985rem\+0\.3265vw\2c 1\.125rem\)\]{
+    font-size: clamp(0.875rem, 0.7985rem + 0.3265vw, 1.125rem);
 }
 .text-\[clamp\(0\.875rem\2c 0\.8338rem\+0\.1759vw\2c 1rem\)\]{
     font-size: clamp(0.875rem, 0.8338rem + 0.1759vw, 1rem);
@@ -2644,12 +2650,6 @@ input:where([type='file']):focus{
 }
 .text-xxs{
     font-size: 10px;
-}
-.text-\[clamp\(0\.75rem\2c 0\.7117rem\+0\.1633vw\2c 0\.875rem\)\]{
-    font-size: clamp(0.75rem, 0.7117rem + 0.1633vw, 0.875rem);
-}
-.text-\[clamp\(0\.875rem\2c 0\.7985rem\+0\.3265vw\2c 1\.125rem\)\]{
-    font-size: clamp(0.875rem, 0.7985rem + 0.3265vw, 1.125rem);
 }
 .font-bold{
     font-weight: 700;
@@ -36205,6 +36205,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-12{
         width: 3rem;
     }
+    .md\:w-14{
+        width: 3.5rem;
+    }
+    .md\:w-16{
+        width: 4rem;
+    }
     .md\:w-2\/4{
         width: 50%;
     }
@@ -36234,12 +36240,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:w-14{
-        width: 3.5rem;
-    }
-    .md\:w-16{
-        width: 4rem;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -36541,14 +36541,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:justify-center{
         justify-content: center;
     }
+    .lg\:gap-11{
+        gap: 2.75rem;
+    }
     .lg\:gap-6{
         gap: 1.5rem;
     }
     .lg\:gap-8{
         gap: 2rem;
-    }
-    .lg\:gap-11{
-        gap: 2.75rem;
     }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]){
         --tw-space-x-reverse: 0;

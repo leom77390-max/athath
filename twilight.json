@@ -1441,7 +1441,7 @@
                 "ar": "ميزات المتجر - سلييك"
             },
             "icon": "sicon-gold-badge",
-            "path": "home.GL_features",
+            "path": "home.SK_features",
             "is_default": true,
             "image": "",
             "fields": [
