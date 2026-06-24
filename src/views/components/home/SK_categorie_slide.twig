@@ -1,6 +1,6 @@
 {% set c = component %}
 <section class="categories-slide" id="categories-section-{{position}}">
-	<div class="categories-slide-wrapper container">
+	<div class="categories-slide-wrapper">
 
 		<div class="categories-slide__content">
 			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
@@ -68,10 +68,6 @@
 </section>
 
 <style>
-  #categories-section-{{position}} .container {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-  }
 	.categories-slide {
 		padding: 40px 0;
 	}
