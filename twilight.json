@@ -5977,7 +5977,6 @@
                     "format": "switch",
                     "value": false
                 },
-
                 {
                     "id": "enable_slider",
                     "type": "boolean",
@@ -6544,7 +6543,7 @@
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
             "fields": [
-                 {
+                {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
@@ -6572,7 +6571,7 @@
                     "format": "switch",
                     "value": false
                 },
-                 {
+                {
                     "type": "boolean",
                     "icon": "sicon-format-fill",
                     "label": "تخصيص ألوان المكون يدويًا",
@@ -6581,104 +6580,103 @@
                     "format": "switch",
                     "value": false
                 },
-          {
-    "id": "categories_display_mode",
-    "type": "items",
-    "format": "dropdown-list",
-    "label": {
-        "ar": "طريقة عرض التصنيفات",
-        "en": "Categories Display Mode"
-    },
-    "description": null,
-    "labelHTML": null,
-    "icon": "sicon-layout-grid",
-    "selected": [
-        {
-            "label": {
-                "ar": "شبكة",
-                "en": "Grid"
-            },
-            "value": "grid",
-            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
-        }
-    ],
-    "options": [
-        {
-            "label": {
-                "ar": "شبكة",
-                "en": "Grid"
-            },
-            "value": "grid",
-            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
-        },
-        {
-            "label": {
-                "ar": "سلايدر",
-                "en": "Slider"
-            },
-            "value": "slider",
-            "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901"
-        }
-    ],
-    "source": "Manual",
-    "required": true
-},
-         {
-    "id": "categories_is_manual",
-    "type": "boolean",
-    "format": "switch",
-    "label": {
-        "ar": "هل التصنيفات يدوية؟",
-        "en": "Are categories manual?"
-    },
-    "description": null,
-    "labelHTML": null,
-    "icon": "sicon-layout-grid",
-    "selected": [
-        {
-            "label": {
-                "ar": "شبكة",
-                "en": "Grid"
-            },
-            "value": "grid",
-            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567891"
-        }
-    ],
-    "options": [
-        {
-            "label": {
-                "ar": "يدوي",
-                "en": "manual"
-            },
-            "value": "manual",
-            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567891"
-        },
-        {
-            "label": {
-                "ar": "تلقائي",
-                "en": "auto"
-            },
-            "value": "auto",
-            "key": "b2c3d4e5-f6a7-8901-bcde-f12345678902"
-        }
-    ],
-    "source": "Manual",
-    "required": true
-},
-
- {
-            "id": "categories_list",
-            "type": "items",
-            "format": "dropdown-list",
-            "label": "قائمة التصنيفات",
-            "description": "اختر التصنيفات التي تظهر في القائمة.",
-            "icon": "sicon-keyboard_arrow_down",
-            "selected": [],
-            "source": "categories",
-            "multichoice": true,
-            "searchable": true,
-            "required": false
-        },
+                {
+                    "id": "categories_display_mode",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": {
+                        "ar": "طريقة عرض التصنيفات",
+                        "en": "Categories Display Mode"
+                    },
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-layout-grid",
+                    "selected": [
+                        {
+                            "label": {
+                                "ar": "شبكة",
+                                "en": "Grid"
+                            },
+                            "value": "grid",
+                            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": {
+                                "ar": "شبكة",
+                                "en": "Grid"
+                            },
+                            "value": "grid",
+                            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                        },
+                        {
+                            "label": {
+                                "ar": "سلايدر",
+                                "en": "Slider"
+                            },
+                            "value": "slider",
+                            "key": "b2c3d4e5-f6a7-8901-bcde-f12345678901"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "categories_is_manual",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": {
+                        "ar": "طريقة عرض التصنيفات",
+                        "en": "Categories Display Mode"
+                    },
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-layout-grid",
+                    "selected": [
+                       {
+                            "label": {
+                                "ar": "يدوي",
+                                "en": "Manual"
+                            },
+                            "value": "manual",
+                            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567894"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": {
+                                "ar": "يدوي",
+                                "en": "Manual"
+                            },
+                            "value": "manual",
+                            "key": "a1b2c3d4-e5f6-7890-abcd-ef1234567894"
+                        },
+                        {
+                            "label": {
+                                "ar": "تصنيفات ",
+                                "en": "Slider Categories"
+                            },
+                            "value": "categories",
+                            "key": "b2c3d4e5-f6a7-8901-bcde-f12345678902"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "categories_list",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "قائمة التصنيفات",
+                    "description": "اختر التصنيفات التي تظهر في القائمة.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
                 {
                     "id": "enable_slider",
                     "type": "boolean",
@@ -6804,7 +6802,7 @@
                         }
                     ]
                 },
-                 {
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",
@@ -6859,14 +6857,14 @@
                     "icon": "sicon-format-fill",
                     "value": "#18181b",
                     "conditions": [
-                        { 
+                        {
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
                         }
                     ]
                 },
-                 {
+                {
                     "id": "card",
                     "type": "collection",
                     "format": "collection",
