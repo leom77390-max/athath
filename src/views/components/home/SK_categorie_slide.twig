@@ -1,10 +1,10 @@
 {% set c = component %}
 
-<section class="categories-slide">
+<section class="categories-slide" id="categories-slider-{{position}}">
     <div class="container">
         <div class="categories-slide__header">
             {% if c.block_top_brand is not empty %}
-                <h3 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h3>
+                <h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h5>
             {% endif %}
             {% if c.categories_list_title is not empty %}
                 <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }};">{{ c.categories_list_title }}</h2>
@@ -13,7 +13,35 @@
                 <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
             {% endif %}
         </div>
-        <div class="categories-slide__content">
+        <div class="categories-slide__content w-full md:w-[95%] lg:w-[90%]">
+        <salla-slider dir="rtl" id="categories-slider-{{position}}" class="categories-slide" slider-config='{
+          "slidesPerView": 1.5,
+          "spaceBetween": 16,
+          "autoplay": {
+              "delay": 0,
+              "disableOnInteraction": false,
+              "pauseOnMouseEnter": false,
+              "stopOnLastSlide": false
+          },
+          "loop": true,
+          "freeMode": true,
+          "breakpoints": {
+              "400": {
+                  "slidesPerView": 1.5,
+                  "spaceBetween": 19,
+                  "slidesPerGroup": 1
+              },
+              "640": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 21
+              },
+              "860": {
+                  "slidesPerView": 3.25,
+                  "spaceBetween": 30
+              }
+          }
+      }' show-controls="true" type="thumbs">
+      <div slot="items">
             {% for category in c.categories_list %}
                 <div class="categories-slide__item">
                     <a href="{{ category.url }}" class="categories-slide__item-link">
@@ -22,6 +50,8 @@
                     </a>
                 </div>
             {% endfor %}
+        </div>
+        </salla-slider>
         </div>
     </div>
 
