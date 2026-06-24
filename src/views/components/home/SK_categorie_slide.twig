@@ -2,35 +2,6 @@
 <section class="categories-slide" id="categories-section-{{position}}">
 	<div class="categories-slide-wrapper">
 
-		<div class="content_cat">
-			<div class="categories-slide__header">
-				{% if c.block_top_brand %}
-					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
-				{% endif %}
-
-				{% if c.categories_list_title %}
-					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
-				{% endif %}
-
-				{% if c.categories_list_subtitle %}
-					<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
-				{% endif %}
-			</div>
-
-			<div class="categories-slide__nav">
-				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').previous()">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="15 18 9 12 15 6"/>
-					</svg>
-				</button>
-				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').next()">
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="9 18 15 12 9 6"/>
-					</svg>
-				</button>
-			</div>
-		</div>
-
 		<div class="categories-slide__content">
 			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
 				"slidesPerView":1.2,
@@ -66,6 +37,33 @@
 			</salla-slider>
 		</div>
 
+		<div class="content_cat">
+			<div class="categories-slide__header">
+				{% if c.block_top_brand %}
+					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+				{% endif %}
+				{% if c.categories_list_title %}
+					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
+				{% endif %}
+				{% if c.categories_list_subtitle %}
+					<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
+				{% endif %}
+			</div>
+
+			<div class="categories-slide__nav">
+				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').next()">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="15 18 9 12 15 6"/>
+					</svg>
+				</button>
+				<button class="categories-slide__nav-btn" onclick="document.getElementById('categories-slider-{{position}}').previous()">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="9 18 15 12 9 6"/>
+					</svg>
+				</button>
+			</div>
+		</div>
+
 	</div>
 </section>
 
@@ -75,20 +73,22 @@
 	}
 	.categories-slide-wrapper {
 		display: flex;
+		flex-direction: row;
 		align-items: center;
 		gap: 40px;
+		direction: ltr;
 	}
 	.content_cat {
 		flex: 0 0 220px;
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
+		direction: rtl;
 	}
 	.categories-slide__header {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
-		padding: 0 0.5rem;
 	}
 	.categories-slide__header-top {
 		font-size: 13px;
@@ -105,8 +105,9 @@
 	}
 	.categories-slide__nav {
 		display: flex;
+		flex-direction: row;
 		gap: 10px;
-		padding: 0 0.5rem;
+		direction: ltr;
 	}
 	.categories-slide__nav-btn {
 		width: 38px;
@@ -128,6 +129,7 @@
 	.categories-slide__content {
 		flex: 1;
 		overflow: hidden;
+		min-width: 0;
 	}
 	.categories-slide__item {
 		background: #fff;
@@ -153,6 +155,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		direction: rtl;
 	}
 	.categories-slide__item-title {
 		font-size: 16px;
@@ -174,11 +177,12 @@
 	}
 	@media (max-width: 768px) {
 		.categories-slide-wrapper {
-			flex-direction: column;
+			flex-direction: column !important;
 		}
 		.content_cat,
 		.categories-slide__content {
 			width: 100%;
+			flex: unset;
 		}
 		.categories-slide__image-wrapper {
 			height: 220px;
