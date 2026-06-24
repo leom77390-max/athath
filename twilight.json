@@ -6789,6 +6789,55 @@
                     ]
                 },
                 {
+                    "id": "space_between",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "المسافة بين البطاقات (px)",
+                    "description": "حدد المسافة بين البطاقات داخل السلايدر.",
+                    "icon": "sicon-hashtag",
+                    "value": 16,
+                    "required": false,
+                    "minimum": "0",
+                    "maximum": "60",
+                    "conditions": [
+                        {
+                            "id": "categories_display_mode",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "autoplay_speed",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "سرعة التشغيل التلقائي (بالمللي ثانية)",
+                    "description": "حدد سرعة الانتقال بين البطاقات. القيمة الافتراضية 3000 (3 ثواني).",
+                    "icon": "sicon-clock",
+                    "value": 3000,
+                    "required": false,
+                    "minimum": "1000",
+                    "maximum": "10000",
+                    "conditions": [
+                        {
+                            "id": "categories_display_mode",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        },
+                        {
+                            "id": "enable_autoplay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",

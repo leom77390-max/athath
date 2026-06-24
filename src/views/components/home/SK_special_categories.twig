@@ -1,40 +1,65 @@
-{{component}}
-
 <section class="SK_special_categories_{{position}} SK_special_categories">
 
-  {% set display_mode = component.categories_display_mode.value | default('grid') %}
-  {% set source_mode  = component.categories_is_manual.value    | default('manual') %}
+  {% set display_mode = component.categories_display_mode %}
+  {% if display_mode is iterable %}{% set display_mode = display_mode.value %}{% endif %}
+  {% set display_mode = display_mode | default('grid') %}
+
+  {% set source_mode = component.categories_is_manual %}
+  {% if source_mode is iterable %}{% set source_mode = source_mode.value %}{% endif %}
+  {% set source_mode = source_mode | default('manual') %}
 
   {% set main_title       = component.main_title %}
   {% set main_description = component.main_description %}
+
+  {# ===== عدد الأعمدة أوتوماتيك ===== #}
+  {% if source_mode == 'categories' %}
+    {% set item_count   = component.categories_list | length %}
+  {% else %}
+    {% set item_count   = component.card | length %}
+  {% endif %}
+  {% set grid_columns = item_count > 0 ? item_count : 4 %}
+  {% if grid_columns > 6 %}{% set grid_columns = 6 %}{% endif %}
+
+  {# ===== Slider Config ===== #}
+  {% set slides_desktop = component.desktop_slides_per_view | default(4) %}
+  {% set slides_laptop  = component.laptop_slides_per_view  | default(3) %}
+  {% set slides_mobile  = component.mobile_slides_per_view  | default(1) %}
+  {% set autoplay       = component.enable_autoplay         | default(false) %}
+  {% set loop           = component.enable_loop             | default(true) %}
+  {% set controls       = component.enable_controls         | default(true) %}
+  {% set autoplay_speed = component.autoplay_speed          | default(3000) %}
+  {% set space_between  = component.space_between           | default(16) %}
+
   {% if main_title or main_description %}
     <div class="sk-header">
-      {% if main_title %}
-        <h2>{{ main_title }}</h2>
-      {% endif %}
-      {% if main_description %}
-        <p>{{ main_description }}</p>
-      {% endif %}
+      {% if main_title %}<h2>{{ main_title }}</h2>{% endif %}
+      {% if main_description %}<p>{{ main_description }}</p>{% endif %}
     </div>
   {% endif %}
 
   <div class="sk-container">
 
+    {# ================================================================
+       GRID MODE
+    ================================================================ #}
     {% if display_mode == 'grid' %}
 
-      <div class="sk-grid">
+      <div class="sk-grid" style="grid-template-columns: repeat({{ grid_columns }}, 1fr);">
 
         {% if source_mode == 'manual' %}
           {% for item in component.card %}
-            {% set bg_image    = item['card.bg_image']            | default('') %}
-            {% set bg_color    = item['card.bg_color']            | default('#f5f0eb') %}
-            {% set is_image    = item['card.background_is_image'] %}
-            {% set title       = item['card.title']               | default('') %}
-            {% set title_color = item['card.title_color']         | default('#ffffff') %}
-            {% set radius      = item['card.corner_rounded']      | default(16) %}
-            {% set btn_url     = item['card.btn_url']             | default('#') %}
+            {% set bg_image     = item.bg_image            | default('') %}
+            {% set bg_color     = item.bg_color            | default('#f5f0eb') %}
+            {% set is_image     = item.background_is_image %}
+            {% set title        = item.title               | default('') %}
+            {% set title_color  = item.title_color         | default('#ffffff') %}
+            {% set radius       = item.corner_rounded      | default(16) %}
+            {% set shadow_color = item.shadow_color        | default('#000000') %}
+            {% set shadow_blur  = item.shadow_blur         | default(16) %}
+            {% set btn_url      = item.btn_url             | default('#') %}
 
-            <a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
+            <a href="{{ btn_url }}" class="sk-card"
+               style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }}; --shadow-blur: {{ shadow_blur }}px;">
               <div class="sk-card-image" style="
                 {% if is_image and bg_image %}
                   background-image: url('{{ bg_image }}');
@@ -43,15 +68,14 @@
                 {% endif %}
               "></div>
               <div class="sk-card-overlay"></div>
-              <span class="sk-card-title" style="color: {{ title_color }};">
-                {{ title }}
-              </span>
+              <span class="sk-card-title" style="color: {{ title_color }};">{{ title }}</span>
             </a>
           {% endfor %}
 
         {% else %}
           {% for cat in component.categories_list %}
-            <a href="{{ cat.url | default('#') }}" class="sk-card">
+            <a href="{{ cat.url | default('#') }}" class="sk-card"
+               style="border-radius: 16px; --shadow-color: #000000; --shadow-blur: 16px;">
               <div class="sk-card-image" style="
                 {% if cat.image %}
                   background-image: url('{{ cat.image }}');
@@ -67,35 +91,36 @@
 
       </div>
 
+    {# ================================================================
+       SLIDER MODE
+    ================================================================ #}
     {% else %}
 
-      {% set slides_desktop = component.desktop_slides_per_view | default(4) %}
-      {% set slides_laptop  = component.laptop_slides_per_view  | default(3) %}
-      {% set slides_mobile  = component.mobile_slides_per_view  | default(1) %}
-      {% set autoplay       = component.enable_autoplay         | default(false) %}
-      {% set loop           = component.enable_loop             | default(true) %}
-      {% set controls       = component.enable_controls         | default(true) %}
-
       <salla-slider
+        type="carousel"
         slides-per-view="{{ slides_desktop }}"
         slides-per-view-tablet="{{ slides_laptop }}"
         slides-per-view-mobile="{{ slides_mobile }}"
-        {% if autoplay %}autoplay{% endif %}
+        space-between="{{ space_between }}"
+        {% if autoplay %}autoplay autoplay-delay="{{ autoplay_speed }}"{% endif %}
         {% if loop %}loop{% endif %}
         {% if controls %}show-arrows{% endif %}
       >
 
         {% if source_mode == 'manual' %}
           {% for item in component.card %}
-            {% set bg_image    = item['card.bg_image']            | default('') %}
-            {% set bg_color    = item['card.bg_color']            | default('#f5f0eb') %}
-            {% set is_image    = item['card.background_is_image'] %}
-            {% set title       = item['card.title']               | default('') %}
-            {% set title_color = item['card.title_color']         | default('#ffffff') %}
-            {% set radius      = item['card.corner_rounded']      | default(16) %}
-            {% set btn_url     = item['card.btn_url']             | default('#') %}
+            {% set bg_image     = item.bg_image            | default('') %}
+            {% set bg_color     = item.bg_color            | default('#f5f0eb') %}
+            {% set is_image     = item.background_is_image %}
+            {% set title        = item.title               | default('') %}
+            {% set title_color  = item.title_color         | default('#ffffff') %}
+            {% set radius       = item.corner_rounded      | default(16) %}
+            {% set shadow_color = item.shadow_color        | default('#000000') %}
+            {% set shadow_blur  = item.shadow_blur         | default(16) %}
+            {% set btn_url      = item.btn_url             | default('#') %}
 
-            <a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
+            <a href="{{ btn_url }}" class="sk-card"
+               style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }}; --shadow-blur: {{ shadow_blur }}px;">
               <div class="sk-card-image" style="
                 {% if is_image and bg_image %}
                   background-image: url('{{ bg_image }}');
@@ -104,15 +129,14 @@
                 {% endif %}
               "></div>
               <div class="sk-card-overlay"></div>
-              <span class="sk-card-title" style="color: {{ title_color }};">
-                {{ title }}
-              </span>
+              <span class="sk-card-title" style="color: {{ title_color }};">{{ title }}</span>
             </a>
           {% endfor %}
 
         {% else %}
           {% for cat in component.categories_list %}
-            <a href="{{ cat.url | default('#') }}" class="sk-card">
+            <a href="{{ cat.url | default('#') }}" class="sk-card"
+               style="border-radius: 16px; --shadow-color: #000000; --shadow-blur: 16px;">
               <div class="sk-card-image" style="
                 {% if cat.image %}
                   background-image: url('{{ cat.image }}');
@@ -135,109 +159,130 @@
 </section>
 
 <style>
-    .SK_special_categories_{{position}} {
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #ffffff;
-    }
+  .SK_special_categories_{{position}} {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+  }
 
-    .SK_special_categories_{{position}} .sk-header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+  .SK_special_categories_{{position}} .sk-header {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+  }
 
-    .SK_special_categories_{{position}} .sk-header h2 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
-      color: {{ component.main_title_color | default('#18181b') }};
-    }
+  .SK_special_categories_{{position}} .sk-header h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    color: {{ component.main_title_color | default('#18181b') }};
+  }
 
-    .SK_special_categories_{{position}} .sk-header p {
-      font-size: 1.1rem;
-      color: {{ component.main_description_color | default('#444444') }};
-    }
+  .SK_special_categories_{{position}} .sk-header p {
+    font-size: 1.1rem;
+    color: {{ component.main_description_color | default('#444444') }};
+  }
 
-    .SK_special_categories_{{position}} .sk-container {
-      width: 100%;
-      {% if component.add_inside_container %}
-        max-width: 1200px;
-        margin-inline: auto;
-      {% endif %}
-    }
+  .SK_special_categories_{{position}} .sk-container {
+    width: 100%;
+    {% if component.add_inside_container %}
+      max-width: 1200px;
+      margin-inline: auto;
+    {% endif %}
+  }
 
+  /* ===== Grid ===== */
+  .SK_special_categories_{{position}} .sk-grid {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ===== Card ===== */
+  .SK_special_categories_{{position}} .sk-card {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    --shadow-color: #000000;
+    --shadow-blur: 16px;
+  }
+
+  .SK_special_categories_{{position}} .sk-card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+  }
+
+  /* ===== Shadow/Overlay مبني على CSS vars ===== */
+  .SK_special_categories_{{position}} .sk-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      var(--shadow-color) 0%,
+      transparent var(--shadow-blur)
+    );
+    opacity: 0.85;
+    transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
+    z-index: 2;
+  }
+
+  .SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
+    transform: scale(1.08);
+  }
+
+  .SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
+    opacity: 1;
+    background: linear-gradient(
+      to top,
+      var(--shadow-color) 0%,
+      transparent calc(var(--shadow-blur) * 1.5)
+    );
+  }
+
+  .SK_special_categories_{{position}} .sk-card-title {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 3;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    text-align: center;
+    padding: 0 12px;
+  }
+
+  /* ===== Slider cards need height ===== */
+  .SK_special_categories_{{position}} salla-slider .sk-card {
+    height: 140px;
+    display: flex;
+    width: 100%;
+  }
+
+  /* ===== Responsive Grid ===== */
+  @media (max-width: 950px) {
     .SK_special_categories_{{position}} .sk-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      width: 100%;
+      grid-template-columns: repeat(2, 1fr) !important;
     }
+  }
 
-    .SK_special_categories_{{position}} .sk-card {
-      position: relative;
-      height: 140px;
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
+  @media (max-width: 500px) {
+    .SK_special_categories_{{position}} .sk-grid {
+      grid-template-columns: 1fr !important;
     }
-
-    .SK_special_categories_{{position}} .sk-card-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: transform 0.5s ease-in-out;
-      z-index: 1;
-    }
-
-    .SK_special_categories_{{position}} .sk-card-overlay {
-      position: absolute;
-      inset: 0;
-      box-shadow: inset 0 -30px 35px rgba(0,0,0,0.35);
-      background: rgba(0,0,0,0.05);
-      transition: box-shadow 0.5s ease-in-out, background 0.5s ease-in-out;
-      z-index: 2;
-    }
-
-    .SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
-      transform: scale(1.08);
-    }
-
-    .SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
-      box-shadow: inset 0 -140px 90px rgba(0,0,0,0.65);
-      background: rgba(0,0,0,0.15);
-    }
-
-    .SK_special_categories_{{position}} .sk-card-title {
-      color: #ffffff;
-      font-size: 1.15rem;
-      font-weight: 500;
-      position: relative;
-      z-index: 3;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-      text-align: center;
-      padding: 0 12px;
-    }
-
-    @media (max-width: 950px) {
-      .SK_special_categories_{{position}} .sk-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 500px) {
-      .SK_special_categories_{{position}} .sk-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  }
+</style>
