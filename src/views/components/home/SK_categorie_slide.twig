@@ -1,18 +1,20 @@
+{% set c = component %}
+
 <section class="categories-slide">
     <div class="container">
         <div class="categories-slide__header">
-            {% if block_top_brand is not empty %}
-                <h3 class="categories-slide__header-top" style="color: {{ block_top_brand_color }};">{{ block_top_brand }}</h3>
+            {% if c.block_top_brand is not empty %}
+                <h3 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }};">{{ c.block_top_brand }}</h3>
             {% endif %}
-            {% if categories_list_title is not empty %}
-                <h2 class="categories-slide__header-title" style="color: {{ categories_list_title_color }};">{{ categories_list_title }}</h2>
+            {% if c.categories_list_title is not empty %}
+                <h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }};">{{ c.categories_list_title }}</h2>
             {% endif %}
-            {% if categories_list_subtitle is not empty %}
-                <p class="categories-slide__header-subtitle" style="color: {{ categories_list_subtitle_color }};">{{ categories_list_subtitle }}</p>
+            {% if c.categories_list_subtitle is not empty %}
+                <p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }};">{{ c.categories_list_subtitle }}</p>
             {% endif %}
         </div>
         <div class="categories-slide__content">
-            {% for category in categories_list %}
+            {% for category in c.categories_list %}
                 <div class="categories-slide__item">
                     <a href="{{ category.url }}" class="categories-slide__item-link">
                         <img src="{{ category.image }}" alt="{{ category.name }}" class="categories-slide__item-image">
