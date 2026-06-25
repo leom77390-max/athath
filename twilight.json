@@ -7291,7 +7291,189 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_store_features",
-            "fields": []
+            "fields": [
+    {
+      "type": "static",
+      "format": "title",
+      "id": "static-style",
+      "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+      "variant": "h6"
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "header_general",
+      "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "وضع المكون داخل حاوية",
+      "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
+      "id": "add_inside_container",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-format-fill",
+      "label": "تخصيص ألوان المكون يدويًا",
+      "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان.",
+      "id": "customize_colors",
+      "format": "switch",
+      "value": false
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "header_colors",
+      "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات الألوان</h3>"
+    },
+    {
+      "id": "bg_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية القسم",
+      "icon": "sicon-format-fill",
+      "value": "#ffffff",
+      "conditions": [
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "badge_bg_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية الشارة",
+      "icon": "sicon-format-fill",
+      "value": "#f3f4f6",
+      "conditions": [
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "badge_text_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون نص الشارة",
+      "icon": "sicon-format-fill",
+      "value": "#18181b",
+      "conditions": [
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "active_badge_bg_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية الشارة المميزة",
+      "icon": "sicon-format-fill",
+      "value": "#18181b",
+      "conditions": [
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "active_badge_text_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون نص الشارة المميزة",
+      "icon": "sicon-format-fill",
+      "value": "#ffffff",
+      "conditions": [
+        {
+          "id": "customize_colors",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "type": "static",
+      "format": "title",
+      "id": "header_badges",
+      "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الشارات</h3>"
+    },
+    {
+      "id": "badges",
+      "type": "collection",
+      "format": "collection",
+      "label": "قائمة الشارات",
+      "description": "أضف شارة لكل ميزة تريد إبرازها — تحتوي على نص ويمكن تمييز واحدة منها.",
+      "item_label": "شارة",
+      "icon": "sicon-list-add",
+      "minLength": "1",
+      "maxLength": "8",
+      "fields": [
+        {
+          "id": "badges.label",
+          "type": "string",
+          "format": "text",
+          "label": "نص الشارة",
+          "description": "النص الذي يظهر داخل الشارة.",
+          "placeholder": "مثال: شحن مجاني",
+          "icon": "sicon-layout",
+          "multilanguage": true,
+          "required": true,
+          "minLength": "2",
+          "maxLength": "40"
+        },
+        {
+          "id": "badges.is_active",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تمييز هذه الشارة",
+          "description": "تفعيل هذا الخيار يجعل الشارة تظهر بخلفية داكنة.",
+          "icon": "sicon-toggle-off",
+          "value": false
+        }
+      ],
+      "value": [
+        {
+          "badges.label": "شحن مجاني",
+          "badges.is_active": false
+        },
+        {
+          "badges.label": "ضمان استرجاع المال",
+          "badges.is_active": false
+        },
+        {
+          "badges.label": "دفع مرن",
+          "badges.is_active": false
+        },
+        {
+          "badges.label": "دعم أونلاين",
+          "badges.is_active": true
+        },
+        {
+          "badges.label": "إرجاع خلال 7 أيام",
+          "badges.is_active": false
+        }
+      ]
+    }
+  ]
+
         }
     ],
     "support_url": null,

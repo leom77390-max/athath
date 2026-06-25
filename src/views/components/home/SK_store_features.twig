@@ -1,0 +1,139 @@
+{# ================================================
+   Feature Badges Component
+   Usage: component.id returns the unique component ID
+   ================================================ #}
+
+{% set id = component.id %}
+{% set settings = component.settings %}
+
+{# ── Color Variables ── #}
+{% set bg_color            = settings.bg_color            ?? '#ffffff' %}
+{% set badge_bg_color      = settings.badge_bg_color      ?? '#f3f4f6' %}
+{% set badge_text_color    = settings.badge_text_color    ?? '#18181b' %}
+{% set active_bg_color     = settings.active_badge_bg_color  ?? '#18181b' %}
+{% set active_text_color   = settings.active_badge_text_color ?? '#ffffff' %}
+{% set badges              = settings.badges              ?? [] %}
+
+<section
+  id="feature-badges-{{ id }}"
+  class="feature-badges-section{% if settings.add_inside_container %} has-container{% endif %}"
+  style="background-color: {{ bg_color }};"
+>
+  {% if settings.add_inside_container %}
+  <div class="feature-badges-container">
+  {% endif %}
+
+    <div class="feature-badges-list" role="list">
+      {% for badge in badges %}
+        {% set is_active = badge['badges.is_active'] ?? false %}
+        <div
+          class="feature-badge{% if is_active %} feature-badge--active{% endif %}"
+          role="listitem"
+          style="
+            background-color: {{ is_active ? active_bg_color : badge_bg_color }};
+            color: {{ is_active ? active_text_color : badge_text_color }};
+            border-color: {{ is_active ? active_bg_color : badge_bg_color }};
+          "
+        >
+          <span class="feature-badge__icon" aria-hidden="true">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="9"
+                cy="9"
+                r="8"
+                stroke="{{ is_active ? active_text_color : badge_text_color }}"
+                stroke-width="1.5"
+              />
+              <path
+                d="M5.5 9L7.8 11.5L12.5 6.5"
+                stroke="{{ is_active ? active_text_color : badge_text_color }}"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="feature-badge__label">
+            {{ badge['badges.label'] }}
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+
+  {% if settings.add_inside_container %}
+  </div>
+  {% endif %}
+</section>
+
+<style>
+  #feature-badges-{{ id }} {
+    padding: 24px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #feature-badges-{{ id }} .feature-badges-container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  #feature-badges-{{ id }} .feature-badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  #feature-badges-{{ id }} .feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1.5px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: default;
+  }
+
+  #feature-badges-{{ id }} .feature-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  #feature-badges-{{ id }} .feature-badge--active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #feature-badges-{{ id }} .feature-badge__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  #feature-badges-{{ id }} .feature-badge__label {
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    #feature-badges-{{ id }} .feature-badges-list {
+      gap: 8px;
+    }
+
+    #feature-badges-{{ id }} .feature-badge {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+  }
+</style>
