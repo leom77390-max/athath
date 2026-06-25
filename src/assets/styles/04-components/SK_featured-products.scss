@@ -143,7 +143,12 @@
     display: none;
     line-height: 1.5;
 }
-
+[dir="rtl"] .tab-btn .tab-desc{
+    text-align: right;
+}
+[dir="ltr"] .tab-btn .tab-desc{
+    text-align: left;
+}
 .tab-btn.active .tab-title {
     color: #111827;
     font-weight: 700;

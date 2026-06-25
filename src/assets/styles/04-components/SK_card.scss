@@ -293,3 +293,10 @@
   right: auto;
   border-radius:0;
 }
+@media (max-width:767px) {
+  .s-product-card-vertical salla-add-product-button button{
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+  }
+}
