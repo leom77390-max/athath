@@ -27989,6 +27989,9 @@ salla-modal:not(.hydrated) {
     margin-right: 5px;
     flex-grow: 1;
 }
+.s-button-btn, .s-price-range-number-input{
+    border-radius: .75rem;
+}
 .s-app-install-banner{
     position: fixed;
     left: 0px;
@@ -35509,6 +35512,10 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   font-size: 0.75rem;
   color: var(--color-font-color);
   opacity: 0.7;
+}
+.index-product .s-filters-widget-plusminus:before,
+.index-product .s-filters-widget-plusminus:after {
+  color: black;
 }
 body.mm-ocd-opened,
 body.modal-is-open,
