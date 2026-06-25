@@ -1,0 +1,163 @@
+
+<section class="SK_press_{{position}} SK_press">
+
+  {% set main_title = component.main_title %}
+
+  {% if main_title %}
+    <div class="sk-press-header">
+      <h2 class="sk-press-title">{{ main_title }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="sk-press-container">
+    <div class="sk-press-grid">
+      {% for item in component.press_card %}
+        {% set logo        = item.logo        | default('') %}
+        {% set quote       = item.quote       | default('') %}
+        {% set quote_color = item.quote_color | default(component.quote_color | default('#18181b')) %}
+
+        <div class="sk-press-card">
+          {# Logo — always render the wrap; show image when available, icon placeholder otherwise #}
+          <div class="sk-press-logo-wrap">
+            {% if logo and logo != '' %}
+              <img
+                src="{{ logo }}"
+                alt="press logo"
+                class="sk-press-logo"
+              />
+            {% else %}
+              <span class="sk-press-logo-placeholder" aria-hidden="true">
+                <s-icon name="sicon-image"></s-icon>
+              </span>
+            {% endif %}
+          </div>
+
+          {# Quote — always render the paragraph; fall back to empty string if missing #}
+          <p class="sk-press-quote" style="color: {{ quote_color }};">
+            {% if quote and quote != '' %}
+              "{{ quote }}"
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .SK_press_{{position}} {
+    padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 40px);
+    background-color: {{ component.bg_color | default('#ffffff') }};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ===== Header ===== */
+  .SK_press_{{position}} .sk-press-header {
+    text-align: center;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+
+  .SK_press_{{position}} .sk-press-title {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+    color: {{ component.main_title_color | default('#18181b') }};
+  }
+
+  /* ===== Container ===== */
+  .SK_press_{{position}} .sk-press-container {
+    width: 100%;
+    {% if component.add_inside_container %}
+      max-width: 1200px;
+      margin-inline: auto;
+    {% endif %}
+  }
+
+  /* ===== Grid ===== */
+  .SK_press_{{position}} .sk-press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    align-items: start;
+  }
+
+  /* ===== Card ===== */
+  .SK_press_{{position}} .sk-press-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(16px, 2.5vw, 28px);
+    text-align: center;
+  }
+
+  /* ===== Logo ===== */
+  .SK_press_{{position}} .sk-press-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+  }
+
+  .SK_press_{{position}} .sk-press-logo {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .SK_press_{{position}} .sk-press-logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 48px;
+    color: #ccc;
+    font-size: 2rem;
+  }
+
+  .SK_press_{{position}} .sk-press-card:hover .sk-press-logo {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  /* ===== Quote ===== */
+  .SK_press_{{position}} .sk-press-quote {
+    font-size: clamp(0.85rem, 1.4vw, 1rem);
+    line-height: 1.75;
+    font-style: italic;
+    color: #18181b;
+    max-width: 320px;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 767px) {
+    .SK_press_{{position}} .sk-press-grid {
+      grid-template-columns: 1fr;
+      gap: clamp(32px, 6vw, 48px);
+    }
+
+    .SK_press_{{position}} .sk-press-card:not(:last-child) {
+      border-inline-end: none;
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: clamp(24px, 4vw, 40px);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .SK_press_{{position}} .sk-press-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .SK_press_{{position}} .sk-press-card:nth-child(2) {
+      border-inline-end: none;
+    }
+  }
+</style>
