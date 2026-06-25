@@ -6542,7 +6542,7 @@
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
-             "fields": [
+            "fields": [
                 {
                     "type": "static",
                     "format": "description",
@@ -6646,7 +6646,7 @@
                             "operation": "=",
                             "value": true
                         },
-                         {
+                        {
                             "id": "categories_is_manual",
                             "operation": "=",
                             "value": [
@@ -6669,7 +6669,28 @@
                             "operation": "=",
                             "value": true
                         },
-                         {
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "corner_rounded",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "استدارة زوايا البطاقة",
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "40",
+                    "conditions": [
+                        {
                             "id": "categories_is_manual",
                             "operation": "=",
                             "value": [
@@ -6864,18 +6885,6 @@
                                     "value": true
                                 }
                             ]
-                        },
-                        {
-                            "id": "card.shadow_blur",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "مقدار تمدد الظل",
-                            "icon": "sicon-pin",
-                            "value": "16",
-                            "step": "1",
-                            "minimum": "0",
-                            "maximum": "40"
                         },
                         {
                             "type": "items",
