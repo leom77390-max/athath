@@ -2608,7 +2608,7 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "customize_color",
+                            "id": "customize_colors",
                             "operation": "=",
                             "value": true
                         }
@@ -2627,7 +2627,7 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "customize_color",
+                            "id": "customize_colors",
                             "operation": "=",
                             "value": true
                         }
@@ -3803,17 +3803,7 @@
                     "value": false,
                     "selected": false
                 },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزالة الهامش السفلي",
-                    "description": null,
-                    "id": "rm_margin",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
-                },
+
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
@@ -4055,25 +4045,6 @@
                             "maximum": "10"
                         },
                         {
-                            "id": "banner.transparent_button",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "جعل لون خلفية الزر شفافة",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": true,
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
                             "id": "banner.items_alignment_horizontal",
                             "type": "items",
                             "format": "dropdown-list",
@@ -4219,25 +4190,6 @@
                             "value": null,
                             "multilanguage": true,
                             "required": false
-                        },
-                        {
-                            "id": "banner.highlighted_word_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون الكلمة المميزة العنوان الرئيسي",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#f3eeea",
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
                         },
                         {
                             "id": "banner.blocktitle_color",
@@ -4402,28 +4354,6 @@
                                     "label": "رابط خارجي",
                                     "key": "custom",
                                     "value": "custom"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.countdown",
-                            "type": "string",
-                            "format": "datetime",
-                            "inputType": "datetime-local",
-                            "label": "العد التنازلي لانتهاء العرض",
-                            "description": "حدد وقت انتهاء العرض او الخصم",
-                            "labelHTML": null,
-                            "icon": "sicon-calendar-time",
-                            "value": "02-25-2026,12:00:00 pm",
-                            "required": false,
-                            "minLength": "0",
-                            "conditions": [
-                                {
-                                    "id": "banner.add_countdown",
-                                    "collection_id": "banner",
-                                    "operation": "=",
-                                    "value": true,
-                                    "value_index": "."
                                 }
                             ]
                         }
@@ -5350,31 +5280,6 @@
                     "format": "description",
                     "id": "static-desc",
                     "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "static-style",
-                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-                    "variant": "h6"
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
-                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
-                    "id": "add_inside_container",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزالة الهامش السفلي",
-                    "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
-                    "id": "rm_margin",
-                    "format": "switch",
-                    "value": false
                 },
                 {
                     "type": "boolean",
@@ -6407,15 +6312,6 @@
                     "label": "وضع المكون داخل حاوية",
                     "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
                     "id": "add_inside_container",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "إزالة الهامش السفلي",
-                    "description": "عند التفعيل، يُزال الفراغ السفلي بين هذا القسم والقسم التالي.",
-                    "id": "rm_margin",
                     "format": "switch",
                     "value": false
                 },
