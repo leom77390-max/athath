@@ -14,7 +14,9 @@
       "email_address": "ادخل البريد الإلكتروني",
       "click_to_copy": "انقر على الكود لنسخه",
       "try_again": "حاول مرة أخرى",
-      "code": "الكود"
+      "code": "الكود",
+      "LeaveComment": "اترك تعليقًا",
+      "AddYourReview": "أضف تقييمك"
     },
     "cart": {
       "product": "المنتج",
@@ -56,7 +58,7 @@
     "products": {
       "calculated_at_checkout": "يتم حسابها عند الدفع",
       "view_full_details": "عرض التفاصيل الكاملة",
-      "discription": "وصف المنتج "
+      "description": "وصف المنتج"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",

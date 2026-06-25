@@ -14,7 +14,9 @@
       "email_address": "Enter Your Email Address",
       "click_to_copy": "Click to copy",
       "try_again": "Try Again",
-      "code": "Code"
+      "code": "Code",
+      "LeaveComment": "Leave a Comment",
+      "AddYourReview": "Add Your Review"
     },
     "cart": {
       "product": "Product",
@@ -55,7 +57,7 @@
     "products": {
       "calculated_at_checkout": "calculated at checkout",
       "view_full_details": "View Full Details",
-      "discription": "Product Description"
+      "description": "Product Description"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",

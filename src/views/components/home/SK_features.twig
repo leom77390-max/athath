@@ -9,7 +9,7 @@
 						<p class="text-[clamp(1.25rem,0.7526rem+1.0554vw,2rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{component.blocktitle_color}};" {% endif %}>{{component.block_title}}</p>
 					{% endif %}
 	</div>
-		<div class="pros-grid lg:flex items-start grid md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-2 gap-5 justify-between lg:gap-11">
+		<div class="pros-grid lg:flex items-start grid  sm:grid-cols-3 xs:grid-cols-2 grid-cols-2 gap-5 justify-between lg:gap-11">
 			{% for pro in component.store_pros %}
 				<div data-sal="slide-left" data-sal-duration="900" data-sal-delay="{{ loop.index * 200 }}" data-sal-easing="ease-out-cubic"  class="pro items-center justify-center  flex flex-col  h-full gap-2 text-center lg:flex-1">
 					{% if pro.icon_list == ["image_icon"] and pro.img_icon %}

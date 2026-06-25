@@ -1443,26 +1443,15 @@
             "icon": "sicon-gold-badge",
             "path": "home.SK_features",
             "is_default": true,
-            "image": "",
+            "image": "https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src=''></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp'></div>"
                 },
-                {
-                    "id": "margin_bottom_rm",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "حذف المسافة السفلية",
-                    "description": "فعّل هذا الخيار، لحذف المسافة السفلية للقسم.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
+               
                 {
                     "id": "use_custom_colors",
                     "type": "boolean",
@@ -1767,7 +1756,7 @@
                                 "en": "Our products are made with pure plant extracts that are safe for your skin."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/9761f332-8ebd-4392-8abb-fbc26d48939c.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/5e450987-18b9-4be1-adef-15d264aeb872_300x164.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -1787,7 +1776,7 @@
                                 "en": "Carefully formulated for sensitive skin to provide complete comfort."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/1da8ce84-a1d4-4f9e-a75a-2dd4e970c370.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/f26a9982-61bc-431f-8149-63a4291b7697_300x164.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -1807,27 +1796,7 @@
                                 "en": "Clinically tested to ensure compatibility with all skin types."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/7870177b-2a38-465b-acb6-6e319862eeeb.webp",
-                            "store_pros.icon_list": [
-                                "image_icon"
-                            ],
-                            "store_pros.icon_color": "#000000",
-                            "store_pros.salla_icon": "sicon-store",
-                            "store_pros.subtext_color": "#333333",
-                            "store_pros.blocktitle_color": "#000000",
-                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
-                        },
-                        {
-                            "store_pros.block_title": {
-                                "ar": "دعم عملاء مميز",
-                                "en": "Premium Customer Support"
-                            },
-                            "store_pros.subtext": {
-                                "ar": "فريق جلوي متاح للرد على استفساراتك 24/7",
-                                "en": "The Glowy team is available to answer your inquiries 24/7."
-                            },
-                            "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/2070588102/fdc8f252-49a0-4e63-ba80-28e38f22f94f.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/1824ddec-59f1-41f9-afa4-e2d74457c654_300x164.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -1839,7 +1808,7 @@
                         }
                     ],
                     "minLength": 1,
-                    "maxLength": "4"
+                    "maxLength": "6"
                 }
             ]
         },
@@ -2309,25 +2278,6 @@
                     "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p'></div>"
                 },
                 {
-                    "id": "enable_cards_animation",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل حركة ظهور المنتجات",
-                    "description": "فعّل هذا الخيار لإضافة حركة ظهور تدريجية على كروت المنتجات عند تغيير التصنيف.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "is_moving",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
                     "id": "customize_color",
                     "type": "boolean",
                     "format": "switch",
@@ -2634,6 +2584,109 @@
             "icon": "sicon-store",
             "path": "home.SK_featured-products",
             "fields": [
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "تخصيص ألوان المكون",
+                    "description": null,
+                    "id": "customize_colors",
+                    "format": "switch",
+                    "required": false,
+                    "value": false,
+                    "selected": false
+                },
+                 {
+                    "id": "section_heading_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النصوص الرئيسية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#010101",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_color",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "section_subtitle_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النصوص الفرعية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#666666",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_color",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                  {
+        "id": "section_heading",
+        "type": "string",
+        "format": "text",
+        "label": "العنوان الرئيسي",
+        "description": "العنوان الكبير الظاهر في القسم",
+        "labelHTML": null,
+        "placeholder": "اكتب العنوان الرئيسي",
+        "icon": "sicon-format-text-alt",
+        "value": {
+            "ar": "العملاء يستمتعون برحلتهم كل يوم",
+            "en": "Customers enjoy their journey everyday"
+        },
+        "multilanguage": true,
+        "required": false,
+        "minLength": "2",
+        "maxLength": "200"
+    },
+    {
+        "id": "section_subtitle",
+        "type": "string",
+        "format": "text",
+        "label": "العنوان الفرعي",
+        "description": "النص الصغير أعلى أو أسفل العنوان الرئيسي",
+        "labelHTML": null,
+        "placeholder": "اكتب العنوان الفرعي",
+        "icon": "sicon-format-text",
+        "value": {
+            "ar": "صور وفيديوهات",
+            "en": "Photos & Videos"
+        },
+        "multilanguage": true,
+        "required": false,
+        "minLength": "2",
+        "maxLength": "100"
+    },
+    {
+        "id": "section_description",
+        "type": "string",
+        "format": "textarea",
+        "label": "وصف القسم",
+        "description": "وصف مختصر يظهر أسفل العنوان",
+        "labelHTML": null,
+        "placeholder": "اكتب وصف القسم",
+        "icon": "sicon-file-text",
+        "value": {
+            "ar": "شاهد تجارب العملاء الحقيقية من خلال الصور والفيديوهات.",
+            "en": "Discover real customer experiences through photos and videos."
+        },
+        "multilanguage": true,
+        "required": false,
+        "minLength": "2",
+        "maxLength": "500"
+    },
                 {
                     "id": "tabs",
                     "type": "collection",
@@ -4501,18 +4554,7 @@
             "is_default": true,
             "image": "https://cdn.files.salla.network/homepage/930809644/bfb05f08-e529-45a6-9300-388318053dfc_1014x838.webp",
             "fields": [
-                {
-                    "id": "margin_bottom_rm",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "حذف المسافة السفلية",
-                    "description": "فعّل هذا الخيار، لحذف المسافة السفلية للقسم.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
+              
                 {
                     "id": "use_custom_colors",
                     "type": "boolean",

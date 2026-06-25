@@ -20,9 +20,9 @@
       <button
         id="open-comment-modal"
         type="button"
-        class="border border-gray-900 px-5 py-3 hover:bg-gray-900 hover:text-background transition-all duration-300"
+        class="border border-gray-900 px-5 py-3 hover:bg-gray-900 hover:text-background transition-all duration-300 rounded-[32px]"
       >
-        Leave a Comment
+        {{trans('blocks.popup.LeaveComment')}}
       </button>
 
     </div>
@@ -49,7 +49,7 @@
 ========================= -->
 <div
   id="comment-modal"
-  class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 opacity-0 invisible transition-all duration-300 p-4"
+  class="fixed inset-0 z-[9999] flex items-center !m-0 justify-center bg-black/50 opacity-0 invisible transition-all duration-300 p-4"
 >
 
   <!-- MODAL BOX -->
@@ -69,7 +69,7 @@
 
     <!-- TITLE -->
     <h3 class="text-2xl font-semibold mb-6">
-      Add Your Review
+       {{trans('blocks.popup.AddYourReview')}}
     </h3>
 
     <!-- FORM -->

@@ -1224,6 +1224,9 @@ input:where([type='file']):focus{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.\!block{
+    display: block !important;
+}
 .block{
     display: block;
 }
@@ -34263,6 +34266,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: none;
   line-height: 1.5;
 }
+[dir=rtl] .tab-btn .tab-desc {
+  text-align: right;
+}
+[dir=ltr] .tab-btn .tab-desc {
+  text-align: left;
+}
 .tab-btn.active .tab-title {
   color: #111827;
   font-weight: 700;
@@ -35037,6 +35046,13 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   right: auto;
   border-radius: 0;
 }
+@media (max-width: 767px) {
+  .s-product-card-vertical salla-add-product-button button {
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+  }
+}
 [dir=rtl] .qv-gallery {
   padding-right: 16px;
 }
@@ -35487,7 +35503,8 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   height: 20px !important;
 }
 .s-progress-bar-progress {
-  background-color: #b94430 !important;
+  background-color: #414042 !important;
+  background-color: var(--color-primary) !important;
 }
 .s-reviews-summary-wrapper {
   flex-direction: row-reverse;
@@ -36236,6 +36253,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-9{
         margin-bottom: 2.25rem;
     }
+    .md\:\!block{
+        display: block !important;
+    }
     .md\:block{
         display: block;
     }
@@ -36247,6 +36267,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:grid{
         display: grid;
+    }
+    .md\:\!hidden{
+        display: none !important;
     }
     .md\:hidden{
         display: none;
