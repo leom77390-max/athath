@@ -16,6 +16,10 @@
   {% set grid_columns = item_count > 0 ? item_count : 4 %}
   {% if grid_columns > 6 %}{% set grid_columns = 6 %}{% endif %}
 
+  {# ===== ألوان التصنيفات من الداشبورد ===== #}
+  {% set cat_title_color = component.categories_title_color | default('#ffffff') %}
+  {% set cat_shadow_color = component.shadow_card_color     | default('#000000') %}
+
   {% if main_title or main_description %}
     <div class="sk-header">
       {% if main_title %}<h2 class="sk-main-title">{{ main_title }}</h2>{% endif %}
@@ -33,7 +37,6 @@
           {% set bg_color     = item.bg_color            | default('#f5f0eb') %}
           {% set is_image     = item.background_is_image %}
           {% set title        = item.title               | default('') %}
-          {% set title_color  = item.title_color         | default('#ffffff') %}
           {% set radius       = item.corner_rounded      | default(16) %}
           {% set shadow_color = item.shadow_color        | default('#000000') %}
           {% set btn_url      = item.btn_url             | default('#') %}
@@ -48,14 +51,14 @@
               {% endif %}
             "></div>
             <div class="sk-card-overlay"></div>
-            <span class="sk-card-title" style="color: {{ title_color }};">{{ title }}</span>
+            <span class="sk-card-title">{{ title }}</span>
           </a>
         {% endfor %}
 
       {% else %}
         {% for cat in component.categories_list %}
           <a href="{{ cat.url | default('#') }}" class="sk-card"
-             style="border-radius: 16px; --shadow-color: #000000;">
+             style="border-radius: 16px; --shadow-color: {{ cat_shadow_color }}; --cat-title-color: {{ cat_title_color }};">
             <div class="sk-card-image" style="
               {% if cat.image %}
                 background-image: url('{{ cat.image }}');
@@ -64,7 +67,7 @@
               {% endif %}
             "></div>
             <div class="sk-card-overlay"></div>
-            <span class="sk-card-title">{{ cat.name }}</span>
+            <span class="sk-card-title sk-card-title--cat">{{ cat.name }}</span>
           </a>
         {% endfor %}
       {% endif %}
@@ -137,11 +140,12 @@
     height: clamp(90px, 12vw, 160px);
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
     --shadow-color: #000000;
+    --cat-title-color: #ffffff;
   }
 
   .SK_special_categories_{{position}} .sk-card-image {
@@ -156,7 +160,7 @@
     z-index: 1;
   }
 
-  /* ===== Overlay — شفاف بالكامل بدون hover ===== */
+  /* ===== Overlay ===== */
   .SK_special_categories_{{position}} .sk-card-overlay {
     position: absolute;
     inset: 0;
@@ -170,7 +174,6 @@
     z-index: 2;
   }
 
-  /* ===== Hover: zoom + overlay يظهر بسلاسة ===== */
   .SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
     transform: scale(1.08);
   }
@@ -179,27 +182,25 @@
     opacity: 1;
   }
 
-  /* ===== Card Title — مخفي بدون hover ===== */
+  /* ===== Card Title — manual: أبيض دايماً ===== */
   .SK_special_categories_{{position}} .sk-card-title {
     font-size: clamp(0.75rem, 1.4vw, 1.1rem);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.3;
+    color: #ffffff;
     position: relative;
     z-index: 3;
     text-align: center;
-    padding: 0 clamp(6px, 1vw, 12px) clamp(8px, 1.2vw, 14px);
+    padding: 0 clamp(6px, 1vw, 12px);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
   }
 
-  .SK_special_categories_{{position}} .sk-card:hover .sk-card-title {
-    opacity: 1;
-    transform: translateY(0);
+  /* ===== Card Title — categories: لون من الداشبورد ===== */
+  .SK_special_categories_{{position}} .sk-card-title--cat {
+    color: var(--cat-title-color);
   }
 
   /* ===== Responsive ===== */

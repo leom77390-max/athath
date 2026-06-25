@@ -6633,6 +6633,52 @@
                     ]
                 },
                 {
+                    "id": "categories_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان التصنيفات",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                         {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "shadow_card_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون ظل البطاقة",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                         {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",
