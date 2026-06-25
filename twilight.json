@@ -6542,12 +6542,13 @@
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
-             "fields": [
+            "image":"https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1",
+            "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1'></div>"
                 },
                 {
                     "type": "static",
@@ -6633,10 +6634,77 @@
                     ]
                 },
                 {
+                    "id": "categories_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان التصنيفات",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "shadow_card_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون ظل البطاقة",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "corner_rounded",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "استدارة زوايا البطاقة",
+                    "icon": "sicon-pin",
+                    "value": "16",
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "40",
+                    "conditions": [
+                        {
+                            "id": "categories_is_manual",
+                            "operation": "=",
+                            "value": [
+                                "categories"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم والزر</h3>"
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم</h3>"
                 },
                 {
                     "id": "main_title",
@@ -6699,7 +6767,7 @@
                     "type": "collection",
                     "format": "collection",
                     "label": "البطاقات",
-                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أو سلايدر.",
+                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان — تظهر في شبكة.",
                     "item_label": "بطاقة",
                     "icon": "sicon-list-add",
                     "minLength": "1",
@@ -6820,18 +6888,6 @@
                             ]
                         },
                         {
-                            "id": "card.shadow_blur",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "مقدار تمدد الظل",
-                            "icon": "sicon-pin",
-                            "value": "16",
-                            "step": "1",
-                            "minimum": "0",
-                            "maximum": "40"
-                        },
-                        {
                             "type": "items",
                             "id": "card.btn_url",
                             "format": "variable-list",
@@ -6899,47 +6955,35 @@
                     "value": [
                         {
                             "ar": {
-                                "card.title": "اكتشف منتجات العناية بالبشرة",
-                                "card.button_text": "تسوق الآن"
+                                "card.title": "اكتشف منتجات العناية بالبشرة"
                             },
                             "card.background_is_image": true,
                             "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/4a51905b-420d-457c-b358-b096b9adf4cc_637x900.webp?_s_uploader_cache_bust=preview-85sqrsd3r",
                             "card.corner_rounded": "16",
                             "card.title": "اكتشف منتجات العناية بالبشرة",
                             "card.title_color": "#18181b",
-                            "card.button_text": "تسوق الآن",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
                             "card.btn_url": ""
                         },
                         {
                             "ar": {
-                                "card.title": "أفضل العروض والخصومات الحصرية",
-                                "card.button_text": "شاهد العروض"
+                                "card.title": "أفضل العروض والخصومات الحصرية"
                             },
                             "card.background_is_image": true,
                             "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/adc95a74-42d5-499a-9077-acaca71e6ead_637x900.webp?_s_uploader_cache_bust=preview-t8rbrf1hr",
                             "card.corner_rounded": "16",
                             "card.title": "أفضل العروض والخصومات الحصرية",
                             "card.title_color": "#ffffff",
-                            "card.button_text": "شاهد العروض",
-                            "card.button_bg_color": "#ffffff",
-                            "card.button_text_color": "#18181b",
                             "card.btn_url": ""
                         },
                         {
                             "ar": {
-                                "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
-                                "card.button_text": "اكتشف المزيد"
+                                "card.title": "منتجات العناية بالشعر بلمسة طبيعية"
                             },
                             "card.background_is_image": true,
                             "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/7989e93b-a133-4397-9472-d54a4b5ad498_637x900.webp?_s_uploader_cache_bust=preview-3km71stih",
                             "card.corner_rounded": "16",
                             "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
                             "card.title_color": "#18181b",
-                            "card.button_text": "اكتشف المزيد",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
                             "card.btn_url": ""
                         }
                     ]
