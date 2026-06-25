@@ -6542,12 +6542,13 @@
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
+            "image":"https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1'></div>"
                 },
                 {
                     "type": "static",
