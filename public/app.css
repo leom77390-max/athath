@@ -27989,9 +27989,6 @@ salla-modal:not(.hydrated) {
     margin-right: 5px;
     flex-grow: 1;
 }
-.s-button-btn, .s-price-range-number-input{
-    border-radius: .75rem;
-}
 .s-app-install-banner{
     position: fixed;
     left: 0px;
