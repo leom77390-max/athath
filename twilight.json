@@ -7282,6 +7282,16 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "bf6d9644-3314-477a-a346-598eb6798204",
+            "title": {
+                "en": "Store Features",
+                "ar": "مميزات المتجر"
+            },
+            "icon": "sicon-store",
+            "path": "home.SK_store_features",
+            "fields": []
         }
     ],
     "support_url": null,
