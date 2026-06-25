@@ -5,8 +5,8 @@
 <div class="SK-Why-choose-us-wrapper bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]">
 	<div class="container md:py-10 py-5">
 	<div class="flex items-center justify-center mb-4 md:mb-8">
-		{% if pro.block_title %}
-						<p class="text-[clamp(1.25rem,0.7526rem+1.0554vw,2rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{blocktitle_color}};" {% endif %}>{{block_title}}</p>
+		{% if component.block_title %}
+						<p class="text-[clamp(1.25rem,0.7526rem+1.0554vw,2rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{component.blocktitle_color}};" {% endif %}>{{component.block_title}}</p>
 					{% endif %}
 	</div>
 		<div class="pros-grid lg:flex items-start grid md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-2 gap-5 justify-between lg:gap-11">

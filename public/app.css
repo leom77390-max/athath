@@ -1352,11 +1352,11 @@ input:where([type='file']):focus{
 .h-\[380px\]{
     height: 380px;
 }
-.h-\[40px\]{
-    height: 40px;
-}
 .h-\[52px\]{
     height: 52px;
+}
+.h-\[82px\]{
+    height: 82px;
 }
 .h-\[872px\]{
     height: 872px;
@@ -1385,12 +1385,6 @@ input:where([type='file']):focus{
 }
 .h-px{
     height: 1px;
-}
-.h-\[82x\]{
-    height: 82x;
-}
-.h-\[82px\]{
-    height: 82px;
 }
 .max-h-0{
     max-height: 0px;
@@ -1516,11 +1510,11 @@ input:where([type='file']):focus{
 .w-\[27px\]{
     width: 27px;
 }
-.w-\[40px\]{
-    width: 40px;
-}
 .w-\[420px\]{
     width: 420px;
+}
+.w-\[80px\]{
+    width: 80px;
 }
 .w-\[92vw\]{
     width: 92vw;
@@ -1534,12 +1528,6 @@ input:where([type='file']):focus{
 }
 .w-full{
     width: 100%;
-}
-.w-\[80\]{
-    width: 80;
-}
-.w-\[80px\]{
-    width: 80px;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
@@ -2619,9 +2607,6 @@ input:where([type='file']):focus{
 .text-\[clamp\(\.725rem\2c 1\.1939rem\+1\.3061vw\2c 1\.5rem\)\]{
     font-size: clamp(.725rem, 1.1939rem + 1.3061vw, 1.5rem);
 }
-.text-\[clamp\(0\.75rem\2c 0\.7117rem\+0\.1633vw\2c 0\.875rem\)\]{
-    font-size: clamp(0.75rem, 0.7117rem + 0.1633vw, 0.875rem);
-}
 .text-\[clamp\(0\.75rem\2c 0\.7141rem\+0\.1609vw\2c 0\.875rem\)\]{
     font-size: clamp(0.75rem, 0.7141rem + 0.1609vw, 0.875rem);
 }
@@ -2634,11 +2619,17 @@ input:where([type='file']):focus{
 .text-\[clamp\(0\.933rem\2c 0\.8106rem\+0\.4898vw\2c 1\.333rem\)\]{
     font-size: clamp(0.933rem, 0.8106rem + 0.4898vw, 1.333rem);
 }
+.text-\[clamp\(1\.25rem\2c 0\.7526rem\+1\.0554vw\2c 2rem\)\]{
+    font-size: clamp(1.25rem, 0.7526rem + 1.0554vw, 2rem);
+}
 .text-\[clamp\(1\.333rem\2c 1\.1695rem\+0\.6539vw\2c 1\.867rem\)\]{
     font-size: clamp(1.333rem, 1.1695rem + 0.6539vw, 1.867rem);
 }
 .text-\[clamp\(10px\2c 1\.1705rem\+-2\.3302vw\2c 15px\)\]{
     font-size: clamp(10px, 1.1705rem + -2.3302vw, 15px);
+}
+.text-\[clamp\(1rem\2c 0\.7526rem\+1\.0554vw\2c 1\.75rem\)\]{
+    font-size: clamp(1rem, 0.7526rem + 1.0554vw, 1.75rem);
 }
 .text-base{
     font-size: 1rem;
@@ -2662,12 +2653,6 @@ input:where([type='file']):focus{
 }
 .text-xxs{
     font-size: 10px;
-}
-.text-\[clamp\(1rem\2c 0\.7526rem\+1\.0554vw\2c 1\.75rem\)\]{
-    font-size: clamp(1rem, 0.7526rem + 1.0554vw, 1.75rem);
-}
-.text-\[clamp\(1\.25rem\2c 0\.7526rem\+1\.0554vw\2c 2rem\)\]{
-    font-size: clamp(1.25rem, 0.7526rem + 1.0554vw, 2rem);
 }
 .font-bold{
     font-weight: 700;
@@ -36223,12 +36208,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-12{
         width: 3rem;
     }
-    .md\:w-14{
-        width: 3.5rem;
-    }
-    .md\:w-16{
-        width: 4rem;
-    }
     .md\:w-2\/4{
         width: 50%;
     }
@@ -36250,6 +36229,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-96{
         width: 24rem;
     }
+    .md\:w-\[150px\]{
+        width: 150px;
+    }
     .md\:w-\[420px\]{
         width: 420px;
     }
@@ -36258,12 +36240,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:w-\[\]{
-        width: ;
-    }
-    .md\:w-\[150px\]{
-        width: 150px;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
