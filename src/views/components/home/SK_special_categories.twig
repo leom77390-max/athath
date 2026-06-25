@@ -36,11 +36,10 @@
           {% set title_color  = item.title_color         | default('#ffffff') %}
           {% set radius       = item.corner_rounded      | default(16) %}
           {% set shadow_color = item.shadow_color        | default('#000000') %}
-          {% set shadow_blur  = item.shadow_blur         | default(16) %}
           {% set btn_url      = item.btn_url             | default('#') %}
 
           <a href="{{ btn_url }}" class="sk-card"
-             style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }}; --shadow-blur: {{ shadow_blur }}px;">
+             style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }};">
             <div class="sk-card-image" style="
               {% if is_image and bg_image %}
                 background-image: url('{{ bg_image }}');
@@ -56,7 +55,7 @@
       {% else %}
         {% for cat in component.categories_list %}
           <a href="{{ cat.url | default('#') }}" class="sk-card"
-             style="border-radius: 16px; --shadow-color: #000000; --shadow-blur: 16px;">
+             style="border-radius: 16px; --shadow-color: #000000;">
             <div class="sk-card-image" style="
               {% if cat.image %}
                 background-image: url('{{ cat.image }}');
@@ -138,12 +137,11 @@
     height: clamp(90px, 12vw, 160px);
     overflow: hidden;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     cursor: pointer;
     text-decoration: none;
     --shadow-color: #000000;
-    --shadow-blur: 16px;
   }
 
   .SK_special_categories_{{position}} .sk-card-image {
@@ -158,47 +156,50 @@
     z-index: 1;
   }
 
-  /* ===== Overlay ===== */
+  /* ===== Overlay — شفاف بالكامل بدون hover ===== */
   .SK_special_categories_{{position}} .sk-card-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
       var(--shadow-color) 0%,
-      transparent var(--shadow-blur)
+      transparent 60%
     );
-    opacity: 0.85;
-    transition: opacity 0.5s ease-in-out, background 0.5s ease-in-out;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
     z-index: 2;
   }
 
+  /* ===== Hover: zoom + overlay يظهر بسلاسة ===== */
   .SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
     transform: scale(1.08);
   }
 
   .SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
     opacity: 1;
-    background: linear-gradient(
-      to top,
-      var(--shadow-color) 0%,
-      transparent calc(var(--shadow-blur) * 1.5)
-    );
   }
 
-  /* ===== Card Title ===== */
+  /* ===== Card Title — مخفي بدون hover ===== */
   .SK_special_categories_{{position}} .sk-card-title {
     font-size: clamp(0.75rem, 1.4vw, 1.1rem);
     font-weight: 500;
     line-height: 1.3;
     position: relative;
     z-index: 3;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     text-align: center;
-    padding: 0 clamp(6px, 1vw, 12px);
+    padding: 0 clamp(6px, 1vw, 12px) clamp(8px, 1.2vw, 14px);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  }
+
+  .SK_special_categories_{{position}} .sk-card:hover .sk-card-title {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ===== Responsive ===== */
