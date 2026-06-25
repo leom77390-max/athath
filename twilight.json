@@ -7116,163 +7116,172 @@
             "icon": "sicon-store",
             "path": "home.SK_special_featured",
             "fields": [
-    {
-        "type": "static",
-        "format": "title",
-        "id": "static-style",
-        "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-        "variant": "h6"
-    },
-    {
-        "type": "static",
-        "format": "title",
-        "id": "header_general",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
-    },
-    {
-        "type": "boolean",
-        "icon": "sicon-toggle-off",
-        "label": "وضع المكون داخل حاوية",
-        "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
-        "id": "add_inside_container",
-        "format": "switch",
-        "value": true
-    },
-    {
-        "type": "boolean",
-        "icon": "sicon-format-fill",
-        "label": "تخصيص ألوان المكون يدويًا",
-        "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان.",
-        "id": "customize_colors",
-        "format": "switch",
-        "value": false
-    },
-    {
-        "type": "static",
-        "format": "title",
-        "id": "header_section_text",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم</h3>"
-    },
-    {
-        "id": "main_title",
-        "type": "string",
-        "format": "text",
-        "label": "عنوان القسم",
-        "description": "يظهر أعلى القسم بخط كبير وعريض.",
-        "placeholder": "مثال: كما ذكرتنا الصحافة",
-        "icon": "sicon-layout",
-        "value": "كما ذكرتنا الصحافة",
-        "multilanguage": true,
-        "required": false
-    },
-    {
-        "id": "main_title_color",
-        "type": "string",
-        "format": "color",
-        "inputType": "color",
-        "label": "لون العنوان الرئيسي",
-        "icon": "sicon-format-fill",
-        "value": "#18181b",
-        "conditions": [
-            {
-                "id": "customize_colors",
-                "operation": "=",
-                "value": true
-            }
-        ]
-    },
-    {
-        "id": "bg_color",
-        "type": "string",
-        "format": "color",
-        "inputType": "color",
-        "label": "لون خلفية القسم",
-        "icon": "sicon-format-fill",
-        "value": "#ffffff",
-        "conditions": [
-            {
-                "id": "customize_colors",
-                "operation": "=",
-                "value": true
-            }
-        ]
-    },
-    {
-        "type": "static",
-        "format": "title",
-        "id": "header_cards",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>البطاقات</h3>"
-    },
-    {
-        "id": "press_card",
-        "type": "collection",
-        "format": "collection",
-        "label": "بطاقات الصحافة",
-        "description": "أضف بطاقة لكل مصدر صحفي — تحتوي على لوجو واقتباس.",
-        "item_label": "مصدر",
-        "icon": "sicon-list-add",
-        "minLength": "1",
-        "maxLength": "6",
-        "fields": [
-            {
-                "id": "press_card.logo",
-                "type": "string",
-                "format": "image",
-                "label": "لوجو المصدر الصحفي",
-                "description": "يظهر أعلى البطاقة.",
-                "icon": "sicon-image",
-                "value": "",
-                "required": true
-            },
-            {
-                "id": "press_card.quote",
-                "type": "string",
-                "format": "textarea",
-                "label": "نص الاقتباس",
-                "description": "الجملة أو الرأي الذي ذُكر عن المتجر.",
-                "placeholder": "مثال: خدمة عملاء استثنائية وجودة لا تُضاهى.",
-                "icon": "sicon-layout",
-                "multilanguage": true,
-                "required": true,
-                "minLength": "5",
-                "maxLength": "200"
-            },
-            {
-                "id": "press_card.quote_color",
-                "type": "string",
-                "format": "color",
-                "inputType": "color",
-                "label": "لون نص الاقتباس",
-                "icon": "sicon-format-fill",
-                "value": "#18181b",
-                "conditions": [
-                    {
-                        "id": "customize_colors",
-                        "operation": "=",
-                        "value": true
-                    }
-                ]
-            }
-        ],
-        "value": [
-            {
-                "press_card.logo": "",
-                "press_card.quote": "خدمة العملاء استثنائية، سأشتري مجدداً بالتأكيد.",
-                "press_card.quote_color": "#18181b"
-            },
-            {
-                "press_card.logo": "",
-                "press_card.quote": "تشكيلة منتجات رائعة وفريق عمل متجاوب جداً.",
-                "press_card.quote_color": "#18181b"
-            },
-            {
-                "press_card.logo": "",
-                "press_card.quote": "أفضل خيار لتحديث أدوات مطبخك اليومية.",
-                "press_card.quote_color": "#18181b"
-            }
-        ]
-    }
-]
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "static-style",
+                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+                    "variant": "h6"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_general",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "وضع المكون داخل حاوية",
+                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
+                    "id": "add_inside_container",
+                    "format": "switch",
+                    "value": true
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-format-fill",
+                    "label": "تخصيص ألوان المكون يدويًا",
+                    "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان.",
+                    "id": "customize_colors",
+                    "format": "switch",
+                    "value": false
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_section_text",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم</h3>"
+                },
+                {
+                    "id": "main_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان القسم",
+                    "description": "يظهر أعلى القسم بخط كبير وعريض.",
+                    "placeholder": "مثال: كما ذكرتنا الصحافة",
+                    "icon": "sicon-layout",
+                    "value": "كما ذكرتنا الصحافة",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "main_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "header_cards",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>البطاقات</h3>"
+                },
+                {
+                    "id": "press_card",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "بطاقات الصحافة",
+                    "description": "أضف بطاقة لكل مصدر صحفي — تحتوي على لوجو واقتباس.",
+                    "item_label": "مصدر",
+                    "icon": "sicon-list-add",
+                    "minLength": "1",
+                    "maxLength": "6",
+                    "fields": [
+                        {
+                            "id": "press_card.logo",
+                            "type": "string",
+                            "format": "image",
+                            "label": "لوجو المصدر الصحفي",
+                            "description": "يظهر أعلى البطاقة.",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "press_card.quote",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص الاقتباس",
+                            "description": "الجملة أو الرأي الذي ذُكر عن المتجر.",
+                            "placeholder": "مثال: خدمة عملاء استثنائية وجودة لا تُضاهى.",
+                            "icon": "sicon-layout",
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": "5",
+                            "maxLength": "200"
+                        },
+                        {
+                            "id": "press_card.quote_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون نص الاقتباس",
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b",
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "ar": {
+                                "press_card.quote": "خدمة العملاء استثنائية، سأشتري مجدداً بالتأكيد."
+                            },
+                            "press_card.logo": "https://cdn.salla.network/images/logo/logo-thumbnail.png",
+                            "press_card.quote": "خدمة العملاء استثنائية، سأشتري مجدداً بالتأكيد.",
+                            "press_card.quote_color": "#18181b"
+                        },
+                        {
+                            "ar": {
+                                "press_card.quote": "تشكيلة منتجات رائعة وفريق عمل متجاوب جداً."
+                            },
+                            "press_card.logo": "https://cdn.salla.network/images/logo/logo-thumbnail.png",
+                            "press_card.quote": "تشكيلة منتجات رائعة وفريق عمل متجاوب جداً.",
+                            "press_card.quote_color": "#18181b"
+                        },
+                        {
+                            "ar": {
+                                "press_card.quote": "أفضل خيار لتحديث أدوات مطبخك اليومية."
+                            },
+                            "press_card.logo": "https://cdn.salla.network/images/logo/logo-thumbnail.png",
+                            "press_card.quote": "أفضل خيار لتحديث أدوات مطبخك اليومية.",
+                            "press_card.quote_color": "#18181b"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": null,

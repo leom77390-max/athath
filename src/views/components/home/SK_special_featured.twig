@@ -12,27 +12,34 @@
   <div class="sk-press-container">
     <div class="sk-press-grid">
       {% for item in component.press_card %}
-        {% set logo       = item['press_card.logo']        | default('') %}
-        {% set logo_width = item['press_card.logo_width']  | default(120) %}
-        {% set quote      = item['press_card.quote']       | default('') %}
-        {% set quote_color= item['press_card.quote_color'] | default('#18181b') %}
+        {% set logo        = item['press_card.logo']        | default('') %}
+        {% set quote       = item['press_card.quote']       | default('') %}
+        {% set quote_color = item['press_card.quote_color'] | default(component.quote_color | default('#18181b')) %}
 
         <div class="sk-press-card">
-          {% if logo %}
-            <div class="sk-press-logo-wrap">
+          {# Logo — always render the wrap; show image when available, icon placeholder otherwise #}
+          <div class="sk-press-logo-wrap">
+            {% if logo and logo != '' %}
               <img
                 src="{{ logo }}"
                 alt="press logo"
                 class="sk-press-logo"
-                style="width: {{ logo_width }}px;"
               />
-            </div>
-          {% endif %}
-          {% if quote %}
-            <p class="sk-press-quote" style="color: {{ quote_color }};">
+            {% else %}
+              <span class="sk-press-logo-placeholder" aria-hidden="true">
+                <s-icon name="sicon-image"></s-icon>
+              </span>
+            {% endif %}
+          </div>
+
+          {# Quote — always render the paragraph; fall back to empty string if missing #}
+          <p class="sk-press-quote" style="color: {{ quote_color }};">
+            {% if quote and quote != '' %}
               "{{ quote }}"
-            </p>
-          {% endif %}
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </p>
         </div>
       {% endfor %}
     </div>
@@ -104,6 +111,16 @@
     filter: grayscale(100%);
     opacity: 0.75;
     transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  .SK_press_{{position}} .sk-press-logo-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 48px;
+    color: #ccc;
+    font-size: 2rem;
   }
 
   .SK_press_{{position}} .sk-press-card:hover .sk-press-logo {
