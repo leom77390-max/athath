@@ -32,8 +32,8 @@
 									<div>
 										<h3 class="categories-slide__item-title">{{category.name}}</h3>
 									</div>
-									<span class="categories-slide__arrow border border-gray-300 rounded-full p-2 flex items-center justify-center">
-										<i class="sicon-arrow-up-right"></i>
+									<span class="categories-slide__arrow border border-gray-300 rounded-full p-4 flex items-center justify-center">
+										<i class="sicon-arrow-up-right text-[18px]"></i>
 									</span>
 								</div>
 							</a>
@@ -213,5 +213,37 @@
 		padding: 14px;
 	}
 
+}
+.categories-slide__arrow {
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	z-index: 1;
+}
+
+.categories-slide__arrow::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		120deg,
+		transparent,
+		rgba(255,255,255,0.6),
+		transparent
+	);
+	transition: all 0.5s ease;
+	z-index: -1;
+}
+
+.categories-slide__arrow:hover {
+	background-color: #111;
+	color: #fff;
+}
+
+.categories-slide__arrow:hover::before {
+	left: 100%;
 }
 </style>
