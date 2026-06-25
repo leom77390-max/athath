@@ -31,15 +31,6 @@
 								<div class="categories-slide__item-info">
 									<div>
 										<h3 class="categories-slide__item-title">{{category.name}}</h3>
-										{% if category.products_count %}
-                      <span class="categories-slide__item-count">
-                        {{ category.products_count }} items
-                      </span>
-                    {% elseif category.items_count %}
-                      <span class="categories-slide__item-count">
-                        {{ category.items_count }} items
-                      </span>
-                    {% endif %}
 									</div>
 									<span class="categories-slide__arrow border border-gray-300 rounded-full p-2 flex items-center justify-center">
 										<i class="sicon-arrow-up-right"></i>

@@ -7009,8 +7009,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "تسوق مجموعة العناية بالبشرة",
-                        "en": "Shop skincare set"
+                        "ar": "اعتنِ ببشرتك",
+                        "en": "Care for your skin"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -7039,8 +7039,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "تسوق مجموعة العناية بالبشرة",
-                        "en": "Shop skincare set"
+                        "ar": "منتجات العناية الذاتية الطبيعية",
+                        "en": "Natural self care products"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -7069,8 +7069,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "ارتقِ بروتين العناية بالبشرة مع هذه الباقة",
-                        "en": "Level up skincare routine with the bundle"
+                        "ar": "نبتكر منتجات آمنة وفعالة حقاً، ومصممة لتمنحك شعوراً رائعاً.",
+                        "en": "We create safe products that really work and are designed to make you feel good"
                     },
                     "multilanguage": true,
                     "required": false,
