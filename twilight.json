@@ -6542,7 +6542,7 @@
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
-            "image":"https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1",
+            "image": "https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1",
             "fields": [
                 {
                     "type": "static",
@@ -7106,6 +7106,16 @@
                     "value": []
                 }
             ]
+        },
+        {
+            "key": "5d2cfb15-b108-48a9-acae-59de79403dc7",
+            "title": {
+                "en": "Featured",
+                "ar": "تم اختيارها"
+            },
+            "icon": "sicon-store",
+            "path": "home.SK_special_featured",
+            "fields": []
         }
     ],
     "support_url": null,
