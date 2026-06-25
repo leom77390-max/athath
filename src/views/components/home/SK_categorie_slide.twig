@@ -46,7 +46,7 @@
 		<div class="content_cat">
 			<div class="categories-slide__header">
 				{% if c.block_top_brand %}
-					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+					<h4 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h4>
 				{% endif %}
 				{% if c.categories_list_title %}
 					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
@@ -85,16 +85,19 @@
 		gap: 1rem;
 	}
 	.categories-slide__header-top {
-		font-size: 13px;
-		font-weight: 500;
+		font-size: 18px;
+		font-weight: 700;
 	}
 	.categories-slide__header-title {
-		font-size: 32px;
-		font-weight: 600;
-		line-height: 1.2;
+		font-size: 40px;
+		font-weight: 800;
+		line-height: 1.5;
+	}
+	.content_cat {
+		max-width: 25rem;
 	}
 	.categories-slide__header-subtitle {
-		font-size: 13px;
+		font-size: 18px;
 		line-height: 1.65;
 	}
 	.categories-slide__nav {
