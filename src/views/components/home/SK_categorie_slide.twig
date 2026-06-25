@@ -1,0 +1,224 @@
+{% set c = component %}
+<section class="categories-slide" id="categories-section-{{position}}">
+	<div class="categories-slide-wrapper">
+
+		<div class="categories-slide__content">
+			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
+				"slidesPerView":1.2,
+				"spaceBetween":20,
+				"breakpoints":{
+          "0":{
+            "slidesPerView":1.8
+          },
+          "640":{
+            "slidesPerView":2.2
+          },
+          "1024":{
+            "slidesPerView":1.8
+          },
+          "1280":{
+            "slidesPerView":2
+          }
+        }
+			}'>
+				<div slot="items" class="swiper-wrapper">
+					{% for category in c.categories_list %}
+						<div class="swiper-slide categories-slide__item">
+							<a href="{{category.url}}" class="categories-slide__item-link">
+								<div class="categories-slide__image-wrapper">
+									<img src="{{category.image}}" class="categories-slide__item-image">
+								</div>
+								<div class="categories-slide__item-info">
+									<div>
+										<h3 class="categories-slide__item-title">{{category.name}}</h3>
+										{% if category.products_count %}
+                      <span class="categories-slide__item-count">
+                        {{ category.products_count }} items
+                      </span>
+                    {% elseif category.items_count %}
+                      <span class="categories-slide__item-count">
+                        {{ category.items_count }} items
+                      </span>
+                    {% endif %}
+									</div>
+									<span class="categories-slide__arrow border border-gray-300 rounded-full p-2 flex items-center justify-center">
+										<i class="sicon-arrow-up-right"></i>
+									</span>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+			</salla-slider>
+		</div>
+
+		<div class="content_cat">
+			<div class="categories-slide__header">
+				{% if c.block_top_brand %}
+					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+				{% endif %}
+				{% if c.categories_list_title %}
+					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
+				{% endif %}
+				{% if c.categories_list_subtitle %}
+					<p class="categories-slide__header-subtitle" style="color: {{ c.categories_list_subtitle_color }}">{{ c.categories_list_subtitle }}</p>
+				{% endif %}
+			</div>
+
+	</div>
+</section>
+
+<style>
+  #categories-section-{{position}} {
+    width: 80%;
+  }
+	.categories-slide {
+		padding: 40px 0;
+	}
+	.categories-slide-wrapper {
+		display: flex;
+		flex-direction: row-reverse;
+		align-items: center;
+		gap: 40px;
+		direction: ltr;
+	}
+	.content_cat {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		direction: rtl;
+	}
+	.categories-slide__header {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.categories-slide__header-top {
+		font-size: 13px;
+		font-weight: 500;
+	}
+	.categories-slide__header-title {
+		font-size: 32px;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	.categories-slide__header-subtitle {
+		font-size: 13px;
+		line-height: 1.65;
+	}
+	.categories-slide__nav {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		direction: ltr;
+	}
+	.categories-slide__nav-btn {
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 1.5px solid #111;
+		background: transparent;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #111;
+		transition: background 0.25s, color 0.25s;
+	}
+	.categories-slide__nav-btn:hover {
+		background: #111;
+		color: #fff;
+	}
+	.categories-slide__content {
+		flex: 1;
+		min-width: 0;
+	}
+	.categories-slide__item {
+		background: #fff;
+		border-radius: 18px;
+		overflow: hidden;
+	}
+	.categories-slide__item-link {
+		display: block;
+		color: inherit;
+		text-decoration: none;
+	}
+	.categories-slide__image-wrapper {
+		height: 400px;
+	}
+	.categories-slide__item-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+    border-radius: 20px 20px 0 0;
+	}
+	.categories-slide__item-info {
+		padding: 18px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		direction: rtl;
+	}
+	.categories-slide__item-title {
+		font-size: 16px;
+		font-weight: 600;
+	}
+	.categories-slide__item-count {
+		font-size: 13px;
+		color: #777;
+	}
+
+@media (max-width: 1024px) {
+
+	#categories-section-{{position}} {
+		width: 100%;
+		padding: 0 16px;
+	}
+
+	.categories-slide-wrapper {
+		flex-direction: column !important;
+		align-items: stretch;
+		gap: 25px;
+		direction: rtl;
+	}
+
+	.content_cat {
+		width: 100%;
+		flex: unset;
+		order: 1;
+		text-align: center;
+	}
+
+	.categories-slide__content {
+		width: 100%;
+		flex: unset;
+		order: 2;
+		overflow: visible;
+	}
+
+	.categories-slide__header {
+		align-items: center;
+	}
+
+	.categories-slide__header-title {
+		font-size: 26px;
+	}
+
+	.categories-slide__header-subtitle {
+		max-width: 320px;
+	}
+
+	.categories-slide__image-wrapper {
+		height: 220px;
+	}
+
+	.categories-slide__item {
+		border-radius: 18px;
+	}
+
+	.categories-slide__item-info {
+		padding: 14px;
+	}
+
+}
+</style>
