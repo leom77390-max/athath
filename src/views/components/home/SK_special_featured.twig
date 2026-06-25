@@ -12,9 +12,9 @@
   <div class="sk-press-container">
     <div class="sk-press-grid">
       {% for item in component.press_card %}
-        {% set logo        = item['press_card.logo']        | default('') %}
-        {% set quote       = item['press_card.quote']       | default('') %}
-        {% set quote_color = item['press_card.quote_color'] | default(component.quote_color | default('#18181b')) %}
+        {% set logo        = item.logo        | default('') %}
+        {% set quote       = item.quote       | default('') %}
+        {% set quote_color = item.quote_color | default(component.quote_color | default('#18181b')) %}
 
         <div class="sk-press-card">
           {# Logo — always render the wrap; show image when available, icon placeholder otherwise #}
@@ -126,11 +126,6 @@
   .SK_press_{{position}} .sk-press-card:hover .sk-press-logo {
     filter: grayscale(0%);
     opacity: 1;
-  }
-
-  /* ===== Divider بين الكروت ===== */
-  .SK_press_{{position}} .sk-press-card:not(:last-child) {
-    border-inline-end: 1px solid #e5e5e5;
   }
 
   /* ===== Quote ===== */
