@@ -7225,18 +7225,6 @@
                 "required": true
             },
             {
-                "id": "press_card.logo_width",
-                "type": "number",
-                "format": "slider",
-                "inputType": "range",
-                "label": "عرض اللوجو (px)",
-                "icon": "sicon-pin",
-                "value": "120",
-                "step": "5",
-                "minimum": "60",
-                "maximum": "220"
-            },
-            {
                 "id": "press_card.quote",
                 "type": "string",
                 "format": "textarea",
@@ -7269,19 +7257,16 @@
         "value": [
             {
                 "press_card.logo": "",
-                "press_card.logo_width": "120",
                 "press_card.quote": "خدمة العملاء استثنائية، سأشتري مجدداً بالتأكيد.",
                 "press_card.quote_color": "#18181b"
             },
             {
                 "press_card.logo": "",
-                "press_card.logo_width": "120",
                 "press_card.quote": "تشكيلة منتجات رائعة وفريق عمل متجاوب جداً.",
                 "press_card.quote_color": "#18181b"
             },
             {
                 "press_card.logo": "",
-                "press_card.logo_width": "120",
                 "press_card.quote": "أفضل خيار لتحديث أدوات مطبخك اليومية.",
                 "press_card.quote_color": "#18181b"
             }
