@@ -7291,7 +7291,7 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_store_features",
-            "fields": [
+           "fields": [
     {
       "type": "static",
       "format": "title",
@@ -7346,70 +7346,6 @@
       ]
     },
     {
-      "id": "badge_bg_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون خلفية الشارة",
-      "icon": "sicon-format-fill",
-      "value": "#f3f4f6",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "badge_text_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون نص الشارة",
-      "icon": "sicon-format-fill",
-      "value": "#18181b",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "active_badge_bg_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون خلفية الشارة المميزة",
-      "icon": "sicon-format-fill",
-      "value": "#18181b",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "active_badge_text_color",
-      "type": "string",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون نص الشارة المميزة",
-      "icon": "sicon-format-fill",
-      "value": "#ffffff",
-      "conditions": [
-        {
-          "id": "customize_colors",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
       "type": "static",
       "format": "title",
       "id": "header_badges",
@@ -7420,7 +7356,7 @@
       "type": "collection",
       "format": "collection",
       "label": "قائمة الشارات",
-      "description": "أضف شارة لكل ميزة تريد إبرازها — تحتوي على نص ويمكن تمييز واحدة منها.",
+      "description": "أضف شارة لكل ميزة تريد إبرازها — تحتوي على نص وأيقونة ويمكن تمييز واحدة منها.",
       "item_label": "شارة",
       "icon": "sicon-list-add",
       "minLength": "1",
@@ -7440,6 +7376,15 @@
           "maxLength": "40"
         },
         {
+          "id": "badges.icon",
+          "type": "string",
+          "format": "icon",
+          "label": "أيقونة الشارة",
+          "description": "الأيقونة التي تظهر بجانب نص الشارة.",
+          "icon": "sicon-user-circle",
+          "value": "sicon-check-circle"
+        },
+        {
           "id": "badges.is_active",
           "type": "boolean",
           "format": "switch",
@@ -7447,33 +7392,222 @@
           "description": "تفعيل هذا الخيار يجعل الشارة تظهر بخلفية داكنة.",
           "icon": "sicon-toggle-off",
           "value": false
+        },
+        {
+          "id": "badges.badge_bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الشارة",
+          "icon": "sicon-format-fill",
+          "value": "#f3f4f6",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.badge_text_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الشارة",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.badge_icon_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة الشارة",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.badge_border_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون حدود الشارة",
+          "icon": "sicon-format-fill",
+          "value": "#e5e7eb",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.badge_border_radius",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "انحناء حدود الشارة (px)",
+          "icon": "sicon-pin",
+          "value": "999",
+          "step": "2",
+          "minimum": "0",
+          "maximum": "999"
+        },
+        {
+          "id": "badges.active_badge_bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الشارة المميزة",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.active_badge_text_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الشارة المميزة",
+          "icon": "sicon-format-fill",
+          "value": "#ffffff",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.active_badge_icon_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة الشارة المميزة",
+          "icon": "sicon-format-fill",
+          "value": "#ffffff",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "badges.active_badge_border_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون حدود الشارة المميزة",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
         }
       ],
       "value": [
         {
           "badges.label": "شحن مجاني",
-          "badges.is_active": false
+          "badges.icon": "sicon-check-circle",
+          "badges.is_active": false,
+          "badges.badge_bg_color": "#f3f4f6",
+          "badges.badge_text_color": "#18181b",
+          "badges.badge_icon_color": "#18181b",
+          "badges.badge_border_color": "#e5e7eb",
+          "badges.badge_border_radius": "999",
+          "badges.active_badge_bg_color": "#18181b",
+          "badges.active_badge_text_color": "#ffffff",
+          "badges.active_badge_icon_color": "#ffffff",
+          "badges.active_badge_border_color": "#18181b"
         },
         {
           "badges.label": "ضمان استرجاع المال",
-          "badges.is_active": false
+          "badges.icon": "sicon-check-circle",
+          "badges.is_active": false,
+          "badges.badge_bg_color": "#f3f4f6",
+          "badges.badge_text_color": "#18181b",
+          "badges.badge_icon_color": "#18181b",
+          "badges.badge_border_color": "#e5e7eb",
+          "badges.badge_border_radius": "999",
+          "badges.active_badge_bg_color": "#18181b",
+          "badges.active_badge_text_color": "#ffffff",
+          "badges.active_badge_icon_color": "#ffffff",
+          "badges.active_badge_border_color": "#18181b"
         },
         {
           "badges.label": "دفع مرن",
-          "badges.is_active": false
+          "badges.icon": "sicon-check-circle",
+          "badges.is_active": false,
+          "badges.badge_bg_color": "#f3f4f6",
+          "badges.badge_text_color": "#18181b",
+          "badges.badge_icon_color": "#18181b",
+          "badges.badge_border_color": "#e5e7eb",
+          "badges.badge_border_radius": "999",
+          "badges.active_badge_bg_color": "#18181b",
+          "badges.active_badge_text_color": "#ffffff",
+          "badges.active_badge_icon_color": "#ffffff",
+          "badges.active_badge_border_color": "#18181b"
         },
         {
           "badges.label": "دعم أونلاين",
-          "badges.is_active": true
+          "badges.icon": "sicon-check-circle",
+          "badges.is_active": true,
+          "badges.badge_bg_color": "#f3f4f6",
+          "badges.badge_text_color": "#18181b",
+          "badges.badge_icon_color": "#18181b",
+          "badges.badge_border_color": "#e5e7eb",
+          "badges.badge_border_radius": "999",
+          "badges.active_badge_bg_color": "#18181b",
+          "badges.active_badge_text_color": "#ffffff",
+          "badges.active_badge_icon_color": "#ffffff",
+          "badges.active_badge_border_color": "#18181b"
         },
         {
           "badges.label": "إرجاع خلال 7 أيام",
-          "badges.is_active": false
+          "badges.icon": "sicon-check-circle",
+          "badges.is_active": false,
+          "badges.badge_bg_color": "#f3f4f6",
+          "badges.badge_text_color": "#18181b",
+          "badges.badge_icon_color": "#18181b",
+          "badges.badge_border_color": "#e5e7eb",
+          "badges.badge_border_radius": "999",
+          "badges.active_badge_bg_color": "#18181b",
+          "badges.active_badge_text_color": "#ffffff",
+          "badges.active_badge_icon_color": "#ffffff",
+          "badges.active_badge_border_color": "#18181b"
         }
       ]
     }
   ]
-
         }
     ],
     "support_url": null,
