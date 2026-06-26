@@ -1434,7 +1434,711 @@
         }
     ],
     "components": [
+        {
+            "key": "daeabd05-ebd0-44d7-a49c-3eb297d78ba3",
+            "title": {
+                "en": "sleek - hero banner",
+                "ar": "سلييك - البانر الرئيسي"
+            },
+            "icon": "sicon-store",
+            "path": "home.hero_section",
+            "image": "https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp",
+            "fields": [
                 {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "static-label2",
+                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div {padding:10px; border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset >  div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+                    "variant": "h6"
+                },
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "وضع المكون داخل حاوية",
+                    "description": null,
+                    "id": "add_inside_container",
+                    "format": "switch",
+                    "required": false,
+                    "value": false,
+                    "selected": false
+                },
+
+                {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "تخصيص ألوان المكون",
+                    "description": null,
+                    "id": "customize_colors",
+                    "format": "switch",
+                    "required": false,
+                    "value": false,
+                    "selected": false
+                },
+                {
+                    "id": "desktop_height",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "ارتفاع البانر في الشاشات الكبيرة",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 90,
+                    "required": false,
+                    "minimum": "20",
+                    "maximum": "200",
+                    "conditions": [
+                        {
+                            "id": "auto_height",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "id": "mobile_height",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "ارتفاع البانر في الشاشات الصغيرة",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 70,
+                    "required": false,
+                    "minimum": "20",
+                    "maximum": "200",
+                    "conditions": [
+                        {
+                            "id": "auto_height",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "id": "auto_height",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "ارتفاع تلقائي حسب ارتفاع الصورة أو الفيديو",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "enable_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل التمرير التلقائي",
+                    "description": "فعّل هذا الخيار لعرض البانرات تلقائيًا داخل السلايدر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "delay_time",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "حدد مدة الانتقال بين البانرات في القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "3",
+                    "required": false,
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "20",
+                    "conditions": [
+                        {
+                            "id": "enable_autoplay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "show_pagination",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار نقاط التنقل",
+                    "description": "",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "show_arrows",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار أسهم التنقل",
+                    "description": "",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "banner",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البانر",
+                    "description": "سيتم عرض القسم بشكل سلايدر عند إضافة أكثر من بانر",
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "banner.desktop_bg",
+                            "type": "string",
+                            "format": "image",
+                            "label": "خلفية البانر في الشاشات الكبيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "banner.vid",
+                                    "collection_id": "banner",
+                                    "operation": "=",
+                                    "value": false,
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.mobile_bg",
+                            "type": "string",
+                            "format": "image",
+                            "label": "خلفية البانر في الشاشات الصغيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "banner.vid",
+                                    "collection_id": "banner",
+                                    "operation": "=",
+                                    "value": false,
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.vid",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "إضافة فيديو بدلاً من الصورة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.vid_url",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "رابط الفيديو",
+                            "description": "",
+                            "labelHTML": null,
+                            "placeholder": "مثال: https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "minLength": "0",
+                            "maxLength": "300000000",
+                            "conditions": [
+                                {
+                                    "id": "banner.vid",
+                                    "collection_id": "banner",
+                                    "operation": "=",
+                                    "value": true,
+                                    "value_index": "."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.blur",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "اضافة طبقة زجاجية خلف محتوى البانر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.overlay",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "قوة التعتيم",
+                            "description": "اضبط شدة الطبقة الداكنة فوق الصورة. صفر = بدون طبقة، عشرة = داكن تمامًا",
+                            "labelHTML": null,
+                            "icon": "sicon-pin",
+                            "value": "1",
+                            "required": false,
+                            "step": "1",
+                            "minimum": "0",
+                            "maximum": "10"
+                        },
+                        {
+                            "id": "banner.items_alignment_horizontal",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة الزر والنصوص أفقياً",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "بداية",
+                                    "value": "start",
+                                    "key": "ace55430-fec1-498e-529-0ea955adee8a"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                                },
+                                {
+                                    "label": "نهاية",
+                                    "value": "end",
+                                    "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.items_alignment_vertical",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة الزر والنصوص رأسياً",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "بداية",
+                                    "value": "start",
+                                    "key": "ace55430-fec1-498e-529-0ea955adee8a"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                                },
+                                {
+                                    "label": "نهاية",
+                                    "value": "end",
+                                    "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.mobile_items_alignment_horizontal",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة العناصر أفقياً (موبايل)",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "منتصف",
+                                    "value": "center"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "بداية",
+                                    "value": "start"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "نهاية",
+                                    "value": "end"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true
+                        },
+                        {
+                            "id": "banner.mobile_items_alignment_vertical",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة العناصر رأسياً (موبايل)",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "منتصف",
+                                    "value": "center"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "بداية",
+                                    "value": "start"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "نهاية",
+                                    "value": "end"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true
+                        },
+                        {
+                            "id": "banner.block_title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الرئيسي",
+                            "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+                            "labelHTML": null,
+                            "placeholder": "",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.blocktitle_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون العنوان الرئيسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#ffffff",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.subtext",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الفرعي",
+                            "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+                            "labelHTML": null,
+                            "placeholder": "",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.subtext_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص الفرعي ",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#FFFFFF",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.button_text_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#FFFFFF",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "id": "banner.button_bg",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون خلفية الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#f3eeea",
+                            "required": false,
+                            "conditions": [
+                                {
+                                    "id": "customize_colors",
+                                    "operation": "=",
+                                    "value": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط الزر",
+                            "id": "banner.url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": [
+                        {
+                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/a7fb6f24-9063-4074-895d-bb583bd48f7f_1440x760.webp",
+                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/660b291e-0ae7-44bb-b8c3-dacb050fe743_686x564.webp",
+                            "banner.vid": false,
+                            "banner.vid_url": "",
+                            "banner.blur": true,
+                            "banner.overlay": 1,
+                            "banner.transparent_button": true,
+                            "banner.items_alignment_horizontal": [
+                                "end"
+                            ],
+                            "banner.items_alignment_vertical": [
+                                "center"
+                            ],
+                            "banner.block_title": {
+                                "ar": "Get the skin you want to feel",
+                                "en": "Get the skin you want to feel"
+                            },
+                            "banner.subtext": {
+                                "ar": "Blend beauty in you",
+                                "en": "Blend beauty in you"
+                            },
+                            "banner.button_text": {
+                                "ar": "Shop Now",
+                                "en": "Shop Now"
+                            },
+                            "banner.blocktitle_color": "#ffffff",
+                            "banner.subtext_color": "#000000",
+                            "banner.button_text_color": "#FFFFFF",
+                            "banner.button_bg": "#f3eeea",
+                            "banner.highlighted_word_color": "#000000",
+                            "banner.highlighted_word_order": 2,
+                            "banner.url": "https://salla.design/",
+                            "banner.add_countdown": false,
+                            "banner.countdown": null
+                        },
+                        {
+                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/da67b691-e6b9-493e-9520-abfed3fddfd7_1440x760.webp",
+                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/80e18d27-9f68-4d81-8b0b-4ad5e4556f3d_686x564.webp",
+                            "banner.vid": false,
+                            "banner.vid_url": "",
+                            "banner.blur": false,
+                            "banner.overlay": 1,
+                            "banner.transparent_button": false,
+                            "banner.items_alignment_horizontal": [
+                                "start"
+                            ],
+                            "banner.items_alignment_vertical": [
+                                "center"
+                            ],
+                            "banner.block_title": {
+                                "ar": "Get the skin you want to feel",
+                                "en": "Get the skin you want to feel"
+                            },
+                            "banner.subtext": {
+                                "ar": "Blend beauty in you",
+                                "en": "Blend beauty in you"
+                            },
+                            "banner.button_text": {
+                                "ar": "Shop Now",
+                                "en": "Shop Now"
+                            },
+                            "banner.blocktitle_color": "#000000",
+                            "banner.subtext_color": "#707070",
+                            "banner.button_text_color": "#FFFFFF",
+                            "banner.button_bg": "#f3eeea",
+                            "banner.highlighted_word_color": "#0b4200",
+                            "banner.highlighted_word_order": 2,
+                            "banner.url": "https://salla.design/",
+                            "banner.add_countdown": false,
+                            "banner.countdown": null
+                        },
+                        {
+                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/c2abdf69-f3d1-4ff5-af62-54e52779440e_1440x760.webp",
+                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/f9254e66-8c11-4ead-8483-2c3bb785378b_686x564.webp",
+                            "banner.vid": false,
+                            "banner.vid_url": "",
+                            "banner.blur": true,
+                            "banner.overlay": 0,
+                            "banner.transparent_button": true,
+                            "banner.items_alignment_horizontal": [
+                                "end"
+                            ],
+                            "banner.items_alignment_vertical": [
+                                "center"
+                            ],
+                            "banner.block_title": {
+                                "ar": "Get the skin you want to feel",
+                                "en": "Get the skin you want to feel"
+                            },
+                            "banner.subtext": {
+                                "ar": "Blend beauty in you",
+                                "en": "Blend beauty in you"
+                            },
+                            "banner.button_text": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "banner.blocktitle_color": "#000000",
+                            "banner.subtext_color": "#5e5e5e",
+                            "banner.button_text_color": "#ffffff",
+                            "banner.button_bg": "#000000",
+                            "banner.highlighted_word_color": "#bb631b",
+                            "banner.highlighted_word_order": 2,
+                            "banner.url": "https://salla.design/",
+                            "banner.add_countdown": false,
+                            "banner.countdown": null
+                        }
+                    ],
+                    "minLength": 1,
+                    "maxLength": "5"
+                }
+            ]
+        },
+        {
             "key": "b0df1b57-d477-4cfb-8ba7-6b0b9eba9edf",
             "title": {
                 "en": "Sleek - store Features",
@@ -1816,7 +2520,7 @@
             "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
             "title": {
                 "en": "Products banner - Sleek",
-                "ar": "منتجات مختارة مع صورة - Sleek"
+                "ar": "منتجات مختارة مع صورة - سلييك"
             },
             "is_default": true,
             "icon": "sicon-store",
@@ -2912,709 +3616,6 @@
                     ],
                     "minLength": 1,
                     "maxLength": 20
-                }
-            ]
-        },
-        {
-            "key": "daeabd05-ebd0-44d7-a49c-3eb297d78ba3",
-            "title": {
-                "en": "sleek - hero banner",
-                "ar": "sleek - البانر الرئيسي"
-            },
-            "icon": "sicon-store",
-            "path": "home.hero_section",
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "static-label2",
-                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div {padding:10px; border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset >  div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-                    "variant": "h6"
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
-                    "description": null,
-                    "id": "add_inside_container",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
-                },
-
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "تخصيص ألوان المكون",
-                    "description": null,
-                    "id": "customize_colors",
-                    "format": "switch",
-                    "required": false,
-                    "value": false,
-                    "selected": false
-                },
-                {
-                    "id": "desktop_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع البانر في الشاشات الكبيرة",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-hashtag",
-                    "value": 90,
-                    "required": false,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "auto_height",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "mobile_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع البانر في الشاشات الصغيرة",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-hashtag",
-                    "value": 70,
-                    "required": false,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "auto_height",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "auto_height",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "ارتفاع تلقائي حسب ارتفاع الصورة أو الفيديو",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "enable_autoplay",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل التمرير التلقائي",
-                    "description": "فعّل هذا الخيار لعرض البانرات تلقائيًا داخل السلايدر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "delay_time",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "حدد مدة الانتقال بين البانرات في القسم",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "3",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "0",
-                    "maximum": "20",
-                    "conditions": [
-                        {
-                            "id": "enable_autoplay",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "show_pagination",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار نقاط التنقل",
-                    "description": "",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "show_arrows",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار أسهم التنقل",
-                    "description": "",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "banner",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "البانر",
-                    "description": "سيتم عرض القسم بشكل سلايدر عند إضافة أكثر من بانر",
-                    "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "banner.desktop_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الكبيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "banner.vid",
-                                    "collection_id": "banner",
-                                    "operation": "=",
-                                    "value": false,
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.mobile_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الصغيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "banner.vid",
-                                    "collection_id": "banner",
-                                    "operation": "=",
-                                    "value": false,
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.vid",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "إضافة فيديو بدلاً من الصورة",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.vid_url",
-                            "type": "string",
-                            "format": "url",
-                            "inputType": "url",
-                            "label": "رابط الفيديو",
-                            "description": "",
-                            "labelHTML": null,
-                            "placeholder": "مثال: https://salla.sa",
-                            "icon": "sicon-link",
-                            "value": null,
-                            "required": false,
-                            "minLength": "0",
-                            "maxLength": "300000000",
-                            "conditions": [
-                                {
-                                    "id": "banner.vid",
-                                    "collection_id": "banner",
-                                    "operation": "=",
-                                    "value": true,
-                                    "value_index": "."
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.blur",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "اضافة طبقة زجاجية خلف محتوى البانر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.overlay",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "قوة التعتيم",
-                            "description": "اضبط شدة الطبقة الداكنة فوق الصورة. صفر = بدون طبقة، عشرة = داكن تمامًا",
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": "1",
-                            "required": false,
-                            "step": "1",
-                            "minimum": "0",
-                            "maximum": "10"
-                        },
-                        {
-                            "id": "banner.items_alignment_horizontal",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة الزر والنصوص أفقياً",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [
-                                {
-                                    "label": "منتصف",
-                                    "value": "center",
-                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "بداية",
-                                    "value": "start",
-                                    "key": "ace55430-fec1-498e-529-0ea955adee8a"
-                                },
-                                {
-                                    "label": "منتصف",
-                                    "value": "center",
-                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
-                                },
-                                {
-                                    "label": "نهاية",
-                                    "value": "end",
-                                    "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.items_alignment_vertical",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة الزر والنصوص رأسياً",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [
-                                {
-                                    "label": "منتصف",
-                                    "value": "center",
-                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "بداية",
-                                    "value": "start",
-                                    "key": "ace55430-fec1-498e-529-0ea955adee8a"
-                                },
-                                {
-                                    "label": "منتصف",
-                                    "value": "center",
-                                    "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
-                                },
-                                {
-                                    "label": "نهاية",
-                                    "value": "end",
-                                    "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.mobile_items_alignment_horizontal",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة العناصر أفقياً (موبايل)",
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [
-                                {
-                                    "label": "منتصف",
-                                    "value": "center"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "بداية",
-                                    "value": "start"
-                                },
-                                {
-                                    "label": "منتصف",
-                                    "value": "center"
-                                },
-                                {
-                                    "label": "نهاية",
-                                    "value": "end"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": true
-                        },
-                        {
-                            "id": "banner.mobile_items_alignment_vertical",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة العناصر رأسياً (موبايل)",
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [
-                                {
-                                    "label": "منتصف",
-                                    "value": "center"
-                                }
-                            ],
-                            "options": [
-                                {
-                                    "label": "بداية",
-                                    "value": "start"
-                                },
-                                {
-                                    "label": "منتصف",
-                                    "value": "center"
-                                },
-                                {
-                                    "label": "نهاية",
-                                    "value": "end"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": true
-                        },
-                        {
-                            "id": "banner.block_title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الرئيسي",
-                            "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
-                            "labelHTML": null,
-                            "placeholder": "",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.blocktitle_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون العنوان الرئيسي",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#ffffff",
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.subtext",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الفرعي",
-                            "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
-                            "labelHTML": null,
-                            "placeholder": "",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.subtext_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون النص الفرعي ",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#FFFFFF",
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.button_text",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.button_text_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون نص الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#FFFFFF",
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "id": "banner.button_bg",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون خلفية الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#f3eeea",
-                            "required": false,
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "رابط الزر",
-                            "id": "banner.url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
-                        }
-                    ],
-                    "value": [
-                        {
-                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/a7fb6f24-9063-4074-895d-bb583bd48f7f_1440x760.webp",
-                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/660b291e-0ae7-44bb-b8c3-dacb050fe743_686x564.webp",
-                            "banner.vid": false,
-                            "banner.vid_url": "",
-                            "banner.blur": true,
-                            "banner.overlay": 1,
-                            "banner.transparent_button": true,
-                            "banner.items_alignment_horizontal": [
-                                "end"
-                            ],
-                            "banner.items_alignment_vertical": [
-                                "center"
-                            ],
-                            "banner.block_title": {
-                                "ar": "Get the skin you want to feel",
-                                "en": "Get the skin you want to feel"
-                            },
-                            "banner.subtext": {
-                                "ar": "Blend beauty in you",
-                                "en": "Blend beauty in you"
-                            },
-                            "banner.button_text": {
-                                "ar": "Shop Now",
-                                "en": "Shop Now"
-                            },
-                            "banner.blocktitle_color": "#ffffff",
-                            "banner.subtext_color": "#000000",
-                            "banner.button_text_color": "#FFFFFF",
-                            "banner.button_bg": "#f3eeea",
-                            "banner.highlighted_word_color": "#000000",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
-                        },
-                        {
-                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/da67b691-e6b9-493e-9520-abfed3fddfd7_1440x760.webp",
-                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/80e18d27-9f68-4d81-8b0b-4ad5e4556f3d_686x564.webp",
-                            "banner.vid": false,
-                            "banner.vid_url": "",
-                            "banner.blur": false,
-                            "banner.overlay": 1,
-                            "banner.transparent_button": false,
-                            "banner.items_alignment_horizontal": [
-                                "start"
-                            ],
-                            "banner.items_alignment_vertical": [
-                                "center"
-                            ],
-                            "banner.block_title": {
-                                "ar": "Get the skin you want to feel",
-                                "en": "Get the skin you want to feel"
-                            },
-                            "banner.subtext": {
-                                "ar": "Blend beauty in you",
-                                "en": "Blend beauty in you"
-                            },
-                            "banner.button_text": {
-                                "ar": "Shop Now",
-                                "en": "Shop Now"
-                            },
-                            "banner.blocktitle_color": "#000000",
-                            "banner.subtext_color": "#707070",
-                            "banner.button_text_color": "#FFFFFF",
-                            "banner.button_bg": "#f3eeea",
-                            "banner.highlighted_word_color": "#0b4200",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
-                        },
-                        {
-                            "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/c2abdf69-f3d1-4ff5-af62-54e52779440e_1440x760.webp",
-                            "banner.mobile_bg": "https://cdn.files.salla.network/homepage/930809644/f9254e66-8c11-4ead-8483-2c3bb785378b_686x564.webp",
-                            "banner.vid": false,
-                            "banner.vid_url": "",
-                            "banner.blur": true,
-                            "banner.overlay": 0,
-                            "banner.transparent_button": true,
-                            "banner.items_alignment_horizontal": [
-                                "end"
-                            ],
-                            "banner.items_alignment_vertical": [
-                                "center"
-                            ],
-                            "banner.block_title": {
-                                "ar": "Get the skin you want to feel",
-                                "en": "Get the skin you want to feel"
-                            },
-                            "banner.subtext": {
-                                "ar": "Blend beauty in you",
-                                "en": "Blend beauty in you"
-                            },
-                            "banner.button_text": {
-                                "ar": "",
-                                "en": ""
-                            },
-                            "banner.blocktitle_color": "#000000",
-                            "banner.subtext_color": "#5e5e5e",
-                            "banner.button_text_color": "#ffffff",
-                            "banner.button_bg": "#000000",
-                            "banner.highlighted_word_color": "#bb631b",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
-                        }
-                    ],
-                    "minLength": 1,
-                    "maxLength": "5"
                 }
             ]
         },
