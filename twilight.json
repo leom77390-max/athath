@@ -1442,6 +1442,7 @@
             },
             "icon": "sicon-store",
             "path": "home.hero_section",
+            "is_default": true,
             "image": "https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp",
             "fields": [
                 {
@@ -2148,6 +2149,7 @@
             ],
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
+            "is_default": true,
             "image": "https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p",
             "fields": [
                 {
@@ -3616,23 +3618,331 @@
             ]
         },
         {
-            "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
+            "key": "1b8ce50b-50a2-4562-8cf3-93aa668bb22b",
             "title": {
-                "en": "Customer opinions - Sleek",
-                "ar": "اراء -العملاء- Sleek"
+                "en": "Split Hero Section - Sleek",
+                "ar": "بانر مقسم - سلييك"
             },
             "icon": "sicon-store",
-            "path": "home.SK_customer-opinions",
-            "image": "https://c.top4top.io/p_382927swx1.png",
+            "path": "home.SK_split_hero",
+            "is_default": true,
+            "image": "https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
-                    "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_382927swx1.png'></div>"
+                    "id": "preview",
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp'></div>"
                 },
                 {
-                    "id": "block_title",
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "تخصيص ألوان المحتوى ",
+                    "id": "customize_content_colors",
+                    "format": "switch",
+                    "value": false,
+                    "selected": false
+                },
+                {
+                    "id": "left_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية ",
+                    "value": "#f5f0e8",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "subtitle_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص العلوي الصغير",
+                    "value": "#555555",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "value": "#1a1a1a",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "description_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الوصف",
+                    "value": "#444444",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "button_text_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "value": "#ffffff",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "button_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "value": "#1a1a1a",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "logo_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص اللوجو",
+                    "value": "#1a1a1a",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "customize_content_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "show_logo",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "media_type",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نوع المحتوى في الجانب الأيمن",
+                    "selected": [
+                        {
+                            "label": "صورة",
+                            "value": "image"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "صورة",
+                            "value": "image"
+                        },
+                        {
+                            "label": "فيديو",
+                            "value": "video"
+                        }
+                    ],
+                    "source": "Manual"
+                },
+                {
+                    "id": "right_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الجانب الأيمن",
+                    "required": false,
+                    "value": "https://cdn.files.salla.network/homepage/930809644/609307bb-a0e1-4a17-bd4f-9f96e44522c4_900x900.webp",
+                    "conditions": [
+                        {
+                            "id": "media_type",
+                            "operation": "=",
+                            "value": "image"
+                        }
+                    ]
+                },
+                {
+                    "id": "right_video",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط الفيديو",
+                    "placeholder": "https://...",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "media_type",
+                            "operation": "=",
+                            "value": "video"
+                        }
+                    ]
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "النص العلوي الصغير",
+                    "multilanguage": true,
+                    "value": {
+                        "ar": "Gentle And Safe",
+                        "en": "Gentle And Safe"
+                    }
+                },
+                {
+                    "id": "main_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "multilanguage": true,
+                    "value": {
+                        "ar": "Made for sensitive skin",
+                        "en": "Made for sensitive skin"
+                    }
+                },
+                {
+                    "id": "description",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "الوصف",
+                    "multilanguage": true,
+                    "value": {
+                        "ar": "We create safe products that really work and are designed to make you feel good",
+                        "en": "We create safe products that really work and are designed to make you feel good"
+                    }
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر",
+                    "multilanguage": true,
+                    "value": {
+                        "ar": "تسوق الآن",
+                        "en": "Shop Now"
+                    }
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط عرض الكل",
+                    "id": "display_all_url",
+                    "value": [],
+                    "description": "عند إختيار رابط فارغ سيتم إخفاء زر 'عرض الكل'",
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
+            "title": {
+                "en": "Choose Product - Sleek",
+                "ar": "منتجات مختارة بعناية - سليك"
+            },
+            "icon": "sicon-store",
+            "image": "https://b.top4top.io/p_3829a4iqb1.png",
+            "path": "home.SK_Slider_Product",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://b.top4top.io/p_3829a4iqb1.png'></div>"
+                },
+                {
+                    "id": "product_title",
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الرئيسي",
@@ -3641,8 +3951,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "آراء العملاء",
-                        "en": "THE REVIEWS ARE IN"
+                        "ar": "المنتجات الأساسية",
+                        "en": "The core products"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -3650,7 +3960,7 @@
                     "maxLength": "100"
                 },
                 {
-                    "id": "blocktitle_color",
+                    "id": "product_title_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -3662,254 +3972,220 @@
                     "required": false
                 },
                 {
-                    "id": "subtext",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي",
-                    "description": null,
+                    "id": "store_products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "إضافة المنتج المميز",
+                    "description": "حدد منتجًا لإبرازه داخل هذا القسم.",
                     "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "قصص حقيقية. تجارب حقيقية",
-                        "en": "Real stories. Real experiences"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "120"
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Products",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": true,
+                    "value": [],
+                    "minLength": "3",
+                    "maxLength": "200"
+                }
+            ]
+        },
+        {
+            "key": "70c52858-8963-478e-a0de-4c24597ee44f",
+            "title": {
+                "en": "scrolling strip - sleek",
+                "ar": "شريط متحرك - سليك"
+            },
+            "icon": "sicon-store",
+            "image": "https://f.top4top.io/p_38294ztkw1.png",
+            "path": "home.sl_moving",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://f.top4top.io/p_38294ztkw1.png'></div>"
                 },
                 {
-                    "id": "subtext_color",
+                    "id": "bar_bac",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون العنوان الفرعي",
+                    "label": "لون الخلفية",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#18181b",
+                    "value": "#faf3f0",
                     "required": false
                 },
                 {
-                    "id": "slider_speed",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "سرعة الحركة في السلايدر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "10",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "0",
-                    "maximum": "20"
-                },
-                {
-                    "id": "testimonials",
+                    "id": "add_sectionbar",
                     "type": "collection",
                     "format": "collection",
-                    "label": "آراء العملاء المخصصة",
+                    "label": "اضف الأقسام",
                     "description": null,
                     "labelHTML": null,
                     "item_label": null,
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "testimonials.image",
+                            "id": "add_sectionbar.bar_img",
                             "type": "string",
                             "format": "image",
-                            "label": "صورة المنتج داخل التقييم",
+                            "label": "الصورة",
                             "description": null,
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": null,
+                            "value": "",
                             "required": false
                         },
                         {
-                            "id": "testimonials.product_name",
+                            "id": "add_sectionbar.bar_title",
                             "type": "string",
                             "format": "text",
-                            "label": "اسم المنتج داخل التقييم",
+                            "label": "العنوان",
                             "description": null,
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
                             "icon": "sicon-format-text-alt",
-                            "value": "Bootcut Sweatpant",
+                            "value": "",
                             "multilanguage": true,
                             "required": false,
-                            "minLength": "2",
-                            "maxLength": "50"
+                            "minLength": 6,
+                            "maxLength": 30
                         },
                         {
-                            "id": "testimonials.product_name_color",
+                            "id": "add_sectionbar.bar_title_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
-                            "label": "لون اسم المنتج",
+                            "label": "لون العنوان",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-format-fill",
-                            "value": "#18181b",
+                            "value": "",
                             "required": false
                         },
                         {
-                            "id": "testimonials.review",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "تقييم المنتج من 1 ل 5",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": "5",
-                            "required": false,
-                            "step": "1",
-                            "minimum": "0",
-                            "maximum": "5"
-                        },
-                        {
-                            "id": "testimonials.review_num",
-                            "type": "string",
-                            "format": "text",
-                            "label": "رقم بجانب تقييم المنتج (مثلاً (4.8))",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "(4.8)",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "1",
-                            "maxLength": "20"
-                        },
-                        {
-                            "id": "testimonials.testimonial",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص رأي العميل",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "2",
-                            "maxLength": "200"
-                        },
-                        {
-                            "id": "testimonials.testimonial_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون نص رأي العميل",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "#18181b",
-                            "required": false
-                        },
-                        {
-                            "id": "testimonials.products",
                             "type": "items",
-                            "format": "dropdown-list",
-                            "label": "المنتجات",
-                            "description": "اختر المنتجات الخاصة بهذا التقييم، بحيث يتم عرض صورة المنتج واسم المنتج داخل التقييم.",
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
-                            "source": "products",
-                            "multichoice": false,
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "add_sectionbar.bar_url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
                             "searchable": true,
-                            "required": false
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
                         }
                     ],
                     "value": [
                         {
-                            "ar": {
-                                "testimonials.testimonial": "سيروم فيتامين C ده غير حياتي! بشرتي أصبحت أكثر إشراقًا ونضارة بعد أسبوعين فقط.",
-                                "testimonials.product_name": "سيروم فيتامين C"
-                            },
-                            "en": {
-                                "testimonials.testimonial": "This Vitamin C serum changed my skin! It looks brighter and more radiant after just two weeks.",
-                                "testimonials.product_name": "Vitamin C Serum"
-                            },
-                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/8da6cc61-f8ab-4807-93de-8414ae010874_750x563.webp",
-                            "testimonials.review": 5,
-                            "testimonials.testimonial_color": "#18181b",
-                            "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This Vitamin C serum changed my skin! It looks brighter and more radiant after just two weeks.",
-                            "testimonials.product_name": "Vitamin C Serum"
+                            "add_sectionbar.bar_img": "https://b.top4top.io/p_3823e63xp1.jpg",
+                            "add_sectionbar.bar_title": "اعتني ببشرتك",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
                         },
                         {
-                            "ar": {
-                                "testimonials.testimonial": "كريم الترطيب ده مثالي لبشرتي الجافة، يمتص بسرعة ويخلي البشرة ناعمة ومشرقة طوال اليوم.",
-                                "testimonials.product_name": "كريم الترطيب العميق"
-                            },
-                            "en": {
-                                "testimonials.testimonial": "This moisturizer is perfect for my dry skin. It absorbs quickly and keeps my skin soft and glowing all day.",
-                                "testimonials.product_name": "Deep Hydration Cream"
-                            },
-                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/9b6e73eb-6cad-4a4f-a7e1-d08fa27c5880_750x563.webp",
-                            "testimonials.review": 5,
-                            "testimonials.testimonial_color": "#18181b",
-                            "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This moisturizer is perfect for my dry skin. It absorbs quickly and keeps my skin soft and glowing all day.",
-                            "testimonials.product_name": "Deep Hydration Cream"
+                            "add_sectionbar.bar_img": "https://i.top4top.io/p_3823qk8o21.jpg",
+                            "add_sectionbar.bar_title": "أساسيات الموسم الجديد",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
                         },
                         {
-                            "ar": {
-                                "testimonials.testimonial": "ماسك الطين ده بينظف المسام بعمق ويقلل من الحبوب بشكل ملحوظ. أنصح فيه جدًا.",
-                                "testimonials.product_name": "ماسك الطين المنقي"
-                            },
-                            "en": {
-                                "testimonials.testimonial": "This clay mask deeply cleans the pores and visibly reduces breakouts. Highly recommended!",
-                                "testimonials.product_name": "Purifying Clay Mask"
-                            },
-                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/dd819214-163c-4723-b574-b0108a6f18c0_750x563.webp",
-                            "testimonials.review": 5,
-                            "testimonials.testimonial_color": "#18181b",
-                            "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This clay mask deeply cleans the pores and visibly reduces breakouts. Highly recommended!",
-                            "testimonials.product_name": "Purifying Clay Mask"
+                            "add_sectionbar.bar_img": "https://j.top4top.io/p_3823vcqty1.jpg",
+                            "add_sectionbar.bar_title": "صنع بالحب",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
                         },
                         {
-                            "ar": {
-                                "testimonials.testimonial": "زيت الوجه ده خفيف جدًا ومرطب بشكل رائع، بشرتي أصبحت أكثر نعومة وصحة.",
-                                "testimonials.product_name": "زيت الوجه الطبيعي"
-                            },
-                            "en": {
-                                "testimonials.testimonial": "This facial oil is so lightweight yet incredibly nourishing. My skin feels softer and healthier.",
-                                "testimonials.product_name": "Natural Facial Oil"
-                            },
-                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/1a727ef7-61e5-47cf-bbff-028c0f51bfa9_750x563.webp",
-                            "testimonials.review": 5,
-                            "testimonials.testimonial_color": "#18181b",
-                            "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This facial oil is so lightweight yet incredibly nourishing. My skin feels softer and healthier.",
-                            "testimonials.product_name": "Natural Facial Oil"
-                        },
-                        {
-                            "ar": {
-                                "testimonials.testimonial": "الكريم المضاد للتجاعيد فعال جدًا، ملاحظة فرق واضح في مرونة البشرة بعد شهر من الاستخدام.",
-                                "testimonials.product_name": "كريم مضاد للتجاعيد"
-                            },
-                            "en": {
-                                "testimonials.testimonial": "This anti-aging cream is really effective. I noticed visible improvement in skin firmness after one month.",
-                                "testimonials.product_name": "Anti-Aging Cream"
-                            },
-                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/b698e44c-e091-4840-90f7-81abe218abda_750x563.webp",
-                            "testimonials.review": 5,
-                            "testimonials.testimonial_color": "#18181b",
-                            "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This anti-aging cream is really effective. I noticed visible improvement in skin firmness after one month.",
-                            "testimonials.product_name": "Anti-Aging Cream"
+                            "add_sectionbar.bar_img": "https://g.top4top.io/p_38231vj1s1.jpg",
+                            "add_sectionbar.bar_title": "أنقذ بشرتك",
+                            "add_sectionbar.bar_title_color": "#000000",
+                            "add_sectionbar.bar_url": null
                         }
                     ],
                     "minLength": "4",
-                    "maxLength": "10"
+                    "maxLength": "20"
+                },
+                {
+                    "id": "lapTop_show",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "اخفاء هذا القسم في الشاشات الكبيرة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "mob_show",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إخفاء هذا القسم على الجوال.",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
                 }
             ]
         },
@@ -3917,11 +4193,19 @@
             "key": "60979fe7-c8a8-4f94-bd16-4ff4110fe65a",
             "title": {
                 "en": "sleek - Featured Products",
-                "ar": "sleek - منتجات مميزة"
+                "ar": " منتجات مميزة - سلييك"
             },
             "icon": "sicon-store",
+            "image": "https://g.top4top.io/p_3829vzv2c1.png",
             "path": "home.SK_featured-products",
+            "is_default": true,
             "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://g.top4top.io/p_3829vzv2c1.png'></div>"
+                },
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
@@ -4254,325 +4538,320 @@
             ]
         },
         {
-            "key": "1b8ce50b-50a2-4562-8cf3-93aa668bb22b",
+            "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
             "title": {
-                "en": "Split Hero Section",
-                "ar": "بانر مقسم (Split Hero)"
+                "en": "Customer opinions - Sleek",
+                "ar": "اراء -العملاء - سلييك"
             },
             "icon": "sicon-store",
-            "path": "home.SK_split_hero",
-            "image": "https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp",
+            "path": "home.SK_customer-opinions",
+            "image": "https://c.top4top.io/p_382927swx1.png",
+            "is_default": true,
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
-                    "id": "preview",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp'></div>"
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_382927swx1.png'></div>"
                 },
                 {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "تخصيص ألوان المحتوى ",
-                    "id": "customize_content_colors",
-                    "format": "switch",
-                    "value": false,
-                    "selected": false
-                },
-                {
-                    "id": "left_bg_color",
+                    "id": "block_title",
                     "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية ",
-                    "value": "#f5f0e8",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "آراء العملاء",
+                        "en": "THE REVIEWS ARE IN"
+                    },
+                    "multilanguage": true,
                     "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "minLength": "2",
+                    "maxLength": "100"
                 },
                 {
-                    "id": "subtitle_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص العلوي الصغير",
-                    "value": "#555555",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "title_color",
+                    "id": "blocktitle_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
                     "label": "لون العنوان الرئيسي",
-                    "value": "#1a1a1a",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
                 },
                 {
-                    "id": "description_color",
+                    "id": "subtext",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "قصص حقيقية. تجارب حقيقية",
+                        "en": "Real stories. Real experiences"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "120"
+                },
+                {
+                    "id": "subtext_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون الوصف",
-                    "value": "#444444",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "label": "لون العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
                 },
                 {
-                    "id": "button_text_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الزر",
-                    "value": "#ffffff",
+                    "id": "slider_speed",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "سرعة الحركة في السلايدر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "10",
                     "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "20"
                 },
                 {
-                    "id": "button_bg_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية الزر",
-                    "value": "#1a1a1a",
-                    "required": false,
-                    "conditions": [
+                    "id": "testimonials",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "آراء العملاء المخصصة",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
                         {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "logo_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص اللوجو",
-                    "value": "#1a1a1a",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "customize_content_colors",
-                            "operation": "=",
-                            "value": true
+                            "id": "testimonials.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة المنتج داخل التقييم",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
                         },
                         {
-                            "id": "show_logo",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "media_type",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "نوع المحتوى في الجانب الأيمن",
-                    "selected": [
+                            "id": "testimonials.product_name",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم المنتج داخل التقييم",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": "Bootcut Sweatpant",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "50"
+                        },
                         {
-                            "label": "صورة",
-                            "value": "image"
+                            "id": "testimonials.product_name_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون اسم المنتج",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b",
+                            "required": false
+                        },
+                        {
+                            "id": "testimonials.review",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "تقييم المنتج من 1 ل 5",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-pin",
+                            "value": "5",
+                            "required": false,
+                            "step": "1",
+                            "minimum": "0",
+                            "maximum": "5"
+                        },
+                        {
+                            "id": "testimonials.review_num",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رقم بجانب تقييم المنتج (مثلاً (4.8))",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": "(4.8)",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": "20"
+                        },
+                        {
+                            "id": "testimonials.testimonial",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص رأي العميل",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "200"
+                        },
+                        {
+                            "id": "testimonials.testimonial_color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون نص رأي العميل",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#18181b",
+                            "required": false
+                        },
+                        {
+                            "id": "testimonials.products",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "المنتجات",
+                            "description": "اختر المنتجات الخاصة بهذا التقييم، بحيث يتم عرض صورة المنتج واسم المنتج داخل التقييم.",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "source": "products",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": false
                         }
                     ],
-                    "options": [
+                    "value": [
                         {
-                            "label": "صورة",
-                            "value": "image"
+                            "ar": {
+                                "testimonials.testimonial": "سيروم فيتامين C ده غير حياتي! بشرتي أصبحت أكثر إشراقًا ونضارة بعد أسبوعين فقط.",
+                                "testimonials.product_name": "سيروم فيتامين C"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This Vitamin C serum changed my skin! It looks brighter and more radiant after just two weeks.",
+                                "testimonials.product_name": "Vitamin C Serum"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/8da6cc61-f8ab-4807-93de-8414ae010874_750x563.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This Vitamin C serum changed my skin! It looks brighter and more radiant after just two weeks.",
+                            "testimonials.product_name": "Vitamin C Serum"
                         },
                         {
-                            "label": "فيديو",
-                            "value": "video"
+                            "ar": {
+                                "testimonials.testimonial": "كريم الترطيب ده مثالي لبشرتي الجافة، يمتص بسرعة ويخلي البشرة ناعمة ومشرقة طوال اليوم.",
+                                "testimonials.product_name": "كريم الترطيب العميق"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This moisturizer is perfect for my dry skin. It absorbs quickly and keeps my skin soft and glowing all day.",
+                                "testimonials.product_name": "Deep Hydration Cream"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/9b6e73eb-6cad-4a4f-a7e1-d08fa27c5880_750x563.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This moisturizer is perfect for my dry skin. It absorbs quickly and keeps my skin soft and glowing all day.",
+                            "testimonials.product_name": "Deep Hydration Cream"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "ماسك الطين ده بينظف المسام بعمق ويقلل من الحبوب بشكل ملحوظ. أنصح فيه جدًا.",
+                                "testimonials.product_name": "ماسك الطين المنقي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This clay mask deeply cleans the pores and visibly reduces breakouts. Highly recommended!",
+                                "testimonials.product_name": "Purifying Clay Mask"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/dd819214-163c-4723-b574-b0108a6f18c0_750x563.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This clay mask deeply cleans the pores and visibly reduces breakouts. Highly recommended!",
+                            "testimonials.product_name": "Purifying Clay Mask"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "زيت الوجه ده خفيف جدًا ومرطب بشكل رائع، بشرتي أصبحت أكثر نعومة وصحة.",
+                                "testimonials.product_name": "زيت الوجه الطبيعي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This facial oil is so lightweight yet incredibly nourishing. My skin feels softer and healthier.",
+                                "testimonials.product_name": "Natural Facial Oil"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/1a727ef7-61e5-47cf-bbff-028c0f51bfa9_750x563.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This facial oil is so lightweight yet incredibly nourishing. My skin feels softer and healthier.",
+                            "testimonials.product_name": "Natural Facial Oil"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "الكريم المضاد للتجاعيد فعال جدًا، ملاحظة فرق واضح في مرونة البشرة بعد شهر من الاستخدام.",
+                                "testimonials.product_name": "كريم مضاد للتجاعيد"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This anti-aging cream is really effective. I noticed visible improvement in skin firmness after one month.",
+                                "testimonials.product_name": "Anti-Aging Cream"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/b698e44c-e091-4840-90f7-81abe218abda_750x563.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This anti-aging cream is really effective. I noticed visible improvement in skin firmness after one month.",
+                            "testimonials.product_name": "Anti-Aging Cream"
                         }
                     ],
-                    "source": "Manual"
-                },
-                {
-                    "id": "right_image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة الجانب الأيمن",
-                    "required": false,
-                    "value": "https://cdn.files.salla.network/homepage/930809644/609307bb-a0e1-4a17-bd4f-9f96e44522c4_900x900.webp",
-                    "conditions": [
-                        {
-                            "id": "media_type",
-                            "operation": "=",
-                            "value": "image"
-                        }
-                    ]
-                },
-                {
-                    "id": "right_video",
-                    "type": "string",
-                    "format": "url",
-                    "inputType": "url",
-                    "label": "رابط الفيديو",
-                    "placeholder": "https://...",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "media_type",
-                            "operation": "=",
-                            "value": "video"
-                        }
-                    ]
-                },
-                {
-                    "id": "subtitle",
-                    "type": "string",
-                    "format": "text",
-                    "label": "النص العلوي الصغير",
-                    "multilanguage": true,
-                    "value": {
-                        "ar": "Gentle And Safe",
-                        "en": "Gentle And Safe"
-                    }
-                },
-                {
-                    "id": "main_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي",
-                    "multilanguage": true,
-                    "value": {
-                        "ar": "Made for sensitive skin",
-                        "en": "Made for sensitive skin"
-                    }
-                },
-                {
-                    "id": "description",
-                    "type": "string",
-                    "format": "textarea",
-                    "label": "الوصف",
-                    "multilanguage": true,
-                    "value": {
-                        "ar": "We create safe products that really work and are designed to make you feel good",
-                        "en": "We create safe products that really work and are designed to make you feel good"
-                    }
-                },
-                {
-                    "id": "button_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الزر",
-                    "multilanguage": true,
-                    "value": {
-                        "ar": "تسوق الآن",
-                        "en": "Shop Now"
-                    }
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط عرض الكل",
-                    "id": "display_all_url",
-                    "value": [],
-                    "description": "عند إختيار رابط فارغ سيتم إخفاء زر 'عرض الكل'",
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "ماركة تجارية",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "مقالة",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "تصنيف ضمن المدونة",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "الماركات التجارية",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "المدونة",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
+                    "minLength": "4",
+                    "maxLength": "10"
                 }
             ]
         },
         {
             "key": "c6dabbb2-a1c9-450f-bf65-b4169af53d0d",
             "title": {
-                "en": "faq_section",
-                "ar": "الأسئلة الشائعة"
+                "en": "faq_section - Sleek",
+                "ar": "الأسئلة الشائعة - سلييك"
             },
             "icon": "sicon-books-pencil",
+            "image": "https://d.top4top.io/p_3829gbckn1.png",
+            "is_default": true,
             "path": "home.SK_faq_section",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                    "value": "<div><img class='w-full' src='https://b.top4top.io/p_3829gbckn1.png'></div>"
                 },
                 {
                     "type": "boolean",
@@ -5323,268 +5602,20 @@
             ]
         },
         {
-            "key": "70c52858-8963-478e-a0de-4c24597ee44f",
-            "title": {
-                "en": "scrolling strip - sleek",
-                "ar": "شريط متحرك - سليك"
-            },
-            "icon": "sicon-store",
-            "path": "home.sl_moving",
-            "fields": [
-                {
-                    "id": "bar_bac",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الخلفية",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#faf3f0",
-                    "required": false
-                },
-                {
-                    "id": "add_sectionbar",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "اضف الأقسام",
-                    "description": null,
-                    "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "add_sectionbar.bar_img",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "add_sectionbar.bar_title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": 6,
-                            "maxLength": 30
-                        },
-                        {
-                            "id": "add_sectionbar.bar_title_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون العنوان",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-format-fill",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "الرابط",
-                            "id": "add_sectionbar.bar_url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
-                        }
-                    ],
-                    "value": [
-                        {
-                            "add_sectionbar.bar_img": "https://b.top4top.io/p_3823e63xp1.jpg",
-                            "add_sectionbar.bar_title": "اعتني ببشرتك",
-                            "add_sectionbar.bar_title_color": "#000000",
-                            "add_sectionbar.bar_url": null
-                        },
-                        {
-                            "add_sectionbar.bar_img": "https://i.top4top.io/p_3823qk8o21.jpg",
-                            "add_sectionbar.bar_title": "أساسيات الموسم الجديد",
-                            "add_sectionbar.bar_title_color": "#000000",
-                            "add_sectionbar.bar_url": null
-                        },
-                        {
-                            "add_sectionbar.bar_img": "https://j.top4top.io/p_3823vcqty1.jpg",
-                            "add_sectionbar.bar_title": "صنع بالحب",
-                            "add_sectionbar.bar_title_color": "#000000",
-                            "add_sectionbar.bar_url": null
-                        },
-                        {
-                            "add_sectionbar.bar_img": "https://g.top4top.io/p_38231vj1s1.jpg",
-                            "add_sectionbar.bar_title": "أنقذ بشرتك",
-                            "add_sectionbar.bar_title_color": "#000000",
-                            "add_sectionbar.bar_url": null
-                        }
-                    ],
-                    "minLength": "4",
-                    "maxLength": "20"
-                },
-                {
-                    "id": "lapTop_show",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "اخفاء هذا القسم في الشاشات الكبيرة",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "mob_show",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إخفاء هذا القسم على الجوال.",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                }
-            ]
-        },
-        {
-            "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
-            "title": {
-                "en": "Choose Product - Sleek",
-                "ar": "منتجات مختارة بعناية - سليك"
-            },
-            "icon": "sicon-store",
-            "path": "home.SK_Slider_Product",
-            "fields": [
-                {
-                    "id": "product_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "المنتجات الأساسية",
-                        "en": "The core products"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "100"
-                },
-                {
-                    "id": "product_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "required": false
-                },
-                {
-                    "id": "store_products",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "إضافة المنتج المميز",
-                    "description": "حدد منتجًا لإبرازه داخل هذا القسم.",
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Products",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": true,
-                    "value": [],
-                    "minLength": "3",
-                    "maxLength": "200"
-                }
-            ]
-        },
-        {
             "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
             "title": {
-                "en": "about-us",
-                "ar": "نبذه عنا"
+                "en": "about-us - sleek",
+                "ar": "نبذه عنا - سلييك"
             },
             "icon": "sicon-airplay-audio",
+            "image": "https://k.top4top.io/p_3829q5kkn1.png",
             "path": "home.SK_about_us",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/88acceb2-e060-466b-b32e-d5194e8f12f4_1440x569.webp'></div>"
+                    "value": "<div><img class='w-full' src='https://k.top4top.io/p_3829q5kkn1.png'></div>"
                 },
                 {
                     "type": "static",
@@ -6171,6 +6202,65 @@
                             "card.btn_url": ""
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
+            "title": {
+                "en": "Choose Product - Sleek",
+                "ar": "منتجات مختارة بعناية - سليك"
+            },
+            "icon": "sicon-store",
+            "path": "home.SK_Slider_Product",
+            "fields": [
+                {
+                    "id": "product_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "المنتجات الأساسية",
+                        "en": "The core products"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
+                    "id": "product_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "store_products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "إضافة المنتج المميز",
+                    "description": "حدد منتجًا لإبرازه داخل هذا القسم.",
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Products",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": true,
+                    "value": [],
+                    "minLength": "3",
+                    "maxLength": "200"
                 }
             ]
         },
