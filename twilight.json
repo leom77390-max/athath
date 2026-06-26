@@ -2141,12 +2141,10 @@
         },
         {
             "key": "f3dd3822-d8ab-4a08-beb7-0e219603d70c",
-            "title": [
-                {
+            "title": {
                     "en": "categories - sleek",
                     "ar": "تصنيفات تفاعلية - سلييك"
-                }
-            ],
+                },
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
             "is_default": true,
