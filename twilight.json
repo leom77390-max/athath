@@ -2140,7 +2140,12 @@
         },
         {
             "key": "f3dd3822-d8ab-4a08-beb7-0e219603d70c",
-            "title": "تصنيفات تفاعلية - Sleek",
+            "title": [
+                {
+                    "en": "categories - sleek",
+                    "ar": "تصنيفات تفاعلية - سلييك"
+                }
+            ],
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
             "image": "https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p",
@@ -2574,6 +2579,173 @@
             ]
         },
         {
+            "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
+            "title": {
+                "en": "Products banner - Sleek",
+                "ar": "منتجات مختارة مع صورة - سلييك"
+            },
+            "is_default": true,
+            "icon": "sicon-store",
+            "path": "home.SK-Products-banner",
+            "image": "https://c.top4top.io/p_3829hlmov1.png",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_3829hlmov1.png'></div>"
+                },
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "تسوق مجموعة العناية بالبشرة",
+                        "en": "Shop skincare set"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
+                    "id": "blocktitle_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "subtext",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "ارتقِ بروتين العناية بالبشرة مع هذه الباقة",
+                        "en": "Level up skincare routine with the bundle"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "120"
+                },
+                {
+                    "id": "subtext_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "required": false
+                },
+                {
+                    "id": "side_img",
+                    "type": "string",
+                    "format": "image",
+                    "label": " صورة جانبية",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": "",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/930809644/0b329bec-3eae-4bb4-8927-b023306870bf_750x797.webp",
+                    "required": true
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "منتجات ونقاط مهمة",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "type": "items",
+                            "icon": "sicon-keyboard_arrow_down",
+                            "label": "منتجات",
+                            "id": "products",
+                            "format": "dropdown-list",
+                            "description": null,
+                            "selected": [],
+                            "options": [],
+                            "required": true,
+                            "multichoice": false,
+                            "source": "products",
+                            "searchable": true,
+                            "value": []
+                        },
+                        {
+                            "id": "horizontal_position",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "الموقع الأفقي لنقطة المنتج",
+                            "description": "حدد مكان النقطة أفقياً من اليسار إلى اليمين",
+                            "labelHTML": null,
+                            "icon": "sicon-pin",
+                            "value": 1,
+                            "required": false,
+                            "step": 1,
+                            "minimum": 0,
+                            "maximum": 100
+                        },
+                        {
+                            "id": "vertical_position",
+                            "type": "number",
+                            "format": "slider",
+                            "inputType": "range",
+                            "label": "الموقع الرأسي لنقطة المنتج",
+                            "description": "حدد مكان النقطة رأسيًا من الأعلى إلى الأسفل",
+                            "labelHTML": null,
+                            "icon": "sicon-pin",
+                            "value": 1,
+                            "required": false,
+                            "step": 1,
+                            "minimum": 0,
+                            "maximum": 100
+                        }
+                    ],
+                    "value": [
+                        {
+                            "products": [],
+                            "horizontal_position": 76,
+                            "vertical_position": 44
+                        },
+                        {
+                            "products": [],
+                            "horizontal_position": 40,
+                            "vertical_position": 62
+                        },
+                        {
+                            "products": [],
+                            "horizontal_position": 16,
+                            "vertical_position": 33
+                        }
+                    ],
+                    "minLength": 1,
+                    "maxLength": "3"
+                }
+            ]
+        },
+        {
             "key": "b0df1b57-d477-4cfb-8ba7-6b0b9eba9edf",
             "title": {
                 "en": "Sleek - store Features",
@@ -2952,167 +3124,6 @@
             ]
         },
         {
-            "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
-            "title": {
-                "en": "Products banner - Sleek",
-                "ar": "منتجات مختارة مع صورة - سلييك"
-            },
-            "is_default": true,
-            "icon": "sicon-store",
-            "path": "home.SK-Products-banner",
-            "image": "",
-            "fields": [
-                {
-                    "id": "block_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "تسوق مجموعة العناية بالبشرة",
-                        "en": "Shop skincare set"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "100"
-                },
-                {
-                    "id": "blocktitle_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "required": false
-                },
-                {
-                    "id": "subtext",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "ارتقِ بروتين العناية بالبشرة مع هذه الباقة",
-                        "en": "Level up skincare routine with the bundle"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "120"
-                },
-                {
-                    "id": "subtext_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الفرعي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "required": false
-                },
-                {
-                    "id": "side_img",
-                    "type": "string",
-                    "format": "image",
-                    "label": " صورة جانبية",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": "",
-                    "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/930809644/0b329bec-3eae-4bb4-8927-b023306870bf_750x797.webp",
-                    "required": true
-                },
-                {
-                    "id": "collection",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "منتجات ونقاط مهمة",
-                    "description": null,
-                    "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "type": "items",
-                            "icon": "sicon-keyboard_arrow_down",
-                            "label": "منتجات",
-                            "id": "products",
-                            "format": "dropdown-list",
-                            "description": null,
-                            "selected": [],
-                            "options": [],
-                            "required": true,
-                            "multichoice": false,
-                            "source": "products",
-                            "searchable": true,
-                            "value": []
-                        },
-                        {
-                            "id": "horizontal_position",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "الموقع الأفقي لنقطة المنتج",
-                            "description": "حدد مكان النقطة أفقياً من اليسار إلى اليمين",
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": 1,
-                            "required": false,
-                            "step": 1,
-                            "minimum": 0,
-                            "maximum": 100
-                        },
-                        {
-                            "id": "vertical_position",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "الموقع الرأسي لنقطة المنتج",
-                            "description": "حدد مكان النقطة رأسيًا من الأعلى إلى الأسفل",
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": 1,
-                            "required": false,
-                            "step": 1,
-                            "minimum": 0,
-                            "maximum": 100
-                        }
-                    ],
-                    "value": [
-                        {
-                            "products": [],
-                            "horizontal_position": 76,
-                            "vertical_position": 44
-                        },
-                        {
-                            "products": [],
-                            "horizontal_position": 40,
-                            "vertical_position": 62
-                        },
-                        {
-                            "products": [],
-                            "horizontal_position": 16,
-                            "vertical_position": 33
-                        }
-                    ],
-                    "minLength": 1,
-                    "maxLength": "3"
-                }
-            ]
-        },
-        {
             "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
             "title": {
                 "en": "Customer opinions - Sleek",
@@ -3120,7 +3131,14 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_customer-opinions",
+            "image": "https://c.top4top.io/p_382927swx1.png",
             "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_382927swx1.png'></div>"
+                },
                 {
                     "id": "block_title",
                     "type": "string",
