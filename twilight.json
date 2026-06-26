@@ -1572,30 +1572,6 @@
                     ]
                 },
                 {
-                    "id": "show_pagination",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار نقاط التنقل",
-                    "description": "",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "show_arrows",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار أسهم التنقل",
-                    "description": "",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
                     "id": "banner",
                     "type": "collection",
                     "format": "collection",
