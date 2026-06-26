@@ -124,7 +124,7 @@
 <div class="app-inner flex flex-col min-h-full bg-background">
     {% hook 'body:start' %}
     {% component 'header.header' %}
-    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
+    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col"' : '' }}>
 
     {% block content %}
 <pre>
