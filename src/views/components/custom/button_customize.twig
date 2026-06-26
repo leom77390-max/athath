@@ -1,0 +1,104 @@
+{# ======================================================
+   Button Effect Pattern
+====================================================== #}
+
+{% set selector = selector|default('btn-effect') %}
+{% set text = text|default('Button') %}
+{% set icon = icon|default('') %}
+
+<a href="{{href}}" class="{{ selector }} {{class}}">
+    <span>{{ text }}</span>
+    {% if icon %}
+        <i class="{{ icon }}"></i>
+    {% endif %}
+</a>
+
+{% set bg = bg|default('transparent') %}
+{% set color = color|default('#111') %}
+{% set border = border|default('#111') %}
+
+{% set hover_bg = hover_bg|default('#111') %}
+{% set hover_color = hover_color|default('#fff') %}
+{% set hover_border = hover_border|default('#111') %}
+
+{% set shine = shine|default('rgba(255,255,255,.45)') %}
+
+<style>
+
+.{{ selector }}{
+
+    --btn-bg: {{ bg }};
+    --btn-color: {{ color }};
+    --btn-border: {{ border }};
+
+    --btn-hover-bg: {{ hover_bg }};
+    --btn-hover-color: {{ hover_color }};
+    --btn-hover-border: {{ hover_border }};
+
+    --btn-shine: {{ shine }};
+
+    position:relative;
+    overflow:hidden;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+
+    background:var(--btn-bg);
+    color:var(--btn-color);
+    border:1px solid var(--btn-border);
+
+    transition:
+        color .35s ease,
+        border-color .35s ease;
+}
+
+.{{ selector }}::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:var(--btn-hover-bg);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .45s cubic-bezier(.22,1,.36,1);
+    z-index:0;
+}
+
+.{{ selector }}::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-160%;
+    width:60%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        var(--btn-shine),
+        transparent
+    );
+    transform:skewX(-25deg);
+    z-index:2;
+}
+
+.{{ selector }} > *{
+    position:relative;
+    z-index:3;
+}
+
+.{{ selector }}:hover{
+    color:var(--btn-hover-color);
+    border-color:var(--btn-hover-border);
+}
+
+.{{ selector }}:hover::after{
+    transform:scaleX(1);
+}
+
+.{{ selector }}:hover::before{
+    left:170%;
+    transition:left .7s ease;
+}
+
+</style>

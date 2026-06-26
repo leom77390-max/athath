@@ -115,6 +115,15 @@
                   >
                     {{ slide.button_text }}
                   </a>
+                  {% include 'components.custom.button_customize.twig' with {
+                      href: slide.url,
+                      text: slide.button_text,
+                      class: 'slide-btn' ~ (slide.transparent_button ? ' btn-transparent' : ''),
+                      bg: slide.button_bg,
+                      color: slide.button_text_color,
+                      hover_bg: '#111',
+                      hover_color: '#fff'
+                  } %}
                 {% endif %}
 
               </div>
