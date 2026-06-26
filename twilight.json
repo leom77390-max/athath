@@ -3124,6 +3124,498 @@
             ]
         },
         {
+            "key": "7104e740-b800-4e63-b57b-5e12ef17275b",
+            "title": {
+                "en": "product category - Sleek",
+                "ar": "منتجات التصنيف - سلييك"
+            },
+            "icon": "sicon-hierarchy",
+            "path": "home.SK_category_banner",
+            "is_default": true,
+            "image": "https://c.top4top.io/p_3829uranl1.png",
+            "fields": [
+                {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://c.top4top.io/p_3829uranl1.png'></div>"
+                },
+                {
+                    "id": "use_custom_colors",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "استخدام ألوان مخصصة",
+                    "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالقسم بدلًا من ألوان الثيم الأساسية.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "section_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون عنوان القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#000000",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "section_subtitle_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون وصف القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#666666",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "head_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون عنوان  البانر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "block_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي  للبانر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "promo_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون عنوان النص الترويجي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "use_custom_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "enable_overlay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل طبقة Overlay للبانر",
+                    "description": "فعّل هذا الخيار لإضافة طبقة لونية فوق صورة البانر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "overlay_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الـ Overlay",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#000000",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "enable_overlay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "overlay_opacity",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "درجة تعتيم الـ Overlay",
+                    "description": "حدد درجة شفافية الطبقة اللونية فوق البانر",
+                    "labelHTML": null,
+                    "icon": "sicon-pin",
+                    "value": "40",
+                    "required": false,
+                    "step": "5",
+                    "minimum": "0",
+                    "maximum": "100",
+                    "conditions": [
+                        {
+                            "id": "enable_overlay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "block_title_component",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي للقسم",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "اكتشف أحدث صيحات الموسم",
+                        "en": "Because you need time for yourself. Blend beauty in you"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "200"
+                },
+                {
+                    "id": "sub_title_component",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي للقسم",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "تشكيلة مختارة بعناية من أبرز التصنيفات والعروض الحصرية لتجد كل ما يناسب ذوقك بأسعار مميزة.",
+                        "en": "Because you need time for yourself. Blend beauty in you"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "200"
+                },
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي للبانر",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "درجــــاتـك المفضلة",
+                        "en": ""
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "40"
+                },
+                {
+                    "id": "promo_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "النص الترويجي للبانر",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "بنصـــــــــــــف السعــــــــــــر",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "60"
+                },
+                {
+                    "id": "enable_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل التمرير التلقائي",
+                    "description": "فعّل هذا الخيار لعرض البانرات تلقائيًا داخل السلايدر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "enable_controls",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة أسهم التنقل",
+                    "description": "فعّل هذا الخيار لإظهار أسهم تُسهّل على الزائر التنقل بين العناصر داخل السلايدر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "is_video",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة فيديو  بدلاً من صورة",
+                    "description": "عند تفعيل هذا الخيار، يمكنك إضافة فيديو  بدلاً من صورة .",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "banner_img",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة البانر الجانبي للقسم",
+                    "description": "قم بإضافة صورة جانبية مميزة تُكمل تصميم القسم.",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "is_video",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+                {
+                    "id": "banner_video",
+                    "type": "string",
+                    "format": "text",
+                    "label": "رابط الفيديو الجانبى للقسم",
+                    "description": "قم بإضافة فيديو جانبى مميزة يكمل تصميم القسم.",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "https://files.catbox.moe/2tfcev.mp4",
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "1000",
+                    "conditions": [
+                        {
+                            "id": "is_video",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "btn_opt",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة زر للبانر",
+                    "description": "فعّل هذا الخيار لإضافة زر مخصص داخل البانر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "btn_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "اطلب الان",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": 30,
+                    "conditions": [
+                        {
+                            "id": "btn_opt",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "btn_clr",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#000000",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "btn_opt",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "btn_bg",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "btn_opt",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "btn_url",
+                    "value": [],
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "id": "btn_opt",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "  حدد التصنيفات",
+                    "id": "store_categories",
+                    "format": "dropdown-list",
+                    "description": null,
+                    "selected": [],
+                    "options": [],
+                    "required": false,
+                    "multichoice": true,
+                    "source": "categories",
+                    "searchable": true,
+                    "maxLength": 20,
+                    "minLength": 4,
+                    "value": [],
+                    "conditions": [
+                        {
+                            "id": "source",
+                            "operation": "=",
+                            "value": "store"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
             "title": {
                 "en": "Customer opinions - Sleek",
@@ -3758,493 +4250,6 @@
                     ],
                     "minLength": 1,
                     "maxLength": 20
-                }
-            ]
-        },
-        {
-            "key": "7104e740-b800-4e63-b57b-5e12ef17275b",
-            "title": {
-                "en": "product category - Sleek",
-                "ar": "منتجات التصنيف -  Sleek"
-            },
-            "icon": "sicon-hierarchy",
-            "path": "home.SK_category_banner",
-            "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/930809644/bfb05f08-e529-45a6-9300-388318053dfc_1014x838.webp",
-            "fields": [
-              
-                {
-                    "id": "use_custom_colors",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "استخدام ألوان مخصصة",
-                    "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالقسم بدلًا من ألوان الثيم الأساسية.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "section_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون عنوان القسم",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#000000",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "section_subtitle_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون وصف القسم",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#666666",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "head_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون عنوان  البانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#ffffff",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "block_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي  للبانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#ffffff",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "promo_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون عنوان النص الترويجي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#ffffff",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "enable_overlay",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل طبقة Overlay للبانر",
-                    "description": "فعّل هذا الخيار لإضافة طبقة لونية فوق صورة البانر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "overlay_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون الـ Overlay",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#000000",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "enable_overlay",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "overlay_opacity",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "درجة تعتيم الـ Overlay",
-                    "description": "حدد درجة شفافية الطبقة اللونية فوق البانر",
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "40",
-                    "required": false,
-                    "step": "5",
-                    "minimum": "0",
-                    "maximum": "100",
-                    "conditions": [
-                        {
-                            "id": "enable_overlay",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "block_title_component",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي للقسم",
-                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "اكتشف أحدث صيحات الموسم",
-                        "en": "Because you need time for yourself. Blend beauty in you"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "200"
-                },
-                {
-                    "id": "sub_title_component",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي للقسم",
-                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "تشكيلة مختارة بعناية من أبرز التصنيفات والعروض الحصرية لتجد كل ما يناسب ذوقك بأسعار مميزة.",
-                        "en": "Because you need time for yourself. Blend beauty in you"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "200"
-                },
-                {
-                    "id": "block_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي للبانر",
-                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "درجــــاتـك المفضلة",
-                        "en": ""
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "40"
-                },
-                {
-                    "id": "promo_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "النص الترويجي للبانر",
-                    "description": "",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": "بنصـــــــــــــف السعــــــــــــر",
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "60"
-                },
-                {
-                    "id": "enable_autoplay",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل التمرير التلقائي",
-                    "description": "فعّل هذا الخيار لعرض البانرات تلقائيًا داخل السلايدر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "enable_controls",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إضافة أسهم التنقل",
-                    "description": "فعّل هذا الخيار لإظهار أسهم تُسهّل على الزائر التنقل بين العناصر داخل السلايدر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "is_video",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إضافة فيديو  بدلاً من صورة",
-                    "description": "عند تفعيل هذا الخيار، يمكنك إضافة فيديو  بدلاً من صورة .",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "banner_img",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة البانر الجانبي للقسم",
-                    "description": "قم بإضافة صورة جانبية مميزة تُكمل تصميم القسم.",
-                    "labelHTML": null,
-                    "placeholder": "e.g. https://hostname.com/image.png",
-                    "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "is_video",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "banner_video",
-                    "type": "string",
-                    "format": "text",
-                    "label": "رابط الفيديو الجانبى للقسم",
-                    "description": "قم بإضافة فيديو جانبى مميزة يكمل تصميم القسم.",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": "https://files.catbox.moe/2tfcev.mp4",
-                    "multilanguage": false,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "1000",
-                    "conditions": [
-                        {
-                            "id": "is_video",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "btn_opt",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إضافة زر للبانر",
-                    "description": "فعّل هذا الخيار لإضافة زر مخصص داخل البانر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "btn_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": "اطلب الان",
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": 30,
-                    "conditions": [
-                        {
-                            "id": "btn_opt",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "btn_clr",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#000000",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "btn_opt",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "btn_bg",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#ffffff",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "btn_opt",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-link",
-                    "label": "رابط الزر",
-                    "id": "btn_url",
-                    "value": [],
-                    "description": null,
-                    "required": false,
-                    "format": "variable-list",
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "ماركة تجارية",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "مقالة",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "تصنيف ضمن المدونة",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "الماركات التجارية",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "المدونة",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "رابط خارجي",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "id": "btn_opt",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "items",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "label": "  حدد التصنيفات",
-                    "id": "store_categories",
-                    "format": "dropdown-list",
-                    "description": null,
-                    "selected": [],
-                    "options": [],
-                    "required": false,
-                    "multichoice": true,
-                    "source": "categories",
-                    "searchable": true,
-                    "maxLength": 20,
-                    "minLength": 4,
-                    "value": [],
-                    "conditions": [
-                        {
-                            "id": "source",
-                            "operation": "=",
-                            "value": "store"
-                        }
-                    ]
                 }
             ]
         },
