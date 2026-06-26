@@ -953,9 +953,6 @@ input:where([type='file']):focus{
 .right-3{
     right: 0.75rem;
 }
-.right-4{
-    right: 1rem;
-}
 .right-5{
     right: 1.25rem;
 }
@@ -974,14 +971,14 @@ input:where([type='file']):focus{
 .top-2{
     top: 0.5rem;
 }
-.top-20{
-    top: 5rem;
-}
 .top-24{
     top: 6rem;
 }
 .top-4{
     top: 1rem;
+}
+.top-40{
+    top: 10rem;
 }
 .top-5{
     top: 1.25rem;
@@ -1000,6 +997,9 @@ input:where([type='file']):focus{
 }
 .top-full{
     top: 100%;
+}
+.top-20{
+    top: 5rem;
 }
 .-z-1{
     z-index: -1;
@@ -30342,6 +30342,7 @@ input[type=radio].sr-only:checked ~ div.mm-ocd--open .mm-ocd__backdrop::after {
 }
 .head-level #mobile-menu > .main-menu{
     display: flex !important;
+    justify-content: center !important;
     gap: 1.5rem !important;
 }
 /* Submenu panel styling */
@@ -36476,6 +36477,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:top-20{
         top: 5rem;
+    }
+    .lg\:top-40{
+        top: 10rem;
     }
     .lg\:col-span-3{
         grid-column: span 3 / span 3;
