@@ -1,5 +1,7 @@
 {
   "blocks": {
+    "ViewProduct":"عرض المنتج"
+    ,
    "header": {
       "cart": "السلة",
       "search": "بحث",

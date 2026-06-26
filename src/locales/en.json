@@ -1,5 +1,6 @@
 {
   "blocks": {
+     "ViewProduct":"View Product",
    "header": {
       "cart": "Cart",
       "language": "Language",
