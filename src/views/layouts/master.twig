@@ -127,9 +127,6 @@
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col"' : '' }}>
 
     {% block content %}
-<pre>
-{{ theme.settings.get('categories_sidecart')|json_encode(constant('JSON_PRETTY_PRINT')) }}
-</pre>
     {# {% include "custom.quickview.twig" %} #}
     {% endblock %}
     </main>

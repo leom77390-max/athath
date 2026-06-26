@@ -19,9 +19,24 @@
 			{{ component.description }}
 		</p>
 
-		<a href="{{ component.display_all_url }}" class="inline-flex w-fit px-6 py-3 rounded-full font-medium transition hover:opacity-80" style="background-color: {{ component.button_bg_color ?? '#000' }}; color: {{ component.button_text_color ?? '#fff' }}">
-			{{ component.button_text }}
-		</a>
+		{% include 'components.custom.button_customize.twig' with {
+			href: component.display_all_url,
+			text: component.button_text,
+
+			class: 'inline-flex w-fit px-6 py-3 rounded-full font-medium transition',
+
+			bg: component.button_bg_color ?? '#000',
+			color: component.button_text_color ?? '#fff',
+
+			border: component.button_bg_color ?? '#000',
+
+			hover_bg: component.button_text_color ?? '#fff',
+			hover_color: component.button_bg_color ?? '#000',
+			hover_border: component.button_text_color ?? '#fff',
+
+			after_bg: component.button_text_color ?? '#fff',
+			shine: 'rgba(0,0,0,.18)'
+		} %}
 
 	</div>
 
