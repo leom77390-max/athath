@@ -6203,65 +6203,7 @@
                 }
             ]
         },
-        {
-            "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
-            "title": {
-                "en": "Choose Product - Sleek",
-                "ar": "منتجات مختارة بعناية - سليك"
-            },
-            "icon": "sicon-store",
-            "path": "home.SK_Slider_Product",
-            "fields": [
-                {
-                    "id": "product_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "المنتجات الأساسية",
-                        "en": "The core products"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "100"
-                },
-                {
-                    "id": "product_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "required": false
-                },
-                {
-                    "id": "store_products",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "إضافة المنتج المميز",
-                    "description": "حدد منتجًا لإبرازه داخل هذا القسم.",
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Products",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": true,
-                    "value": [],
-                    "minLength": "3",
-                    "maxLength": "200"
-                }
-            ]
-        },
+
         {
             "key": "9fdf7adf-eb88-489c-80d3-71e9c2b31b04",
             "title": {
