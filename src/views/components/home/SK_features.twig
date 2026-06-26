@@ -1,6 +1,5 @@
 
-<section class="SK-Why-choose-us SK-Why-choose-us-{{position}} 
-{% if component.margin_bottom_rm %} !mb-0  {% else %} SK-s-block {% endif %}"
+<section class="SK-Why-choose-us SK-Why-choose-us-{{position}}"
 >
 <div class="SK-Why-choose-us-wrapper bg-[color-mix(in_srgb,var(--color-primary)_15%,transparent)]">
 	<div class="container md:py-10 py-5">
@@ -21,7 +20,7 @@
 							<lord-icon class="h-[82px] md:w-[150px] w-[80px]] my-icon_features" src="https://cdn.lordicon.com/{{ pro.animated_icon_id }}.json" trigger="loop" stroke="bold" state="loop-roll" colors="primary:var(--color-primary)"></lord-icon>
 						</div>
 					{% endif %}
-					<div class="ltr:text-left rtl:text-right leading-normal">
+					<div class="leading-normal">
 					{% if pro.block_title %}
 						<p class="text-[clamp(1rem,0.7526rem+1.0554vw,1.75rem)] text-font pb-2 font-bold text-wrap" {% if component.use_custom_colors %} style="color:{{pro.blocktitle_color}};" {% endif %}>{{pro.block_title}}</p>
 					{% endif %}
