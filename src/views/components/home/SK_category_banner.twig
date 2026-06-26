@@ -61,13 +61,22 @@
             {{ component.block_title }}
           </h3>
 
-          {% if component.btn_opt %}
-            <a href="{{ component.btn_url|default('#') }}"
-               class="px-8 py-3 rounded-full text-sm font-semibold bg-font text-background hover:-translate-y-0.5 hover:shadow-lg transition"
-               style="background: {{ component.btn_bg }}; color: {{ component.btn_clr }}">
-              {{ component.btn_text }}
-            </a>
+         {% if component.btn_opt %}
+          {% include 'components.custom.button_customize.twig' with {
+                  href: component.btn_url|default('#'),
+                  text: component.btn_text,
+                  selector: 'section-btn',
+                  class: 'section-btn px-8 py-3 rounded-full text-sm font-semibold',
+                  bg: component.btn_bg,
+                  color: component.btn_clr,
+                  border: component.btn_bg,
+                  hover_bg: component.btn_clr,
+                  hover_color: component.btn_bg,
+                  hover_border: component.btn_clr,
+                  after_bg: component.btn_clr
+              } %}
           {% endif %}
+          
 
         </div>
       </div>
