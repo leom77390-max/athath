@@ -1,4 +1,4 @@
-<footer class="store-footer mt-[clamp(5.133rem,2.3965rem+9.3288vw,11.8rem)]">
+<footer class="store-footer mt-[clamp(5.133rem,2.3965rem+9.3288vw,11.8rem)] border-t border-t-secondary">
   <div aria-label="footer" class="store-footer__inner !border-0">
     <div class="container grid grid-col-1 lg:grid-cols-8 gap-0 lg:gap-6">
 
@@ -52,10 +52,8 @@
             {{ store.description|raw }}
           </div>
         {% endif %}
-        {# =========================
-          Social Icons
-        ========================== #}
-        {% if theme.settings.get('use_colored_social_icons') %}
+        <div class="lg:hidden">
+          {% if theme.settings.get('use_colored_social_icons') %}
 
           <div class="custom-social-links flex gap-3
             {% if theme.settings.get('footer_is_center') %}
@@ -72,6 +70,7 @@
         {% else %}
           <salla-social class="block lg:mb-6"></salla-social>
         {% endif %}
+        </div>
       </div>
       <div>
           {% if theme.settings.get('newsletter_view') %}
@@ -85,7 +84,7 @@
       {# =========================
         Footer Links
       ========================== #}
-      <div class="flex items-start flex-col lg:flex-row justify-around lg:col-span-5 gap-4 footer_links">
+      <div class="flex items-start flex-col lg:flex-row justify-between lg:col-span-5 gap-4 footer_links">
 
         <div>
           <h3>{{ trans('blocks.footer.pages_links') }}</h3>
@@ -100,13 +99,13 @@
         <div>
           <salla-contacts></salla-contacts>
         </div>
-              <div>
-                  {% if theme.settings.get('newsletter_view') %}
+        {% if theme.settings.get('newsletter_view') %}
+              <div class="lg:hidden flex">
                     {% include 'pages.partials.newslatter.twig' with {
                       class: "justify-center items-start lg:hidden flex flex-col-reverse flex-col gap-3 mt-4"
                     } %}
-                  {% endif %}
-              </div>
+                  </div>
+        {% endif %}
 
         {# <salla-apps-icons></salla-apps-icons> #}
 
@@ -123,7 +122,7 @@
   ========================== #}
   <div class="under-footer">
 
-	  <div class="container">
+	  <div class="container border-t border-[#00000057]">
 		<div class="hidden lg:flex lg:flex-row flex-col items-center justify-between lg:pb-2 ">
 		  <salla-payments></salla-payments>
 			<div class="flex gap-4 VAT_center mt-3">
@@ -212,17 +211,38 @@
               {% endif %}
       </div>
       <div class="lg:flex items-center justify-between w-fit text-center 
-        {{ theme.settings.get('enable_bottom_nav')
-        ? '!pb-6 mb-14 lg:!py-4 lg:mb-0'
-        : ''
-        }}"
-      >
+          {{ theme.settings.get('enable_bottom_nav')
+          ? '!pb-6 mb-14 lg:!py-4 lg:mb-0'
+          : ''
+          }}"
+        >
     
         <span class="text-sm copyright-text">
         {% hook copyright %}
         </span>
       </div>
-      <span class="lg:block hidden"></span>
+              {# =========================
+          Social Icons
+        ========================== #}
+        <div class="hidden lg:block">
+        {% if theme.settings.get('use_colored_social_icons') %}
+
+          <div class="custom-social-links flex gap-3
+            {% if theme.settings.get('footer_is_center') %}
+              items-center justify-center
+            {% else %}
+              items-start justify-start
+            {% endif %}
+            lg:items-start lg:justify-start"
+          >
+            {# {% include 'pages.partials.social_icon.twig' %} #}
+          <salla-social class="block lg:mb-6"></salla-social>
+          </div>
+
+        {% else %}
+          <salla-social class="block lg:mb-6"></salla-social>
+        {% endif %}
+        </div>
       <div class="lg:hidden block">
         <salla-payments></salla-payments>
       </div>

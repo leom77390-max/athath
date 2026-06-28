@@ -375,7 +375,7 @@ class App extends AppHelpers {
       const total = cartPanel.querySelector("#sidecart-total");
       const subTotal = cartPanel.querySelector("#sidecart-subtotal");
       const totalDiscount = cartPanel.querySelector("#sidecart-total-discount");
-      const count = cartPanel.querySelector(".sidecart-products-count");
+      // const count = cartPanel.querySelector(".sidecart-products-count");
       const totalItemsEl = document.querySelectorAll(".cart-total-items");
       const footerPanel = cartPanel.querySelector("#sidecart-footer");
       const sideCouponInput = cartPanel.querySelector("#sidecart-coupon-input");
@@ -630,7 +630,7 @@ class App extends AppHelpers {
           if (items.length) {
             if (footerPanel) footerPanel.style.display = "";
             if (submitBtn) submitBtn.style.display = "flex";
-            count.textContent = `(${cart.count} ${currentLang === "ar" ? "منتج" : "product"})`;
+            // count.textContent = `(${cart.count} ${currentLang === "ar" ? "منتج" : "product"})`;
 
             itemsWrap.innerHTML = items.map(item => {
               const itemUrl = item.product_url || salla.url.get("*/p" + item.product_id);
