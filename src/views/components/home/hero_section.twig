@@ -1,7 +1,7 @@
 {# ============================================================ #}
 {# Peek/Coverflow Hero Slider — يطابق تصميم الفيديو             #}
 {# ============================================================ #}
-<section class="shopify-hero-{{ position }} {% if component.rm_margin %}no-margin{% endif %}"
+<section class="{{component.add_inside_container ? container : ''}} shopify-hero-{{ position }}" 
  style="
     --desktop-height: {{ component.desktop_height | default(90) }}vh;
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
@@ -108,13 +108,14 @@
                 {% endif %}
 
                 {% if slide.button_text %}
-                  <a
-                    href="{{ slide.url }}"
-                    class="slide-btn{% if slide.transparent_button %} btn-transparent{% endif %}"
-                    style="background-color: {{ slide.button_bg }}; color: {{ slide.button_text_color }}"
-                  >
-                    {{ slide.button_text }}
-                  </a>
+                 {% include 'components.custom.button_customize.twig' with {
+                    href: slide.url,
+                    text: slide.button_text,
+                    selector:'slide-btn-' ~ loop.index,
+                    class: 'slide-btn slide-btn-' ~ loop.index ~ (slide.transparent_button ? ' btn-transparent' : ''),
+                    bg: slide.button_bg,
+                    color: slide.button_text_color,
+                } %}
                 {% endif %}
 
               </div>

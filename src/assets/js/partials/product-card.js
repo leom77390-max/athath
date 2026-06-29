@@ -256,13 +256,25 @@ class ProductCard extends HTMLElement {
               onclick="salla.wishlist.toggle(${this.product.id})"
               data-id="${this.product.id}">
               <i class="sicon-heart"></i>
-            </salla-button>` : ``
+            </salla-button>
+            
+             <salla-add-product-button 
+             shape="icon"
+             class="md:!hidden !block"
+                product-id="${this.product.id}"
+                product-status="${this.effectiveStatus}"
+                product-type="${this.product.type}">
+                ${this.product.status == 'sale' ?
+                    `<i class="text-base sicon-${ this.product.type == 'booking' ? 'calendar-time' : 'shopping-bag'}"></i>` : ``
+                  }
+              </salla-add-product-button>
+            ` : ``
           }
             </div>
 
             <div class="s-product-card-actions">
              ${!this.horizontal && !this.hideAddBtn ?
-            `<div class="s-product-card-content-footer gap-2 absolute transition-all duration-700 md:bottom-2 md:opacity-0 group-hover:opacity-100 bottom-6 group-hover:bottom-6 left-1/2 -translate-x-1/2 w-full px-4">
+            `<div class="s-product-card-content-footer gap-2 !hidden md:!block absolute transition-all duration-700 md:bottom-2 md:opacity-0 group-hover:opacity-100 bottom-6 group-hover:bottom-6 left-1/2 -translate-x-1/2 w-full px-4">
               <salla-add-product-button width="wide"
                 product-id="${this.product.id}"
                 product-status="${this.effectiveStatus}"

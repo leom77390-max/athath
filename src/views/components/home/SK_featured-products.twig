@@ -5,10 +5,19 @@
 
         <!-- TOP HEADER -->
         <div class="mb-10 text-center ">
-            <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-gray-900 leading-tight mx-auto lg:mx-0 ">
-                Customers enjoy their journey everyday
+           <h2
+                class="text-3xl lg:text-4xl font-bold mb-4 leading-tight mx-auto lg:mx-0"
+                style="color: {{ component.section_heading_color ?: '#010101' }}"
+            >
+                {{ component.section_heading }}
             </h2>
-            <p class="text-xs uppercase tracking-widest text-gray-400 mb-2">Photos & Videos</p>
+
+            <p
+                class="text-xs uppercase tracking-widest mb-2"
+                style="color: {{ component.section_subtitle_color ?: '#666666' }}"
+            >
+                {{ component.section_subtitle }}
+            </p>
         </div>
 
         <!-- MOBILE: Dropdown + Description -->
@@ -47,5 +56,16 @@
 </section>
 
 <style>
+{% if component.section_heading_color %}
+.tab-btn .tab-title{
+    color:{{component.section_heading_color}} !important;
+}
+{% endif %}
+{% if component.section_subtitle_color %}
+.tab-btn .tab-desc{
+    color:{{component.section_subtitle_color}} !important;
+}
+{% endif %}
+
 </style>
 

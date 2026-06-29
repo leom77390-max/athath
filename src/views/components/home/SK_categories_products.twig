@@ -5,7 +5,7 @@
 				<!-- Tabs Titles -->
 				<div class="flex items-center gap-4 justify-between w-full flex-col md:flex-row">
 
-					<div class="SK-categories flex items-center flex-wrap justify-center gap-4 md:gap-8">
+					<div class="SK-categories flex items-center flex-wrap justify-start gap-4 md:gap-8">
 						{% for cat in component.categories %}
 							<salla-tab-header slot="header" name="category-{{ loop.index }}">
 								<div class="SK-tab-item flex flex-col cursor-pointer group">
@@ -142,6 +142,10 @@
 	</style>
 {% endif %}
 <style>
+.SK-products-section .carousel-slider .swiper{
+  padding:0px 12px !important;
+  margin:0 !important;
+}
 .s-tabs-content {
   display: grid;
   grid-template-rows: 0fr;

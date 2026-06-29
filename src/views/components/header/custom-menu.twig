@@ -44,7 +44,7 @@ const MegaMenu = (() => {
   function makeRow({ title, url, children, image }, depth = 0) {
     const hasSubs = children?.length > 0;
     const row = document.createElement('div');
-    row.className = 'menu-row mb-9';
+    row.className = 'menu-row mb-2';
     row.setAttribute('role', 'listitem');
 
     const img = image
@@ -149,7 +149,7 @@ const MegaMenu = (() => {
     document.dispatchEvent(new CustomEvent('menus:ready', { detail: data }));
 
     const homeRow = document.createElement('div');
-    homeRow.className = 'menu-row mb-9';
+    homeRow.className = 'menu-row mb-2';
     homeRow.innerHTML = `
       <a href="{{ store.url }}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-font mb-9 text-lg">
         {{ trans('blocks.header.home') }}

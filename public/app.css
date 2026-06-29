@@ -953,9 +953,6 @@ input:where([type='file']):focus{
 .right-3{
     right: 0.75rem;
 }
-.right-4{
-    right: 1rem;
-}
 .right-5{
     right: 1.25rem;
 }
@@ -974,14 +971,14 @@ input:where([type='file']):focus{
 .top-2{
     top: 0.5rem;
 }
-.top-20{
-    top: 5rem;
-}
 .top-24{
     top: 6rem;
 }
 .top-4{
     top: 1rem;
+}
+.top-40{
+    top: 10rem;
 }
 .top-5{
     top: 1.25rem;
@@ -1224,6 +1221,9 @@ input:where([type='file']):focus{
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+.\!block{
+    display: block !important;
+}
 .block{
     display: block;
 }
@@ -1354,6 +1354,9 @@ input:where([type='file']):focus{
 }
 .h-\[52px\]{
     height: 52px;
+}
+.h-\[82px\]{
+    height: 82px;
 }
 .h-\[872px\]{
     height: 872px;
@@ -1509,6 +1512,9 @@ input:where([type='file']):focus{
 }
 .w-\[420px\]{
     width: 420px;
+}
+.w-\[80px\]{
+    width: 80px;
 }
 .w-\[92vw\]{
     width: 92vw;
@@ -2015,6 +2021,9 @@ input:where([type='file']):focus{
 .whitespace-nowrap{
     white-space: nowrap;
 }
+.text-wrap{
+    text-wrap: wrap;
+}
 .break-all{
     word-break: break-all;
 }
@@ -2196,6 +2205,14 @@ input:where([type='file']):focus{
     --tw-bg-opacity: 1;
     background-color: rgba(185, 68, 48, 1);
     background-color: rgba(185, 68, 48, var(--tw-bg-opacity, 1));
+}
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
+    background-color: rgba(65, 64, 66, 0.15);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_15\%\2c transparent\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 15%,transparent);
+    }
 }
 .bg-background{
     background-color: var(--color-background);
@@ -2596,17 +2613,26 @@ input:where([type='file']):focus{
 .text-\[clamp\(0\.75rem\2c 0\.7141rem\+0\.1609vw\2c 0\.875rem\)\]{
     font-size: clamp(0.75rem, 0.7141rem + 0.1609vw, 0.875rem);
 }
+.text-\[clamp\(0\.875rem\2c 0\.7985rem\+0\.3265vw\2c 1\.125rem\)\]{
+    font-size: clamp(0.875rem, 0.7985rem + 0.3265vw, 1.125rem);
+}
 .text-\[clamp\(0\.875rem\2c 0\.8338rem\+0\.1759vw\2c 1rem\)\]{
     font-size: clamp(0.875rem, 0.8338rem + 0.1759vw, 1rem);
 }
 .text-\[clamp\(0\.933rem\2c 0\.8106rem\+0\.4898vw\2c 1\.333rem\)\]{
     font-size: clamp(0.933rem, 0.8106rem + 0.4898vw, 1.333rem);
 }
+.text-\[clamp\(1\.25rem\2c 0\.7526rem\+1\.0554vw\2c 2rem\)\]{
+    font-size: clamp(1.25rem, 0.7526rem + 1.0554vw, 2rem);
+}
 .text-\[clamp\(1\.333rem\2c 1\.1695rem\+0\.6539vw\2c 1\.867rem\)\]{
     font-size: clamp(1.333rem, 1.1695rem + 0.6539vw, 1.867rem);
 }
 .text-\[clamp\(10px\2c 1\.1705rem\+-2\.3302vw\2c 15px\)\]{
     font-size: clamp(10px, 1.1705rem + -2.3302vw, 15px);
+}
+.text-\[clamp\(1rem\2c 0\.7526rem\+1\.0554vw\2c 1\.75rem\)\]{
+    font-size: clamp(1rem, 0.7526rem + 1.0554vw, 1.75rem);
 }
 .text-base{
     font-size: 1rem;
@@ -30316,6 +30342,7 @@ input[type=radio].sr-only:checked ~ div.mm-ocd--open .mm-ocd__backdrop::after {
 }
 .head-level #mobile-menu > .main-menu{
     display: flex !important;
+    justify-content: center !important;
     gap: 1.5rem !important;
 }
 /* Submenu panel styling */
@@ -34240,6 +34267,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: none;
   line-height: 1.5;
 }
+[dir=rtl] .tab-btn .tab-desc {
+  text-align: right;
+}
+[dir=ltr] .tab-btn .tab-desc {
+  text-align: left;
+}
 .tab-btn.active .tab-title {
   color: #111827;
   font-weight: 700;
@@ -35014,6 +35047,13 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   right: auto;
   border-radius: 0;
 }
+@media (max-width: 767px) {
+  .s-product-card-vertical salla-add-product-button button {
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+  }
+}
 [dir=rtl] .qv-gallery {
   padding-right: 16px;
 }
@@ -35464,7 +35504,8 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   height: 20px !important;
 }
 .s-progress-bar-progress {
-  background-color: #b94430 !important;
+  background-color: #414042 !important;
+  background-color: var(--color-primary) !important;
 }
 .s-reviews-summary-wrapper {
   flex-direction: row-reverse;
@@ -36144,15 +36185,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:gap-8{
         gap: 2rem;
     }
-    .sm\:space-y-16 > :not([hidden]) ~ :not([hidden]){
-        --tw-space-y-reverse: 0;
-        margin-top: calc(4rem * (1 - 0));
-        margin-top: calc(4rem * (1 - var(--tw-space-y-reverse)));
-        margin-top: calc(4rem * calc(1 - 0));
-        margin-top: calc(4rem * calc(1 - var(--tw-space-y-reverse)));
-        margin-bottom: calc(4rem * 0);
-        margin-bottom: calc(4rem * var(--tw-space-y-reverse));
-    }
     .sm\:p-1{
         padding: 0.25rem;
     }
@@ -36213,6 +36245,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-9{
         margin-bottom: 2.25rem;
     }
+    .md\:\!block{
+        display: block !important;
+    }
     .md\:block{
         display: block;
     }
@@ -36224,6 +36259,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:grid{
         display: grid;
+    }
+    .md\:\!hidden{
+        display: none !important;
     }
     .md\:hidden{
         display: none;
@@ -36275,6 +36313,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-96{
         width: 24rem;
+    }
+    .md\:w-\[150px\]{
+        width: 150px;
     }
     .md\:w-\[420px\]{
         width: 420px;
@@ -36427,6 +36468,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:top-20{
         top: 5rem;
+    }
+    .lg\:top-40{
+        top: 10rem;
     }
     .lg\:col-span-3{
         grid-column: span 3 / span 3;
@@ -36585,6 +36629,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:justify-center{
         justify-content: center;
     }
+    .lg\:gap-11{
+        gap: 2.75rem;
+    }
     .lg\:gap-6{
         gap: 1.5rem;
     }
@@ -36698,6 +36745,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 480px){
+    .xs\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     .xs\:p-11{
         padding: 2.75rem;
     }

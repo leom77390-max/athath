@@ -8,16 +8,16 @@
 				"spaceBetween":20,
 				"breakpoints":{
           "0":{
-            "slidesPerView":1.8
+            "slidesPerView":1.5
           },
           "640":{
-            "slidesPerView":2.2
-          },
-          "1024":{
             "slidesPerView":1.8
           },
-          "1280":{
+          "1024":{
             "slidesPerView":2
+          },
+          "1280":{
+            "slidesPerView":2.5
           }
         }
 			}'>
@@ -31,18 +31,9 @@
 								<div class="categories-slide__item-info">
 									<div>
 										<h3 class="categories-slide__item-title">{{category.name}}</h3>
-										{% if category.products_count %}
-                      <span class="categories-slide__item-count">
-                        {{ category.products_count }} items
-                      </span>
-                    {% elseif category.items_count %}
-                      <span class="categories-slide__item-count">
-                        {{ category.items_count }} items
-                      </span>
-                    {% endif %}
 									</div>
-									<span class="categories-slide__arrow border border-gray-300 rounded-full p-2 flex items-center justify-center">
-										<i class="sicon-arrow-up-right"></i>
+									<span class="categories-slide__arrow border border-gray-300 rounded-full p-4 flex items-center justify-center">
+										<i class="sicon-arrow-up-right text-[18px]"></i>
 									</span>
 								</div>
 							</a>
@@ -55,7 +46,7 @@
 		<div class="content_cat">
 			<div class="categories-slide__header">
 				{% if c.block_top_brand %}
-					<h5 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h5>
+					<h4 class="categories-slide__header-top" style="color: {{ c.block_top_brand_color }}">{{ c.block_top_brand }}</h4>
 				{% endif %}
 				{% if c.categories_list_title %}
 					<h2 class="categories-slide__header-title" style="color: {{ c.categories_list_title_color }}">{{ c.categories_list_title }}</h2>
@@ -70,7 +61,7 @@
 
 <style>
   #categories-section-{{position}} {
-    width: 80%;
+    width: 90%;
   }
 	.categories-slide {
 		padding: 40px 0;
@@ -94,16 +85,16 @@
 		gap: 1rem;
 	}
 	.categories-slide__header-top {
-		font-size: 13px;
-		font-weight: 500;
+		font-size: 18px;
+		font-weight: 700;
 	}
 	.categories-slide__header-title {
-		font-size: 32px;
-		font-weight: 600;
-		line-height: 1.2;
+		font-size: 40px;
+		font-weight: 800;
+		line-height: 1.5;
 	}
 	.categories-slide__header-subtitle {
-		font-size: 13px;
+		font-size: 18px;
 		line-height: 1.65;
 	}
 	.categories-slide__nav {
@@ -160,12 +151,14 @@
 		direction: rtl;
 	}
 	.categories-slide__item-title {
-		font-size: 16px;
-		font-weight: 600;
+		font-size: 24px;
+		font-weight: 800;
 	}
-	.categories-slide__item-count {
-		font-size: 13px;
-		color: #777;
+
+	@media (min-width: 1024px) {
+    .content_cat {
+			max-width: 25rem;
+		}
 	}
 
 @media (max-width: 1024px) {
@@ -209,7 +202,7 @@
 	}
 
 	.categories-slide__image-wrapper {
-		height: 220px;
+		height: 320px;
 	}
 
 	.categories-slide__item {
@@ -220,5 +213,42 @@
 		padding: 14px;
 	}
 
+}
+.categories-slide__arrow {
+	position: relative;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	pointer-events: none;
+}
+
+.categories-slide__item:hover .categories-slide__arrow {
+	pointer-events: auto;
+	background-color: #111;
+	color: #fff;
+}
+
+.categories-slide__arrow::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		120deg,
+		transparent,
+		rgba(255,255,255,0.6),
+		transparent
+	);
+	transition: all 0.5s ease;
+}
+
+.categories-slide__item:hover .categories-slide__arrow::before {
+	left: 100%;
+}
+
+.categories-slide__arrow i {
+	position: relative;
+	z-index: 2;
 }
 </style>
