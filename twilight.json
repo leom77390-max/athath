@@ -1469,7 +1469,6 @@
                     "value": false,
                     "selected": false
                 },
-
                 {
                     "type": "boolean",
                     "icon": "sicon-toggle-off",
@@ -4844,6 +4843,17 @@
                     "id": "background_is_image",
                     "format": "switch",
                     "value": false
+                },
+                  {
+                    "type": "boolean",
+                    "icon": "sicon-toggle-off",
+                    "label": "وضع المكون داخل حاوية",
+                    "description": null,
+                    "id": "add_inside_container",
+                    "format": "switch",
+                    "required": false,
+                    "value": false,
+                    "selected": false
                 },
                 {
                     "id": "background_color",
