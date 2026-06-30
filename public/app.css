@@ -1256,6 +1256,10 @@ input:where([type='file']):focus{
 .aspect-square{
     aspect-ratio: 1 / 1;
 }
+.\!size-11{
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+}
 .size-6{
     width: 1.5rem;
     height: 1.5rem;
@@ -1263,14 +1267,6 @@ input:where([type='file']):focus{
 .size-8{
     width: 2rem;
     height: 2rem;
-}
-.size-11{
-    width: 2.75rem;
-    height: 2.75rem;
-}
-.\!size-11{
-    width: 2.75rem !important;
-    height: 2.75rem !important;
 }
 .\!h-36{
     height: 9rem !important;
@@ -1389,9 +1385,6 @@ input:where([type='file']):focus{
 }
 .h-px{
     height: 1px;
-}
-.h-1{
-    height: 0.25rem;
 }
 .max-h-0{
     max-height: 0px;
@@ -2304,12 +2297,6 @@ input:where([type='file']):focus{
 }
 .bg-transparent{
     background-color: transparent;
-}
-.bg-white\/10{
-    background-color: rgba(255, 255, 255, 0.1);
-}
-.bg-white\/20{
-    background-color: rgba(255, 255, 255, 0.2);
 }
 .bg-gradient-to-t{
     background-image: linear-gradient(to top, var(--tw-gradient-stops));
@@ -35964,13 +35951,13 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(45deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.hover\:border:hover{
-    border-width: 1px;
-}
 .hover\:border-black:hover{
     --tw-border-opacity: 1;
     border-color: rgba(0, 0, 0, 1);
     border-color: rgba(0, 0, 0, var(--tw-border-opacity, 1));
+}
+.hover\:border-font:hover{
+    border-color: var(--color-font);
 }
 .hover\:border-gray-100:hover{
     --tw-border-opacity: 1;
@@ -35982,8 +35969,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(156, 163, 175, 1);
     border-color: rgba(156, 163, 175, var(--tw-border-opacity, 1));
 }
-.hover\:border-font:hover{
-    border-color: var(--color-font);
+.hover\:bg-background:hover{
+    background-color: var(--color-background);
 }
 .hover\:bg-font:hover{
     background-color: var(--color-font);
@@ -36006,14 +35993,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:bg-secondary:hover{
     background-color: var(--color-secondary);
 }
-.hover\:bg-white:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgba(255, 255, 255, 1);
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
-}
-.hover\:bg-background:hover{
-    background-color: var(--color-background);
-}
 .hover\:text-background:hover{
     color: var(--color-background);
 }
@@ -36033,11 +36012,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
-}
-.hover\:text-black:hover{
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, 1);
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .hover\:underline:hover{
     text-decoration-line: underline;

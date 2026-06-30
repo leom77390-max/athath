@@ -128,21 +128,22 @@
       </div>
     </salla-slider>
     <div class="flex items-center justify-center w-fit gap-4 mx-auto">
-      {% if component.show_navigation %}
-        <button
-            class="hero-next-{{ position }} !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition hover:bg-background hover:text-font hover:border-font">
-            <i class="sicon-arrow-right"></i>
-        </button>
-      {% endif %}
-        {% if component.show_pagination %}
-        <div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
-        {% endif %}
         {% if component.show_navigation %}
         <button
             class="hero-prev-{{ position }} !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition hover:bg-background hover:text-font hover:border-font">
-            <i class="sicon-arrow-left"></i>
+            <i class="sicon-arrow-right"></i>
         </button>
         {% endif %}
+     
+        {% if component.show_pagination %}
+        <div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
+        {% endif %}
+         {% if component.show_navigation %}
+        <button
+            class="hero-next-{{ position }} !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition hover:bg-background hover:text-font hover:border-font">
+            <i class="sicon-arrow-left"></i>
+        </button>
+      {% endif %}
     </div>
 </section>
 <style>
@@ -204,7 +205,9 @@
 .shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet-active::after {
     animation: heroProgress-{{ position }} {{ component.delay_time|default(3) }}s linear forwards;
 }
-
+.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+  width:fit-content !important;
+}
 @keyframes heroProgress-{{ position }} {
     from {
         width: 0;
