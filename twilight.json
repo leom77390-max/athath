@@ -81,7 +81,7 @@
       "type": "static",
       "format": "title",
       "id": "colors_of_our_theme",
-      "value": "<div class='flex-center p-3 mb-7 text-center font-bold text-lg' style='background: #f3f0e9;padding: 4px;color: #010101;border-radius: 20px;margin-bottom: 10px;'  >ألـوان الثـيم</div>",
+      "value": "<div class='flex-center p-3 mb-7 text-center font-bold text-lg' style='background: #21636d;padding: 4px;color: #010101;border-radius: 20px;margin-bottom: 10px;'  >ألـوان الثـيم</div>",
       "variant": "h6"
     },
     {
