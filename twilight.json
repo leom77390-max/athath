@@ -5281,50 +5281,6 @@
                     ]
                 },
                 {
-                    "id": "desktop_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع الوسائط — الشاشات الكبيرة (vh)",
-                    "description": "الارتفاع الأقصى للصورة أو الفيديو على سطح المكتب.",
-                    "icon": "sicon-hashtag",
-                    "value": 90,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_image",
-                                "three_column"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": "mobile_height",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "ارتفاع الوسائط — الشاشات الصغيرة (vh)",
-                    "description": "الارتفاع الأقصى للصورة أو الفيديو على الجوال.",
-                    "icon": "sicon-hashtag",
-                    "value": 70,
-                    "minimum": "20",
-                    "maximum": "200",
-                    "conditions": [
-                        {
-                            "id": "layout_mode",
-                            "operation": "=",
-                            "value": [
-                                "accordion_image",
-                                "three_column"
-                            ]
-                        }
-                    ]
-                },
-                {
                     "type": "static",
                     "format": "title",
                     "id": "header_faq",
