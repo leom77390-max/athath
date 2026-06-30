@@ -43,69 +43,83 @@
         {% set ls = component.laptop_slides_per_view|default(3) %}
         {% set ms = component.mobile_slides_per_view|default(1) %}
         {% set mob_peek = ms ~ '.3' %}
-        {% set controls = component.enable_controls|default(true) ? 'outer' : 'none' %}
-        {% set loop_val = component.enable_loop|default(false) ? 'true' : 'false' %}
 
         <salla-slider
-            type="carousel"
-            controls="{{ controls }}"
-            pagination
             id="sk-cards-{{ component.id }}"
+            type="carousel"
+            class="SK-cards-section__slider"
+            {{ component.enable_autoplay ? 'auto-play' : '' }}
+            {{ component.enable_controls|default(true) ? 'controls-outer' : 'show-controls="false"' }}
+            {{ component.enable_loop|default(true) ? 'loop="true"' : '' }}
+            pagination
             slider-config='{
-                {% if component.enable_autoplay %}"autoplay":{"delay":3000,"disableOnInteraction":false},{% endif %}
-                "loop": {{ loop_val }},
                 "slidesPerView": {{ mob_peek }},
                 "spaceBetween": 16,
+                "speed": 800,
+                "grabCursor": true,
                 "breakpoints": {
                     "640":  {"slidesPerView": 2.1,  "spaceBetween": 20},
                     "1024": {"slidesPerView": {{ ls }}, "spaceBetween": 24},
                     "1280": {"slidesPerView": {{ ds }}, "spaceBetween": 24}
                 }
+                {% if component.enable_autoplay %},
+                "autoplay": {
+                    "delay": {{ component.delay_time | default(3) }}000,
+                    "disableOnInteraction": false,
+                    "pauseOnMouseEnter": true
+                }
+                {% endif %}
             }'
-            class="SK-cards-section__slider">
+        >
             <div slot="items">
                 {% for card in component.card %}
                 <div class="swiper-slide h-auto">
                     <div class="SK-card"
-                         style="border-radius:{{ card.corner_rounded|default(16) }}px; overflow:hidden;">
+                         style="border-radius:{{ card.corner_rounded|default(card['card.corner_rounded']|default(16)) }}px; overflow:hidden;">
 
                         {# Full-bleed background #}
+                        {% set card_bg_is_image = card.background_is_image is defined ? card.background_is_image : card['card.background_is_image']|default(false) %}
+                        {% set card_bg_image = card.bg_image|default(card['card.bg_image']|default('')) %}
+                        {% set card_bg_color = card.bg_color|default(card['card.bg_color']|default('#f5f0eb')) %}
                         <div class="SK-card__bg"
                              style="
-                             {% if card.background_is_image and card.bg_image %}
-                                 background-image:url('{{ card.bg_image }}');
+                             {% if card_bg_is_image and card_bg_image %}
+                                 background-image:url('{{ card_bg_image }}');
                                  background-size:cover;
                                  background-position:center top;
                              {% else %}
-                                 background-color:{{ card.bg_color|default('#f5f0eb') }};
+                                 background-color:{{ card_bg_color }};
                              {% endif %}
                              "></div>
 
                         {# Bottom gradient overlay so text is always readable #}
                         {% if component.overlay_is_true %}
-                                                <div class="SK-card__overlay"></div>
-
+                            <div class="SK-card__overlay"></div>
                         {% endif %}
-                        
 
                         {# Card content — sits above the overlay #}
-                        <div class="SK-card__body">
+                        {% set card_title = card.title|default(card['card.title']|default('')) %}
+                        {% set card_title_color = card.title_color|default(card['card.title_color']|default('#18181b')) %}
+                        {% set card_btn_text = card.button_text|default(card['card.button_text']|default('')) %}
+                        {% set card_btn_bg = card.button_bg_color|default(card['card.button_bg_color']|default('#18181b')) %}
+                        {% set card_btn_color = card.button_text_color|default(card['card.button_text_color']|default('#ffffff')) %}
+                        {% set card_btn_url = card.btn_url|default(card['card.btn_url']|default('#')) %}
 
-                            {% if card.title %}
+                        <div class="SK-card__body">
+                            {% if card_title %}
                             <h3 class="SK-card__title"
-                                style="color:{{ card.title_color|default('#18181b') }};">
-                                {{ card.title }}
+                                style="color:{{ card_title_color }};">
+                                {{ card_title }}
                             </h3>
                             {% endif %}
 
-                            {% if card.button_text %}
-                            <a href="{{ card.btn_url|default('#') }}"
+                            {% if card_btn_text %}
+                            <a href="{{ card_btn_url }}"
                                class="SK-card__btn"
-                               style="--btn-bg: {{ card.button_bg_color|default('#18181b') }}; --btn-color: {{ card.button_text_color|default('#ffffff') }}; background-color: var(--btn-bg); color: var(--btn-color);">
-                                <span class="SK-card__btn-text">{{ card.button_text }}</span>
+                               style="--btn-bg: {{ card_btn_bg }}; --btn-color: {{ card_btn_color }}; background-color: var(--btn-bg); color: var(--btn-color);">
+                                <span class="SK-card__btn-text">{{ card_btn_text }}</span>
                             </a>
                             {% endif %}
-
                         </div>
                     </div>
                 </div>
@@ -134,7 +148,9 @@
                          "></div>
 
                     {# Bottom gradient overlay so text is always readable #}
-                    <div class="SK-card__overlay"></div>
+                      {% if component.overlay_is_true %}
+                            <div class="SK-card__overlay"></div>
+                        {% endif %}
 
                     {# Card content — sits above the overlay #}
                     <div class="SK-card__body">
@@ -393,9 +409,17 @@
 }
 .SK-cards-section__slider .swiper {
     overflow: visible;
+    cursor: grab;
+}
+.SK-cards-section__slider .swiper:active {
+    cursor: grabbing;
+}
+.SK-cards-section__slider .swiper-wrapper {
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }
 .SK-cards-section__slider .swiper-slide {
     height: auto;
+    transition: transform 0.4s ease;
 }
 
 /* ── Mobile ── */
