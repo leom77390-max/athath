@@ -175,6 +175,7 @@
   position: absolute;
   inset: 0;
 }
+{% if component.show_pagination %}
 
 .shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet {
     position: relative;
@@ -212,4 +213,5 @@
         width: 100%;
     }
 }
+{% endif %}
 </style>
