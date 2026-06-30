@@ -7,6 +7,28 @@
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
   "
 >
+<div
+  class="inner-content flex flex-col
+    {% if component.items_alignment_horizontal|default('center') == 'start' %}
+      items-start text-start
+    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
+      items-center text-center
+    {% else %}
+      items-end text-end
+    {% endif %}">
+
+    {% if  component.subtext %}
+      <p class="component-subtext" style="color: {{ component.subtext_color }}">
+        {{ component.subtext }}
+      </p>
+    {% endif %}
+
+    {% if  component.block_title %}
+      <h2 class="component-title" style="color: {{ component.blocktitle_color }}">
+        {{ component.block_title }}
+      </h2>
+    {% endif %}
+</div>
     <salla-slider
         id="shopify-hero-{{ position }}"
         type="carousel"
