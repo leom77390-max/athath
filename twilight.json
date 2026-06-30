@@ -5808,6 +5808,31 @@
                     ]
                 },
                 {
+                    "id": "delay_time",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "مدة التأخير بين الشرائح (بالثواني)",
+                    "description": "حدد عدد الثواني التي ينتظرها السلايدر قبل الانتقال للبطاقة التالية.",
+                    "icon": "sicon-clock",
+                    "value": 3,
+                    "step": "1",
+                    "minimum": "1",
+                    "maximum": "10",
+                    "conditions": [
+                        {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "enable_autoplay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "id": "enable_loop",
                     "type": "boolean",
                     "format": "switch",
@@ -6257,7 +6282,6 @@
                 }
             ]
     },
-
     {
       "key": "9fdf7adf-eb88-489c-80d3-71e9c2b31b04",
       "title": {
