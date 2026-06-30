@@ -8,7 +8,7 @@
   "
 >
 <div
-  class="inner-content flex flex-col
+  class="inner-content flex flex-col container
     {% if component.items_alignment_horizontal|default('center') == 'start' %}
       items-start text-start
     {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
@@ -16,17 +16,15 @@
     {% else %}
       items-end text-end
     {% endif %}">
-
-    {% if  component.subtext %}
-      <p class="component-subtext" style="color: {{ component.subtext_color }}">
-        {{ component.subtext }}
-      </p>
-    {% endif %}
-
     {% if  component.block_title %}
       <h2 class="component-title" style="color: {{ component.blocktitle_color }}">
         {{ component.block_title }}
       </h2>
+    {% endif %}
+        {% if  component.subtext %}
+      <p class="component-subtext" style="color: {{ component.subtext_color }}">
+        {{ component.subtext }}
+      </p>
     {% endif %}
 </div>
     <salla-slider
