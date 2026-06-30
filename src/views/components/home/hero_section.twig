@@ -7,6 +7,26 @@
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
   "
 >
+<div
+  class="inner-content flex flex-col container
+    {% if component.items_alignment_horizontal|default('center') == 'start' %}
+      items-start text-start
+    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
+      items-center text-center
+    {% else %}
+      items-end text-end
+    {% endif %}">
+    {% if  component.block_title %}
+      <h2 class="component-title" style="color: {{ component.blocktitle_color }}">
+        {{ component.block_title }}
+      </h2>
+    {% endif %}
+        {% if  component.subtext %}
+      <p class="component-subtext" style="color: {{ component.subtext_color }}">
+        {{ component.subtext }}
+      </p>
+    {% endif %}
+</div>
     <salla-slider
         id="shopify-hero-{{ position }}"
         type="carousel"
@@ -127,6 +147,24 @@
 
       </div>
     </salla-slider>
+    <div class="flex items-center justify-center w-fit gap-4 mx-auto">
+        {% if component.show_navigation %}
+        <button
+            class="hero-prev-{{ position }} !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition hover:bg-background hover:text-font hover:border-font">
+            <i class="sicon-arrow-right"></i>
+        </button>
+        {% endif %}
+     
+        {% if component.show_pagination %}
+        <div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
+        {% endif %}
+         {% if component.show_navigation %}
+        <button
+            class="hero-next-{{ position }} !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition hover:bg-background hover:text-font hover:border-font">
+            <i class="sicon-arrow-left"></i>
+        </button>
+      {% endif %}
+    </div>
 </section>
 <style>
 .shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet::before,
@@ -158,4 +196,45 @@
   position: absolute;
   inset: 0;
 }
+{% if component.show_pagination %}
+
+.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet {
+    position: relative;
+    width: 20px !important;
+    height: 10px !important;
+    margin: 0 4px !important;
+    border-radius: 9999px !important;
+    background: rgba(0,0,0,.2) !important;
+    opacity: 1 !important;
+    overflow: hidden;
+}
+.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet-active{
+ width: 40px !important;
+}
+
+.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 0;
+    height: 100%;
+    background: #000;
+    border-radius: inherit;
+}
+
+.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet-active::after {
+    animation: heroProgress-{{ position }} {{ component.delay_time|default(3) }}s linear forwards;
+}
+.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+  width:fit-content !important;
+}
+@keyframes heroProgress-{{ position }} {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+{% endif %}
 </style>

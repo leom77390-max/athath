@@ -10,7 +10,7 @@
     : 'background-color:' ~ component.background_color|default('#ffffff') ~ ';' %}
 
 <section
-    class="SK-cards-section SK-cards-section-{{position}} {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? '!mb-0' : '' }}"
+    class="SK-cards-section overflow-hidden SK-cards-section-{{position}} {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? '!mb-0' : '' }}"
     style="{{ bg_style }}">
 
     {# ── Section Header ── #}

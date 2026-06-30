@@ -105,6 +105,10 @@
   }
 }
 
+.s-user-menu-toggler.opened .s-user-menu-dropdown {
+    visibility: visible;
+    --tw-translate-y: 87% !important;
+  }
 
 /* ===============================
    TOP NAVBAR
