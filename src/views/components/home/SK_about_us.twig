@@ -82,7 +82,11 @@
                              "></div>
 
                         {# Bottom gradient overlay so text is always readable #}
-                        <div class="SK-card__overlay"></div>
+                        {% if component.overlay_is_true %}
+                                                <div class="SK-card__overlay"></div>
+
+                        {% endif %}
+                        
 
                         {# Card content — sits above the overlay #}
                         <div class="SK-card__body">

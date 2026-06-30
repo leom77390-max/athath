@@ -5589,6 +5589,15 @@
                     "value": false
                 },
                 {
+                    "type": "boolean",
+                    "icon": "sicon-format-fill",
+                    "label": "تفعيل التدرج الخلفي",
+                    "description": "تفعيل هذا الخيار يجعل التدرج الخلفي فوق الخلفية",
+                    "id": "overlay_is_true",
+                    "format": "switch",
+                    "value": true
+                },
+                {
                     "id": "enable_slider",
                     "type": "boolean",
                     "format": "switch",
