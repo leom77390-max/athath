@@ -5616,10 +5616,10 @@
                     "label": "عدد البطاقات في الشاشات الكبيرة",
                     "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة الكمبيوتر.",
                     "icon": "sicon-hashtag",
-                    "value": 4,
+                    "value": 3,
                     "required": true,
                     "minimum": "1",
-                    "maximum": "4",
+                    "maximum": "3",
                     "conditions": [
                         {
                             "id": "enable_slider",
