@@ -11,13 +11,15 @@
 
 {% set mode = component.layout_mode|default('accordion_image') %}
 
-<section class="SK-faq-section SK-faq-section-{{position}} {{ component.add_inside_container ? 'container' : '' }} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
+<section class="SK-faq-section SK-faq-section-{{position}} {{ component.rm_margin ? 'mb-0' : 'mb-12' }} SK-layout--{{ mode }}"
          style="--desktop-height: {{ component.desktop_height|default(90) }}vh; --mobile-height: {{ component.mobile_height|default(70) }}vh;
                 {% if component.background_is_image and component.background_image %}
                     background-image: url('{{ component.background_image }}'); background-size: cover; background-position: center;
                 {% else %}
                     background-color: {{ component.background_color|default('transparent') }};
                 {% endif %}">
+
+    <div class="{{ component.add_inside_container ? 'container' : '' }}">
 
     {# ── Global Title (all modes) ── #}
     {% if component.main_title %}
@@ -141,8 +143,7 @@
                 {% else %}
                     <video src="{{ component.banner_video }}"
                            class="SK-faq-section__media rounded-2xl w-full"
-                           controls
-                           playsinline></video>
+                           autoplay muted loop playsinline></video>
                 {% endif %}
             {% elseif component.banner_img %}
                 <img src="{{ component.banner_img }}"
@@ -262,8 +263,7 @@
                 {% else %}
                     <video src="{{ component.banner_video }}"
                            class="SK-faq-section__media rounded-2xl w-full"
-                           controls
-                           playsinline></video>
+                           autoplay muted loop playsinline></video>
                 {% endif %}
             {% elseif component.banner_img %}
                 <img src="{{ component.banner_img }}"
@@ -320,6 +320,7 @@
 
     {% endif %}{# /layout switch #}
 
+    </div>
 </section>
 
 
