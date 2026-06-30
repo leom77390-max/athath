@@ -29522,7 +29522,7 @@ input[type=radio].sr-only:checked ~ div.Sleek-header #nav-cart span {
 .Sleek-header .header-search .s-search-results{
     z-index: 10;
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .s-user-menu-toggler.opened .s-user-menu-dropdown {
     --tw-translate-y: 87% !important;
   }
