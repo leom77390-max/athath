@@ -43,38 +43,20 @@
         {% set ls = component.laptop_slides_per_view|default(3) %}
         {% set ms = component.mobile_slides_per_view|default(1) %}
         {% set mob_peek = ms ~ '.3' %}
-        {% set loop_val = component.enable_loop|default(true) ? 'true' : 'false' %}
 
         <salla-slider
             id="sk-cards-{{ component.id }}"
             type="carousel"
-            auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}"
-            show-controls="{{ component.enable_controls|default(true) ? 'true' : 'false' }}"
-            pagination="true"
-            slides-per-view="auto"
-            speed="800"
             class="SK-cards-section__slider"
-            data-delay="{{ component.delay_time | default(3) }}000"
+            {{ component.enable_autoplay ? 'auto-play' : '' }}
+            {{ component.enable_controls|default(true) ? 'controls-outer' : 'show-controls="false"' }}
+            {{ component.enable_loop|default(true) ? 'loop="true"' : '' }}
+            pagination
             slider-config='{
                 "slidesPerView": {{ mob_peek }},
                 "spaceBetween": 16,
                 "speed": 800,
-                "loop": {{ loop_val }},
                 "grabCursor": true,
-                "touchRatio": 1.5,
-                "freeMode": {
-                    "enabled": false,
-                    "momentum": true,
-                    "momentumRatio": 0.8
-                },
-                "navigation": {
-                    "nextEl": ".sk-cards-next-{{ component.id }}",
-                    "prevEl": ".sk-cards-prev-{{ component.id }}"
-                },
-                "pagination": {
-                    "el": ".sk-cards-pagination-{{ component.id }}",
-                    "clickable": true
-                },
                 "breakpoints": {
                     "640":  {"slidesPerView": 2.1,  "spaceBetween": 20},
                     "1024": {"slidesPerView": {{ ls }}, "spaceBetween": 24},
@@ -166,7 +148,9 @@
                          "></div>
 
                     {# Bottom gradient overlay so text is always readable #}
-                    <div class="SK-card__overlay"></div>
+                      {% if component.overlay_is_true %}
+                            <div class="SK-card__overlay"></div>
+                        {% endif %}
 
                     {# Card content — sits above the overlay #}
                     <div class="SK-card__body">
