@@ -48,12 +48,15 @@
 
         <salla-slider
             type="carousel"
-            controls="{{ controls }}"
+            show-controls="{{ controls }}"
             pagination
+            auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}"
             id="sk-cards-{{ component.id }}"
+            speed="800"
             slider-config='{
                 {% if component.enable_autoplay %}"autoplay":{"delay":3000,"disableOnInteraction":false},{% endif %}
                 "loop": {{ loop_val }},
+                "speed": 800,
                 "slidesPerView": {{ mob_peek }},
                 "spaceBetween": 16,
                 "breakpoints": {
