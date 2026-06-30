@@ -74,7 +74,7 @@
     }
     .store-footer__inner {
       color: var(--color-font) !important;
-      background-color: var(--color-primary) !important;
+      background-color: var(--color-background) !important;
       @apply py-6 lg:py-12;
     }
 
@@ -125,7 +125,7 @@
 
 .store-footer {
   .footer-is-light & {
-    * {
+    *:not(#mc-embedded-subscribe) {
       color: var(--color-font) !important;
     }
     /* روابط الفوتر */
@@ -140,8 +140,9 @@
     /* روابط السوشيال */
     .s-social-link {
       a {
-        background-color: #c4c4c4;
+        background-color: #ffffff;
         border-radius: 6px;
+        border: 0;
         color: var(--color-font);
       }
     }

@@ -75,20 +75,25 @@ salla.onReady(() => {
       let html = `
         <div class="bundle-wrapper">
 
-            <salla-slider
-            id="${sliderId}"
-            type="thumbs"
-            show-controls="false"
-            slider-config='{
-            "slidesPerView": 1,
-            "spaceBetween": 12,
-            "loop": false,
-            "navigation": {
-                "nextEl": ".bundle-next",
-                "prevEl": ".bundle-prev"
-            }
-            }'
-        >
+           <salla-slider
+              id="${sliderId}"
+              type="thumbs"
+              show-controls="false"
+              slider-config='{
+                  "slidesPerView": 1,
+                  "spaceBetween": 12,
+                  "loop": true,
+                  "autoplay": {
+                      "delay": 3000,
+                      "disableOnInteraction": false,
+                      "pauseOnMouseEnter": true
+                  },
+                  "navigation": {
+                      "nextEl": ".bundle-next",
+                      "prevEl": ".bundle-prev"
+                  }
+              }'
+          >
             <div slot="items">
       `;
 
