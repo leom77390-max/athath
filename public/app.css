@@ -1,5 +1,5 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.107.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.15_webpack@5.107.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.107.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.108.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.16_webpack@5.108.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.108.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
@@ -4046,6 +4046,47 @@ textarea.s-input{
 .s-add-product-button-mini-checkout-content svg:where([dir="rtl"], [dir="rtl"] *){
     margin-right: 0px;
     margin-left: 0.375rem;
+}
+.s-add-product-button-busy{
+    pointer-events: none;
+    position: relative;
+}
+.s-add-product-button-busy::after{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    height: 1rem;
+    width: 1rem;
+    --tw-translate-x: -50%;
+    content: var(--tw-content);
+    --tw-translate-y: -50%;
+    transform: translate(-50%, -50%) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes spin{
+    to{
+        content: var(--tw-content);
+        transform: rotate(360deg);
+    }
+}
+.s-add-product-button-busy::after{
+    animation: spin 1s linear infinite;
+    border-radius: 9999px;
+    border-width: 2px;
+    border-style: solid;
+    border-top-color: #414042;
+    border-top-color: var(--color-primary);
+    border-left-color: #414042;
+    border-left-color: var(--color-primary);
+    border-bottom-color: rgba(243, 244, 246, 1);
+    border-bottom-color: rgba(243, 244, 246, var(--tw-border-opacity, 1));
+    --tw-border-opacity: 1;
+    border-right-color: rgba(243, 244, 246, 1);
+    border-right-color: rgba(243, 244, 246, var(--tw-border-opacity, 1));
+    --tw-content: '';
+    content: '';
+    content: var(--tw-content);
 }
 .s-advertisement-content{
     width: 100%;
@@ -10973,6 +11014,7 @@ input[type=radio].sr-only:checked ~ div.s-gifting-remove-preview {
     margin-left: auto;
     margin-right: auto;
     width: 65%;
+    min-width: 18rem;
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
@@ -18900,6 +18942,48 @@ input[type=radio].sr-only:checked ~ div.s-order-edit-products-search i {
         align-items: stretch;
     }
 }
+.s-order-options-modal-body{
+    display: block;
+}
+.s-order-options-modal-subtitle{
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    color: rgba(75, 85, 99, 1);
+    color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+}
+.s-order-options-modal-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.s-order-options-modal-item{
+    display: block;
+}
+.s-order-options-modal-footer{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.first-btn .s-add-product-button-main:not(.s-order-options-modal-footer) > salla-button {
+  width: 100%;
+  margin: 0;
+}
+.first-btn .s-add-product-button-main:not(.s-order-options-modal-footer) > salla-button button {
+  height: 48px;
+}
+.s-order-options-modal-cta-content{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.s-order-options-modal-cta-text{
+    font-weight: 700;
+}
+.s-order-options-modal-cta-total{
+    font-weight: 700;
+}
 .s-order-summary-wrapper{
     display: grid;
     grid-gap: 0.625rem;
@@ -20870,6 +20954,9 @@ article:has(salla-product-card-embed)::after{
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     padding: 1.25rem;
 }
+.s-product-options-no-padding{
+    padding: 0px !important;
+}
 .s-product-options-option-container{
     margin-bottom: 1.25rem;
 }
@@ -21668,7 +21755,7 @@ input[type=radio].sr-only:checked ~ div.s-product-options-donation-amount-curren
     }
 }
 .s-product-options-digital-card-option-stock-out{
-    opacity: 0.5;
+    opacity: 0.4;
 }
 .s-product-options-grid-mode{
     margin-bottom: 1.25rem;
@@ -21752,6 +21839,9 @@ input[type=radio].sr-only:checked ~ div.s-product-options-grid-mode input[type=r
 }
 .s-product-options-disabled{
     cursor: not-allowed;
+    opacity: 0.5;
+}
+.s-product-options-option-stock-out{
     opacity: 0.5;
 }
 .s-product-size-guide-wrapper .s-modal-title{
@@ -35887,11 +35977,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .target\:btn:target:hover{
     opacity: 0.8;
-}
-.hover\:-translate-y-0\.5:hover{
-    --tw-translate-y: -0.125rem;
-    transform: translate(var(--tw-translate-x), -0.125rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .hover\:-translate-y-px:hover{
     --tw-translate-y: -1px;
