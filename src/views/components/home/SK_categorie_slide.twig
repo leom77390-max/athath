@@ -162,20 +162,23 @@
 	}
 
 
-	.categories-slide-wrapper {
+.categories-slide-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	direction: ltr;
+	flex-direction: row-reverse;
+}
 
-		display: flex;
-		flex-direction: row-reverse;
-		align-items: center;
-		gap: 40px;
-		direction: ltr;
 
-	}
+[dir="ltr"] .categories-slide-wrapper {
+	flex-direction: row;
+}
 
-	.categories-slide-wrapper .ltr {
-		flex-direction: row;
-	}
 
+[dir="rtl"] .categories-slide-wrapper {
+	flex-direction: row-reverse;
+}
 
 	.categories-slide__content {
 
