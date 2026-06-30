@@ -121,18 +121,39 @@ class QuickView {
 
   // ---------- Stock ----------
   renderStock() {
-    const p = this.product;
-    const el = this.drawer.querySelector('.qv-stock');
+      const p = this.product;
+      const el = this.drawer.querySelector('.qv-stock');
 
-    if (p.is_out_of_stock) {
-      el.innerHTML = `<span class="w-2 h-2 rounded-full bg-red-500"></span> ${salla.lang.get('pages.products.out_of_stock')}`;
-      return;
-    }
-    if (p.unlimited_quantity || !p.quantity) {
-      el.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500"></span> <span class="text-green-600">${salla.lang.get('pages.products.in_stock')}</span>`;
-      return;
-    }
-    el.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500"></span> <span class="text-green-600">${salla.helpers.number(p.quantity)} ${salla.lang.get('pages.products.remained')}</span>`;
+      const isAr = document.documentElement.lang.startsWith('ar');
+
+      const t = {
+          inStock: isAr ? 'متوفر' : 'In Stock',
+          outOfStock: isAr ? 'نفدت الكمية' : 'Out of Stock',
+          remained: isAr ? 'متبقي' : 'left',
+      };
+
+      if (p.is_out_of_stock) {
+          el.innerHTML = `
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+              <span class="text-red-600">${t.outOfStock}</span>
+          `;
+          return;
+      }
+
+      if (p.unlimited_quantity || !p.quantity) {
+          el.innerHTML = `
+              <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              <span class="text-green-600">${t.inStock}</span>
+          `;
+          return;
+      }
+
+      el.innerHTML = `
+          <span class="w-2 h-2 rounded-full bg-green-500"></span>
+          <span class="text-green-600">
+              ${salla.helpers.number(p.quantity)} ${t.remained}
+          </span>
+      `;
   }
 
   // ---------- Options (salla-product-options + تحويل لـ pills) ----------
