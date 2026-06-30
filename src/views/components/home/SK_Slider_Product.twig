@@ -1,84 +1,145 @@
-{% set c = component %}
-
 <section class="sk-slider-product s-block overflow-hidden" id="sk-slider-product-{{ position }}">
 
-		{% if c.product_title %}
-			<div class="flex items-center justify-between">
-				<h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
-					{{ c.product_title }}
-				</h2>
-        <div class="bundle-arrows flex items-center gap-2 mb-6">
-          <button class="group relative overflow-hidden flex items-center justify-center border border-black p-3 rounded-full transition-all duration-300 hover:bg-black">
-            <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
-            <i class="relative z-10 sicon-caret-right ltr:-scale-x-100 transition-colors duration-300 group-hover:text-white"></i>
-          </button>
+	{% if c.product_title %}
+		<div class="flex items-center justify-between">
 
-          <button class="group relative overflow-hidden flex items-center justify-center border border-black p-3 rounded-full transition-all duration-300 hover:bg-black">
-            <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
-            <i class="relative z-10 sicon-caret-left ltr:-scale-x-100 transition-colors duration-300 group-hover:text-white"></i>
-          </button>
-        </div>
-      </div>
-		{% endif %}
+			<h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
+				{{ c.product_title }}
+			</h2>
 
-	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel"slider-config='{
-        "slidesPerView": 1.2,
-        "spaceBetween": 16,
-        "navigation": {
-          "nextEl": "#sk-slider-product-{{position}} .bundle-front-{{position}}",
-          "prevEl": "#sk-slider-product-{{position}} .bundle-back-{{position}}"
-        },
-        "breakpoints": {
-          "0": {
-            "slidesPerView": 1.2,
-            "spaceBetween": 16
-          },
-          "768": {
-            "slidesPerView": 1.5,
-            "spaceBetween": 24
-          },
-          "1024": {
-            "slidesPerView": 2,
-            "spaceBetween": 24
-          }
-        }
-      }'>
+			<div class="bundle-arrows flex items-center gap-2 mb-6">
+
+				<button class="bundle-back-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 rounded-full transition-all duration-300 hover:bg-black" aria-label="Previous">
+
+					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
+
+					<i class="relative z-10 sicon-caret-right ltr:-scale-x-100 transition-colors duration-300 group-hover:text-white"></i>
+
+				</button>
+
+
+				<button class="bundle-front-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 rounded-full transition-all duration-300 hover:bg-black" aria-label="Next">
+
+					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
+
+					<i class="relative z-10 sicon-caret-left ltr:-scale-x-100 transition-colors duration-300 group-hover:text-white"></i>
+
+				</button>
+
+			</div>
+
+		</div>
+	{% endif %}
+
+
+	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel" slider-config='{
+					"slidesPerView": 1.2,
+					"spaceBetween": 16,
+			
+					"navigation": {
+						"nextEl": ".bundle-front-{{position}}",
+						"prevEl": ".bundle-back-{{position}}"
+					},
+			
+					"breakpoints": {
+			
+						"0": {
+							"slidesPerView": 1.2,
+							"spaceBetween": 16
+						},
+			
+						"768": {
+							"slidesPerView": 1.5,
+							"spaceBetween": 24
+						},
+			
+						"1024": {
+							"slidesPerView": 2,
+							"spaceBetween": 24
+						}
+			
+					}
+				}'>
+
 		<div slot="items">
+
 			{% for product in c.store_products %}
+
 				<a href="{{ product.url }}" class="sk-product-card">
+
 					<div class="sk-product-card__img">
+
 						<img src="{{ product.images[0].url }}" alt="{{ product.name }}" loading="lazy">
+
 					</div>
+
+
 					<div class="sk-product-card__info">
+
+
 						{% if product.category %}
-							<span class="sk-product-card__cat">{{ product.category.name }}</span>
+							<span class="sk-product-card__cat">
+								{{ product.category.name }}
+							</span>
 						{% endif %}
-						<h3 class="sk-product-card__name">{{ product.name }}</h3>
+
+
+						<h3 class="sk-product-card__name">
+							{{ product.name }}
+						</h3>
+
+
 						<div class="sk-product-card__price">
+
 							{% if product.is_on_sale %}
-								<span class="sk-price-sale">{{ product.sale_price | money }}</span>
-								<span class="sk-price-old">{{ product.regular_price | money }}</span>
+
+								<span class="sk-price-sale">
+									{{ product.sale_price | money }}
+								</span>
+
+								<span class="sk-price-old">
+									{{ product.regular_price | money }}
+								</span>
+
 							{% else %}
-								<span class="sk-price-current">{{ product.price | money }}</span>
+
+								<span class="sk-price-current">
+									{{ product.price | money }}
+								</span>
+
 							{% endif %}
+
 						</div>
+
+
 						{% if product.description %}
-							<p class="sk-product-card__desc">{{ product.description | striptags }}</p>
+							<p class="sk-product-card__desc">
+								{{ product.description | striptags }}
+							</p>
 						{% endif %}
+
+
 						<span class="sk-product-card__btn">
 							{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}
 						</span>
+
+
 					</div>
+
 				</a>
+
 			{% endfor %}
+
+
 		</div>
+
 	</salla-slider>
 
 
 </section>
 
 <style>
-	#sk-slider-product-{{position}} {
+	#sk-slider-product-{{position}}{
 		width: 90%;
 	}
 	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav {
