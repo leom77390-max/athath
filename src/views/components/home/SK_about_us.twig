@@ -42,14 +42,14 @@
         {% set ds = component.desktop_slides_per_view|default(3) %}
         {% set ls = component.laptop_slides_per_view|default(3) %}
         {% set ms = component.mobile_slides_per_view|default(1) %}
-        {% set mob_peek = ms ~ '.15' %}
+        {% set mob_peek = ms ~ '.3' %}
         {% set controls = component.enable_controls|default(true) ? 'outer' : 'none' %}
         {% set loop_val = component.enable_loop|default(false) ? 'true' : 'false' %}
 
         <salla-slider
             type="carousel"
             controls="{{ controls }}"
-            pagination="none"
+            pagination
             id="sk-cards-{{ component.id }}"
             slider-config='{
                 {% if component.enable_autoplay %}"autoplay":{"delay":3000,"disableOnInteraction":false},{% endif %}
@@ -101,9 +101,8 @@
                             {% if card.button_text %}
                             <a href="{{ card.btn_url|default('#') }}"
                                class="SK-card__btn"
-                               style="background-color:{{ card.button_bg_color|default('#18181b') }};
-                                      color:{{ card.button_text_color|default('#ffffff') }};">
-                                {{ card.button_text }}
+                               style="--btn-bg: {{ card.button_bg_color|default('#18181b') }}; --btn-color: {{ card.button_text_color|default('#ffffff') }}; background-color: var(--btn-bg); color: var(--btn-color);">
+                                <span class="SK-card__btn-text">{{ card.button_text }}</span>
                             </a>
                             {% endif %}
 
@@ -150,9 +149,8 @@
                         {% if card.button_text %}
                         <a href="{{ card.btn_url|default('#') }}"
                            class="SK-card__btn"
-                           style="background-color:{{ card.button_bg_color|default('#18181b') }};
-                                  color:{{ card.button_text_color|default('#ffffff') }};">
-                            {{ card.button_text }}
+                           style="--btn-bg: {{ card.button_bg_color|default('#18181b') }}; --btn-color: {{ card.button_text_color|default('#ffffff') }}; background-color: var(--btn-bg); color: var(--btn-color);">
+                            <span class="SK-card__btn-text">{{ card.button_text }}</span>
                         </a>
                         {% endif %}
 
@@ -195,10 +193,43 @@
     font-weight: 500;
     text-decoration: none;
     padding-bottom: 3px;
-    border-bottom: 1.5px solid currentColor;
+    position: relative;
     transition: opacity 0.2s;
 }
-.SK-cards-section__cta-link:hover { opacity: 0.65; }
+.SK-cards-section__cta-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: right;
+}
+@media (hover: hover) {
+    .SK-cards-section__cta-link:hover { opacity: 0.65; }
+    .SK-cards-section__cta-link:hover::after {
+        animation: cta-link-slide 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+}
+@keyframes cta-link-slide {
+    0% {
+        transform-origin: right;
+        transform: scaleX(1);
+    }
+    50% {
+        transform-origin: right;
+        transform: scaleX(0);
+    }
+    51% {
+        transform-origin: left;
+        transform: scaleX(0);
+    }
+    100% {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+}
 
 /* ── Grid (when slider disabled) ── */
 .SK-cards-section__grid {
@@ -236,8 +267,10 @@
     height: 100%;
     transition: transform 0.7s ease;
 }
-.SK-card:hover .SK-card__bg {
-    transform: scale(1.04);
+@media (hover: hover) {
+    .SK-card:hover .SK-card__bg {
+        transform: scale(1.04);
+    }
 }
 
 /* Gradient overlay — fades image into a readable bottom zone */
@@ -287,17 +320,76 @@
     text-decoration: none;
     transition: transform 0.25s, box-shadow 0.25s;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
 }
-.SK-card__btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+
+.SK-card__btn::before,
+.SK-card__btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    z-index: 1;
 }
-.SK-card__btn:active { transform: scale(0.97); }
+
+.SK-card__btn::before {
+    background-color: var(--btn-color, #ffffff);
+    opacity: 0.3;
+    transition-delay: 0.1s;
+}
+
+.SK-card__btn::after {
+    background-color: var(--btn-color, #ffffff);
+    transition-delay: 0s;
+}
+
+.SK-card__btn-text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    transition-delay: 0s;
+}
+
+@media (hover: hover) {
+    .SK-card__btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .SK-card__btn:hover::before,
+    .SK-card__btn:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .SK-card__btn:hover::before {
+        transition-delay: 0s;
+    }
+
+    .SK-card__btn:hover::after {
+        transition-delay: 0.1s;
+    }
+
+    .SK-card__btn:hover .SK-card__btn-text {
+        color: var(--btn-bg, #18181b);
+        transition-delay: 0.1s;
+    }
+}
 
 /* ── Slider overrides ── */
 .SK-cards-section__slider {
     --salla-slider-padding: 0;
     overflow: visible; /* let peek card show */
+    padding-bottom: 2.5rem; /* space for pagination */
+}
+.SK-cards-section__slider .swiper-pagination {
+    bottom: 0 !important;
 }
 .SK-cards-section__slider .swiper {
     overflow: visible;
