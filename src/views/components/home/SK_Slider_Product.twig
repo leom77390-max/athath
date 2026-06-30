@@ -20,19 +20,28 @@
 		{% endif %}
 	</div>
 
-	<salla-slider id="sk-slider-{{ position }}" show-controls="false" type="carousel" slider-config='{
-			        "slidesPerView": 1.2,
-			        "spaceBetween": 16,
-               "navigation": {
-                "nextEl": ".bundle-front-{{position}}",
-                "prevEl": ".bundle-back-{{position}}"
-              },
-			        "breakpoints": {
-			          "0": { "slidesPerView": 1.2, "spaceBetween": 16 },
-			          "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
-			          "1024": { "slidesPerView": 2, "spaceBetween": 24 }
-			        }
-			      }'>
+	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel"slider-config='{
+        "slidesPerView": 1.2,
+        "spaceBetween": 16,
+        "navigation": {
+          "nextEl": "#sk-slider-product-{{position}} .bundle-front-{{position}}",
+          "prevEl": "#sk-slider-product-{{position}} .bundle-back-{{position}}"
+        },
+        "breakpoints": {
+          "0": {
+            "slidesPerView": 1.2,
+            "spaceBetween": 16
+          },
+          "768": {
+            "slidesPerView": 1.5,
+            "spaceBetween": 24
+          },
+          "1024": {
+            "slidesPerView": 2,
+            "spaceBetween": 24
+          }
+        }
+      }'>
 		<div slot="items">
 			{% for product in c.store_products %}
 				<a href="{{ product.url }}" class="sk-product-card">
@@ -240,7 +249,7 @@
 		.sk-product-card__info {
 			padding: 18px 14px;
 		}
-		#sk-slider-{{position}}{
+		#sk-slider-product-{{position}}{
 			width: 100%;
 		}
 	}
