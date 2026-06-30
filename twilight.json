@@ -4820,11 +4820,763 @@
             "is_default": true,
             "path": "home.SK_faq_section",
             "fields": [
+        {
+          "type": "static",
+          "format": "description",
+          "id": "static-desc",
+          "value": "<div><img class='w-full' src='https://b.top4top.io/p_3829gbckn1.png'></div>"
+        },
+        {
+          "type": "boolean",
+          "icon": "sicon-format-fill",
+          "label": "تخصيص ألوان المكون يدويًا",
+          "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
+          "id": "customize_colors",
+          "format": "switch",
+          "value": false
+        },
+        {
+          "type": "boolean",
+          "icon": "sicon-format-fill",
+          "label": "صورة الخلفية",
+          "description": "فعل هذا الخيار لوضع صورة خلفية في هذا المكون بدلا من اللون الافتراضي",
+          "id": "background_is_image",
+          "format": "switch",
+          "value": false
+        },
+        {
+          "type": "boolean",
+          "icon": "sicon-toggle-off",
+          "label": "وضع المكون داخل حاوية",
+          "description": null,
+          "id": "add_inside_container",
+          "format": "switch",
+          "required": false,
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "background_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "اللون الافتراضي للخلفية",
+          "description": "اختر لون خلفية المكون .",
+          "icon": "sicon-format-fill",
+          "value": "#f3eeea",
+          "conditions": [
+            {
+              "id": "background_is_image",
+              "operation": "=",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "background_image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "description": "أضف صورة مميزة تُكمل القسم بشكل بصري متناسق.",
+          "icon": "sicon-image",
+          "value": "https://cdn.files.salla.network/homepage/686931608/a0950d11-007e-4b8f-9483-b213c3baf62a_890x900.webp",
+          "conditions": [
+            {
+              "id": "background_is_image",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "layout_mode",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "نمط عرض القسم",
+          "description": "اختر الطريقة التي تريد عرض قسم الأسئلة الشائعة بها.",
+          "icon": "sicon-layout",
+          "selected": [
+            {
+              "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
+              "value": "three_column",
+              "key": "layout-three-column"
+            }
+          ],
+          "options": [
+            {
+              "label": "أكورديون فقط — عرض مبسّط",
+              "value": "accordion_only",
+              "key": "layout-accordion-only"
+            },
+            {
+              "label": "أكورديون + صورة / فيديو ",
+              "value": "accordion_image",
+              "key": "layout-accordion-image"
+            },
+            {
+              "label": "أكورديون + محتوى",
+              "value": "accordion_content",
+              "key": "layout-accordion-content"
+            },
+            {
+              "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
+              "value": "three_column",
+              "key": "layout-three-column"
+            }
+          ],
+          "source": "Manual",
+          "required": true
+        },
+        {
+          "type": "static",
+          "format": "title",
+          "id": "header_content",
+          "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "main_title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان الرئيسي للقسم",
+          "description": "يظهر أعلى القسم في جميع أنماط العرض.",
+          "placeholder": "مثال: لديك سؤال؟ نحن هنا للإجابة!",
+          "icon": "sicon-layout",
+          "value": "لديك سؤال؟ نحن هنا للإجابة!",
+          "multilanguage": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "main_title_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص الرئيسي للقسم",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            },
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "subtext",
+          "type": "string",
+          "format": "textarea",
+          "label": "النص الترويجي",
+          "description": "نص توضيحي يظهر في العمود الأول بجانب الأسئلة.",
+          "placeholder": "مثال: نصنع منتجات آمنة وفعّالة — هل لديك سؤال؟",
+          "icon": "sicon-format-text-alt",
+          "value": "نصنع منتجات آمنة وفعّالة مصمَّمة لتشعرك بأفضل حال. هل لديك سؤال حول منتجاتنا؟ تحقق مما إذا كان بإمكانك إيجاد إجابتك هنا أو تواصل معنا مباشرةً.",
+          "multilanguage": true,
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "subtext_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص الترويجي",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            },
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص زر الدعوة للتصرف (CTA)",
+          "description": "النص الذي يظهر داخل الزر أسفل النص الترويجي.",
+          "placeholder": "مثال: تواصل معنا",
+          "icon": "sicon-format-text-alt",
+          "value": "تواصل معنا",
+          "multilanguage": true,
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "button_text_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "icon": "sicon-format-fill",
+          "value": "#ffffff",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            },
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "button_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "icon": "sicon-format-fill",
+          "value": "#18181b",
+          "conditions": [
+            {
+              "id": "customize_colors",
+              "operation": "=",
+              "value": true
+            },
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "type": "items",
+          "id": "url",
+          "format": "variable-list",
+          "label": "رابط زر الدعوة للتصرف",
+          "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الزر.",
+          "icon": "sicon-link",
+          "value": null,
+          "searchable": true,
+          "source": "custom",
+          "sources": [
+            {
+              "label": "منتج",
+              "key": "products",
+              "value": "products"
+            },
+            {
+              "label": "تصنيف",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "ماركة تجارية",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "صفحة تعريفية",
+              "key": "pages",
+              "value": "pages"
+            },
+            {
+              "label": "مقالة",
+              "key": "blog_articles",
+              "value": "blog_articles"
+            },
+            {
+              "label": "تصنيف ضمن المدونة",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "التخفيضات",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "صفحة الماركات",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "المدونة",
+              "key": "blog_link",
+              "value": "blog_link"
+            },
+            {
+              "label": "رابط خارجي مخصص",
+              "key": "custom",
+              "value": "custom"
+            }
+          ],
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_content", "three_column"]
+            }
+          ]
+        },
+        {
+          "type": "static",
+          "format": "title",
+          "id": "header_media",
+          "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات الصورة / الفيديو</h3>",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "media_type",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "نوع الوسائط المتعددة",
+          "description": "اختر ما إذا كنت تريد عرض صورة أو فيديو في المنتصف.",
+          "icon": "sicon-image",
+          "selected": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "media-image"
+            }
+          ],
+          "options": [
+            {
+              "label": "صورة",
+              "value": "image",
+              "key": "media-image"
+            },
+            {
+              "label": "فيديو",
+              "value": "video",
+              "key": "media-video"
+            }
+          ],
+          "source": "Manual",
+          "required": true,
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "banner_img",
+          "type": "string",
+          "format": "image",
+          "label": "صورة البانر",
+          "description": "أضف صورة مميزة تُكمل القسم بشكل بصري متناسق.",
+          "icon": "sicon-image",
+          "value": "https://cdn.files.salla.network/homepage/686931608/a0950d11-007e-4b8f-9483-b213c3baf62a_890x900.webp",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            },
+            {
+              "id": "media_type",
+              "operation": "=",
+              "value": "image"
+            }
+          ]
+        },
+        {
+          "id": "banner_video",
+          "type": "string",
+          "format": "text",
+          "label": "رابط الفيديو (URL)",
+          "description": "الصق رابط فيديو مباشر (mp4) أو رابط YouTube / Vimeo.",
+          "placeholder": "https://www.youtube.com/embed/XXXX",
+          "icon": "sicon-play",
+          "value": "",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            },
+            {
+              "id": "media_type",
+              "operation": "=",
+              "value": "video"
+            }
+          ]
+        },
+        {
+          "id": "desktop_height",
+          "type": "number",
+          "format": "integer",
+          "inputType": "number",
+          "label": "ارتفاع الوسائط — الشاشات الكبيرة (vh)",
+          "description": "الارتفاع الأقصى للصورة أو الفيديو على سطح المكتب.",
+          "icon": "sicon-hashtag",
+          "value": 90,
+          "minimum": "20",
+          "maximum": "200",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            }
+          ]
+        },
+        {
+          "id": "mobile_height",
+          "type": "number",
+          "format": "integer",
+          "inputType": "number",
+          "label": "ارتفاع الوسائط — الشاشات الصغيرة (vh)",
+          "description": "الارتفاع الأقصى للصورة أو الفيديو على الجوال.",
+          "icon": "sicon-hashtag",
+          "value": 70,
+          "minimum": "20",
+          "maximum": "200",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": ["accordion_image", "three_column"]
+            }
+          ]
+        },
+        {
+          "type": "static",
+          "format": "title",
+          "id": "header_faq",
+          "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الأسئلة الشائعة — الأكورديون</h3>",
+          "conditions": [
+            {
+              "id": "layout_mode",
+              "operation": "=",
+              "value": [
+                "accordion_only",
+                "accordion_image",
+                "accordion_content",
+                "three_column"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "faq_accordion",
+          "type": "collection",
+          "format": "collection",
+          "label": "قائمة الأسئلة الشائعة",
+          "description": "أضف أسئلة وإجابات بأسلوب الأكورديون القابل للتوسيع. يمكنك تخصيص ألوان كل عنصر على حدة.",
+          "item_label": "سؤال وجواب",
+          "icon": "sicon-list-add",
+          "minLength": "1",
+          "maxLength": "15",
+          "fields": [
+            {
+              "id": "faq_accordion.bg_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون خلفية بطاقة السؤال",
+              "description": "اختر لون خلفية الحاوية لهذا السؤال والجواب.",
+              "icon": "sicon-format-fill",
+              "value": "#ffffff",
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "faq_accordion.corner_rounded",
+              "type": "number",
+              "format": "slider",
+              "inputType": "range",
+              "label": "حدد مدى استدارة الزوايا للبطاقات",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-pin",
+              "value": "16",
+              "required": false,
+              "step": "1",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            {
+              "id": "faq_accordion.question",
+              "type": "string",
+              "format": "text",
+              "label": "نص السؤال",
+              "description": "اكتب السؤال كما يطرحه العميل عادةً.",
+              "placeholder": "مثال: كم تستغرق مدة الشحن؟",
+              "icon": "sicon-help",
+              "multilanguage": true,
+              "required": true,
+              "minLength": "5",
+              "maxLength": "150"
+            },
+            {
+              "id": "faq_accordion.question_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون نص السؤال",
+              "icon": "sicon-format-fill",
+              "value": "#18181b",
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "faq_accordion.icon",
+              "type": "string",
+              "format": "icon",
+              "label": "أيقونة الأكورديون (حالة مغلق)",
+              "description": "تتحول تلقائيًا عند الفتح.",
+              "icon": "sicon-user-circle",
+              "value": "sicon-add"
+            },
+            {
+              "id": "faq_accordion.icon_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون الأيقونة",
+              "icon": "sicon-format-fill",
+              "value": "#18181b",
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "faq_accordion.hr_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون الخط الفاصل والحدود",
+              "description": "يؤثر على حدود البطاقة والخط الفاصل بين السؤال والإجابة.",
+              "icon": "sicon-format-fill",
+              "value": "#e4e4e7",
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "faq_accordion.answer",
+              "type": "string",
+              "format": "textarea",
+              "label": "نص الإجابة",
+              "description": "اكتب الإجابة التفصيلية الكاملة على السؤال.",
+              "placeholder": "مثال: يستغرق الشحن من 3 إلى 5 أيام عمل داخل المملكة...",
+              "icon": "sicon-chat-bubble",
+              "multilanguage": true,
+              "required": true,
+              "minLength": "10",
+              "maxLength": "1000"
+            },
+            {
+              "id": "faq_accordion.answer_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون نص الإجابة",
+              "icon": "sicon-format-fill",
+              "value": "#4b5563",
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            }
+          ],
+          "value": [
+            {
+              "ar": {
+                "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
+                "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
+              },
+              "en": {
+                "faq_accordion.question": "How long does shipping take?",
+                "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and may vary slightly for remote areas."
+              },
+              "faq_accordion.bg_color": "#ffffff",
+              "faq_accordion.corner_rounded": "16",
+              "faq_accordion.icon": "sicon-shipping",
+              "faq_accordion.icon_color": "#18181b",
+              "faq_accordion.hr_color": "#e4e4e7",
+              "faq_accordion.question_color": "#18181b",
+              "faq_accordion.answer_color": "#4b5563",
+              "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
+              "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
+            },
+            {
+              "ar": {
+                "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
+                "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
+              },
+              "en": {
+                "faq_accordion.question": "Are the products original and skin-safe?",
+                "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
+              },
+              "faq_accordion.bg_color": "#ffffff",
+              "faq_accordion.corner_rounded": "16",
+              "faq_accordion.icon": "sicon-shield-check",
+              "faq_accordion.icon_color": "#18181b",
+              "faq_accordion.hr_color": "#e4e4e7",
+              "faq_accordion.question_color": "#18181b",
+              "faq_accordion.answer_color": "#4b5563",
+              "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
+              "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
+            },
+            {
+              "ar": {
+                "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع؟",
+                "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من تاريخ الاستلام، بشرط أن يكون بحالته الأصلية ولم يتم فتحه أو استخدامه."
+              },
+              "en": {
+                "faq_accordion.question": "What is the return and exchange policy?",
+                "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
+              },
+              "faq_accordion.bg_color": "#ffffff",
+              "faq_accordion.icon": "sicon-refresh",
+              "faq_accordion.icon_color": "#18181b",
+              "faq_accordion.hr_color": "#e4e4e7",
+              "faq_accordion.question_color": "#18181b",
+              "faq_accordion.answer_color": "#4b5563",
+              "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع؟",
+              "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من تاريخ الاستلام، بشرط أن يكون بحالته الأصلية ولم يتم فتحه أو استخدامه."
+            },
+            {
+              "ar": {
+                "faq_accordion.question": "كيف يمكنني تتبع طلبي؟",
+                "faq_accordion.answer": "بعد شحن طلبك ستصلك رسالة نصية أو بريد إلكتروني يتضمن رقم التتبع. يمكنك أيضًا متابعة الطلب من خلال حسابك في المتجر."
+              },
+              "en": {
+                "faq_accordion.question": "How can I track my order?",
+                "faq_accordion.answer": "Once your order is shipped, you will receive an SMS or email with a tracking number. You can also follow up on your order through your store account."
+              },
+              "faq_accordion.bg_color": "#ffffff",
+              "faq_accordion.corner_rounded": "16",
+              "faq_accordion.icon": "sicon-location",
+              "faq_accordion.icon_color": "#18181b",
+              "faq_accordion.hr_color": "#e4e4e7",
+              "faq_accordion.question_color": "#18181b",
+              "faq_accordion.answer_color": "#4b5563",
+              "faq_accordion.question": "كيف يمكنني تتبع طلبي؟",
+              "faq_accordion.answer": "بعد شحن طلبك ستصلك رسالة نصية أو بريد إلكتروني يتضمن رقم التتبع. يمكنك أيضًا متابعة الطلب من خلال حسابك في المتجر."
+            },
+            {
+              "ar": {
+                "faq_accordion.question": "هل الدفع الإلكتروني آمن؟",
+                "faq_accordion.answer": "نعم، نستخدم بروتوكولات تشفير متقدمة لضمان أمان جميع عمليات الدفع، وندعم وسائل دفع موثوقة مثل مدى وفيزا وماستركارد وApple Pay."
+              },
+              "en": {
+                "faq_accordion.question": "Is online payment secure?",
+                "faq_accordion.answer": "Yes, we use advanced encryption protocols to secure all payments. We support trusted payment methods such as Mada, Visa, Mastercard, and Apple Pay."
+              },
+              "faq_accordion.bg_color": "#ffffff",
+              "faq_accordion.corner_rounded": "16",
+              "faq_accordion.icon": "sicon-shield-check",
+              "faq_accordion.icon_color": "#18181b",
+              "faq_accordion.hr_color": "#e4e4e7",
+              "faq_accordion.question_color": "#18181b",
+              "faq_accordion.answer_color": "#4b5563",
+              "faq_accordion.question": "هل الدفع الإلكتروني آمن؟",
+              "faq_accordion.answer": "نعم، نستخدم بروتوكولات تشفير متقدمة لضمان أمان جميع عمليات الدفع، وندعم وسائل دفع موثوقة مثل مدى وفيزا وماستركارد وApple Pay."
+            }
+          ]
+        }
+      ]
+        },
+        {
+            "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
+            "title": {
+                "en": "about-us - sleek",
+                "ar": "نبذه عنا - سلييك"
+            },
+            "icon": "sicon-airplay-audio",
+            "image": "https://k.top4top.io/p_3829q5kkn1.png",
+            "path": "home.SK_about_us",
+            "fields": [
     {
         "type": "static",
         "format": "description",
         "id": "static-desc",
-        "value": "<div><img class='w-full' src='https://b.top4top.io/p_3829gbckn1.png'></div>"
+        "value": "<div><img class='w-full' src='https://k.top4top.io/p_3829q5kkn1.png'></div>"
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "static-style",
+        "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
+        "variant": "h6"
+    },
+    {
+        "type": "static",
+        "format": "title",
+        "id": "header_cards",
+        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
+    },
+    {
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "label": "وضع المكون داخل حاوية",
+        "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
+        "id": "add_inside_container",
+        "format": "switch",
+        "value": false
     },
     {
         "type": "boolean",
@@ -4838,32 +5590,155 @@
     {
         "type": "boolean",
         "icon": "sicon-format-fill",
-        "label": "صورة الخلفية",
-        "description": "فعل هذا الخيار لوضع صورة خلفية في هذا المكون بدلا من اللون الافتراضي",
-        "id": "background_is_image",
+        "label": "تفعيل التدرج الخلفي",
+        "description": "تفعيل هذا الخيار يجعل التدرج الخلفي فوق الخلفية",
+        "id": "overlay_is_true",
         "format": "switch",
-        "value": false
+        "value": true
+    },
+    {
+        "id": "enable_slider",
+        "type": "boolean",
+        "format": "switch",
+        "label": "تفعيل عرض البطاقات كسلايدر",
+        "description": "فعّل هذا الخيار لعرض البطاقات داخل شريط تمرير أفقي بدلاً من الشبكة الثابتة.",
+        "icon": "sicon-toggle-off",
+        "value": true,
+        "selected": true,
+        "required": false
+    },
+    {
+        "id": "desktop_slides_per_view",
+        "type": "number",
+        "format": "integer",
+        "inputType": "number",
+        "label": "عدد البطاقات في الشاشات الكبيرة",
+        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة الكمبيوتر.",
+        "icon": "sicon-hashtag",
+        "value": 3,
+        "required": true,
+        "minimum": "1",
+        "maximum": "3",
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "laptop_slides_per_view",
+        "type": "number",
+        "format": "integer",
+        "inputType": "number",
+        "label": "عدد البطاقات في الشاشات المتوسطة",
+        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة اللابتوب والأجهزة اللوحية.",
+        "icon": "sicon-hashtag",
+        "value": 3,
+        "required": true,
+        "minimum": "1",
+        "maximum": "3",
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "mobile_slides_per_view",
+        "type": "number",
+        "format": "integer",
+        "inputType": "number",
+        "label": "عدد البطاقات في الشاشات الصغيرة",
+        "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على الهواتف المحمولة.",
+        "icon": "sicon-hashtag",
+        "value": 1,
+        "required": true,
+        "minimum": "1",
+        "maximum": "2",
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "enable_controls",
+        "type": "boolean",
+        "format": "switch",
+        "label": "إظهار أسهم التنقل",
+        "description": "فعّل هذا الخيار لإظهار الأسهم التي تساعد الزائر على التنقل بين البطاقات داخل السلايدر.",
+        "icon": "sicon-toggle-off",
+        "value": true,
+        "selected": true,
+        "required": false,
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "enable_autoplay",
+        "type": "boolean",
+        "format": "switch",
+        "label": "تفعيل التشغيل التلقائي",
+        "description": "عند التفعيل، سيتم تمرير البطاقات تلقائيًا داخل السلايدر.",
+        "icon": "sicon-toggle-off",
+        "value": false,
+        "selected": false,
+        "required": false,
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
+    },
+    {
+        "id": "enable_loop",
+        "type": "boolean",
+        "format": "switch",
+        "label": "تفعيل التكرار اللانهائي",
+        "description": "فعّل هذا الخيار لجعل السلايدر يعيد عرض البطاقات بشكل مستمر بدون توقف.",
+        "icon": "sicon-toggle-off",
+        "value": true,
+        "selected": false,
+        "required": false,
+        "conditions": [
+            {
+                "id": "enable_slider",
+                "operation": "=",
+                "value": true
+            }
+        ]
     },
     {
         "type": "boolean",
-        "icon": "sicon-toggle-off",
-        "label": "وضع المكون داخل حاوية",
-        "description": null,
-        "id": "add_inside_container",
+        "icon": "sicon-image",
+        "label": "صورة الخلفية للقسم",
+        "description": "فعّل هذا الخيار لوضع صورة خلفية للقسم بدلاً من اللون الافتراضي.",
+        "id": "background_is_image",
         "format": "switch",
-        "required": false,
-        "value": false,
-        "selected": false
+        "value": false
     },
     {
         "id": "background_color",
         "type": "string",
         "format": "color",
         "inputType": "color",
-        "label": "اللون الافتراضي للخلفية",
-        "description": "اختر لون خلفية المكون .",
+        "label": "لون خلفية القسم",
+        "description": "اختر لون خلفية المكون.",
         "icon": "sicon-format-fill",
-        "value": "#f3eeea",
+        "value": "#ffffff",
         "conditions": [
             {
                 "id": "background_is_image",
@@ -4876,10 +5751,10 @@
         "id": "background_image",
         "type": "string",
         "format": "image",
-        "label": "صورة الخلفية",
-        "description": "أضف صورة مميزة تُكمل القسم بشكل بصري متناسق.",
+        "label": "صورة خلفية القسم",
+        "description": "أضف صورة خلفية للقسم بالكامل.",
         "icon": "sicon-image",
-        "value": "https://cdn.files.salla.network/homepage/686931608/a0950d11-007e-4b8f-9483-b213c3baf62a_890x900.webp",
+        "value": "",
         "conditions": [
             {
                 "id": "background_is_image",
@@ -4889,91 +5764,32 @@
         ]
     },
     {
-        "id": "layout_mode",
-        "type": "items",
-        "format": "dropdown-list",
-        "label": "نمط عرض القسم",
-        "description": "اختر الطريقة التي تريد عرض قسم الأسئلة الشائعة بها.",
-        "icon": "sicon-layout",
-        "selected": [
-            {
-                "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
-                "value": "three_column",
-                "key": "layout-three-column"
-            }
-        ],
-        "options": [
-            {
-                "label": "أكورديون فقط — عرض مبسّط",
-                "value": "accordion_only",
-                "key": "layout-accordion-only"
-            },
-            {
-                "label": "أكورديون + صورة / فيديو ",
-                "value": "accordion_image",
-                "key": "layout-accordion-image"
-            },
-            {
-                "label": "أكورديون + محتوى",
-                "value": "accordion_content",
-                "key": "layout-accordion-content"
-            },
-            {
-                "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
-                "value": "three_column",
-                "key": "layout-three-column"
-            }
-        ],
-        "source": "Manual",
-        "required": true
-    },
-    {
         "type": "static",
         "format": "title",
-        "id": "header_content",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات النص والزر الترويجي</h3>",
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
+        "id": "header_section_text",
+        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم والزر</h3>"
     },
     {
         "id": "main_title",
         "type": "string",
-        "format": "text",
+        "format": "textarea",
         "label": "العنوان الرئيسي للقسم",
-        "description": "يظهر أعلى القسم في جميع أنماط العرض.",
-        "placeholder": "مثال: لديك سؤال؟ نحن هنا للإجابة!",
+        "description": "يظهر أعلى القسم بخط كبير وعريض.",
+        "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
         "icon": "sicon-layout",
         "value": {
-            "ar": "لديك سؤال؟ نحن هنا للإجابة!",
-            "en": "Have a question? We are here to answer!"
+            "ar": "تشكيلات الربيع لارتدائها معاً أو بشكل منفصل، مهما كانت حالة الطقس.",
+            "en": "Spring styles to wear together or apart, whatever the weather."
         },
         "multilanguage": true,
-        "required": false,
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
+        "required": false
     },
     {
         "id": "main_title_color",
         "type": "string",
         "format": "color",
         "inputType": "color",
-        "label": "لون النص الرئيسي للقسم",
+        "label": "لون العنوان الرئيسي",
         "icon": "sicon-format-fill",
         "value": "#18181b",
         "conditions": [
@@ -4981,116 +5797,29 @@
                 "id": "customize_colors",
                 "operation": "=",
                 "value": true
-            },
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
             }
         ]
     },
     {
-        "id": "subtext",
-        "type": "string",
-        "format": "textarea",
-        "label": "النص الترويجي",
-        "description": "نص توضيحي يظهر في العمود الأول بجانب الأسئلة.",
-        "placeholder": "مثال: نصنع منتجات آمنة وفعّالة — هل لديك سؤال؟",
-        "icon": "sicon-format-text-alt",
-        "value": "نصنع منتجات آمنة وفعّالة مصمَّمة لتشعرك بأفضل حال. هل لديك سؤال حول منتجاتنا؟ تحقق مما إذا كان بإمكانك إيجاد إجابتك هنا أو تواصل معنا مباشرةً.",
-        "multilanguage": true,
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "subtext_color",
-        "type": "string",
-        "format": "color",
-        "inputType": "color",
-        "label": "لون النص الترويجي",
-        "icon": "sicon-format-fill",
-        "value": "#18181b",
-        "conditions": [
-            {
-                "id": "customize_colors",
-                "operation": "=",
-                "value": true
-            },
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "button_text",
+        "id": "cta_text",
         "type": "string",
         "format": "text",
-        "label": "نص زر الدعوة للتصرف (CTA)",
-        "description": "النص الذي يظهر داخل الزر أسفل النص الترويجي.",
-        "placeholder": "مثال: تواصل معنا",
-        "icon": "sicon-format-text-alt",
+        "label": "نص رابط الدعوة للتصرف (CTA)",
+        "description": "النص الذي يظهر كرابط تحته خط أسفل العنوان الرئيسي.",
+        "placeholder": "مثال: About Us",
+        "icon": "sicon-link",
         "value": {
-            "ar": "تواصل معنا",
-            "en": "Contact us"
+            "ar": "من نحن",
+            "en": "About Us"
         },
-        "multilanguage": true,
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
+        "multilanguage": true
     },
     {
-        "id": "button_text_color",
+        "id": "cta_color",
         "type": "string",
         "format": "color",
         "inputType": "color",
-        "label": "لون نص الزر",
-        "icon": "sicon-format-fill",
-        "value": "#ffffff",
-        "conditions": [
-            {
-                "id": "customize_colors",
-                "operation": "=",
-                "value": true
-            },
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "button_bg",
-        "type": "string",
-        "format": "color",
-        "inputType": "color",
-        "label": "لون خلفية الزر",
+        "label": "لون نص رابط CTA",
         "icon": "sicon-format-fill",
         "value": "#18181b",
         "conditions": [
@@ -5098,23 +5827,15 @@
                 "id": "customize_colors",
                 "operation": "=",
                 "value": true
-            },
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
             }
         ]
     },
     {
         "type": "items",
-        "id": "url",
+        "id": "cta_url",
         "format": "variable-list",
         "label": "رابط زر الدعوة للتصرف",
-        "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الزر.",
+        "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الرابط.",
         "icon": "sicon-link",
         "value": null,
         "searchable": true,
@@ -5170,161 +5891,157 @@
                 "key": "custom",
                 "value": "custom"
             }
-        ],
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
         ]
     },
     {
         "type": "static",
         "format": "title",
-        "id": "header_media",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات الصورة / الفيديو</h3>",
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_image",
-                    "three_column"
-                ]
-            }
-        ]
+        "id": "header_cards",
+        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات البطاقات</h3>"
     },
     {
-        "id": "media_type",
-        "type": "items",
-        "format": "dropdown-list",
-        "label": "نوع الوسائط المتعددة",
-        "description": "اختر ما إذا كنت تريد عرض صورة أو فيديو في المنتصف.",
-        "icon": "sicon-image",
-        "selected": [
-            {
-                "label": "صورة",
-                "value": "image",
-                "key": "media-image"
-            }
-        ],
-        "options": [
-            {
-                "label": "صورة",
-                "value": "image",
-                "key": "media-image"
-            },
-            {
-                "label": "فيديو",
-                "value": "video",
-                "key": "media-video"
-            }
-        ],
-        "source": "Manual",
-        "required": true,
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_image",
-                    "three_column"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "banner_img",
-        "type": "string",
-        "format": "image",
-        "label": "صورة البانر",
-        "description": "أضف صورة مميزة تُكمل القسم بشكل بصري متناسق.",
-        "icon": "sicon-image",
-        "value": "https://cdn.files.salla.network/homepage/686931608/a0950d11-007e-4b8f-9483-b213c3baf62a_890x900.webp",
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_image",
-                    "three_column"
-                ]
-            },
-            {
-                "id": "media_type",
-                "operation": "=",
-                "value": "image"
-            }
-        ]
-    },
-    {
-        "id": "banner_video",
-        "type": "string",
-        "format": "text",
-        "label": "رابط الفيديو (URL)",
-        "description": "الصق رابط فيديو مباشر (mp4) أو رابط YouTube / Vimeo.",
-        "placeholder": "https://www.youtube.com/embed/XXXX",
-        "icon": "sicon-play",
-        "value": {
-            "ar": "",
-            "en": ""
-        },
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_image",
-                    "three_column"
-                ]
-            },
-            {
-                "id": "media_type",
-                "operation": "=",
-                "value": "video"
-            }
-        ]
-    },
-    {
-        "type": "static",
-        "format": "title",
-        "id": "header_faq",
-        "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الأسئلة الشائعة — الأكورديون</h3>",
-        "conditions": [
-            {
-                "id": "layout_mode",
-                "operation": "=",
-                "value": [
-                    "accordion_only",
-                    "accordion_image",
-                    "accordion_content",
-                    "three_column"
-                ]
-            }
-        ]
-    },
-    {
-        "id": "faq_accordion",
+        "id": "card",
         "type": "collection",
         "format": "collection",
-        "label": "قائمة الأسئلة الشائعة",
-        "description": "أضف أسئلة وإجابات بأسلوب الأكورديون القابل للتوسيع. يمكنك تخصيص ألوان كل عنصر على حدة.",
-        "item_label": "سؤال وجواب",
+        "label": "البطاقات",
+        "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أفقية.",
+        "item_label": "بطاقة",
         "icon": "sicon-list-add",
         "minLength": "1",
-        "maxLength": "15",
+        "maxLength": "6",
         "fields": [
             {
-                "id": "faq_accordion.bg_color",
+                "type": "boolean",
+                "icon": "sicon-toggle-off",
+                "label": "هل خلفية البطاقة صورة ام لون",
+                "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
+                "id": "card.background_is_image",
+                "format": "switch",
+                "required": false,
+                "value": true,
+                "selected": true
+            },
+            {
+                "id": "card.bg_image",
+                "type": "string",
+                "format": "image",
+                "label": "صورة خلفية البطاقة",
+                "description": "تملأ الجزء العلوي من البطاقة.",
+                "icon": "sicon-image",
+                "value": "",
+                "conditions": [
+                    {
+                        "id": "card.background_is_image",
+                        "operation": "=",
+                        "value": true,
+                        "value_index": ".",
+                        "collection_id": "card"
+                    }
+                ]
+            },
+            {
+                "id": "card.bg_color",
                 "type": "string",
                 "format": "color",
                 "inputType": "color",
-                "label": "لون خلفية بطاقة السؤال",
-                "description": "اختر لون خلفية الحاوية لهذا السؤال والجواب.",
+                "label": "لون خلفية البطاقة",
+                "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
+                "icon": "sicon-format-fill",
+                "value": "#f5f0eb",
+                "conditions": [
+                    {
+                        "id": "card.background_is_image",
+                        "operation": "=",
+                        "value": false,
+                        "value_index": ".",
+                        "collection_id": "card"
+                    }
+                ]
+            },
+            {
+                "id": "card.corner_rounded",
+                "type": "number",
+                "format": "slider",
+                "inputType": "range",
+                "label": "استدارة زوايا البطاقة",
+                "icon": "sicon-pin",
+                "value": "16",
+                "step": "1",
+                "minimum": "0",
+                "maximum": "40"
+            },
+            {
+                "id": "card.title",
+                "type": "string",
+                "format": "text",
+                "label": "عنوان البطاقة",
+                "description": "يظهر أسفل الصورة بخط واضح.",
+                "placeholder": "مثال: News, tips, reviews",
+                "icon": "sicon-layout",
+                "multilanguage": true,
+                "required": true,
+                "minLength": "2",
+                "maxLength": "80",
+                "value": {
+                    "ar": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "card.title_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون عنوان البطاقة",
+                "icon": "sicon-format-fill",
+                "value": "#18181b",
+                "conditions": [
+                    {
+                        "id": "customize_colors",
+                        "operation": "=",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "id": "card.button_text",
+                "type": "string",
+                "format": "text",
+                "label": "نص زر البطاقة",
+                "description": "يظهر في أسفل البطاقة كزر بارز.",
+                "placeholder": "مثال: View Our Blog",
+                "icon": "sicon-shopping-bag",
+                "multilanguage": true,
+                "required": true,
+                "minLength": "2",
+                "maxLength": "40",
+                "value": {
+                    "ar": "",
+                    "en": ""
+                }
+            },
+            {
+                "id": "card.button_bg_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون خلفية زر البطاقة",
+                "icon": "sicon-format-fill",
+                "value": "#18181b",
+                "conditions": [
+                    {
+                        "id": "customize_colors",
+                        "operation": "=",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "id": "card.button_text_color",
+                "type": "string",
+                "format": "color",
+                "inputType": "color",
+                "label": "لون نص زر البطاقة",
                 "icon": "sicon-format-fill",
                 "value": "#ffffff",
                 "conditions": [
@@ -5336,121 +6053,66 @@
                 ]
             },
             {
-                "id": "faq_accordion.corner_rounded",
-                "type": "number",
-                "format": "slider",
-                "inputType": "range",
-                "label": "حدد مدى استدارة الزوايا للبطاقات",
-                "description": null,
-                "labelHTML": null,
-                "icon": "sicon-pin",
-                "value": "16",
+                "type": "items",
+                "id": "card.btn_url",
+                "format": "variable-list",
+                "label": "رابط زر البطاقة",
+                "description": "اختر الصفحة أو المنتج الذي يتجه إليه زر هذه البطاقة.",
+                "icon": "sicon-link",
+                "value": null,
                 "required": false,
-                "step": "1",
-                "minimum": "0",
-                "maximum": "100"
-            },
-            {
-                "id": "faq_accordion.question",
-                "type": "string",
-                "format": "text",
-                "label": "نص السؤال",
-                "description": "اكتب السؤال كما يطرحه العميل عادةً.",
-                "placeholder": "مثال: كم تستغرق مدة الشحن؟",
-                "icon": "sicon-help",
-                "multilanguage": true,
-                "required": true,
-                "minLength": "5",
-                "maxLength": "150",
-                "value": {
-                    "ar": "",
-                    "en": ""
-                }
-            },
-            {
-                "id": "faq_accordion.question_color",
-                "type": "string",
-                "format": "color",
-                "inputType": "color",
-                "label": "لون نص السؤال",
-                "icon": "sicon-format-fill",
-                "value": "#18181b",
-                "conditions": [
+                "searchable": true,
+                "source": "custom",
+                "sources": [
                     {
-                        "id": "customize_colors",
-                        "operation": "=",
-                        "value": true
-                    }
-                ]
-            },
-            {
-                "id": "faq_accordion.icon",
-                "type": "string",
-                "format": "icon",
-                "label": "أيقونة الأكورديون (حالة مغلق)",
-                "description": "تتحول تلقائيًا عند الفتح.",
-                "icon": "sicon-user-circle",
-                "value": "sicon-add"
-            },
-            {
-                "id": "faq_accordion.icon_color",
-                "type": "string",
-                "format": "color",
-                "inputType": "color",
-                "label": "لون الأيقونة",
-                "icon": "sicon-format-fill",
-                "value": "#18181b",
-                "conditions": [
+                        "label": "منتج",
+                        "key": "products",
+                        "value": "products"
+                    },
                     {
-                        "id": "customize_colors",
-                        "operation": "=",
-                        "value": true
-                    }
-                ]
-            },
-            {
-                "id": "faq_accordion.hr_color",
-                "type": "string",
-                "format": "color",
-                "inputType": "color",
-                "label": "لون الخط الفاصل والحدود",
-                "description": "يؤثر على حدود البطاقة والخط الفاصل بين السؤال والإجابة.",
-                "icon": "sicon-format-fill",
-                "value": "#e4e4e7",
-                "conditions": [
+                        "label": "تصنيف",
+                        "key": "categories",
+                        "value": "categories"
+                    },
                     {
-                        "id": "customize_colors",
-                        "operation": "=",
-                        "value": true
-                    }
-                ]
-            },
-            {
-                "id": "faq_accordion.answer",
-                "type": "string",
-                "format": "textarea",
-                "label": "نص الإجابة",
-                "description": "اكتب الإجابة التفصيلية الكاملة على السؤال.",
-                "placeholder": "مثال: يستغرق الشحن من 3 إلى 5 أيام عمل داخل المملكة...",
-                "icon": "sicon-chat-bubble",
-                "multilanguage": true,
-                "required": true,
-                "minLength": "10",
-                "maxLength": "1000"
-            },
-            {
-                "id": "faq_accordion.answer_color",
-                "type": "string",
-                "format": "color",
-                "inputType": "color",
-                "label": "لون نص الإجابة",
-                "icon": "sicon-format-fill",
-                "value": "#4b5563",
-                "conditions": [
+                        "label": "ماركة تجارية",
+                        "key": "brands",
+                        "value": "brands"
+                    },
                     {
-                        "id": "customize_colors",
-                        "operation": "=",
-                        "value": true
+                        "label": "صفحة تعريفية",
+                        "key": "pages",
+                        "value": "pages"
+                    },
+                    {
+                        "label": "مقالة",
+                        "key": "blog_articles",
+                        "value": "blog_articles"
+                    },
+                    {
+                        "label": "تصنيف ضمن المدونة",
+                        "key": "blog_categories",
+                        "value": "blog_categories"
+                    },
+                    {
+                        "label": "التخفيضات",
+                        "key": "offers_link",
+                        "value": "offers_link"
+                    },
+                    {
+                        "label": "الماركات التجارية",
+                        "key": "brands_link",
+                        "value": "brands_link"
+                    },
+                    {
+                        "label": "المدونة",
+                        "key": "blog_link",
+                        "value": "blog_link"
+                    },
+                    {
+                        "label": "رابط خارجي",
+                        "key": "custom",
+                        "value": "custom"
                     }
                 ]
             }
@@ -5458,714 +6120,64 @@
         "value": [
             {
                 "ar": {
-                    "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
-                    "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
+                    "card.title": "اكتشف منتجات العناية بالبشرة",
+                    "card.button_text": "تسوق الآن"
                 },
                 "en": {
-                    "faq_accordion.question": "How long does shipping take?",
-                    "faq_accordion.answer": "Shipping and delivery usually take 3 to 5 business days, and may vary slightly for remote areas."
+                    "card.title": "Discover Skincare Products",
+                    "card.button_text": "Shop Now"
                 },
-                "faq_accordion.bg_color": "#ffffff",
-                "faq_accordion.corner_rounded": "16",
-                "faq_accordion.icon": "sicon-shipping",
-                "faq_accordion.icon_color": "#18181b",
-                "faq_accordion.hr_color": "#e4e4e7",
-                "faq_accordion.question_color": "#18181b",
-                "faq_accordion.answer_color": "#4b5563",
-                "faq_accordion.question": "كم تستغرق مدة شحن الطلبات؟",
-                "faq_accordion.answer": "تستغرق عملية الشحن والتوصيل عادةً من 3 إلى 5 أيام عمل داخل المملكة، وقد تختلف المدة قليلاً للمناطق النائية."
+                "card.background_is_image": true,
+                "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/4a51905b-420d-457c-b358-b096b9adf4cc_637x900.webp?_s_uploader_cache_bust=preview-85sqrsd3r",
+                "card.corner_rounded": "16",
+                "card.title": "اكتشف منتجات العناية بالبشرة",
+                "card.title_color": "#18181b",
+                "card.button_text": "تسوق الآن",
+                "card.button_bg_color": "#18181b",
+                "card.button_text_color": "#ffffff",
+                "card.btn_url": ""
             },
             {
                 "ar": {
-                    "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
-                    "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
+                    "card.title": "أفضل العروض والخصومات الحصرية",
+                    "card.button_text": "شاهد العروض"
                 },
                 "en": {
-                    "faq_accordion.question": "Are the products original and skin-safe?",
-                    "faq_accordion.answer": "Yes, all our products are 100% authentic, FDA-approved, and dermatologically tested to ensure skin safety."
+                    "card.title": "Best Exclusive Offers and Discounts",
+                    "card.button_text": "View Offers"
                 },
-                "faq_accordion.bg_color": "#ffffff",
-                "faq_accordion.corner_rounded": "16",
-                "faq_accordion.icon": "sicon-shield-check",
-                "faq_accordion.icon_color": "#18181b",
-                "faq_accordion.hr_color": "#e4e4e7",
-                "faq_accordion.question_color": "#18181b",
-                "faq_accordion.answer_color": "#4b5563",
-                "faq_accordion.question": "هل المنتجات المتوفرة أصلية وآمنة للبشرة؟",
-                "faq_accordion.answer": "نعم، جميع منتجاتنا أصلية 100% ومصرحة من هيئة الغذاء والدواء، وتم اختبارها طبيًا لضمان سلامتها على البشرة."
+                "card.background_is_image": true,
+                "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/adc95a74-42d5-499a-9077-acaca71e6ead_637x900.webp?_s_uploader_cache_bust=preview-t8rbrf1hr",
+                "card.corner_rounded": "16",
+                "card.title": "أفضل العروض والخصومات الحصرية",
+                "card.title_color": "#ffffff",
+                "card.button_text": "شاهد العروض",
+                "card.button_bg_color": "#ffffff",
+                "card.button_text_color": "#18181b",
+                "card.btn_url": ""
             },
             {
                 "ar": {
-                    "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع؟",
-                    "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من تاريخ الاستلام، بشرط أن يكون بحالته الأصلية ولم يتم فتحه أو استخدامه."
+                    "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
+                    "card.button_text": "اكتشف المزيد"
                 },
                 "en": {
-                    "faq_accordion.question": "What is the return and exchange policy?",
-                    "faq_accordion.answer": "You can return or exchange products within 7 days of receipt, provided the product is in its original packaging and has not been opened or used."
+                    "card.title": "Haircare Products with a Natural Touch",
+                    "card.button_text": "Discover More"
                 },
-                "faq_accordion.bg_color": "#ffffff",
-                "faq_accordion.icon": "sicon-refresh",
-                "faq_accordion.icon_color": "#18181b",
-                "faq_accordion.hr_color": "#e4e4e7",
-                "faq_accordion.question_color": "#18181b",
-                "faq_accordion.answer_color": "#4b5563",
-                "faq_accordion.question": "ما هي سياسة الاستبدال والاسترجاع؟",
-                "faq_accordion.answer": "يمكنك استبدال أو استرجاع المنتج خلال 7 أيام من تاريخ الاستلام، بشرط أن يكون بحالته الأصلية ولم يتم فتحه أو استخدامه."
-            },
-            {
-                "ar": {
-                    "faq_accordion.question": "كيف يمكنني تتبع طلبي؟",
-                    "faq_accordion.answer": "بعد شحن طلبك ستصلك رسالة نصية أو بريد إلكتروني يتضمن رقم التتبع. يمكنك أيضًا متابعة الطلب من خلال حسابك في المتجر."
-                },
-                "en": {
-                    "faq_accordion.question": "How can I track my order?",
-                    "faq_accordion.answer": "Once your order is shipped, you will receive an SMS or email with a tracking number. You can also follow up on your order through your store account."
-                },
-                "faq_accordion.bg_color": "#ffffff",
-                "faq_accordion.corner_rounded": "16",
-                "faq_accordion.icon": "sicon-location",
-                "faq_accordion.icon_color": "#18181b",
-                "faq_accordion.hr_color": "#e4e4e7",
-                "faq_accordion.question_color": "#18181b",
-                "faq_accordion.answer_color": "#4b5563",
-                "faq_accordion.question": "كيف يمكنني تتبع طلبي؟",
-                "faq_accordion.answer": "بعد شحن طلبك ستصلك رسالة نصية أو بريد إلكتروني يتضمن رقم التتبع. يمكنك أيضًا متابعة الطلب من خلال حسابك في المتجر."
-            },
-            {
-                "ar": {
-                    "faq_accordion.question": "هل الدفع الإلكتروني آمن؟",
-                    "faq_accordion.answer": "نعم، نستخدم بروتوكولات تشفير متقدمة لضمان أمان جميع عمليات الدفع، وندعم وسائل دفع موثوقة مثل مدى وفيزا وماستركارد وApple Pay."
-                },
-                "en": {
-                    "faq_accordion.question": "Is online payment secure?",
-                    "faq_accordion.answer": "Yes, we use advanced encryption protocols to secure all payments. We support trusted payment methods such as Mada, Visa, Mastercard, and Apple Pay."
-                },
-                "faq_accordion.bg_color": "#ffffff",
-                "faq_accordion.corner_rounded": "16",
-                "faq_accordion.icon": "sicon-shield-check",
-                "faq_accordion.icon_color": "#18181b",
-                "faq_accordion.hr_color": "#e4e4e7",
-                "faq_accordion.question_color": "#18181b",
-                "faq_accordion.answer_color": "#4b5563",
-                "faq_accordion.question": "هل الدفع الإلكتروني آمن؟",
-                "faq_accordion.answer": "نعم، نستخدم بروتوكولات تشفير متقدمة لضمان أمان جميع عمليات الدفع، وندعم وسائل دفع موثوقة مثل مدى وفيزا وماستركارد وApple Pay."
+                "card.background_is_image": true,
+                "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/7989e93b-a133-4397-9472-d54a4b5ad498_637x900.webp?_s_uploader_cache_bust=preview-3km71stih",
+                "card.corner_rounded": "16",
+                "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
+                "card.title_color": "#18181b",
+                "card.button_text": "اكتشف المزيد",
+                "card.button_bg_color": "#18181b",
+                "card.button_text_color": "#ffffff",
+                "card.btn_url": ""
             }
         ]
     }
 ]
-        },
-        {
-            "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
-            "title": {
-                "en": "about-us - sleek",
-                "ar": "نبذه عنا - سلييك"
-            },
-            "icon": "sicon-airplay-audio",
-            "image": "https://k.top4top.io/p_3829q5kkn1.png",
-            "path": "home.SK_about_us",
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "description",
-                    "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://k.top4top.io/p_3829q5kkn1.png'></div>"
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "static-style",
-                    "value": "<style>.fieldset > div.rounded-lg > div.flex-col > div{padding:10px;border-bottom:1px solid #f3eeea;}.fieldset > div > div:first-of-type{background-color:#f3eeea;border-color:#f3eeea;color:black;border-radius:4px;}.fieldset > div.rounded-lg > div.flex-col{background:#FAFAFA;border:1px solid #f3eeea;}.fieldset > div.bg-black > div:first-of-type s-icon{color:black;}</style>",
-                    "variant": "h6"
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "header_cards",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>"
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
-                    "description": "تفعيل هذا الخيار يجعل المكون محاطاً بحاوية مركزية ذات هوامش جانبية.",
-                    "id": "add_inside_container",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-format-fill",
-                    "label": "تخصيص ألوان المكون يدويًا",
-                    "description": "فعّل هذا الخيار لتظهر حقول تخصيص الألوان للنصوص والأزرار.",
-                    "id": "customize_colors",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-format-fill",
-                    "label": "تفعيل التدرج الخلفي",
-                    "description": "تفعيل هذا الخيار يجعل التدرج الخلفي فوق الخلفية",
-                    "id": "overlay_is_true",
-                    "format": "switch",
-                    "value": true
-                },
-                {
-                    "id": "enable_slider",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل عرض البطاقات كسلايدر",
-                    "description": "فعّل هذا الخيار لعرض البطاقات داخل شريط تمرير أفقي بدلاً من الشبكة الثابتة.",
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-                {
-                    "id": "desktop_slides_per_view",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "عدد البطاقات في الشاشات الكبيرة",
-                    "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة الكمبيوتر.",
-                    "icon": "sicon-hashtag",
-                    "value": 3,
-                    "required": true,
-                    "minimum": "1",
-                    "maximum": "3",
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "laptop_slides_per_view",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "عدد البطاقات في الشاشات المتوسطة",
-                    "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على أجهزة اللابتوب والأجهزة اللوحية.",
-                    "icon": "sicon-hashtag",
-                    "value": 3,
-                    "required": true,
-                    "minimum": "1",
-                    "maximum": "3",
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "mobile_slides_per_view",
-                    "type": "number",
-                    "format": "integer",
-                    "inputType": "number",
-                    "label": "عدد البطاقات في الشاشات الصغيرة",
-                    "description": "حدد عدد البطاقات التي تظهر في الصف الواحد على الهواتف المحمولة.",
-                    "icon": "sicon-hashtag",
-                    "value": 1,
-                    "required": true,
-                    "minimum": "1",
-                    "maximum": "2",
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "enable_controls",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار أسهم التنقل",
-                    "description": "فعّل هذا الخيار لإظهار الأسهم التي تساعد الزائر على التنقل بين البطاقات داخل السلايدر.",
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "enable_autoplay",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل التشغيل التلقائي",
-                    "description": "عند التفعيل، سيتم تمرير البطاقات تلقائيًا داخل السلايدر.",
-                    "icon": "sicon-toggle-off",
-                    "value": false,
-                    "selected": false,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "enable_loop",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل التكرار اللانهائي",
-                    "description": "فعّل هذا الخيار لجعل السلايدر يعيد عرض البطاقات بشكل مستمر بدون توقف.",
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "boolean",
-                    "icon": "sicon-image",
-                    "label": "صورة الخلفية للقسم",
-                    "description": "فعّل هذا الخيار لوضع صورة خلفية للقسم بدلاً من اللون الافتراضي.",
-                    "id": "background_is_image",
-                    "format": "switch",
-                    "value": false
-                },
-                {
-                    "id": "background_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية القسم",
-                    "description": "اختر لون خلفية المكون.",
-                    "icon": "sicon-format-fill",
-                    "value": "#ffffff",
-                    "conditions": [
-                        {
-                            "id": "background_is_image",
-                            "operation": "=",
-                            "value": false
-                        }
-                    ]
-                },
-                {
-                    "id": "background_image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة خلفية القسم",
-                    "description": "أضف صورة خلفية للقسم بالكامل.",
-                    "icon": "sicon-image",
-                    "value": "",
-                    "conditions": [
-                        {
-                            "id": "background_is_image",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "header_section_text",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم والزر</h3>"
-                },
-                {
-                    "id": "main_title",
-                    "type": "string",
-                    "format": "textarea",
-                    "label": "العنوان الرئيسي للقسم",
-                    "description": "يظهر أعلى القسم بخط كبير وعريض.",
-                    "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
-                    "icon": "sicon-layout",
-                    "value": "Spring styles to wear together or apart, whatever the weather.",
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "main_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "conditions": [
-                        {
-                            "id": "customize_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "cta_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص رابط الدعوة للتصرف (CTA)",
-                    "description": "النص الذي يظهر كرابط تحته خط أسفل العنوان الرئيسي.",
-                    "placeholder": "مثال: About Us",
-                    "icon": "sicon-link",
-                    "value": "About Us",
-                    "multilanguage": true
-                },
-                {
-                    "id": "cta_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص رابط CTA",
-                    "icon": "sicon-format-fill",
-                    "value": "#18181b",
-                    "conditions": [
-                        {
-                            "id": "customize_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "type": "items",
-                    "id": "cta_url",
-                    "format": "variable-list",
-                    "label": "رابط زر الدعوة للتصرف",
-                    "description": "اختر الصفحة أو المنتج أو الرابط الخارجي الذي يتجه إليه الرابط.",
-                    "icon": "sicon-link",
-                    "value": null,
-                    "searchable": true,
-                    "source": "custom",
-                    "sources": [
-                        {
-                            "label": "منتج",
-                            "key": "products",
-                            "value": "products"
-                        },
-                        {
-                            "label": "تصنيف",
-                            "key": "categories",
-                            "value": "categories"
-                        },
-                        {
-                            "label": "ماركة تجارية",
-                            "key": "brands",
-                            "value": "brands"
-                        },
-                        {
-                            "label": "صفحة تعريفية",
-                            "key": "pages",
-                            "value": "pages"
-                        },
-                        {
-                            "label": "مقالة",
-                            "key": "blog_articles",
-                            "value": "blog_articles"
-                        },
-                        {
-                            "label": "تصنيف ضمن المدونة",
-                            "key": "blog_categories",
-                            "value": "blog_categories"
-                        },
-                        {
-                            "label": "التخفيضات",
-                            "key": "offers_link",
-                            "value": "offers_link"
-                        },
-                        {
-                            "label": "صفحة الماركات",
-                            "key": "brands_link",
-                            "value": "brands_link"
-                        },
-                        {
-                            "label": "المدونة",
-                            "key": "blog_link",
-                            "value": "blog_link"
-                        },
-                        {
-                            "label": "رابط خارجي مخصص",
-                            "key": "custom",
-                            "value": "custom"
-                        }
-                    ]
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "header_cards",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات البطاقات</h3>"
-                },
-                {
-                    "id": "card",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "البطاقات",
-                    "description": "أضف بطاقات تحتوي على صورة خلفية وعنوان وزر — تظهر في شبكة أفقية.",
-                    "item_label": "بطاقة",
-                    "icon": "sicon-list-add",
-                    "minLength": "1",
-                    "maxLength": "6",
-                    "fields": [
-                        {
-                            "type": "boolean",
-                            "icon": "sicon-toggle-off",
-                            "label": "هل خلفية البطاقة صورة ام لون",
-                            "description": "إذا اخترت صورة ، ستقوم باختيار صورة لكل بطاقة",
-                            "id": "card.background_is_image",
-                            "format": "switch",
-                            "required": false,
-                            "value": true,
-                            "selected": true
-                        },
-                        {
-                            "id": "card.bg_image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة خلفية البطاقة",
-                            "description": "تملأ الجزء العلوي من البطاقة.",
-                            "icon": "sicon-image",
-                            "value": "",
-                            "conditions": [
-                                {
-                                    "id": "card.background_is_image",
-                                    "operation": "=",
-                                    "value": true,
-                                    "value_index": ".",
-                                    "collection_id": "card"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "card.bg_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون خلفية البطاقة",
-                            "description": "يُستخدم عند غياب الصورة أو كخلفية للجزء السفلي.",
-                            "icon": "sicon-format-fill",
-                            "value": "#f5f0eb",
-                            "conditions": [
-                                {
-                                    "id": "card.background_is_image",
-                                    "operation": "=",
-                                    "value": false,
-                                    "value_index": ".",
-                                    "collection_id": "card"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "card.corner_rounded",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "استدارة زوايا البطاقة",
-                            "icon": "sicon-pin",
-                            "value": "16",
-                            "step": "1",
-                            "minimum": "0",
-                            "maximum": "40"
-                        },
-                        {
-                            "id": "card.title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "عنوان البطاقة",
-                            "description": "يظهر أسفل الصورة بخط واضح.",
-                            "placeholder": "مثال: News, tips, reviews",
-                            "icon": "sicon-layout",
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "2",
-                            "maxLength": "80"
-                        },
-                        {
-                            "id": "card.title_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون عنوان البطاقة",
-                            "icon": "sicon-format-fill",
-                            "value": "#18181b",
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "id": "card.button_text",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص زر البطاقة",
-                            "description": "يظهر في أسفل البطاقة كزر بارز.",
-                            "placeholder": "مثال: View Our Blog",
-                            "icon": "sicon-shopping-bag",
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "2",
-                            "maxLength": "40"
-                        },
-                        {
-                            "id": "card.button_bg_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون خلفية زر البطاقة",
-                            "icon": "sicon-format-fill",
-                            "value": "#18181b",
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "id": "card.button_text_color",
-                            "type": "string",
-                            "format": "color",
-                            "inputType": "color",
-                            "label": "لون نص زر البطاقة",
-                            "icon": "sicon-format-fill",
-                            "value": "#ffffff",
-                            "conditions": [
-                                {
-                                    "id": "customize_colors",
-                                    "operation": "=",
-                                    "value": true
-                                }
-                            ]
-                        },
-                        {
-                            "type": "items",
-                            "id": "card.btn_url",
-                            "format": "variable-list",
-                            "label": "رابط زر البطاقة",
-                            "description": "اختر الصفحة أو المنتج الذي يتجه إليه زر هذه البطاقة.",
-                            "icon": "sicon-link",
-                            "value": null,
-                            "required": false,
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
-                        }
-                    ],
-                    "value": [
-                        {
-                            "ar": {
-                                "card.title": "اكتشف منتجات العناية بالبشرة",
-                                "card.button_text": "تسوق الآن"
-                            },
-                            "card.background_is_image": true,
-                            "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/4a51905b-420d-457c-b358-b096b9adf4cc_637x900.webp?_s_uploader_cache_bust=preview-85sqrsd3r",
-                            "card.corner_rounded": "16",
-                            "card.title": "اكتشف منتجات العناية بالبشرة",
-                            "card.title_color": "#18181b",
-                            "card.button_text": "تسوق الآن",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                            "card.btn_url": ""
-                        },
-                        {
-                            "ar": {
-                                "card.title": "أفضل العروض والخصومات الحصرية",
-                                "card.button_text": "شاهد العروض"
-                            },
-                            "card.background_is_image": true,
-                            "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/adc95a74-42d5-499a-9077-acaca71e6ead_637x900.webp?_s_uploader_cache_bust=preview-t8rbrf1hr",
-                            "card.corner_rounded": "16",
-                            "card.title": "أفضل العروض والخصومات الحصرية",
-                            "card.title_color": "#ffffff",
-                            "card.button_text": "شاهد العروض",
-                            "card.button_bg_color": "#ffffff",
-                            "card.button_text_color": "#18181b",
-                            "card.btn_url": ""
-                        },
-                        {
-                            "ar": {
-                                "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
-                                "card.button_text": "اكتشف المزيد"
-                            },
-                            "card.background_is_image": true,
-                            "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/7989e93b-a133-4397-9472-d54a4b5ad498_637x900.webp?_s_uploader_cache_bust=preview-3km71stih",
-                            "card.corner_rounded": "16",
-                            "card.title": "منتجات العناية بالشعر بلمسة طبيعية",
-                            "card.title_color": "#18181b",
-                            "card.button_text": "اكتشف المزيد",
-                            "card.button_bg_color": "#18181b",
-                            "card.button_text_color": "#ffffff",
-                            "card.btn_url": ""
-                        }
-                    ]
-                }
-            ]
         },
 
         {
