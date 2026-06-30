@@ -1480,6 +1480,107 @@
           "value": false,
           "selected": false
         },
+                    {
+              "id": "items_alignment_horizontal",
+              "type": "items",
+              "format": "dropdown-list",
+              "label": "محاذاة الزر والنصوص أفقياً",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-keyboard_arrow_down",
+              "selected": [
+                {
+                  "label": "منتصف",
+                  "value": "center",
+                  "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                }
+              ],
+              "options": [
+                {
+                  "label": "بداية",
+                  "value": "start",
+                  "key": "ace55430-fec1-498e-529-0ea955adee8a"
+                },
+                {
+                  "label": "منتصف",
+                  "value": "center",
+                  "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                },
+                {
+                  "label": "نهاية",
+                  "value": "end",
+                  "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
+                }
+              ],
+              "source": "Manual",
+              "multichoice": false,
+              "searchable": true,
+              "required": false
+            },
+                    {
+              "id": "block_title",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان الرئيسي",
+              "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+              "labelHTML": null,
+              "placeholder": "",
+              "icon": "sicon-format-text-alt",
+              "value": null,
+              "multilanguage": true,
+              "required": false
+            },
+            {
+              "id": "blocktitle_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون العنوان الرئيسي",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#ffffff",
+              "required": false,
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "subtext",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان الفرعي",
+              "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+              "labelHTML": null,
+              "placeholder": "",
+              "icon": "sicon-format-text-alt",
+              "value": null,
+              "multilanguage": true,
+              "required": false
+            },
+            {
+              "id": "subtext_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون النص الفرعي ",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#FFFFFF",
+              "required": false,
+              "conditions": [
+                {
+                  "id": "customize_colors",
+                  "operation": "=",
+                  "value": true
+                }
+              ]
+            },
         {
           "id": "desktop_height",
           "type": "number",
