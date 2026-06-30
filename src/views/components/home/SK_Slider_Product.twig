@@ -8,11 +8,11 @@
 				<h2 class="sk-slider-title" style="color: {{ c.product_title_color }};">
 					{{ c.product_title }}
 				</h2>
-				<div class="bundle-arrows flex items-center gap-2 mt-4">
-					<button class="bundle-back flex items-center justify-center border border-primary p-2 rounded-sm" aria-label="Previous">
+				<div class="bundle-arrows flex items-center gap-2">
+					<button class="bundle-back-{{position}} flex items-center justify-center border border-primary p-4 rounded-full" aria-label="Previous">
 						<i class="sicon-caret-right ltr:-scale-x-100"></i>
 					</button>
-					<button class="bundle-front flex items-center justify-center border border-primary p-2 rounded-sm" aria-label="Next">
+					<button class="bundle-front-{{position}} flex items-center justify-center border border-primary p-4 rounded-full" aria-label="Next">
 						<i class="sicon-caret-left ltr:-scale-x-100"></i>
 					</button>
 				</div>
@@ -24,9 +24,9 @@
 			        "slidesPerView": 1.2,
 			        "spaceBetween": 16,
                "navigation": {
-                "nextEl": ".bundle-front",
-                "prevEl": ".bundle-back`"
-            },
+                "nextEl": ".bundle-front-{{position}}",
+                "prevEl": ".bundle-back-{{position}}"
+              }
 			        "breakpoints": {
 			          "0": { "slidesPerView": 1.2, "spaceBetween": 16 },
 			          "768": { "slidesPerView": 1.5, "spaceBetween": 24 },
