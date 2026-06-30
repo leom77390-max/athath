@@ -1,0 +1,140 @@
+{# ================================================
+   Feature Badges Component
+   ================================================ #}
+
+{% set id       = component.id %}
+{% set settings = component.settings %}
+{% set bg_color = settings.bg_color ?? '#ffffff' %}
+{% set badges   = settings.badges   ?? [] %}
+
+<section
+  id="feature-badges-{{ id }}"
+  class="feature-badges-section"
+  style="background-color: {{ bg_color }};"
+>
+  {% if settings.add_inside_container %}
+  <div class="feature-badges-container">
+  {% endif %}
+
+    <div class="feature-badges-list" role="list">
+
+      {% for badge in badges %}
+
+        {# ── Per-badge values (all colors & radius live inside the collection) ── #}
+        {% set is_active = badge['badges.is_active'] ?? false %}
+
+        {# Default state #}
+        {% set bg     = badge['badges.badge_bg_color']     ?? '#f3f4f6' %}
+        {% set text   = badge['badges.badge_text_color']   ?? '#18181b' %}
+        {% set icon_c = badge['badges.badge_icon_color']   ?? '#18181b' %}
+        {% set border = badge['badges.badge_border_color'] ?? '#e5e7eb' %}
+        {% set radius = badge['badges.badge_border_radius'] ?? '999' %}
+
+        {# Active-state overrides #}
+        {% if is_active %}
+          {% set bg     = badge['badges.active_badge_bg_color']     ?? '#18181b' %}
+          {% set text   = badge['badges.active_badge_text_color']   ?? '#ffffff' %}
+          {% set icon_c = badge['badges.active_badge_icon_color']   ?? '#ffffff' %}
+          {% set border = badge['badges.active_badge_border_color'] ?? '#18181b' %}
+        {% endif %}
+
+        {% set icon_name = badge['badges.icon'] ?? 'sicon-check-circle' %}
+
+        <div
+          class="feature-badge{% if is_active %} feature-badge--active{% endif %}"
+          role="listitem"
+          style="
+            background-color: {{ bg }};
+            color:            {{ text }};
+            border-color:     {{ border }};
+            border-radius:    {{ radius }}px;
+          "
+        >
+          {# Salla icon rendered as <s-icon> web component with dynamic color #}
+          <s-icon
+            class="feature-badge__icon"
+            name="{{ icon_name }}"
+            style="color: {{ icon_c }}; --icon-size: 18px;"
+            aria-hidden="true"
+          ></s-icon>
+
+          <span class="feature-badge__label">
+            {{ badge['badges.label'] }}
+          </span>
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+  {% if settings.add_inside_container %}
+  </div>
+  {% endif %}
+</section>
+
+<style>
+  #feature-badges-{{ id }} {
+    padding: 24px 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #feature-badges-{{ id }} .feature-badges-container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  #feature-badges-{{ id }} .feature-badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  #feature-badges-{{ id }} .feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1.5px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    cursor: default;
+    /* border-radius comes from inline style (per-badge slider) */
+  }
+
+  #feature-badges-{{ id }} .feature-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  #feature-badges-{{ id }} .feature-badge--active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  #feature-badges-{{ id }} .feature-badge__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  #feature-badges-{{ id }} .feature-badge__label {
+    display: inline-block;
+  }
+
+  @media (max-width: 640px) {
+    #feature-badges-{{ id }} .feature-badges-list {
+      gap: 8px;
+    }
+    #feature-badges-{{ id }} .feature-badge {
+      font-size: 13px;
+      padding: 8px 14px;
+    }
+  }
+</style>
