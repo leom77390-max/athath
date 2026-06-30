@@ -2412,8 +2412,8 @@
           "placeholder": "Placeholder text ..",
           "icon": "sicon-format-text-alt",
           "value": {
-            "ar": "المنتجات",
-            "en": "Products"
+            "ar": "عرض المزيد",
+            "en": "Show All"
           },
           "multilanguage": true,
           "required": true,
@@ -3893,39 +3893,39 @@
             }
           ]
         },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "النص العلوي الصغير",
-          "multilanguage": true,
-          "value": {
-            "ar": "Gentle And Safe",
-            "en": "Gentle And Safe"
-          }
-        },
-        {
-          "id": "main_title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان الرئيسي",
-          "multilanguage": true,
-          "value": {
-            "ar": "Made for sensitive skin",
-            "en": "Made for sensitive skin"
-          }
-        },
-        {
-          "id": "description",
-          "type": "string",
-          "format": "textarea",
-          "label": "الوصف",
-          "multilanguage": true,
-          "value": {
-            "ar": "We create safe products that really work and are designed to make you feel good",
-            "en": "We create safe products that really work and are designed to make you feel good"
-          }
-        },
+       {
+  "id": "subtitle",
+  "type": "string",
+  "format": "text",
+  "label": "النص العلوي الصغير",
+  "multilanguage": true,
+  "value": {
+    "ar": "لطيف وآمن",
+    "en": "Gentle And Safe"
+  }
+},
+{
+  "id": "main_title",
+  "type": "string",
+  "format": "text",
+  "label": "العنوان الرئيسي",
+  "multilanguage": true,
+  "value": {
+    "ar": "مصمم خصيصًا للبشرة الحساسة",
+    "en": "Made for sensitive skin"
+  }
+},
+       {
+  "id": "description",
+  "type": "string",
+  "format": "textarea",
+  "label": "الوصف",
+  "multilanguage": true,
+  "value": {
+    "ar": "نبتكر منتجات آمنة وفعّالة، مصممة بعناية لتمنحك العناية التي تستحقها وتجعلك تشعرين بالثقة والجمال كل يوم.",
+    "en": "We create safe products that really work and are designed to make you feel good"
+  }
+},
         {
           "id": "button_text",
           "type": "string",
@@ -4422,40 +4422,40 @@
             }
           ],
           "value": [
-            {
-              "tabs.tab_id": "t1",
-              "tabs.title": {
-                "ar": "Safe for Sensitive Skin",
-                "en": "Safe for Sensitive Skin"
-              },
-              "tabs.description": {
-                "ar": "We’re strict about what goes into our products (and what stays out). Our therapist calls it setting healthy boundaries.",
-                "en": "We’re strict about what goes into our products (and what stays out). Our therapist calls it setting healthy boundaries."
-              }
-            },
-            {
-              "tabs.tab_id": "t2",
-              "tabs.title": {
-                "ar": "Safe for Dry Skin",
-                "en": "Safe for Dry Skin"
-              },
-              "tabs.description": {
-                "ar": "Explore the Benefits of Using Safe-for-Dry Products in Your Everyday Life.",
-                "en": "Explore the Benefits of Using Safe-for-Dry Products in Your Everyday Life."
-              }
-            },
-            {
-              "tabs.tab_id": "t3",
-              "tabs.title": {
-                "ar": "Organic Skincare",
-                "en": "Organic Skincare"
-              },
-              "tabs.description": {
-                "ar": "Unlock the Power of Nature with Effective Organic Skincare Solutions.",
-                "en": "Unlock the Power of Nature with Effective Organic Skincare Solutions."
-              }
-            }
-          ],
+  {
+    "tabs.tab_id": "t1",
+    "tabs.title": {
+      "ar": "آمن للبشرة الحساسة",
+      "en": "Safe for Sensitive Skin"
+    },
+    "tabs.description": {
+      "ar": "نحرص بعناية على اختيار المكونات التي تدخل في منتجاتنا، ونستبعد كل ما قد يسبب تهيجًا للبشرة الحساسة، لتمنحك عناية آمنة وفعالة كل يوم.",
+      "en": "We’re strict about what goes into our products (and what stays out). Our therapist calls it setting healthy boundaries."
+    }
+  },
+  {
+    "tabs.tab_id": "t2",
+    "tabs.title": {
+      "ar": "آمن للبشرة الجافة",
+      "en": "Safe for Dry Skin"
+    },
+    "tabs.description": {
+      "ar": "اكتشف فوائد استخدام منتجات مصممة خصيصًا لترطيب البشرة الجافة وتغذيتها بعمق، لتمنحها النعومة والحيوية التي تستحقها.",
+      "en": "Explore the Benefits of Using Safe-for-Dry Products in Your Everyday Life."
+    }
+  },
+  {
+    "tabs.tab_id": "t3",
+    "tabs.title": {
+      "ar": "العناية الطبيعية بالبشرة",
+      "en": "Organic Skincare"
+    },
+    "tabs.description": {
+      "ar": "استمتع بقوة المكونات الطبيعية مع حلول فعالة للعناية بالبشرة، تمنحك إشراقة صحية وجمالًا يدوم.",
+      "en": "Unlock the Power of Nature with Effective Organic Skincare Solutions."
+    }
+  }
+],
           "minLength": 1,
           "maxLength": 10
         },
