@@ -21,11 +21,12 @@
       class="absolute top-5 right-5 w-10 h-10 rounded-full
              flex items-center justify-center
              hover:bg-gray-100 transition">
-      ✕
+      {# ✕ #}
+      <i class="sicon-cancel text-lg"></i>
     </button>
 
     <h3 class="text-2xl font-semibold text-center mb-8 text-gray-900">
-      Share this product
+      {{trans('blocks.Sharethisproduct')}}
     </h3>
 
     <ul class="grid grid-cols-5 gap-4">
@@ -44,7 +45,9 @@
             <i class="sicon-facebook text-2xl"></i>
           </div>
 
-          <span class="text-xs text-gray-500">Facebook</span>
+          <span class="text-xs text-gray-500">
+            {{ trans('common.facebook') }}
+          </span>
         </a>
       </li>
 
@@ -64,7 +67,9 @@
             </svg>
           </div>
 
-          <span class="text-xs text-gray-500">X</span>
+          <span class="text-xs text-gray-500">
+  {{ trans('common.x') }}
+</span>
         </a>
       </li>
 
@@ -82,7 +87,9 @@
             <i class="sicon-whatsapp text-2xl"></i>
           </div>
 
-          <span class="text-xs text-gray-500">WhatsApp</span>
+          <span class="text-xs text-gray-500">
+  {{ trans('common.whatsapp') }}
+</span>
         </a>
       </li>
 
@@ -99,7 +106,9 @@
             <i class="sicon-mail text-xl"></i>
           </div>
 
-          <span class="text-xs text-gray-500">Email</span>
+          <span class="text-xs text-gray-500">
+  {{ trans('common.email') }}
+</span>
         </a>
       </li>
 
@@ -119,7 +128,7 @@
 
           <span id="copyText"
             class="text-xs text-gray-500 transition-all duration-300">
-            Copy
+            {{ trans('common.copy') }}
           </span>
         </button>
       </li>
@@ -215,7 +224,7 @@
         const copyText = document.getElementById('copyText');
         const copyIcon = document.getElementById('copyIcon');
 
-        copyText.textContent = 'Copied ✓';
+        copyText.textContent = '{{ trans('common.copied') }} ✓';
 
         copyIcon.classList.remove('bg-gray-100');
         copyIcon.classList.add(
@@ -226,7 +235,7 @@
 
         setTimeout(() => {
 
-          copyText.textContent = 'Copy';
+         copyText.textContent = "{{ trans('common.copy') }}";
 
           copyIcon.classList.remove(
             'bg-emerald-100',

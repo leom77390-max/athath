@@ -1,7 +1,9 @@
 {
   "blocks": {
-    "ViewProduct":"عرض المنتج"
-    ,
+    "ViewProduct":"عرض المنتج",
+    "Share":"مشاركة",
+    "Sharethisproduct":"شارك هذا المنتج",
+    
    "header": {
       "cart": "السلة",
       "search": "بحث",
@@ -73,6 +75,12 @@
   },
   "common": {
     "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
-    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة "
+    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة ",
+    "facebook": "فيسبوك",
+    "x": "إكس",
+    "whatsapp": "واتساب",
+    "email": "البريد الإلكتروني",
+    "copy": "نسخ",
+    "copied": "تم النسخ"
   }
 }
