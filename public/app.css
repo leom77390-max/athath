@@ -1429,9 +1429,6 @@ input:where([type='file']):focus{
 .min-h-full{
     min-height: 100%;
 }
-.min-h-screen{
-    min-height: 100vh;
-}
 .\!w-36{
     width: 9rem !important;
 }
@@ -2402,10 +2399,6 @@ input:where([type='file']):focus{
 .px-2{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-}
-.px-2\.5{
-    padding-left: 0.625rem;
-    padding-right: 0.625rem;
 }
 .px-3{
     padding-left: 0.75rem;
