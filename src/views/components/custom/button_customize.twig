@@ -18,63 +18,82 @@
 .{{ selector }}{
     --btn-bg: {{ bg }};
     --btn-color: {{ color }};
-    --btn-border: {{ bg }};
+    --btn-border: {{ border }};
     --btn-hover-bg: {{ color }};
     --btn-hover-color: {{ bg }};
-    --btn-hover-border: {{ bg }};
-    --btn-shine: {{ shine }};
-    position:relative;
-    overflow:hidden;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:.5rem;
-    background:var(--btn-bg);
-    color:var(--btn-color);
-    border:1px solid var(--btn-border);
+
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    background: var(--btn-bg);
+    color: var(--btn-color);
+    border: 1px solid var(--btn-border);
+
     transition:
-        color .35s ease,
-        border-color .35s ease;
+        color .45s cubic-bezier(.7,0,.3,1),
+        border-color .35s ease,
+        transform .25s,
+        box-shadow .25s;
 }
+
+.{{ selector }}::before,
 .{{ selector }}::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:var(--btn-hover-bg);
-    transform:scaleX(0);
-    transform-origin:left;
-    transition:transform .45s cubic-bezier(.22,1,.36,1);
-    z-index:0;
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .5s cubic-bezier(.7,0,.3,1);
+    z-index: 1;
 }
+
 .{{ selector }}::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:-160%;
-    width:60%;
-    height:100%;
-    background:linear-gradient(
-        120deg,
-        transparent,
-        var(--btn-shine),
-        transparent
-    );
-    transform:skewX(-25deg);
-    z-index:2;
+    background: var(--btn-hover-bg);
+    opacity: .3;
+    transition-delay: .1s;
 }
+
+.{{ selector }}::after{
+    background: var(--btn-hover-bg);
+    transition-delay: 0s;
+}
+
 .{{ selector }} > *{
-    position:relative;
-    z-index:3;
+    position: relative;
+    z-index: 2;
+    transition: color .5s cubic-bezier(.7,0,.3,1);
 }
+
+@media (hover:hover){
+
 .{{ selector }}:hover{
-    color:var(--btn-hover-color);
-    border-color:var(--btn-hover-border);
+    color: var(--btn-hover-color);
+    border-color: var(--btn-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0,0,0,.18);
 }
+
+.{{ selector }}:hover::before,
 .{{ selector }}:hover::after{
-    transform:scaleX(1);
+    transform: scaleX(1);
+    transform-origin: left;
 }
+
 .{{ selector }}:hover::before{
-    left:170%;
-    transition:left .7s ease;
+    transition-delay: 0s;
+}
+
+.{{ selector }}:hover::after{
+    transition-delay: .1s;
+}
+
+.{{ selector }}:hover > *{
+    color: var(--btn-hover-color);
+}
+
 }
 </style>
