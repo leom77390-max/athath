@@ -1,6 +1,10 @@
 {
   "blocks": {
      "ViewProduct":"View Product",
+     "Share":"Share",
+     "Sharethisproduct":"Share this product"
+   ,
+   
    "header": {
       "cart": "Cart",
       "language": "Language",
@@ -71,6 +75,12 @@
   },
   "common": {
     "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
-    "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount"
+    "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount",
+    "facebook": "Facebook",
+    "x": "X",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "copy": "Copy",
+    "copied": "Copied"
   }
 }
