@@ -44,33 +44,43 @@
         {% set ms = component.mobile_slides_per_view|default(1) %}
         {% set mob_peek = ms ~ '.3' %}
 
-        <salla-slider
-            id="sk-cards-{{ component.id }}"
-            type="carousel"
-            class="SK-cards-section__slider"
-            {{ component.enable_autoplay ? 'auto-play' : '' }}
-            {{ component.enable_controls|default(true) ? 'controls-outer' : 'show-controls="false"' }}
-            {{ component.enable_loop|default(true) ? 'loop="true"' : '' }}
-            pagination
-            slider-config='{
-                "slidesPerView": {{ mob_peek }},
-                "spaceBetween": 16,
-                "speed": 800,
-                "grabCursor": true,
-                "breakpoints": {
-                    "640":  {"slidesPerView": 2.1,  "spaceBetween": 20},
-                    "1024": {"slidesPerView": {{ ls }}, "spaceBetween": 24},
-                    "1280": {"slidesPerView": {{ ds }}, "spaceBetween": 24}
-                }
-                {% if component.enable_autoplay %},
-                "autoplay": {
-                    "delay": {{ component.delay_time | default(3) }}000,
-                    "disableOnInteraction": false,
-                    "pauseOnMouseEnter": true
-                }
-                {% endif %}
-            }'
-        >
+    <salla-slider
+    id="sk-cards-{{ component.id }}"
+    type="carousel"
+    class="SK-cards-section__slider"
+    {% if component.enable_autoplay %}auto-play{% endif %}
+    {% if component.enable_controls is same as(false) %}show-controls="false"{% else %}controls-outer{% endif %}
+    {% if component.enable_loop is not same as(false) %}loop="true"{% endif %}
+    {% if component.enable_pagination is not same as(false) %}pagination{% endif %}
+    slider-config='{
+    "slidesPerView": {{ mob_peek }},
+    "spaceBetween": 16,
+    "speed": 600,
+    "grabCursor": true,
+    "simulateTouch": true,
+    "allowTouchMove": true,
+    "followFinger": true,
+    "touchRatio": 1.8,
+    "threshold": 5,
+    "resistance": true,
+    "resistanceRatio": 0.85,
+    "breakpoints": {
+        "640": { "slidesPerView": 2.1, "spaceBetween": 20 },
+        "1024": { "slidesPerView": {{ ls }}, "spaceBetween": 24 },
+        "1280": { "slidesPerView": {{ ds }}, "spaceBetween": 24 }
+    }
+    {% if component.enable_autoplay %},
+    "autoplay": {
+        "delay": 3000,
+        "disableOnInteraction": false,
+        "pauseOnMouseEnter": false
+    }
+    {% endif %}
+    {% if component.enable_loop is not same as(false) %},
+    "loop": true
+    {% endif %}
+}'
+>
             <div slot="items">
                 {% for card in component.card %}
                 <div class="swiper-slide h-auto">
@@ -177,6 +187,45 @@
 
     {% endif %}
 
+    <style>
+    #sk-cards-{{ component.id }}::part(nav-btn) {
+        border-radius: {{ component.arrows_radius | default(50) }}px !important;
+    }
+    #sk-cards-{{ component.id }} .s-slider-nav-arrow {
+        border-radius: {{ component.arrows_radius | default(50) }}px !important;
+    }
+    </style>
+
+    {% if component.customize_colors %}
+    <style>
+    #sk-cards-{{ component.id }} {
+        --swiper-pagination-color: {{ component.pagination_color | default('#18181b') }};
+        --swiper-pagination-bullet-inactive-color: {{ component.pagination_color | default('#18181b') }};
+        --swiper-navigation-color: {{ component.arrows_color | default('#18181b') }};
+    }
+    #sk-cards-{{ component.id }}::part(nav-btn) {
+        color: {{ component.arrows_color | default('#18181b') }};
+        background-color: {{ component.arrows_bg_color | default('#ffffff') }};
+        border: 1px solid {{ component.arrows_color | default('#18181b') }};
+    }
+    #sk-cards-{{ component.id }} .s-slider-nav-arrow {
+        background-color: {{ component.arrows_bg_color | default('#ffffff') }} !important;
+        color: {{ component.arrows_color | default('#18181b') }} !important;
+        border: 1px solid {{ component.arrows_color | default('#18181b') }} !important;
+    }
+    #sk-cards-{{ component.id }} .s-slider-nav-arrow svg {
+        fill: {{ component.arrows_color | default('#18181b') }} !important;
+    }
+    #sk-cards-{{ component.id }} .swiper-pagination-bullet {
+        background-color: {{ component.pagination_color | default('#18181b') }} !important;
+        opacity: 0.5;
+    }
+    #sk-cards-{{ component.id }} .swiper-pagination-bullet-active {
+        opacity: 1 !important;
+    }
+    </style>
+    {% endif %}
+
 </section>
 
 <style>
@@ -277,11 +326,14 @@
 
 /* Background layer */
 .SK-card__bg {
-    position: absolute;
+   position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s ease;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform .35s ease;
 }
 @media (hover: hover) {
     .SK-card:hover .SK-card__bg {
@@ -400,12 +452,21 @@
 
 /* ── Slider overrides ── */
 .SK-cards-section__slider {
-    --salla-slider-padding: 0;
+    --salla-slider-padding: 3.5rem;
     overflow: visible; /* let peek card show */
     padding-bottom: 2.5rem; /* space for pagination */
 }
 .SK-cards-section__slider .swiper-pagination {
-    bottom: 0 !important;
+    bottom: -35px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    display: flex;
+    justify-content: center;
+}
+.SK-cards-section__slider .s-slider-nav-arrow,
+.SK-cards-section__slider::part(nav-btn) {
+    box-shadow: none !important;
 }
 .SK-cards-section__slider .swiper {
     overflow: visible;
@@ -415,17 +476,19 @@
     cursor: grabbing;
 }
 .SK-cards-section__slider .swiper-wrapper {
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    
 }
 .SK-cards-section__slider .swiper-slide {
     height: auto;
-    transition: transform 0.4s ease;
 }
 
 /* ── Mobile ── */
 @media (max-width: 639px) {
     .SK-cards-section {
         padding: 2.5rem 1rem;
+    }
+    .SK-cards-section__slider {
+        --salla-slider-padding: 0;
     }
     .SK-card__title { font-size: 1.05rem; }
     .SK-card__btn   { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
