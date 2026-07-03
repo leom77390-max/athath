@@ -48,9 +48,9 @@
             id="sk-cards-{{ component.id }}"
             type="carousel"
             class="SK-cards-section__slider"
-            {{ component.enable_autoplay ? 'auto-play' : '' }}
-            {{ component.enable_controls|default(true) ? 'controls-outer' : 'show-controls="false"' }}
-            {{ component.enable_loop|default(true) ? 'loop="true"' : '' }}
+            {% if component.enable_autoplay %}autoplay{% endif %}
+            {% if component.enable_controls is same as(false) %}show-controls="false"{% else %}controls-outer{% endif %}
+            {% if component.enable_loop is not same as(false) %}loop="true"{% endif %}
             pagination
             slider-config='{
                 "slidesPerView": {{ mob_peek }},
@@ -64,7 +64,7 @@
                 }
                 {% if component.enable_autoplay %},
                 "autoplay": {
-                    "delay": {{ component.delay_time | default(3) }}000,
+                    "delay": 3000,
                     "disableOnInteraction": false,
                     "pauseOnMouseEnter": true
                 }
@@ -415,11 +415,10 @@
     cursor: grabbing;
 }
 .SK-cards-section__slider .swiper-wrapper {
-    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    
 }
 .SK-cards-section__slider .swiper-slide {
     height: auto;
-    transition: transform 0.4s ease;
 }
 
 /* ── Mobile ── */
