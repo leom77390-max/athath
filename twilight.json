@@ -5859,6 +5859,24 @@
                     ]
                 },
                 {
+                    "id": "enable_pagination",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار نقاط التنقل (الباجينيشن)",
+                    "description": "فعّل هذا الخيار لإظهار النقاط السفلية التي تساعد الزائر على التنقل بين البطاقات.",
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "type": "boolean",
                     "icon": "sicon-image",
                     "label": "صورة الخلفية للقسم",
@@ -5951,6 +5969,54 @@
                     "format": "color",
                     "inputType": "color",
                     "label": "لون نص رابط CTA",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "arrows_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون أيقونة الأسهم",
+                    "icon": "sicon-format-fill",
+                    "value": "#18181b",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "arrows_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الأسهم",
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "conditions": [
+                        {
+                            "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "pagination_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نقاط التنقل (الباجينيشن)",
                     "icon": "sicon-format-fill",
                     "value": "#18181b",
                     "conditions": [
