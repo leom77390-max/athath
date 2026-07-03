@@ -5876,6 +5876,25 @@
                         }
                     ]
                 },
+                     {
+                    "id": "arrows_radius",
+                    "type": "number",
+                    "format": "slider",
+                    "inputType": "range",
+                    "label": "استدارة الأسهم",
+                    "icon": "sicon-pin",
+                    "value": "50",
+                    "step": "1",
+                    "minimum": "0",
+                    "maximum": "50",
+                    "conditions": [
+                        {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
                 {
                     "type": "boolean",
                     "icon": "sicon-image",

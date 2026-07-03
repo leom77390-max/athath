@@ -187,6 +187,15 @@
 
     {% endif %}
 
+    <style>
+    #sk-cards-{{ component.id }}::part(nav-btn) {
+        border-radius: {{ component.arrows_radius | default(50) }}px !important;
+    }
+    #sk-cards-{{ component.id }} .s-slider-nav-arrow {
+        border-radius: {{ component.arrows_radius | default(50) }}px !important;
+    }
+    </style>
+
     {% if component.customize_colors %}
     <style>
     #sk-cards-{{ component.id }} {
@@ -443,17 +452,21 @@
 
 /* ── Slider overrides ── */
 .SK-cards-section__slider {
-    --salla-slider-padding: 0;
+    --salla-slider-padding: 3.5rem;
     overflow: visible; /* let peek card show */
     padding-bottom: 2.5rem; /* space for pagination */
 }
 .SK-cards-section__slider .swiper-pagination {
-    bottom: 0 !important;
+    bottom: -35px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: auto !important;
     display: flex;
     justify-content: center;
+}
+.SK-cards-section__slider .s-slider-nav-arrow,
+.SK-cards-section__slider::part(nav-btn) {
+    box-shadow: none !important;
 }
 .SK-cards-section__slider .swiper {
     overflow: visible;
@@ -473,6 +486,9 @@
 @media (max-width: 639px) {
     .SK-cards-section {
         padding: 2.5rem 1rem;
+    }
+    .SK-cards-section__slider {
+        --salla-slider-padding: 0;
     }
     .SK-card__title { font-size: 1.05rem; }
     .SK-card__btn   { padding: 0.6rem 1.5rem; font-size: 0.85rem; }
