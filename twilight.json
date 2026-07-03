@@ -5992,6 +5992,11 @@
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
+                        },
+                          {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
                         }
                     ]
                 },
@@ -6008,6 +6013,11 @@
                             "id": "customize_colors",
                             "operation": "=",
                             "value": true
+                        },
+                          {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
                         }
                     ]
                 },
@@ -6022,6 +6032,11 @@
                     "conditions": [
                         {
                             "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                          {
+                            "id": "enable_slider",
                             "operation": "=",
                             "value": true
                         }
