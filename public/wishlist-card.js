@@ -163,17 +163,29 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
+<<<<<<< HEAD
 /******/ 	const __webpack_module_cache__ = {};
+=======
+/******/ 	var __webpack_module_cache__ = {};
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
+<<<<<<< HEAD
 /******/ 		const cachedModule = __webpack_module_cache__[moduleId];
+=======
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
+<<<<<<< HEAD
 /******/ 		const module = __webpack_module_cache__[moduleId] = {
+=======
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
@@ -182,7 +194,11 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 		// Execute the module function
 /******/ 		if (!(moduleId in __webpack_modules__)) {
 /******/ 			delete __webpack_module_cache__[moduleId];
+<<<<<<< HEAD
 /******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
+=======
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 			e.code = 'MODULE_NOT_FOUND';
 /******/ 			throw e;
 /******/ 		}
@@ -195,6 +211,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
+<<<<<<< HEAD
 /******/ 		// define getter/value functions for harmony exports
 /******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			if(Array.isArray(definition)) {
@@ -215,6 +232,13 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 					if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 						Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 					}
+=======
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 				}
 /******/ 			}
 /******/ 		};
@@ -229,7 +253,11 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
 /******/ 		__webpack_require__.r = (exports) => {
+<<<<<<< HEAD
 /******/ 			if(Symbol.toStringTag) {
+=======
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
@@ -241,7 +269,11 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
+<<<<<<< HEAD
 /******/ 	let __webpack_exports__ = __webpack_require__("./src/assets/js/partials/wishlist-card.js");
+=======
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/assets/js/partials/wishlist-card.js");
+>>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 	
 /******/ })()
 ;
