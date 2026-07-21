@@ -4626,7 +4626,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t2",
+                            "tabs_products.tab_id": "t1",
                             "tabs_products.media_type": [
                                 "image"
                             ],
@@ -4634,7 +4634,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t2",
+                            "tabs_products.tab_id": "t1",
                             "tabs_products.media_type": [
                                 "video"
                             ],
@@ -4642,7 +4642,7 @@
                             "tabs_products.image": ""
                         },
                         {
-                            "tabs_products.tab_id": "t3",
+                            "tabs_products.tab_id": "t2",
                             "tabs_products.media_type": [
                                 "image"
                             ],
@@ -4650,7 +4650,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t3",
+                            "tabs_products.tab_id": "t2",
                             "tabs_products.media_type": [
                                 "image"
                             ],
