@@ -1459,15 +1459,60 @@
                     "variant": "h6"
                 },
                 {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
+                    "id": "banner_width",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عرض البانر",
                     "description": null,
-                    "id": "add_inside_container",
-                    "format": "switch",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "wide",
+                            "key": "w1"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "wide",
+                            "key": "w1"
+                        },
+                        {
+                            "label": "داخل حاوية",
+                            "value": "container",
+                            "key": "w2"
+                        },
+                        {
+                            "label": "نسبة مئوية",
+                            "value": "percentage",
+                            "key": "w3"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "banner_percentage_width",
+                    "type": "number",
+                    "format": "number",
+                    "label": "نسبة العرض (%)",
+                    "description": "أدخل النسبة (مثال: 90)",
+                    "labelHTML": null,
+                    "placeholder": "90",
+                    "icon": "sicon-settings",
+                    "value": 90,
                     "required": false,
-                    "value": false,
-                    "selected": false
+                    "conditions": [
+                        {
+                            "id": "banner_width",
+                            "operation": "=",
+                            "value": "percentage"
+                        }
+                    ]
                 },
                 {
                     "type": "boolean",

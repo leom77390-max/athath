@@ -1,4 +1,4 @@
-<section class="py-5 md:py-10 shopcat-section-{{position}} container">
+<section class="px-10 md:px-20 shopcat-section-{{position}} container">
 
   {% set top_heading = component.block_title_component|default(component.block_title) %}
   {% set top_subtitle = component.sub_title_component|default(component.promo_text) %}
@@ -11,11 +11,13 @@
 
   {# ── Top heading ───────────────────────────────────────────── #}
   <div class="text-center flex items-center justify-center flex-col mb-12 text-font ">
-    <h2 class="text-2xl md:text-3xl text-font font-bold mb-2"{% if component.use_custom_colors %} style="color: {{ top_heading_color }}"{% endif %}>
+    <h2 class="text-2xl md:text-3xl text-font font-bold mb-2" {% if component.use_custom_colors %}
+      style="color: {{ top_heading_color }}" {% endif %}>
       {{ top_heading }}
     </h2>
 
-    <p class="text-base text-font"{% if component.use_custom_colors %} style="color: {{ top_subtitle_color }}"{% endif %}>
+    <p class="text-base text-font" {% if component.use_custom_colors %} style="color: {{ top_subtitle_color }}" {% endif
+      %}>
       {{ top_subtitle }}
     </p>
   </div>
@@ -24,59 +26,51 @@
   <div class="relative flex flex-col lg:flex-row items-start gap-8">
 
     {# ── Left sticky banner ───────────────────────────────────── #}
-    <aside class="w-full flex-1 flex-shrink-0 lg:sticky top-40" >
+    <aside class="w-full flex-1 flex-shrink-0 lg:sticky top-40">
       <div class="relative lg:sticky lg:top-40 rounded-2xl overflow-hidden">
 
         {% if component.is_video and component.banner_video %}
-          <video
-            src="{{ component.banner_video }}"
-            poster="{{ component.banner_img|default('') }}"
-            class="w-full h-[380px] lg:h-[680px] object-cover block"
-            playsinline
-            autoplay
-            muted
-            loop
-          >
-            Your browser does not support the video tag.
-          </video>
+        <video src="{{ component.banner_video }}" poster="{{ component.banner_img|default('') }}"
+          class="w-full h-[380px] lg:h-[680px] object-cover block" playsinline autoplay muted loop>
+          Your browser does not support the video tag.
+        </video>
         {% else %}
-          <img
-            src="{{ component.banner_img }}"
-            alt="{{ component.block_title }}"
-            class="w-full h-[380px] lg:h-[680px] object-cover block"
-            loading="lazy">
+        <img src="{{ component.banner_img }}" alt="{{ component.block_title }}"
+          class="w-full h-[380px] lg:h-[680px] object-cover block" loading="lazy">
         {% endif %}
 
         {% if overlay_enabled %}
-          <div class="absolute inset-0" style="background: {{ overlay_color }}; opacity: {{ overlay_opacity }}"></div>
+        <div class="absolute inset-0" style="background: {{ overlay_color }}; opacity: {{ overlay_opacity }}"></div>
         {% endif %}
 
         <div class="absolute inset-0 flex flex-col items-center justify-start text-center p-8 gap-4">
-          
-          <span class="text-sm tracking-wide text-background "{% if component.use_custom_colors %} style="color: {{ component.promo_color }}"{% endif %}>
+
+          <span class="text-sm tracking-wide text-background " {% if component.use_custom_colors %}
+            style="color: {{ component.promo_color }}" {% endif %}>
             {{ component.promo_text }}
           </span>
 
-          <h3 class="text-2xl md:text-3xl font-bold leading-tight text-background"{% if component.use_custom_colors %} style="color: {{ component.block_color }}"{% endif %}>
+          <h3 class="text-2xl md:text-3xl font-bold leading-tight text-background" {% if component.use_custom_colors %}
+            style="color: {{ component.block_color }}" {% endif %}>
             {{ component.block_title }}
           </h3>
 
-         {% if component.btn_opt %}
+          {% if component.btn_opt %}
           {% include 'components.custom.button_customize.twig' with {
-                  href: component.btn_url|default('#'),
-                  text: component.btn_text,
-                  selector: 'section-btn',
-                  class: 'section-btn px-8 py-3 rounded-full text-sm font-semibold',
-                  bg: component.btn_bg,
-                  color: component.btn_clr,
-                  border: component.btn_bg,
-                  hover_bg: component.btn_clr,
-                  hover_color: component.btn_bg,
-                  hover_border: component.btn_clr,
-                  after_bg: component.btn_clr
-              } %}
+          href: component.btn_url|default('#'),
+          text: component.btn_text,
+          selector: 'section-btn',
+          class: 'section-btn px-8 py-3 rounded-full text-sm font-semibold',
+          bg: component.btn_bg,
+          color: component.btn_clr,
+          border: component.btn_bg,
+          hover_bg: component.btn_clr,
+          hover_color: component.btn_bg,
+          hover_border: component.btn_clr,
+          after_bg: component.btn_clr
+          } %}
           {% endif %}
-          
+
 
         </div>
       </div>
@@ -94,8 +88,8 @@
             <h3 class="text-xl md:text-2xl font-bold text-font">
               {{ category.name }}
             </h3>
-              <a href="{{ category.url }}"
-               class="text-sm text-secondary  underline underline-offset-4 hover:opacity-60 transition whitespace-nowrap ">
+            <a href="{{ category.url }}"
+              class="text-sm text-secondary  underline underline-offset-4 hover:opacity-60 transition whitespace-nowrap ">
               عرض الكل
             </a>
           </div>
@@ -104,19 +98,19 @@
 
             <div class="flex gap-2">
 
-              <button class="w-10 h-10 rtl:rotate-180 rounded-full border border-secondary bg-background text-secondary hover:bg-font hover:text-background transition flex items-center justify-center"
-                      aria-label="السابق"
-                      onclick="slideMove('SK-slider-{{ position }}-{{ loop.index }}', -1)">
+              <button
+                class="w-10 h-10 rtl:rotate-180 rounded-full border border-secondary bg-background text-secondary hover:bg-font hover:text-background transition flex items-center justify-center"
+                aria-label="السابق" onclick="slideMove('SK-slider-{{ position }}-{{ loop.index }}', -1)">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="15 18 9 12 15 6"/>
+                  <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
 
-              <button class="w-10 h-10 rounded-full rtl:rotate-180 border border-secondary bg-background text-secondary hover:bg-font hover:text-background transition flex items-center justify-center"
-                      aria-label="التالي"
-                      onclick="slideMove('SK-slider-{{ position }}-{{ loop.index }}', 1)">
+              <button
+                class="w-10 h-10 rounded-full rtl:rotate-180 border border-secondary bg-background text-secondary hover:bg-font hover:text-background transition flex items-center justify-center"
+                aria-label="التالي" onclick="slideMove('SK-slider-{{ position }}-{{ loop.index }}', 1)">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="9 18 15 12 9 6"/>
+                  <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
 
@@ -124,11 +118,8 @@
           </div>
         </div>
         {# Slider #}
-        <salla-products-slider
-          source="categories"
-          source-value="[{{ category.id }}]"
-          slider-id="SK-slider-{{ position }}-{{ loop.index }}"
-          slider-config='{
+        <salla-products-slider source="categories" source-value="[{{ category.id }}]"
+          slider-id="SK-slider-{{ position }}-{{ loop.index }}" slider-config='{
               "slidesPerView": 2,
               "spaceBetween": 16,
               "speed": 1000,
@@ -159,36 +150,70 @@
 </section>
 
 <script>
-function slideMove(sliderId, direction) {
-  var el = document.querySelector('[slider-id="' + sliderId + '"]');
-  if (!el) return;
+  function slideMove(sliderId, direction) {
+    var el = document.querySelector('[slider-id="' + sliderId + '"]');
+    if (!el) return;
 
-  var swiper = el.swiper || (el.shadowRoot && el.shadowRoot.querySelector('.swiper'))?._swiper;
-  if (swiper) {
-    direction === 1 ? swiper.slideNext() : swiper.slidePrev();
-    return;
-  }
+    var swiper = el.swiper || (el.shadowRoot && el.shadowRoot.querySelector('.swiper'))?._swiper;
+    if (swiper) {
+      direction === 1 ? swiper.slideNext() : swiper.slidePrev();
+      return;
+    }
 
-  var inner = el.querySelector('.swiper') || el.shadowRoot?.querySelector('.swiper');
-  if (inner && inner.swiper) {
-    direction === 1 ? inner.swiper.slideNext() : inner.swiper.slidePrev();
+    var inner = el.querySelector('.swiper') || el.shadowRoot?.querySelector('.swiper');
+    if (inner && inner.swiper) {
+      direction === 1 ? inner.swiper.slideNext() : inner.swiper.slidePrev();
+    }
   }
-}
 </script>
 <style>
-.shopcat-section-{{position}} .s-products-slider-card {
-  max-width: 100%;
-}
-.shopcat-section-{{position}} .carousel-slider .swiper {
-  padding: 10px 16px !important;
-}
-    .shopcat-section-{{position}} .s-slider-block__title-nav {
-        display: none;
+  .shopcat-section- {
+      {
+      position
     }
-   .shopcat-section-{{position}} .s-products-slider-wrapper{
-      margin: 0 !important; 
+  }
+
+  .s-products-slider-card {
+    max-width: 100%;
+  }
+
+  .shopcat-section- {
+      {
+      position
     }
-    .shopcat-section-{{position}} .carousel-slider .swiper-wrapper > div{
-      padding: 0 !important;
+  }
+
+  .carousel-slider .swiper {
+    padding: 10px 16px !important;
+  }
+
+  .shopcat-section- {
+      {
+      position
     }
+  }
+
+  .s-slider-block__title-nav {
+    display: none;
+  }
+
+  .shopcat-section- {
+      {
+      position
+    }
+  }
+
+  .s-products-slider-wrapper {
+    margin: 0 !important;
+  }
+
+  .shopcat-section- {
+      {
+      position
+    }
+  }
+
+  .carousel-slider .swiper-wrapper>div {
+    padding: 0 !important;
+  }
 </style>

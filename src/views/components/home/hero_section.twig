@@ -1,14 +1,27 @@
 {# ============================================================ #}
 {# Peek/Coverflow Hero Slider — يطابق تصميم الفيديو             #}
 {# ============================================================ #}
-<section class="{{component.add_inside_container ? container : ''}} shopify-hero-{{ position }}" 
+{% set width_class = '' %}
+{% set width_style = '' %}
+
+{% if component.banner_width == 'container' %}
+  {% set width_class = 'container mx-auto' %}
+{% elseif component.banner_width == 'percentage' %}
+  {% set width_class = 'mx-auto' %}
+  {% set width_style = 'width: ' ~ component.banner_percentage_width|default(90) ~ '%; max-width: 100%;' %}
+{% else %}
+  {% set width_class = 'w-full' %}
+{% endif %}
+
+<section class="{{ width_class }} shopify-hero-{{ position }} mb-10 md:mb-20" 
  style="
+    {{ width_style }}
     --desktop-height: {{ component.desktop_height | default(90) }}vh;
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
   "
 >
 <div
-  class="inner-content flex flex-col container
+  class="inner-content flex flex-col {{ component.block_title or component.subtext ? 'pb-6' : '' }} container
     {% if component.items_alignment_horizontal|default('center') == 'start' %}
       items-start text-start
     {% elseif component.items_alignment_horizontal|default('center') == 'center' %}

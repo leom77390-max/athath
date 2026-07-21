@@ -1,21 +1,16 @@
-<section id="featured-products" data-component='{{ component|json_encode|raw }}'
-    class="bg-background">
+<section id="featured-products" data-component='{{ component|json_encode|raw }}' class="bg-background">
 
-    <div class="container py-5 md:py-10">
+    <div class="container px-10 md:px-20">
 
         <!-- TOP HEADER -->
         <div class="mb-10 text-center ">
-           <h2
-                class="text-3xl lg:text-4xl font-bold mb-4 leading-tight mx-auto lg:mx-0"
-                style="color: {{ component.section_heading_color ?: '#010101' }}"
-            >
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4 leading-tight mx-auto lg:mx-0"
+                style="color: {{ component.section_heading_color ?: '#010101' }}">
                 {{ component.section_heading }}
             </h2>
 
-            <p
-                class="text-xs uppercase tracking-widest mb-2"
-                style="color: {{ component.section_subtitle_color ?: '#666666' }}"
-            >
+            <p class="text-xs uppercase tracking-widest mb-2"
+                style="color: {{ component.section_subtitle_color ?: '#666666' }}">
                 {{ component.section_subtitle }}
             </p>
         </div>
@@ -28,7 +23,7 @@
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2">
-                        <polyline points="6 9 12 15 18 9"/>
+                        <polyline points="6 9 12 15 18 9" />
                     </svg>
                 </div>
             </div>
@@ -46,7 +41,9 @@
 
             <!-- RIGHT: Flex layout on desktop (staggered), slider on mobile -->
             <div class="w-full lg:w-3/4">
-                <div id="tab-content" class="flex gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:flex-wrap lg:items-start pb-4 lg:pb-0" style="scrollbar-width: none;">
+                <div id="tab-content"
+                    class="flex gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:flex-wrap lg:items-start pb-4 lg:pb-0"
+                    style="scrollbar-width: none;">
                     <!-- Dynamic content -->
                 </div>
             </div>
@@ -56,16 +53,39 @@
 </section>
 
 <style>
-{% if component.section_heading_color %}
-.tab-btn .tab-title{
-    color:{{component.section_heading_color}} !important;
-}
-{% endif %}
-{% if component.section_subtitle_color %}
-.tab-btn .tab-desc{
-    color:{{component.section_subtitle_color}} !important;
-}
-{% endif %}
+    {
+        % if component.section_heading_color %
+    }
 
+    .tab-btn .tab-title {
+        color: {
+                {
+                component.section_heading_color
+            }
+        }
+
+        !important;
+    }
+
+        {
+        % endif %
+    }
+
+        {
+        % if component.section_subtitle_color %
+    }
+
+    .tab-btn .tab-desc {
+        color: {
+                {
+                component.section_subtitle_color
+            }
+        }
+
+        !important;
+    }
+
+        {
+        % endif %
+    }
 </style>
-
