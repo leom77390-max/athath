@@ -1,6 +1,6 @@
 {% set c = component %}
  
-<section class="sk-slider-product s-block overflow-hidden" id="sk-slider-product-{{ position }}">
+<section class="sk-slider-product s-block overflow-hidden" id="sk-slider-product-section-{{ position }}">
 
 	<div class="container">
 
@@ -131,7 +131,7 @@
 
 
 						<span class="sk-product-card__btn">
-							{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}
+							<span>{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}</span>
 						</span>
 
 
@@ -151,7 +151,10 @@
 
 <style>
 	#sk-slider-product-{{position}}{
-		width: 90%;
+		width: 100%;
+		max-width: 1320px;
+		margin: 0 auto;
+		padding: 30px 16px;
 	}
 	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav {
 		left: 6rem !important;
@@ -189,10 +192,6 @@
 		opacity: .35 !important;
 	}
 
-	#sk-slider-product-{{position}}{
-		padding: 40px 0;
-	}
-
 	.sk-slider-title {
 		font-size: clamp(1.25rem, 2vw, 1.75rem);
 		font-weight: 700;
@@ -201,62 +200,69 @@
 
 	.sk-product-card {
 		display: flex !important;
-		align-items: stretch;
-		background: #f4f4f5;
-		border-radius: 16px;
-		overflow: hidden;
+		align-items: center;
+		background: transparent;
+		border-radius: 0;
+		overflow: visible;
 		text-decoration: none;
 		color: inherit;
 		height: 100%;
-		transition: box-shadow 0.3s;
-	}
-
-	.sk-product-card:hover {
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+		gap: 32px;
+		transition: all 0.3s ease;
 	}
 
 	.sk-product-card__img {
 		flex: 0 0 45%;
 		max-width: 45%;
 		overflow: hidden;
-		background: #e4e4e7;
+		background: #f4f4f5;
+		border-radius: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 1 / 1;
+		transition: transform 0.4s ease, box-shadow 0.3s ease;
 	}
 
 	.sk-product-card__img img {
 		width: 100%;
 		height: 100%;
-		min-height: 500px;
-		object-fit: cover;
+		object-fit: contain;
+		padding: 24px;
 		display: block;
-		transition: transform 0.4s ease;
+		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.sk-product-card:hover .sk-product-card__img {
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 	}
 
 	.sk-product-card:hover .sk-product-card__img img {
-		transform: scale(1.04);
+		transform: scale(1.05);
 	}
 
 	.sk-product-card__info {
 		flex: 1;
-		padding: 28px 24px;
+		padding: 12px 0;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 10px;
+		gap: 12px;
 	}
 
 	.sk-product-card__cat {
-		font-size: 1.25rem;
+		font-size: 0.8rem;
 		color: #71717a;
 		text-transform: uppercase;
-		letter-spacing: 0.07em;
-		font-weight: 500;
+		letter-spacing: 0.08em;
+		font-weight: 600;
 	}
 
 	.sk-product-card__name {
-		font-size: clamp(1.1rem, 1.4vw, 4rem);
+		font-size: clamp(1.2rem, 1.6vw, 1.65rem);
 		font-weight: 700;
 		color: #18181b;
-		line-height: 1.3;
+		line-height: 1.35;
 		margin: 0;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
@@ -265,7 +271,7 @@
 	}
 
 	.sk-product-card__price {
-		font-size: 1.05rem;
+		font-size: 1.1rem;
 		font-weight: 700;
 		color: #18181b;
 		display: flex;
@@ -284,9 +290,9 @@
 	}
 
 	.sk-product-card__desc {
-		font-size: 1.25rem;
-		color: #52525b;
-		line-height: 1.6;
+		font-size: 0.95rem;
+		color: #71717a;
+		line-height: 1.5;
 		margin: 0;
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
@@ -296,19 +302,81 @@
 
 	.sk-product-card__btn {
 		margin-top: 8px;
-		display: inline-block;
+		display: inline-flex;
 		align-self: flex-start;
-		padding: 11px 26px;
+		align-items: center;
+		justify-content: center;
+		padding: 12px 28px;
 		background: #18181b;
-		color: #fff;
+		color: #ffffff;
+		border: 1px solid #18181b;
 		border-radius: 999px;
 		font-size: 0.875rem;
 		font-weight: 600;
-		transition: opacity 0.2s;
+		position: relative;
+		overflow: hidden;
+		transition:
+			color .45s cubic-bezier(.7,0,.3,1),
+			border-color .35s ease,
+			transform .25s,
+			box-shadow .25s;
+		z-index: 1;
+		box-sizing: border-box;
 	}
 
-	.sk-product-card:hover .sk-product-card__btn {
-		opacity: 0.8;
+	.sk-product-card__btn::before,
+	.sk-product-card__btn::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform .5s cubic-bezier(.7,0,.3,1);
+		z-index: -1;
+	}
+
+	.sk-product-card__btn::before {
+		background: #ffffff;
+		opacity: .3;
+		transition-delay: .1s;
+	}
+
+	.sk-product-card__btn::after {
+		background: #ffffff;
+		transition-delay: 0s;
+	}
+
+	.sk-product-card__btn > * {
+		position: relative;
+		z-index: 2;
+		transition: color .5s cubic-bezier(.7,0,.3,1);
+	}
+
+	@media (hover: hover) {
+		.sk-product-card__btn:hover {
+			color: #18181b;
+			border-color: #18181b;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+		}
+
+		.sk-product-card__btn:hover::before,
+		.sk-product-card__btn:hover::after {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+
+		.sk-product-card__btn:hover::before {
+			transition-delay: 0s;
+		}
+
+		.sk-product-card__btn:hover::after {
+			transition-delay: .1s;
+		}
+
+		.sk-product-card__btn:hover > * {
+			color: #18181b !important;
+		}
 	}
 
 	[dir="rtl"] .sk-product-card {
@@ -316,14 +384,26 @@
 	}
 
 	@media(max-width: 767px) {
-		.sk-product-card__img img {
-			min-height: 180px;
+		.sk-product-card {
+			flex-direction: column !important;
+			gap: 16px;
+			align-items: stretch;
 		}
-		.sk-product-card__info {
-			padding: 18px 14px;
-		}
-		#sk-slider-product-{{position}}{
+		
+		.sk-product-card__img {
+			flex: 0 0 auto;
+			max-width: 100%;
 			width: 100%;
+			aspect-ratio: 1.1 / 1;
+		}
+
+		.sk-product-card__img img {
+			padding: 20px;
+		}
+
+		.sk-product-card__info {
+			padding: 8px 4px;
+			gap: 8px;
 		}
 	}
 </style>
