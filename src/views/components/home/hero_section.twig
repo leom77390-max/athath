@@ -5,21 +5,20 @@
 {% set width_style = '' %}
 
 {% if component.banner_width == 'container' %}
-  {% set width_class = 'container mx-auto' %}
+  {% set width_class = 'container' %}
 {% elseif component.banner_width == 'percentage' %}
-  {% set width_class = 'mx-auto' %}
-  {% set width_style = 'width: ' ~ component.banner_percentage_width|default(90) ~ '%; max-width: 100%;' %}
+  {% set width_class = 'shopify-hero-percentage-' ~ position %}
 {% else %}
   {% set width_class = 'w-full' %}
-{% endif %}
-
+{% endif %} 
+  
 <section class="{{ width_class }} shopify-hero-{{ position }} mb-10 md:mb-20" 
  style="
     {{ width_style }}
     --desktop-height: {{ component.desktop_height | default(90) }}vh;
     --mobile-height: {{ component.mobile_height | default(70) }}vh;
   "
->
+> 
 <div
   class="inner-content flex flex-col {{ component.block_title or component.subtext ? 'pb-6' : '' }} container
     {% if component.items_alignment_horizontal|default('center') == 'start' %}
@@ -249,6 +248,16 @@
     }
     to {
         width: 100%;
+    }
+}
+{% endif %}
+{% if component.banner_width == 'percentage' %}
+.shopify-hero-percentage-{{ position }} {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .shopify-hero-percentage-{{ position }} {
+        width: {{ component.banner_percentage_width|default(90) }}%;
     }
 }
 {% endif %}
