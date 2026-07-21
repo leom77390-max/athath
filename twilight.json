@@ -1459,15 +1459,60 @@
                     "variant": "h6"
                 },
                 {
-                    "type": "boolean",
-                    "icon": "sicon-toggle-off",
-                    "label": "وضع المكون داخل حاوية",
+                    "id": "banner_width",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "عرض البانر",
                     "description": null,
-                    "id": "add_inside_container",
-                    "format": "switch",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "wide",
+                            "key": "w1"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "عرض كامل",
+                            "value": "wide",
+                            "key": "w1"
+                        },
+                        {
+                            "label": "داخل حاوية",
+                            "value": "container",
+                            "key": "w2"
+                        },
+                        {
+                            "label": "نسبة مئوية",
+                            "value": "percentage",
+                            "key": "w3"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "banner_percentage_width",
+                    "type": "number",
+                    "format": "number",
+                    "label": "نسبة العرض (%)",
+                    "description": "أدخل النسبة (مثال: 90)",
+                    "labelHTML": null,
+                    "placeholder": "90",
+                    "icon": "sicon-settings",
+                    "value": 90,
                     "required": false,
-                    "value": false,
-                    "selected": false
+                    "conditions": [
+                        {
+                            "id": "banner_width",
+                            "operation": "=",
+                            "value": "percentage"
+                        }
+                    ]
                 },
                 {
                     "type": "boolean",
@@ -1477,8 +1522,8 @@
                     "id": "customize_colors",
                     "format": "switch",
                     "required": false,
-                    "value": false,
-                    "selected": false
+                    "value": true,
+                    "selected": true
                 },
                 {
                     "id": "items_alignment_horizontal",
@@ -1490,9 +1535,9 @@
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [
                         {
-                            "label": "منتصف",
-                            "value": "center",
-                            "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                            "label": "نهاية",
+                            "value": "end",
+                            "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
                         }
                     ],
                     "options": [
@@ -1526,7 +1571,10 @@
                     "labelHTML": null,
                     "placeholder": "",
                     "icon": "sicon-format-text-alt",
-                    "value": null,
+                    "value": {
+                        "ar": "اكتشفي إشراقتك الطبيعية",
+                        "en": "Reveal Your Natural Glow"
+                    },
                     "multilanguage": true,
                     "required": false
                 },
@@ -1539,7 +1587,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#ffffff",
+                    "value": "#000000",
                     "required": false,
                     "conditions": [
                         {
@@ -1558,7 +1606,10 @@
                     "labelHTML": null,
                     "placeholder": "",
                     "icon": "sicon-format-text-alt",
-                    "value": null,
+                    "value": {
+                        "ar": "جمال يبدأ بالعناية",
+                        "en": "Beauty Starts With Care"
+                    },
                     "multilanguage": true,
                     "required": false
                 },
@@ -1571,7 +1622,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#FFFFFF",
+                    "value": "#4a4a4a",
                     "required": false,
                     "conditions": [
                         {
@@ -1591,7 +1642,7 @@
                     "labelHTML": null,
                     "placeholder": null,
                     "icon": "sicon-hashtag",
-                    "value": 90,
+                    "value": 80,
                     "required": false,
                     "minimum": "20",
                     "maximum": "200",
@@ -1633,7 +1684,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
-                    "value": true,
+                    "value": false,
                     "selected": false,
                     "required": false
                 },
@@ -1645,8 +1696,8 @@
                     "description": "فعّل هذا الخيار لعرض البانرات تلقائيًا داخل السلايدر.",
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
+                    "value": false,
+                    "selected": false,
                     "required": false
                 },
                 {
@@ -2130,34 +2181,35 @@
                             "banner.vid_url": "",
                             "banner.blur": true,
                             "banner.overlay": 1,
-                            "banner.transparent_button": true,
                             "banner.items_alignment_horizontal": [
                                 "end"
                             ],
                             "banner.items_alignment_vertical": [
                                 "center"
                             ],
+                            "banner.mobile_items_alignment_horizontal": [
+                                "center"
+                            ],
+                            "banner.mobile_items_alignment_vertical": [
+                                "start"
+                            ],
                             "banner.block_title": {
-                                "ar": "احصلي على البشرة التي تحلمين بها",
-                                "en": "Get the skin you want to feel"
+                                "ar": "اكتشفي إشراقتك الطبيعية",
+                                "en": "Reveal Your Natural Glow"
                             },
                             "banner.subtext": {
-                                "ar": "أبرزي جمالك الطبيعي",
-                                "en": "Blend beauty in you"
+                                "ar": "جمال يبدأ بالعناية",
+                                "en": "Beauty Starts With Care"
                             },
                             "banner.button_text": {
-                                "ar": "تسوق الآن",
+                                "ar": "تسوقي الآن",
                                 "en": "Shop Now"
                             },
                             "banner.blocktitle_color": "#ffffff",
-                            "banner.subtext_color": "#000000",
+                            "banner.subtext_color": "#4d4d4d",
                             "banner.button_text_color": "#FFFFFF",
-                            "banner.button_bg": "#f3eeea",
-                            "banner.highlighted_word_color": "#000000",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
+                            "banner.button_bg": "#000000",
+                            "banner.url": "https://salla.design/ar/dev-pgjb0szuu7ue4uur/-/c145655181"
                         },
                         {
                             "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/da67b691-e6b9-493e-9520-abfed3fddfd7_1440x760.webp",
@@ -2166,34 +2218,35 @@
                             "banner.vid_url": "",
                             "banner.blur": false,
                             "banner.overlay": 1,
-                            "banner.transparent_button": false,
                             "banner.items_alignment_horizontal": [
                                 "start"
                             ],
                             "banner.items_alignment_vertical": [
                                 "center"
                             ],
+                            "banner.mobile_items_alignment_horizontal": [
+                                "center"
+                            ],
+                            "banner.mobile_items_alignment_vertical": [
+                                "start"
+                            ],
                             "banner.block_title": {
-                                "ar": "احصلي على البشرة التي تحلمين بها",
-                                "en": "Get the skin you want to feel"
+                                "ar": "العناية التي تستحقها بشرتك",
+                                "en": "Skincare Your Skin Deserves"
                             },
                             "banner.subtext": {
-                                "ar": "أبرزي جمالك الطبيعي",
-                                "en": "Blend beauty in you"
+                                "ar": "تركيبات فعالة لبشرة صحية",
+                                "en": "Effective Formulas for Healthy Skin"
                             },
                             "banner.button_text": {
-                                "ar": "تسوق الآن",
-                                "en": "Shop Now"
+                                "ar": "اكتشفي المزيد",
+                                "en": "Discover More"
                             },
                             "banner.blocktitle_color": "#000000",
                             "banner.subtext_color": "#707070",
                             "banner.button_text_color": "#FFFFFF",
-                            "banner.button_bg": "#f3eeea",
-                            "banner.highlighted_word_color": "#0b4200",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
+                            "banner.button_bg": "#000000",
+                            "banner.url": "https://salla.design/ar/dev-pgjb0szuu7ue4uur/-/p1725694198"
                         },
                         {
                             "banner.desktop_bg": "https://cdn.files.salla.network/homepage/930809644/c2abdf69-f3d1-4ff5-af62-54e52779440e_1440x760.webp",
@@ -2202,34 +2255,72 @@
                             "banner.vid_url": "",
                             "banner.blur": true,
                             "banner.overlay": 0,
-                            "banner.transparent_button": true,
                             "banner.items_alignment_horizontal": [
                                 "end"
                             ],
                             "banner.items_alignment_vertical": [
                                 "center"
                             ],
+                            "banner.mobile_items_alignment_horizontal": [
+                                "center"
+                            ],
+                            "banner.mobile_items_alignment_vertical": [
+                                "start"
+                            ],
                             "banner.block_title": {
-                                "ar": "احصلي على البشرة التي تحلمين بها",
-                                "en": "Get the skin you want to feel"
+                                "ar": "جمالك يبدأ من هنا",
+                                "en": "Your Beauty Journey Starts Here"
                             },
                             "banner.subtext": {
-                                "ar": "أبرزي جمالك الطبيعي",
-                                "en": "Blend beauty in you"
+                                "ar": "منتجات مختارة لإطلالة متألقة",
+                                "en": "Curated Beauty Essentials"
                             },
                             "banner.button_text": {
-                                "ar": "اكتشف المزيد",
-                                "en": "Discover More"
+                                "ar": "تسوقي المجموعة",
+                                "en": "Shop Collection"
                             },
                             "banner.blocktitle_color": "#000000",
                             "banner.subtext_color": "#5e5e5e",
                             "banner.button_text_color": "#ffffff",
                             "banner.button_bg": "#000000",
-                            "banner.highlighted_word_color": "#bb631b",
-                            "banner.highlighted_word_order": 2,
-                            "banner.url": "https://salla.design/",
-                            "banner.add_countdown": false,
-                            "banner.countdown": null
+                            "banner.url": "https://salla.design/ar/dev-pgjb0szuu7ue4uur/-/c145655181"
+                        },
+                        {
+                            "banner.desktop_bg": "",
+                            "banner.mobile_bg": "",
+                            "banner.vid": true,
+                            "banner.vid_url": "https://github.com/themiifyHG/uploavideos/raw/refs/heads/main/uploads/1782245836068_6693869-uhd_4096_2160_30fps.mp4",
+                            "banner.blur": false,
+                            "banner.overlay": 4,
+                            "banner.items_alignment_horizontal": [
+                                "center"
+                            ],
+                            "banner.items_alignment_vertical": [
+                                "center"
+                            ],
+                            "banner.mobile_items_alignment_horizontal": [
+                                "center"
+                            ],
+                            "banner.mobile_items_alignment_vertical": [
+                                "center"
+                            ],
+                            "banner.block_title": {
+                                "ar": "فخامة الجمال تبدأ هنا",
+                                "en": "Experience Timeless Beauty"
+                            },
+                            "banner.subtext": {
+                                "ar": "عناية يومية تمنحك إشراقة تدوم.",
+                                "en": "Daily rituals for radiant, healthy skin."
+                            },
+                            "banner.button_text": {
+                                "ar": "اكتشفي المزيد",
+                                "en": "Discover More"
+                            },
+                            "banner.blocktitle_color": "#ffffff",
+                            "banner.subtext_color": "#FFFFFF",
+                            "banner.button_text_color": "#FFFFFF",
+                            "banner.button_bg": "#000000",
+                            "banner.url": "https://salla.design/ar/dev-pgjb0szuu7ue4uur/-/c1554497652"
                         }
                     ],
                     "minLength": 1,
@@ -4580,7 +4671,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t2",
+                            "tabs_products.tab_id": "t1",
                             "tabs_products.media_type": [
                                 "image"
                             ],
@@ -4588,7 +4679,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t2",
+                            "tabs_products.tab_id": "t1",
                             "tabs_products.media_type": [
                                 "video"
                             ],
@@ -4596,7 +4687,7 @@
                             "tabs_products.image": ""
                         },
                         {
-                            "tabs_products.tab_id": "t3",
+                            "tabs_products.tab_id": "t2",
                             "tabs_products.media_type": [
                                 "image"
                             ],
@@ -4604,7 +4695,7 @@
                             "tabs_products.video_url": ""
                         },
                         {
-                            "tabs_products.tab_id": "t3",
+                            "tabs_products.tab_id": "t2",
                             "tabs_products.media_type": [
                                 "image"
                             ],
@@ -5876,7 +5967,7 @@
                         }
                     ]
                 },
-                     {
+                {
                     "id": "arrows_radius",
                     "type": "number",
                     "format": "slider",
@@ -6012,7 +6103,7 @@
                             "operation": "=",
                             "value": true
                         },
-                          {
+                        {
                             "id": "enable_slider",
                             "operation": "=",
                             "value": true
@@ -6033,7 +6124,7 @@
                             "operation": "=",
                             "value": true
                         },
-                          {
+                        {
                             "id": "enable_slider",
                             "operation": "=",
                             "value": true
@@ -6054,7 +6145,7 @@
                             "operation": "=",
                             "value": true
                         },
-                          {
+                        {
                             "id": "enable_slider",
                             "operation": "=",
                             "value": true

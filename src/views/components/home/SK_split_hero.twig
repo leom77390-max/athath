@@ -1,25 +1,28 @@
 {# {{component}} #}
 {# Hero Section #}
-<section class=" container py-5 md:py-10">
+<section class=" container pb-10 md:pb-20">
 
 	{# LEFT SIDE #}
-    <div class="flex flex-col-reverse md:flex-row rounded-[32px] overflow-hidden">
+	<div class="flex flex-col-reverse md:flex-row rounded-[32px] overflow-hidden">
 
-	<div class="w-full md:w-1/2 flex flex-col justify-center items-center p-10 md:p-16" style="background-color: {{ component.left_bg_color ?? '#f5f0e8' }};">
+		<div class="w-full md:w-1/2 flex flex-col justify-center items-center p-10 md:p-16"
+			style="background-color: {{ component.left_bg_color ?? '#f5f0e8' }};">
 
-		<p class="text-sm mb-3" style="color: {{ component.subtitle_color ?? '#555' }}">
-			{{ component.subtitle }}
-		</p>
+			<p class="text-sm mb-3" style="color: {{ component.subtitle_color ?? '#555' }}">
+				{{ component.subtitle }}
+			</p>
 
-		<h1 class="text-3xl md:text-5xl font-semibold text-center leading-tight mb-4" style="color: {{ component.title_color ?? '#1a1a1a' }}">
-			{{ component.main_title }}
-		</h1>
+			<h1 class="text-3xl md:text-5xl font-semibold text-center leading-tight mb-4"
+				style="color: {{ component.title_color ?? '#1a1a1a' }}">
+				{{ component.main_title }}
+			</h1>
 
-		<p class="text-base md:text-lg mb-6 max-w-md text-center" style="color: {{ component.description_color ?? '#444' }}">
-			{{ component.description }}
-		</p>
+			<p class="text-base md:text-lg mb-6 max-w-md text-center"
+				style="color: {{ component.description_color ?? '#444' }}">
+				{{ component.description }}
+			</p>
 
-		{% include 'components.custom.button_customize.twig' with {
+			{% include 'components.custom.button_customize.twig' with {
 			href: component.display_all_url,
 			text: component.button_text,
 			class: 'inline-flex w-fit px-6 py-3 rounded-full font-medium transition',
@@ -31,34 +34,36 @@
 			hover_border: component.button_text_color ?? '#fff',
 			after_bg: component.button_text_color ?? '#fff',
 			shine: 'rgba(0,0,0,.18)'
-		} %}
+			} %}
 
-	</div>
+		</div>
 
-	{# RIGHT SIDE (IMAGE / VIDEO) #}
-	<div class="w-full md:w-1/2 overflow-hidden group relative min-h-[320px] md:min-h-[500px] bg-black">
+		{# RIGHT SIDE (IMAGE / VIDEO) #}
+		<div class="w-full md:w-1/2 overflow-hidden group relative min-h-[320px] md:min-h-[500px] bg-black">
 
-		{% if component.media_type == 'video' %}
+			{% if component.media_type == 'video' %}
 
 			<video class="w-full h-full object-cover" autoplay muted loop playsinline>
 				<source src="{{ component.right_video }}" type="video/mp4">
 			</video>
 
-		{% else %}
+			{% else %}
 
-			<img src="{{ component.right_image }}" alt="{{ component.main_title }}" class="group-hover:scale-105 w-full h-full object-cover transition-transform duration-300"/>
+			<img src="{{ component.right_image }}" alt="{{ component.main_title }}"
+				class="group-hover:scale-105 w-full h-full object-cover transition-transform duration-300" />
 
-		{% endif %}
+			{% endif %}
 
-		{# Optional glossy overlay like the design #}
-		{# <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div> #}
+			{# Optional glossy overlay like the design #}
+			{# <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div> #}
 
-		{# Brand word (like "glossy") #}
+			{# Brand word (like "glossy") #}
 			{% if logo_text is defined %}
-				<div class="absolute top-6 right-6 text-background text-4xl md:text-6xl font-serif opacity-90"> {{ component.logo_text }}
+			<div class="absolute top-6 right-6 text-background text-4xl md:text-6xl font-serif opacity-90"> {{
+				component.logo_text }}
 			</div>
-		{% endif %}
+			{% endif %}
 
+		</div>
 	</div>
-    </div>
 </section>
