@@ -45,12 +45,14 @@
 
 <header class="store-header Sleek-header relative z-50 ">
 <style>
-    .the-logo {
-        height: {{ logo_size ? logo_size_sm|default(40) : 40 }}px !important;
+    @media (max-width: 1023px) {
+        .the-logo {
+            height: {{ logo_size ? logo_size_sm|default(40) : 40 }}px;
+        }
     }
     @media (min-width: 1024px) {
         .the-logo {
-            height: {{ logo_size ? logo_size_lg|default(60) : 60 }}px !important;
+            height: {{ logo_size ? logo_size_lg|default(60) : 60 }}px;
         }
     }
 </style>
@@ -408,17 +410,7 @@
             gap: 0;
         }
     {% endif %}
-    {% if logo_size %}
-        .the-logo {
-            height: {{ logo_size_lg }}px;
-        }
-        
-        @media (max-width: 1024px) {
-            .the-logo {
-                height: {{ logo_size_sm }}px;
-            }
-        }
-    {% endif %}
+
 		
 </style>
 

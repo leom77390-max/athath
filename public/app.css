@@ -1118,6 +1118,9 @@ input:where([type='file']):focus{
 .mb-20{
     margin-bottom: 5rem;
 }
+.mb-24{
+    margin-bottom: 6rem;
+}
 .mb-3{
     margin-bottom: 0.75rem;
 }
@@ -1138,9 +1141,6 @@ input:where([type='file']):focus{
 }
 .mb-8{
     margin-bottom: 2rem;
-}
-.mb-9{
-    margin-bottom: 2.25rem;
 }
 .mb-\[clamp\(0\.533rem\2c 0\.3695rem\+0\.6539vw\2c 1\.067rem\)\]{
     margin-bottom: clamp(0.533rem, 0.3695rem + 0.6539vw, 1.067rem);
@@ -1201,9 +1201,6 @@ input:where([type='file']):focus{
 }
 .mt-auto{
     margin-top: auto;
-}
-.mb-24{
-    margin-bottom: 6rem;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -2124,6 +2121,9 @@ input:where([type='file']):focus{
 .border-\[\#00000057\]{
     border-color: rgba(0,0,0,0.34118);
 }
+.border-\[\#4D4D4D26\]{
+    border-color: rgba(77,77,77,0.14902);
+}
 .border-\[\#E4E4E7\]{
     --tw-border-opacity: 1;
     border-color: rgba(228, 228, 231, 1);
@@ -2179,12 +2179,6 @@ input:where([type='file']):focus{
 }
 .border-white\/20{
     border-color: rgba(255, 255, 255, 0.2);
-}
-.border-\[\]{
-    border-color: ;
-}
-.border-\[\#4D4D4D26\]{
-    border-color: rgba(77,77,77,0.14902);
 }
 .border-b-\[\#8B8B8B\]{
     --tw-border-opacity: 1;
@@ -37794,9 +37788,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:h-5{
         height: 1.25rem;
-    }
-    .lg\:h-6{
-        height: 1.5rem;
     }
     .lg\:h-\[680px\]{
         height: 680px;
