@@ -48,8 +48,22 @@ class App extends AppHelpers {
     salla.log(`ThemeApp(Raed)::${message}`);
     return this;
   }
+    getLocalizedMessage(key) {
+    const lang = document.documentElement.lang || "ar";
+    const messages = {
+      ar: {
+        added: "تم اضافة المنتج لقائمة الأمنيات",
+        removed: "تم حذف المنتج من قائمة الأمنيات",
+      },
+      en: {
+        added: "Product added to wishlist",
+        removed: "Product removed from wishlist",
+      },
+    };
+    return messages[lang]?.[key] || messages["ar"][key] || key;
+  }
 
-    initAttachWishlistListeners() {
+  initAttachWishlistListeners() {
     let isListenerAttached = false;
 
     function toggleFavoriteIcon(id, isAdded = true) {
