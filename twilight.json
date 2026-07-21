@@ -290,6 +290,49 @@
             "selected": false
         },
         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تخصيص حجم الشعار",
+            "description": "تفعيل هذا الخيار يسمح لك بتحديد ارتفاع الشعار على الجوال والكمبيوتر.",
+            "id": "logo_size_control",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "id": "logo_size_sm",
+            "type": "number",
+            "format": "number",
+            "label": "ارتفاع الشعار في الجوال (بكسل)",
+            "icon": "sicon-settings",
+            "value": 40,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "logo_size_control",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "logo_size_lg",
+            "type": "number",
+            "format": "number",
+            "label": "ارتفاع الشعار في الكمبيوتر (بكسل)",
+            "icon": "sicon-settings",
+            "value": 60,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "logo_size_control",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "id": "add_header_colors",
             "label": "استخدام ألوان مخصصة للشريط العلوي",
             "description": "تفعيل ألوان خاصة بالشريط العلوي بدلًا من الألوان الافتراضية للثيم.",
