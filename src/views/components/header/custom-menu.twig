@@ -52,7 +52,7 @@ const MegaMenu = (() => {
       : '';
 
     if (!hasSubs) {
-      row.innerHTML = `<a href="${url || '#'}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-font mb-9 text-lg">${title}</a>`;
+      row.innerHTML = `<a href="${url || '#'}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-[#4D4D4D26] mb-4 text-lg">${title}</a>`;
       return row;
     }
 
@@ -151,7 +151,7 @@ const MegaMenu = (() => {
     const homeRow = document.createElement('div');
     homeRow.className = 'menu-row mb-2';
     homeRow.innerHTML = `
-      <a href="{{ store.url }}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-font mb-9 text-lg">
+      <a href="{{ store.url }}" class="row-link flex items-center gap-2 pb-3 px-1 border-b border-[#4D4D4D26] mb-4 text-lg">
         {{ trans('blocks.header.home') }}
       </a>`;
 

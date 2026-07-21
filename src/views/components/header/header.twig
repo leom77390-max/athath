@@ -44,6 +44,18 @@
 
 
 <header class="store-header Sleek-header relative z-50 ">
+<style>
+    @media (max-width: 1023px) {
+        .the-logo {
+            height: {{ logo_size ? logo_size_sm|default(40) : 40 }}px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .the-logo {
+            height: {{ logo_size ? logo_size_lg|default(60) : 60 }}px;
+        }
+    }
+</style>
 {% if add_promo_bar %}
 	<div style="background-color: {{ customize_promo_bar_colors ? promo_bar_bg : 'var(--color-primary)' }}; color: {{ customize_promo_bar_color ? promo_bar_text_color : 'var(--color-background)' }};" class="promo-bar min-h-8 lg:min-h-12 flex items-center justify-center">
         <div class="max-w-[1412px] px-4 text-center py-1 text-sm">
@@ -98,7 +110,7 @@
 					class="flex relative h-auto lg:py-1 py-2 items-center gap-4 lg:gap-6 justify-between">
 					{# Center Section - Logo #}
 					<div class="flex  lg:justify-center {{ show_top_navbar and logo_end ? 'justify-start' : 'justify-center' }} {{ not show_top_navbar ? 'justify-center' : '' }}" href="{{ store.url }}">
-						<div class="the-logo navbar-brand !w-auto lg:h-6 h-4 relative">
+						<div class="the-logo navbar-brand !w-auto relative transition-all duration-300">
 							<a class="block absolute h-full w-full" href="{{ store.url }}"></a>
 
 							<img class="h-full w-full object-contain" fetchpriority="high" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
@@ -398,17 +410,7 @@
             gap: 0;
         }
     {% endif %}
-    {% if logo_size %}
-        .the-logo {
-            height: {{ logo_size_lg }}px;
-        }
-        
-        @media (max-width: 1024px) {
-            .the-logo {
-                height: {{ logo_size_sm }}px;
-            }
-        }
-    {% endif %}
+
 		
 </style>
 
