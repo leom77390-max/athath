@@ -2,9 +2,9 @@
 <section class="full-screen-popup">
   <div
     class="pop-up pop-up-{{ position }}"
-    style="background-color: {{ theme.settings.get('popup_bg') }};">
+    style="background-color: {{ theme.settings.get('popup_bg') }}; --popup-bg-color: {{ theme.settings.get('popup_bg', '#f2f2f2') }};">
 
-    <button id="popup-close">
+    <button id="popup-close" aria-label="Close popup">
       <i class="sicon-cancel"></i>
     </button>
 
@@ -25,11 +25,13 @@
           <img src="{{ store.logo }}" alt="{{ store.name }} logo">
         </div>
 
+        {% if theme.settings.get("promotional_header") %}
         <div class="popup-badge">
           <span style="color: {{ theme.settings.get('promotional_header_color') }};">
             {{ theme.settings.get("promotional_header") }}
           </span>
         </div>
+        {% endif %}
 
         <p class="popup-main-header"
           style="color: {{ theme.settings.get('main_header_color') }};">
@@ -50,10 +52,12 @@
               style="
                 color: {{ theme.settings.get('code_text_color') }};
                 background-color: {{ theme.settings.get('code_text_bg') }};
-                border-color: var(--color-secondary);
               ">
-              <i class="sicon-copy"></i>
-              {{ theme.settings.get("code_text") }}
+              <span class="coupon-icon-wrapper">
+                <i class="sicon-copy copy-icon"></i>
+                <i class="sicon-check check-icon" style="display: none; color: #ffffff;"></i>
+              </span>
+              <span class="coupon-code-text">{{ theme.settings.get("code_text") }}</span>
             </div>
             <p class="coupon-hint">{{ trans('blocks.popup.click_to_copy') }}</p>
           </div>
@@ -68,7 +72,7 @@
             <div class="newsletter-form">
               <span class="email-icon"><i class="sicon-envelope"></i></span>
               <input
-                placeholder="{{ trans('blocks.popup.email_address') }}"
+                placeholder=" "
                 id="newsletter-email-popup"
                 name="email"
                 required
@@ -89,7 +93,11 @@
             <button
               type="submit"
               id="newsletter-submit-popup"
-              class="popup-submit-btn">
+              class="popup-submit-btn"
+              style="
+                color: {{ theme.settings.get('btn_text_color') }};
+                background-color: {{ theme.settings.get('btn_text_bg') }};
+              ">
               <span>{{ theme.settings.get("btn_text") }}</span>
               <i class="sicon-arrow-left"></i>
             </button>
@@ -117,10 +125,12 @@
     display: none;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.35s ease, visibility 0.35s ease;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .full-screen-popup.show {
@@ -130,17 +140,17 @@
 
   .pop-up {
     position: relative;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
-    max-width: 900px;
-    width: 92%;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18);
-    transform: translateY(28px);
-    transition: transform 0.35s ease;
+    max-width: 850px;
+    width: 90%;
+    box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.15), 0 20px 40px -20px rgba(15, 23, 42, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: scale(0.95) translateY(15px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .full-screen-popup.show .pop-up {
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
 
   .popup-layout {
@@ -151,9 +161,22 @@
   }
 
   .popup-image {
-    flex: 0 0 46%;
-    max-width: 46%;
+    flex: 0 0 45%;
+    max-width: 45%;
+    position: relative;
     overflow: hidden;
+  }
+
+  .popup-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.06) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  [dir="rtl"] .popup-image::after {
+    background: linear-gradient(to left, rgba(0,0,0,0.06) 0%, transparent 100%);
   }
 
   .popup-image img {
@@ -161,6 +184,12 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transform: scale(1.08);
+    transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .full-screen-popup.show .popup-image img {
+    transform: scale(1);
   }
 
   .popup-content {
@@ -170,7 +199,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     text-align: center;
   }
 
@@ -178,6 +207,11 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2px;
+    transition: transform 0.3s ease;
+  }
+
+  .popup-logo:hover {
+    transform: scale(1.05);
   }
 
   .popup-logo img {
@@ -187,18 +221,28 @@
   }
 
   .popup-badge {
-    display: inline-block;
-    background-color: #f4f4f4;
-    border-radius: 20px;
-    padding: 5px 18px;
-    font-size: 13px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 100px;
+    padding: 5px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  .popup-badge:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
   }
 
   .popup-main-header {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #555;
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #1e293b;
     margin: 0;
     max-width: 320px;
   }
@@ -208,8 +252,10 @@
     align-items: center;
     gap: 10px;
     width: 100%;
-    color: #aaa;
-    font-size: 13px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 4px 0;
   }
 
   .popup-divider::before,
@@ -217,14 +263,14 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: #e0e0e0;
+    background: #e2e8f0;
   }
 
   #newsletter-form-popup {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
   }
 
   .newsletter-form {
@@ -234,43 +280,102 @@
 
   .newsletter-form input {
     width: 100%;
-    padding: 14px 44px 14px 16px;
-    border: 1.5px solid;
-    border-radius: 10px;
+    padding: 16px 44px 16px 16px;
+    border: 1.5px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
     font-size: 14px;
     background: #fff;
     outline: none;
     box-sizing: border-box;
-    transition: border-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     direction: rtl;
     text-align: right;
   }
 
+  [dir="rtl"] .newsletter-form input {
+    padding-left: 16px;
+    padding-right: 44px;
+    text-align: right;
+  }
+
+  [dir="ltr"] .newsletter-form input {
+    padding-right: 16px;
+    padding-left: 44px;
+    text-align: left;
+  }
+
   .newsletter-form input:focus {
-    border-color: var(--color-secondary) !important;
+    border-color: var(--color-secondary, #00809d) !important;
+    box-shadow: 0 0 0 4px rgba(0, 128, 157, 0.12);
   }
 
   .email-icon {
     position: absolute;
-    left: 14px;
     top: 50%;
     transform: translateY(-50%);
-    color: #aaa;
+    color: #94a3b8;
     font-size: 16px;
     pointer-events: none;
+    transition: color 0.3s;
+    z-index: 2;
+  }
+
+  [dir="rtl"] .email-icon {
+    right: 16px;
+  }
+
+  [dir="ltr"] .email-icon {
+    left: 16px;
+  }
+
+  .newsletter-form input:focus ~ .email-icon {
+    color: var(--color-secondary, #00809d);
   }
 
   .newsletter-form label {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 4px;
+    z-index: 2;
+  }
+
+  [dir="rtl"] .newsletter-form label {
+    right: 40px;
+  }
+
+  [dir="ltr"] .newsletter-form label {
+    left: 40px;
+  }
+
+  .newsletter-form input:focus ~ label,
+  .newsletter-form input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-secondary, #00809d);
+  }
+
+  [dir="rtl"] .newsletter-form input:focus ~ label,
+  [dir="rtl"] .newsletter-form input:not(:placeholder-shown) ~ label {
+    right: 16px;
+  }
+
+  [dir="ltr"] .newsletter-form input:focus ~ label,
+  [dir="ltr"] .newsletter-form input:not(:placeholder-shown) ~ label {
+    left: 16px;
   }
 
   .popup-submit-btn {
     width: 100%;
-    padding: 14px 20px;
+    padding: 16px 20px;
     border: none;
-    border-radius: 10px;
-    background-color: var(--color-secondary);
-    color: #fff;
+    border-radius: 12px;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
@@ -278,28 +383,51 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    transition: opacity 0.2s, transform 0.15s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 128, 157, 0.2);
   }
 
   .popup-submit-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 128, 157, 0.3);
+  }
+
+  .popup-submit-btn:active {
+    transform: translateY(0);
   }
 
   .popup-submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
+  }
+
+  .popup-submit-btn i {
+    transition: transform 0.3s ease;
+  }
+
+  [dir="rtl"] .popup-submit-btn:hover i {
+    transform: translateX(-4px);
+  }
+
+  [dir="ltr"] .popup-submit-btn:hover i {
+    transform: translateX(4px);
   }
 
   .popup-privacy {
-    font-size: 12px;
-    color: #999;
+    font-size: 11px;
+    color: #94a3b8;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  .popup-privacy i {
+    font-size: 12px;
   }
 
   .coupon-code-container {
@@ -307,74 +435,167 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
 
   #coupon-code {
     width: 100%;
-    padding: 14px 20px;
-    border: 2px dashed;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 700;
+    padding: 16px 24px;
+    border: 2px dashed rgba(0, 128, 157, 0.35);
+    border-radius: 14px;
+    font-size: 20px;
+    font-weight: 800;
     letter-spacing: 2px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    transition: transform 0.15s, opacity 0.15s;
+    gap: 12px;
+    position: relative;
     box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #coupon-code::before,
+  #coupon-code::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    background-color: var(--popup-bg-color, #f2f2f2);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  #coupon-code::before {
+    left: -8px;
+    border-right: 2px dashed rgba(0, 128, 157, 0.35);
+  }
+
+  #coupon-code::after {
+    right: -8px;
+    border-left: 2px dashed rgba(0, 128, 157, 0.35);
   }
 
   #coupon-code:hover {
-    opacity: 0.85;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 128, 157, 0.15);
+    border-color: var(--color-secondary, #00809d);
+  }
+
+  .coupon-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .coupon-icon-wrapper i {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  #coupon-code.copied {
+    background-color: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+    animation: coupon-bounce 0.4s ease;
+  }
+
+  #coupon-code.copied::before,
+  #coupon-code.copied::after {
+    border-color: #10b981 !important;
+  }
+
+  @keyframes coupon-bounce {
+    0% { transform: translateY(-2px) scale(1); }
+    50% { transform: translateY(1px) scale(0.96); }
+    100% { transform: translateY(-2px) scale(1); }
   }
 
   .coupon-hint {
-    font-size: 12px;
-    color: #999;
+    font-size: 11px;
+    color: #94a3b8;
     margin: 0;
+    font-weight: 500;
   }
 
   #popup-close {
     position: absolute;
-    top: 14px;
-    left: 14px;
+    top: 20px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 50%;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 14px;
-    color: #555;
-    transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    font-size: 16px;
+    color: #1e293b;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  [dir="rtl"] #popup-close {
+    left: 20px;
+  }
+
+  [dir="ltr"] #popup-close {
+    right: 20px;
   }
 
   #popup-close:hover {
     background: #fff;
-    transform: scale(1.08);
+    transform: rotate(90deg) scale(1.08);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   }
 
   @media (max-width: 640px) {
     .popup-layout {
       flex-direction: column;
+      min-height: auto;
     }
 
     .popup-image {
-      flex: 0 0 200px;
+      flex: 0 0 190px;
       max-width: 100%;
-      height: 200px;
+      height: 190px;
+    }
+
+    .popup-image::after {
+      background: linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, transparent 100%) !important;
     }
 
     .popup-content {
-      padding: 28px 24px;
+      padding: 32px 24px;
+      gap: 14px;
+    }
+
+    .popup-main-header {
+      font-size: 15px;
+    }
+
+    #popup-close {
+      top: 12px;
+      width: 34px;
+      height: 34px;
+      font-size: 14px;
+    }
+    
+    [dir="rtl"] #popup-close {
+      left: 12px;
+    }
+
+    [dir="ltr"] #popup-close {
+      right: 12px;
     }
   }
 </style>
@@ -387,10 +608,12 @@
   if (closeBtn && popup && popupBox) {
     const hasSeenPopup = sessionStorage.getItem("popupShown");
 
-   if (!hasSeenPopup) {
+    if (!hasSeenPopup) {
       window.addEventListener("load", function () {
         setTimeout(() => {
           popup.style.display = "flex";
+          // Trigger browser layout before adding class for transition
+          popup.offsetHeight;
           popup.classList.add("show");
           sessionStorage.setItem("popupShown", "true");
         }, 5000);
@@ -401,7 +624,7 @@
       popup.classList.remove("show");
       setTimeout(() => {
         popup.style.display = "none";
-      }, 350);
+      }, 400);
     });
 
     popup.addEventListener("click", function (e) {
@@ -409,7 +632,7 @@
         popup.classList.remove("show");
         setTimeout(() => {
           popup.style.display = "none";
-        }, 350);
+        }, 400);
       }
     });
   }
@@ -417,6 +640,10 @@
   const couponCode = document.getElementById("coupon-code");
   if (couponCode) {
     const isRTL = document.documentElement.dir === "rtl";
+    const couponText = couponCode.querySelector(".coupon-code-text");
+    const copyIcon = couponCode.querySelector(".copy-icon");
+    const checkIcon = couponCode.querySelector(".check-icon");
+    const originalCode = couponCode.dataset.code;
 
     couponCode.addEventListener("click", function () {
       const code = this.dataset.code;
@@ -429,10 +656,21 @@
             : "Code copied successfully!";
           salla.notify.success(successMessage);
 
-          this.style.transform = "scale(0.95)";
+          this.classList.add("copied");
+          if (couponText) {
+            couponText.textContent = isRTL ? "تم النسخ!" : "Copied!";
+          }
+          if (copyIcon) copyIcon.style.display = "none";
+          if (checkIcon) checkIcon.style.display = "inline-block";
+
           setTimeout(() => {
-            this.style.transform = "scale(1)";
-          }, 100);
+            this.classList.remove("copied");
+            if (couponText) {
+              couponText.textContent = originalCode;
+            }
+            if (copyIcon) copyIcon.style.display = "inline-block";
+            if (checkIcon) checkIcon.style.display = "none";
+          }, 1500);
         })
         .catch(() => {
           const errorMessage = isRTL ? "فشل نسخ الكود" : "Failed to copy code";
@@ -500,7 +738,7 @@
             popup.classList.remove("show");
             setTimeout(() => {
               popup.style.display = "none";
-            }, 350);
+            }, 400);
           }
         })
         .catch(() => {
@@ -513,3 +751,4 @@
   });
 </script>
 {% endif %}
+
