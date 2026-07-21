@@ -16,11 +16,7 @@
   \************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-<<<<<<< HEAD
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"./node_modules/.pnpm/@babel+runtime@7.29.7/node_modules/@babel/runtime/helpers/esm/classCallCheck.js\");\n/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ \"./node_modules/.pnpm/@babel+runtime@7.29.7/node_modules/@babel/runtime/helpers/esm/createClass.js\");\n\n\nvar BasePage = /*#__PURE__*/function () {\n  function BasePage() {\n    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(this, BasePage);\n  }\n  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(BasePage, [{\n    key: \"onReady\",\n    value: function onReady() {\n      //\n    }\n  }, {\n    key: \"registerEvents\",\n    value: function registerEvents() {\n      //\n    }\n\n    /**\r\n     * To avoid loading unwanted classes, unless it's wanted page\r\n     * @param {null|string[]} allowedPages\r\n     * @return {*}\r\n     */\n  }, {\n    key: \"initiate\",\n    value: function initiate(allowedPages) {\n      if (allowedPages && !allowedPages.includes(salla.config.get('page.slug'))) {\n        return app.log(\"The Class For (\".concat(allowedPages.join(','), \") Skipped.\"));\n      }\n      this.onReady();\n      this.registerEvents();\n      app.log(\"The Class For (\".concat((allowedPages === null || allowedPages === void 0 ? void 0 : allowedPages.join(',')) || '*', \") Loaded\\uD83C\\uDF89\"));\n    }\n  }]);\n}();\n/**\r\n * Because we merged multi classes into one file, there is no need to initiate all of them\r\n */\nBasePage.initiateWhenReady = function () {\n  var _window$app,\n    _this = this;\n  var allowedPages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n  if (((_window$app = window.app) === null || _window$app === void 0 ? void 0 : _window$app.status) === 'ready') {\n    new this().initiate(allowedPages);\n  } else {\n    document.addEventListener('theme::ready', function () {\n      return new _this().initiate(allowedPages);\n    });\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BasePage);\n\n//# sourceURL=webpack://theme-raed/./src/assets/js/base-page.js?\n}");
-=======
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"./node_modules/.pnpm/@babel+runtime@7.29.7/node_modules/@babel/runtime/helpers/esm/classCallCheck.js\");\n/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ \"./node_modules/.pnpm/@babel+runtime@7.29.7/node_modules/@babel/runtime/helpers/esm/createClass.js\");\n\n\nvar BasePage = /*#__PURE__*/function () {\n  function BasePage() {\n    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(this, BasePage);\n  }\n  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(BasePage, [{\n    key: \"onReady\",\n    value: function onReady() {\n      //\n    }\n  }, {\n    key: \"registerEvents\",\n    value: function registerEvents() {\n      //\n    }\n\n    /**\n     * To avoid loading unwanted classes, unless it's wanted page\n     * @param {null|string[]} allowedPages\n     * @return {*}\n     */\n  }, {\n    key: \"initiate\",\n    value: function initiate(allowedPages) {\n      if (allowedPages && !allowedPages.includes(salla.config.get('page.slug'))) {\n        return app.log(\"The Class For (\".concat(allowedPages.join(','), \") Skipped.\"));\n      }\n      this.onReady();\n      this.registerEvents();\n      app.log(\"The Class For (\".concat((allowedPages === null || allowedPages === void 0 ? void 0 : allowedPages.join(',')) || '*', \") Loaded\\uD83C\\uDF89\"));\n    }\n  }]);\n}();\n/**\n * Because we merged multi classes into one file, there is no need to initiate all of them\n */\nBasePage.initiateWhenReady = function () {\n  var _window$app,\n    _this = this;\n  var allowedPages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;\n  if (((_window$app = window.app) === null || _window$app === void 0 ? void 0 : _window$app.status) === 'ready') {\n    new this().initiate(allowedPages);\n  } else {\n    document.addEventListener('theme::ready', function () {\n      return new _this().initiate(allowedPages);\n    });\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BasePage);\n\n//# sourceURL=webpack://theme-raed/./src/assets/js/base-page.js?\n}");
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 
 /***/ },
 
@@ -137,29 +133,17 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	});
 /************************************************************************/
 /******/ 	// The module cache
-<<<<<<< HEAD
 /******/ 	const __webpack_module_cache__ = {};
-=======
-/******/ 	var __webpack_module_cache__ = {};
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
-<<<<<<< HEAD
 /******/ 		const cachedModule = __webpack_module_cache__[moduleId];
-=======
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
-<<<<<<< HEAD
 /******/ 		const module = __webpack_module_cache__[moduleId] = {
-=======
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 			// no module.id needed
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
@@ -168,11 +152,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 		// Execute the module function
 /******/ 		if (!(moduleId in __webpack_modules__)) {
 /******/ 			delete __webpack_module_cache__[moduleId];
-<<<<<<< HEAD
 /******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
-=======
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 			e.code = 'MODULE_NOT_FOUND';
 /******/ 			throw e;
 /******/ 		}
@@ -185,7 +165,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
-<<<<<<< HEAD
 /******/ 		// define getter/value functions for harmony exports
 /******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			if(Array.isArray(definition)) {
@@ -206,13 +185,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 					if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 						Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 					}
-=======
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 				}
 /******/ 			}
 /******/ 		};
@@ -227,11 +199,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
 /******/ 		__webpack_require__.r = (exports) => {
-<<<<<<< HEAD
 /******/ 			if(Symbol.toStringTag) {
-=======
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
@@ -243,11 +211,7 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-<<<<<<< HEAD
 /******/ 	let __webpack_exports__ = __webpack_require__("./src/assets/js/order.js");
-=======
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/assets/js/order.js");
->>>>>>> 38b19caf21434b819843c7f430067b0c8784357f
 /******/ 	
 /******/ })()
 ;
