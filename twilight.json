@@ -2846,6 +2846,78 @@
                     "searchable": true,
                     "required": false,
                     "value": []
+                },
+                {
+                    "id": "enable_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل التمرير التلقائي",
+                    "description": "فعّل هذا الخيار لتشغيل السلايدر تلقائيًا.",
+                    "icon": "sicon-toggle-off",
+                    "value": false,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "enable_controls",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة أسهم التنقل",
+                    "description": "فعّل هذا الخيار لإظهار أسهم التنقل في القسم.",
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "enable_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تكرار لا نهائي للسلايدر",
+                    "description": "تفعيل التكرار الدائري للسلايدر دون توقف عند النهاية.",
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "desktop_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات الكبيرة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على أجهزة الديسكتوب.",
+                    "icon": "sicon-hashtag",
+                    "value": 3,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "6"
+                },
+                {
+                    "id": "laptop_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات المتوسطة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على أجهزة اللابتوب والأجهزة اللوحية.",
+                    "icon": "sicon-hashtag",
+                    "value": 2,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "4"
+                },
+                {
+                    "id": "mobile_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات الصغيرة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على الهواتف المحمولة.",
+                    "icon": "sicon-hashtag",
+                    "value": 1,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "3"
                 }
             ]
         },
@@ -4257,6 +4329,78 @@
                     "value": [],
                     "minLength": "3",
                     "maxLength": "200"
+                },
+                {
+                    "id": "enable_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل التمرير التلقائي",
+                    "description": "فعّل هذا الخيار لتشغيل السلايدر تلقائيًا.",
+                    "icon": "sicon-toggle-off",
+                    "value": false,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "enable_controls",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إضافة أسهم التنقل",
+                    "description": "فعّل هذا الخيار لإظهار أسهم التنقل في القسم.",
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "enable_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تكرار لا نهائي للسلايدر",
+                    "description": "تفعيل التكرار الدائري للسلايدر دون توقف عند النهاية.",
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "desktop_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات الكبيرة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على أجهزة الديسكتوب.",
+                    "icon": "sicon-hashtag",
+                    "value": 2,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "6"
+                },
+                {
+                    "id": "laptop_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات المتوسطة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على أجهزة اللابتوب والأجهزة اللوحية.",
+                    "icon": "sicon-hashtag",
+                    "value": 2,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "4"
+                },
+                {
+                    "id": "mobile_slides_per_view",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "عدد السلايدات في الشاشات الصغيرة",
+                    "description": "حدد عدد السلايدات التي تظهر في نفس الوقت على الهواتف المحمولة.",
+                    "icon": "sicon-hashtag",
+                    "value": 1,
+                    "required": true,
+                    "minimum": "1",
+                    "maximum": "3"
                 }
             ]
         },
