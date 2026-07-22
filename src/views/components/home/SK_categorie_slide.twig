@@ -1,4 +1,10 @@
 {% set c = component %}
+{% set slides_desktop = c.desktop_slides_per_view | default(2.5) %}
+{% set slides_tablet  = c.laptop_slides_per_view  | default(2) %}
+{% set slides_mobile  = c.mobile_slides_per_view  | default(1.5) %}
+{% set autoplay       = c.enable_autoplay         | default(false) %}
+{% set loop           = c.enable_loop             | default(true) %}
+{% set controls       = c.enable_controls         | default(true) %}
 
 <section class="categories-slide" id="categories-section-{{position}}">
 
@@ -7,29 +13,32 @@
 
 		<div class="categories-slide__content">
 
-			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="true" slider-config='{
-										"slidesPerView":1.2,
-										"spaceBetween":20,
-					
-										"navigation":{
-											"nextEl":".categories-next-{{position}}",
-											"prevEl":".categories-prev-{{position}}"
-										},
-					
-										"breakpoints":{
-											"0":{
-												"slidesPerView":1.5
+			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="{{ loop ? 'true' : 'false' }}" slider-config='{
+										"slidesPerView": {{ slides_mobile }},
+										"spaceBetween": 20,
+										"breakpoints": {
+											"0": {
+												"slidesPerView": {{ slides_mobile }}
 											},
-											"640":{
-												"slidesPerView":1.8
+											"640": {
+												"slidesPerView": {{ slides_tablet }}
 											},
-											"1024":{
-												"slidesPerView":2
-											},
-											"1280":{
-												"slidesPerView":2.5
+											"1024": {
+												"slidesPerView": {{ slides_desktop }}
 											}
 										}
+										{% if controls %},
+										"navigation": {
+											"nextEl": ".categories-next-{{position}}",
+											"prevEl": ".categories-prev-{{position}}"
+										}
+										{% endif %}
+										{% if autoplay %},
+										"autoplay": {
+											"delay": 3000,
+											"disableOnInteraction": false
+										}
+										{% endif %}
 									}'>
 
 				<div slot="items" class="swiper-wrapper">
@@ -112,6 +121,7 @@
 				{% endif %}
 
 				
+			{% if controls %}
 			<div class="categories-slide__nav">
 
 
@@ -138,6 +148,7 @@
 
 
 			</div>
+			{% endif %}
 
 
 			</div>
