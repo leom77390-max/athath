@@ -2,9 +2,9 @@
 {% set slides_desktop = c.desktop_slides_per_view | default(2.5) %}
 {% set slides_tablet  = c.laptop_slides_per_view  | default(2) %}
 {% set slides_mobile  = c.mobile_slides_per_view  | default(1.5) %}
-{% set autoplay       = c.enable_autoplay         | default(false) %}
-{% set loop           = c.enable_loop             | default(true) %}
-{% set controls       = c.enable_controls         | default(true) %}
+{% set autoplay       = c.enable_autoplay is same as(true) %}
+{% set loop           = c.enable_loop is not same as(false) %}
+{% set controls       = c.enable_controls is not same as(false) %}
 
 <section class="categories-slide" id="categories-section-{{position}}">
 
