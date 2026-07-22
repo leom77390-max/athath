@@ -1,5 +1,5 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.108.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.16_webpack@5.108.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.108.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.107.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.15_webpack@5.107.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.107.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
@@ -2008,6 +2008,9 @@ input:where([type='file']):focus{
 }
 .overflow-x-hidden{
     overflow-x: hidden;
+}
+.overflow-x-clip{
+    overflow-x: clip;
 }
 .scroll-smooth{
     scroll-behavior: smooth;
@@ -29609,6 +29612,18 @@ input[type=radio].sr-only:checked ~ div.s-app-install-banner-cancel-button {
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
+}
+/* Scroll Animation classes added by app.js (is_animation setting) */
+section.reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+}
+section.reveal.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
 }
 .swiper-lazy{
     opacity: 0;

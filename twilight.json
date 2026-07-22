@@ -876,6 +876,45 @@
             "variant": "h6"
         },
         {
+            "id": "is_animation",
+            "label": " إضافة الانتقالات التفاعلية للمتجر ",
+            "description": "عند التفعيل، تظهر أقسام المتجر بحركات سلسة تزيد جاذبية التصفح.",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "smooth_app",
+            "label": "تفعيل التمرير السلس في الصفحة الرئيسية",
+            "description": "إذا كانت مفعلة، سيتم تشغيل تأثير التمرير السلس  وإذا كانت معطلة، لن يعمل تأثير التمرير السلس في أي صفحة.",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false
+        },
+        {
+            "id": "smooth_app_duration",
+            "label": "مدة التمرير السلس (Duration)",
+            "description": "أدخل رقماً للتحكم بمدة التمرير (مثال: 1.2 للتمرير العادي، 3 لتمرير بطيء جداً)",
+            "type": "string",
+            "format": "text",
+            "required": false,
+            "value": "1.2",
+            "selected": "1.2",
+             "conditions": [
+                {
+                    "id": "smooth_app",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تفعيل صفحة التحميل",

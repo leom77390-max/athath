@@ -20,6 +20,9 @@ class App extends AppHelpers {
     if (enable_side_cart) {
         this.init_SideCart();
     }
+     if (is_animation) {
+      this.animationSite();
+    }
     this.initAddToCart();
     this.initiateDropdowns();
     this.initiateModals();
@@ -63,6 +66,39 @@ class App extends AppHelpers {
     return messages[lang]?.[key] || messages["ar"][key] || key;
   }
 
+  animationSite() {
+  const banner = document.querySelector(".sg_main_banner");
+
+  window.addEventListener("load", () => {
+    if (banner) {
+      banner.classList.add("show");
+    }
+  });
+
+  document
+    .querySelectorAll("section:not(.sg_main_banner)")
+    .forEach((sec, i) => {
+      sec.classList.add("reveal");
+      sec.style.setProperty("--i", i);
+    });
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  document
+    .querySelectorAll("section.reveal")
+    .forEach((sec) => observer.observe(sec));
+}
   initAttachWishlistListeners() {
     let isListenerAttached = false;
 
