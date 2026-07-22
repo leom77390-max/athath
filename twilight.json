@@ -912,7 +912,7 @@
                     "operation": "=",
                     "value": true
                 }
-            ],
+            ]
         },
         {
             "type": "boolean",
