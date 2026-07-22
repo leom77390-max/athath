@@ -44,11 +44,7 @@
 	</div>
 
 
-	<salla-slider 
-	id="sk-slider-product-{{ position }}"
-	show-controls="false"
-	type="carousel"
-	slider-config='{
+	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel" slider-config='{
 		"slidesPerView": 1.2,
 		"spaceBetween": 16,
 		"navigation": {
@@ -76,68 +72,68 @@
 
 			{% for product in c.store_products %}
 
-				<a href="{{ product.url }}" class="sk-product-card">
+			<a href="{{ product.url }}" class="sk-product-card">
 
-					<div class="sk-product-card__img">
+				<div class="sk-product-card__img">
 
-						<img src="{{ product.images[0].url }}" alt="{{ product.name }}" loading="lazy">
+					<img src="{{ product.images[0].url }}" alt="{{ product.name }}" loading="lazy">
 
-					</div>
-
-
-					<div class="sk-product-card__info">
+				</div>
 
 
-						{% if product.category %}
-							<span class="sk-product-card__cat">
-								{{ product.category.name }}
-							</span>
-						{% endif %}
+				<div class="sk-product-card__info">
 
 
-						<h3 class="sk-product-card__name">
-							{{ product.name }}
-						</h3>
+					{% if product.category %}
+					<span class="sk-product-card__cat">
+						{{ product.category.name }}
+					</span>
+					{% endif %}
 
 
-						<div class="sk-product-card__price">
-
-							{% if product.is_on_sale %}
-
-								<span class="sk-price-sale">
-									{{ product.sale_price | money }}
-								</span>
-
-								<span class="sk-price-old">
-									{{ product.regular_price | money }}
-								</span>
-
-							{% else %}
-
-								<span class="sk-price-current">
-									{{ product.price | money }}
-								</span>
-
-							{% endif %}
-
-						</div>
+					<h3 class="sk-product-card__name">
+						{{ product.name }}
+					</h3>
 
 
-						{% if product.description %}
-							<p class="sk-product-card__desc">
-								{{ product.description | striptags }}
-							</p>
-						{% endif %}
+					<div class="sk-product-card__price">
 
+						{% if product.is_on_sale %}
 
-						<span class="sk-product-card__btn">
-							{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}
+						<span class="sk-price-sale">
+							{{ product.sale_price | money }}
 						</span>
 
+						<span class="sk-price-old">
+							{{ product.regular_price | money }}
+						</span>
+
+						{% else %}
+
+						<span class="sk-price-current">
+							{{ product.price | money }}
+						</span>
+
+						{% endif %}
 
 					</div>
 
-				</a>
+
+					{% if product.description %}
+					<p class="sk-product-card__desc">
+						{{ product.description | striptags }}
+					</p>
+					{% endif %}
+
+
+					<span class="sk-product-card__btn">
+						<span>{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}</span>
+					</span>
+
+
+				</div>
+
+			</a>
 
 			{% endfor %}
 
@@ -150,21 +146,25 @@
 </section>
 
 <style>
-	#sk-slider-product-{{position}}{
+	#sk-slider-product-{{position}} {
 		width: 90%;
 	}
+
 	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav {
 		left: 6rem !important;
 		top: -2rem !important;
 		width: 5% !important;
 	}
-	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav button, #sk-slider-product-{{position}}.s-slider-nav-arrow {
+
+	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav button,
+	#sk-slider-product-{{position}}.s-slider-nav-arrow {
 		border: 1px solid #000000 !important;
 		background: transparent !important;
 		transition: all 0.3s ease;
 	}
 
-	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav button svg, #sk-slider-product-{{position}}.s-slider-nav-arrow svg {
+	#sk-slider-product-{{position}}.s-slider-v-centered .s-slider-block__title-nav button svg,
+	#sk-slider-product-{{position}}.s-slider-nav-arrow svg {
 		fill: #000000 !important;
 		transition: fill 0.3s ease;
 	}
@@ -189,7 +189,7 @@
 		opacity: .35 !important;
 	}
 
-	#sk-slider-product-{{position}}{
+	#sk-slider-product-{{position}} {
 		padding: 40px 0;
 	}
 
@@ -276,6 +276,7 @@
 	.sk-price-sale {
 		color: #18181b;
 	}
+
 	.sk-price-old {
 		color: #a1a1aa;
 		font-size: 0.875rem;
@@ -296,19 +297,81 @@
 
 	.sk-product-card__btn {
 		margin-top: 8px;
-		display: inline-block;
+		display: inline-flex;
 		align-self: flex-start;
+		align-items: center;
+		justify-content: center;
 		padding: 11px 26px;
 		background: #18181b;
-		color: #fff;
+		color: #ffffff;
+		border: 1px solid #18181b;
 		border-radius: 999px;
 		font-size: 0.875rem;
 		font-weight: 600;
-		transition: opacity 0.2s;
+		position: relative;
+		overflow: hidden;
+		transition:
+			color .45s cubic-bezier(.7,0,.3,1),
+			border-color .35s ease,
+			transform .25s,
+			box-shadow .25s;
+		z-index: 1;
+		box-sizing: border-box;
 	}
 
-	.sk-product-card:hover .sk-product-card__btn {
-		opacity: 0.8;
+	.sk-product-card__btn::before,
+	.sk-product-card__btn::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		transform: scaleX(0);
+		transform-origin: right;
+		transition: transform .5s cubic-bezier(.7,0,.3,1);
+		z-index: -1;
+	}
+
+	.sk-product-card__btn::before {
+		background: #ffffff;
+		opacity: .3;
+		transition-delay: .1s;
+	}
+
+	.sk-product-card__btn::after {
+		background: #ffffff;
+		transition-delay: 0s;
+	}
+
+	.sk-product-card__btn > * {
+		position: relative;
+		z-index: 2;
+		transition: color .5s cubic-bezier(.7,0,.3,1);
+	}
+
+	@media (hover: hover) {
+		.sk-product-card__btn:hover {
+			color: #18181b;
+			border-color: #18181b;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+		}
+
+		.sk-product-card__btn:hover::before,
+		.sk-product-card__btn:hover::after {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+
+		.sk-product-card__btn:hover::before {
+			transition-delay: 0s;
+		}
+
+		.sk-product-card__btn:hover::after {
+			transition-delay: .1s;
+		}
+
+		.sk-product-card__btn:hover > * {
+			color: #18181b !important;
+		}
 	}
 
 	[dir="rtl"] .sk-product-card {
@@ -319,10 +382,12 @@
 		.sk-product-card__img img {
 			min-height: 180px;
 		}
+
 		.sk-product-card__info {
 			padding: 18px 14px;
 		}
-		#sk-slider-product-{{position}}{
+
+		#sk-slider-product-{{position}} {
 			width: 100%;
 		}
 	}
