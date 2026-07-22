@@ -131,6 +131,29 @@
     {% endblock %}
     </main>
     {% component 'footer.footer' %}
+     {% if theme.settings.get('smooth_app') %}
+            <div class="smooth-wrapper {{ wrapper_py }}">
+                <div class="smooth-content">
+{% endif %}
+{% if theme.settings.get('smooth_app') %}
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+        <script>
+            window.addEventListener('load', () => {
+                gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
+                ScrollSmoother.create({
+                    wrapper: ".smooth-wrapper",
+                    content: ".smooth-content",
+                    smooth: 1.5,
+                    smoothTouch: 0.2,
+                    normalizeScroll: true,
+                    effects: false,
+                });
+                ScrollTrigger.refresh();
+            });
+        </script>
+{% endif %}
 </div>
 
 {# include custom components #}
@@ -144,6 +167,7 @@
 {% endif %}
 <script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
 
+        
 {# Twilight Components #}
 {# Twilight Components #}
 <div class="quick-view-overlay fixed inset-0 bg-black/40 opacity-0 invisible transition duration-300 z-[9998]"></div>

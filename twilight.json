@@ -876,6 +876,28 @@
             "variant": "h6"
         },
         {
+        "id": "is_animation",
+        "label": " إضافة الانتقالات التفاعلية للمتجر ",
+        "description": "عند التفعيل، تظهر أقسام المتجر بحركات سلسة تزيد جاذبية التصفح.",
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "format": "switch",
+        "required": false,
+        "value": true,
+        "selected": true
+        },
+        {
+        "id": "smooth_app",
+        "label": "تفعيل التمرير السلس في الصفحة الرئيسية",
+        "description": "إذا كانت مفعلة، سيتم تشغيل تأثير التمرير السلس  وإذا كانت معطلة، لن يعمل تأثير التمرير السلس في أي صفحة.",
+        "type": "boolean",
+        "icon": "sicon-toggle-off",
+        "format": "switch",
+        "required": false,
+        "value": true,
+        "selected": false
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تفعيل صفحة التحميل",
