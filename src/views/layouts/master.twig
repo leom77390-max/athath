@@ -78,6 +78,7 @@
         window.notify_when_available_in_card = "{{ theme.settings.get('notify_when_available_in_card', true) }}"
         window.enable_side_cart = "{{ theme.settings.get('enable_side_cart', true) }}";
         window.categories_sidecart = {{ theme.settings.get('categories_sidecart') | json_encode |raw  }}
+        window.is_animation = "{{ theme.settings.get('is_animation') }}";
     </script>
 
     {% hook 'head:start' %}
@@ -109,7 +110,7 @@
     {# tracking services, custom css feature. #}
     {% hook 'head:end' %}
 </head>
-<body id="app" class="theme-raed overflow-x-hidden bg-background {% hook 'body:classes' %}
+<body id="app" class="theme-raed overflow-x-clip bg-background {% hook 'body:classes' %}
   {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
@@ -121,6 +122,11 @@
 </noscript>
 {% include "components.header.custom-menu.twig" %}
 
+{% if theme.settings.get('smooth_app') %}
+<div class="smooth-wrapper {{ wrapper_py }}">
+    <div class="smooth-content">
+{% endif %}
+
 <div class="app-inner flex flex-col min-h-full bg-background">
     {% hook 'body:start' %}
     {% component 'header.header' %}
@@ -131,10 +137,13 @@
     {% endblock %}
     </main>
     {% component 'footer.footer' %}
-     {% if theme.settings.get('smooth_app') %}
-            <div class="smooth-wrapper {{ wrapper_py }}">
-                <div class="smooth-content">
+</div>
+
+{% if theme.settings.get('smooth_app') %}
+    </div>
+</div>
 {% endif %}
+
 {% if theme.settings.get('smooth_app') %}
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
@@ -154,7 +163,6 @@
             });
         </script>
 {% endif %}
-</div>
 
 {# include custom components #}
 {% include 'components.custom.scroll_to_top' %}
