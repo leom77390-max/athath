@@ -1,70 +1,130 @@
 <section class="dynamic-sections dynamic-sections-{{position}} mb-10 md:mb-16 {{component.mob_show ? "hidden md:block" : ""}} {{component.lapTop_show ? "md:hidden" : ""}}">   
-    <div class="dynamic-slider-wrapper" style="background:{{component.bar_bac}}">
-        <div class="dynamic-slider-track" 
-             style="--width: 320px; --quantity: {{component.add_sectionbar|length}}; --speed: 20s; --height: 120px;">  
-            <div class="dynamic-slider-container flex flex-nowrap">
-                {% for bar in component.add_sectionbar %}
-                    <a href="{{ bar.bar_url}}" class="dynamic-slider-image" style="--position: {{loop.index}}" >
-                        <img loading="lazy" src="{{ bar.bar_img }}" alt="{{ bar.name }}" />
-                        <h2 style="color:{{bar.bar_title_color}}">{{bar.bar_title}}</h2>
-                    </a>
-                {% endfor %}
+    {% set items = component.add_sectionbar %}
+    {% if items|length > 0 %}
+        {% set total_items = items|length %}
+        {% set repeat_count = 2 %}
+        {% if total_items < 4 %}
+            {% set repeat_count = 6 %}
+        {% elseif total_items < 8 %}
+            {% set repeat_count = 4 %}
+        {% endif %}
+
+        <div class="sleek-marquee-wrapper" style="background: {{ component.bar_bac ? component.bar_bac : '#faf3f0' }};">
+            <div class="sleek-marquee-track">
+                {# Group 1 #}
+                <div class="sleek-marquee-group">
+                    {% for i in 1..repeat_count %}
+                        {% for bar in items %}
+                            <a {% if bar.bar_url %}href="{{ bar.bar_url }}"{% endif %} class="sleek-marquee-item">
+                                {% if bar.bar_title %}
+                                    <span class="sleek-marquee-text" style="color: {{ bar.bar_title_color ? bar.bar_title_color : '#1e1e1e' }};">
+                                        {{ bar.bar_title }}
+                                    </span>
+                                {% endif %}
+                                {% if bar.bar_img %}
+                                    <img class="sleek-marquee-image" loading="lazy" src="{{ bar.bar_img }}" alt="{{ bar.bar_title }}" />
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                {# Group 2 (Clone for seamless infinite scrolling) #}
+                <div class="sleek-marquee-group" aria-hidden="true">
+                    {% for i in 1..repeat_count %}
+                        {% for bar in items %}
+                            <a {% if bar.bar_url %}href="{{ bar.bar_url }}"{% endif %} class="sleek-marquee-item">
+                                {% if bar.bar_title %}
+                                    <span class="sleek-marquee-text" style="color: {{ bar.bar_title_color ? bar.bar_title_color : '#1e1e1e' }};">
+                                        {{ bar.bar_title }}
+                                    </span>
+                                {% endif %}
+                                {% if bar.bar_img %}
+                                    <img class="sleek-marquee-image" loading="lazy" src="{{ bar.bar_img }}" alt="{{ bar.bar_title }}" />
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </section>
-    
-<style>
-  .dynamic-slider-wrapper {
-      width: 100%;
-      margin: auto;
-      border: 1px solid #000000;
-  }
-  .dynamic-slider-track {
-      width: 100%;
-      height: var(--height);
-      overflow: hidden;
-  }
-  .dynamic-slider-container {
-      min-width: calc(var(--width) * var(--quantity));
-      display: flex;
-      gap: 0;
-      width: 100%;
-      position: relative;
-  }
-  .dynamic-slider-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      left: 100%;
-      width: var(--width);
-      height: var(--height);
-      animation: slideLeftt var(--speed) linear infinite;
-      animation-delay: calc((var(--speed) / var(--quantity)) * (var(--position) - 1) - var(--speed));
-      padding: 4px 0;
-      gap: 10px;  
-  }
-  .dynamic-slider-image img {
-      height: 62px;
-      object-fit: cover;
-      border-radius: 50%;
-  }
-  .dynamic-slider-image h2 {
-      margin: 0; 
-      font-weight: 700;
-      font-size: 25px;
-  }
-  @keyframes slideLeftt {
-      from {
-          left: 100%;
-      }
-      to {
-          left: calc(var(--width) * -1);
-      }
-  }
-  .dynamic-slider-wrapper:hover .dynamic-slider-image {
-      animation-play-state: paused;
-  }
 
+<style>
+    .sleek-marquee-wrapper {
+        width: 100%;
+        overflow: hidden;
+        padding: 22px 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        user-select: none;
+        direction: ltr; /* Forces consistent layout flow and scroll direction */
+    }
+
+    .sleek-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: sleek-marquee-scroll 30s linear infinite;
+        align-items: center;
+    }
+
+    .sleek-marquee-wrapper:hover .sleek-marquee-track {
+        animation-play-state: paused;
+    }
+
+    .sleek-marquee-group {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 36px;
+        padding: 0 18px; /* Half of gap on left/right ensures perfect gap between groups */
+    }
+
+    .sleek-marquee-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: opacity 0.2s ease;
+    }
+
+    .sleek-marquee-item:hover {
+        opacity: 0.8;
+    }
+
+    /* Disable hover state if the item has no link */
+    .sleek-marquee-item:not([href]) {
+        cursor: default;
+        pointer-events: none;
+    }
+    .sleek-marquee-item:not([href]):hover {
+        opacity: 1;
+    }
+
+    .sleek-marquee-text {
+        font-weight: 500;
+        font-size: 16px;
+        margin: 0;
+        font-family: inherit;
+    }
+
+    .sleek-marquee-image {
+        width: 38px;
+        height: 38px;
+        object-fit: cover;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    @keyframes sleek-marquee-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
 </style>
