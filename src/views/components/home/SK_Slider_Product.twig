@@ -1,4 +1,10 @@
 {% set c = component %}
+{% set slides_desktop = c.desktop_slides_per_view | default(2) %}
+{% set slides_tablet  = c.laptop_slides_per_view  | default(1.5) %}
+{% set slides_mobile  = c.mobile_slides_per_view  | default(1.2) %}
+{% set autoplay       = c.enable_autoplay is same as(true) %}
+{% set loop           = c.enable_loop is not same as(false) %}
+{% set controls       = c.enable_controls is not same as(false) %}
  
 <section class="sk-slider-product s-block overflow-hidden" id="sk-slider-product-{{ position }}">
 
@@ -13,6 +19,7 @@
 			</h2>
 
 
+			{% if controls %}
 			<div class="bundle-arrows flex items-center gap-2 mb-6">
 
 				<button 
@@ -36,6 +43,7 @@
 
 
 			</div>
+			{% endif %}
 
 		</div>
 
@@ -44,27 +52,35 @@
 	</div>
 
 
-	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel" slider-config='{
-		"slidesPerView": 1.2,
+	<salla-slider id="sk-slider-product-{{ position }}" show-controls="false" type="carousel" loop="{{ loop ? 'true' : 'false' }}" slider-config='{
+		"slidesPerView": {{ slides_mobile }},
 		"spaceBetween": 16,
-		"navigation": {
-			"nextEl": ".bundle-front-{{position}}",
-			"prevEl": ".bundle-back-{{position}}"
-		},
 		"breakpoints": {
 			"0": {
-				"slidesPerView": 1.2,
+				"slidesPerView": {{ slides_mobile }},
 				"spaceBetween": 16
 			},
 			"768": {
-				"slidesPerView": 1.5,
+				"slidesPerView": {{ slides_tablet }},
 				"spaceBetween": 24
 			},
 			"1024": {
-				"slidesPerView": 2,
+				"slidesPerView": {{ slides_desktop }},
 				"spaceBetween": 24
 			}
 		}
+		{% if controls %},
+		"navigation": {
+			"nextEl": ".bundle-front-{{position}}",
+			"prevEl": ".bundle-back-{{position}}"
+		}
+		{% endif %}
+		{% if autoplay %},
+		"autoplay": {
+			"delay": 3000,
+			"disableOnInteraction": false
+		}
+		{% endif %}
 	}'>
 
 
