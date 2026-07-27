@@ -912,7 +912,7 @@
                     "operation": "=",
                     "value": true
                 }
-            ]
+            ] 
         },
         {
             "type": "boolean",
@@ -955,6 +955,11 @@
                     "label": "استخدام لودر اللوجو الخاص بالثيم",
                     "value": "logo_loader",
                     "key": "e9v8eejf-c8c6-437e-9d45-3vce269afde5"
+                },
+                {
+                    "label": "لودر الطبقات المنحنية (Shopflex)",
+                    "value": "shopflex_loader",
+                    "key": "sf_loader_12345"
                 }
             ],
             "conditions": [

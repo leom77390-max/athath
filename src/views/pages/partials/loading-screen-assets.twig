@@ -257,6 +257,101 @@
       </div>
     </div>
 		
+	{% elseif theme.settings.get('loader_type') == 'shopflex_loader' %}
+		<style>
+			/* Shopflex Custom Animations */
+			.shopflex-layer {
+				transform: translateY(100vh);
+				border-top-left-radius: 50% 15vh;
+				border-top-right-radius: 50% 15vh;
+			}
+			.shopflex-white-layer {
+				z-index: 1;
+				animation: slideInFromBottom 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+			}
+			.shopflex-black-layer {
+				z-index: 2;
+				animation: slideInFromBottom 1s cubic-bezier(0.77, 0, 0.175, 1) 0.15s forwards;
+			}
+			.shopflex-loader-wrapper.hide .shopflex-black-layer .curtain-path {
+				animation: pullCurtain 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+				animation-delay: 0.1s; 
+			}
+			.shopflex-loader-wrapper.hide .shopflex-white-layer .curtain-path {
+				animation: pullCurtain 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+				animation-delay: 0.25s; 
+			}
+			.shopflex-loader-wrapper.hide .loader-content {
+				transform: translateY(-40px);
+				opacity: 0;
+			}
+			.logo-path {
+				stroke: #ffffff; 
+				stroke-width: 1;
+				fill: transparent;
+				stroke-dasharray: 300;
+				stroke-dashoffset: 300;
+				animation: drawLogo 1.5s ease 1s forwards, fillLogo 0.5s ease 2.2s forwards;
+			}
+			.loader-progress::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				background: #ffffff; 
+				transform: translateX(-100%);
+				animation: loadProgress 2s cubic-bezier(0.4, 0, 0.2, 1) 1s forwards;
+			}
+
+			@keyframes slideInFromBottom {
+				0% { transform: translateY(100vh); border-top-left-radius: 50% 15vh; border-top-right-radius: 50% 15vh; }
+				100% { transform: translateY(0); border-top-left-radius: 50% 0; border-top-right-radius: 50% 0; }
+			}
+			@keyframes pullCurtain {
+				0% { d: path("M 0 0 L 100 0 L 100 100 Q 50 100 0 100 Z"); }
+				50% { d: path("M 0 0 L 100 0 L 100 75 Q 50 40 0 75 Z"); }
+				100% { d: path("M 0 0 L 100 0 L 100 0 Q 50 0 0 0 Z"); }
+			}
+			@keyframes drawLogo {
+				100% { stroke-dashoffset: 0; }
+			}
+			@keyframes fillLogo {
+				100% { fill: #ffffff; stroke-color: transparent; }
+			}
+			@keyframes loadProgress {
+				100% { transform: translateX(0); }
+			}
+		</style>
+
+		<div id="page-loader" class="shopflex-loader-wrapper fixed inset-0 w-screen h-screen z-[9999] pointer-events-auto">
+			<!-- LAYER 1: The White Background -->
+			<div class="shopflex-layer shopflex-white-layer absolute inset-0 flex justify-center items-center overflow-hidden">
+				<svg class="curtain-svg absolute inset-0 w-full h-full -z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+					<path class="curtain-path" fill="#ffffff" d="M 0 0 L 100 0 L 100 100 Q 50 100 0 100 Z"></path>
+				</svg>
+			</div>
+
+			<!-- LAYER 2: The Black Loader Layer -->
+			<div class="shopflex-layer shopflex-black-layer absolute inset-0 flex justify-center items-center overflow-hidden">
+				<svg class="curtain-svg absolute inset-0 w-full h-full -z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+					<path class="curtain-path" fill="#000000" d="M 0 0 L 100 0 L 100 100 Q 50 100 0 100 Z"></path>
+				</svg>
+
+				<!-- The Logo and Progress Bar -->
+				<div class="loader-content flex flex-col items-center text-white transition-all duration-500 ease-in-out z-10">
+					<svg class="loader-logo w-[150px] h-auto mb-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 34">
+						<g>
+							<path class="logo-path" d="M66.99 21.947c-2.609 0-4.79-2.032-4.79-4.958.118-6.55 9.484-6.522 9.613 0 0 2.932-2.216 4.957-4.824 4.957Zm0-13.357c-6.958-.097-10.814 7.554-7.005 13.282 3.124 4.69 10.902 4.673 14.038 0 3.839-5.74-.07-13.379-7.028-13.282m32.031 6.225c.24-.645.603-1.232 1.137-1.706 2.157-1.866 6.5-1.318 7.185 1.706h-8.322Zm12.208 1.945c.129-11.148-16.323-10.651-16.276.177-.076 3.292 1.835 6.636 5.052 7.857 3.271 1.3 7.415.519 9.712-2.169 0 0 .446-.456-.053-.798l-.445-.308s-1.231-.845-1.624-1.153c-.392-.308-.638.052-.638.052-1.044 1.26-2.849 1.7-4.443 1.466-2.222-.274-3.722-2.083-3.833-4.21h11.968c.322 0 .58-.258.58-.571v-.348"></path>
+							<path class="logo-path" d="M85.352 21.952c-2.58 0-4.865-1.968-4.865-5.003.287-6.562 9.495-6.465 9.595 0 0 2.807-2.122 5.003-4.73 5.003Zm.416-13.362c-2.075 0-4.12.793-5.281 2.305V2.896a.477.477 0 0 0-.48-.467h-2.75a.476.476 0 0 0-.48.467V16.51c-.235 5.295 3.3 8.94 8.475 8.895 11.288.245 11.248-16.677.522-16.808M38.62 23.87l-3.006 7.234c-.082.256.059.467.328.467h3.025c.263 0 .55-.21.638-.467l9.05-21.452a.47.47 0 0 0-.446-.645h-2.79a.774.774 0 0 0-.714.468l-4.074 9.784-4.068-9.784a.77.77 0 0 0-.715-.468h-2.795a.47.47 0 0 0-.446.645l6.02 14.223-.006-.006Zm20.122-11.948.3-2.561a.472.472 0 0 0-.382-.508c-.504-.103-1.67-.268-2.227-.263-4.8-.256-7.62 2.785-7.532 7.258v8.683c0 .257.217.468.481.468h2.784a.44.44 0 0 0 .446-.434V16.88c0-1.951.263-3.183 1.066-3.868 1.348-1.141 3.576-.89 4.525-.702a.446.446 0 0 0 .533-.382M6.192 16.949c0-2.842 2.121-4.907 4.73-4.907 6.406.211 6.523 9.693 0 9.916-2.609 0-4.73-2.197-4.73-5.004m-3.681.023c0 5.198 3.51 8.444 8.51 8.421 5.181.052 8.71-3.594 8.475-8.889V2.896a.47.47 0 0 0-.48-.467h-2.75a.476.476 0 0 0-.48.467v8c-1.16-1.507-3.206-2.306-5.28-2.306-4.361 0-7.995 3.287-7.995 8.387Zm28.696-5.055.299-2.561a.472.472 0 0 0-.381-.508c-.504-.103-1.67-.268-2.227-.263-4.8-.256-7.62 2.785-7.532 7.258v8.683c0 .257.217.468.48.468h2.785a.44.44 0 0 0 .445-.434V16.88c0-1.951.264-3.183 1.067-3.868 1.348-1.141 3.575-.89 4.525-.702a.443.443 0 0 0 .533-.382m80.76-3.446c-1.488 0-2.696-1.175-2.696-2.624.141-3.48 5.252-3.48 5.393 0 0 1.449-1.208 2.624-2.697 2.624Zm0-6.053c-1.945 0-3.522 1.534-3.522 3.429.188 4.552 6.863 4.552 7.051 0 0-1.895-1.583-3.43-3.529-3.43Z"></path>
+						</g>
+					</svg>
+					<div class="loader-progress w-[150px] h-[2px] bg-white/20 relative overflow-hidden rounded-[2px]"></div>
+				</div>
+			</div>
+		</div>
+		
 	{% else %}
 		<style>
 			.loader-init {
@@ -302,13 +397,26 @@
 		window.addEventListener("load", () => {
 			const loader = document.getElementById("page-loader");
 			if (loader) {
-				loader.style.opacity = '0';
-				loader.style.visibility = 'hidden';
-				loader.addEventListener("transitionend", () => {
-					if (loader.parentNode) {
-						loader.parentNode.removeChild(loader);
-					}
-				});
+				if (loader.classList.contains('shopflex-loader-wrapper')) {
+					// Shopflex specific logic
+					setTimeout(() => {
+						loader.classList.add('hide');
+						setTimeout(() => {
+							if (loader.parentNode) {
+								loader.parentNode.removeChild(loader);
+							}
+						}, 1500); 
+					}, 3500);
+				} else {
+					// Default logic
+					loader.style.opacity = '0';
+					loader.style.visibility = 'hidden';
+					loader.addEventListener("transitionend", () => {
+						if (loader.parentNode) {
+							loader.parentNode.removeChild(loader);
+						}
+					});
+				}
 			}
 		});
 	</script>

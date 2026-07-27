@@ -173,3 +173,9 @@ $main-text-color: var(--main-text-color);
 @keyframes sidecart-spin {
   to { transform: rotate(360deg); }
 }
+
+#viewed-section{
+  .swiper-wrapper{
+    gap: 10px !important;
+  }
+}
