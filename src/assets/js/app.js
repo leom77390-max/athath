@@ -55,12 +55,18 @@ class App extends AppHelpers {
     const lang = document.documentElement.lang || "ar";
     const messages = {
       ar: {
+        clear_all: "\u062d\u0630\u0641 \u0627\u0644\u0643\u0644",
+        clear_all_confirm: "\u0647\u0644 \u062a\u0631\u064a\u062f \u062d\u0630\u0641 \u0643\u0644 \u0645\u0646\u062a\u062c\u0627\u062a \u0627\u0644\u0633\u0644\u0629\u061f",
+        "coupon_field_label": "كود الخصم",
         added: "تم اضافة المنتج لقائمة الأمنيات",
         removed: "تم حذف المنتج من قائمة الأمنيات",
       },
       en: {
         added: "Product added to wishlist",
         removed: "Product removed from wishlist",
+        "coupon_field_label": "Coupon code",
+        clear_all: "Clear all",
+        clear_all_confirm: "Do you want to remove all items from the cart?",
       },
     };
     return messages[lang]?.[key] || messages["ar"][key] || key;
@@ -431,6 +437,12 @@ class App extends AppHelpers {
       const sideCouponInput = cartPanel.querySelector("#sidecart-coupon-input");
       const sideCouponBtn = cartPanel.querySelector("#sidecart-coupon-btn");
       const sideCouponError = cartPanel.querySelector("#sidecart-coupon-error");
+      const sideCouponToggle = cartPanel.querySelector("#sidecart-coupon-toggle");
+      const sideCouponToggleText = cartPanel.querySelector("#sidecart-coupon-toggle-text");
+      const sideCouponSheet = cartPanel.querySelector("#sidecart-coupon-sheet");
+      const sideCouponSheetOverlay = cartPanel.querySelector("#sidecart-coupon-sheet-overlay");
+      const sideCouponClose = cartPanel.querySelector("#sidecart-coupon-close");
+      const sidecartClearAllBtn = cartPanel.querySelector("#sidecart-clear-all");
       const isRtl = document.documentElement.dir === "rtl" || document.body.dir === "rtl";
 
       // Guard: abort if critical DOM elements are missing
@@ -461,6 +473,7 @@ class App extends AppHelpers {
             content.style.transform = "translateX(0)";
           });
         } else {
+          toggleCouponSheet(false);
           overlay.classList.remove("opacity-100");
           const outX = isRtl ? "100%" : "-100%";
           cartPanel.style.transform = `translateX(${outX})`;
@@ -471,6 +484,64 @@ class App extends AppHelpers {
             overlay.classList.add("hidden");
             cartPanel.style.visibility = "hidden";
           }, 300);
+        }
+      };
+
+      const toggleCouponSheet = (show) => {
+        if (!sideCouponSheet || !sideCouponSheetOverlay) return;
+
+        sideCouponToggle?.setAttribute("aria-expanded", show ? "true" : "false");
+        sideCouponSheet.setAttribute("aria-hidden", show ? "false" : "true");
+
+        if (show) {
+          sideCouponSheetOverlay.classList.remove("hidden");
+          requestAnimationFrame(() => {
+            sideCouponSheetOverlay.classList.add("opacity-100");
+            sideCouponSheet.style.transform = "translateY(0)";
+          });
+          setTimeout(() => sideCouponInput?.focus(), 320);
+          return;
+        }
+
+        sideCouponSheetOverlay.classList.remove("opacity-100");
+        sideCouponSheet.style.transform = "translateY(100%)";
+        setTimeout(() => {
+          if (sideCouponSheet.getAttribute("aria-hidden") === "true") {
+            sideCouponSheetOverlay.classList.add("hidden");
+          }
+        }, 300);
+      };
+
+      const updateCouponToggleText = (coupon = '') => {
+        if (!sideCouponToggleText) return;
+        sideCouponToggleText.textContent = coupon || (this.getLocalizedMessage('coupon_field_label'));
+      };
+
+      const getSideCartItemIds = () => {
+        return [...itemsWrap.querySelectorAll("form[id^='sidecart-item-'] input[name='id']")]
+          .map(input => input.value)
+          .filter(Boolean);
+      };
+
+      const clearSideCart = async () => {
+        const ids = getSideCartItemIds();
+        if (!ids.length || sidecartClearAllBtn?.disabled) return;
+
+        if (!window.confirm(this.getLocalizedMessage('clear_all_confirm'))) return;
+
+        const originalHtml = sidecartClearAllBtn.innerHTML;
+        sidecartClearAllBtn.disabled = true;
+        sidecartClearAllBtn.innerHTML = '<span class="sidecart-spinner"></span>';
+
+        try {
+          await Promise.all(ids.map(id => salla.cart.deleteItem(id)));
+          await loadCart();
+        } catch (err) {
+          console.error("Side cart clear all failed:", err);
+          salla.notify.error(salla.lang.get("common.messages.error_occurred") || "حدث خطأ");
+        } finally {
+          sidecartClearAllBtn.innerHTML = originalHtml;
+          sidecartClearAllBtn.disabled = false;
         }
       };
 
@@ -680,6 +751,7 @@ class App extends AppHelpers {
           if (items.length) {
             if (footerPanel) footerPanel.style.display = "";
             if (submitBtn) submitBtn.style.display = "flex";
+            if (sidecartClearAllBtn) sidecartClearAllBtn.style.display = "inline-flex";
             // count.textContent = `(${cart.count} ${currentLang === "ar" ? "منتج" : "product"})`;
 
             itemsWrap.innerHTML = items.map(item => {
@@ -758,6 +830,7 @@ class App extends AppHelpers {
               if (cart.coupon) {
                 sideCouponInput.value = cart.coupon;
                 sideCouponInput.disabled = true;
+                updateCouponToggleText(cart.coupon);
                 sideCouponBtn?.classList.add('has-coupon');
                 const couponSpan = sideCouponBtn?.querySelector('.coupon-text');
                 const couponIcon = sideCouponBtn?.querySelector('.sicon-cancel');
@@ -766,6 +839,7 @@ class App extends AppHelpers {
               } else {
                 sideCouponInput.value = '';
                 sideCouponInput.disabled = false;
+                updateCouponToggleText();
                 sideCouponBtn?.classList.remove('has-coupon');
                 const couponSpan = sideCouponBtn?.querySelector('.coupon-text');
                 const couponIcon = sideCouponBtn?.querySelector('.sicon-cancel');
@@ -778,10 +852,13 @@ class App extends AppHelpers {
     // Hide coupon row when cart is empty
               const couponWrap = cartPanel.querySelector("#sidecart-coupon-wrap");
               if (couponWrap) couponWrap.style.display = "none";
+              toggleCouponSheet(false);
+              updateCouponToggleText();
 
               // Hide footer elements
               if (footerPanel) footerPanel.style.display = "none";
               if (submitBtn) submitBtn.style.display = "none";
+              if (sidecartClearAllBtn) sidecartClearAllBtn.style.display = "none";
 
               // Clear and prepare empty state container
               itemsWrap.innerHTML = `
@@ -826,6 +903,8 @@ class App extends AppHelpers {
       // ═══════════════════════════════════════════
       //  Loading State: show overlay on form change
       // ═══════════════════════════════════════════
+      sidecartClearAllBtn?.addEventListener("click", clearSideCart);
+
       itemsWrap.addEventListener("change", (e) => {
         const form = e.target.closest("form[id^='sidecart-item-']");
         if (form) appendLoadingOverlay(form);
@@ -852,6 +931,10 @@ class App extends AppHelpers {
       //  Coupon Handling
       // ═══════════════════════════════════════════
       if (sideCouponInput && sideCouponBtn) {
+        sideCouponToggle?.addEventListener("click", () => toggleCouponSheet(true));
+        sideCouponClose?.addEventListener("click", () => toggleCouponSheet(false));
+        sideCouponSheetOverlay?.addEventListener("click", () => toggleCouponSheet(false));
+
         sideCouponInput.addEventListener("keyup", (e) => {
           if (e.keyCode === 13) sideCouponBtn.click();
           if (sideCouponError) sideCouponError.textContent = '';
@@ -876,6 +959,7 @@ class App extends AppHelpers {
               const coupon = res.data.cart.coupon;
               if (coupon && !hasCoupon) {
                 sideCouponInput.disabled = true;
+                updateCouponToggleText(coupon);
                 sideCouponBtn.classList.add('has-coupon');
                 const cs = sideCouponBtn.querySelector('.coupon-text');
                 const ci = sideCouponBtn.querySelector('.sicon-cancel');
@@ -884,6 +968,7 @@ class App extends AppHelpers {
               } else if (!coupon && hasCoupon) {
                 sideCouponInput.value = '';
                 sideCouponInput.disabled = false;
+                updateCouponToggleText();
                 sideCouponBtn.classList.remove('has-coupon');
                 const cs = sideCouponBtn.querySelector('.coupon-text');
                 const ci = sideCouponBtn.querySelector('.sicon-cancel');
@@ -927,7 +1012,14 @@ class App extends AppHelpers {
         }
       });
       overlay?.addEventListener("click", () => toggleCart(false));
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleCart(false); });
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (sideCouponSheet?.getAttribute("aria-hidden") === "false") {
+          toggleCouponSheet(false);
+          return;
+        }
+        toggleCart(false);
+      });
   }
   /**
    * Workaround for seeking to simplify & clean, There are three ways to use this method:

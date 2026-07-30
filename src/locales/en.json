@@ -57,7 +57,9 @@
       "cart_options": "Cart Options",
       "shipping": "Shipping",
       "buy_now": "Buy Now",
-      "coupon_field_label": "Coupon code"
+      "coupon_field_label": "Coupon code",
+      "clear_all": "Clear all",
+      "clear_all_confirm": "Do you want to remove all items from the cart?"
     },
     "products": {
       "calculated_at_checkout": "calculated at checkout",

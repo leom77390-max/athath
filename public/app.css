@@ -919,6 +919,10 @@ input:where([type='file']):focus{
     bottom: 0px;
     left: 0px;
 }
+.inset-x-0{
+    left: 0px;
+    right: 0px;
+}
 .inset-y-0{
     top: 0px;
     bottom: 0px;
@@ -1031,6 +1035,12 @@ input:where([type='file']):focus{
 .z-\[2\]{
     z-index: 2;
 }
+.z-\[3\]{
+    z-index: 3;
+}
+.z-\[4\]{
+    z-index: 4;
+}
 .z-\[61\]{
     z-index: 61;
 }
@@ -1090,9 +1100,6 @@ input:where([type='file']):focus{
 }
 .-mb-52{
     margin-bottom: -13rem;
-}
-.-mt-4{
-    margin-top: -1rem;
 }
 .-mt-62{
     margin-top: -248px;
@@ -1685,6 +1692,11 @@ input:where([type='file']):focus{
     transform: translate(var(--tw-translate-x), 1.5rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.translate-y-full{
+    --tw-translate-y: 100%;
+    transform: translate(var(--tw-translate-x), 100%) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .rotate-45{
     --tw-rotate: 45deg;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(45deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -2262,6 +2274,9 @@ input:where([type='file']):focus{
     background-color: rgba(0, 0, 0, 1);
     background-color: rgba(0, 0, 0, var(--tw-bg-opacity, 1));
 }
+.bg-black\/30{
+    background-color: rgba(0, 0, 0, 0.3);
+}
 .bg-black\/35{
     background-color: rgba(0, 0, 0, 0.35);
 }
@@ -2390,6 +2405,9 @@ input:where([type='file']):focus{
 }
 .\!p-0{
     padding: 0px !important;
+}
+.p-0{
+    padding: 0px;
 }
 .p-1{
     padding: 0.25rem;
@@ -3002,6 +3020,12 @@ input:where([type='file']):focus{
     --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
     box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
+}
+.shadow-\[0_-12px_30px_rgba\(0\2c 0\2c 0\2c 0\.12\)\]{
+    --tw-shadow: 0 -12px 30px rgba(0,0,0,0.12);
+    --tw-shadow-colored: 0 -12px 30px var(--tw-shadow-color);
+    box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 -12px 30px rgba(0,0,0,0.12);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
 }
 .shadow-\[0_25px_80px_rgba\(0\2c 0\2c 0\2c \.18\)\]{
@@ -37234,6 +37258,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-text-opacity: 1;
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
+}
+.hover\:text-red-800:hover{
+    --tw-text-opacity: 1;
+    color: rgba(153, 27, 27, 1);
+    color: rgba(153, 27, 27, var(--tw-text-opacity, 1));
 }
 .hover\:underline:hover{
     text-decoration-line: underline;

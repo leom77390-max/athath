@@ -20,7 +20,51 @@ class Cart extends BasePage {
         });
 
         this.initSubmitCart();
+        this.initClearCart();
         validateProductOptions();
+    }
+
+    initClearCart() {
+        let clearBtn = document.querySelector('#cart-clear-all');
+
+        if (!clearBtn) {
+            return;
+        }
+
+        app.onClick(clearBtn, async event => {
+            event.preventDefault();
+
+            if (clearBtn.disabled) {
+                return;
+            }
+
+            let ids = [...document.querySelectorAll('form[id^="item-"] input[name="id"]')]
+                .map(input => input.value)
+                .filter(Boolean);
+
+            if (!ids.length) {
+                return;
+            }
+
+            let confirmMessage = salla.lang.get('pages.cart.clear_all_confirm') || 'Do you want to remove all items from the cart?';
+            if (!window.confirm(confirmMessage)) {
+                return;
+            }
+
+            let originalHtml = clearBtn.innerHTML;
+            clearBtn.disabled = true;
+            clearBtn.innerHTML = '<span class="sidecart-spinner"></span>';
+
+            try {
+                await Promise.all(ids.map(id => salla.cart.deleteItem(id)));
+                window.location.reload();
+            } catch (err) {
+                console.error('Cart clear all failed:', err);
+                salla.notify.error(salla.lang.get('common.messages.error_occurred') || 'An error occurred');
+                clearBtn.innerHTML = originalHtml;
+                clearBtn.disabled = false;
+            }
+        });
     }
 
     initSubmitCart() {

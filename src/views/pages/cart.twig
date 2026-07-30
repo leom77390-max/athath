@@ -61,6 +61,15 @@
                 {% hook 'cart:items.start' %}
 
             {% if cart.items|length %}
+                <div class="mb-4 flex w-full items-center justify-end">
+                    <button type="button"
+                            id="cart-clear-all"
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-red-600 underline underline-offset-4 transition hover:text-red-800">
+                        <i class="sicon-trash"></i>
+                        <span>{{ trans('pages.cart.clear_all') }}</span>
+                    </button>
+                </div>
+
                 {# Table Header #}
                 <div class="cart-table-header">
                     <span class="col-product">{{ trans('blocks.cart.product') }}</span>
