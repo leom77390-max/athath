@@ -906,13 +906,13 @@
             "required": false,
             "value": "1.2",
             "selected": "1.2",
-             "conditions": [
+            "conditions": [
                 {
                     "id": "smooth_app",
                     "operation": "=",
                     "value": true
                 }
-            ] 
+            ]
         },
         {
             "type": "boolean",
@@ -2745,6 +2745,18 @@
                     "format": "description",
                     "id": "static-desc",
                     "value": "<div ><img class='w-full' src='https://a.top4top.io/p_3829nrx8m1.png'></div>"
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#F3EEEA",
+                    "required": false
                 },
                 {
                     "id": "block_top_brand",
@@ -5178,11 +5190,11 @@
                                 "testimonials.product_name": "Vitamin C Serum"
                             },
                             "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/8da6cc61-f8ab-4807-93de-8414ae010874_750x563.webp",
-                            "testimonials.review": 5,
+                            "testimonials.review": "5",
                             "testimonials.testimonial_color": "#18181b",
                             "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This Vitamin C serum changed my skin! It looks brighter and more radiant after just two weeks.",
-                            "testimonials.product_name": "Vitamin C Serum"
+                            "testimonials.testimonial": "سيروم فيتامين C ده غير حياتي! بشرتي أصبحت أكثر إشراقًا ونضارة بعد أسبوعين فقط.",
+                            "testimonials.product_name": "سيروم فيتامين C"
                         },
                         {
                             "ar": {
@@ -5194,11 +5206,11 @@
                                 "testimonials.product_name": "Deep Hydration Cream"
                             },
                             "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/9b6e73eb-6cad-4a4f-a7e1-d08fa27c5880_750x563.webp",
-                            "testimonials.review": 5,
+                            "testimonials.review": "5",
                             "testimonials.testimonial_color": "#18181b",
                             "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This moisturizer is perfect for my dry skin. It absorbs quickly and keeps my skin soft and glowing all day.",
-                            "testimonials.product_name": "Deep Hydration Cream"
+                            "testimonials.testimonial": "كريم الترطيب ده مثالي لبشرتي الجافة، يمتص بسرعة ويخلي البشرة ناعمة ومشرقة طوال اليوم.",
+                            "testimonials.product_name": "كريم الترطيب العميق"
                         },
                         {
                             "ar": {
@@ -5210,11 +5222,11 @@
                                 "testimonials.product_name": "Purifying Clay Mask"
                             },
                             "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/dd819214-163c-4723-b574-b0108a6f18c0_750x563.webp",
-                            "testimonials.review": 5,
+                            "testimonials.review": "5",
                             "testimonials.testimonial_color": "#18181b",
                             "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This clay mask deeply cleans the pores and visibly reduces breakouts. Highly recommended!",
-                            "testimonials.product_name": "Purifying Clay Mask"
+                            "testimonials.testimonial": "ماسك الطين ده بينظف المسام بعمق ويقلل من الحبوب بشكل ملحوظ. أنصح فيه جدًا.",
+                            "testimonials.product_name": "ماسك الطين المنقي"
                         },
                         {
                             "ar": {
@@ -5226,11 +5238,11 @@
                                 "testimonials.product_name": "Natural Facial Oil"
                             },
                             "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/1a727ef7-61e5-47cf-bbff-028c0f51bfa9_750x563.webp",
-                            "testimonials.review": 5,
+                            "testimonials.review": "5",
                             "testimonials.testimonial_color": "#18181b",
                             "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This facial oil is so lightweight yet incredibly nourishing. My skin feels softer and healthier.",
-                            "testimonials.product_name": "Natural Facial Oil"
+                            "testimonials.testimonial": "زيت الوجه ده خفيف جدًا ومرطب بشكل رائع، بشرتي أصبحت أكثر نعومة وصحة.",
+                            "testimonials.product_name": "زيت الوجه الطبيعي"
                         },
                         {
                             "ar": {
@@ -5242,11 +5254,11 @@
                                 "testimonials.product_name": "Anti-Aging Cream"
                             },
                             "testimonials.image": "https://cdn.files.salla.network/homepage/930809644/b698e44c-e091-4840-90f7-81abe218abda_750x563.webp",
-                            "testimonials.review": 5,
+                            "testimonials.review": "5",
                             "testimonials.testimonial_color": "#18181b",
                             "testimonials.product_name_color": "#18181b",
-                            "testimonials.testimonial": "This anti-aging cream is really effective. I noticed visible improvement in skin firmness after one month.",
-                            "testimonials.product_name": "Anti-Aging Cream"
+                            "testimonials.testimonial": "الكريم المضاد للتجاعيد فعال جدًا، ملاحظة فرق واضح في مرونة البشرة بعد شهر من الاستخدام.",
+                            "testimonials.product_name": "كريم مضاد للتجاعيد"
                         }
                     ],
                     "minLength": "4",
