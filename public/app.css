@@ -1551,6 +1551,15 @@ input:where([type='file']):focus{
 .w-screen{
     width: 100vw;
 }
+.w-\[\]{
+    width: ;
+}
+.w-\[\*00\]{
+    width: *00;
+}
+.w-\[90\%\]{
+    width: 90%;
+}
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
     min-width: fit-content !important;
