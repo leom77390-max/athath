@@ -55,7 +55,8 @@
 								{% if item.testimonial %} 
 									<p style="color:{{item.testimonial_color}}" class="testimonial-text text-sm font-medium mt-0.5">"{{ item.testimonial }}"</p>
 								{% endif %}
-								<div class="product-info mt-6 pt-6 border-t border-gray-200 w-full">
+								{% if item.products %}
+								<div class="product-info hidden mt-6 pt-6 border-t border-gray-200 w-full">
 									<div class="flex items-center gap-3">
 										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover rounded" loading="lazy">
 										<div class="flex-1 min-w-0">
@@ -64,6 +65,7 @@
 										</div>
 									</div>
 								</div>
+								{% endif %}
 							</div>
 						</a>
 					{% endfor %}
@@ -86,7 +88,8 @@
 								{% if item.testimonial %} 
 									<p style="color:{{item.testimonial_color}}" class="testimonial-text text-base font-medium mt-0.5">"{{ item.testimonial }}"</p>
 								{% endif %}
-								<div class="product-info mt-6 pt-6 border-t border-gray-200 w-full">
+								{% if item.products %}
+								<div class="product-info hidden mt-6 pt-6 border-t border-gray-200 w-full">
 									<div class="flex items-center gap-3">
 										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover rounded" loading="lazy">
 										<div class="flex-1 min-w-0">
@@ -95,6 +98,7 @@
 										</div>
 									</div>
 								</div>
+								{% endif %}
 							</div>
 						</a>
 					{% endfor %}
@@ -132,6 +136,7 @@ salla.onReady(() => {
         thumb.src = product.data.image?.url || '';
         title.textContent = product.data.name || '';
         card.href = url;
+        productInfo.classList.remove('hidden');
       }
     } catch (e) {
       console.warn('Failed to load product details:', e);

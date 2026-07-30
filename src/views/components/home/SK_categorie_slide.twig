@@ -6,7 +6,7 @@
 {% set loop           = c.enable_loop is not same as(false) %}
 {% set controls       = c.enable_controls is not same as(false) %}
 
-<section class="categories-slide" id="categories-section-{{position}}">
+<section class="categories-slide mx-auto" id="categories-section-{{position}}" {% if c.bg_color %}style="background-color: {{ c.bg_color }};"{% endif %}>
 
 	<div class="categories-slide-wrapper">
 

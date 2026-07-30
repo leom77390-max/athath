@@ -2747,6 +2747,18 @@
                     "value": "<div ><img class='w-full' src='https://a.top4top.io/p_3829nrx8m1.png'></div>"
                 },
                 {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#F3EEEA",
+                    "required": false
+                },
+                {
                     "id": "block_top_brand",
                     "type": "string",
                     "format": "text",
