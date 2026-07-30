@@ -563,6 +563,58 @@ class App extends AppHelpers {
         if (ov) ov.remove();
       }
 
+      let sidecartCategoriesCache = {};
+
+      function getSidecartCategoriesCacheKey(ids) {
+        const lang = document.documentElement.lang || "ar";
+        return `sidecart_categories_${lang}_${JSON.stringify(ids)}`;
+      }
+
+      function readSidecartCategoriesCache(ids) {
+        const cacheKey = getSidecartCategoriesCacheKey(ids);
+        if (sidecartCategoriesCache[cacheKey]) return sidecartCategoriesCache[cacheKey];
+
+        try {
+          const cached = sessionStorage.getItem(cacheKey);
+          sidecartCategoriesCache[cacheKey] = cached ? JSON.parse(cached) : null;
+          return sidecartCategoriesCache[cacheKey];
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function writeSidecartCategoriesCache(ids, categories) {
+        const cacheKey = getSidecartCategoriesCacheKey(ids);
+        sidecartCategoriesCache[cacheKey] = categories;
+
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify(categories));
+        } catch (e) {
+          // Cache is optional; the empty cart still renders from fresh data.
+        }
+      }
+
+      async function getSidecartCategories(ids) {
+        const cached = readSidecartCategoriesCache(ids);
+        if (cached) return cached;
+
+        const results = await Promise.all(
+          ids.map(async (id) => {
+            try {
+              const res = await salla.product.categories(id);
+              return res?.data || res;
+            } catch (e) {
+              console.warn("Failed category fetch:", id, e);
+              return null;
+            }
+          })
+        );
+
+        const categories = results.filter(Boolean);
+        if (categories.length) writeSidecartCategoriesCache(ids, categories);
+        return categories;
+      }
+
       async function renderSmartEmptyState() {
         const emptyEl = document.getElementById('sidecart-empty-state');
 
@@ -579,24 +631,9 @@ class App extends AppHelpers {
 
         console.log(ids, "category ids");
 
-        // Fetch categories
         if (ids.length > 0) {
           try {
-
-            const results = await Promise.all(
-              ids.map(async (id) => {
-                try {
-                  const res = await salla.product.categories(id);
-                  return res?.data || res;
-                } catch (e) {
-                  console.warn("Failed category fetch:", id, e);
-                  return null;
-                }
-              })
-            );
-
-            categories = results.filter(Boolean);
-
+            categories = await getSidecartCategories(ids);
           } catch (e) {
             console.warn("Failed to fetch sidecart categories", e);
           }
