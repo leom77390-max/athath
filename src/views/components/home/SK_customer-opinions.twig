@@ -1,6 +1,6 @@
 {% set home_mb = component.rm_bottom_margin|default(false) ? 'home-section--no-bottom-spacing' : (theme.settings.get('customize_section_bottom_spacing', false) ? 'home-section-bottom-spacing' : '') %}
 {% set slider_speed = component.slider_speed|default(3) %}
-<section class="SK-testimonials SK-testimonials-{{position}} {{ home_mb }} bg-primary py-[20px] md:py-[40px]">
+<section class="SK-testimonials SK-testimonials-{{position}} {{ home_mb }} {% if not component.bg_color %}bg-primary{% endif %} py-[20px] md:py-[40px]" {% if component.bg_color %}style="background-color: {{ component.bg_color }}"{% endif %}>
 	<div class="wrapper text-font">
 		<div class="heading mb-[clamp(1.2rem,0.7509rem+1.7963vw,1.667rem)] text-center">
 			<p style="color:{{component.blocktitle_color}}" class="block-title mb-[clamp(0.533rem,0.3695rem+0.6539vw,1.067rem)] text-[clamp(1.333rem,1.1695rem+0.6539vw,1.867rem)] font-semibold">{{component.block_title}}</p>
