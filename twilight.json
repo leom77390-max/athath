@@ -6286,8 +6286,8 @@
                     "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
                     "icon": "sicon-layout",
                     "value": {
-                        "ar": "خيارات مثالية لعنايتكِ اليومية، استخدميها ضمن روتين شامل أو كمنتجات فردية لتتألقي دائماً.",
-                        "en": "Spring styles to wear together or apart, whatever the weather."
+                        "ar": "خيارات مثالية لعنايتكِ اليومية",
+                        "en": "Perfect options for your daily care"
                     },
                     "multilanguage": true,
                     "required": false
@@ -6317,7 +6317,7 @@
                     "placeholder": "مثال: About Us",
                     "icon": "sicon-link",
                     "value": {
-                        "ar": "اكتشفي التشكيلة الآن",
+                        "ar": "اكتشفي الآن",
                         "en": "Shop now"
                     },
                     "multilanguage": true
@@ -6724,21 +6724,6 @@
                             "card.button_text": "اكتشف المزيد",
                             "card.button_bg_color": "#18181b",
                             "card.button_text_color": "#ffffff",
-                            "card.btn_url": ""
-                        },
-                        {
-                            "ar": {
-                                "card.title": "أفضل العروض والخصومات الحصرية",
-                                "card.button_text": "شاهد العروض"
-                            },
-                            "card.background_is_image": true,
-                            "card.bg_image": "https://cdn.files.salla.network/homepage/686931608/adc95a74-42d5-499a-9077-acaca71e6ead_637x900.webp?_s_uploader_cache_bust=preview-t8rbrf1hr",
-                            "card.corner_rounded": "16",
-                            "card.title": "أفضل العروض والخصومات الحصرية",
-                            "card.title_color": "#ffffff",
-                            "card.button_text": "شاهد العروض",
-                            "card.button_bg_color": "#ffffff",
-                            "card.button_text_color": "#18181b",
                             "card.btn_url": ""
                         }
                     ]
