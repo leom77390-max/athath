@@ -5045,6 +5045,18 @@
                     "required": false
                 },
                 {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "",
+                    "required": false
+                },
+                {
                     "id": "slider_speed",
                     "type": "number",
                     "format": "slider",
