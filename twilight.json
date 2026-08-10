@@ -3163,8 +3163,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "Featured by Press",
-                        "en": "Featured by Press"
+                        "ar": "ما يميزنا",
+                        "en": "What Makes Us Special"
                     },
                     "multilanguage": true,
                     "required": false,
