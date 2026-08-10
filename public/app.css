@@ -1,5 +1,5 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.107.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.15_webpack@5.107.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.107.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.108.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.16_webpack@5.108.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.108.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
@@ -1535,6 +1535,9 @@ input:where([type='file']):focus{
 .w-\[80px\]{
     width: 80px;
 }
+.w-\[90\%\]{
+    width: 90%;
+}
 .w-\[92vw\]{
     width: 92vw;
 }
@@ -1550,15 +1553,6 @@ input:where([type='file']):focus{
 }
 .w-screen{
     width: 100vw;
-}
-.w-\[\]{
-    width: ;
-}
-.w-\[\*00\]{
-    width: *00;
-}
-.w-\[90\%\]{
-    width: 90%;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
