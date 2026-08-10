@@ -123,9 +123,10 @@ class Product extends BasePage {
       radioContainer.classList.add("custom-radio-options");
 
       const radioButtons = [];
+      const uniqueSuffix = Math.random().toString(36).substr(2, 9);
 
       options.forEach((option) => {
-        const id = `option_${option.value}`;
+        const id = `option_${option.value}_${uniqueSuffix}`;
 
         const label = document.createElement("label");
         label.setAttribute("for", id);
@@ -158,9 +159,9 @@ class Product extends BasePage {
     });
   }
   observeSizeOptionSingle() {
-    const target = document.querySelector("salla-product-options");
+    const target = document.querySelector(".product-single salla-product-options");
     if (!target) {
-      console.warn("No <salla-product-options> element found.");
+      console.warn("No <salla-product-options> element found in .product-single.");
       return;
     }
 
