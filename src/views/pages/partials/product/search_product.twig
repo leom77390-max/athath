@@ -375,6 +375,7 @@ salla.onReady(() => {
 
   function openDrawer() {
     if (state.isOpen) return;
+    document.dispatchEvent(new CustomEvent('modal:open', { detail: 'side-search' }));
     state.isOpen = true;
 
     dom.drawer.classList.add('is-open');
@@ -475,6 +476,8 @@ salla.onReady(() => {
   }
 
   function buildProductCard(product, keys) {
+    window.__sideSearchProducts = window.__sideSearchProducts || new Map();
+    window.__sideSearchProducts.set(String(product.id), product);
 
     const name   = escapeHTML(product[keys.nameKey] || '');
     const thumb  = product[keys.thumbKey] || (product.image && product.image.url) || '';
@@ -501,7 +504,7 @@ salla.onReady(() => {
         role="option"
         aria-label="${name}"
       >
-        <div class="w-[123px] h-[123px] rounded-xl overflow-hidden shrink-0 bg-font/5">
+        <div class="w-[123px] h-[123px] rounded-xl overflow-hidden shrink-0 bg-font/5 relative">
           <img
             src="${escapeHTML(thumb)}"
             alt="${name}"
@@ -510,6 +513,9 @@ salla.onReady(() => {
             class="w-full h-full object-cover block transition-transform duration-300 group-hover:scale-[1.04]"
             onerror="this.style.display='none'"
           >
+          <button type="button" class="search-qv-btn absolute top-1.5 right-1.5 rtl:left-1.5 rtl:right-auto flex items-center justify-center rounded-full bg-background text-font w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 shadow-sm hover:scale-105" data-id="${product.id}" aria-label="Quick View">
+            <i class="sicon-search text-base font-semibold pointer-events-none"></i>
+          </button>
         </div>
         <div class="flex-1 min-w-0">
           <h3 class="text-[13.5px] font-semibold text-font m-0 mb-1.5 leading-[1.45] line-clamp-2">${name}</h3>
@@ -628,6 +634,12 @@ salla.onReady(() => {
     if (e.key === 'Escape' && state.isOpen) closeDrawer();
   });
 
+  document.addEventListener('modal:open', (e) => {
+    if (e.detail !== 'side-search' && state.isOpen) {
+      closeDrawer();
+    }
+  });
+
   dom.drawer.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab' || !state.isOpen) return;
 
@@ -641,6 +653,19 @@ salla.onReady(() => {
       e.preventDefault(); last.focus();
     } else if (!e.shiftKey && document.activeElement === last) {
       e.preventDefault(); first.focus();
+    }
+  });
+
+  dom.drawer.addEventListener('click', (e) => {
+    const qvBtn = e.target.closest('.search-qv-btn');
+    if (qvBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const productId = qvBtn.dataset.id;
+      const product = window.__sideSearchProducts?.get(String(productId));
+      if (product) {
+        document.dispatchEvent(new CustomEvent('quick-view:open', { detail: structuredClone(product) }));
+      }
     }
   });
 
