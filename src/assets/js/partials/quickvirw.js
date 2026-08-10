@@ -21,12 +21,15 @@ class QuickView {
       if (e.key === 'Escape') quickView.close();
     });
 
-    this.drawer
-      ?.querySelector('.qv-buy-now')
-      ?.addEventListener('click', () => this.buyNow());
+    document.addEventListener('modal:open', (e) => {
+      if (e.detail !== 'quick-view' && !this.drawer.classList.contains('translate-x-full')) {
+        quickView.close();
+      }
+    });
   }
 
   async open(product) {
+    document.dispatchEvent(new CustomEvent('modal:open', { detail: 'quick-view' }));
     this.product = product;
 
     document.body.classList.add('overflow-hidden');
@@ -250,30 +253,6 @@ class QuickView {
     if (idInput) {
       idInput.value = this.product.id;
     }
-  }
-
-  // ---------- Buy Now ----------
-  buyNow() {
-    const addBtn = this.drawer.querySelector('.qv-add-btn');
-    if (!addBtn) return;
-    
-    const handleAdd = () => {
-      salla.cart.submit();
-      cleanup();
-    };
-    
-    const cleanup = () => {
-      window.removeEventListener('salla:cart:itemAdded', handleAdd);
-      document.removeEventListener('cart::item.added', handleAdd);
-    };
-
-    window.addEventListener('salla:cart:itemAdded', handleAdd, { once: true });
-    document.addEventListener('cart::item.added', handleAdd, { once: true });
-    
-    // Fallback cleanup in case of validation failure or API error
-    setTimeout(cleanup, 5000);
-
-    addBtn.click();
   }
 
   render() {
