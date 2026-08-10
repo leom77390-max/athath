@@ -1,5 +1,5 @@
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.107.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.15_webpack@5.107.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.107.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.108.2/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@8.2.1_postcss@8.5.16_webpack@5.108.2/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@16.0.8_sass@1.101.0_webpack@5.108.2/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
@@ -1032,6 +1032,9 @@ input:where([type='file']):focus{
 .z-\[101\]{
     z-index: 101;
 }
+.z-\[1\]{
+    z-index: 1;
+}
 .z-\[2\]{
     z-index: 2;
 }
@@ -1214,6 +1217,9 @@ input:where([type='file']):focus{
 }
 .mt-auto{
     margin-top: auto;
+}
+.box-border{
+    box-sizing: border-box;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -1535,6 +1541,9 @@ input:where([type='file']):focus{
 .w-\[80px\]{
     width: 80px;
 }
+.w-\[90\%\]{
+    width: 90%;
+}
 .w-\[92vw\]{
     width: 92vw;
 }
@@ -1550,15 +1559,6 @@ input:where([type='file']):focus{
 }
 .w-screen{
     width: 100vw;
-}
-.w-\[\]{
-    width: ;
-}
-.w-\[\*00\]{
-    width: *00;
-}
-.w-\[90\%\]{
-    width: 90%;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
@@ -2219,6 +2219,11 @@ input:where([type='file']):focus{
 .border-white\/20{
     border-color: rgba(255, 255, 255, 0.2);
 }
+.border-zinc-900{
+    --tw-border-opacity: 1;
+    border-color: rgba(24, 24, 27, 1);
+    border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
+}
 .border-b-\[\#8B8B8B\]{
     --tw-border-opacity: 1;
     border-bottom-color: rgba(139, 139, 139, 1);
@@ -2361,6 +2366,11 @@ input:where([type='file']):focus{
 .bg-white\/20{
     background-color: rgba(255, 255, 255, 0.2);
 }
+.bg-zinc-900{
+    --tw-bg-opacity: 1;
+    background-color: rgba(24, 24, 27, 1);
+    background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
+}
 .bg-gradient-to-r{
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -2485,6 +2495,10 @@ input:where([type='file']):focus{
     padding-left: 2rem;
     padding-right: 2rem;
 }
+.px-\[26px\]{
+    padding-left: 26px;
+    padding-right: 26px;
+}
 .py-1{
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
@@ -2528,6 +2542,10 @@ input:where([type='file']):focus{
 .py-9{
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
+}
+.py-\[11px\]{
+    padding-top: 11px;
+    padding-bottom: 11px;
 }
 .py-\[20px\]{
     padding-top: 20px;
@@ -2704,6 +2722,9 @@ input:where([type='file']):focus{
 .text-\[clamp\(1\.25rem\2c 0\.7526rem\+1\.0554vw\2c 2rem\)\]{
     font-size: clamp(1.25rem, 0.7526rem + 1.0554vw, 2rem);
 }
+.text-\[clamp\(1\.25rem\2c 2vw\2c 1\.75rem\)\]{
+    font-size: max(1.25rem, min(2vw, 1.75rem));
+}
 .text-\[clamp\(1\.333rem\2c 1\.1695rem\+0\.6539vw\2c 1\.867rem\)\]{
     font-size: clamp(1.333rem, 1.1695rem + 0.6539vw, 1.867rem);
 }
@@ -2781,11 +2802,17 @@ input:where([type='file']):focus{
 .leading-8{
     line-height: 2rem;
 }
+.leading-\[1\.35\]{
+    line-height: 1.35;
+}
 .leading-\[1\.45\]{
     line-height: 1.45;
 }
 .leading-\[1\.625\]{
     line-height: 1.625;
+}
+.leading-\[1\.6\]{
+    line-height: 1.6;
 }
 .leading-\[14px\]{
     line-height: 14px;
@@ -2825,6 +2852,9 @@ input:where([type='file']):focus{
 }
 .tracking-wide{
     letter-spacing: 0.025em;
+}
+.tracking-wider{
+    letter-spacing: 0.05em;
 }
 .tracking-widest{
     letter-spacing: 0.1em;
@@ -2973,6 +3003,26 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+}
+.text-zinc-400{
+    --tw-text-opacity: 1;
+    color: rgba(161, 161, 170, 1);
+    color: rgba(161, 161, 170, var(--tw-text-opacity, 1));
+}
+.text-zinc-500{
+    --tw-text-opacity: 1;
+    color: rgba(113, 113, 122, 1);
+    color: rgba(113, 113, 122, var(--tw-text-opacity, 1));
+}
+.text-zinc-600{
+    --tw-text-opacity: 1;
+    color: rgba(82, 82, 91, 1);
+    color: rgba(82, 82, 91, var(--tw-text-opacity, 1));
+}
+.text-zinc-900{
+    --tw-text-opacity: 1;
+    color: rgba(24, 24, 27, 1);
+    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -37191,6 +37241,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .target\:btn:target:hover{
     opacity: 0.8;
 }
+.hover\:-translate-y-1:hover{
+    --tw-translate-y: -0.25rem;
+    transform: translate(var(--tw-translate-x), -0.25rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .hover\:-translate-y-px:hover{
     --tw-translate-y: -1px;
     transform: translate(var(--tw-translate-x), -1px) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -37248,6 +37303,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:bg-secondary:hover{
     background-color: var(--color-secondary);
 }
+.hover\:bg-zinc-900:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgba(24, 24, 27, 1);
+    background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
+}
 .hover\:text-background:hover{
     color: var(--color-background);
 }
@@ -37272,6 +37332,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);
     color: rgba(153, 27, 27, var(--tw-text-opacity, 1));
+}
+.hover\:text-white:hover{
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
 }
 .hover\:underline:hover{
     text-decoration-line: underline;
@@ -37569,6 +37634,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-9{
         margin-bottom: 2.25rem;
     }
+    .md\:line-clamp-3{
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
     .md\:\!block{
         display: block !important;
     }
@@ -37601,6 +37672,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[400px\]{
         height: 400px;
+    }
+    .md\:h-\[480px\]{
+        height: 480px;
     }
     .md\:h-\[clamp\(25rem\2c 12\.0188rem\+27\.0442vw\2c 39\.063rem\)\]{
         height: clamp(25rem, 12.0188rem + 27.0442vw, 39.063rem);
@@ -37644,6 +37718,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-\[420px\]{
         width: 420px;
     }
+    .md\:w-\[45\%\]{
+        width: 45%;
+    }
     .md\:w-\[95\%\]{
         width: 95%;
     }
@@ -37680,6 +37757,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-14{
         gap: 3.5rem;
     }
+    .md\:gap-3{
+        gap: 0.75rem;
+    }
     .md\:gap-4{
         gap: 1rem;
     }
@@ -37698,11 +37778,18 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:overflow-hidden{
         overflow: hidden;
     }
+    .md\:rounded-\[20px\]{
+        border-radius: 20px;
+    }
     .md\:p-16{
         padding: 4rem;
     }
     .md\:p-8{
         padding: 2rem;
+    }
+    .md\:px-0{
+        padding-left: 0px;
+        padding-right: 0px;
     }
     .md\:px-5{
         padding-left: 1.25rem;
@@ -37719,6 +37806,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-20{
         padding-top: 5rem;
         padding-bottom: 5rem;
+    }
+    .md\:py-3{
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
     }
     .md\:py-4{
         padding-top: 1rem;
@@ -37751,8 +37842,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
+    .md\:text-\[0\.95rem\]{
+        font-size: 0.95rem;
+    }
+    .md\:text-\[1\.1rem\]{
+        font-size: 1.1rem;
+    }
     .md\:text-\[1\.6rem\]{
         font-size: 1.6rem;
+    }
+    .md\:text-\[clamp\(1\.2rem\2c 1\.5vw\2c 1\.75rem\)\]{
+        font-size: max(1.2rem, min(1.5vw, 1.75rem));
     }
     .md\:text-base{
         font-size: 1rem;
@@ -37761,6 +37861,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:text-lg{
         font-size: 1.125rem;
         line-height: 1.75rem;
+    }
+    .md\:text-sm{
+        font-size: 0.875rem;
+        line-height: 1.25rem;
     }
     .md\:text-xs{
         font-size: 0.75rem;
@@ -38359,6 +38463,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
+    .rtl\:md\:flex-row-reverse:where([dir="rtl"], [dir="rtl"] *){
+        flex-direction: row-reverse;
+    }
     .rtl\:md\:pl-10:where([dir="rtl"], [dir="rtl"] *){
         padding-left: 2.5rem;
     }
