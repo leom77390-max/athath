@@ -8137,6 +8137,16 @@
                     "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1'></div>"
                 },
                 {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false
+                },
+                {
                     "id": "items",
                     "key": "0473eb46-c7f5-44c5-bd6f-b1fe716a5e64",
                     "type": "collection",
