@@ -255,14 +255,25 @@ class QuickView {
   // ---------- Buy Now ----------
   buyNow() {
     const addBtn = this.drawer.querySelector('.qv-add-btn');
-    addBtn?.click();
+    if (!addBtn) return;
+    
+    const handleAdd = () => {
+      salla.cart.submit();
+      cleanup();
+    };
+    
+    const cleanup = () => {
+      window.removeEventListener('salla:cart:itemAdded', handleAdd);
+      document.removeEventListener('cart::item.added', handleAdd);
+    };
 
-    // ⚠️ تأكد من اسم الـ event الصح اللي بيتطلق فعليًا بعد الإضافة
-    document.addEventListener(
-      'cart::item.added',
-      () => { window.location.href = salla.url.get('checkout.cart'); },
-      { once: true }
-    );
+    window.addEventListener('salla:cart:itemAdded', handleAdd, { once: true });
+    document.addEventListener('cart::item.added', handleAdd, { once: true });
+    
+    // Fallback cleanup in case of validation failure or API error
+    setTimeout(cleanup, 5000);
+
+    addBtn.click();
   }
 
   render() {
