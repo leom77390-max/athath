@@ -6285,7 +6285,10 @@
                     "description": "يظهر أعلى القسم بخط كبير وعريض.",
                     "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
                     "icon": "sicon-layout",
-                    "value": "Spring styles to wear together or apart, whatever the weather.",
+                    "value": {
+                        "ar": "خيارات مثالية لعنايتكِ اليومية، استخدميها ضمن روتين شامل أو كمنتجات فردية لتتألقي دائماً.",
+                        "en": "Spring styles to wear together or apart, whatever the weather."
+                    },
                     "multilanguage": true,
                     "required": false
                 },
@@ -6313,7 +6316,10 @@
                     "description": "النص الذي يظهر كرابط تحته خط أسفل العنوان الرئيسي.",
                     "placeholder": "مثال: About Us",
                     "icon": "sicon-link",
-                    "value": "About Us",
+                    "value": {
+                        "ar": "اكتشفي التشكيلة الآن",
+                        "en": "Shop now"
+                    },
                     "multilanguage": true
                 },
                 {
