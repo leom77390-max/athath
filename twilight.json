@@ -4147,7 +4147,7 @@
                     "format": "image",
                     "label": "صورة الجانب الأيمن",
                     "required": false,
-                    "value": "https://cdn.files.salla.network/homepage/930809644/609307bb-a0e1-4a17-bd4f-9f96e44522c4_900x900.webp",
+                    "value": "https://cdn.files.salla.network/homepage/686931608/78903152-8ed4-45ce-8cab-1079dfbdd1bd-original.webp?_s_uploader_cache_bust=preview-rk43draob",
                     "conditions": [
                         {
                             "id": "media_type",
