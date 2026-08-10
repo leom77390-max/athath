@@ -6286,8 +6286,8 @@
                     "placeholder": "مثال: Spring styles to wear together or apart, whatever the weather.",
                     "icon": "sicon-layout",
                     "value": {
-                        "ar": "خيارات مثالية لعنايتكِ اليومية، استخدميها ضمن روتين شامل أو كمنتجات فردية لتتألقي دائماً.",
-                        "en": "Spring styles to wear together or apart, whatever the weather."
+                        "ar": "خيارات مثالية لعنايتكِ اليومية",
+                        "en": "Perfect options for your daily care"
                     },
                     "multilanguage": true,
                     "required": false
@@ -6317,7 +6317,7 @@
                     "placeholder": "مثال: About Us",
                     "icon": "sicon-link",
                     "value": {
-                        "ar": "اكتشفي التشكيلة الآن",
+                        "ar": "اكتشفي الآن",
                         "en": "Shop now"
                     },
                     "multilanguage": true
