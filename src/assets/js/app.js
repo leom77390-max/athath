@@ -463,6 +463,7 @@ class App extends AppHelpers {
       // ═══════════════════════════════════════════
       const toggleCart = (show) => {
         if (show) {
+          document.dispatchEvent(new CustomEvent('modal:open', { detail: 'side-cart' }));
           cartPanel.style.visibility = "visible";
           cartPanel.style.pointerEvents = "auto";
           overlay.classList.remove("hidden");
@@ -1045,6 +1046,12 @@ class App extends AppHelpers {
       // Use event delegation so dynamically-injected close buttons (e.g. empty-cart state) also work
       cartPanel.addEventListener("click", (e) => {
         if (e.target.closest(".menu-close") || e.target.closest(".close-side-panel")) {
+          toggleCart(false);
+        }
+      });
+
+      document.addEventListener('modal:open', (e) => {
+        if (e.detail !== 'side-cart' && cartPanel.style.visibility === "visible") {
           toggleCart(false);
         }
       });

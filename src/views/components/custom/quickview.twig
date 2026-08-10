@@ -1,0 +1,69 @@
+<div class="quick-view-overlay fixed inset-0 bg-black/40 opacity-0 invisible transition duration-300 z-[9998]"></div>
+
+<aside class="quick-view fixed top-1/2 -translate-y-1/2 right-0 rounded-[32px] w-full sm:w-[460px] max-w-full h-full bg-background translate-x-full transition-transform duration-500 ease-[cubic-bezier(.22,.61,.36,1)] z-[9999] flex flex-col overflow-hidden">
+
+  <button class="quick-view-close absolute top-4 ltr:left-4 shadow-lg rtl:right-4 w-9 h-9 flex items-center justify-center rounded-full bg-background text-font ring-1 ring-gray-100 z-10" aria-label="Close">
+    &#120;
+  </button>
+
+  <div class="qv-loading hidden absolute inset-0 bg-background w-full sm:w-[460px] max-w-full/70 items-center justify-center z-20">
+    <span class="qv-spinner w-8 h-8 border-2 border-gray-300 border-t-black rounded-full animate-spin"></span>
+  </div>
+
+  <div class="qv-content flex-1 flex flex-col overflow-y-auto pb-4">
+
+    {# ---------- Gallery (Swiper) ---------- #}
+    <div class="qv-gallery relative bg-gray-50 flex-shrink-0">
+      <div class="qv-slider-wrapper"></div>
+    </div>
+
+    {# ---------- Info ---------- #}
+    <div class="qv-info flex flex-col gap-3 p-5 sm:p-6 flex-1">
+      <h2 class="qv-title text-2xl font-bold text-gray-900"></h2>
+
+      <div class="qv-price-wrapper flex items-center gap-2"></div>
+
+      <p class="text-sm text-gray-500">
+        <a href="{{ link('shipping') }}" class="underline">{{ trans('pages.cart.shipping') }}</a>
+        {{ trans('pages.products.calculated_at_checkout') }}
+      </p>
+
+      <div class="qv-stock flex items-center gap-2 text-sm font-medium"></div>
+
+      <p class="qv-description text-sm text-gray-600 leading-relaxed"></p>
+
+      <form class="qv-form form form--add-to-cart" onsubmit="return salla.form.onSubmit('cart.addItem', event)">
+        {# هتتملى ديناميكيًا بـ salla-product-options #}
+        <div class="qv-options flex flex-col gap-4"></div>
+
+        <div class="flex items-center gap-3 mt-2">
+          <input type="hidden" name="id" class="qv-product-id" value="">
+          <salla-quantity-input class="qv-quantity shrink-0" name="quantity" value="1" min="1"></salla-quantity-input>
+          <salla-add-product-button type="submit" class="qv-add-btn grow" width="wide" fill="outline"></salla-add-product-button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <a
+  href="#"
+  class="qv-full-details relative flex-shrink-0 flex items-center justify-between
+  bg-background w-full sm:w-[460px] max-w-full border-t border-font px-4 py-4 text-sm font-medium hover:text-background text-font
+  overflow-hidden group transition-all z-50"
+>
+  
+  <!-- text -->
+  <span class="relative z-10">
+    {{ trans('pages.products.view_full_details') }}
+  </span>
+
+  <!-- icon -->
+  <i class="sicon-arrow-{{ direction == 'rtl' ? 'left' : 'right' }} relative z-10"></i>
+
+  <!-- hover fill layer -->
+  <span
+    class="absolute inset-0 w-0 bg-font transition-all duration-500 group-hover:w-full"
+  ></span>
+</a>
+
+</aside>

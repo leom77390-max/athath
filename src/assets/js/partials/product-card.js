@@ -57,7 +57,6 @@ class ProductCard extends HTMLElement {
       };
       this.mainImage = this.product?.images?.[0]?.url || this.product?.image?.url;
       this.secondImage = this.product?.images?.[1]?.url || null;
-      console.log(this.product, 'product details loaded for card');
       
     } catch (error) {
       console.error('Failed to load cached product details for card', error);

@@ -5045,6 +5045,18 @@
                     "required": false
                 },
                 {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "",
+                    "required": false
+                },
+                {
                     "id": "slider_speed",
                     "type": "number",
                     "format": "slider",
@@ -8126,6 +8138,16 @@
                     "format": "description",
                     "id": "static-desc",
                     "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1'></div>"
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false
                 },
                 {
                     "id": "items",

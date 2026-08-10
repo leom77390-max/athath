@@ -21,12 +21,15 @@ class QuickView {
       if (e.key === 'Escape') quickView.close();
     });
 
-    this.drawer
-      ?.querySelector('.qv-buy-now')
-      ?.addEventListener('click', () => this.buyNow());
+    document.addEventListener('modal:open', (e) => {
+      if (e.detail !== 'quick-view' && !this.drawer.classList.contains('translate-x-full')) {
+        quickView.close();
+      }
+    });
   }
 
   async open(product) {
+    document.dispatchEvent(new CustomEvent('modal:open', { detail: 'quick-view' }));
     this.product = product;
 
     document.body.classList.add('overflow-hidden');
@@ -250,19 +253,6 @@ class QuickView {
     if (idInput) {
       idInput.value = this.product.id;
     }
-  }
-
-  // ---------- Buy Now ----------
-  buyNow() {
-    const addBtn = this.drawer.querySelector('.qv-add-btn');
-    addBtn?.click();
-
-    // ⚠️ تأكد من اسم الـ event الصح اللي بيتطلق فعليًا بعد الإضافة
-    document.addEventListener(
-      'cart::item.added',
-      () => { window.location.href = salla.url.get('checkout.cart'); },
-      { once: true }
-    );
   }
 
   render() {
