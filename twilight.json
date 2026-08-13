@@ -6922,7 +6922,12 @@
                     "description": "يظهر أعلى القسم بخط كبير وعريض.",
                     "placeholder": "مثال: اكتشف أحدث التصنيفات",
                     "icon": "sicon-layout",
-                    "value": "اكتشف أحدث التصنيفات",
+                    "value": [
+                        {
+                            "ar": "اكتشف أحدث التصنيفات",
+                            "en": "Discover the latest categories"
+                        }
+                    ],
                     "multilanguage": true,
                     "required": false
                 },
@@ -6950,7 +6955,12 @@
                     "description": "يظهر أسفل العنوان الرئيسي كنص توضيحي.",
                     "placeholder": "مثال: تصفح أبرز التصنيفات واعثر على ما يناسبك",
                     "icon": "sicon-layout",
-                    "value": "تصفح أبرز التصنيفات واعثر على ما يناسبك",
+                    "value": [
+                        {
+                            "ar": "تصفح أبرز التصنيفات واعثر على ما يناسبك",
+                            "en": "Browse the latest categories and find what suits you"
+                        }
+                    ],
                     "multilanguage": true,
                     "required": false
                 },
