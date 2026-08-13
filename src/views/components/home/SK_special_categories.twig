@@ -1,7 +1,18 @@
 <section class="SK_special_categories_{{position}} SK_special_categories">
 
-	{% set display_mode = component.categories_display_mode | default('grid') %}
-	{% set source_mode  = component.categories_is_manual    | default('manual') %}
+	{#
+	  categories_is_manual is a dropdown-list field.
+	  Salla returns selected dropdown value as a string or array.
+	  We compare as string by taking [0] if array, or directly if string.
+	#}
+	{% set _mode_raw    = component.categories_is_manual %}
+	{% set source_mode  = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
+	{% set source_mode  = source_mode | default('manual') %}
+
+	{% set items_count  = source_mode == 'manual' ? component.card|length : component.categories_list|length %}
+	{% set desktop_cols = items_count > 0 and items_count < 5 ? items_count : 5 %}
+	{% set tablet_cols  = items_count > 0 and items_count < 3 ? items_count : 3 %}
+	{% set mobile_cols  = items_count > 0 and items_count < 2 ? items_count : 2 %}
 
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
@@ -18,114 +29,53 @@
 
 	<div class="sk-container">
 
-		{% if display_mode == 'grid' %}
+		<div class="sk-grid">
 
-			<div class="sk-grid">
+			{% if source_mode == 'manual' %}
+				{% for item in component.card %}
+					{% set bg_image    = item.bg_image            | default('') %}
+					{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
+					{% set is_image    = item.background_is_image %}
+					{% set title       = item.title               | default('') %}
+					{% set title_color = item.title_color         | default('#ffffff') %}
+					{% set radius      = item.corner_rounded      | default(16) %}
+					{% set btn_url     = item.btn_url             | default('#') %}
 
-				{% if source_mode == 'manual' %}
-					{% for item in component.card %}
-						{% set bg_image    = item.bg_image            | default('') %}
-						{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
-						{% set is_image    = item.background_is_image %}
-						{% set title       = item.title               | default('') %}
-						{% set title_color = item.title_color         | default('#ffffff') %}
-						{% set radius      = item.corner_rounded      | default(16) %}
-						{% set btn_url     = item.btn_url             | default('#') %}
+					<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
+						<div class="sk-card-image" style="
+							{% if bg_image %}
+							  background-image: url('{{ bg_image }}');
+							{% else %}
+							  background-color: {{ bg_color }};
+							{% endif %}
+						"></div>
+						<div class="sk-card-overlay"></div>
+						<span class="sk-card-title" style="color: {{ title_color }};">
+							{{ title }}
+						</span>
+					</a>
+				{% endfor %}
 
-						<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
-							<div class="sk-card-image" style="
-								                {% if is_image and bg_image %}
-								                  background-image: url('{{ bg_image }}');
-								                {% else %}
-								                  background-color: {{ bg_color }};
-								                {% endif %}
-								              "></div>
-							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title" style="color: {{ title_color }};">
-								{{ title }}
-							</span>
-						</a>
-					{% endfor %}
+			{% else %}
+				{% set radius      = component.corner_rounded         | default(16) %}
+				{% set title_color = component.categories_title_color | default('#ffffff') %}
 
-				{% else %}
-					{% set radius      = component.corner_rounded         | default(16) %}
-					{% set title_color = component.categories_title_color | default('#18181b') %}
+				{% for cat in component.categories_list %}
+					<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
+						<div class="sk-card-image" style="
+							{% if cat.image %}
+							  background-image: url('{{ cat.image }}');
+							{% else %}
+							  background-color: #f5f0eb;
+							{% endif %}
+						"></div>
+						<div class="sk-card-overlay"></div>
+						<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
+					</a>
+				{% endfor %}
+			{% endif %}
 
-					{% for cat in component.categories_list %}
-						<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
-							<div class="sk-card-image" style="
-								                {% if cat.image %}
-								                  background-image: url('{{ cat.image }}');
-								                {% else %}
-								                  background-color: #f5f0eb;
-								                {% endif %}
-								              "></div>
-							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
-						</a>
-					{% endfor %}
-				{% endif %}
-
-			</div>
-
-		{% else %}
-
-			{% set slides_desktop = component.desktop_slides_per_view | default(5) %}
-			{% set slides_laptop  = component.laptop_slides_per_view  | default(3) %}
-			{% set slides_mobile  = component.mobile_slides_per_view  | default(1) %}
-			{% set autoplay       = component.enable_autoplay         | default(false) %}
-			{% set loop           = component.enable_loop             | default(true) %}
-			{% set controls       = component.enable_controls         | default(true) %}
-
-			<salla-slider slides-per-view="{{ slides_desktop }}" slides-per-view-tablet="{{ slides_laptop }}" slides-per-view-mobile="{{ slides_mobile }}" {% if autoplay %} autoplay {% endif %} {% if loop %} loop {% endif %} {% if controls %} show-arrows {% endif %}>
-
-				{% if source_mode == 'manual' %}
-					{% for item in component.card %}
-						{% set bg_image    = item.bg_image            | default('') %}
-						{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
-						{% set is_image    = item.background_is_image %}
-						{% set title       = item.title               | default('') %}
-						{% set title_color = item.title_color         | default('#ffffff') %}
-						{% set radius      = item.corner_rounded      | default(16) %}
-						{% set btn_url     = item.btn_url             | default('#') %}
-
-						<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
-							<div class="sk-card-image" style="
-								                {% if is_image and bg_image %}
-								                  background-image: url('{{ bg_image }}');
-								                {% else %}
-								                  background-color: {{ bg_color }};
-								                {% endif %}
-								              "></div>
-							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title" style="color: {{ title_color }};">
-								{{ title }}
-							</span>
-						</a>
-					{% endfor %}
-
-				{% else %}
-					{% set radius      = component.corner_rounded         | default(16) %}
-					{% set title_color = component.categories_title_color | default('#18181b') %}
-
-					{% for cat in component.categories_list %}
-						<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
-							<div class="sk-card-image" style="
-								                {% if cat.image %}
-								                  background-image: url('{{ cat.image }}');
-								                {% else %}
-								                  background-color: #f5f0eb;
-								                {% endif %}
-								              "></div>
-							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
-						</a>
-					{% endfor %}
-				{% endif %}
-
-			</salla-slider>
-
-		{% endif %}
+		</div>
 
 	</div>
 
@@ -140,27 +90,25 @@
 		background-color: #ffffff;
 	}
 
-	.SK_special_categories_{{position}}.sk-header {
+	.SK_special_categories_{{position}} .sk-header {
 		text-align: center;
 		margin-bottom: 40px;
 	}
 
-	.SK_special_categories_{{position}}.sk-header h2 {
+	.SK_special_categories_{{position}} .sk-header h2 {
 		font-size: 2.2rem;
 		font-weight: 600;
 		margin-bottom: 12px;
 		letter-spacing: -0.5px;
-		color: {{component.main_title_color | default('#18181b')}}
-		;
+		color: {{ component.main_title_color | default('#18181b') }};
 	}
 
-	.SK_special_categories_{{position}}.sk-header p {
+	.SK_special_categories_{{position}} .sk-header p {
 		font-size: 1.1rem;
-		color: {{component.main_description_color | default('#444444')}}
-		;
+		color: {{ component.main_description_color | default('#666666') }};
 	}
 
-	.SK_special_categories_{{position}}.sk-container {
+	.SK_special_categories_{{position}} .sk-container {
 		width: 100%;
 		{% if component.add_inside_container %}
 			max-width: 1200px;
@@ -168,26 +116,27 @@
 		{% endif %}
 	}
 
-	.SK_special_categories_{{position}}.sk-grid {
+	.SK_special_categories_{{position}} .sk-grid {
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
+		grid-template-columns: repeat({{ desktop_cols }}, 1fr);
 		gap: 16px;
 		width: 100%;
+		justify-content: center;
 	}
 
-	.SK_special_categories_{{position}}.sk-card {
+	.SK_special_categories_{{position}} .sk-card {
 		position: relative;
 		height: 140px;
-		border-radius: 20px;
+		border-radius: 16px;
 		overflow: hidden;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		align-items: flex-end;
+		justify-content: flex-start;
 		cursor: pointer;
 		text-decoration: none;
 	}
 
-	.SK_special_categories_{{position}}.sk-card-image {
+	.SK_special_categories_{{position}} .sk-card-image {
 		position: absolute;
 		inset: 0;
 		width: 100%;
@@ -199,44 +148,41 @@
 		z-index: 1;
 	}
 
-	.SK_special_categories_{{position}}.sk-card-overlay {
+	.SK_special_categories_{{position}} .sk-card-overlay {
 		position: absolute;
 		inset: 0;
-		box-shadow: inset 0 -30px 35px rgba(0, 0, 0, 0.35);
-		background: rgba(0, 0, 0, 0.05);
-		transition: box-shadow 0.5s ease-in-out, background 0.5s ease-in-out;
+		background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 60%);
+		transition: background 0.4s ease-in-out;
 		z-index: 2;
 	}
 
-	.SK_special_categories_{{position}}.sk-card:hover .sk-card-image {
-		transform: scale(1.08);
+	.SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
+		transform: scale(1.06);
 	}
 
-	.SK_special_categories_{{position}}.sk-card:hover .sk-card-overlay {
-		box-shadow: inset 0 -140px 90px rgba(0, 0, 0, 0.65);
-		background: rgba(0, 0, 0, 0.15);
+	.SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
+		background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 70%);
+		transition-delay: 0.15s;
 	}
 
-	.SK_special_categories_{{position}}.sk-card-title {
+	.SK_special_categories_{{position}} .sk-card-title {
 		color: #ffffff;
-		font-size: 1.15rem;
+		font-size: 1rem;
 		font-weight: 500;
 		position: relative;
 		z-index: 3;
-		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-		text-align: center;
-		padding: 0 12px;
+		padding: 12px 14px;
 	}
 
 	@media(max-width: 950px) {
-		.SK_special_categories_{{position}}.sk-grid {
-			grid-template-columns: repeat(2, 1fr);
+		.SK_special_categories_{{position}} .sk-grid {
+			grid-template-columns: repeat({{ tablet_cols }}, 1fr);
 		}
 	}
 
-	@media(max-width: 500px) {
-		.SK_special_categories_{{position}}.sk-grid {
-			grid-template-columns: 1fr;
+	@media(max-width: 600px) {
+		.SK_special_categories_{{position}} .sk-grid {
+			grid-template-columns: repeat({{ mobile_cols }}, 1fr);
 		}
 	}
 </style>
