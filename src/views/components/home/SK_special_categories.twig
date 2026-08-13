@@ -1,7 +1,7 @@
 <section class="SK_special_categories_{{position}} SK_special_categories">
 
-	{% set display_mode = component.categories_display_mode.value | default('grid') %}
-	{% set source_mode  = component.categories_is_manual.value    | default('manual') %}
+	{% set display_mode = component.categories_display_mode | default('grid') %}
+	{% set source_mode  = component.categories_is_manual    | default('manual') %}
 
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
@@ -24,13 +24,13 @@
 
 				{% if source_mode == 'manual' %}
 					{% for item in component.card %}
-						{% set bg_image    = item['card.bg_image']            | default('') %}
-						{% set bg_color    = item['card.bg_color']            | default('#f5f0eb') %}
-						{% set is_image    = item['card.background_is_image'] %}
-						{% set title       = item['card.title']               | default('') %}
-						{% set title_color = item['card.title_color']         | default('#ffffff') %}
-						{% set radius      = item['card.corner_rounded']      | default(16) %}
-						{% set btn_url     = item['card.btn_url']             | default('#') %}
+						{% set bg_image    = item.bg_image            | default('') %}
+						{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
+						{% set is_image    = item.background_is_image %}
+						{% set title       = item.title               | default('') %}
+						{% set title_color = item.title_color         | default('#ffffff') %}
+						{% set radius      = item.corner_rounded      | default(16) %}
+						{% set btn_url     = item.btn_url             | default('#') %}
 
 						<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
 							<div class="sk-card-image" style="
@@ -48,8 +48,11 @@
 					{% endfor %}
 
 				{% else %}
+					{% set radius      = component.corner_rounded         | default(16) %}
+					{% set title_color = component.categories_title_color | default('#18181b') %}
+
 					{% for cat in component.categories_list %}
-						<a href="{{ cat.url | default('#') }}" class="sk-card">
+						<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
 							<div class="sk-card-image" style="
 								                {% if cat.image %}
 								                  background-image: url('{{ cat.image }}');
@@ -58,7 +61,7 @@
 								                {% endif %}
 								              "></div>
 							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title">{{ cat.name }}</span>
+							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
 						</a>
 					{% endfor %}
 				{% endif %}
@@ -67,7 +70,7 @@
 
 		{% else %}
 
-			{% set slides_desktop = component.desktop_slides_per_view | default(4) %}
+			{% set slides_desktop = component.desktop_slides_per_view | default(5) %}
 			{% set slides_laptop  = component.laptop_slides_per_view  | default(3) %}
 			{% set slides_mobile  = component.mobile_slides_per_view  | default(1) %}
 			{% set autoplay       = component.enable_autoplay         | default(false) %}
@@ -78,13 +81,13 @@
 
 				{% if source_mode == 'manual' %}
 					{% for item in component.card %}
-						{% set bg_image    = item['card.bg_image']            | default('') %}
-						{% set bg_color    = item['card.bg_color']            | default('#f5f0eb') %}
-						{% set is_image    = item['card.background_is_image'] %}
-						{% set title       = item['card.title']               | default('') %}
-						{% set title_color = item['card.title_color']         | default('#ffffff') %}
-						{% set radius      = item['card.corner_rounded']      | default(16) %}
-						{% set btn_url     = item['card.btn_url']             | default('#') %}
+						{% set bg_image    = item.bg_image            | default('') %}
+						{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
+						{% set is_image    = item.background_is_image %}
+						{% set title       = item.title               | default('') %}
+						{% set title_color = item.title_color         | default('#ffffff') %}
+						{% set radius      = item.corner_rounded      | default(16) %}
+						{% set btn_url     = item.btn_url             | default('#') %}
 
 						<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
 							<div class="sk-card-image" style="
@@ -102,8 +105,11 @@
 					{% endfor %}
 
 				{% else %}
+					{% set radius      = component.corner_rounded         | default(16) %}
+					{% set title_color = component.categories_title_color | default('#18181b') %}
+
 					{% for cat in component.categories_list %}
-						<a href="{{ cat.url | default('#') }}" class="sk-card">
+						<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
 							<div class="sk-card-image" style="
 								                {% if cat.image %}
 								                  background-image: url('{{ cat.image }}');
@@ -112,7 +118,7 @@
 								                {% endif %}
 								              "></div>
 							<div class="sk-card-overlay"></div>
-							<span class="sk-card-title">{{ cat.name }}</span>
+							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
 						</a>
 					{% endfor %}
 				{% endif %}
@@ -164,7 +170,7 @@
 
 	.SK_special_categories_{{position}}.sk-grid {
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
+		grid-template-columns: repeat(5, 1fr);
 		gap: 16px;
 		width: 100%;
 	}
