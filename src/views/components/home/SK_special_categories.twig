@@ -39,9 +39,10 @@
 					{% set title       = item.title               | default('') %}
 					{% set title_color = item.title_color         | default('#ffffff') %}
 					{% set radius      = item.corner_rounded      | default(16) %}
+					{% set shadow_color= item.shadow_color        | default('#18181b') %}
 					{% set btn_url     = item.btn_url             | default('#') %}
 
-					<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px;">
+					<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }};">
 						<div class="sk-card-image" style="
 							{% if bg_image %}
 							  background-image: url('{{ bg_image }}');
@@ -59,9 +60,10 @@
 			{% else %}
 				{% set radius      = component.corner_rounded         | default(16) %}
 				{% set title_color = component.categories_title_color | default('#ffffff') %}
+				{% set shadow_color= component.shadow_card_color      | default('#18181b') %}
 
 				{% for cat in component.categories_list %}
-					<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px;">
+					<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }};">
 						<div class="sk-card-image" style="
 							{% if cat.image %}
 							  background-image: url('{{ cat.image }}');
@@ -151,7 +153,7 @@
 	.SK_special_categories_{{position}} .sk-card-overlay {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 60%);
+		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 60%);
 		transition: background 0.4s ease-in-out;
 		z-index: 2;
 	}
@@ -161,7 +163,7 @@
 	}
 
 	.SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
-		background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 70%);
+		background: linear-gradient(to top, var(--shadow-color, #18181b) -20%, transparent 80%);
 		transition-delay: 0.15s;
 	}
 
