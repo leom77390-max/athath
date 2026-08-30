@@ -1524,7 +1524,7 @@
         {
             "key": "daeabd05-ebd0-44d7-a49c-3eb297d78ba3",
             "title": {
-                "en": "sleek - hero banner",
+                "en": "furniture - hero banner",
                 "ar": " البانر الرئيسي - اثاثي"
             },
             "icon": "sicon-store",
@@ -2418,7 +2418,7 @@
         {
             "key": "f3dd3822-d8ab-4a08-beb7-0e219603d70c",
             "title": {
-                "en": "categories - sleek",
+                "en": "categories - furniture",
                 "ar": "تصنيفات تفاعلية - اثاثي"
             },
             "icon": "sicon-hierarchy",
@@ -2733,7 +2733,7 @@
         {
             "key": "f996b1d0-95e1-410a-88a2-8f50aa448d04",
             "title": {
-                "en": "categories - sleek",
+                "en": "categories - furniture",
                 "ar": "تصنيفات - اثاثي"
             },
             "icon": "sicon-store",
@@ -2941,7 +2941,7 @@
         {
             "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
             "title": {
-                "en": "Products banner - Sleek",
+                "en": "Products banner - furniture",
                 "ar": "منتجات مختارة مع صورة - اثاثي"
             },
             "is_default": true,
@@ -3108,7 +3108,7 @@
         {
             "key": "b0df1b57-d477-4cfb-8ba7-6b0b9eba9edf",
             "title": {
-                "en": "Sleek - store Features",
+                "en": "furniture - store Features",
                 "ar": "ميزات المتجر - اثاثي"
             },
             "icon": "sicon-gold-badge",
@@ -3486,7 +3486,7 @@
         {
             "key": "7104e740-b800-4e63-b57b-5e12ef17275b",
             "title": {
-                "en": "product category - Sleek",
+                "en": "product category - furniture",
                 "ar": "منتجات التصنيف - اثاثي"
             },
             "icon": "sicon-hierarchy",
@@ -3978,7 +3978,7 @@
         {
             "key": "1b8ce50b-50a2-4562-8cf3-93aa668bb22b",
             "title": {
-                "en": "Split Hero Section - Sleek",
+                "en": "Split Hero Section - furniture",
                 "ar": "بانر مقسم - اثاثي"
             },
             "icon": "sicon-store",
@@ -4285,7 +4285,7 @@
         {
             "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
             "title": {
-                "en": "Choose Product - Sleek",
+                "en": "Choose Product - furniture",
                 "ar": "منتجات مختارة بعناية - اثاثي"
             },
             "icon": "sicon-store",
@@ -4424,7 +4424,7 @@
         {
             "key": "70c52858-8963-478e-a0de-4c24597ee44f",
             "title": {
-                "en": "scrolling strip - sleek",
+                "en": "scrolling strip - furniture",
                 "ar": "شريط متحرك - اثاثي"
             },
             "icon": "sicon-store",
@@ -4622,7 +4622,7 @@
         {
             "key": "60979fe7-c8a8-4f94-bd16-4ff4110fe65a",
             "title": {
-                "en": "sleek - Featured Products",
+                "en": "furniture - Featured Products",
                 "ar": " منتجات مميزة - اثاثي"
             },
             "icon": "sicon-store",
@@ -4902,7 +4902,7 @@
                             "tabs_products.media_type": [
                                 "video"
                             ],
-                            "tabs_products.video_url": "https://sleek-theme-demo.myshopify.com/cdn/shop/videos/c/vp/ca6fc5e2b28c4b3e8edf0c0998b3704a/ca6fc5e2b28c4b3e8edf0c0998b3704a.HD-1080p-7.2Mbps-29795286.mp4?v=0",
+                            "tabs_products.video_url": "https://furniture-theme-demo.myshopify.com/cdn/shop/videos/c/vp/ca6fc5e2b28c4b3e8edf0c0998b3704a/ca6fc5e2b28c4b3e8edf0c0998b3704a.HD-1080p-7.2Mbps-29795286.mp4?v=0",
                             "tabs_products.image": ""
                         },
                         {
@@ -4926,7 +4926,7 @@
                             "tabs_products.media_type": [
                                 "video"
                             ],
-                            "tabs_products.video_url": "https://sleek-theme-demo.myshopify.com/cdn/shop/videos/c/vp/4dfe47ac17be4153886bf3935e13b99b/4dfe47ac17be4153886bf3935e13b99b.HD-1080p-7.2Mbps-29795339.mp4?v=0",
+                            "tabs_products.video_url": "https://furniture-theme-demo.myshopify.com/cdn/shop/videos/c/vp/4dfe47ac17be4153886bf3935e13b99b/4dfe47ac17be4153886bf3935e13b99b.HD-1080p-7.2Mbps-29795339.mp4?v=0",
                             "tabs_products.image": ""
                         },
                         {
@@ -4970,7 +4970,7 @@
         {
             "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
             "title": {
-                "en": "Customer opinions - Sleek",
+                "en": "Customer opinions - furniture",
                 "ar": "اراء -العملاء - اثاثي"
             },
             "icon": "sicon-store",
@@ -5281,7 +5281,7 @@
         {
             "key": "c6dabbb2-a1c9-450f-bf65-b4169af53d0d",
             "title": {
-                "en": "faq_section - Sleek",
+                "en": "faq_section - furniture",
                 "ar": "الأسئلة الشائعة - اثاثي"
             },
             "icon": "sicon-books-pencil",
@@ -6026,7 +6026,7 @@
         {
             "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
             "title": {
-                "en": "about-us - sleek",
+                "en": "about-us - furniture",
                 "ar": "نبذه عنا - اثاثي"
             },
             "icon": "sicon-airplay-audio",
