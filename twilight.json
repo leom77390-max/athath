@@ -1,10 +1,10 @@
 {
     "name": {
-        "ar": "سليك",
-        "en": "Sleek"
+        "ar": "اثاثي",
+        "en": "My Furniture"
     },
-    "repository": "https://github.com/nexadigital105-rgb/sleek",
-    "author_email": "tafrah.dev@gmail.com",
+    "repository": "https://github.com/leom77390-max/athath",
+    "author_email": "",
     "features": [
         "mega-menu",
         "fonts",
@@ -1525,7 +1525,7 @@
             "key": "daeabd05-ebd0-44d7-a49c-3eb297d78ba3",
             "title": {
                 "en": "sleek - hero banner",
-                "ar": " البانر الرئيسي - سلييك"
+                "ar": " البانر الرئيسي - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.hero_section",
@@ -2419,7 +2419,7 @@
             "key": "f3dd3822-d8ab-4a08-beb7-0e219603d70c",
             "title": {
                 "en": "categories - sleek",
-                "ar": "تصنيفات تفاعلية - سلييك"
+                "ar": "تصنيفات تفاعلية - اثاثي"
             },
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
@@ -2734,7 +2734,7 @@
             "key": "f996b1d0-95e1-410a-88a2-8f50aa448d04",
             "title": {
                 "en": "categories - sleek",
-                "ar": "تصنيفات - سليك"
+                "ar": "تصنيفات - اثاثي"
             },
             "icon": "sicon-store",
             "image": "https://a.top4top.io/p_3829nrx8m1.png",
@@ -2942,7 +2942,7 @@
             "key": "252efb3b-e99f-423c-8ac8-06d4ce753c6e",
             "title": {
                 "en": "Products banner - Sleek",
-                "ar": "منتجات مختارة مع صورة - سلييك"
+                "ar": "منتجات مختارة مع صورة - اثاثي"
             },
             "is_default": true,
             "icon": "sicon-store",
@@ -3109,7 +3109,7 @@
             "key": "b0df1b57-d477-4cfb-8ba7-6b0b9eba9edf",
             "title": {
                 "en": "Sleek - store Features",
-                "ar": "ميزات المتجر - سلييك"
+                "ar": "ميزات المتجر - اثاثي"
             },
             "icon": "sicon-gold-badge",
             "path": "home.SK_features",
@@ -3487,7 +3487,7 @@
             "key": "7104e740-b800-4e63-b57b-5e12ef17275b",
             "title": {
                 "en": "product category - Sleek",
-                "ar": "منتجات التصنيف - سلييك"
+                "ar": "منتجات التصنيف - اثاثي"
             },
             "icon": "sicon-hierarchy",
             "path": "home.SK_category_banner",
@@ -3979,7 +3979,7 @@
             "key": "1b8ce50b-50a2-4562-8cf3-93aa668bb22b",
             "title": {
                 "en": "Split Hero Section - Sleek",
-                "ar": "بانر مقسم - سلييك"
+                "ar": "بانر مقسم - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.SK_split_hero",
@@ -4286,7 +4286,7 @@
             "key": "2d53a665-8b3e-4bed-b308-0b72fe160a1b",
             "title": {
                 "en": "Choose Product - Sleek",
-                "ar": "منتجات مختارة بعناية - سليك"
+                "ar": "منتجات مختارة بعناية - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
@@ -4425,7 +4425,7 @@
             "key": "70c52858-8963-478e-a0de-4c24597ee44f",
             "title": {
                 "en": "scrolling strip - sleek",
-                "ar": "شريط متحرك - سليك"
+                "ar": "شريط متحرك - اثاثي"
             },
             "icon": "sicon-store",
             "image": "https://f.top4top.io/p_38294ztkw1.png",
@@ -4623,7 +4623,7 @@
             "key": "60979fe7-c8a8-4f94-bd16-4ff4110fe65a",
             "title": {
                 "en": "sleek - Featured Products",
-                "ar": " منتجات مميزة - سلييك"
+                "ar": " منتجات مميزة - اثاثي"
             },
             "icon": "sicon-store",
             "image": "https://g.top4top.io/p_3829vzv2c1.png",
@@ -4971,7 +4971,7 @@
             "key": "9e9b1e24-c980-467c-b6e1-d5d482c0e145",
             "title": {
                 "en": "Customer opinions - Sleek",
-                "ar": "اراء -العملاء - سلييك"
+                "ar": "اراء -العملاء - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.SK_customer-opinions",
@@ -5282,7 +5282,7 @@
             "key": "c6dabbb2-a1c9-450f-bf65-b4169af53d0d",
             "title": {
                 "en": "faq_section - Sleek",
-                "ar": "الأسئلة الشائعة - سلييك"
+                "ar": "الأسئلة الشائعة - اثاثي"
             },
             "icon": "sicon-books-pencil",
             "image": "https://d.top4top.io/p_3829gbckn1.png",
@@ -6027,7 +6027,7 @@
             "key": "f5abee88-dc7c-47ab-b51f-27f1b9a5b59e",
             "title": {
                 "en": "about-us - sleek",
-                "ar": "نبذه عنا - سلييك"
+                "ar": "نبذه عنا - اثاثي"
             },
             "icon": "sicon-airplay-audio",
             "image": "https://k.top4top.io/p_3829q5kkn1.png",
@@ -8260,7 +8260,7 @@
             ]
         }
     ],
-    "support_url": "https://tafrahdigital.vercel.app/",
+    "support_url": "",
     "description": {
         "ar": "",
         "en": ""
