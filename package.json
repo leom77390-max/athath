@@ -14,7 +14,7 @@
     "prod": "webpack --mode production",
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch",
-    "dev": "salla theme p --with-editor --store  Sleekk"
+    "dev": "salla theme p --with-editor --store  Furniture"
   },
   "author": "Salla",
   "dependencies": {
