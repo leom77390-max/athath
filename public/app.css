@@ -2366,6 +2366,9 @@ input:where([type='file']):focus{
     background-color: rgba(24, 24, 27, 1);
     background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
 }
+.bg-white\/80{
+    background-color: rgba(255, 255, 255, 0.8);
+}
 .bg-gradient-to-r{
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
@@ -39131,6 +39134,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:right-auto:where([dir="ltr"], [dir="ltr"] *){
     right: auto;
 }
+.ltr\:left-8:where([dir="ltr"], [dir="ltr"] *){
+    left: 2rem;
+}
+.ltr\:right-8:where([dir="ltr"], [dir="ltr"] *){
+    right: 2rem;
+}
 .ltr\:ml-1:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.25rem;
 }
@@ -39283,6 +39292,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:right-auto:where([dir="rtl"], [dir="rtl"] *){
     right: auto;
+}
+.rtl\:left-8:where([dir="rtl"], [dir="rtl"] *){
+    left: 2rem;
+}
+.rtl\:right-8:where([dir="rtl"], [dir="rtl"] *){
+    right: 2rem;
 }
 .rtl\:ml-0:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0px;
