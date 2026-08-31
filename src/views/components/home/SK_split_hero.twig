@@ -3,7 +3,7 @@
 <section class=" container pb-10 md:pb-20">
 
 	{# LEFT SIDE #}
-	<div class="flex flex-col-reverse md:flex-row rounded-[32px] overflow-hidden">
+	<div class="flex flex-col-reverse md:flex-row -[32px] overflow-hidden">
 
 		<div class="w-full md:w-1/2 flex flex-col justify-center items-center p-10 md:p-16"
 			style="background-color: {{ component.left_bg_color ?? '#f5f0e8' }};">
@@ -25,7 +25,7 @@
 			{% include 'components.custom.button_customize.twig' with {
 			href: component.display_all_url,
 			text: component.button_text,
-			class: 'inline-flex w-fit px-6 py-3 rounded-full font-medium transition',
+			class: 'inline-flex w-fit px-6 py-3 -full font-medium transition',
 			bg: component.button_bg_color ?? '#000',
 			color: component.button_text_color ?? '#fff',
 			border: component.button_bg_color ?? '#000',

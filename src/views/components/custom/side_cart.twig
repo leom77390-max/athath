@@ -46,18 +46,18 @@
              aria-hidden="true">
             <div class="mb-4 flex items-center justify-between gap-3">
                 <p class="text-graytext text-base font-semibold">{{ trans('pages.cart.coupon_field_label') }}</p>
-                <button type="button" id="sidecart-coupon-close" class="h-9 w-9 flex items-center justify-center rounded-full border border-font text-font hover:bg-font hover:text-background transition" aria-label="{{ trans('common.elements.close') }}">
+                <button type="button" id="sidecart-coupon-close" class="h-9 w-9 flex items-center justify-center -full border border-font text-font hover:bg-font hover:text-background transition" aria-label="{{ trans('common.elements.close') }}">
                     <i class="sicon-cancel text-lg"></i>
                 </button>
             </div>
             <div class="flex items-stretch gap-2">
                 <input id="sidecart-coupon-input"
-                       class="flex-1 rounded-[32px] text-sm placeholder:opacity-100 focus:placeholder:opacity-0 transition-opacity duration-200"
+                       class="flex-1 -[32px] text-sm placeholder:opacity-100 focus:placeholder:opacity-0 transition-opacity duration-200"
                        placeholder="{{ trans('pages.cart.coupon_placeholder') }}"
                        aria-label="{{ trans('pages.cart.have_coupon') }}"
                        type="text">
                 <button type="button" id="sidecart-coupon-btn"
-                        class="sidecart-coupon-btn shrink-0 px-4 md text-sm font-semibold bg-background border border-font  text-font hover:bg-font transition hover:text-background rounded-[32px] ">
+                        class="sidecart-coupon-btn shrink-0 px-4 md text-sm font-semibold bg-background border border-font  text-font hover:bg-font transition hover:text-background -[32px] ">
                     <span class="coupon-text">{{ trans('pages.cart.save_coupon') }}</span>
                     <i class="sicon-cancel text-lg hidden"></i>
                 </button>
@@ -96,7 +96,7 @@
             {% endif %}
         </div>
         <button type="button" id="sidecart-submit" class="w-full flex items-center justify-center gap-2 bg-background  border-font text-font py-3   transition-colors border cursor-pointer
-        text-background rounded-full  font-semibold
+        text-background -full  font-semibold
         ">
             <i class="sicon-shopping-bag text-lg"></i>
             <span>{{ trans('pages.cart.complete_order') }}</span>

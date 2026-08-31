@@ -37,7 +37,7 @@
 }' show-controls="false" type="thumbs">
 				<div slot="items">
 					{% for item in component.testimonials %}
-						<a href="#" class="testimonial-card-link group block testimonials testimonials-{{loop.index}} overflow-hidden bg-background rounded-[32px] transition hover:shadow-lg" data-product-ids="{{ item.products|json_encode }}" data-item-index="{{ loop.index }}">
+						<a href="#" class="testimonial-card-link group block testimonials testimonials-{{loop.index}} overflow-hidden bg-background -[32px] transition hover:shadow-lg" data-product-ids="{{ item.products|json_encode }}" data-item-index="{{ loop.index }}">
 							<div class="h-[clamp(16.067rem,14.8425rem+4.8980vw,20.067rem)] overflow-hidden">
 								<img src="{{ item.image }}" class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" alt="{{ item.product_name }}">
 							</div>
@@ -58,7 +58,7 @@
 								{% if item.products %}
 								<div class="product-info hidden mt-6 pt-6 border-t border-gray-200 w-full">
 									<div class="flex items-center gap-3">
-										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover rounded" loading="lazy">
+										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover " loading="lazy">
 										<div class="flex-1 min-w-0">
 											<p class="product-title text-xs font-semibold truncate text-gray-900"></p>
 											<span class="text-xs text-secondary font-medium">{{trans('blocks.ViewProduct')}}</span>
@@ -70,7 +70,7 @@
 						</a>
 					{% endfor %}
 					{% for item in component.testimonials %}
-						<a href="#" class="testimonial-card-link group block testimonials testimonials-{{loop.index}} overflow-hidden bg-background rounded-[32px] transition hover:shadow-lg" data-product-ids="{{ item.products|json_encode }}" data-item-index="{{ loop.index }}">
+						<a href="#" class="testimonial-card-link group block testimonials testimonials-{{loop.index}} overflow-hidden bg-background -[32px] transition hover:shadow-lg" data-product-ids="{{ item.products|json_encode }}" data-item-index="{{ loop.index }}">
 							<div class="h-[clamp(16.067rem,14.8425rem+4.8980vw,20.067rem)] overflow-hidden">
 								<img src="{{ item.image }}" class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" alt="{{ item.product_name }}">
 							</div>
@@ -91,7 +91,7 @@
 								{% if item.products %}
 								<div class="product-info hidden mt-6 pt-6 border-t border-gray-200 w-full">
 									<div class="flex items-center gap-3">
-										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover rounded" loading="lazy">
+										<img src="" alt="Product" class="product-thumb w-12 h-12 object-cover " loading="lazy">
 										<div class="flex-1 min-w-0">
 											<p class="product-title text-xs font-semibold truncate text-gray-900"></p>
 											<span class="text-xs text-secondary font-medium">{{trans('blocks.ViewProduct')}}</span>

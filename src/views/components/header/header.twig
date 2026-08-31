@@ -82,7 +82,7 @@
 
 			{# Store Scope/Location #}
 			{% if store.scope %}
-				<button class="btn--rounded-gray" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+				<button class="btn--" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
 					<i class="sicon-location rtl:ml-1 ltr:mr-1"></i>
 					{{ store.scope.name }}
 				</button>
@@ -132,7 +132,7 @@
 
                         <div class="flex lg:hidden flex-col items-center gap-1.5">
 							{% if theme.settings.get('enable_side_search') %}
-								<button id="search-trigger" class="search-trigger inline-flex items-center justify-center lg:w-5 lg:h-5 w-4 h-4 border-0 bg-transparent cursor-pointer rounded-[10px] text-inherit transition-colors duration-300 hover:bg-font/5" aria-label="Search" aria-expanded="false" aria-controls="search-drawer">
+								<button id="search-trigger" class="search-trigger inline-flex items-center justify-center lg:w-5 lg:h-5 w-4 h-4 border-0 bg-transparent cursor-pointer -[10px] text-inherit transition-colors duration-300 hover:bg-font/5" aria-label="Search" aria-expanded="false" aria-controls="search-drawer">
 									<svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewbox="0 0 23 21" fill="none">
 										<path d="M22.5 19.8534L17.703 15.0562" stroke-linecap="round" stroke-linejoin="round"/>
 										<path d="M9.32203 18.1448C14.1943 18.1448 18.1441 14.1949 18.1441 9.32239C18.1441 4.44992 14.1943 0.5 9.32203 0.5C4.44976 0.5 0.5 4.44992 0.5 9.32239C0.5 14.1949 4.44976 18.1448 9.32203 18.1448Z"  stroke-linecap="round" stroke-linejoin="round"/>
@@ -150,9 +150,9 @@
 						</div>
 								{#<a class="mburger mburger--collapse leading-none justify-start items-center gap-2 lg:!hidden !flex" href="#mobile-menu" aria-label="Open-menu">
 									<p class="flex flex-col gap-1 items-start group ltr:scale-x-[-1]">
-										<span class="w-5 h-[2px] bg-background rounded-lg"></span>
-										<span class="w-5 group-hover:w-3 transition-all h-[2px] bg-background rounded-lg"></span>
-										<span class="w-2.5 group-hover:w-5 transition-all h-[2px] bg-background rounded-lg"></span>
+										<span class="w-5 h-[2px] bg-background "></span>
+										<span class="w-5 group-hover:w-3 transition-all h-[2px] bg-background "></span>
+										<span class="w-2.5 group-hover:w-5 transition-all h-[2px] bg-background "></span>
 									</p>
 								</a> #}
                         		
@@ -236,7 +236,7 @@
 										<path d="M6.66669 6.66666V3.75C6.66669 2.5 7.50002 1.66666 8.75002 1.66666H11.25C12.5 1.66666 13.3334 2.5 13.3334 3.75V6.66666" stroke-width="1.4375" stroke-linecap="round" stroke-linejoin="round"/>
 										<path d="M17.0084 14.1917H6.66669" stroke-width="1.4375" stroke-linecap="round" stroke-linejoin="round"/>
 									</svg>
-									<span class="cart-total-items bg-red-500 absolute top-[-0.75rem] right-2 text-background text-xxs rounded-full w-[18px] h-[18px] !flex items-center justify-center select-none" title="{{ trans('pages.cart.items_count') }}">{{ cart.items_count }}</span>
+									<span class="cart-total-items bg-red-500 absolute top-[-0.75rem] right-2 text-background text-xxs -full w-[18px] h-[18px] !flex items-center justify-center select-none" title="{{ trans('pages.cart.items_count') }}">{{ cart.items_count }}</span>
 									{# <span class="text-sm font-medium hidden lg:inline">{{ trans('blocks.header.cart') }}</span> #}
 								</button>
 							{% else %}
@@ -269,7 +269,7 @@
 							{# Search Button #}
 							<div class="flex-col items-center gap-1.5 hidden lg:flex lg:min-w-16">
 								{% if theme.settings.get('enable_side_search') %}
-									<button id="search-trigger" class="search-trigger inline-flex items-center justify-center lg:w-5 lg:h-5 w-4 h-4 border-0 bg-transparent cursor-pointer rounded-[10px] text-inherit transition-colors duration-300 hover:bg-font/5" aria-label="Search" aria-expanded="false" aria-controls="search-drawer">
+									<button id="search-trigger" class="search-trigger inline-flex items-center justify-center lg:w-5 lg:h-5 w-4 h-4 border-0 bg-transparent cursor-pointer -[10px] text-inherit transition-colors duration-300 hover:bg-font/5" aria-label="Search" aria-expanded="false" aria-controls="search-drawer">
 										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewbox="0 0 23 21" fill="none">
 											<path d="M22.5 19.8534L17.703 15.0562" stroke-linecap="round" stroke-linejoin="round"/>
 											<path d="M9.32203 18.1448C14.1943 18.1448 18.1441 14.1949 18.1441 9.32239C18.1441 4.44992 14.1943 0.5 9.32203 0.5C4.44976 0.5 0.5 4.44992 0.5 9.32239C0.5 14.1949 4.44976 18.1448 9.32203 18.1448Z"  stroke-linecap="round" stroke-linejoin="round"/>
@@ -288,9 +288,9 @@
 							{% endif %}
 							<button id="custom-menu-trigger" class="custom-menu-trigger md:hidden  justify-start gap-2 items-center flex">
 									<p class="flex flex-col gap-1 items-start group">
-										<span class="w-5 h-[2px] bg-font rounded-lg span-menue"></span>
-										<span class="w-5 group-hover:w-3 transition-all h-[2px] bg-font rounded-lg span-menue"></span>
-										<span class="w-2.5 group-hover:w-5 transition-all h-[2px] bg-font rounded-lg span-menue"></span>
+										<span class="w-5 h-[2px] bg-font  span-menue"></span>
+										<span class="w-5 group-hover:w-3 transition-all h-[2px] bg-font  span-menue"></span>
+										<span class="w-2.5 group-hover:w-5 transition-all h-[2px] bg-font  span-menue"></span>
 
 									</p>
 								</button>

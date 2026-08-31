@@ -42,7 +42,7 @@
 					{% set shadow_color= item.shadow_color        | default('#18181b') %}
 					{% set btn_url     = item.btn_url             | default('#') %}
 
-					<a href="{{ btn_url }}" class="sk-card" style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }};">
+					<a href="{{ btn_url }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
 						<div class="sk-card-image" style="
 							{% if bg_image %}
 							  background-image: url('{{ bg_image }}');
@@ -63,7 +63,7 @@
 				{% set shadow_color= component.shadow_card_color      | default('#18181b') %}
 
 				{% for cat in component.categories_list %}
-					<a href="{{ cat.url | default('#') }}" class="sk-card" style="border-radius: {{ radius }}px; --shadow-color: {{ shadow_color }};">
+					<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
 						<div class="sk-card-image" style="
 							{% if cat.image %}
 							  background-image: url('{{ cat.image }}');
@@ -129,7 +129,6 @@
 	.SK_special_categories_{{position}} .sk-card {
 		position: relative;
 		height: 140px;
-		border-radius: 16px;
 		overflow: hidden;
 		display: flex;
 		align-items: center;

@@ -23,7 +23,7 @@
 			<div class="flex items-center gap-2 mb-6">
 
 				<button 
-				class="bundle-back-{{position}} group relative overflow-hidden flex items-center justify-center border border-zinc-900 p-3 rounded-full transition-all duration-300 hover:bg-zinc-900 text-zinc-900 hover:text-white">
+				class="bundle-back-{{position}} group relative overflow-hidden flex items-center justify-center border border-zinc-900 p-3 -full transition-all duration-300 hover:bg-zinc-900 text-zinc-900 hover:text-white">
 
 					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
 
@@ -33,7 +33,7 @@
 
 
 				<button 
-				class="bundle-front-{{position}} group relative overflow-hidden flex items-center justify-center border border-zinc-900 p-3 rounded-full transition-all duration-300 hover:bg-zinc-900 text-zinc-900 hover:text-white">
+				class="bundle-front-{{position}} group relative overflow-hidden flex items-center justify-center border border-zinc-900 p-3 -full transition-all duration-300 hover:bg-zinc-900 text-zinc-900 hover:text-white">
 
 					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
 
@@ -96,7 +96,7 @@
 
 			<a href="{{ product.url }}" class="group flex flex-col md:flex-row rtl:md:flex-row-reverse items-stretch md:items-center bg-transparent h-full gap-4 md:gap-8 transition-all duration-300 ease-out hover:-translate-y-1">
 
-				<div class="w-full h-[300px] md:w-[45%] md:h-[480px] rounded-2xl md:rounded-[20px] flex items-center justify-center overflow-hidden flex-shrink-0 transition-all duration-300">
+				<div class="w-full h-[300px] md:w-[45%] md:h-[480px]  md:-[20px] flex items-center justify-center overflow-hidden flex-shrink-0 transition-all duration-300">
 
 					<img src="{{ product.images[0].url }}" alt="{{ product.name }}" loading="lazy" class="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-105">
 
@@ -148,7 +148,7 @@
 					{% endif %}
 
 
-					<span class="sk-product-card__btn mt-2 inline-flex self-start items-center justify-center px-[26px] py-[11px] max-md:px-[18px] max-md:py-[8px] bg-zinc-900 text-white border border-zinc-900 rounded-full text-xs md:text-sm font-semibold relative overflow-hidden z-[1] box-border">
+					<span class="sk-product-card__btn mt-2 inline-flex self-start items-center justify-center px-[26px] py-[11px] max-md:px-[18px] max-md:py-[8px] bg-zinc-900 text-white border border-zinc-900 -full text-xs md:text-sm font-semibold relative overflow-hidden z-[1] box-border">
 						<span>{{ user.language.code == 'ar' ? 'اشترِ هذا المنتج' : 'Shop This Product' }}</span>
 					</span>
 

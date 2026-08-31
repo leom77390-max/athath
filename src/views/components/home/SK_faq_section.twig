@@ -41,7 +41,7 @@
     <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
                 border-color: {{ item.hr_color|default('#e4e4e7') }};
-                border-radius: {{ component.corner_rounded|default(16) }}px;"
+                "
          data-accordion-item>
 
         <button type="button"
@@ -92,7 +92,7 @@
     <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
                 border-color: {{ item.hr_color|default('#e4e4e7') }};
-                border-radius: {{ component.corner_rounded|default(16) }}px;"
+                "
          data-accordion-item>
 
         <button type="button"
@@ -135,20 +135,20 @@
             {% if component.media_type == 'video' and component.banner_video %}
                 {% if 'youtube.com' in component.banner_video or 'youtu.be' in component.banner_video or 'vimeo.com' in component.banner_video %}
                     <iframe src="{{ component.banner_video }}"
-                            class="SK-faq-section__media rounded-2xl w-full"
+                            class="SK-faq-section__media  w-full"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                             title="{{ component.main_title|default('FAQ Video') }}"></iframe>
                 {% else %}
                     <video src="{{ component.banner_video }}"
-                           class="SK-faq-section__media rounded-2xl w-full"
+                           class="SK-faq-section__media  w-full"
                            autoplay muted loop playsinline></video>
                 {% endif %}
             {% elseif component.banner_img %}
                 <img src="{{ component.banner_img }}"
                      alt="{{ component.main_title|default('') }}"
-                     class="SK-faq-section__media max-w-full h-auto object-contain rounded-2xl" />
+                     class="SK-faq-section__media max-w-full h-auto object-contain " />
             {% endif %}
         </div>
 
@@ -171,7 +171,7 @@
             {% endif %}
             {% if component.button_text %}
             <a href="{{ component.url|default('#') }}"
-               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200"
+               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 -full text-sm font-medium transition duration-200"
                style="background-color: {{ component.customize_colors ? component.button_bg|default('#18181b') : '#18181b' }};
                       color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
                 <span class="relative z-10">{{ component.button_text }}</span>
@@ -185,7 +185,7 @@
     <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
                 border-color: {{ item.hr_color|default('#e4e4e7') }};
-                border-radius: {{ component.corner_rounded|default(16) }}px;"
+                "
          data-accordion-item>
 
         <button type="button"
@@ -242,7 +242,7 @@
             {% endif %}
             {% if component.button_text %}
             <a href="{{ component.url|default('#') }}"
-               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 rounded-full text-sm font-medium transition duration-200"
+               class="SK-btn-swipe inline-flex items-center justify-center px-6 py-3 -full text-sm font-medium transition duration-200"
                style="background-color: {{ component.customize_colors ? component.button_bg|default('#18181b') : '#18181b' }};
                       color: {{ component.customize_colors ? component.button_text_color|default('#ffffff') : '#ffffff' }};">
                 <span class="relative z-10">{{ component.button_text }}</span>
@@ -255,20 +255,20 @@
             {% if component.media_type == 'video' and component.banner_video %}
                 {% if 'youtube.com' in component.banner_video or 'youtu.be' in component.banner_video or 'vimeo.com' in component.banner_video %}
                     <iframe src="{{ component.banner_video }}"
-                            class="SK-faq-section__media rounded-2xl w-full"
+                            class="SK-faq-section__media  w-full"
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen
                             title="{{ component.main_title|default('FAQ Video') }}"></iframe>
                 {% else %}
                     <video src="{{ component.banner_video }}"
-                           class="SK-faq-section__media rounded-2xl w-full"
+                           class="SK-faq-section__media  w-full"
                            autoplay muted loop playsinline></video>
                 {% endif %}
             {% elseif component.banner_img %}
                 <img src="{{ component.banner_img }}"
                      alt="{{ component.main_title|default('') }}"
-                     class="SK-faq-section__media max-w-full h-auto object-contain rounded-2xl" />
+                     class="SK-faq-section__media max-w-full h-auto object-contain " />
             {% endif %}
         </div>
 
@@ -278,7 +278,7 @@
     <div class="faq-accordion-item border transition-all duration-300"
          style="background-color: {{ item.bg_color|default('#ffffff') }};
                 border-color: {{ item.hr_color|default('#e4e4e7') }};
-                border-radius: {{ component.corner_rounded|default(16) }}px;"
+                "
          data-accordion-item>
 
         <button type="button"
@@ -366,8 +366,7 @@
     position: absolute;
     background-color: currentColor;
     transition: transform 0.3s ease;
-    border-radius: 2px;
-}
+    }
 .faq-toggle-icon .horizontal {
     width: 14px;
     height: 2px;

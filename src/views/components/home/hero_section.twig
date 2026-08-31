@@ -131,7 +131,7 @@
 	</salla-slider>
 	<div class="flex items-center justify-center w-fit gap-4 mx-auto mt-3">
 		{% if component.show_navigation %}
-			<button class="hero-prev-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
+			<button class="hero-prev-{{ position }} group relative overflow-hidden !size-11 -full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
 				<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
 				<i class="relative z-10 sicon-arrow-right transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
 			</button>
@@ -141,7 +141,7 @@
 			<div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
 		{% endif %}
 		{% if component.show_navigation %}
-			<button class="hero-next-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
+			<button class="hero-next-{{ position }} group relative overflow-hidden !size-11 -full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
 				<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
 				<i class="relative z-10 sicon-arrow-left transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
 			</button>
@@ -182,7 +182,7 @@
 			width: 20px !important;
 			height: 10px !important;
 			margin: 0 4px !important;
-			border-radius: 9999px !important;
+			!important;
 			background: rgba(0, 0, 0, 0.2) !important;
 			opacity: 1 !important;
 			overflow: hidden;
@@ -198,7 +198,7 @@
 			width: 0;
 			height: 100%;
 			background: #000;
-			border-radius: inherit;
+			inherit;
 		}
 
 		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet-active::after {
