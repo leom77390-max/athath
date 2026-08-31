@@ -8188,6 +8188,16 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "d7542ac2-98bf-4fe6-aac9-1efe3035eae9",
+            "title": {
+                "en": "special-hero",
+                "ar": "هيرو مميز"
+            },
+            "icon": "sicon-packed-box",
+            "path": "home.hero-special",
+            "fields": []
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
