@@ -9,7 +9,7 @@
     break-inside: avoid;
     margin-bottom: 1rem;
     position: relative;
-    border-radius: 1.25rem;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -18,7 +18,7 @@
     width: 100%;
     display: block;
     object-fit: cover;
-    border-radius: 1.25rem;
+    border-radius: 0;
     min-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
     max-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
 }
@@ -30,7 +30,7 @@
     left: 12px;
     right: 12px;
     background: white;
-    border-radius: 0.875rem;
+    border-radius: 0;
     padding: 10px 14px;
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@
 #tab-content .product-overlay img {
     width: 36px;
     height: 36px;
-    border-radius: 8px;
+    border-radius: 0;
     object-fit: cover;
     min-height: unset;
 }

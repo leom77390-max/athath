@@ -2086,12 +2086,6 @@ input:where([type='file']):focus{
 .rounded-3xl{
     border-radius: 1.5rem;
 }
-.rounded-\[10px\]{
-    border-radius: 10px;
-}
-.rounded-\[14px\]{
-    border-radius: 14px;
-}
 .rounded-\[28px\]{
     border-radius: 28px;
 }
@@ -36420,7 +36414,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
        break-inside: avoid;
   margin-bottom: 1rem;
   position: relative;
-  border-radius: 1.25rem;
+  border-radius: 0;
   overflow: hidden;
 }
 #tab-content .media-card img,
@@ -36429,7 +36423,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 1.25rem;
+  border-radius: 0;
   min-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
   max-height: clamp(25rem, 20.9061rem + 17.4672vw, 37.5rem);
 }
@@ -36440,7 +36434,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 12px;
   right: 12px;
   background: white;
-  border-radius: 0.875rem;
+  border-radius: 0;
   padding: 10px 14px;
   display: flex;
   align-items: center;
@@ -36450,7 +36444,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #tab-content .product-overlay img {
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 0;
   -o-object-fit: cover;
      object-fit: cover;
   min-height: 0;
@@ -37077,7 +37071,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical {
   background: #F6F6F6;
-  border-radius: 2rem;
+  border-radius: 0;
   overflow: hidden;
 }
 .s-product-card-vertical salla-add-product-button button {
@@ -37356,7 +37350,7 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
 }
 .quick-view .qv-gallery .swiper-slide img {
   max-height: 360px !important;
-  border-radius: 32px !important;
+  border-radius: 0 !important;
 }
 .quick-view .s-quantity-input-container {
   border-radius: 9999px;
@@ -38701,9 +38695,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:overflow-hidden{
         overflow: hidden;
-    }
-    .md\:rounded-\[20px\]{
-        border-radius: 20px;
     }
     .md\:p-16{
         padding: 4rem;
