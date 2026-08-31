@@ -54,7 +54,7 @@
     button{
       position: relative;
       overflow: hidden;
-      border-radius: 9999px;
+      border-radius: 0;
       background: var(--color-background);
       color: var(--color-font);
       width: 2rem;
@@ -102,7 +102,7 @@
   overflow: hidden;
   salla-add-product-button {
     button {
-      border-radius: 9999px;
+      border-radius: 0;
       position: relative;
       overflow: hidden;
 
@@ -174,7 +174,7 @@
 // quick view button styles
 // quick view button styles
 .quick-view-button{
-  @apply relative overflow-hidden rounded-full z-[1]
+  @apply relative overflow-hidden z-[1]
          bg-background text-font
          transition-all duration-300;
 

@@ -137,7 +137,7 @@
   }
       salla-add-product-button {
     button {
-      border-radius: 9999px;
+      border-radius: 0;
       position: relative;
       overflow: hidden;
 
@@ -235,7 +235,7 @@
     }
   }
     .s-quantity-input-container{
-    border-radius: 9999px;
+    border-radius: 0;
     height: 48px;
     background: color-mix(in srgb, var(--color-background) 97%, var(--color-font) 3%);
   }

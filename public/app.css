@@ -37032,7 +37032,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-vertical .s-product-card-wishlist-btn button {
   position: relative;
   overflow: hidden;
-  border-radius: 9999px;
+  border-radius: 0;
   background: var(--color-background);
   color: var(--color-font);
   width: 2rem;
@@ -37075,7 +37075,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: hidden;
 }
 .s-product-card-vertical salla-add-product-button button {
-  border-radius: 9999px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   background: var(--color-background);
@@ -37123,7 +37123,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    border-radius: 9999px;
     background-color: var(--color-background);
     color: var(--color-font);
     transition-property: all;
@@ -37353,12 +37352,12 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   border-radius: 0 !important;
 }
 .quick-view .s-quantity-input-container {
-  border-radius: 9999px;
+  border-radius: 0;
   height: 48px;
 }
 .quick-view salla-add-product-button button {
   height: 48px;
-  border-radius: 9999px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   background: #f6f6f6;
@@ -37527,7 +37526,7 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   --salla-fast-checkout-button-width: 100%;
 }
 .single-product salla-add-product-button button {
-  border-radius: 9999px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   background: var(--color-font);
@@ -37601,7 +37600,7 @@ input[type=radio].sr-only:checked ~ div.quick-view-button::after {
   border-radius: 32px;
 }
 .s-quantity-input-container {
-  border-radius: 9999px;
+  border-radius: 0;
   height: 48px;
   background: color-mix(in srgb, var(--color-background) 97%, var(--color-font) 3%);
 }
