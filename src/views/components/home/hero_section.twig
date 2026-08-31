@@ -12,7 +12,7 @@
   {% set width_class = 'w-full' %}
 {% endif %} 
   
-<section class="{{ width_class }} mt-6 shopify-hero-{{ position }} mb-10 md:mb-20" 
+<section class="relative {{ width_class }} mt-6 shopify-hero-{{ position }} mb-10 md:mb-20" 
  style="
     {{ width_style }}
     --desktop-height: {{ component.desktop_height | default(90) }}vh;
@@ -66,6 +66,15 @@
             "el": ".hero-pagination-{{ position }}",
             "clickable": true
           }
+          {% if component.slider_effect == 'fade' %},
+          "effect": "fade",
+          "fadeEffect": {
+            "crossFade": true
+          }
+          {% endif %}
+          {% if component.enable_parallax %},
+          "parallax": true
+          {% endif %}
           {% if component.enable_autoplay %},
           "autoplay": {
             "delay": {{ component.delay_time | default(3) }}000,
@@ -128,18 +137,19 @@
               <div class="inner-content">
 
                 {% if slide.subtext %}
-                  <p class="slide-subtext" style="color: {{ slide.subtext_color }}">
+                  <p class="slide-subtext" style="color: {{ slide.subtext_color }}" {% if component.enable_parallax %}data-swiper-parallax="-300"{% endif %}>
                     {{ slide.subtext }}
                   </p>
                 {% endif %}
 
                 {% if slide.block_title %} 
-                  <h2 class="slide-title my-3" style="color: {{ slide.blocktitle_color }}">
+                  <h2 class="slide-title my-3" style="color: {{ slide.blocktitle_color }}" {% if component.enable_parallax %}data-swiper-parallax="-500"{% endif %}>
                     {{ slide.block_title }}
                   </h2>
                 {% endif %}
 
                 {% if slide.button_text %}
+                 <div class="mt-4" {% if component.enable_parallax %}data-swiper-parallax="-700"{% endif %}>
                  {% include 'components.custom.button_customize.twig' with {
                     href: slide.url,
                     text: slide.button_text,
@@ -148,6 +158,7 @@
                     bg: slide.button_bg,
                     color: slide.button_text_color,
                 } %}
+                 </div>
                 {% endif %}
 
               </div>
@@ -159,7 +170,7 @@
 
       </div>
     </salla-slider>
-    <div class="flex items-center justify-center w-fit gap-4 mx-auto mt-3">
+    <div class="flex items-center justify-center w-fit gap-4 mx-auto {{ component.pagination_position == 'inside' ? 'absolute bottom-6 left-1/2 -translate-x-1/2 z-20 mt-0' : 'mt-3' }}">
         {% if component.show_navigation %}
         <button
             class="hero-prev-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
@@ -191,13 +202,20 @@
     animation: afterWidthExpand 5s ease-in-out forwards;
     animation-delay: 0.7s;
 }
+{% if component.banner_width == 'wide' %}
     #shopify-hero-{{ position }} .carousel-slider .swiper {
-    padding: 10px 16px !important;
-}
-.shopify-hero-{{ position }} .carousel-slider .swiper{
-  padding:0px 12px !important;
-  margin:0 !important;
-}
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+{% else %}
+    #shopify-hero-{{ position }} .carousel-slider .swiper {
+        padding: 10px 16px !important;
+    }
+    .shopify-hero-{{ position }} .carousel-slider .swiper{
+      padding:0px 12px !important;
+      margin:0 !important;
+    }
+{% endif %}
 .shopify-hero-{{ position }} .slide-bg-video,
 .shopify-hero-{{ position }} .slide-bg-picture img {
   width: 100%;

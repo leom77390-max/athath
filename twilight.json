@@ -1810,6 +1810,70 @@
                     ]
                 },
                 {
+                    "id": "slider_effect",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "تأثير الانتقال",
+                    "icon": "sicon-animation",
+                    "selected": [
+                        {
+                            "label": "تلاشي (Fade)",
+                            "value": "fade"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "تمرير",
+                            "value": "slide"
+                        },
+                        {
+                            "label": "تلاشي (Fade)",
+                            "value": "fade"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "enable_parallax",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل تأثير Parallax للنصوص",
+                    "icon": "sicon-toggle-off",
+                    "value": false,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "pagination_position",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "موقع نقاط التنقل",
+                    "icon": "sicon-alignment-bottom",
+                    "selected": [
+                        {
+                            "label": "متراكب (داخل البانر)",
+                            "value": "inside"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "أسفل البانر",
+                            "value": "bottom"
+                        },
+                        {
+                            "label": "متراكب (داخل البانر)",
+                            "value": "inside"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": false
+                },
+                {
                     "id": "show_pagination",
                     "type": "boolean",
                     "format": "switch",
