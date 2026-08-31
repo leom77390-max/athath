@@ -13,18 +13,18 @@
 {% endif %}
 
 <section class="{{ width_class }} mt-6 shopify-hero-{{ position }} mb-10 md:mb-20" style="
-		    {{ width_style }}
-		    --desktop-height: {{ component.desktop_height | default(90) }}vh;
-		    --mobile-height: {{ component.mobile_height | default(70) }}vh;
-		  ">
+				    {{ width_style }}
+				    --desktop-height: {{ component.desktop_height | default(90) }}vh;
+				    --mobile-height: {{ component.mobile_height | default(70) }}vh;
+				  ">
 	<div class="inner-content flex flex-col {{ component.block_title or component.subtext ? 'pb-6' : '' }} container
-			    {% if component.items_alignment_horizontal|default('center') == 'start' %}
-			      items-start text-start
-			    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
-			      items-center text-center
-			    {% else %}
-			      items-end text-end
-			    {% endif %}">
+						    {% if component.items_alignment_horizontal|default('center') == 'start' %}
+						      items-start text-start
+						    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
+						      items-center text-center
+						    {% else %}
+						      items-end text-end
+						    {% endif %}">
 		{% if  component.block_title %}
 			<h2 class="component-title" style="color: {{ component.blocktitle_color }}">
 				{{ component.block_title }}
@@ -37,27 +37,27 @@
 		{% endif %}
 	</div>
 	<salla-slider id="shopify-hero-{{ position }}" type="carousel" auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}" auto-height="{{ component.auto_height ? 'true' : 'false' }}" show-controls="false" pagination="{{ component.show_pagination ? 'true' : 'false' }}" slides-per-view="auto" centered="true" space-between="10" speed="700" class="custom-shopify-style-slider" data-delay="{{ component.delay_time | default(3) }}000" slider-config='{
-			          "slidesPerView": "auto",
-			          "centeredSlides": true,
-			          "spaceBetween": 10,
-			          "speed": 700,
-			          "loop": true,
-			          "navigation": {
-			            "nextEl": ".hero-next-{{ position }}",
-			            "prevEl": ".hero-prev-{{ position }}"
-			          },
-			          "pagination": {
-			            "el": ".hero-pagination-{{ position }}",
-			            "clickable": true
-			          }
-			          {% if component.enable_autoplay %},
-			          "autoplay": {
-			            "delay": {{ component.delay_time | default(3) }}000,
-			            "disableOnInteraction": false,
-			            "pauseOnMouseEnter": true
-			          }
-			          {% endif %}
-			        }'>
+						          "slidesPerView": "auto",
+						          "centeredSlides": true,
+						          "spaceBetween": 10,
+						          "speed": 700,
+						          "loop": true,
+						          "navigation": {
+						            "nextEl": ".hero-next-{{ position }}",
+						            "prevEl": ".hero-prev-{{ position }}"
+						          },
+						          "pagination": {
+						            "el": ".hero-pagination-{{ position }}",
+						            "clickable": true
+						          }
+						          {% if component.enable_autoplay %},
+						          "autoplay": {
+						            "delay": {{ component.delay_time | default(3) }}000,
+						            "disableOnInteraction": false,
+						            "pauseOnMouseEnter": true
+						          }
+						          {% endif %}
+						        }'>
 		<div slot="items">
 
 			{% for slide in component.banner %}
@@ -67,83 +67,57 @@
 				{% set mobile_v_align = slide.mobile_items_alignment_vertical[0] | default(v_align) %}
 				{% set mobile_h_align = slide.mobile_items_alignment_horizontal[0] | default(h_align) %}
 
-				<div class="custom-slide-item slideshow__item-wrap">
+				<div class="custom-slide-item">
 
 					{% if slide.vid and slide.vid_url %}
 
-						<div class="slide-bg-media slideshow__bg bg-image overflow-hidden">
-							<div class="slideshow__slide-bg absolute inset-full">
-								<div class="w-full h-full block{% if component.text_animation %} is-animated{% endif %}" data-motion="zoom-out">
-									<video class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}" autoplay muted loop playsinline preload="metadata" poster="{{ slide.desktop_bg }}">
-										<source src="{{ slide.vid_url }}" type="video/mp4">
-									</video>
-								</div>
-							</div>
+						<div class="slide-bg-media">
+							<video class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}" autoplay muted loop playsinline preload="metadata" poster="{{ slide.desktop_bg }}">
+								<source src="{{ slide.vid_url }}" type="video/mp4">
+							</video>
 						</div>
 
 					{% else %}
 
-						<div class="slide-bg-media slideshow__bg bg-image overflow-hidden">
-							<div class="slideshow__slide-bg absolute inset-full">
-								<div class="w-full h-full block{% if component.text_animation %} is-animated{% endif %}" data-motion="zoom-out">
-									<picture class="slide-bg-picture media media--height media-wrapper block w-full h-full relative overflow-hidden{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
-										<source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
-										<img src="{{ slide.desktop_bg }}" alt="{{ slide.block_title }}" loading="{{ loop.first ? 'eager' : 'lazy' }}" fetchpriority="{{ loop.first ? 'high' : 'auto' }}">
-									</picture>
-								</div>
-							</div>
-						</div>
+						<picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
+							<source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
+							<img src="{{ slide.desktop_bg }}" alt="{{ slide.block_title }}" loading="{{ loop.first ? 'eager' : 'lazy' }}" fetchpriority="{{ loop.first ? 'high' : 'auto' }}">
+						</picture>
 
 					{% endif %}
 
 					{% if slide.overlay > 0 %}
-						<div class="slide-overlay slideshow__overlay bg-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
+						<div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
 					{% endif %}
 
-					<div class="slide-content-wrapper slideshow__content flex flex-col focus-none color-scheme-inverse
-							                      v-align-{{ v_align }}
-							                      h-align-{{ h_align }}
-							                      mobile-v-align-{{ mobile_v_align }}
-							                      mobile-h-align-{{ mobile_h_align }}" tabindex="-1">
-						<div class="inner-content slideshow__text rich-text text-center md:text-left">
+					<div class="  slide-content-wrapper
+														                      v-align-{{ v_align }}
+														                      h-align-{{ h_align }}
+														                      mobile-v-align-{{ mobile_v_align }}
+														                      mobile-h-align-{{ mobile_h_align }}">
+						<div class="inner-content">
+
+							{% if slide.subtext %}
+								<p class="slide-subtext" style="color: {{ slide.subtext_color }}">
+									{{ slide.subtext }}
+								</p>
+							{% endif %}
 
 							{% if slide.block_title %}
-								<h2 class="slide-title slideshow__title hd1 rich-text__heading my-3" style="color: {{ slide.blocktitle_color }}">
-									<div class="block{% if component.text_animation %} is-animated{% endif %}" data-motion="fade-up" data-motion-delay="250">
-										{{ slide.block_title }}
-									</div>
+								<h2 class="slide-title my-3" style="color: {{ slide.blocktitle_color }}">
+									{{ slide.block_title }}
 								</h2>
 							{% endif %}
 
-							{% if slide.subtext %}
-								<div class="block slideshow__description text-lg rich-text__text rte{% if component.text_animation %} is-animated{% endif %}" data-motion="fade-up" data-motion-delay="350">
-									<p class="slide-subtext" style="color: {{ slide.subtext_color }}">
-										{{ slide.subtext }}
-									</p>
-								</div>
-							{% endif %}
-
 							{% if slide.button_text %}
-								<div class="slideshow__buttons rich-text__button mt-4">
-									<div class="block{% if component.text_animation %} is-animated{% endif %}" data-motion="fade-up" data-motion-delay="450">
-										{% set btn_class = 'btn slide-btn slide-btn-' ~ loop.index %}
-										{% if slide.button_style[0] == 'outline' %}
-											{% set btn_class = btn_class ~ ' btn-outline' %}
-										{% elseif slide.button_style[0] == 'underline' %}
-											{% set btn_class = btn_class ~ ' btn--underline' %}
-										{% else %}
-											{% set btn_class = btn_class ~ (slide.transparent_button ? ' btn-transparent' : '') %}
-										{% endif %}
-										{% include 'components.custom.button_customize.twig' with {
-											href: slide.url,
-											text: slide.button_text,
-											selector:'slide-btn-' ~ loop.index,
-											class: btn_class,
-											bg: slide.button_bg,
-											color: slide.button_text_color,
-										} %}
-									</div>
-								</div>
+								{% include 'components.custom.button_customize.twig' with {
+                    href: slide.url,
+                    text: slide.button_text,
+                    selector:'slide-btn-' ~ loop.index,
+                    class: 'slide-btn slide-btn-' ~ loop.index ~ (slide.transparent_button ? ' btn-transparent' : ''),
+                    bg: slide.button_bg,
+                    color: slide.button_text_color,
+                } %}
 							{% endif %}
 
 						</div>
@@ -209,7 +183,7 @@
 			height: 10px !important;
 			margin: 0 4px !important;
 			border-radius: 9999px !important;
-			background: rgba(0, 0, 0, .2) !important;
+			background: rgba(0, 0, 0, 0.2) !important;
 			opacity: 1 !important;
 			overflow: hidden;
 		}
@@ -228,8 +202,7 @@
 		}
 
 		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet-active::after {
-			animation: heroProgress-{{position}}{{component.delay_time|default(3)}}
-			s linear forwards;
+			animation: heroProgress-{{position}}{{component.delay_time|default(3)}}s linear forwards;
 		}
 		.swiper-pagination-bullets,
 		.swiper-pagination-bullets.swiper-pagination-horizontal,
@@ -257,45 +230,4 @@
 			}
 		}
 	{% endif %}
-
-	/* Shopify Component Animations */
-	.swiper-slide .is-animated[data-motion="fade-up"] {
-		opacity: 0;
-		transform: translateY(2.5rem);
-		transition: opacity 0.8s ease, transform 0.8s ease;
-	}
-	.swiper-slide.swiper-slide-active .is-animated[data-motion="fade-up"] {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	.swiper-slide .is-animated[data-motion="fade-up"][data-motion-delay="250"] { transition-delay: 250ms; }
-	.swiper-slide .is-animated[data-motion="fade-up"][data-motion-delay="350"] { transition-delay: 350ms; }
-	.swiper-slide .is-animated[data-motion="fade-up"][data-motion-delay="450"] { transition-delay: 450ms; }
-
-	.swiper-slide .is-animated[data-motion="zoom-out"] {
-		transform: scale(1.1);
-		transition: transform 3s ease-out;
-	}
-	.swiper-slide.swiper-slide-active .is-animated[data-motion="zoom-out"] {
-		transform: scale(1);
-	}
-
-	/* Button Styles */
-	.btn--underline {
-		background: transparent !important;
-		color: currentColor !important;
-		border: none !important;
-		border-bottom: 1px solid currentColor !important;
-		border-radius: 0 !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		padding-bottom: 2px !important;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-	}
-	.btn-outline {
-		background: transparent !important;
-		border: 1px solid currentColor !important;
-		color: currentColor !important;
-	}
 </style>
