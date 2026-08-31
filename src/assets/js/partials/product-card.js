@@ -243,7 +243,7 @@ class ProductCard extends HTMLElement {
           ${this.fullImage ? `<a href="${this.product?.url}" aria-label=${this.product.name} class="s-product-card-overlay"></a>`:''}
 
             <div class="top_action flex flex-col gap-2 absolute top-2 right-2 md:-right-1 md:opacity-0 group-hover:opacity-100 group-hover:right-2 transition-all duration-700  z-10 ">
-              <button class="quick-view-button flex items-center justify-center bg-background text-font w-8  h-8 md:w-12 md:h-12"><i class="sicon-search text-lg font-semibold md:text-2xl"></i></button>
+              <button class="quick-view-button flex items-center justify-center rounded-full bg-background text-font w-8  h-8 md:w-12 md:h-12"><i class="sicon-search text-lg font-semibold md:text-2xl"></i></button>
                         ${!this.horizontal && !this.fullImage ?
             `<salla-button
               shape="icon"
