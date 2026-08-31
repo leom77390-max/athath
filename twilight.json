@@ -1810,6 +1810,16 @@
                     ]
                 },
                 {
+                    "id": "text_animation",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل حركات النصوص",
+                    "icon": "sicon-animation",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
                     "id": "show_pagination",
                     "type": "boolean",
                     "format": "switch",
@@ -2175,6 +2185,37 @@
                                     "value": true
                                 }
                             ]
+                        },
+                        {
+                            "id": "banner.button_style",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "شكل الزر",
+                            "icon": "sicon-mouse",
+                            "selected": [
+                                {
+                                    "label": "لون موحد",
+                                    "value": "solid"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "لون موحد",
+                                    "value": "solid"
+                                },
+                                {
+                                    "label": "مفرغ",
+                                    "value": "outline"
+                                },
+                                {
+                                    "label": "خط سفلي",
+                                    "value": "underline"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": false,
+                            "required": false
                         },
                         {
                             "id": "banner.button_bg",
