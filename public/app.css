@@ -37075,7 +37075,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: hidden;
 }
 .s-product-card-vertical salla-add-product-button button {
-  border-radius: 9999px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   background: var(--color-background);
