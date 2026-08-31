@@ -2235,11 +2235,6 @@ input:where([type='file']):focus{
     border-bottom-color: rgba(139, 139, 139, 1);
     border-bottom-color: rgba(139, 139, 139, var(--tw-border-opacity, 1));
 }
-.border-b-gray-100{
-    --tw-border-opacity: 1;
-    border-bottom-color: rgba(243, 244, 246, 1);
-    border-bottom-color: rgba(243, 244, 246, var(--tw-border-opacity, 1));
-}
 .border-t-\[\#FFFFFF33\]{
     border-top-color: rgba(255,255,255,0.2);
 }
@@ -38643,9 +38638,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-96{
         width: 24rem;
-    }
-    .md\:w-\[150px\]{
-        width: 150px;
     }
     .md\:w-\[420px\]{
         width: 420px;
