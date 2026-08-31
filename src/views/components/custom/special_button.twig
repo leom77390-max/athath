@@ -1,0 +1,68 @@
+{#
+  Props:
+  - text: string
+  - url: string
+  - class: string
+  - color: string (optional, defaults to inherit)
+#}
+<a href="{{ url | default('#') }}" class="special-btn {{ class }}" {% if color %}style="color: {{ color }};"{% endif %}>
+    <span class="special-btn-text">{{ text | default('SHOP NOW') }}</span>
+</a>
+
+<style>
+.special-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.special-btn-text {
+    transition: opacity 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.special-btn:hover .special-btn-text {
+    opacity: 0.6;
+}
+
+.special-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: currentColor;
+    transform-origin: bottom left;
+    transform: scaleX(1);
+}
+
+.special-btn:hover::after {
+    animation: slideUnderlineRight 0.7s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes slideUnderlineRight {
+    0% {
+        transform-origin: bottom right;
+        transform: scaleX(1);
+    }
+    49.9% {
+        transform-origin: bottom right;
+        transform: scaleX(0);
+    }
+    50% {
+        transform-origin: bottom left;
+        transform: scaleX(0);
+    }
+    100% {
+        transform-origin: bottom left;
+        transform: scaleX(1);
+    }
+}
+</style>

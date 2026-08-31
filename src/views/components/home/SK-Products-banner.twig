@@ -3,7 +3,7 @@
 		<div class="container flex items-center md:flex-row flex-col gap-6 h-[872px] md:h-[clamp(25rem,12.0188rem+27.0442vw,39.063rem)]">
 
 			<!-- IMAGE -->
-			<div class="img-wrapper flex-1 w-full md:w-1/2 h-full relative rounded-3xl overflow-hidden md:order-2">
+			<div class="img-wrapper flex-1 w-full md:w-1/2 h-full relative  overflow-hidden md:order-2">
 
 				{% for item in component.collection %}
 				<button
@@ -68,7 +68,7 @@
                     <!-- ADD ALL BUTTON -->
     
                     <button
-                        class="bundle-add-cart-btn mt-6 max-w-[270px] bg-primary text-background w-[75%] mx-auto px-6 py-3 rounded-xl transition hover:opacity-80"
+                        class="bundle-add-cart-btn mt-6 max-w-[270px] bg-primary text-background w-[75%] mx-auto px-6 py-3  transition hover:opacity-80"
                         data-label-default="{{ user.language.code == 'ar' ? 'إضافة الجميع' : 'Add all to cart' }}"
                         data-label-success="{{ user.language.code == 'ar' ? 'تمت إضافة المنتجات' : 'Added Successfully' }}"
                         data-label-error="{{ user.language.code == 'ar' ? 'حدث خطأ' : 'Something went wrong' }}"
@@ -123,7 +123,6 @@
 	width:16px;
 	height:16px;
 	display:block;
-	border-radius:999px;
 	background:#fff;
 	border:2px solid #000;
 	transition:.35s;
@@ -207,11 +206,11 @@
 				<div class="flex items-center gap-4">
 
 					<!-- Number Badge -->
-					<span class="w-8 h-8 rounded-full border border-gray-100 flex items-center justify-center text-sm font-medium text-gray-700 shrink-0 shadow-[0_2px_10px_rgba(0,0,0,0.05)] bg-white">
+					<span class="w-8 h-8 -full border border-gray-100 flex items-center justify-center text-sm font-medium text-gray-700 shrink-0 shadow-[0_2px_10px_rgba(0,0,0,0.05)] bg-white">
 						${index}
 					</span>
 
-					<div class="w-20 h-20 rounded-xl overflow-hidden bg-gray-50 flex-shrink-0 p-1">
+					<div class="w-20 h-20  overflow-hidden bg-gray-50 flex-shrink-0 p-1">
 
 						<img
 							src="${product.image?.url || ''}"

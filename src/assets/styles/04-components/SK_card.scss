@@ -54,7 +54,7 @@
     button{
       position: relative;
       overflow: hidden;
-      border-radius: 9999px;
+      border-radius: 0;
       background: var(--color-background);
       color: var(--color-font);
       width: 2rem;
@@ -98,11 +98,11 @@
 // add to cart button styles
 .s-product-card-vertical {
   background: #F6F6F6;
-  border-radius: 2rem;
+  border-radius: 0;
   overflow: hidden;
   salla-add-product-button {
     button {
-      border-radius: 9999px;
+      border-radius: 0;
       position: relative;
       overflow: hidden;
 
