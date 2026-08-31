@@ -4,153 +4,113 @@
 {% set width_class = '' %}
 {% set width_style = '' %}
 
-{% if component.banner_width == 'container' %}
-  {% set width_class = 'container' %}
+	{% if component.banner_width == 'container' %}
+	{% set width_class = 'container' %}
 {% elseif component.banner_width == 'percentage' %}
-  {% set width_class = 'shopify-hero-percentage-' ~ position %}
+	{% set width_class = 'shopify-hero-percentage-' ~ position %}
 {% else %}
-  {% set width_class = 'w-full' %}
-{% endif %} 
-  
-<section class="relative {{ width_class }} mt-6 shopify-hero-{{ position }} mb-10 md:mb-20" 
- style="
-    {{ width_style }}
-    --desktop-height: {{ component.desktop_height | default(90) }}vh;
-    --mobile-height: {{ component.mobile_height | default(70) }}vh;
-  "
-> 
-<div
-  class="inner-content flex flex-col {{ component.block_title or component.subtext ? 'pb-6' : '' }} container
-    {% if component.items_alignment_horizontal|default('center') == 'start' %}
-      items-start text-start
-    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
-      items-center text-center
-    {% else %}
-      items-end text-end
-    {% endif %}">
-    {% if  component.block_title %}
-      <h2 class="component-title" style="color: {{ component.blocktitle_color }}">
-        {{ component.block_title }}
-      </h2>
-    {% endif %}
-        {% if  component.subtext %}
-      <p class="component-subtext" style="color: {{ component.subtext_color }}">
-        {{ component.subtext }}
-      </p>
-    {% endif %}
-</div>
-    <salla-slider 
-        id="shopify-hero-{{ position }}"
-        type="carousel"
-        auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}"
-        auto-height="{{ component.auto_height ? 'true' : 'false' }}"
-        show-controls="false"
-        pagination="{{ component.show_pagination ? 'true' : 'false' }}"
-        slides-per-view="auto"
-        centered="true"
-        space-between="10"
-        speed="700"
-        class="custom-shopify-style-slider"
-        data-delay="{{ component.delay_time | default(3) }}000"
-        slider-config='{
-          "slidesPerView": "auto",
-          "centeredSlides": true,
-          "spaceBetween": 10,
-          "speed": 700,
-          "loop": true,
-          "navigation": {
-            "nextEl": ".hero-next-{{ position }}",
-            "prevEl": ".hero-prev-{{ position }}"
-          },
-          "pagination": {
-            "el": ".hero-pagination-{{ position }}",
-            "clickable": true
-          }
-          {% if component.slider_effect == 'fade' %},
-          "effect": "fade",
-          "fadeEffect": {
-            "crossFade": true
-          }
-          {% endif %}
-          {% if component.enable_parallax %},
-          "parallax": true
-          {% endif %}
-          {% if component.enable_autoplay %},
-          "autoplay": {
-            "delay": {{ component.delay_time | default(3) }}000,
-            "disableOnInteraction": false,
-            "pauseOnMouseEnter": true 
-          }
-          {% endif %}
-        }'
-      >
-      <div slot="items">
+	{% set width_class = 'w-full' %}
+{% endif %}
 
-        {% for slide in component.banner %}
+<section class="{{ width_class }} mt-6 shopify-hero-{{ position }} mb-10 md:mb-20" style="
+		    {{ width_style }}
+		    --desktop-height: {{ component.desktop_height | default(90) }}vh;
+		    --mobile-height: {{ component.mobile_height | default(70) }}vh;
+		  ">
+	<div class="inner-content flex flex-col {{ component.block_title or component.subtext ? 'pb-6' : '' }} container
+			    {% if component.items_alignment_horizontal|default('center') == 'start' %}
+			      items-start text-start
+			    {% elseif component.items_alignment_horizontal|default('center') == 'center' %}
+			      items-center text-center
+			    {% else %}
+			      items-end text-end
+			    {% endif %}">
+		{% if  component.block_title %}
+			<h2 class="component-title" style="color: {{ component.blocktitle_color }}">
+				{{ component.block_title }}
+			</h2>
+		{% endif %}
+		{% if  component.subtext %}
+			<p class="component-subtext" style="color: {{ component.subtext_color }}">
+				{{ component.subtext }}
+			</p>
+		{% endif %}
+	</div>
+	<salla-slider id="shopify-hero-{{ position }}" type="carousel" auto-play="{{ component.enable_autoplay ? 'true' : 'false' }}" auto-height="{{ component.auto_height ? 'true' : 'false' }}" show-controls="false" pagination="{{ component.show_pagination ? 'true' : 'false' }}" slides-per-view="auto" centered="true" space-between="10" speed="700" class="custom-shopify-style-slider" data-delay="{{ component.delay_time | default(3) }}000" slider-config='{
+			          "slidesPerView": "auto",
+			          "centeredSlides": true,
+			          "spaceBetween": 10,
+			          "speed": 700,
+			          "loop": true,
+			          "navigation": {
+			            "nextEl": ".hero-next-{{ position }}",
+			            "prevEl": ".hero-prev-{{ position }}"
+			          },
+			          "pagination": {
+			            "el": ".hero-pagination-{{ position }}",
+			            "clickable": true
+			          }
+			          {% if component.enable_autoplay %},
+			          "autoplay": {
+			            "delay": {{ component.delay_time | default(3) }}000,
+			            "disableOnInteraction": false,
+			            "pauseOnMouseEnter": true
+			          }
+			          {% endif %}
+			        }'>
+		<div slot="items">
 
-          {% set v_align = slide.items_alignment_vertical[0] | default('center') %}
-          {% set h_align = slide.items_alignment_horizontal[0] | default('start') %}
-          {% set mobile_v_align = slide.mobile_items_alignment_vertical[0] | default(v_align) %}
-          {% set mobile_h_align = slide.mobile_items_alignment_horizontal[0] | default(h_align) %}
+			{% for slide in component.banner %}
 
-          <div class="custom-slide-item">
+				{% set v_align = slide.items_alignment_vertical[0] | default('center') %}
+				{% set h_align = slide.items_alignment_horizontal[0] | default('start') %}
+				{% set mobile_v_align = slide.mobile_items_alignment_vertical[0] | default(v_align) %}
+				{% set mobile_h_align = slide.mobile_items_alignment_horizontal[0] | default(h_align) %}
 
-          {% if slide.vid and slide.vid_url %}
+				<div class="custom-slide-item">
 
-            <div class="slide-bg-media">
-              <video
-                class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                poster="{{ slide.desktop_bg }}"
-              >
-                <source src="{{ slide.vid_url }}" type="video/mp4">
-              </video>
-            </div>
+					{% if slide.vid and slide.vid_url %}
 
-          {% else %}
+						<div class="slide-bg-media">
+							<video class="slide-bg-video{% if slide.blur %} blur-effect{% endif %}" autoplay muted loop playsinline preload="metadata" poster="{{ slide.desktop_bg }}">
+								<source src="{{ slide.vid_url }}" type="video/mp4">
+							</video>
+						</div>
 
-            <picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
-              <source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
-              <img
-                src="{{ slide.desktop_bg }}"
-                alt="{{ slide.block_title }}"
-                loading="{{ loop.first ? 'eager' : 'lazy' }}"
-                fetchpriority="{{ loop.first ? 'high' : 'auto' }}"
-              >
-            </picture>
+					{% else %}
 
-          {% endif %}
+						<picture class="slide-bg-picture{% if slide.blur %} blur-effect{% endif %} ltr:scale-x-[-1]">
+							<source media="(max-width: 767px)" srcset="{{ slide.mobile_bg }}">
+							<img src="{{ slide.desktop_bg }}" alt="{{ slide.block_title }}" loading="{{ loop.first ? 'eager' : 'lazy' }}" fetchpriority="{{ loop.first ? 'high' : 'auto' }}">
+						</picture>
 
-            {% if slide.overlay > 0 %}
-              <div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
-            {% endif %}
+					{% endif %}
 
-            <div class="  slide-content-wrapper
-                      v-align-{{ v_align }}
-                      h-align-{{ h_align }}
-                      mobile-v-align-{{ mobile_v_align }}
-                      mobile-h-align-{{ mobile_h_align }}">
-              <div class="inner-content">
+					{% if slide.overlay > 0 %}
+						<div class="slide-overlay" style="opacity: {{ slide.overlay / 10 }}"></div>
+					{% endif %}
 
-                {% if slide.subtext %}
-                  <p class="slide-subtext" style="color: {{ slide.subtext_color }}" {% if component.enable_parallax %}data-swiper-parallax="-300"{% endif %}>
-                    {{ slide.subtext }}
-                  </p>
-                {% endif %}
+					<div class="  slide-content-wrapper
+							                      v-align-{{ v_align }}
+							                      h-align-{{ h_align }}
+							                      mobile-v-align-{{ mobile_v_align }}
+							                      mobile-h-align-{{ mobile_h_align }}">
+						<div class="inner-content">
 
-                {% if slide.block_title %} 
-                  <h2 class="slide-title my-3" style="color: {{ slide.blocktitle_color }}" {% if component.enable_parallax %}data-swiper-parallax="-500"{% endif %}>
-                    {{ slide.block_title }}
-                  </h2>
-                {% endif %}
+							{% if slide.subtext %}
+								<p class="slide-subtext" style="color: {{ slide.subtext_color }}">
+									{{ slide.subtext }}
+								</p>
+							{% endif %}
 
-                {% if slide.button_text %}
-                 <div class="mt-4" {% if component.enable_parallax %}data-swiper-parallax="-700"{% endif %}>
-                 {% include 'components.custom.button_customize.twig' with {
+							{% if slide.block_title %}
+								<h2 class="slide-title my-3" style="color: {{ slide.blocktitle_color }}">
+									{{ slide.block_title }}
+								</h2>
+							{% endif %}
+
+							{% if slide.button_text %}
+								{% include 'components.custom.button_customize.twig' with {
                     href: slide.url,
                     text: slide.button_text,
                     selector:'slide-btn-' ~ loop.index,
@@ -158,125 +118,117 @@
                     bg: slide.button_bg,
                     color: slide.button_text_color,
                 } %}
-                 </div>
-                {% endif %}
+							{% endif %}
 
-              </div>
-            </div>
+						</div>
+					</div>
 
-          </div>
+				</div>
 
-        {% endfor %}
+			{% endfor %}
 
-      </div>
-    </salla-slider>
-    <div class="flex items-center justify-center w-fit gap-4 mx-auto {{ component.pagination_position == 'inside' ? 'absolute bottom-6 left-1/2 -translate-x-1/2 z-20 mt-0' : 'mt-3' }}">
-        {% if component.show_navigation %}
-        <button
-            class="hero-prev-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
-            <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
-            <i class="relative z-10 sicon-arrow-right transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
-        </button>
-        {% endif %}
-     
-        {% if component.show_pagination %}
-        <div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
-        {% endif %}
-         {% if component.show_navigation %}
-        <button
-            class="hero-next-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
-            <span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
-            <i class="relative z-10 sicon-arrow-left transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
-        </button>
-      {% endif %}
-    </div>
+		</div>
+	</salla-slider>
+	<div class="flex items-center justify-center w-fit gap-4 mx-auto mt-3">
+		{% if component.show_navigation %}
+			<button class="hero-prev-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
+				<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+				<i class="relative z-10 sicon-arrow-right transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
+			</button>
+		{% endif %}
+
+		{% if component.show_pagination %}
+			<div class="hero-pagination-{{ position }} flex items-center gap-2"></div>
+		{% endif %}
+		{% if component.show_navigation %}
+			<button class="hero-next-{{ position }} group relative overflow-hidden !size-11 rounded-full border border-white/20 bg-font backdrop-blur-md text-background flex items-center justify-center transition-all duration-300 hover:bg-background hover:text-font hover:border-font">
+				<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"></span>
+				<i class="relative z-10 sicon-arrow-left transition-colors duration-300 group-hover:text-font ltr:scale-x-[-1]"></i>
+			</button>
+		{% endif %}
+	</div>
 </section>
 <style>
-.shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet::before,
- .shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet::after,
-.shopify-hero-{{ position }} .pagination-and-controls .swiper-pagination-bullet {
-	background-color:white;
-}
-/* Apply animation */
-.AU-hero-section-{{position}} .swiper-pagination-bullet.swiper-pagination-bullet-active::after {
-    animation: afterWidthExpand 5s ease-in-out forwards;
-    animation-delay: 0.7s;
-}
-{% if component.banner_width == 'wide' %}
-    #shopify-hero-{{ position }} .carousel-slider .swiper {
-      padding: 0 !important;
-      margin: 0 !important;
-    }
-{% else %}
-    #shopify-hero-{{ position }} .carousel-slider .swiper {
-        padding: 10px 16px !important;
-    }
-    .shopify-hero-{{ position }} .carousel-slider .swiper{
-      padding:0px 12px !important;
-      margin:0 !important;
-    }
-{% endif %}
-.shopify-hero-{{ position }} .slide-bg-video,
-.shopify-hero-{{ position }} .slide-bg-picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+	.shopify-hero-{{position}}.pagination-and-controls .swiper-pagination-bullet::before, .shopify-hero-{{position}}.pagination-and-controls .swiper-pagination-bullet::after, .shopify-hero-{{position}}.pagination-and-controls .swiper-pagination-bullet {
+		background-color: white;
+	}
+	/* Apply animation */
+	.AU-hero-section-{{position}}.swiper-pagination-bullet.swiper-pagination-bullet-active::after {
+		animation: afterWidthExpand 5s ease-in-out forwards;
+		animation-delay: 0.7s;
+	}
+	#shopify-hero-{{position}}.carousel-slider .swiper {
+		padding: 10px 16px !important;
+	}
+	.shopify-hero-{{position}}.carousel-slider .swiper {
+		padding: 0 12px !important;
+		margin: 0 !important;
+	}
+	.shopify-hero-{{position}}.slide-bg-video, .shopify-hero-{{position}}.slide-bg-picture img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
 
-.shopify-hero-{{ position }} .slide-bg-media {
-  position: absolute;
-  inset: 0;
-}
-{% if component.show_pagination %}
+	.shopify-hero-{{position}}.slide-bg-media {
+		position: absolute;
+		inset: 0;
+	}
+	{% if component.show_pagination %}
 
-.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet {
-    position: relative;
-    width: 20px !important;
-    height: 10px !important;
-    margin: 0 4px !important;
-    border-radius: 9999px !important;
-    background: rgba(0,0,0,.2) !important;
-    opacity: 1 !important;
-    overflow: hidden;
-}
-.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet-active{
- width: 40px !important;
-}
+		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet {
+			position: relative;
+			width: 20px !important;
+			height: 10px !important;
+			margin: 0 4px !important;
+			border-radius: 9999px !important;
+			background: rgba(0, 0, 0, .2) !important;
+			opacity: 1 !important;
+			overflow: hidden;
+		}
+		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet-active {
+			width: 40px !important;
+		}
 
-.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 0;
-    height: 100%;
-    background: #000;
-    border-radius: inherit;
-}
+		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			width: 0;
+			height: 100%;
+			background: #000;
+			border-radius: inherit;
+		}
 
-.shopify-hero-{{ position }} .hero-pagination-{{ position }} .swiper-pagination-bullet-active::after {
-    animation: heroProgress-{{ position }} {{ component.delay_time|default(3) }}s linear forwards;
-}
-.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
-  width:fit-content !important;
-}
-@keyframes heroProgress-{{ position }} {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-{% endif %}
-{% if component.banner_width == 'percentage' %}
-.shopify-hero-percentage-{{ position }} {
-    width: 100%;
-}
-@media (min-width: 768px) {
-    .shopify-hero-percentage-{{ position }} {
-        width: {{ component.banner_percentage_width|default(90) }}%;
-    }
-}
-{% endif %}
+		.shopify-hero-{{position}}.hero-pagination-{{position}}.swiper-pagination-bullet-active::after {
+			animation: heroProgress-{{position}}{{component.delay_time|default(3)}}
+			s linear forwards;
+		}
+		.swiper-pagination-bullets,
+		.swiper-pagination-bullets.swiper-pagination-horizontal,
+		.swiper-pagination-custom,
+		.swiper-pagination-fraction {
+			width: fit-content !important;
+		}
+		@keyframes heroProgress-{{position}}{
+			from {
+				width: 0;
+			}
+			to {
+				width: 100%;
+			}
+		}
+	{% endif %}
+	{% if component.banner_width == 'percentage' %}
+		.shopify-hero-percentage-{{position}}{
+			width: 100%;
+		}
+		@media(min-width: 768px) {
+			.shopify-hero-percentage-{{position}}{
+				width: {{component.banner_percentage_width|default(90)}}
+				%;
+			}
+		}
+	{% endif %}
 </style>
