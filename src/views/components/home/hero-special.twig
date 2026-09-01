@@ -5,32 +5,38 @@
 {% set pag_style = pag_style_v is iterable ? pag_style_v|first : pag_style_v %}
 {% set pag_pos_v = component.hs_pagination_position.value|default(component.hs_pagination_position|default('bottom-center')) %}
 {% set pag_pos = pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v %}
-{% set arrows_vis_v = component.hs_arrows_visibility.value|default(component.hs_arrows_visibility|default('desktop')) %}
-{% set arrows_vis = arrows_vis_v is iterable ? arrows_vis_v|first : arrows_vis_v %}
 {% set autoplay_speed = component.hs_autoplay_speed|default(4000) %}
 {% set transition_speed = component.hs_transition_speed|default(700) %}
 
 <style>
-	.hero-slideshow-{{ component.id }} {
+	.hs-wrap-{{ component.id }} {
 		height: {{ component.hs_mobile_height | default('620px') }};
 	}
 	@media(min-width: 768px) {
-		.hero-slideshow-{{ component.id }} {
+		.hs-wrap-{{ component.id }} {
 			height: {{ component.hs_tablet_height | default('500px') }};
 		}
 	}
 	@media(min-width: 1024px) {
-		.hero-slideshow-{{ component.id }} {
+		.hs-wrap-{{ component.id }} {
 			height: {{ component.hs_desktop_height | default('620px') }};
 		}
 	}
 
-	.hero-slideshow-{{ component.id }} .swiper-slide {
+	.hs-wrap-{{ component.id }} salla-slider,
+	.hs-wrap-{{ component.id }} .swiper,
+	.hs-wrap-{{ component.id }} .swiper-wrapper {
+		height: 100%;
+	}
+
+	.hs-wrap-{{ component.id }} .swiper-slide {
 		position: relative;
 		overflow: hidden;
 	}
 
-	.hero-slideshow-{{ component.id }} .hs-slide-bg-img {
+	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
+		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -42,127 +48,214 @@
 	}
 
 	{% if component.hs_enable_zoom_animation %}
-		.hero-slideshow-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
-			transform: scale(1.12);
+		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
+			transform: scale(1.08);
 		}
 	{% endif %}
 
-	.hero-slideshow-{{ component.id }} .hs-overlay {
+	.hs-wrap-{{ component.id }} .hs-overlay {
 		position: absolute;
 		inset: 0;
 		background-color: #000000;
+		pointer-events: none;
+		z-index: 1;
 	}
 
-	.hero-slideshow-{{ component.id }} .hs-content {
+	.hs-wrap-{{ component.id }} .hs-content {
 		position: absolute;
 		inset: 0;
 		display: flex;
 		flex-direction: column;
 		padding: 24px;
-		z-index: 10;
+		z-index: 2;
 	}
-
 	@media(min-width: 768px) {
-		.hero-slideshow-{{ component.id }} .hs-content {
+		.hs-wrap-{{ component.id }} .hs-content {
 			padding: 64px;
 		}
 	}
 
-	.hero-slideshow-{{ component.id }} .hs-text-box {
+	.hs-wrap-{{ component.id }} .hs-text-box {
 		max-width: 640px;
 	}
 
-	.hero-slideshow-{{ component.id }} .hs-btn {
+	/* ─── Buttons ─── */
+	.hs-wrap-{{ component.id }} .hs-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 12px 28px;
 		font-size: 13px;
 		letter-spacing: 0.15em;
 		text-transform: uppercase;
 		font-weight: 600;
-		transition: all .25s ease;
+		text-decoration: none;
+		transition: opacity .25s ease;
 	}
-	.hero-slideshow-{{ component.id }} .hs-btn--underline {
-		padding: 0 0 4px 0;
-		border-bottom: 1px solid currentColor;
+	.hs-wrap-{{ component.id }} .hs-btn--underline {
+		position: relative;
+		padding-bottom: 4px;
 	}
-	.hero-slideshow-{{ component.id }} .hs-btn--solid.hs-scheme-light {
+	.hs-wrap-{{ component.id }} .hs-btn--underline::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1.5px;
+		background: currentColor;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover {
+		opacity: 0.65;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover::after {
+		animation: hsBorderSlide 0.65s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+	}
+	@keyframes hsBorderSlide {
+		0%   { transform-origin: right; transform: scaleX(1); }
+		49%  { transform-origin: right; transform: scaleX(0); }
+		50%  { transform-origin: left;  transform: scaleX(0); }
+		100% { transform-origin: left;  transform: scaleX(1); }
+	}
+
+	.hs-wrap-{{ component.id }} .hs-btn--solid {
+		padding: 12px 28px;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-light {
 		background-color: #ffffff;
 		color: #000000;
 	}
-	.hero-slideshow-{{ component.id }} .hs-btn--solid.hs-scheme-dark {
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-dark {
 		background-color: #000000;
 		color: #ffffff;
 	}
-	.hero-slideshow-{{ component.id }} .hs-btn--outline {
+	.hs-wrap-{{ component.id }} .hs-btn--outline {
+		padding: 12px 28px;
 		border: 1px solid currentColor;
 		background: transparent;
 	}
 
-	.hero-slideshow-{{ component.id }} .swiper-pagination-bullet {
-		background: #ffffff;
-		opacity: .6;
-	}
-	.hero-slideshow-{{ component.id }} .swiper-pagination-bullet-active {
-		opacity: 1;
+	/* ─── Pagination position ─── */
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination),
+	.hs-wrap-{{ component.id }} .swiper-pagination {
+		{% if pag_pos == 'bottom-start' %}
+			text-align: start;
+			padding-inline-start: 2rem;
+		{% elseif pag_pos == 'bottom-end' %}
+			text-align: end;
+			padding-inline-end: 2rem;
+		{% else %}
+			text-align: center;
+		{% endif %}
+		bottom: 20px;
+		z-index: 5;
 	}
 
-	{% if not component.hs_show_arrows or arrows_vis == 'desktop' %}
-		.hero-slideshow-{{ component.id }} .hs-nav-btn {
-			display: none;
-		}
-		@media(min-width: 1024px) {
-			.hero-slideshow-{{ component.id }} .hs-nav-btn {
-				display: {{ component.hs_show_arrows ? 'flex' : 'none' }};
-			}
-		}
+	/* ─── Nav arrows ─── */
+	.hs-wrap-{{ component.id }} .hs-prev,
+	.hs-wrap-{{ component.id }} .hs-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background: rgba(255,255,255,.8);
+		border: none;
+		cursor: pointer;
+	}
+	.hs-wrap-{{ component.id }} .hs-prev { inset-inline-start: 1rem; }
+	.hs-wrap-{{ component.id }} .hs-next { inset-inline-end: 1rem; }
+
+	{% if not component.hs_show_arrows %}
+		.hs-wrap-{{ component.id }} .hs-prev,
+		.hs-wrap-{{ component.id }} .hs-next { display: none !important; }
 	{% endif %}
 
 	{% if component.hs_hide_on_desktop %}
-		@media(min-width: 1024px) { .hero-slideshow-{{ component.id }} { display: none !important; } }
+		@media(min-width: 1024px) { .hs-wrap-{{ component.id }} { display: none !important; } }
 	{% endif %}
 	{% if component.hs_hide_on_tablet %}
-		@media(min-width: 768px) and (max-width: 1023px) { .hero-slideshow-{{ component.id }} { display: none !important; } }
+		@media(min-width: 768px) and (max-width: 1023px) { .hs-wrap-{{ component.id }} { display: none !important; } }
 	{% endif %}
 	{% if component.hs_hide_on_mobile %}
-		@media(max-width: 767px) { .hero-slideshow-{{ component.id }} { display: none !important; } }
+		@media(max-width: 767px) { .hs-wrap-{{ component.id }} { display: none !important; } }
 	{% endif %}
 </style>
 
-<section id="{{ component.hs_section_id }}" class="hero-slideshow-wrap-{{ component.id }} relative w-full {{ component.hs_custom_css_class }}">
-	<div class="swiper hero-slideshow-{{ component.id }} w-full h-full relative">
-		<div class="swiper-wrapper">
+<section id="{{ component.hs_section_id }}" class="hs-wrap-{{ component.id }} relative w-full {{ component.hs_custom_css_class }}">
+
+	<salla-slider
+		id="hs-slider-{{ component.id }}"
+		type="carousel"
+		auto-play="{{ component.hs_enable_autoplay ? 'true' : 'false' }}"
+		show-controls="false"
+		pagination="{{ component.hs_show_pagination ? 'true' : 'false' }}"
+		slides-per-view="1"
+		speed="{{ transition_speed }}"
+		class="w-full h-full"
+		slider-config='{
+			"slidesPerView": 1,
+			"effect": "{{ effect }}",
+			"fadeEffect": { "crossFade": true },
+			"speed": {{ transition_speed }},
+			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
+			{% if component.hs_enable_autoplay %}
+			"autoplay": {
+				"delay": {{ autoplay_speed }},
+				"disableOnInteraction": false,
+				"pauseOnMouseEnter": true
+			},
+			{% endif %}
+			{% if component.hs_show_pagination %}
+			"pagination": {
+				"el": ".hs-pagination-{{ component.id }}",
+				"clickable": true,
+				"type": "{{ pag_style }}"
+			},
+			{% endif %}
+			{% if component.hs_show_arrows %}
+			"navigation": {
+				"nextEl": ".hs-next-{{ component.id }}",
+				"prevEl": ".hs-prev-{{ component.id }}"
+			},
+			{% endif %}
+			"on": {}
+		}'
+	>
+		<div slot="items">
 			{% for slide in slides %}
 				{% set _desk_img = slide.desktop_image|default('')|trim %}
 				{% set _desk_img = _desk_img is iterable ? _desk_img|first : _desk_img %}
-				{% set _mob_img = slide.mobile_image|default(_desk_img)|trim %}
-				{% set _mob_img = _mob_img is iterable ? _mob_img|first : _mob_img %}
+				{% set _mob_img  = slide.mobile_image|default(_desk_img)|trim %}
+				{% set _mob_img  = _mob_img is iterable ? _mob_img|first : _mob_img %}
 
-				{% set scheme_v = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
-				{% set scheme = scheme_v is iterable ? scheme_v|first : scheme_v %}
+				{% set scheme_v  = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
+				{% set scheme    = scheme_v is iterable ? scheme_v|first : scheme_v %}
 				{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
 
-				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
-				{% set h_pos = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
-				{% set v_pos_v = slide.vertical_position.value|default(slide.vertical_position|default('end')) %}
-				{% set v_pos = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
-				{% set align_v = slide.text_alignment.value|default(slide.text_alignment|default('start')) %}
-				{% set align = align_v is iterable ? align_v|first : align_v %}
+				{% set h_pos_v   = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
+				{% set h_pos     = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
+				{% set v_pos_v   = slide.vertical_position.value|default(slide.vertical_position|default('end')) %}
+				{% set v_pos     = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
+				{% set align_v   = slide.text_alignment.value|default(slide.text_alignment|default('start')) %}
+				{% set align     = align_v is iterable ? align_v|first : align_v %}
 
-				{% set justify_class = (v_pos == 'start') ? 'justify-start' : (v_pos == 'center' ? 'justify-center' : 'justify-end') %}
-				{% set items_class = (h_pos == 'start') ? 'items-start' : (h_pos == 'center' ? 'items-center' : 'items-end') %}
-				{% set text_align_class = (align == 'center') ? 'text-center' : (align == 'end' ? 'text-end' : 'text-start') %}
+				{% set justify_class  = (v_pos == 'start') ? 'justify-start' : (v_pos == 'center' ? 'justify-center' : 'justify-end') %}
+				{% set items_class    = (h_pos == 'start') ? 'items-start' : (h_pos == 'center' ? 'items-center' : 'items-end') %}
+				{% set text_align_cls = (align == 'center') ? 'text-center' : (align == 'end' ? 'text-end' : 'text-start') %}
 
-				{% set _btn_val = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
-				{% set _slide_btn_url = _btn_val.url|default(_btn_val|default('#')) %}
+				{% set _btn_val        = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
+				{% set _slide_btn_url  = _btn_val.url|default(_btn_val|default('#')) %}
 
 				{% set btn_style_v = slide.btn_style.value|default(slide.btn_style|default('underline')) %}
-				{% set btn_style = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
+				{% set btn_style   = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
-				<div class="swiper-slide" data-slide-index="{{ loop.index0 }}">
+				<div class="swiper-slide">
 					<picture class="absolute inset-0 w-full h-full block">
 						{% if _mob_img %}
 							<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
@@ -173,7 +266,7 @@
 					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
 
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
-						<div class="hs-text-box {{ text_align_class }}" style="color: {{ text_color }};">
+						<div class="hs-text-box {{ text_align_cls }}" style="color: {{ text_color }};">
 							{% if slide.heading %}
 								<h2 class="text-3xl md:text-6xl font-serif mb-4 leading-tight">{{ slide.heading }}</h2>
 							{% endif %}
@@ -181,7 +274,9 @@
 								<p class="text-base md:text-lg mb-6 opacity-90">{{ slide.description }}</p>
 							{% endif %}
 							{% if slide.btn_text %}
-								<a href="{{ _slide_btn_url }}" class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}" style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}">
+								<a href="{{ _slide_btn_url }}"
+								   class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
+								   style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}">
 									{{ slide.btn_text }}
 								</a>
 							{% endif %}
@@ -192,53 +287,17 @@
 		</div>
 
 		{% if component.hs_show_pagination %}
-			<div class="swiper-pagination hs-pagination-{{ component.id }} absolute z-20 flex gap-2
-				{{ pag_pos == 'bottom-start' ? 'justify-start ltr:left-8 rtl:right-8' : (pag_pos == 'bottom-end' ? 'justify-end ltr:right-8 rtl:left-8' : 'justify-center left-0 right-0') }}"
-				style="bottom: 24px;"></div>
+			<div slot="pagination" class="hs-pagination-{{ component.id }}"></div>
 		{% endif %}
+	</salla-slider>
 
-		{% if component.hs_show_arrows %}
-			<button type="button" class="hs-nav-btn hs-prev-{{ component.id }} absolute z-20 top-1/2 -translate-y-1/2 ltr:left-4 rtl:right-4 items-center justify-center w-10 h-10 rounded-full bg-white/80">
-				<span class="sicon-arrow-{{ component.direction == 'rtl' ? 'right' : 'left' }}"></span>
-			</button>
-			<button type="button" class="hs-nav-btn hs-next-{{ component.id }} absolute z-20 top-1/2 -translate-y-1/2 ltr:right-4 rtl:left-4 items-center justify-center w-10 h-10 rounded-full bg-white/80">
-				<span class="sicon-arrow-{{ component.direction == 'rtl' ? 'left' : 'right' }}"></span>
-			</button>
-		{% endif %}
-	</div>
+	{% if component.hs_show_arrows %}
+		<button type="button" class="hs-prev hs-prev-{{ component.id }}">
+			<span class="sicon-arrow-{% if store.dir == 'rtl' %}right{% else %}left{% endif %}"></span>
+		</button>
+		<button type="button" class="hs-next hs-next-{{ component.id }}">
+			<span class="sicon-arrow-{% if store.dir == 'rtl' %}left{% else %}right{% endif %}"></span>
+		</button>
+	{% endif %}
+
 </section>
-
-<script>
-	document.addEventListener('DOMContentLoaded', function () {
-		if (typeof Swiper === 'undefined') {
-			console.warn('Swiper library not found — hero-slideshow-{{ component.id }} cannot initialize.');
-			return;
-		}
-
-		new Swiper('.hero-slideshow-{{ component.id }}', {
-			effect: '{{ effect }}',
-			fadeEffect: { crossFade: true },
-			speed: {{ transition_speed }},
-			loop: {{ component.hs_enable_loop ? 'true' : 'false' }},
-			autoplay: {{ component.hs_enable_autoplay ? ('{ delay: ' ~ autoplay_speed ~ ', disableOnInteraction: false }') : 'false' }},
-			{% if component.hs_show_pagination %}
-			pagination: {
-				el: '.hs-pagination-{{ component.id }}',
-				clickable: true,
-				type: '{{ pag_style }}'
-			},
-			{% endif %}
-			{% if component.hs_show_arrows %}
-			navigation: {
-				nextEl: '.hs-next-{{ component.id }}',
-				prevEl: '.hs-prev-{{ component.id }}'
-			},
-			{% endif %}
-			on: {
-				init: function () {
-					this.el.querySelectorAll('.swiper-slide')[this.activeIndex]?.classList.add('swiper-slide-active');
-				}
-			}
-		});
-	});
-</script>
