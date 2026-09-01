@@ -7,6 +7,7 @@
 {% set pag_pos = pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v %}
 {% set autoplay_speed = component.hs_autoplay_speed|default(4000) %}
 {% set transition_speed = component.hs_transition_speed|default(700) %}
+{% set enable_parallax = component.hs_enable_parallax %}
 
 <style>
 	.hs-wrap-{{ component.id }} {
@@ -38,9 +39,11 @@
 		position: absolute;
 		inset: 0;
 		width: 100%;
-		height: 100%;
+		height: 110%;
+		top: -5%;
 		object-fit: cover;
 		object-position: center;
+		will-change: transform;
 		{% if component.hs_enable_zoom_animation %}
 			transform: scale(1);
 			transition: transform {{ (autoplay_speed + transition_speed) }}ms ease-out;
@@ -77,7 +80,18 @@
 
 	.hs-wrap-{{ component.id }} .hs-text-box {
 		max-width: 640px;
+		{% if enable_parallax %}
+			will-change: transform;
+			transition: transform 0.1s linear;
+		{% endif %}
 	}
+
+	/* ─── Parallax content ─── */
+	{% if enable_parallax %}
+		.hs-wrap-{{ component.id }} .hs-content {
+			perspective: 1000px;
+		}
+	{% endif %}
 
 	/* ─── Buttons ─── */
 	.hs-wrap-{{ component.id }} .hs-btn {
@@ -108,9 +122,9 @@
 		opacity: 0.65;
 	}
 	.hs-wrap-{{ component.id }} .hs-btn--underline:hover::after {
-		animation: hsBorderSlide 0.65s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+		animation: hsBorderSlide-{{ component.id }} 0.65s cubic-bezier(0.77, 0, 0.175, 1) forwards;
 	}
-	@keyframes hsBorderSlide {
+	@keyframes hsBorderSlide-{{ component.id }} {
 		0%   { transform-origin: right; transform: scaleX(1); }
 		49%  { transform-origin: right; transform: scaleX(0); }
 		50%  { transform-origin: left;  transform: scaleX(0); }
@@ -134,20 +148,43 @@
 		background: transparent;
 	}
 
-	/* ─── Pagination position ─── */
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination),
-	.hs-wrap-{{ component.id }} .swiper-pagination {
+	/* ─── Pagination ─── */
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} {
+		position: absolute;
+		z-index: 10;
+		bottom: 20px;
+		left: 0;
+		right: 0;
+		display: flex;
+		gap: 6px;
+		pointer-events: none;
 		{% if pag_pos == 'bottom-start' %}
-			text-align: start;
+			justify-content: flex-start;
 			padding-inline-start: 2rem;
 		{% elseif pag_pos == 'bottom-end' %}
-			text-align: end;
+			justify-content: flex-end;
 			padding-inline-end: 2rem;
 		{% else %}
-			text-align: center;
+			justify-content: center;
 		{% endif %}
-		bottom: 20px;
-		z-index: 5;
+	}
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} .swiper-pagination-bullet {
+		pointer-events: all;
+		width: 8px;
+		height: 8px;
+		background: rgba(255,255,255,0.55);
+		border-radius: 99px;
+		cursor: pointer;
+		transition: background .3s, width .3s;
+		display: inline-block;
+	}
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} .swiper-pagination-bullet-active {
+		background: #fff;
+		width: 24px;
+	}
+	/* hide salla-slider's built-in pagination since we roll our own */
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) {
+		display: none !important;
 	}
 
 	/* ─── Nav arrows ─── */
@@ -192,7 +229,7 @@
 		type="carousel"
 		auto-play="{{ component.hs_enable_autoplay ? 'true' : 'false' }}"
 		show-controls="false"
-		pagination="{{ component.hs_show_pagination ? 'true' : 'false' }}"
+		pagination="false"
 		slides-per-view="1"
 		speed="{{ transition_speed }}"
 		class="w-full h-full"
@@ -209,13 +246,11 @@
 				"pauseOnMouseEnter": true
 			},
 			{% endif %}
-			{% if component.hs_show_pagination %}
 			"pagination": {
 				"el": ".hs-pagination-{{ component.id }}",
 				"clickable": true,
-				"type": "{{ pag_style }}"
+				"type": "bullets"
 			},
-			{% endif %}
 			{% if component.hs_show_arrows %}
 			"navigation": {
 				"nextEl": ".hs-next-{{ component.id }}",
@@ -266,7 +301,7 @@
 					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
 
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
-						<div class="hs-text-box {{ text_align_cls }}" style="color: {{ text_color }};">
+						<div class="hs-text-box {{ text_align_cls }} {% if enable_parallax %}hs-parallax-box{% endif %}" style="color: {{ text_color }};">
 							{% if slide.heading %}
 								<h2 class="text-3xl md:text-6xl font-serif mb-4 leading-tight">{{ slide.heading }}</h2>
 							{% endif %}
@@ -285,11 +320,11 @@
 				</div>
 			{% endfor %}
 		</div>
-
-		{% if component.hs_show_pagination %}
-			<div slot="pagination" class="hs-pagination-{{ component.id }}"></div>
-		{% endif %}
 	</salla-slider>
+
+	{% if component.hs_show_pagination %}
+		<div class="hs-pagination-{{ component.id }}"></div>
+	{% endif %}
 
 	{% if component.hs_show_arrows %}
 		<button type="button" class="hs-prev hs-prev-{{ component.id }}">
@@ -301,3 +336,29 @@
 	{% endif %}
 
 </section>
+
+{% if enable_parallax %}
+<script>
+(function() {
+	var wrap = document.querySelector('.hs-wrap-{{ component.id }}');
+	if (!wrap) return;
+	var strength = {{ component.hs_parallax_strength | default(20) }};
+
+	wrap.addEventListener('mousemove', function(e) {
+		var boxes = wrap.querySelectorAll('.hs-parallax-box');
+		var rect  = wrap.getBoundingClientRect();
+		var xRel  = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+		var yRel  = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+		boxes.forEach(function(box) {
+			box.style.transform = 'translate(' + (xRel * strength * -1) + 'px, ' + (yRel * strength * -1) + 'px)';
+		});
+	});
+
+	wrap.addEventListener('mouseleave', function() {
+		wrap.querySelectorAll('.hs-parallax-box').forEach(function(box) {
+			box.style.transform = 'translate(0,0)';
+		});
+	});
+})();
+</script>
+{% endif %}

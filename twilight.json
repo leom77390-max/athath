@@ -8588,6 +8588,29 @@
         "label": "إخفاء في الجوال",
         "format": "switch",
         "value": false
+    },
+    {
+        "type": "boolean",
+        "id": "hs_enable_parallax",
+        "label": "تفعيل تأثير البارالاكس على المحتوى",
+        "format": "switch",
+        "value": false,
+        "description": "يتحرك النص بشكل طفيف عند حركة الماوس فوق السلايدر."
+    },
+    {
+        "id": "hs_parallax_strength",
+        "type": "number",
+        "format": "slider",
+        "inputType": "range",
+        "label": "قوة تأثير البارالاكس",
+        "value": "20",
+        "step": "5",
+        "minimum": "5",
+        "maximum": "60",
+        "conditions": [
+            { "id": "hs_enable_parallax", "operation": "=", "value": true }
+        ],
+        "description": "كلما زادت القيمة زادت حدة حركة البارالاكس."
     }
 ]
         }

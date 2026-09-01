@@ -2361,9 +2361,6 @@ input:where([type='file']):focus{
 .bg-white\/20{
     background-color: rgba(255, 255, 255, 0.2);
 }
-.bg-white\/80{
-    background-color: rgba(255, 255, 255, 0.8);
-}
 .bg-zinc-900{
     --tw-bg-opacity: 1;
     background-color: rgba(24, 24, 27, 1);
@@ -39116,9 +39113,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:left-4:where([dir="ltr"], [dir="ltr"] *){
     left: 1rem;
 }
-.ltr\:left-8:where([dir="ltr"], [dir="ltr"] *){
-    left: 2rem;
-}
 .ltr\:right-0:where([dir="ltr"], [dir="ltr"] *){
     right: 0px;
 }
@@ -39133,9 +39127,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .ltr\:right-4:where([dir="ltr"], [dir="ltr"] *){
     right: 1rem;
-}
-.ltr\:right-8:where([dir="ltr"], [dir="ltr"] *){
-    right: 2rem;
 }
 .ltr\:right-auto:where([dir="ltr"], [dir="ltr"] *){
     right: auto;
@@ -39278,9 +39269,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:left-4:where([dir="rtl"], [dir="rtl"] *){
     left: 1rem;
 }
-.rtl\:left-8:where([dir="rtl"], [dir="rtl"] *){
-    left: 2rem;
-}
 .rtl\:left-auto:where([dir="rtl"], [dir="rtl"] *){
     left: auto;
 }
@@ -39292,9 +39280,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:right-4:where([dir="rtl"], [dir="rtl"] *){
     right: 1rem;
-}
-.rtl\:right-8:where([dir="rtl"], [dir="rtl"] *){
-    right: 2rem;
 }
 .rtl\:right-auto:where([dir="rtl"], [dir="rtl"] *){
     right: auto;
