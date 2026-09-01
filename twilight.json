@@ -8258,7 +8258,7 @@
         "label": "مدة عرض كل شريحة (بالمللي ثانية)",
         "value": "4000",
         "step": "500",
-        "minimum": "1500",
+        "minimum": "0",
         "maximum": "10000",
         "conditions": [
             { "id": "hs_enable_autoplay", "operation": "=", "value": true }
