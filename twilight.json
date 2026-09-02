@@ -8963,18 +8963,12 @@
           "format": "dropdown-list",
           "label": "ارتفاع القسم",
           "icon": "sicon-cursor-resize-y",
-          "selected": [
-            {
-              "value": "650",
-              "label": "متوسط (650px)",
-              "key": "sh2"
-            }
-          ],
           "options": [
-            { "value": "500", "label": "صغير (500px)", "key": "sh1" },
-            { "value": "650", "label": "متوسط (650px)", "key": "sh2" },
-            { "value": "800", "label": "كبير (800px)", "key": "sh3" }
-          ]
+            { "value": "500", "label": "صغير (500px)" },
+            { "value": "650", "label": "متوسط (650px)" },
+            { "value": "800", "label": "كبير (800px)" }
+          ],
+          "value": "650"
         },
         {
           "id": "section_width",
@@ -8982,25 +8976,17 @@
           "format": "dropdown-list",
           "label": "عرض القسم",
           "icon": "sicon-width",
-          "selected": [
-            {
-              "label": "عرض كامل",
-              "value": "wide",
-              "key": "w1"
-            }
-          ],
           "options": [
             {
               "label": "عرض كامل",
-              "value": "wide",
-              "key": "w1"
+              "value": "wide"
             },
             {
               "label": "داخل حاوية",
-              "value": "container",
-              "key": "w2"
+              "value": "container"
             }
-          ]
+          ],
+          "value": "wide"
         },
         {
           "id": "special_colors_condition",

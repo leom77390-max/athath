@@ -2344,9 +2344,6 @@ input:where([type='file']):focus{
 .border-white\/20{
     border-color: rgba(255, 255, 255, 0.2);
 }
-.border-white\/70{
-    border-color: rgba(255, 255, 255, 0.7);
-}
 .border-zinc-900{
     --tw-border-opacity: 1;
     border-color: rgba(24, 24, 27, 1);
@@ -38338,9 +38335,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(0, 0, 0, 1);
     border-color: rgba(0, 0, 0, var(--tw-border-opacity, 1));
 }
-.hover\:border-current:hover{
-    border-color: currentColor;
-}
 .hover\:border-font:hover{
     border-color: var(--color-font);
 }
@@ -38353,11 +38347,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-border-opacity: 1;
     border-color: rgba(156, 163, 175, 1);
     border-color: rgba(156, 163, 175, var(--tw-border-opacity, 1));
-}
-.hover\:border-white:hover{
-    --tw-border-opacity: 1;
-    border-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1));
 }
 .hover\:bg-background:hover{
     background-color: var(--color-background);
