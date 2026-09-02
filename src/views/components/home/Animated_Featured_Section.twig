@@ -2,13 +2,17 @@
 {% set width_val = hm.section_width is iterable ? hm.section_width|first.value : hm.section_width %}
 {% set height_val = hm.section_height is iterable ? hm.section_height|first.value : hm.section_height %}
 {% set is_container = width_val == 'container' %}
-{% set color_style = hm.special_colors_condition ? 'background-color: ' ~ hm.bg_color ~ '; color: ' ~ hm.text_color ~ ';' : '' %}
-{% set text_class = hm.special_colors_condition ? 'text-current' : 'text-white' %}
-{% set border_class = hm.special_colors_condition ? 'border-current' : 'border-white/70' %}
-{% set border_hover_class = hm.special_colors_condition ? 'hover:border-current' : 'hover:border-white' %}
+
+{% set marquee_style = hm.special_colors_condition and hm.marquee_color ? 'color: ' ~ hm.marquee_color ~ ';' : '' %}
+{% set marquee_class = hm.special_colors_condition and hm.marquee_color ? '' : 'text-white' %}
+
+{% set subheading_style = hm.special_colors_condition and hm.subheading_color ? 'color: ' ~ hm.subheading_color ~ ';' : '' %}
+{% set subheading_class = hm.special_colors_condition and hm.subheading_color ? '' : 'text-white' %}
+
+{% set button_class = hm.special_colors_condition and hm.button_color ? '' : 'text-white' %}
 
 {% if hm.background_image %}
-<section class="w-full relative {% if is_container %}py-8 lg:py-16{% endif %}" style="{{ color_style }}">
+<section class="w-full relative {% if is_container %}py-8 lg:py-16{% endif %}">
     <div class="{{ is_container ? 'container mx-auto px-4' : 'w-full' }}">
         <div
             class="hero-marquee relative w-full overflow-hidden flex flex-col {{ is_container ? 'rounded-2xl' : '' }}"
@@ -37,7 +41,7 @@
                         {% for i in 1..2 %}
                             <div class="flex items-center shrink-0">
                                 {% for j in 1..6 %}
-                                    <span class="hero-marquee__item font-serif text-3xl md:text-5xl {{ text_class }} uppercase mx-6 md:mx-10">
+                                    <span class="hero-marquee__item font-serif text-3xl md:text-5xl {{ marquee_class }} uppercase mx-6 md:mx-10" style="{{ marquee_style }}">
                                         {{ hm.marquee_text }}
                                     </span>
                                 {% endfor %}
@@ -50,7 +54,7 @@
             {# ============ Centered content ============ #}
             <div class="relative flex-1 flex flex-col items-center justify-center text-center px-4 gap-5">
                 {% if hm.subheading %}
-                    <p class="{{ text_class }} text-base md:text-lg max-w-xl">
+                    <p class="{{ subheading_class }} text-base md:text-lg max-w-xl" style="{{ subheading_style }}">
                         {{ hm.subheading }}
                     </p>
                 {% endif %}
@@ -59,7 +63,7 @@
                     {% include 'components.custom.special_button' with {
                         text: hm.button_text,
                         url: hm.button_url,
-                        class: text_class ~ ' text-xs md:text-sm tracking-[2px]',
+                        class: button_class ~ ' text-xs md:text-sm tracking-[2px]',
                         color: hm.special_colors_condition and hm.button_color ? hm.button_color : null
                     } %}
                 {% endif %}
