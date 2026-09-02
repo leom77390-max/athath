@@ -1657,6 +1657,10 @@ input:where([type='file']):focus{
 .w-full{
     width: 100%;
 }
+.w-max{
+    width: -moz-max-content;
+    width: max-content;
+}
 .w-screen{
     width: 100vw;
 }

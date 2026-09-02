@@ -9083,6 +9083,16 @@
           "visibleWhen": {
               "special_colors_condition": true
           }
+        },
+        {
+          "id": "button_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون الزر",
+          "value": "#ffffff",
+          "visibleWhen": {
+              "special_colors_condition": true
+          }
         }
       ]
         }

@@ -59,7 +59,8 @@
                     {% include 'components.custom.special_button' with {
                         text: hm.button_text,
                         url: hm.button_url,
-                        class: text_class ~ ' text-xs md:text-sm tracking-[2px]'
+                        class: text_class ~ ' text-xs md:text-sm tracking-[2px]',
+                        color: hm.special_colors_condition and hm.button_color ? hm.button_color : null
                     } %}
                 {% endif %}
             </div>
