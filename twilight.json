@@ -9575,7 +9575,112 @@
             },
             "icon": "sicon-store",
             "path": "home.Get_The_Look",
-            "fields": []
+            "fields": [
+                {
+                    "id": "subheading",
+                    "type": "string",
+                    "format": "text",
+                    "multilanguage": true,
+                    "label": "العنوان الفرعي (Subheading)",
+                    "value": { "en": "GET THE LOOK", "ar": "تسوق الإطلالة" }
+                },
+                {
+                    "id": "right_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون خلفية القائمة (يمين)",
+                    "value": "#f9f6f0"
+                },
+                {
+                    "id": "looks",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "عناصر الإطلالة (Lookbook Items)",
+                    "item_label": "إطلالة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "looks.list_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "عنوان القائمة (مثال: Living Room)",
+                            "value": { "en": "Living Room", "ar": "غرفة المعيشة" }
+                        },
+                        {
+                            "id": "looks.list_number",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الرقم الجانبي (مثال: 03)",
+                            "value": "01"
+                        },
+                        {
+                            "id": "looks.slider_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة العرض",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "looks.overlay_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "العنوان على الصورة",
+                            "value": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" }
+                        },
+                        {
+                            "id": "looks.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "نص الزر",
+                            "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "id": "looks.button_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الزر",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "looks.list_title": { "en": "Living Room", "ar": "غرفة المعيشة" },
+                            "looks.list_number": "03",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Workspace", "ar": "مساحة العمل" },
+                            "looks.list_number": "12",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "WORKSPACE", "ar": "مساحة العمل" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Sofa Living", "ar": "كنب المعيشة" },
+                            "looks.list_number": "07",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "كنب المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Lounge", "ar": "ردهة الاستراحة" },
+                            "looks.list_number": "15",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "LOUNGE", "ar": "الردهة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
