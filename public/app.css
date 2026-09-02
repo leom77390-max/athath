@@ -999,6 +999,9 @@ input:where([type='file']):focus{
 .right-\[5\%\]{
     right: 5%;
 }
+.start-0{
+    left: 0px;
+}
 .top-0{
     top: 0px;
 }
@@ -1456,6 +1459,9 @@ input:where([type='file']):focus{
 .h-\[52px\]{
     height: 52px;
 }
+.h-\[60vh\]{
+    height: 60vh;
+}
 .h-\[760px\]{
     height: 760px;
 }
@@ -1532,6 +1538,9 @@ input:where([type='file']):focus{
 }
 .min-h-\[34px\]{
     min-height: 34px;
+}
+.min-h-\[500px\]{
+    min-height: 500px;
 }
 .min-h-full{
     min-height: 100%;
@@ -2362,6 +2371,9 @@ input:where([type='file']):focus{
 .border-white\/20{
     border-color: rgba(255, 255, 255, 0.2);
 }
+.border-white\/50{
+    border-color: rgba(255, 255, 255, 0.5);
+}
 .border-zinc-900{
     --tw-border-opacity: 1;
     border-color: rgba(24, 24, 27, 1);
@@ -3011,6 +3023,9 @@ input:where([type='file']):focus{
 .tracking-\[0\.15em\]{
     letter-spacing: 0.15em;
 }
+.tracking-\[0\.2em\]{
+    letter-spacing: 0.2em;
+}
 .tracking-\[0px\]{
     letter-spacing: 0px;
 }
@@ -3074,6 +3089,11 @@ input:where([type='file']):focus{
 }
 .text-background{
     color: var(--color-background);
+}
+.text-black{
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .text-blue-500{
     --tw-text-opacity: 1;
@@ -3446,6 +3466,9 @@ input:where([type='file']):focus{
 }
 .duration-700{
     transition-duration: 700ms;
+}
+.duration-\[1500ms\]{
+    transition-duration: 1500ms;
 }
 .ease-\[cubic-bezier\(\.16\2c 1\2c \.3\2c 1\)\]{
     transition-timing-function: cubic-bezier(.16,1,.3,1);
@@ -38381,6 +38404,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(156, 163, 175, 1);
     border-color: rgba(156, 163, 175, var(--tw-border-opacity, 1));
 }
+.hover\:border-white:hover{
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1));
+}
 .hover\:bg-background:hover{
     background-color: var(--color-background);
 }
@@ -38450,9 +38478,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .hover\:opacity-60:hover{
     opacity: 0.6;
-}
-.hover\:opacity-70:hover{
-    opacity: 0.7;
 }
 .hover\:opacity-80:hover{
     opacity: 0.8;
@@ -38593,12 +38618,35 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .group:hover .group-hover\:opacity-100{
     opacity: 1;
 }
+.group.is-active .group-\[\.is-active\]\:w-full{
+    width: 100%;
+}
 .groupactive .group-\[active\]\:w-full{
     width: 100%;
+}
+.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:translate-y-0{
+    --tw-translate-y: 0px;
+    transform: translate(var(--tw-translate-x), 0px) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:scale-110{
+    --tw-scale-x: 1.1;
+    --tw-scale-y: 1.1;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.1) scaleY(1.1);
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:bg-black\/40{
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .groupactive .group-\[active\]\:text-primary{
     color: #414042;
     color: var(--color-primary);
+}
+.group.is-active .group-\[\.is-active\]\:opacity-100{
+    opacity: 1;
+}
+.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:opacity-100{
+    opacity: 1;
 }
 @media (min-width: 640px){
     .sm\:col-span-2{
@@ -38742,6 +38790,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-20{
         margin-bottom: 5rem;
     }
+    .md\:mb-6{
+        margin-bottom: 1.5rem;
+    }
     .md\:mb-8{
         margin-bottom: 2rem;
     }
@@ -38868,6 +38919,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-10{
         gap: 2.5rem;
     }
+    .md\:gap-12{
+        gap: 3rem;
+    }
     .md\:gap-14{
         gap: 3.5rem;
     }
@@ -38904,6 +38958,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:px-0{
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .md\:px-16{
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     .md\:px-5{
         padding-left: 1.25rem;
@@ -39073,6 +39131,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:mt-24{
         margin-top: 6rem;
     }
+    .lg\:mt-4{
+        margin-top: 1rem;
+    }
     .lg\:mt-5{
         margin-top: 1.25rem;
     }
@@ -39097,6 +39158,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:flex{
         display: flex;
     }
+    .lg\:grid{
+        display: grid;
+    }
     .lg\:\!hidden{
         display: none !important;
     }
@@ -39111,6 +39175,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:h-\[680px\]{
         height: 680px;
+    }
+    .lg\:h-screen{
+        height: 100vh;
     }
     .lg\:min-h-12{
         min-height: 3rem;
@@ -39256,6 +39323,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+    .lg\:px-24{
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
     .lg\:px-8{
         padding-left: 2rem;
         padding-right: 2rem;
@@ -39310,6 +39381,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
+    .lg\:text-7xl{
+        font-size: 4.5rem;
+        line-height: 1;
+    }
     .lg\:text-8xl{
         font-size: 6rem;
         line-height: 1;
@@ -39341,6 +39416,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .xl\:text-6xl{
         font-size: 3.75rem;
+        line-height: 1;
+    }
+    .xl\:text-7xl{
+        font-size: 4.5rem;
+        line-height: 1;
+    }
+    .xl\:text-8xl{
+        font-size: 6rem;
         line-height: 1;
     }
     .xl\:text-9xl{

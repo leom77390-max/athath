@@ -4,7 +4,7 @@
     <div class="w-full flex flex-col lg:grid lg:grid-cols-2">
         
         {# Left Column: Slider #}
-        <div class="relative w-full h-[60vh] lg:h-screen min-h-[500px] overflow-hidden">
+        <div class="relative w-full h-[60vh] lg:h-auto min-h-[500px] overflow-hidden">
             {% if gl.looks %}
                 <salla-slider 
                     id="lookbook-slider-{{ component.id }}"
@@ -13,7 +13,7 @@
                     autoplay="false"
                     controls="none"
                     pagination="none"
-                    class="w-full h-full block"
+                    class="absolute inset-0 w-full h-full block"
                 >
                     <div slot="items" class="h-full">
                         {% for look in gl.looks %}
@@ -48,7 +48,7 @@
         </div>
 
         {# Right Column: List #}
-        <div class="relative w-full h-auto lg:h-screen flex flex-col justify-center py-16 px-8 md:px-16 lg:px-24" 
+        <div class="relative w-full h-auto flex flex-col justify-center py-16 px-8 md:px-16 lg:px-24 lg:py-24" 
              style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
              
             {% if gl.subheading %}
