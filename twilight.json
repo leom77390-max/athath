@@ -9033,6 +9033,59 @@
             { "value": "800", "label": "Large (800px)" }
           ],
           "default": "650"
+        },
+        {
+          "id": "section_width",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "عرض القسم",
+          "icon": "sicon-width",
+          "selected": [
+            {
+              "label": "عرض كامل",
+              "value": "wide",
+              "key": "w1"
+            }
+          ],
+          "options": [
+            {
+              "label": "عرض كامل",
+              "value": "wide",
+              "key": "w1"
+            },
+            {
+              "label": "داخل حاوية",
+              "value": "container",
+              "key": "w2"
+            }
+          ]
+        },
+        {
+          "id": "special_colors_condition",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تفعيل الألوان المخصصة (Special Colors)",
+          "value": false
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون الخلفية",
+          "value": "#18181b",
+          "visibleWhen": {
+              "special_colors_condition": true
+          }
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون النص",
+          "value": "#ffffff",
+          "visibleWhen": {
+              "special_colors_condition": true
+          }
         }
       ]
         }
