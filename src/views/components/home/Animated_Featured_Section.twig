@@ -29,7 +29,7 @@
 
             {# ============ Marquee ============ #}
             {% if hm.marquee_text %}
-                <div class="hero-marquee__track relative w-full overflow-hidden py-4 md:py-6 border-b {{ hm.special_colors_condition ? 'border-current/20' : 'border-white/20' }}">
+                <div class="hero-marquee__track relative w-full overflow-hidden py-4 md:py-6">
                     <div
                         class="hero-marquee__inner flex whitespace-nowrap will-change-transform w-max"
                         style="animation-duration: {{ hm.marquee_speed|default('25') }}s;"
