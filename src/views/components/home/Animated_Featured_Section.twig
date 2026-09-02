@@ -1,0 +1,86 @@
+{% set hm = component %}
+{% if hm.background_image %}
+<section
+    class="hero-marquee relative w-full overflow-hidden flex flex-col"
+    style="height: {{ hm.section_height|default('650') }}px;"
+    aria-label="{{ hm.subheading|default('Hero banner') }}"
+>
+    {# ============ Background ============ #}
+    <img
+        src="{{ hm.background_image }}"
+        alt="{{ hm.subheading|default('') }}"
+        loading="lazy"
+        class="absolute inset-0 w-full h-full object-cover object-center -z-20"
+    >
+    <span
+        class="absolute inset-0 bg-black -z-10"
+        style="opacity: {{ (hm.overlay_opacity|default('35') / 100) }};"
+    ></span>
+
+    {# ============ Marquee ============ #}
+    {% if hm.marquee_text %}
+        <div class="hero-marquee__track relative w-full overflow-hidden py-4 md:py-6 border-b border-white/20">
+            <div
+                class="hero-marquee__inner flex whitespace-nowrap will-change-transform"
+                style="animation-duration: {{ hm.marquee_speed|default('25') }}s;"
+            >
+                {% for i in 1..2 %}
+                    <div class="flex items-center shrink-0">
+                        {% for j in 1..6 %}
+                            <span class="hero-marquee__item font-serif text-3xl md:text-5xl text-white uppercase mx-6 md:mx-10">
+                                {{ hm.marquee_text }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {# ============ Centered content ============ #}
+    <div class="relative flex-1 flex flex-col items-center justify-center text-center px-4 gap-5">
+        {% if hm.subheading %}
+            <p class="text-white text-base md:text-lg max-w-xl">
+                {{ hm.subheading }}
+            </p>
+        {% endif %}
+
+        {% if hm.button_text and hm.button_url %}
+            
+                href="{{ hm.button_url }}"
+                class="hero-marquee__btn inline-block text-white text-xs md:text-sm tracking-[2px] uppercase pb-1 border-b border-white/70 hover:border-white transition-colors duration-300"
+            >
+                {{ hm.button_text }}
+            </a>
+        {% endif %}
+    </div>
+
+</section>
+
+{% style %}
+    .hero-marquee__inner {
+        animation-name: hero-marquee-scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .hero-marquee:hover .hero-marquee__inner {
+        animation-play-state: paused;
+    }
+
+    @keyframes hero-marquee-scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
+
+    .hero-marquee__item {
+        letter-spacing: 1px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-marquee__inner {
+            animation: none;
+        }
+    }
+{% endstyle %}
+{% endif %}

@@ -942,14 +942,29 @@ input:where([type='file']):focus{
 .bottom-6{
     bottom: 1.5rem;
 }
+.bottom-\[15\%\]{
+    bottom: 15%;
+}
+.bottom-\[5\%\]{
+    bottom: 5%;
+}
 .left-0{
     left: 0px;
 }
 .left-1\/2{
     left: 50%;
 }
-.left-\[14\%\]{
-    left: 14%;
+.left-\[1\%\]{
+    left: 1%;
+}
+.left-\[10\%\]{
+    left: 10%;
+}
+.left-\[15\%\]{
+    left: 15%;
+}
+.left-\[25\%\]{
+    left: 25%;
 }
 .left-\[5\%\]{
     left: 5%;
@@ -977,6 +992,9 @@ input:where([type='file']):focus{
 }
 .right-\[10\%\]{
     right: 10%;
+}
+.right-\[22\%\]{
+    right: 22%;
 }
 .right-\[5\%\]{
     right: 5%;
@@ -1011,11 +1029,26 @@ input:where([type='file']):focus{
 .top-\[-0\.75rem\]{
     top: -0.75rem;
 }
+.top-\[10\%\]{
+    top: 10%;
+}
 .top-\[11px\]{
     top: 11px;
 }
+.top-\[12\%\]{
+    top: 12%;
+}
+.top-\[25\%\]{
+    top: 25%;
+}
 .top-\[34\%\]{
     top: 34%;
+}
+.top-\[35\%\]{
+    top: 35%;
+}
+.top-\[5\%\]{
+    top: 5%;
 }
 .top-\[var\(--mainnav-height\)\]{
     top: var(--mainnav-height);
@@ -1028,6 +1061,9 @@ input:where([type='file']):focus{
 }
 .-z-10{
     z-index: -10;
+}
+.z-0{
+    z-index: 0;
 }
 .z-10{
     z-index: 10;
@@ -1074,6 +1110,9 @@ input:where([type='file']):focus{
 .z-\[9999\]{
     z-index: 9999;
 }
+.-z-20{
+    z-index: -20;
+}
 .col-span-2{
     grid-column: span 2 / span 2;
 }
@@ -1112,6 +1151,10 @@ input:where([type='file']):focus{
 .my-3{
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+}
+.mx-6{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 .\!mb-0{
     margin-bottom: 0px !important;
@@ -1290,9 +1333,6 @@ input:where([type='file']):focus{
 .hidden{
     display: none;
 }
-.aspect-\[4\/3\]{
-    aspect-ratio: 4/3;
-}
 .aspect-\[4\/5\]{
     aspect-ratio: 4/5;
 }
@@ -1383,11 +1423,17 @@ input:where([type='file']):focus{
 .h-\[1px\]{
     height: 1px;
 }
+.h-\[280px\]{
+    height: 280px;
+}
 .h-\[2px\]{
     height: 2px;
 }
 .h-\[300px\]{
     height: 300px;
+}
+.h-\[320px\]{
+    height: 320px;
 }
 .h-\[34px\]{
     height: 34px;
@@ -1562,20 +1608,32 @@ input:where([type='file']):focus{
 .w-\[16\%\]{
     width: 16%;
 }
+.w-\[18\%\]{
+    width: 18%;
+}
 .w-\[18px\]{
     width: 18px;
 }
 .w-\[22\%\]{
     width: 22%;
 }
+.w-\[24\%\]{
+    width: 24%;
+}
 .w-\[27px\]{
     width: 27px;
+}
+.w-\[35\%\]{
+    width: 35%;
+}
+.w-\[42\%\]{
+    width: 42%;
 }
 .w-\[420px\]{
     width: 420px;
 }
-.w-\[62vw\]{
-    width: 62vw;
+.w-\[45\%\]{
+    width: 45%;
 }
 .w-\[75\%\]{
     width: 75%;
@@ -1598,10 +1656,6 @@ input:where([type='file']):focus{
 }
 .w-full{
     width: 100%;
-}
-.w-max{
-    width: -moz-max-content;
-    width: max-content;
 }
 .w-screen{
     width: 100vw;
@@ -1649,14 +1703,17 @@ input:where([type='file']):focus{
 .max-w-\[220px\]{
     max-width: 220px;
 }
-.max-w-\[260px\]{
-    max-width: 260px;
+.max-w-\[240px\]{
+    max-width: 240px;
 }
 .max-w-\[270px\]{
     max-width: 270px;
 }
 .max-w-\[320px\]{
     max-width: 320px;
+}
+.max-w-\[340px\]{
+    max-width: 340px;
 }
 .max-w-\[420px\]{
     max-width: 420px;
@@ -1681,6 +1738,9 @@ input:where([type='file']):focus{
 }
 .max-w-xs{
     max-width: 20rem;
+}
+.max-w-xl{
+    max-width: 36rem;
 }
 .flex-1{
     flex: 1 1 0%;
@@ -1842,9 +1902,6 @@ input:where([type='file']):focus{
 }
 .snap-mandatory{
     --tw-scroll-snap-strictness: mandatory;
-}
-.snap-start{
-    scroll-snap-align: start;
 }
 .appearance-none{
     -webkit-appearance: none;
@@ -2288,6 +2345,9 @@ input:where([type='file']):focus{
     border-color: rgba(24, 24, 27, 1);
     border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
 }
+.border-white\/70{
+    border-color: rgba(255, 255, 255, 0.7);
+}
 .border-b-\[\#8B8B8B\]{
     --tw-border-opacity: 1;
     border-bottom-color: rgba(139, 139, 139, 1);
@@ -2573,6 +2633,10 @@ input:where([type='file']):focus{
 .py-10{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+}
+.py-12{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 .py-16{
     padding-top: 4rem;
@@ -38283,6 +38347,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(156, 163, 175, 1);
     border-color: rgba(156, 163, 175, var(--tw-border-opacity, 1));
 }
+.hover\:border-white:hover{
+    --tw-border-opacity: 1;
+    border-color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1));
+}
 .hover\:bg-background:hover{
     background-color: var(--color-background);
 }
@@ -38621,6 +38690,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:order-2{
         order: 2;
+    }
+    .md\:mx-10{
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
     }
     .md\:-mb-2{
         margin-bottom: -0.5rem;

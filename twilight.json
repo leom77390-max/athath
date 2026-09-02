@@ -8956,7 +8956,85 @@
             },
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
-            "fields": []
+            "fields": [
+        {
+          "id": "background_image",
+          "type": "string",
+          "format": "image",
+          "label": "Background Image",
+          "label_ar": "صورة الخلفية",
+          "required": true
+        },
+        {
+          "id": "overlay_opacity",
+          "type": "string",
+          "format": "range",
+          "label": "Overlay Darkness",
+          "label_ar": "درجة تغميق الخلفية",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "default": "35"
+        },
+        {
+          "id": "marquee_text",
+          "type": "string",
+          "label": "Marquee Text",
+          "label_ar": "نص الشريط المتحرك",
+          "placeholder": "ELEGANT LIGHTING — FEATURED ITEM",
+          "required": true
+        },
+        {
+          "id": "marquee_speed",
+          "type": "string",
+          "format": "range",
+          "label": "Marquee Speed (seconds)",
+          "label_ar": "سرعة الشريط (بالثانية)",
+          "min": 10,
+          "max": 60,
+          "step": 5,
+          "default": "25"
+        },
+        {
+          "id": "subheading",
+          "type": "string",
+          "format": "textarea",
+          "label": "Subheading",
+          "label_ar": "العنوان الفرعي",
+          "placeholder": "Discover the interior design of your dreams",
+          "required": false
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "label": "Button Text",
+          "label_ar": "نص الزر",
+          "placeholder": "SHOP NOW",
+          "required": false
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "inputType": "url",
+          "label": "Button URL",
+          "label_ar": "رابط الزر",
+          "required": false
+        },
+        {
+          "id": "section_height",
+          "type": "string",
+          "format": "select",
+          "label": "Section Height",
+          "label_ar": "ارتفاع القسم",
+          "options": [
+            { "value": "500", "label": "Small (500px)" },
+            { "value": "650", "label": "Medium (650px)" },
+            { "value": "800", "label": "Large (800px)" }
+          ],
+          "default": "650"
+        }
+      ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
