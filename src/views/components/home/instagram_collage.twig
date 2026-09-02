@@ -16,23 +16,23 @@
 
             {% for item in ig.images %}
                 {% if loop.index == 1 %}
-                    <figure class="absolute top-0 left-[5%] w-[22%] max-w-[320px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                    <figure class="absolute top-[5%] left-[5%] w-[22%] max-w-[320px] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 2 %}
-                    <figure class="absolute top-[34%] left-0 w-[14%] max-w-[190px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
-                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                    <figure class="absolute top-[34%] left-[1%] w-[14%] max-w-[190px] shadow-sm z-10 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
                     </figure>
                 {% elseif loop.index == 3 %}
-                    <figure class="absolute bottom-0 left-[14%] w-[16%] max-w-[220px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                    <figure class="absolute bottom-[5%] left-[15%] w-[16%] max-w-[220px] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 4 %}
-                    <figure class="absolute top-0 right-[5%] w-[22%] max-w-[320px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
-                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/3]">
+                    <figure class="absolute top-[12%] right-[5%] w-[24%] max-w-[340px] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 5 %}
-                    <figure class="absolute bottom-0 right-[10%] w-[16%] max-w-[220px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                    <figure class="absolute bottom-[15%] right-[22%] w-[18%] max-w-[240px] shadow-sm z-10 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
                     </figure>
                 {% endif %}
@@ -57,9 +57,30 @@
             </div>
         </div>
 
-        {# ============ MOBILE — text then horizontal scroll ============ #}
-        <div class="ig-collage__mobile md:hidden flex flex-col gap-8 {{ align_class }}">
-            <div class="flex flex-col gap-4 {{ align_class }}">
+        {# ============ MOBILE — scattered collage ============ #}
+        <div class="ig-collage__mobile md:hidden flex flex-col w-full">
+            
+            <!-- Top Images -->
+            <div class="relative w-full h-[320px] max-w-[420px] mx-auto mt-4">
+                {% for item in ig.images %}
+                    {% if loop.index == 1 %}
+                        <figure class="absolute top-0 left-[25%] w-[45%] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                        </figure>
+                    {% elseif loop.index == 2 %}
+                        <figure class="absolute top-[35%] left-[5%] w-[42%] shadow-sm z-10 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
+                        </figure>
+                    {% elseif loop.index == 3 %}
+                        <figure class="absolute top-[25%] right-[5%] w-[35%] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                        </figure>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Text Content -->
+            <div class="flex flex-col gap-4 py-12 px-4 w-full {{ align_class }}">
                 {% if ig.subheading %}
                     <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
                 {% endif %}
@@ -77,14 +98,19 @@
                 {% endif %}
             </div>
 
-            <div class="w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                <div class="flex gap-3 px-4 w-max">
-                    {% for item in ig.images %}
-                        <figure class="snap-start shrink-0 w-[62vw] max-w-[260px] {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
-                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5] rounded-sm">
+            <!-- Bottom Images -->
+            <div class="relative w-full h-[280px] max-w-[420px] mx-auto mb-4">
+                {% for item in ig.images %}
+                    {% if loop.index == 4 %}
+                        <figure class="absolute bottom-0 left-[10%] w-[45%] shadow-sm z-0 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                         </figure>
-                    {% endfor %}
-                </div>
+                    {% elseif loop.index == 5 %}
+                        <figure class="absolute top-[10%] right-[10%] w-[42%] shadow-sm z-10 {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
+                        </figure>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
 

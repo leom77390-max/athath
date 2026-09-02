@@ -8802,7 +8802,7 @@
           "label": "العنوان الفرعي (Subheading)",
           "placeholder": "RENOVATE YOUR HOME",
           "icon": "sicon-format-text-alt",
-          "value": "",
+          "value": "RENOVATE YOUR HOME",
           "multilanguage": true,
           "required": false
         },
