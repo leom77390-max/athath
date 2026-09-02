@@ -38334,6 +38334,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(0, 0, 0, 1);
     border-color: rgba(0, 0, 0, var(--tw-border-opacity, 1));
 }
+.hover\:border-current:hover{
+    border-color: currentColor;
+}
 .hover\:border-font:hover{
     border-color: var(--color-font);
 }
@@ -39195,6 +39198,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:py-1{
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
+    }
+    .lg\:py-16{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
     .lg\:py-24{
         padding-top: 6rem;

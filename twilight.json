@@ -8956,83 +8956,86 @@
             },
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
-            "fields": [
+      "fields": [
         {
           "id": "background_image",
           "type": "string",
           "format": "image",
-          "label": "Background Image",
-          "label_ar": "صورة الخلفية",
+          "label": "صورة الخلفية",
           "required": true
         },
         {
           "id": "overlay_opacity",
-          "type": "string",
+          "type": "number",
           "format": "range",
-          "label": "Overlay Darkness",
-          "label_ar": "درجة تغميق الخلفية",
+          "label": "درجة تغميق الخلفية",
           "min": 0,
           "max": 80,
           "step": 5,
-          "default": "35"
+          "value": 35
         },
         {
           "id": "marquee_text",
           "type": "string",
-          "label": "Marquee Text",
-          "label_ar": "نص الشريط المتحرك",
-          "placeholder": "ELEGANT LIGHTING — FEATURED ITEM",
+          "format": "text",
+          "label": "نص الشريط المتحرك",
+          "placeholder": "منتج مميز — تسوق الآن",
+          "value": "إضاءة أنيقة — منتجات مميزة",
           "required": true
         },
         {
           "id": "marquee_speed",
-          "type": "string",
+          "type": "number",
           "format": "range",
-          "label": "Marquee Speed (seconds)",
-          "label_ar": "سرعة الشريط (بالثانية)",
+          "label": "سرعة الشريط (بالثانية)",
           "min": 10,
           "max": 60,
           "step": 5,
-          "default": "25"
+          "value": 25
         },
         {
           "id": "subheading",
           "type": "string",
           "format": "textarea",
-          "label": "Subheading",
-          "label_ar": "العنوان الفرعي",
-          "placeholder": "Discover the interior design of your dreams",
+          "label": "العنوان الفرعي",
+          "placeholder": "اكتشف التصميم الداخلي لأحلامك",
+          "value": "اكتشف التصميم الداخلي لأحلامك",
           "required": false
         },
         {
           "id": "button_text",
           "type": "string",
-          "label": "Button Text",
-          "label_ar": "نص الزر",
-          "placeholder": "SHOP NOW",
+          "format": "text",
+          "label": "نص الزر",
+          "placeholder": "تسوق الآن",
+          "value": "تسوق الآن",
           "required": false
         },
         {
           "id": "button_url",
           "type": "string",
           "format": "url",
-          "inputType": "url",
-          "label": "Button URL",
-          "label_ar": "رابط الزر",
+          "label": "رابط الزر",
           "required": false
         },
         {
           "id": "section_height",
-          "type": "string",
-          "format": "select",
-          "label": "Section Height",
-          "label_ar": "ارتفاع القسم",
-          "options": [
-            { "value": "500", "label": "Small (500px)" },
-            { "value": "650", "label": "Medium (650px)" },
-            { "value": "800", "label": "Large (800px)" }
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "ارتفاع القسم",
+          "icon": "sicon-cursor-resize-y",
+          "selected": [
+            {
+              "value": "650",
+              "label": "متوسط (650px)",
+              "key": "sh2"
+            }
           ],
-          "default": "650"
+          "options": [
+            { "value": "500", "label": "صغير (500px)", "key": "sh1" },
+            { "value": "650", "label": "متوسط (650px)", "key": "sh2" },
+            { "value": "800", "label": "كبير (800px)", "key": "sh3" }
+          ]
         },
         {
           "id": "section_width",
