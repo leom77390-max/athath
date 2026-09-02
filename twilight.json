@@ -8789,24 +8789,43 @@
             "path": "home.instagram_collage",
              "fields": [
         {
+            "type": "static",
+            "format": "title",
+            "id": "group_general",
+            "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>",
+            "variant": "h6"
+        },
+        {
           "id": "subheading",
           "type": "string",
-          "label": "Subheading",
+          "format": "text",
+          "label": "العنوان الفرعي (Subheading)",
           "placeholder": "RENOVATE YOUR HOME",
+          "icon": "sicon-format-text-alt",
+          "value": "",
+          "multilanguage": true,
           "required": false
         },
         {
           "id": "heading",
           "type": "string",
-          "label": "Heading",
+          "format": "text",
+          "label": "العنوان الرئيسي (Heading)",
           "placeholder": "WE'RE ON GRAM",
+          "icon": "sicon-format-color-text",
+          "value": "WE'RE ON GRAM",
+          "multilanguage": true,
           "required": true
         },
         {
           "id": "button_text",
           "type": "string",
-          "label": "Button Text",
+          "format": "text",
+          "label": "نص الزر (Button Text)",
           "placeholder": "@YOUR_STORE",
+          "icon": "sicon-cursor-click",
+          "value": "@YOUR_STORE",
+          "multilanguage": true,
           "required": true
         },
         {
@@ -8814,44 +8833,108 @@
           "type": "string",
           "format": "url",
           "inputType": "url",
-          "label": "Instagram Profile URL",
+          "label": "رابط حساب الانستقرام",
           "placeholder": "https://instagram.com/your_store",
+          "icon": "sicon-link",
+          "value": "",
           "required": true
         },
         {
           "id": "bg_color",
           "type": "string",
           "format": "color",
-          "label": "Section Background Color",
-          "default": "#f3efe9"
+          "inputType": "color",
+          "label": "لون خلفية القسم",
+          "icon": "sicon-format-fill",
+          "value": "#f3efe9"
         },
         {
           "id": "open_new_tab",
           "type": "boolean",
           "format": "switch",
-          "label": "Open link in new tab",
-          "selected": true
+          "label": "فتح الرابط في صفحة جديدة",
+          "value": true
+        },
+        {
+          "id": "text_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص والزر",
+          "icon": "sicon-format-color-text",
+          "value": "#18181b"
+        },
+        {
+            "id": "section_width",
+            "type": "items",
+            "label": "عرض القسم",
+            "format": "dropdown-list",
+            "options": [
+                { "label": "داخل حاوية (Container)", "value": "container" },
+                { "label": "عرض كامل (Full width)", "value": "wide" }
+            ],
+            "value": "wide"
+        },
+        {
+            "id": "title_alignment",
+            "type": "items",
+            "label": "محاذاة النص",
+            "format": "dropdown-list",
+            "options": [
+                { "label": "بداية", "value": "start" },
+                { "label": "وسط", "value": "center" },
+                { "label": "نهاية", "value": "end" }
+            ],
+            "value": "center"
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "group_images",
+            "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>صور الكولاج</h3>",
+            "variant": "h6"
         },
         {
           "id": "images",
           "type": "collection",
           "format": "collection",
-          "label": "Collage Images",
+          "label": "الصور",
+          "item_label": "صورة",
+          "icon": "sicon-image-gallery",
           "minLength": 4,
           "maxLength": 5,
+          "value": [
+                {
+                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                },
+                {
+                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                },
+                {
+                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                },
+                {
+                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                }
+          ],
           "required": true,
           "fields": [
             {
-              "id": "image",
+              "id": "images.image",
               "type": "string",
               "format": "image",
-              "label": "Image",
+              "label": "الصورة",
+              "icon": "sicon-image",
+              "value": "",
               "required": true
             },
             {
-              "id": "alt",
+              "id": "images.alt",
               "type": "string",
-              "label": "Alt text (optional)",
+              "format": "text",
+              "label": "النص البديل (Alt text)",
+              "icon": "sicon-text-align-right",
+              "value": "",
               "required": false
             }
           ]

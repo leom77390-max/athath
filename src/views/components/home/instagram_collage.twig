@@ -1,11 +1,13 @@
 {% set ig = component %}
+{% set align_class = ig.title_alignment == 'start' ? 'text-start items-start' : (ig.title_alignment == 'end' ? 'text-end items-end' : 'text-center items-center') %}
+
 {% if ig.images|length %}
 <section
     class="ig-collage relative w-full overflow-hidden py-16 lg:py-24"
-    style="background-color: {{ ig.bg_color|default('#f3efe9') }};"
+    style="background-color: {{ ig.bg_color|default('#f3efe9') }}; color: {{ ig.text_color|default('#18181b') }};"
     aria-label="{{ ig.heading }}"
 >
-    <div class="container mx-auto px-4">
+    <div class="{{ ig.section_width == 'wide' ? 'w-full px-4 md:px-8' : 'container mx-auto px-4' }}">
 
         {# ============ DESKTOP — scattered collage ============ #}
         <div class="ig-collage__desktop hidden md:block relative mx-auto max-w-[1500px] h-[760px]">
@@ -34,7 +36,7 @@
                 {% endif %}
             {% endfor %}
 
-            <div class="ig-collage__text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] text-center flex flex-col items-center gap-5 z-10">
+            <div class="ig-collage__text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] flex flex-col gap-5 z-10 {{ align_class }}">
                 {% if ig.subheading %}
                     <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
                 {% endif %}
@@ -54,8 +56,8 @@
         </div>
 
         {# ============ MOBILE — text then horizontal scroll ============ #}
-        <div class="ig-collage__mobile md:hidden flex flex-col items-center gap-8 text-center">
-            <div class="flex flex-col items-center gap-4">
+        <div class="ig-collage__mobile md:hidden flex flex-col gap-8 {{ align_class }}">
+            <div class="flex flex-col gap-4 {{ align_class }}">
                 {% if ig.subheading %}
                     <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
                 {% endif %}
