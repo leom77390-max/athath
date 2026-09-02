@@ -9278,7 +9278,10 @@
                     "format": "text",
                     "multilanguage": true,
                     "label": "نص الشريط المتحرك",
-                    "value": { "en": "DESIGN FOR LIVING * UNIQUE FURNITURE *", "ar": "تصاميم للحياة * أثاث فريد *" },
+                    "value": {
+                        "en": "DESIGN FOR LIVING * UNIQUE FURNITURE *",
+                        "ar": "تصاميم للحياة * أثاث فريد *"
+                    },
                     "conditions": [
                         {
                             "id": "enable_marquee",
@@ -9332,8 +9335,14 @@
                             "format": "dropdown-list",
                             "label": "نوع الخلفية",
                             "options": [
-                                { "label": "صورة", "value": "image" },
-                                { "label": "لون ثابت", "value": "color" }
+                                {
+                                    "label": "صورة",
+                                    "value": "image"
+                                },
+                                {
+                                    "label": "لون ثابت",
+                                    "value": "color"
+                                }
                             ],
                             "value": "image"
                         },
@@ -9385,9 +9394,18 @@
                             "format": "dropdown-list",
                             "label": "المحاذاة الأفقية للنص (Text Align)",
                             "options": [
-                                { "label": "يمين", "value": "right" },
-                                { "label": "وسط", "value": "center" },
-                                { "label": "يسار", "value": "left" }
+                                {
+                                    "label": "يمين",
+                                    "value": "right"
+                                },
+                                {
+                                    "label": "وسط",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "يسار",
+                                    "value": "left"
+                                }
                             ],
                             "value": "center"
                         },
@@ -9397,10 +9415,22 @@
                             "format": "dropdown-list",
                             "label": "المحاذاة العمودية (Vertical Justify)",
                             "options": [
-                                { "label": "توزيع (أعلى وأسفل)", "value": "between" },
-                                { "label": "وسط (Center)", "value": "center" },
-                                { "label": "أعلى (Top)", "value": "start" },
-                                { "label": "أسفل (Bottom)", "value": "end" }
+                                {
+                                    "label": "توزيع (أعلى وأسفل)",
+                                    "value": "between"
+                                },
+                                {
+                                    "label": "وسط (Center)",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "أعلى (Top)",
+                                    "value": "start"
+                                },
+                                {
+                                    "label": "أسفل (Bottom)",
+                                    "value": "end"
+                                }
                             ],
                             "value": "between"
                         },
@@ -9417,7 +9447,10 @@
                             "format": "text",
                             "multilanguage": true,
                             "label": "العنوان الفرعي (Subheading)",
-                            "value": { "en": "SEASON SALE COLLECTIONS", "ar": "تشكيلة تخفيضات الموسم" }
+                            "value": {
+                                "en": "SEASON SALE COLLECTIONS",
+                                "ar": "تشكيلة تخفيضات الموسم"
+                            }
                         },
                         {
                             "id": "cards.heading",
@@ -9425,7 +9458,10 @@
                             "format": "textarea",
                             "multilanguage": true,
                             "label": "العنوان الرئيسي (Heading)",
-                            "value": { "en": "SALE 30%\nOFF", "ar": "خصم\n30%" }
+                            "value": {
+                                "en": "SALE 30%\nOFF",
+                                "ar": "خصم\n30%"
+                            }
                         },
                         {
                             "id": "cards.heading_color",
@@ -9440,7 +9476,10 @@
                             "format": "textarea",
                             "multilanguage": true,
                             "label": "الوصف (Description)",
-                            "value": { "en": "", "ar": "" }
+                            "value": {
+                                "en": "",
+                                "ar": ""
+                            }
                         },
                         {
                             "id": "cards.button_text",
@@ -9448,7 +9487,10 @@
                             "format": "text",
                             "multilanguage": true,
                             "label": "نص الزر (Button Text)",
-                            "value": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                            "value": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
                         },
                         {
                             "id": "cards.button_url",
@@ -9465,9 +9507,18 @@
                             "cards.text_align": "center",
                             "cards.vertical_align": "between",
                             "cards.text_color": "#ffffff",
-                            "cards.subheading": { "en": "BUY SET OF 3 AND SAVE 10%", "ar": "اشتري 3 ووفر 10%" },
-                            "cards.heading": { "en": "BUNDLE &\nSAVE", "ar": "باقة التوفير" },
-                            "cards.button_text": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                            "cards.subheading": {
+                                "en": "BUY SET OF 3 AND SAVE 10%",
+                                "ar": "اشتري 3 ووفر 10%"
+                            },
+                            "cards.heading": {
+                                "en": "BUNDLE &\nSAVE",
+                                "ar": "باقة التوفير"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
                         },
                         {
                             "cards.bg_type": "color",
@@ -9475,11 +9526,23 @@
                             "cards.text_align": "center",
                             "cards.vertical_align": "center",
                             "cards.text_color": "#ffffff",
-                            "cards.subheading": { "en": "SEASON SALE COLLECTIONS", "ar": "تشكيلة الموسم" },
-                            "cards.heading": { "en": "SALE 30%\nOFF", "ar": "خصم 30%" },
+                            "cards.subheading": {
+                                "en": "SEASON SALE COLLECTIONS",
+                                "ar": "تشكيلة الموسم"
+                            },
+                            "cards.heading": {
+                                "en": "SALE 30%\nOFF",
+                                "ar": "خصم 30%"
+                            },
                             "cards.heading_color": "#E6EDA4",
-                            "cards.description": { "en": "Save extra on our sale collection\n*Runs until 14:00pm PST", "ar": "وفر أكثر مع تشكيلة التخفيضات" },
-                            "cards.button_text": { "en": "SHOP THE SALE", "ar": "تسوق العروض" }
+                            "cards.description": {
+                                "en": "Save extra on our sale collection\n*Runs until 14:00pm PST",
+                                "ar": "وفر أكثر مع تشكيلة التخفيضات"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP THE SALE",
+                                "ar": "تسوق العروض"
+                            }
                         },
                         {
                             "cards.bg_type": "image",
@@ -9487,13 +9550,32 @@
                             "cards.text_align": "center",
                             "cards.vertical_align": "between",
                             "cards.text_color": "#ffffff",
-                            "cards.subheading": { "en": "DESIGN FOR LIVING", "ar": "تصاميم للحياة" },
-                            "cards.heading": { "en": "RENOVATE\nYOUR HOME", "ar": "جدد منزلك" },
-                            "cards.button_text": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                            "cards.subheading": {
+                                "en": "DESIGN FOR LIVING",
+                                "ar": "تصاميم للحياة"
+                            },
+                            "cards.heading": {
+                                "en": "RENOVATE\nYOUR HOME",
+                                "ar": "جدد منزلك"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
                         }
                     ]
                 }
             ]
+        },
+        {
+            "key": "bf47a5f0-f4aa-4e49-a79f-7d08803f11c3",
+            "title": {
+                "en": "Get The Look",
+                "ar": "تسوق الإطلالة"
+            },
+            "icon": "sicon-store",
+            "path": "home.Get_The_Look",
+            "fields": []
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
