@@ -39176,8 +39176,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:h-\[680px\]{
         height: 680px;
     }
-    .lg\:h-screen{
-        height: 100vh;
+    .lg\:h-auto{
+        height: auto;
     }
     .lg\:min-h-12{
         min-height: 3rem;
