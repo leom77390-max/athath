@@ -1,6 +1,6 @@
 {% set hm = component %}
-{% set width_val = hm.section_width[0].value ?? hm.section_width %}
-{% set height_val = hm.section_height[0].value ?? hm.section_height %}
+{% set width_val = hm.section_width is iterable ? hm.section_width|first.value : hm.section_width %}
+{% set height_val = hm.section_height is iterable ? hm.section_height|first.value : hm.section_height %}
 {% set is_container = width_val == 'container' %}
 {% set color_style = hm.special_colors_condition ? 'background-color: ' ~ hm.bg_color ~ '; color: ' ~ hm.text_color ~ ';' : '' %}
 {% set text_class = hm.special_colors_condition ? 'text-current' : 'text-white' %}
