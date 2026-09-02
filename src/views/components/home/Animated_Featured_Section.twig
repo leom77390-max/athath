@@ -54,12 +54,11 @@
                 {% endif %}
 
                 {% if hm.button_text and hm.button_url %}
-                    <a
-                        href="{{ hm.button_url }}"
-                        class="hero-marquee__btn inline-block {{ text_class }} text-xs md:text-sm tracking-[2px] uppercase pb-1 border-b {{ border_class }} {{ border_hover_class }} transition-colors duration-300"
-                    >
-                        {{ hm.button_text }}
-                    </a>
+                    {% include 'components.custom.special_button' with {
+                        text: hm.button_text,
+                        url: hm.button_url,
+                        class: text_class ~ ' text-xs md:text-sm tracking-[2px]'
+                    } %}
                 {% endif %}
             </div>
         </div>
