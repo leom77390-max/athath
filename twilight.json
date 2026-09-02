@@ -8947,6 +8947,16 @@
           ]
         }
       ]
+        },
+        {
+            "key": "bf52b425-b15b-4ed4-862f-14deaf7b9c7a",
+            "title": {
+                "en": "Animated Featured Section",
+                "ar": "قسم مميز متحرك"
+            },
+            "icon": "sicon-store",
+            "path": "home.Animated_Featured_Section",
+            "fields": []
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
