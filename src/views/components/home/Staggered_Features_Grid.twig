@@ -1,0 +1,64 @@
+{% set sfg = component %}
+
+{% set bg_style = sfg.special_colors_condition and sfg.bg_color ? 'background-color: ' ~ sfg.bg_color ~ ';' : '' %}
+{% set heading_style = sfg.special_colors_condition and sfg.heading_color ? 'color: ' ~ sfg.heading_color ~ ';' : '' %}
+{% set title_style = sfg.special_colors_condition and sfg.title_color ? 'color: ' ~ sfg.title_color ~ ';' : '' %}
+{% set desc_style = sfg.special_colors_condition and sfg.desc_color ? 'color: ' ~ sfg.desc_color ~ ';' : '' %}
+
+<section class="w-full py-16 lg:py-24 bg-white text-[#18181b]" {% if bg_style %}style="{{ bg_style }}"{% endif %}>
+    <div class="container mx-auto px-4 md:px-8">
+        {# Main Heading #}
+        {% if sfg.heading %}
+            <div class="max-w-4xl mx-auto text-center mb-16 lg:mb-24">
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight text-gray-900" {% if heading_style %}style="{{ heading_style }}"{% endif %}>
+                    {{ sfg.heading|nl2br }}
+                </h2>
+            </div>
+        {% endif %}
+
+        {# Grid #}
+        {% if sfg.features %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 items-start">
+                {% for feature in sfg.features %}
+                    
+                    {# Margins and Aspect Ratios based on index to match design #}
+                    {% set stagger_class = 'lg:mt-0' %}
+                    {% set aspect_class = 'aspect-[3/4]' %}
+                    
+                    {% if loop.index0 == 0 %}
+                        {% set stagger_class = 'lg:mt-0' %}
+                        {% set aspect_class = 'aspect-[3/4]' %}
+                    {% elseif loop.index0 == 1 %}
+                        {% set stagger_class = 'lg:mt-24' %}
+                        {% set aspect_class = 'aspect-[4/3]' %}
+                    {% elseif loop.index0 == 2 %}
+                        {% set stagger_class = 'lg:mt-8' %}
+                        {% set aspect_class = 'aspect-[4/5]' %}
+                    {% elseif loop.index0 == 3 %}
+                        {% set stagger_class = 'lg:mt-24' %}
+                        {% set aspect_class = 'aspect-[5/4]' %}
+                    {% endif %}
+                    
+                    <div class="flex flex-col group {{ stagger_class }}">
+                        <div class="w-full overflow-hidden mb-6 {{ aspect_class }}">
+                            <img 
+                                src="{{ feature.image }}" 
+                                alt="{{ feature.title }}" 
+                                loading="lazy"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            >
+                        </div>
+                        
+                        {% if feature.title %}
+                            <h3 class="font-serif text-xl md:text-2xl mb-3 text-gray-900" {% if title_style %}style="{{ title_style }}"{% endif %}>{{ feature.title }}</h3>
+                        {% endif %}
+                        
+                        {% if feature.description %}
+                            <p class="text-sm text-gray-600 leading-relaxed" {% if desc_style %}style="{{ desc_style }}"{% endif %}>{{ feature.description }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>

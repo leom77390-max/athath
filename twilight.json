@@ -9088,7 +9088,175 @@
             },
             "icon": "sicon-store",
             "path": "home.Staggered_Features_Grid",
-            "fields": []
+            "fields": [
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "العنوان الرئيسي (Main Heading)",
+                    "placeholder": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
+                    "value": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "special_colors_condition",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الألوان المخصصة (Special Colors)",
+                    "value": false
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون الخلفية",
+                    "value": "#ffffff",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "heading_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "value": "#111827",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "title_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون عناوين الميزات",
+                    "value": "#111827",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "desc_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون وصف الميزات",
+                    "value": "#4b5563",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "features",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الميزات (Features)",
+                    "item_label": "ميزة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "value": [
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Showroom",
+                                "ar": "صالة العرض"
+                            },
+                            "features.description": {
+                                "en": "Experience design for living at our flagship showroom.",
+                                "ar": "اكتشف تصاميم الحياة العصرية في صالة العرض الرئيسية لدينا."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Interior work",
+                                "ar": "أعمال داخلية"
+                            },
+                            "features.description": {
+                                "en": "Designing spaces with precision, curated materials, and aesthetic execution.",
+                                "ar": "تصميم المساحات بدقة مع مواد منتقاة وتنفيذ هادف وجمالي."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Authentic design",
+                                "ar": "تصميم أصيل"
+                            },
+                            "features.description": {
+                                "en": "We offer authentic, lasting pieces—chosen for their timeless aesthetic appeal.",
+                                "ar": "نقدم قطعاً أصيلة تدوم طويلاً، اخترناها بعناية لجودتها العالية وجاذبيتها الخالدة."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Custom additions",
+                                "ar": "إضافات مخصصة"
+                            },
+                            "features.description": {
+                                "en": "Crafting refined interiors through tailored elements and craftsmanship.",
+                                "ar": "نصنع تصميمات داخلية راقية من خلال عناصر مصممة خصيصاً وحرفية عالية."
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "features.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الميزة",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "features.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان (Title)",
+                            "icon": "sicon-format-color-text",
+                            "multilanguage": true,
+                            "value": "",
+                            "required": false
+                        },
+                        {
+                            "id": "features.description",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "الوصف (Description)",
+                            "icon": "sicon-text-align-right",
+                            "multilanguage": true,
+                            "value": "",
+                            "required": false
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
