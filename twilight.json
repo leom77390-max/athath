@@ -8787,7 +8787,76 @@
             },
             "icon": "sicon-instagram2",
             "path": "home.instagram_collage",
-            "fields": []
+             "fields": [
+        {
+          "id": "subheading",
+          "type": "string",
+          "label": "Subheading",
+          "placeholder": "RENOVATE YOUR HOME",
+          "required": false
+        },
+        {
+          "id": "heading",
+          "type": "string",
+          "label": "Heading",
+          "placeholder": "WE'RE ON GRAM",
+          "required": true
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "label": "Button Text",
+          "placeholder": "@YOUR_STORE",
+          "required": true
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "inputType": "url",
+          "label": "Instagram Profile URL",
+          "placeholder": "https://instagram.com/your_store",
+          "required": true
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "label": "Section Background Color",
+          "default": "#f3efe9"
+        },
+        {
+          "id": "open_new_tab",
+          "type": "boolean",
+          "format": "switch",
+          "label": "Open link in new tab",
+          "selected": true
+        },
+        {
+          "id": "images",
+          "type": "collection",
+          "format": "collection",
+          "label": "Collage Images",
+          "minLength": 4,
+          "maxLength": 5,
+          "required": true,
+          "fields": [
+            {
+              "id": "image",
+              "type": "string",
+              "format": "image",
+              "label": "Image",
+              "required": true
+            },
+            {
+              "id": "alt",
+              "type": "string",
+              "label": "Alt text (optional)",
+              "required": false
+            }
+          ]
+        }
+      ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
@@ -8796,3 +8865,5 @@
         "en": ""
     }
 }
+
+

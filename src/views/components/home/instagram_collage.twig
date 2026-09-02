@@ -1,0 +1,95 @@
+{% set ig = component %}
+{% if ig.images|length %}
+<section
+    class="ig-collage relative w-full overflow-hidden py-16 lg:py-24"
+    style="background-color: {{ ig.bg_color|default('#f3efe9') }};"
+    aria-label="{{ ig.heading }}"
+>
+    <div class="container mx-auto px-4">
+
+        {# ============ DESKTOP — scattered collage ============ #}
+        <div class="ig-collage__desktop hidden md:block relative mx-auto max-w-[1500px] h-[760px]">
+
+            {% for item in ig.images %}
+                {% if loop.index == 1 %}
+                    <figure class="absolute top-0 left-[5%] w-[22%] max-w-[320px] shadow-sm">
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                    </figure>
+                {% elseif loop.index == 2 %}
+                    <figure class="absolute top-[34%] left-0 w-[14%] max-w-[190px] shadow-sm">
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                    </figure>
+                {% elseif loop.index == 3 %}
+                    <figure class="absolute bottom-0 left-[14%] w-[16%] max-w-[220px] shadow-sm">
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
+                    </figure>
+                {% elseif loop.index == 4 %}
+                    <figure class="absolute top-0 right-[5%] w-[22%] max-w-[320px] shadow-sm">
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/3]">
+                    </figure>
+                {% elseif loop.index == 5 %}
+                    <figure class="absolute bottom-0 right-[10%] w-[16%] max-w-[220px] shadow-sm">
+                        <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
+                    </figure>
+                {% endif %}
+            {% endfor %}
+
+            <div class="ig-collage__text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] text-center flex flex-col items-center gap-5 z-10">
+                {% if ig.subheading %}
+                    <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
+                {% endif %}
+
+                <h2 class="ig-collage__heading font-serif text-5xl lg:text-6xl leading-[1.05] text-current m-0">
+                    {{ ig.heading }}
+                </h2>
+
+                {% if ig.button_text and ig.button_url %}
+                    <a href="{{ ig.button_url }}"
+                       {% if ig.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                       class="inline-block mt-2 px-8 py-3 border border-current text-xs tracking-[2px] uppercase hover:bg-black hover:text-white transition-colors duration-300">
+                        {{ ig.button_text }}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        {# ============ MOBILE — text then horizontal scroll ============ #}
+        <div class="ig-collage__mobile md:hidden flex flex-col items-center gap-8 text-center">
+            <div class="flex flex-col items-center gap-4">
+                {% if ig.subheading %}
+                    <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
+                {% endif %}
+
+                <h2 class="ig-collage__heading font-serif text-4xl leading-tight text-current m-0">
+                    {{ ig.heading }}
+                </h2>
+
+                {% if ig.button_text and ig.button_url %}
+                    <a href="{{ ig.button_url }}"
+                       {% if ig.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+                       class="inline-block mt-1 px-7 py-2.5 border border-current text-xs tracking-[2px] uppercase">
+                        {{ ig.button_text }}
+                    </a>
+                {% endif %}
+            </div>
+
+            <div class="w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                <div class="flex gap-3 px-4 w-max">
+                    {% for item in ig.images %}
+                        <figure class="snap-start shrink-0 w-[62vw] max-w-[260px]">
+                            <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5] rounded-sm">
+                        </figure>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% style %}
+    .ig-collage__heading { letter-spacing: 0.5px; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+{% endstyle %}
+{% endif %}
