@@ -1,0 +1,133 @@
+{% set gl = component %}
+
+<section class="get-the-look-section w-full relative bg-white" id="section-{{ component.id }}">
+    <div class="w-full flex flex-col lg:grid lg:grid-cols-2">
+        
+        {# Left Column: Slider #}
+        <div class="relative w-full h-[60vh] lg:h-screen min-h-[500px] overflow-hidden">
+            {% if gl.looks %}
+                <salla-slider 
+                    id="lookbook-slider-{{ component.id }}"
+                    type="default"
+                    loop="false"
+                    autoplay="false"
+                    controls="none"
+                    pagination="none"
+                    class="w-full h-full block"
+                >
+                    <div slot="items" class="h-full">
+                        {% for look in gl.looks %}
+                            <div class="swiper-slide h-full relative overflow-hidden group">
+                                {# Image with Parallax/Zoom #}
+                                <img src="{{ look.slider_image }}" 
+                                     alt="{{ look.overlay_title|striptags }}" 
+                                     class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-[1500ms] scale-100 group-[.swiper-slide-active]:scale-110" 
+                                     loading="lazy">
+                                     
+                                {# Dark Gradient Overlay #}
+                                <div class="absolute inset-0 bg-black/30 z-0 transition-opacity duration-1000 group-[.swiper-slide-active]:bg-black/40"></div>
+                                
+                                {# Overlay Content #}
+                                <div class="relative z-10 w-full h-full flex flex-col items-center justify-center text-center p-8 transition-all duration-1000 opacity-0 translate-y-4 group-[.swiper-slide-active]:opacity-100 group-[.swiper-slide-active]:translate-y-0">
+                                    {% if look.overlay_title %}
+                                        <h3 class="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white uppercase mb-4 md:mb-6 tracking-wide">{{ look.overlay_title }}</h3>
+                                    {% endif %}
+                                    
+                                    {% if look.button_text %}
+                                        <a href="{{ look.button_url|default('#') }}" class="inline-flex items-center gap-2 text-white font-sans text-xs md:text-sm uppercase tracking-widest pb-1 border-b border-white/50 transition-colors hover:border-white">
+                                            {{ look.button_text }}
+                                            <i class="sicon-arrow-top-right rtl:-scale-x-100 inline-block"></i>
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </salla-slider>
+            {% endif %}
+        </div>
+
+        {# Right Column: List #}
+        <div class="relative w-full h-auto lg:h-screen flex flex-col justify-center py-16 px-8 md:px-16 lg:px-24" 
+             style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
+             
+            {% if gl.subheading %}
+                <span class="block font-sans text-xs md:text-sm uppercase tracking-[0.2em] mb-10 md:mb-16 opacity-70">{{ gl.subheading }}</span>
+            {% endif %}
+
+            <ul class="flex flex-col gap-8 md:gap-12">
+                {% for look in gl.looks %}
+                    <li>
+                        <button 
+                            type="button"
+                            class="lookbook-trigger group text-start flex items-start gap-2 md:gap-3 relative pb-2 w-max {% if loop.first %}is-active{% endif %}"
+                            data-slide-index="{{ loop.index0 }}"
+                            data-slider-id="lookbook-slider-{{ component.id }}"
+                        >
+                            <span class="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-black transition-opacity duration-300 group-[.is-active]:opacity-100 opacity-40 group-hover:opacity-100">
+                                {{ look.list_title }}
+                            </span>
+                            {% if look.list_number %}
+                                <sup class="font-sans text-xs md:text-sm mt-2 lg:mt-4 transition-opacity duration-300 group-[.is-active]:opacity-100 opacity-40 group-hover:opacity-100">{{ look.list_number }}</sup>
+                            {% endif %}
+                            
+                            {# Animated Underline #}
+                            <span class="absolute bottom-0 start-0 h-[2px] bg-black transition-all duration-500 w-0 group-hover:w-full group-[.is-active]:w-full"></span>
+                        </button>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+</section>
+
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.get-the-look-section');
+    
+    sections.forEach(section => {
+        const triggers = section.querySelectorAll('.lookbook-trigger');
+        const sliderId = triggers[0]?.getAttribute('data-slider-id');
+        const slider = document.getElementById(sliderId);
+        
+        // Hover Logic
+        triggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', function() {
+                const index = parseInt(this.getAttribute('data-slide-index'));
+                
+                // Update Triggers Visually
+                triggers.forEach(t => t.classList.remove('is-active'));
+                this.classList.add('is-active');
+                
+                // Change Slide
+                if (slider && slider.swiper) {
+                    slider.swiper.slideTo(index);
+                } else {
+                    const checkSwiper = setInterval(() => {
+                        if (slider && slider.swiper) {
+                            slider.swiper.slideTo(index);
+                            clearInterval(checkSwiper);
+                        }
+                    }, 50);
+                    setTimeout(() => clearInterval(checkSwiper), 1000);
+                }
+            });
+        });
+
+        // Sync Logic if Mobile Swipe Happens
+        const syncSlider = setInterval(() => {
+            if (slider && slider.swiper) {
+                slider.swiper.on('slideChange', function () {
+                    const activeIndex = this.activeIndex;
+                    triggers.forEach(t => t.classList.remove('is-active'));
+                    const activeTrigger = section.querySelector(`.lookbook-trigger[data-slide-index="${activeIndex}"]`);
+                    if (activeTrigger) activeTrigger.classList.add('is-active');
+                });
+                clearInterval(syncSlider);
+            }
+        }, 100);
+        setTimeout(() => clearInterval(syncSlider), 3000);
+    });
+});
+</script>
