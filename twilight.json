@@ -9266,6 +9266,56 @@
             "path": "home.Promotional_Cards",
             "fields": [
                 {
+                    "id": "enable_marquee",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الشريط المتحرك (Marquee)",
+                    "value": true
+                },
+                {
+                    "id": "marquee_text",
+                    "type": "string",
+                    "format": "text",
+                    "multilanguage": true,
+                    "label": "نص الشريط المتحرك",
+                    "value": { "en": "DESIGN FOR LIVING * UNIQUE FURNITURE *", "ar": "تصاميم للحياة * أثاث فريد *" },
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "marquee_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون الشريط المتحرك",
+                    "value": "#d1d5db",
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "marquee_speed",
+                    "type": "number",
+                    "format": "number",
+                    "label": "سرعة الشريط (بالثانية)",
+                    "value": 20,
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "id": "cards",
                     "type": "collection",
                     "format": "collection",
@@ -9278,7 +9328,7 @@
                     "fields": [
                         {
                             "id": "cards.bg_type",
-                            "type": "string",
+                            "type": "items",
                             "format": "dropdown-list",
                             "label": "نوع الخلفية",
                             "options": [
@@ -9331,7 +9381,7 @@
                         },
                         {
                             "id": "cards.text_align",
-                            "type": "string",
+                            "type": "items",
                             "format": "dropdown-list",
                             "label": "المحاذاة الأفقية للنص (Text Align)",
                             "options": [
@@ -9343,7 +9393,7 @@
                         },
                         {
                             "id": "cards.vertical_align",
-                            "type": "string",
+                            "type": "items",
                             "format": "dropdown-list",
                             "label": "المحاذاة العمودية (Vertical Justify)",
                             "options": [

@@ -2999,11 +2999,14 @@ input:where([type='file']):focus{
 .leading-relaxed{
     line-height: 1.625;
 }
+.leading-snug{
+    line-height: 1.375;
+}
 .leading-tight{
     line-height: 1.25;
 }
-.leading-snug{
-    line-height: 1.375;
+.tracking-\[0\.15em\]{
+    letter-spacing: 0.15em;
 }
 .tracking-\[0px\]{
     letter-spacing: 0px;
@@ -3025,9 +3028,6 @@ input:where([type='file']):focus{
 }
 .tracking-widest{
     letter-spacing: 0.1em;
-}
-.tracking-\[0\.15em\]{
-    letter-spacing: 0.15em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -38448,14 +38448,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:opacity-60:hover{
     opacity: 0.6;
 }
+.hover\:opacity-70:hover{
+    opacity: 0.7;
+}
 .hover\:opacity-80:hover{
     opacity: 0.8;
 }
 .hover\:opacity-90:hover{
     opacity: 0.9;
-}
-.hover\:opacity-70:hover{
-    opacity: 0.7;
 }
 .hover\:shadow-default:hover{
     --tw-shadow: 5px 10px 30px #2B2D340D;;
@@ -38874,11 +38874,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-4{
         gap: 1rem;
     }
-    .md\:gap-8{
-        gap: 2rem;
-    }
     .md\:gap-6{
         gap: 1.5rem;
+    }
+    .md\:gap-8{
+        gap: 2rem;
     }
     .md\:space-y-0 > :not([hidden]) ~ :not([hidden]){
         --tw-space-y-reverse: 0;
@@ -38918,6 +38918,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 0px;
         padding-bottom: 0px;
     }
+    .md\:py-16{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
     .md\:py-20{
         padding-top: 5rem;
         padding-bottom: 5rem;
@@ -38937,10 +38941,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-\[40px\]{
         padding-top: 40px;
         padding-bottom: 40px;
-    }
-    .md\:py-16{
-        padding-top: 4rem;
-        padding-bottom: 4rem;
     }
     .md\:pb-20{
         padding-bottom: 5rem;
@@ -39231,11 +39231,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:bg-background{
         background-color: var(--color-background);
     }
-    .lg\:p-8{
-        padding: 2rem;
-    }
     .lg\:p-12{
         padding: 3rem;
+    }
+    .lg\:p-8{
+        padding: 2rem;
     }
     .lg\:\!py-4{
         padding-top: 1rem !important;
@@ -39303,12 +39303,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
-    .lg\:text-title-size{
-        font-size: 42px;
-    }
     .lg\:text-sm{
         font-size: 0.875rem;
         line-height: 1.25rem;
+    }
+    .lg\:text-title-size{
+        font-size: 42px;
     }
     .lg\:leading-\[24px\]{
         line-height: 24px;

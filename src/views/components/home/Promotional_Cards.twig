@@ -1,15 +1,40 @@
 {% set pc = component %}
 
-<section class="w-full py-8 md:py-16 bg-white">
+<section class="w-full py-8 md:py-16 bg-white overflow-hidden">
+    
+    {# Marquee Section #}
+    {% if pc.enable_marquee and pc.marquee_text %}
+        <div class="promo-marquee relative w-full overflow-hidden mb-12 md:mb-20">
+            <div class="promo-marquee__inner flex items-center whitespace-nowrap w-max will-change-transform"
+                 style="animation-duration: {{ pc.marquee_speed|default(20) }}s; color: {{ pc.marquee_color|default('#d1d5db') }};">
+                
+                {# Repeat text multiple times to ensure seamless infinite scroll #}
+                {% for i in 1..2 %}
+                    <div class="flex items-center shrink-0">
+                        {% for j in 1..6 %}
+                            <span class="promo-marquee__item font-serif text-5xl md:text-7xl lg:text-8xl xl:text-9xl uppercase mx-6 md:mx-10">
+                                {{ pc.marquee_text }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
     <div class="container mx-auto px-4 md:px-8">
         {% if pc.cards %}
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
                 {% for card in pc.cards %}
                     
                     {# Dynamic classes based on schema settings #}
-                    {% set align_class = 'text-' ~ card.text_align|default('center') %}
-                    {% set justify_class = 'justify-' ~ card.vertical_align|default('between') %}
-                    {% set is_image_bg = card.bg_type == 'image' %}
+                    {% set raw_text_align = card.text_align is iterable ? card.text_align|first.value : card.text_align %}
+                    {% set raw_vertical_align = card.vertical_align is iterable ? card.vertical_align|first.value : card.vertical_align %}
+                    {% set raw_bg_type = card.bg_type is iterable ? card.bg_type|first.value : card.bg_type %}
+                    
+                    {% set align_class = 'text-' ~ raw_text_align|default('center') %}
+                    {% set justify_class = 'justify-' ~ raw_vertical_align|default('between') %}
+                    {% set is_image_bg = raw_bg_type == 'image' %}
                     {% set overlay_opacity = card.overlay_opacity is defined ? card.overlay_opacity / 100 : 0.15 %}
                     
                     <div class="relative w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] flex flex-col {{ align_class }} {{ justify_class }} p-8 lg:p-12 overflow-hidden group"
@@ -36,8 +61,8 @@
                             {% endif %}
                             
                             {% if card.description %}
-                                <p class="font-sans text-xs lg:text-sm opacity-80 mt-2 leading-relaxed">
-                                    {{ card.description|nl2br }}
+                                <p class="font-sans text-xs lg:text-sm opacity-80 mt-2 leading-relaxed whitespace-pre-line">
+                                    {{ card.description }}
                                 </p>
                             {% endif %}
                         </div>
@@ -57,3 +82,39 @@
         {% endif %}
     </div>
 </section>
+
+<style>
+    .promo-marquee__inner {
+        animation-name: promo-marquee-scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .promo-marquee:hover .promo-marquee__inner {
+        animation-play-state: paused;
+    }
+
+    @keyframes promo-marquee-scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(50%); }
+    }
+
+    html[dir="ltr"] .promo-marquee__inner {
+        animation-name: promo-marquee-scroll-ltr;
+    }
+
+    @keyframes promo-marquee-scroll-ltr {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
+
+    .promo-marquee__item {
+        letter-spacing: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .promo-marquee__inner {
+            animation: none;
+        }
+    }
+</style>
