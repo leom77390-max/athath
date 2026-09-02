@@ -8198,6 +8198,16 @@
             "icon": "sicon-packed-box",
             "path": "home.hero-special",
             "fields": []
+        },
+        {
+            "key": "3d8f3ff5-36cf-4d17-b5f1-80374ba5654a",
+            "title": {
+                "en": "Instagram Collage",
+                "ar": "كولاج انستقرام"
+            },
+            "icon": "sicon-instagram2",
+            "path": "home.instagram_collage",
+            "fields": []
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
