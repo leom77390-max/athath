@@ -1,0 +1,364 @@
+{% set slides = component.hero_slideshow_slides|default([]) %}
+{% set effect_v = component.hs_transition_effect.value|default(component.hs_transition_effect|default('fade')) %}
+{% set effect = effect_v is iterable ? effect_v|first : effect_v %}
+{% set pag_style_v = component.hs_pagination_style.value|default(component.hs_pagination_style|default('bullets')) %}
+{% set pag_style = pag_style_v is iterable ? pag_style_v|first : pag_style_v %}
+{% set pag_pos_v = component.hs_pagination_position.value|default(component.hs_pagination_position|default('bottom-center')) %}
+{% set pag_pos = pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v %}
+{% set autoplay_speed = component.hs_autoplay_speed|default(4000) %}
+{% set transition_speed = component.hs_transition_speed|default(700) %}
+{% set enable_parallax = component.hs_enable_parallax %}
+
+<style>
+	.hs-wrap-{{ component.id }} {
+		height: {{ component.hs_mobile_height | default('620px') }};
+	}
+	@media(min-width: 768px) {
+		.hs-wrap-{{ component.id }} {
+			height: {{ component.hs_tablet_height | default('500px') }};
+		}
+	}
+	@media(min-width: 1024px) {
+		.hs-wrap-{{ component.id }} {
+			height: {{ component.hs_desktop_height | default('620px') }};
+		}
+	}
+
+	.hs-wrap-{{ component.id }} salla-slider,
+	.hs-wrap-{{ component.id }} .swiper,
+	.hs-wrap-{{ component.id }} .swiper-wrapper {
+		height: 100%;
+	}
+
+	.hs-wrap-{{ component.id }} .swiper-slide {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 110%;
+		top: -5%;
+		object-fit: cover;
+		object-position: center;
+		will-change: transform;
+		{% if component.hs_enable_zoom_animation %}
+			transform: scale(1);
+			transition: transform {{ (autoplay_speed + transition_speed) }}ms ease-out;
+		{% endif %}
+	}
+
+	{% if component.hs_enable_zoom_animation %}
+		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
+			transform: scale(1.08);
+		}
+	{% endif %}
+
+	.hs-wrap-{{ component.id }} .hs-overlay {
+		position: absolute;
+		inset: 0;
+		background-color: #000000;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	.hs-wrap-{{ component.id }} .hs-content {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		padding: 24px;
+		z-index: 2;
+	}
+	@media(min-width: 768px) {
+		.hs-wrap-{{ component.id }} .hs-content {
+			padding: 64px;
+		}
+	}
+
+	.hs-wrap-{{ component.id }} .hs-text-box {
+		max-width: 640px;
+		{% if enable_parallax %}
+			will-change: transform;
+			transition: transform 0.1s linear;
+		{% endif %}
+	}
+
+	/* ─── Parallax content ─── */
+	{% if enable_parallax %}
+		.hs-wrap-{{ component.id }} .hs-content {
+			perspective: 1000px;
+		}
+	{% endif %}
+
+	/* ─── Buttons ─── */
+	.hs-wrap-{{ component.id }} .hs-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 13px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		font-weight: 600;
+		text-decoration: none;
+		transition: opacity .25s ease;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline {
+		position: relative;
+		padding-bottom: 4px;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1.5px;
+		background: currentColor;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover {
+		opacity: 0.65;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover::after {
+		animation: hsBorderSlide-{{ component.id }} 0.65s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+	}
+	@keyframes hsBorderSlide-{{ component.id }} {
+		0%   { transform-origin: right; transform: scaleX(1); }
+		49%  { transform-origin: right; transform: scaleX(0); }
+		50%  { transform-origin: left;  transform: scaleX(0); }
+		100% { transform-origin: left;  transform: scaleX(1); }
+	}
+
+	.hs-wrap-{{ component.id }} .hs-btn--solid {
+		padding: 12px 28px;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-light {
+		background-color: #ffffff;
+		color: #000000;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-dark {
+		background-color: #000000;
+		color: #ffffff;
+	}
+	.hs-wrap-{{ component.id }} .hs-btn--outline {
+		padding: 12px 28px;
+		border: 1px solid currentColor;
+		background: transparent;
+	}
+
+	/* ─── Pagination ─── */
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} {
+		position: absolute;
+		z-index: 10;
+		bottom: 20px;
+		left: 0;
+		right: 0;
+		display: flex;
+		gap: 6px;
+		pointer-events: none;
+		{% if pag_pos == 'bottom-start' %}
+			justify-content: flex-start;
+			padding-inline-start: 2rem;
+		{% elseif pag_pos == 'bottom-end' %}
+			justify-content: flex-end;
+			padding-inline-end: 2rem;
+		{% else %}
+			justify-content: center;
+		{% endif %}
+	}
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} .swiper-pagination-bullet {
+		pointer-events: all;
+		width: 8px;
+		height: 8px;
+		background: rgba(255,255,255,0.55);
+		border-radius: 99px;
+		cursor: pointer;
+		transition: background .3s, width .3s;
+		display: inline-block;
+	}
+	.hs-wrap-{{ component.id }} .hs-pagination-{{ component.id }} .swiper-pagination-bullet-active {
+		background: #fff;
+		width: 24px;
+	}
+	/* hide salla-slider's built-in pagination since we roll our own */
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) {
+		display: none !important;
+	}
+
+	/* ─── Nav arrows ─── */
+	.hs-wrap-{{ component.id }} .hs-prev,
+	.hs-wrap-{{ component.id }} .hs-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		background: rgba(255,255,255,.8);
+		border: none;
+		cursor: pointer;
+	}
+	.hs-wrap-{{ component.id }} .hs-prev { inset-inline-start: 1rem; }
+	.hs-wrap-{{ component.id }} .hs-next { inset-inline-end: 1rem; }
+
+	{% if not component.hs_show_arrows %}
+		.hs-wrap-{{ component.id }} .hs-prev,
+		.hs-wrap-{{ component.id }} .hs-next { display: none !important; }
+	{% endif %}
+
+	{% if component.hs_hide_on_desktop %}
+		@media(min-width: 1024px) { .hs-wrap-{{ component.id }} { display: none !important; } }
+	{% endif %}
+	{% if component.hs_hide_on_tablet %}
+		@media(min-width: 768px) and (max-width: 1023px) { .hs-wrap-{{ component.id }} { display: none !important; } }
+	{% endif %}
+	{% if component.hs_hide_on_mobile %}
+		@media(max-width: 767px) { .hs-wrap-{{ component.id }} { display: none !important; } }
+	{% endif %}
+</style>
+
+<section id="{{ component.hs_section_id }}" class="hs-wrap-{{ component.id }} relative w-full {{ component.hs_custom_css_class }}">
+
+	<salla-slider
+		id="hs-slider-{{ component.id }}"
+		type="carousel"
+		auto-play="{{ component.hs_enable_autoplay ? 'true' : 'false' }}"
+		show-controls="false"
+		pagination="false"
+		slides-per-view="1"
+		speed="{{ transition_speed }}"
+		class="w-full h-full"
+		slider-config='{
+			"slidesPerView": 1,
+			"effect": "{{ effect }}",
+			"fadeEffect": { "crossFade": true },
+			"speed": {{ transition_speed }},
+			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
+			{% if component.hs_enable_autoplay %}
+			"autoplay": {
+				"delay": {{ autoplay_speed }},
+				"disableOnInteraction": false,
+				"pauseOnMouseEnter": true
+			},
+			{% endif %}
+			"pagination": {
+				"el": ".hs-pagination-{{ component.id }}",
+				"clickable": true,
+				"type": "bullets"
+			},
+			{% if component.hs_show_arrows %}
+			"navigation": {
+				"nextEl": ".hs-next-{{ component.id }}",
+				"prevEl": ".hs-prev-{{ component.id }}"
+			},
+			{% endif %}
+			"on": {}
+		}'
+	>
+		<div slot="items">
+			{% for slide in slides %}
+				{% set _desk_img = slide.desktop_image|default('')|trim %}
+				{% set _desk_img = _desk_img is iterable ? _desk_img|first : _desk_img %}
+				{% set _mob_img  = slide.mobile_image|default(_desk_img)|trim %}
+				{% set _mob_img  = _mob_img is iterable ? _mob_img|first : _mob_img %}
+
+				{% set scheme_v  = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
+				{% set scheme    = scheme_v is iterable ? scheme_v|first : scheme_v %}
+				{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
+
+				{% set h_pos_v   = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
+				{% set h_pos     = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
+				{% set v_pos_v   = slide.vertical_position.value|default(slide.vertical_position|default('end')) %}
+				{% set v_pos     = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
+				{% set align_v   = slide.text_alignment.value|default(slide.text_alignment|default('start')) %}
+				{% set align     = align_v is iterable ? align_v|first : align_v %}
+
+				{% set justify_class  = (v_pos == 'start') ? 'justify-start' : (v_pos == 'center' ? 'justify-center' : 'justify-end') %}
+				{% set items_class    = (h_pos == 'start') ? 'items-start' : (h_pos == 'center' ? 'items-center' : 'items-end') %}
+				{% set text_align_cls = (align == 'center') ? 'text-center' : (align == 'end' ? 'text-end' : 'text-start') %}
+
+				{% set _btn_val        = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
+				{% set _slide_btn_url  = _btn_val.url|default(_btn_val|default('#')) %}
+
+				{% set btn_style_v = slide.btn_style.value|default(slide.btn_style|default('underline')) %}
+				{% set btn_style   = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
+
+				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
+
+				<div class="swiper-slide">
+					<picture class="absolute inset-0 w-full h-full block">
+						{% if _mob_img %}
+							<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
+						{% endif %}
+						<img class="hs-slide-bg-img" src="{{ _desk_img }}" alt="{{ slide.alt_text|default('') }}" loading="{{ loop.first ? 'eager' : 'lazy' }}">
+					</picture>
+
+					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
+
+					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
+						<div class="hs-text-box {{ text_align_cls }} {% if enable_parallax %}hs-parallax-box{% endif %}" style="color: {{ text_color }};">
+							{% if slide.heading %}
+								<h2 class="text-3xl md:text-6xl font-serif mb-4 leading-tight">{{ slide.heading }}</h2>
+							{% endif %}
+							{% if slide.description %}
+								<p class="text-base md:text-lg mb-6 opacity-90">{{ slide.description }}</p>
+							{% endif %}
+							{% if slide.btn_text %}
+								<a href="{{ _slide_btn_url }}"
+								   class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
+								   style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}">
+									{{ slide.btn_text }}
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</salla-slider>
+
+	{% if component.hs_show_pagination %}
+		<div class="hs-pagination-{{ component.id }}"></div>
+	{% endif %}
+
+	{% if component.hs_show_arrows %}
+		<button type="button" class="hs-prev hs-prev-{{ component.id }}">
+			<span class="sicon-arrow-{% if store.dir == 'rtl' %}right{% else %}left{% endif %}"></span>
+		</button>
+		<button type="button" class="hs-next hs-next-{{ component.id }}">
+			<span class="sicon-arrow-{% if store.dir == 'rtl' %}left{% else %}right{% endif %}"></span>
+		</button>
+	{% endif %}
+
+</section>
+
+{% if enable_parallax %}
+<script>
+(function() {
+	var wrap = document.querySelector('.hs-wrap-{{ component.id }}');
+	if (!wrap) return;
+	var strength = {{ component.hs_parallax_strength | default(20) }};
+
+	wrap.addEventListener('mousemove', function(e) {
+		var boxes = wrap.querySelectorAll('.hs-parallax-box');
+		var rect  = wrap.getBoundingClientRect();
+		var xRel  = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
+		var yRel  = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
+		boxes.forEach(function(box) {
+			box.style.transform = 'translate(' + (xRel * strength * -1) + 'px, ' + (yRel * strength * -1) + 'px)';
+		});
+	});
+
+	wrap.addEventListener('mouseleave', function() {
+		wrap.querySelectorAll('.hs-parallax-box').forEach(function(box) {
+			box.style.transform = 'translate(0,0)';
+		});
+	});
+})();
+</script>
+{% endif %}

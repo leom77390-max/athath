@@ -948,6 +948,12 @@ input:where([type='file']):focus{
 .left-1\/2{
     left: 50%;
 }
+.left-\[14\%\]{
+    left: 14%;
+}
+.left-\[5\%\]{
+    left: 5%;
+}
 .right-0{
     right: 0px;
 }
@@ -968,6 +974,12 @@ input:where([type='file']):focus{
 }
 .right-\[-38px\]{
     right: -38px;
+}
+.right-\[10\%\]{
+    right: 10%;
+}
+.right-\[5\%\]{
+    right: 5%;
 }
 .top-0{
     top: 0px;
@@ -1001,6 +1013,9 @@ input:where([type='file']):focus{
 }
 .top-\[11px\]{
     top: 11px;
+}
+.top-\[34\%\]{
+    top: 34%;
 }
 .top-\[var\(--mainnav-height\)\]{
     top: var(--mainnav-height);
@@ -1275,6 +1290,12 @@ input:where([type='file']):focus{
 .hidden{
     display: none;
 }
+.aspect-\[4\/3\]{
+    aspect-ratio: 4/3;
+}
+.aspect-\[4\/5\]{
+    aspect-ratio: 4/5;
+}
 .aspect-square{
     aspect-ratio: 1 / 1;
 }
@@ -1376,6 +1397,9 @@ input:where([type='file']):focus{
 }
 .h-\[52px\]{
     height: 52px;
+}
+.h-\[760px\]{
+    height: 760px;
 }
 .h-\[82px\]{
     height: 82px;
@@ -1529,17 +1553,29 @@ input:where([type='file']):focus{
 .w-\[123px\]{
     width: 123px;
 }
+.w-\[14\%\]{
+    width: 14%;
+}
 .w-\[150px\]{
     width: 150px;
 }
+.w-\[16\%\]{
+    width: 16%;
+}
 .w-\[18px\]{
     width: 18px;
+}
+.w-\[22\%\]{
+    width: 22%;
 }
 .w-\[27px\]{
     width: 27px;
 }
 .w-\[420px\]{
     width: 420px;
+}
+.w-\[62vw\]{
+    width: 62vw;
 }
 .w-\[75\%\]{
     width: 75%;
@@ -1562,6 +1598,10 @@ input:where([type='file']):focus{
 }
 .w-full{
     width: 100%;
+}
+.w-max{
+    width: -moz-max-content;
+    width: max-content;
 }
 .w-screen{
     width: 100vw;
@@ -1600,8 +1640,26 @@ input:where([type='file']):focus{
 .max-w-\[1412px\]{
     max-width: 1412px;
 }
+.max-w-\[1500px\]{
+    max-width: 1500px;
+}
+.max-w-\[190px\]{
+    max-width: 190px;
+}
+.max-w-\[220px\]{
+    max-width: 220px;
+}
+.max-w-\[260px\]{
+    max-width: 260px;
+}
 .max-w-\[270px\]{
     max-width: 270px;
+}
+.max-w-\[320px\]{
+    max-width: 320px;
+}
+.max-w-\[420px\]{
+    max-width: 420px;
 }
 .max-w-\[480px\]{
     max-width: 480px;
@@ -1784,6 +1842,9 @@ input:where([type='file']):focus{
 }
 .snap-mandatory{
     --tw-scroll-snap-strictness: mandatory;
+}
+.snap-start{
+    scroll-snap-align: start;
 }
 .appearance-none{
     -webkit-appearance: none;
@@ -2178,6 +2239,9 @@ input:where([type='file']):focus{
     border-color: rgba(191, 219, 254, 1);
     border-color: rgba(191, 219, 254, var(--tw-border-opacity, 1));
 }
+.border-current{
+    border-color: currentColor;
+}
 .border-font{
     border-color: var(--color-font);
 }
@@ -2486,6 +2550,10 @@ input:where([type='file']):focus{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
+.px-7{
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+}
 .px-8{
     padding-left: 2rem;
     padding-right: 2rem;
@@ -2505,6 +2573,10 @@ input:where([type='file']):focus{
 .py-10{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+}
+.py-16{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 .py-2{
     padding-top: 0.5rem;
@@ -2661,6 +2733,10 @@ input:where([type='file']):focus{
     font-size: 2.25rem;
     line-height: 2.5rem;
 }
+.text-5xl{
+    font-size: 3rem;
+    line-height: 1;
+}
 .text-6xl{
     font-size: 3.75rem;
     line-height: 1;
@@ -2797,6 +2873,9 @@ input:where([type='file']):focus{
 .leading-8{
     line-height: 2rem;
 }
+.leading-\[1\.05\]{
+    line-height: 1.05;
+}
 .leading-\[1\.35\]{
     line-height: 1.35;
 }
@@ -2841,6 +2920,12 @@ input:where([type='file']):focus{
 }
 .tracking-\[0px\]{
     letter-spacing: 0px;
+}
+.tracking-\[2px\]{
+    letter-spacing: 2px;
+}
+.tracking-\[3px\]{
+    letter-spacing: 3px;
 }
 .tracking-normal{
     letter-spacing: 0em;
@@ -2896,6 +2981,9 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(59, 130, 246, 1);
     color: rgba(59, 130, 246, var(--tw-text-opacity, 1));
+}
+.text-current{
+    color: currentColor;
 }
 .text-danger{
     --tw-text-opacity: 1;
@@ -38714,6 +38802,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+    .md\:px-8{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
     .md\:py-0{
         padding-top: 0px;
         padding-bottom: 0px;
@@ -39031,6 +39123,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
     }
+    .lg\:py-24{
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
     .lg\:py-4{
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -39060,6 +39156,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-4xl{
         font-size: 2.25rem;
         line-height: 2.5rem;
+    }
+    .lg\:text-6xl{
+        font-size: 3.75rem;
+        line-height: 1;
     }
     .lg\:text-title-size{
         font-size: 42px;
