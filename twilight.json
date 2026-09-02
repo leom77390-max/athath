@@ -8787,166 +8787,181 @@
             },
             "icon": "sicon-instagram2",
             "path": "home.instagram_collage",
-             "fields": [
-        {
-            "type": "static",
-            "format": "title",
-            "id": "group_general",
-            "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>",
-            "variant": "h6"
-        },
-        {
-          "id": "subheading",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان الفرعي (Subheading)",
-          "placeholder": "RENOVATE YOUR HOME",
-          "icon": "sicon-format-text-alt",
-          "value": "RENOVATE YOUR HOME",
-          "multilanguage": true,
-          "required": false
-        },
-        {
-          "id": "heading",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان الرئيسي (Heading)",
-          "placeholder": "WE'RE ON GRAM",
-          "icon": "sicon-format-color-text",
-          "value": "WE'RE ON GRAM",
-          "multilanguage": true,
-          "required": true
-        },
-        {
-          "id": "button_text",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر (Button Text)",
-          "placeholder": "@YOUR_STORE",
-          "icon": "sicon-cursor-click",
-          "value": "@YOUR_STORE",
-          "multilanguage": true,
-          "required": true
-        },
-        {
-          "id": "button_url",
-          "type": "string",
-          "format": "url",
-          "inputType": "url",
-          "label": "رابط حساب الانستقرام",
-          "placeholder": "https://instagram.com/your_store",
-          "icon": "sicon-link",
-          "value": "",
-          "required": true
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية القسم",
-          "icon": "sicon-format-fill",
-          "value": "#f3efe9"
-        },
-        {
-          "id": "open_new_tab",
-          "type": "boolean",
-          "format": "switch",
-          "label": "فتح الرابط في صفحة جديدة",
-          "value": true
-        },
-        {
-          "id": "text_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون النص والزر",
-          "icon": "sicon-format-color-text",
-          "value": "#18181b"
-        },
-        {
-            "id": "section_width",
-            "type": "items",
-            "label": "عرض القسم",
-            "format": "dropdown-list",
-            "options": [
-                { "label": "داخل حاوية (Container)", "value": "container" },
-                { "label": "عرض كامل (Full width)", "value": "wide" }
-            ],
-            "value": "wide"
-        },
-        {
-            "id": "title_alignment",
-            "type": "items",
-            "label": "محاذاة النص",
-            "format": "dropdown-list",
-            "options": [
-                { "label": "بداية", "value": "start" },
-                { "label": "وسط", "value": "center" },
-                { "label": "نهاية", "value": "end" }
-            ],
-            "value": "center"
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "group_images",
-            "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>صور الكولاج</h3>",
-            "variant": "h6"
-        },
-        {
-          "id": "enable_floating_animation",
-          "type": "boolean",
-          "format": "switch",
-          "label": "تفعيل حركة صعود ونزول للصور بشكل لانهائي",
-          "value": false
-        },
-        {
-          "id": "images",
-          "type": "collection",
-          "format": "collection",
-          "label": "الصور",
-          "item_label": "صورة",
-          "icon": "sicon-image-gallery",
-          "minLength": 4,
-          "maxLength": 5,
-          "value": [
+            "fields": [
                 {
-                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                    "type": "static",
+                    "format": "title",
+                    "id": "group_general",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>",
+                    "variant": "h6"
                 },
                 {
-                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                    "id": "subheading",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي (Subheading)",
+                    "placeholder": "RENOVATE YOUR HOME",
+                    "icon": "sicon-format-text-alt",
+                    "value": "RENOVATE YOUR HOME",
+                    "multilanguage": true,
+                    "required": false
                 },
                 {
-                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                    "id": "heading",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي (Heading)",
+                    "placeholder": "WE'RE ON GRAM",
+                    "icon": "sicon-format-color-text",
+                    "value": "WE'RE ON GRAM",
+                    "multilanguage": true,
+                    "required": true
                 },
                 {
-                    "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                    "id": "button_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر (Button Text)",
+                    "placeholder": "@YOUR_STORE",
+                    "icon": "sicon-cursor-click",
+                    "value": "@YOUR_STORE",
+                    "multilanguage": true,
+                    "required": true
+                },
+                {
+                    "id": "button_url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط حساب الانستقرام",
+                    "placeholder": "https://instagram.com/your_store",
+                    "icon": "sicon-link",
+                    "value": "",
+                    "required": true
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "icon": "sicon-format-fill",
+                    "value": "#f3efe9"
+                },
+                {
+                    "id": "open_new_tab",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "فتح الرابط في صفحة جديدة",
+                    "value": true
+                },
+                {
+                    "id": "text_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص والزر",
+                    "icon": "sicon-format-color-text",
+                    "value": "#18181b"
+                },
+                {
+                    "id": "section_width",
+                    "type": "items",
+                    "label": "عرض القسم",
+                    "format": "dropdown-list",
+                    "options": [
+                        {
+                            "label": "داخل حاوية (Container)",
+                            "value": "container"
+                        },
+                        {
+                            "label": "عرض كامل (Full width)",
+                            "value": "wide"
+                        }
+                    ],
+                    "value": "wide"
+                },
+                {
+                    "id": "title_alignment",
+                    "type": "items",
+                    "label": "محاذاة النص",
+                    "format": "dropdown-list",
+                    "options": [
+                        {
+                            "label": "بداية",
+                            "value": "start"
+                        },
+                        {
+                            "label": "وسط",
+                            "value": "center"
+                        },
+                        {
+                            "label": "نهاية",
+                            "value": "end"
+                        }
+                    ],
+                    "value": "center"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "group_images",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>صور الكولاج</h3>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "enable_floating_animation",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل حركة صعود ونزول للصور بشكل لانهائي",
+                    "value": false
+                },
+                {
+                    "id": "images",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الصور",
+                    "item_label": "صورة",
+                    "icon": "sicon-image-gallery",
+                    "minLength": 4,
+                    "maxLength": 5,
+                    "value": [
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        }
+                    ],
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "images.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "images.alt",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص البديل (Alt text)",
+                            "icon": "sicon-text-align-right",
+                            "value": "",
+                            "required": false
+                        }
+                    ]
                 }
-          ],
-          "required": true,
-          "fields": [
-            {
-              "id": "images.image",
-              "type": "string",
-              "format": "image",
-              "label": "الصورة",
-              "icon": "sicon-image",
-              "value": "",
-              "required": true
-            },
-            {
-              "id": "images.alt",
-              "type": "string",
-              "format": "text",
-              "label": "النص البديل (Alt text)",
-              "icon": "sicon-text-align-right",
-              "value": "",
-              "required": false
-            }
-          ]
-        }
-      ]
+            ]
         },
         {
             "key": "bf52b425-b15b-4ed4-862f-14deaf7b9c7a",
@@ -9064,6 +9079,16 @@
                     ]
         }
       ]
+        },
+        {
+            "key": "9d146fd5-ad94-46b9-bb2a-e753bfbda7ae",
+            "title": {
+                "en": "Staggered Features Grid",
+                "ar": "شبكة الميزات المتداخلة"
+            },
+            "icon": "sicon-store",
+            "path": "home.Staggered_Features_Grid",
+            "fields": []
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
@@ -9072,5 +9097,3 @@
         "en": ""
     }
 }
-
-
