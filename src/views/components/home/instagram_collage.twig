@@ -1,4 +1,6 @@
 {% set ig = component %}
+{% set anim_class = ig.enable_floating_animation ? 'ig-float-animation' : '' %}
+{% set delays = [0, 1.5, 0.7, 2, 1] %}
 {% set align_class = ig.title_alignment == 'start' ? 'text-start items-start' : (ig.title_alignment == 'end' ? 'text-end items-end' : 'text-center items-center') %}
 
 {% if ig.images|length %}
@@ -14,23 +16,23 @@
 
             {% for item in ig.images %}
                 {% if loop.index == 1 %}
-                    <figure class="absolute top-0 left-[5%] w-[22%] max-w-[320px] shadow-sm">
+                    <figure class="absolute top-0 left-[5%] w-[22%] max-w-[320px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 2 %}
-                    <figure class="absolute top-[34%] left-0 w-[14%] max-w-[190px] shadow-sm">
+                    <figure class="absolute top-[34%] left-0 w-[14%] max-w-[190px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 3 %}
-                    <figure class="absolute bottom-0 left-[14%] w-[16%] max-w-[220px] shadow-sm">
+                    <figure class="absolute bottom-0 left-[14%] w-[16%] max-w-[220px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5]">
                     </figure>
                 {% elseif loop.index == 4 %}
-                    <figure class="absolute top-0 right-[5%] w-[22%] max-w-[320px] shadow-sm">
+                    <figure class="absolute top-0 right-[5%] w-[22%] max-w-[320px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/3]">
                     </figure>
                 {% elseif loop.index == 5 %}
-                    <figure class="absolute bottom-0 right-[10%] w-[16%] max-w-[220px] shadow-sm">
+                    <figure class="absolute bottom-0 right-[10%] w-[16%] max-w-[220px] shadow-sm {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                         <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-square">
                     </figure>
                 {% endif %}
@@ -78,7 +80,7 @@
             <div class="w-full overflow-x-auto snap-x snap-mandatory scrollbar-hide">
                 <div class="flex gap-3 px-4 w-max">
                     {% for item in ig.images %}
-                        <figure class="snap-start shrink-0 w-[62vw] max-w-[260px]">
+                        <figure class="snap-start shrink-0 w-[62vw] max-w-[260px] {{ anim_class }}" {{ ig.enable_floating_animation ? 'style="animation-delay: ' ~ delays[loop.index0 % 5] ~ 's;"' : ''|raw }}>
                             <img src="{{ item.image }}" alt="{{ item.alt|default(ig.heading) }}" loading="lazy" class="w-full h-auto object-cover aspect-[4/5] rounded-sm">
                         </figure>
                     {% endfor %}
@@ -95,4 +97,11 @@
     .ig-collage__heading { letter-spacing: 0.5px; }
     .scrollbar-hide::-webkit-scrollbar { display: none; }
     .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes igFloatUpAndDown {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+    }
+    .ig-float-animation {
+        animation: igFloatUpAndDown 4s ease-in-out infinite;
+    }
 </style>
