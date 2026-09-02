@@ -9094,8 +9094,14 @@
                     "type": "string",
                     "format": "textarea",
                     "label": "العنوان الرئيسي (Main Heading)",
-                    "placeholder": "Change the look of your house,\nchange the perspective of others",
-                    "value": "Change the look of your house,\nchange the perspective of others",
+                    "placeholder": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
+                    "value": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
                     "multilanguage": true,
                     "required": false
                 },
@@ -9174,23 +9180,47 @@
                     "value": [
                         {
                             "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": "Showroom",
-                            "features.description": "Experience design for living at our flagship showroom located in Boston's South End."
+                            "features.title": {
+                                "en": "Showroom",
+                                "ar": "صالة العرض"
+                            },
+                            "features.description": {
+                                "en": "Experience design for living at our flagship showroom.",
+                                "ar": "اكتشف تصاميم الحياة العصرية في صالة العرض الرئيسية لدينا."
+                            }
                         },
                         {
                             "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": "Interior work",
-                            "features.description": "Designing spaces with precision, curated materials, and purposeful, aesthetic execution."
+                            "features.title": {
+                                "en": "Interior work",
+                                "ar": "أعمال داخلية"
+                            },
+                            "features.description": {
+                                "en": "Designing spaces with precision, curated materials, and aesthetic execution.",
+                                "ar": "تصميم المساحات بدقة مع مواد منتقاة وتنفيذ هادف وجمالي."
+                            }
                         },
                         {
                             "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": "Authentic design",
-                            "features.description": "We offer authentic, lasting pieces—chosen for their ethical integrity and timeless aesthetic appeal."
+                            "features.title": {
+                                "en": "Authentic design",
+                                "ar": "تصميم أصيل"
+                            },
+                            "features.description": {
+                                "en": "We offer authentic, lasting pieces—chosen for their timeless aesthetic appeal.",
+                                "ar": "نقدم قطعاً أصيلة تدوم طويلاً، اخترناها بعناية لجودتها العالية وجاذبيتها الخالدة."
+                            }
                         },
                         {
                             "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": "Custom additions",
-                            "features.description": "Crafting refined interiors through tailored elements, thoughtful design, and craftsmanship."
+                            "features.title": {
+                                "en": "Custom additions",
+                                "ar": "إضافات مخصصة"
+                            },
+                            "features.description": {
+                                "en": "Crafting refined interiors through tailored elements and craftsmanship.",
+                                "ar": "نصنع تصميمات داخلية راقية من خلال عناصر مصممة خصيصاً وحرفية عالية."
+                            }
                         }
                     ],
                     "required": true,
@@ -9210,6 +9240,7 @@
                             "format": "text",
                             "label": "العنوان (Title)",
                             "icon": "sicon-format-color-text",
+                            "multilanguage": true,
                             "value": "",
                             "required": false
                         },
@@ -9219,6 +9250,7 @@
                             "format": "textarea",
                             "label": "الوصف (Description)",
                             "icon": "sicon-text-align-right",
+                            "multilanguage": true,
                             "value": "",
                             "required": false
                         }

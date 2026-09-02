@@ -1189,6 +1189,9 @@ input:where([type='file']):focus{
 .mb-14{
     margin-bottom: 3.5rem;
 }
+.mb-16{
+    margin-bottom: 4rem;
+}
 .mb-2{
     margin-bottom: 0.5rem;
 }
@@ -1282,9 +1285,6 @@ input:where([type='file']):focus{
 .mt-auto{
     margin-top: auto;
 }
-.mb-16{
-    margin-bottom: 4rem;
-}
 .box-border{
     box-sizing: border-box;
 }
@@ -1336,20 +1336,20 @@ input:where([type='file']):focus{
 .hidden{
     display: none;
 }
-.aspect-\[4\/5\]{
-    aspect-ratio: 4/5;
-}
-.aspect-square{
-    aspect-ratio: 1 / 1;
-}
 .aspect-\[3\/4\]{
     aspect-ratio: 3/4;
 }
 .aspect-\[4\/3\]{
     aspect-ratio: 4/3;
 }
+.aspect-\[4\/5\]{
+    aspect-ratio: 4/5;
+}
 .aspect-\[5\/4\]{
     aspect-ratio: 5/4;
+}
+.aspect-square{
+    aspect-ratio: 1 / 1;
 }
 .\!size-11{
     width: 2.75rem !important;
@@ -1698,6 +1698,9 @@ input:where([type='file']):focus{
 .max-w-3xl{
     max-width: 48rem;
 }
+.max-w-4xl{
+    max-width: 56rem;
+}
 .max-w-\[100px\]{
     max-width: 100px;
 }
@@ -1757,9 +1760,6 @@ input:where([type='file']):focus{
 }
 .max-w-xs{
     max-width: 20rem;
-}
-.max-w-4xl{
-    max-width: 56rem;
 }
 .flex-1{
     flex: 1 1 0%;
@@ -3039,6 +3039,11 @@ input:where([type='file']):focus{
     color: rgba(255, 255, 255, 1) !important;
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important;
 }
+.text-\[\#18181b\]{
+    --tw-text-opacity: 1;
+    color: rgba(24, 24, 27, 1);
+    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
+}
 .text-\[\#1877F2\]{
     --tw-text-opacity: 1;
     color: rgba(24, 119, 242, 1);
@@ -3183,11 +3188,6 @@ input:where([type='file']):focus{
     color: rgba(82, 82, 91, var(--tw-text-opacity, 1));
 }
 .text-zinc-900{
-    --tw-text-opacity: 1;
-    color: rgba(24, 24, 27, 1);
-    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
-}
-.text-\[\#18181b\]{
     --tw-text-opacity: 1;
     color: rgba(24, 24, 27, 1);
     color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
@@ -38930,6 +38930,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 1.875rem;
         line-height: 2.25rem;
     }
+    .md\:text-4xl{
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
     .md\:text-5xl{
         font-size: 3rem;
         line-height: 1;
@@ -38965,10 +38969,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:text-xs{
         font-size: 0.75rem;
         line-height: 1rem;
-    }
-    .md\:text-4xl{
-        font-size: 2.25rem;
-        line-height: 2.5rem;
     }
     .md\:font-normal{
         font-weight: 400;
@@ -39034,17 +39034,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:mb-8{
         margin-bottom: 2rem;
     }
-    .lg\:mt-12{
-        margin-top: 3rem;
-    }
-    .lg\:mt-5{
-        margin-top: 1.25rem;
-    }
     .lg\:mt-0{
         margin-top: 0px;
     }
+    .lg\:mt-12{
+        margin-top: 3rem;
+    }
     .lg\:mt-24{
         margin-top: 6rem;
+    }
+    .lg\:mt-5{
+        margin-top: 1.25rem;
     }
     .lg\:mt-8{
         margin-top: 2rem;
@@ -39169,14 +39169,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:gap-11{
         gap: 2.75rem;
     }
+    .lg\:gap-12{
+        gap: 3rem;
+    }
     .lg\:gap-6{
         gap: 1.5rem;
     }
     .lg\:gap-8{
         gap: 2rem;
-    }
-    .lg\:gap-12{
-        gap: 3rem;
     }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]){
         --tw-space-x-reverse: 0;
@@ -39266,16 +39266,16 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 2.25rem;
         line-height: 2.5rem;
     }
+    .lg\:text-5xl{
+        font-size: 3rem;
+        line-height: 1;
+    }
     .lg\:text-6xl{
         font-size: 3.75rem;
         line-height: 1;
     }
     .lg\:text-title-size{
         font-size: 42px;
-    }
-    .lg\:text-5xl{
-        font-size: 3rem;
-        line-height: 1;
     }
     .lg\:leading-\[24px\]{
         line-height: 24px;
