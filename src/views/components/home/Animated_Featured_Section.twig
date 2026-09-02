@@ -31,7 +31,7 @@
             {% if hm.marquee_text %}
                 <div class="hero-marquee__track relative w-full overflow-hidden py-4 md:py-6 border-b {{ hm.special_colors_condition ? 'border-current/20' : 'border-white/20' }}">
                     <div
-                        class="hero-marquee__inner flex whitespace-nowrap will-change-transform"
+                        class="hero-marquee__inner flex whitespace-nowrap will-change-transform w-max"
                         style="animation-duration: {{ hm.marquee_speed|default('25') }}s;"
                     >
                         {% for i in 1..2 %}
@@ -81,6 +81,15 @@
     }
 
     @keyframes hero-marquee-scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(50%); }
+    }
+
+    html[dir="ltr"] .hero-marquee__inner {
+        animation-name: hero-marquee-scroll-ltr;
+    }
+
+    @keyframes hero-marquee-scroll-ltr {
         from { transform: translateX(0); }
         to   { transform: translateX(-50%); }
     }
