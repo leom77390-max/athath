@@ -8895,6 +8895,13 @@
             "variant": "h6"
         },
         {
+          "id": "enable_floating_animation",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تفعيل حركة صعود ونزول للصور بشكل لانهائي",
+          "value": false
+        },
+        {
           "id": "images",
           "type": "collection",
           "format": "collection",
