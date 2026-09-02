@@ -1,5 +1,7 @@
 {% set hm = component %}
-{% set is_container = hm.section_width == 'container' %}
+{% set width_val = hm.section_width[0].value ?? hm.section_width %}
+{% set height_val = hm.section_height[0].value ?? hm.section_height %}
+{% set is_container = width_val == 'container' %}
 {% set color_style = hm.special_colors_condition ? 'background-color: ' ~ hm.bg_color ~ '; color: ' ~ hm.text_color ~ ';' : '' %}
 {% set text_class = hm.special_colors_condition ? 'text-current' : 'text-white' %}
 {% set border_class = hm.special_colors_condition ? 'border-current' : 'border-white/70' %}
@@ -10,7 +12,7 @@
     <div class="{{ is_container ? 'container mx-auto px-4' : 'w-full' }}">
         <div
             class="hero-marquee relative w-full overflow-hidden flex flex-col {{ is_container ? 'rounded-2xl' : '' }}"
-            style="height: {{ hm.section_height|default('650') }}px;"
+            style="height: {{ height_val|default('650') }}px;"
             aria-label="{{ hm.subheading|default('Hero banner') }}"
         >
             {# ============ Background ============ #}
