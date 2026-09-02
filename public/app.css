@@ -939,6 +939,9 @@ input:where([type='file']):focus{
 .bottom-1{
     bottom: 0.25rem;
 }
+.bottom-10{
+    bottom: 2.5rem;
+}
 .bottom-6{
     bottom: 1.5rem;
 }
@@ -947,6 +950,9 @@ input:where([type='file']):focus{
 }
 .bottom-\[5\%\]{
     bottom: 5%;
+}
+.end-10{
+    right: 2.5rem;
 }
 .left-0{
     left: 0px;
@@ -1001,6 +1007,9 @@ input:where([type='file']):focus{
 }
 .start-0{
     left: 0px;
+}
+.start-10{
+    left: 2.5rem;
 }
 .top-0{
     top: 0px;
@@ -1459,8 +1468,8 @@ input:where([type='file']):focus{
 .h-\[52px\]{
     height: 52px;
 }
-.h-\[60vh\]{
-    height: 60vh;
+.h-\[55vw\]{
+    height: 55vw;
 }
 .h-\[760px\]{
     height: 760px;
@@ -1538,9 +1547,6 @@ input:where([type='file']):focus{
 }
 .min-h-\[34px\]{
     min-height: 34px;
-}
-.min-h-\[500px\]{
-    min-height: 500px;
 }
 .min-h-full{
     min-height: 100%;
@@ -1816,6 +1822,11 @@ input:where([type='file']):focus{
 .-translate-y-1\/2{
     --tw-translate-y: -50%;
     transform: translate(var(--tw-translate-x), -50%) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-0{
+    --tw-translate-x: 0px;
+    transform: translate(0px, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .translate-x-10{
@@ -2179,6 +2190,9 @@ input:where([type='file']):focus{
     border-bottom-width: calc(1px * 0);
     border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
+.divide-black\/10 > :not([hidden]) ~ :not([hidden]){
+    border-color: rgba(0, 0, 0, 0.1);
+}
 .self-start{
     align-self: flex-start;
 }
@@ -2532,10 +2546,19 @@ input:where([type='file']):focus{
     --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-black\/50{
+    --tw-gradient-from: rgba(0, 0, 0, 0.5) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .from-transparent{
     --tw-gradient-from: transparent var(--tw-gradient-from-position);
     --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.via-black\/10{
+    --tw-gradient-to: rgba(0, 0, 0, 0)  var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), rgba(0, 0, 0, 0.1) var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .via-white\/40{
     --tw-gradient-to: rgba(255, 255, 255, 0)  var(--tw-gradient-to-position);
@@ -2697,6 +2720,10 @@ input:where([type='file']):focus{
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
 }
+.py-6{
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -2843,6 +2870,9 @@ input:where([type='file']):focus{
 .text-7xl{
     font-size: 4.5rem;
     line-height: 1;
+}
+.text-\[0\.65rem\]{
+    font-size: 0.65rem;
 }
 .text-\[1\.2rem\]{
     font-size: 1.2rem;
@@ -3023,8 +3053,8 @@ input:where([type='file']):focus{
 .tracking-\[0\.15em\]{
     letter-spacing: 0.15em;
 }
-.tracking-\[0\.2em\]{
-    letter-spacing: 0.2em;
+.tracking-\[0\.25em\]{
+    letter-spacing: 0.25em;
 }
 .tracking-\[0px\]{
     letter-spacing: 0px;
@@ -3089,11 +3119,6 @@ input:where([type='file']):focus{
 }
 .text-background{
     color: var(--color-background);
-}
-.text-black{
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, 1);
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .text-blue-500{
     --tw-text-opacity: 1;
@@ -3245,6 +3270,9 @@ input:where([type='file']):focus{
 }
 .opacity-100{
     opacity: 1;
+}
+.opacity-30{
+    opacity: 0.3;
 }
 .opacity-40{
     opacity: 0.4;
@@ -3467,8 +3495,8 @@ input:where([type='file']):focus{
 .duration-700{
     transition-duration: 700ms;
 }
-.duration-\[1500ms\]{
-    transition-duration: 1500ms;
+.duration-\[1200ms\]{
+    transition-duration: 1200ms;
 }
 .ease-\[cubic-bezier\(\.16\2c 1\2c \.3\2c 1\)\]{
     transition-timing-function: cubic-bezier(.16,1,.3,1);
@@ -38566,6 +38594,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     transform: translate(0.25rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.group:hover .group-hover\:translate-x-2{
+    --tw-translate-x: 0.5rem;
+    transform: translate(0.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .group:hover .group-hover\:translate-x-full{
     --tw-translate-x: 100%;
     transform: translate(100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -38624,28 +38657,16 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .groupactive .group-\[active\]\:w-full{
     width: 100%;
 }
-.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:translate-y-0{
-    --tw-translate-y: 0px;
-    transform: translate(var(--tw-translate-x), 0px) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.group.is-active .group-\[\.is-active\]\:translate-x-2{
+    --tw-translate-x: 0.5rem;
+    transform: translate(0.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:scale-110{
-    --tw-scale-x: 1.1;
-    --tw-scale-y: 1.1;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.1) scaleY(1.1);
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:bg-black\/40{
-    background-color: rgba(0, 0, 0, 0.4);
 }
 .groupactive .group-\[active\]\:text-primary{
     color: #414042;
     color: var(--color-primary);
 }
 .group.is-active .group-\[\.is-active\]\:opacity-100{
-    opacity: 1;
-}
-.group.swiper-slide-active .group-\[\.swiper-slide-active\]\:opacity-100{
     opacity: 1;
 }
 @media (min-width: 640px){
@@ -38790,9 +38811,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-20{
         margin-bottom: 5rem;
     }
-    .md\:mb-6{
-        margin-bottom: 1.5rem;
-    }
     .md\:mb-8{
         margin-bottom: 2rem;
     }
@@ -38919,9 +38937,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-10{
         gap: 2.5rem;
     }
-    .md\:gap-12{
-        gap: 3rem;
-    }
     .md\:gap-14{
         gap: 3.5rem;
     }
@@ -38998,6 +39013,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-6{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
+    }
+    .md\:py-8{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
     .md\:py-\[40px\]{
         padding-top: 40px;
@@ -39082,8 +39101,18 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         clip: auto;
         white-space: normal;
     }
+    .lg\:absolute{
+        position: absolute;
+    }
     .lg\:sticky{
         position: sticky;
+    }
+    .lg\:inset-y-0{
+        top: 0px;
+        bottom: 0px;
+    }
+    .lg\:end-0{
+        right: 0px;
     }
     .lg\:top-20{
         top: 5rem;
@@ -39131,8 +39160,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:mt-24{
         margin-top: 6rem;
     }
-    .lg\:mt-4{
-        margin-top: 1rem;
+    .lg\:mt-3{
+        margin-top: 0.75rem;
     }
     .lg\:mt-5{
         margin-top: 1.25rem;
@@ -39187,6 +39216,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:min-h-\[528px\]{
         min-height: 528px;
+    }
+    .lg\:min-h-\[600px\]{
+        min-height: 600px;
+    }
+    .lg\:w-1\/2{
+        width: 50%;
     }
     .lg\:w-10\/12{
         width: 83.333333%;
@@ -39323,9 +39358,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
-    .lg\:px-24{
-        padding-left: 6rem;
-        padding-right: 6rem;
+    .lg\:px-20{
+        padding-left: 5rem;
+        padding-right: 5rem;
     }
     .lg\:px-8{
         padding-left: 2rem;
@@ -39381,10 +39416,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
-    .lg\:text-7xl{
-        font-size: 4.5rem;
-        line-height: 1;
-    }
     .lg\:text-8xl{
         font-size: 6rem;
         line-height: 1;
@@ -39414,21 +39445,20 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 0px;
         padding-right: 0px;
     }
+    .xl\:px-28{
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
     .xl\:text-6xl{
         font-size: 3.75rem;
-        line-height: 1;
-    }
-    .xl\:text-7xl{
-        font-size: 4.5rem;
-        line-height: 1;
-    }
-    .xl\:text-8xl{
-        font-size: 6rem;
         line-height: 1;
     }
     .xl\:text-9xl{
         font-size: 8rem;
         line-height: 1;
+    }
+    .xl\:text-\[4\.5rem\]{
+        font-size: 4.5rem;
     }
 }
 @media (min-width: 480px){
@@ -39669,6 +39699,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     transform: translate(-100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.rtl\:translate-x-0:where([dir="rtl"], [dir="rtl"] *){
+    --tw-translate-x: 0px;
+    transform: translate(0px, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .rtl\:rotate-180:where([dir="rtl"], [dir="rtl"] *){
     --tw-rotate: 180deg;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(180deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -39725,6 +39760,16 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:even\:border-r:nth-child(even):where([dir="rtl"], [dir="rtl"] *){
     border-right-width: 1px;
+}
+.group:hover .rtl\:group-hover\:-translate-x-2:where([dir="rtl"], [dir="rtl"] *){
+    --tw-translate-x: -0.5rem;
+    transform: translate(-0.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group.is-active .rtl\:group-\[\.is-active\]\:-translate-x-2:where([dir="rtl"], [dir="rtl"] *){
+    --tw-translate-x: -0.5rem;
+    transform: translate(-0.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 @media (min-width: 640px){
     .sm\:rtl\:text-right:where([dir="rtl"], [dir="rtl"] *){

@@ -1,50 +1,32 @@
 {% set gl = component %}
 {% set section_id = 'gtl-' ~ component.id %}
 
-<section class="get-the-look-section w-full relative" id="{{ section_id }}">
-    {#
-        Layout: 2 columns CSS Grid
-        Left  → text list (sets the height naturally)
-        Right → image panel (absolute, fills 100% of section height)
-    #}
-    <div class="relative w-full flex flex-col lg:grid lg:grid-cols-2 lg:min-h-[600px]">
+<section class="get-the-look-section w-full" id="{{ section_id }}">
 
-        {# ── LEFT: Text List ──────────────────────────────── #}
-        <div class="relative z-10 w-full flex flex-col justify-center py-16 px-8 md:px-16 lg:px-20 xl:px-28"
-             style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
+    <div class="gtl-wrapper" id="{{ section_id }}-wrapper">
+
+        {# ── LEFT: Text List ─────────────────────────────── #}
+        <div class="gtl-left" style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
 
             {% if gl.subheading %}
-                <span class="block font-sans text-xs md:text-sm uppercase tracking-[0.25em] mb-10 md:mb-16 opacity-60">
-                    {{ gl.subheading }}
-                </span>
+                <span class="gtl-subheading">{{ gl.subheading }}</span>
             {% endif %}
 
             {% if gl.looks %}
-                <ul class="flex flex-col divide-y divide-black/10">
+                <ul class="gtl-list">
                     {% for look in gl.looks %}
-                        <li>
+                        <li class="gtl-list-item">
                             <button
                                 type="button"
-                                class="gtl-trigger group w-full text-start flex items-start gap-2 md:gap-3 relative py-6 md:py-8 {% if loop.first %}is-active{% endif %}"
+                                class="gtl-trigger {% if loop.first %}is-active{% endif %}"
                                 data-index="{{ loop.index0 }}"
                                 data-section="{{ section_id }}"
                             >
-                                <span class="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] leading-none transition-all duration-300
-                                             group-[.is-active]:opacity-100 group-[.is-active]:translate-x-2
-                                             opacity-30 translate-x-0 group-hover:opacity-100 group-hover:translate-x-2
-                                             rtl:translate-x-0 rtl:group-[.is-active]:-translate-x-2 rtl:group-hover:-translate-x-2">
-                                    {{ look.list_title }}
-                                </span>
+                                <span class="gtl-title-text">{{ look.list_title }}</span>
                                 {% if look.list_number %}
-                                    <sup class="font-sans text-[0.65rem] mt-2 lg:mt-3 transition-opacity duration-300
-                                                group-[.is-active]:opacity-100 opacity-30 group-hover:opacity-100">
-                                        {{ look.list_number }}
-                                    </sup>
+                                    <sup class="gtl-number">{{ look.list_number }}</sup>
                                 {% endif %}
-
-                                {# Underline animation #}
-                                <span class="absolute bottom-0 start-0 h-px bg-black transition-all duration-500
-                                             w-0 group-[.is-active]:w-full group-hover:w-full"></span>
+                                <span class="gtl-underline"></span>
                             </button>
                         </li>
                     {% endfor %}
@@ -52,39 +34,34 @@
             {% endif %}
         </div>
 
-        {# ── RIGHT: Image Panel (full height of section) ──── #}
-        <div class="relative w-full h-[55vw] lg:h-auto lg:absolute lg:inset-y-0 lg:end-0 lg:w-1/2 overflow-hidden">
+        {# ── RIGHT: Image Panel ───────────────────────────── #}
+        <div class="gtl-right">
             {% if gl.looks %}
                 {% for look in gl.looks %}
-                    <div class="gtl-image-panel absolute inset-0 w-full h-full transition-opacity duration-700 {% if loop.first %}opacity-100{% else %}opacity-0{% endif %}"
+                    <div class="gtl-panel {% if loop.first %}is-active{% endif %}"
                          data-panel-index="{{ loop.index0 }}"
                          data-section="{{ section_id }}">
 
-                        {# Image #}
                         {% if look.slider_image %}
                             <img src="{{ look.slider_image }}"
                                  alt="{{ look.overlay_title|striptags }}"
-                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] scale-100 gtl-img-zoom"
+                                 class="gtl-panel-img"
                                  loading="lazy">
                         {% endif %}
 
-                        {# Gradient overlay for text readability #}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent z-10"></div>
+                        <div class="gtl-panel-gradient"></div>
 
-                        {# Overlay text at the bottom #}
-                        <div class="absolute bottom-10 start-10 end-10 z-20 text-white transition-all duration-700
-                                    {% if loop.first %}opacity-100 translate-y-0{% else %}opacity-0 translate-y-4{% endif %} gtl-overlay-text">
+                        <div class="gtl-panel-content">
                             {% if look.overlay_title %}
-                                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl uppercase mb-4 leading-tight">
-                                    {{ look.overlay_title }}
-                                </h3>
+                                <h3 class="gtl-panel-title">{{ look.overlay_title }}</h3>
                             {% endif %}
                             {% if look.button_text %}
-                                <a href="{{ look.button_url|default('#') }}"
-                                   class="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest pb-1 border-b border-white/50 hover:border-white transition-colors">
-                                    {{ look.button_text }}
-                                    <i class="sicon-arrow-top-right rtl:-scale-x-100"></i>
-                                </a>
+                                {% include 'components.custom.special_button' with {
+                                    text: look.button_text,
+                                    url: look.button_url|default('#'),
+                                    color: '#ffffff',
+                                    class: 'gtl-panel-btn'
+                                } %}
                             {% endif %}
                         </div>
                     </div>
@@ -96,52 +73,225 @@
 </section>
 
 <style>
-    .gtl-img-zoom {
-        transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* ── Wrapper ────────────────────────────────────────── */
+.get-the-look-section #{{ section_id }}-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 500px;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .get-the-look-section #{{ section_id }}-wrapper {
+        flex-direction: row;
+        min-height: 600px;
     }
-    .gtl-image-panel.is-active .gtl-img-zoom {
-        transform: scale(1.06);
+}
+
+/* ── LEFT column ───────────────────────────────────── */
+.get-the-look-section .gtl-left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) { .get-the-look-section .gtl-left { padding: 5rem 4rem; } }
+@media (min-width: 1024px) { .get-the-look-section .gtl-left { width: 50%; padding: 5rem 5rem; } }
+@media (min-width: 1280px) { .get-the-look-section .gtl-left { padding: 6rem 6rem; } }
+
+/* ── RIGHT column ──────────────────────────────────── */
+.get-the-look-section .gtl-right {
+    position: relative;
+    width: 100%;
+    height: 60vw;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+    .get-the-look-section .gtl-right {
+        width: 50%;
+        height: auto;       /* height is now driven by the flex row */
+        align-self: stretch; /* stretch to match left column height */
     }
-    .gtl-image-panel.is-active .gtl-overlay-text {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .gtl-image-panel:not(.is-active) .gtl-overlay-text {
-        opacity: 0;
-        transform: translateY(1rem);
-    }
+}
+
+/* ── Image panels ──────────────────────────────────── */
+.get-the-look-section .gtl-panel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    z-index: 0;
+}
+.get-the-look-section .gtl-panel.is-active {
+    opacity: 1;
+    z-index: 1;
+}
+.get-the-look-section .gtl-panel-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1);
+}
+.get-the-look-section .gtl-panel.is-active .gtl-panel-img {
+    transform: scale(1.06);
+}
+.get-the-look-section .gtl-panel-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+    z-index: 2;
+}
+.get-the-look-section .gtl-panel-content {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    right: 2.5rem;
+    z-index: 3;
+    color: #fff;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    opacity: 0;
+    transform: translateY(1.25rem);
+}
+.get-the-look-section .gtl-panel.is-active .gtl-panel-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+.get-the-look-section .gtl-panel-title {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(1.8rem, 3.5vw, 3.5rem);
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+.get-the-look-section .gtl-panel-btn {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* ── Subheading ────────────────────────────────────── */
+.get-the-look-section .gtl-subheading {
+    display: block;
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    opacity: 0.55;
+    margin-bottom: 3rem;
+}
+
+/* ── List ──────────────────────────────────────────── */
+.get-the-look-section .gtl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.get-the-look-section .gtl-list-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* ── Trigger button ────────────────────────────────── */
+.get-the-look-section .gtl-trigger {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.5rem 0 1.75rem;
+    width: 100%;
+    text-align: start;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.get-the-look-section .gtl-title-text {
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+    line-height: 1;
+    color: #111;
+    opacity: 0.28;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(0);
+}
+html[dir="rtl"] .get-the-look-section .gtl-title-text { transform: translateX(0); }
+
+.get-the-look-section .gtl-trigger:hover .gtl-title-text,
+.get-the-look-section .gtl-trigger.is-active .gtl-title-text {
+    opacity: 1;
+    transform: translateX(0.5rem);
+}
+html[dir="rtl"] .get-the-look-section .gtl-trigger:hover .gtl-title-text,
+html[dir="rtl"] .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
+    transform: translateX(-0.5rem);
+}
+
+.get-the-look-section .gtl-number {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.6rem;
+    margin-top: 0.6rem;
+    opacity: 0.28;
+    transition: opacity 0.3s ease;
+}
+.get-the-look-section .gtl-trigger:hover .gtl-number,
+.get-the-look-section .gtl-trigger.is-active .gtl-number {
+    opacity: 1;
+}
+
+/* Underline */
+.get-the-look-section .gtl-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: #111;
+    transition: width 0.5s ease;
+}
+html[dir="rtl"] .get-the-look-section .gtl-underline {
+    left: auto;
+    right: 0;
+}
+.get-the-look-section .gtl-trigger:hover .gtl-underline,
+.get-the-look-section .gtl-trigger.is-active .gtl-underline {
+    width: 100%;
+}
 </style>
 
 <script defer>
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.get-the-look-section');
+document.addEventListener('DOMContentLoaded', function () {
+    var sections = document.querySelectorAll('.get-the-look-section');
 
-    sections.forEach(section => {
-        const sectionId = section.id;
-        const triggers = section.querySelectorAll(`.gtl-trigger[data-section="${sectionId}"]`);
-        const panels   = section.querySelectorAll(`.gtl-image-panel[data-section="${sectionId}"]`);
+    sections.forEach(function (section) {
+        var sectionId = section.id;
+        var triggers  = section.querySelectorAll('.gtl-trigger[data-section="' + sectionId + '"]');
+        var panels    = section.querySelectorAll('.gtl-panel[data-section="' + sectionId + '"]');
 
-        // Set first panel as active visually
-        if (panels[0]) panels[0].classList.add('is-active');
-
-        triggers.forEach(trigger => {
+        triggers.forEach(function (trigger) {
             trigger.addEventListener('mouseenter', function () {
-                const index = parseInt(this.dataset.index);
+                var index = parseInt(this.dataset.index, 10);
 
-                // Update trigger active state
-                triggers.forEach(t => t.classList.remove('is-active'));
+                triggers.forEach(function (t) { t.classList.remove('is-active'); });
                 this.classList.add('is-active');
 
-                // Crossfade image panels
-                panels.forEach((panel, i) => {
+                panels.forEach(function (panel, i) {
                     if (i === index) {
                         panel.classList.add('is-active');
-                        panel.style.opacity = '1';
-                        panel.style.zIndex  = '1';
                     } else {
                         panel.classList.remove('is-active');
-                        panel.style.opacity = '0';
-                        panel.style.zIndex  = '0';
                     }
                 });
             });
