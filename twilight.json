@@ -8957,37 +8957,7 @@
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
       "fields": [
-            {
-          "id": "section_height",
-          "type": "items",
-          "format": "dropdown-list",
-          "label": "ارتفاع القسم",
-          "icon": "sicon-cursor-resize-y",
-          "options": [
-            { "value": "500", "label": "صغير (500px)" },
-            { "value": "650", "label": "متوسط (650px)" },
-            { "value": "800", "label": "كبير (800px)" }
-          ],
-          "value": "650"
-        },
-        {
-          "id": "section_width",
-          "type": "items",
-          "format": "dropdown-list",
-          "label": "عرض القسم",
-          "icon": "sicon-width",
-          "options": [
-            {
-              "label": "عرض كامل",
-              "value": "wide"
-            },
-            {
-              "label": "داخل حاوية",
-              "value": "container"
-            }
-          ],
-          "value": "wide"
-        },
+      
         {
           "id": "special_colors_condition",
           "type": "boolean",
