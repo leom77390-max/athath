@@ -1,0 +1,109 @@
+{% set hm = component %}
+{% set is_container = hm.section_width == 'container' %}
+
+{% set marquee_style = hm.special_colors_condition and hm.marquee_color ? 'color: ' ~ hm.marquee_color ~ ';' : '' %}
+{% set marquee_class = hm.special_colors_condition and hm.marquee_color ? '' : 'text-white' %}
+
+{% set subheading_style = hm.special_colors_condition and hm.subheading_color ? 'color: ' ~ hm.subheading_color ~ ';' : '' %}
+{% set subheading_class = hm.special_colors_condition and hm.subheading_color ? '' : 'text-white' %}
+
+{% set button_class = hm.special_colors_condition and hm.button_color ? '' : 'text-white' %}
+
+{% if hm.background_image %}
+<section class="w-full relative {% if is_container %}py-8 lg:py-16{% endif %}">
+    <div class="{{ is_container ? 'container mx-auto px-4' : 'w-full' }}">
+        <div
+            class="hero-marquee relative w-full overflow-hidden flex flex-col {{ is_container ? 'rounded-2xl' : '' }}"
+            style="height: {{ hm.section_height|default('650') }}px;"
+            aria-label="{{ hm.subheading|default('Hero banner') }}"
+        >
+            {# ============ Background ============ #}
+            <img
+                src="{{ hm.background_image }}"
+                alt="{{ hm.subheading|default('') }}"
+                loading="lazy"
+                class="absolute inset-0 w-full h-full object-cover object-center -z-20"
+            >
+            <span
+                class="absolute inset-0 bg-black -z-10"
+                style="opacity: {{ (hm.overlay_opacity|default('35') / 100) }};"
+            ></span>
+
+            {# ============ Marquee ============ #}
+            {% if hm.marquee_text %}
+                <div class="hero-marquee__track relative w-full overflow-hidden py-4 md:py-6">
+                    <div
+                        class="hero-marquee__inner flex whitespace-nowrap will-change-transform w-max"
+                        style="animation-duration: {{ hm.marquee_speed|default('25') }}s;"
+                    >
+                        {% for i in 1..2 %}
+                            <div class="flex items-center shrink-0">
+                                {% for j in 1..6 %}
+                                    <span class="hero-marquee__item font-serif text-3xl md:text-5xl {{ marquee_class }} uppercase mx-6 md:mx-10" style="{{ marquee_style }}">
+                                        {{ hm.marquee_text }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+
+            {# ============ Centered content ============ #}
+            <div class="relative flex-1 flex flex-col items-center justify-center text-center px-4 gap-5">
+                {% if hm.subheading %}
+                    <p class="{{ subheading_class }} text-base md:text-lg max-w-xl" style="{{ subheading_style }}">
+                        {{ hm.subheading }}
+                    </p>
+                {% endif %}
+
+                {% if hm.button_text and hm.button_url %}
+                    {% include 'components.custom.special_button' with {
+                        text: hm.button_text,
+                        url: hm.button_url,
+                        class: button_class ~ ' text-xs md:text-sm tracking-[2px]',
+                        color: hm.special_colors_condition and hm.button_color ? hm.button_color : null
+                    } %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endif %}
+
+<style>
+    .hero-marquee__inner {
+        animation-name: hero-marquee-scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .hero-marquee:hover .hero-marquee__inner {
+        animation-play-state: paused;
+    }
+
+    @keyframes hero-marquee-scroll {
+        from { transform: translateX(0); }
+        to   { transform: translateX(50%); }
+    }
+
+    html[dir="ltr"] .hero-marquee__inner {
+        animation-name: hero-marquee-scroll-ltr;
+    }
+
+    @keyframes hero-marquee-scroll-ltr {
+        from { transform: translateX(0); }
+        to   { transform: translateX(-50%); }
+    }
+
+    .hero-marquee__item {
+        letter-spacing: 1px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hero-marquee__inner {
+            animation: none;
+        }
+    }
+</style>

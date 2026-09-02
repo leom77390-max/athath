@@ -8971,7 +8971,114 @@
             },
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
-            "fields": []
+      "fields": [
+      
+        {
+          "id": "special_colors_condition",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تفعيل الألوان المخصصة (Special Colors)",
+          "value": false
+        },
+        {
+          "id": "background_image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "required": true
+        },
+        {
+          "id": "overlay_opacity",
+          "type": "number",
+          "format": "number",
+          "label": "درجة تغميق الخلفية",
+          "value": 35
+        },
+        {
+          "id": "marquee_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الشريط المتحرك",
+          "placeholder": "منتج مميز — تسوق الآن",
+          "value": "إضاءة أنيقة — منتجات مميزة",
+          "required": true
+        },
+        {
+          "id": "marquee_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون الشريط المتحرك",
+          "value": "#ffffff",
+               "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+        },
+        {
+          "id": "marquee_speed",
+          "type": "number",
+          "format": "number",
+          "label": "سرعة الشريط (بالثانية)",
+          "value": 25
+        },
+        {
+          "id": "subheading",
+          "type": "string",
+          "format": "textarea",
+          "label": "العنوان الفرعي",
+          "placeholder": "اكتشف التصميم الداخلي لأحلامك",
+          "value": "اكتشف التصميم الداخلي لأحلامك",
+          "required": false
+        },
+        {
+          "id": "subheading_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون العنوان الفرعي",
+          "value": "#ffffff",
+               "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+        },
+        {
+          "id": "button_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر",
+          "placeholder": "تسوق الآن",
+          "value": "تسوق الآن",
+          "required": false
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الزر",
+          "required": false
+        },
+
+        {
+          "id": "button_color",
+          "type": "string",
+          "format": "color",
+          "label": "لون الزر",
+          "value": "#ffffff",
+               "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+        }
+      ]
         },
         {
             "key": "9d146fd5-ad94-46b9-bb2a-e753bfbda7ae",
