@@ -70,9 +70,11 @@
                         {# Card Action (Bottom or following content) #}
                         {% if card.button_text %}
                             <div class="relative z-10 {% if card.vertical_align != 'between' %}mt-8{% endif %} w-full">
-                                <a href="{{ card.button_url|default('#') }}" class="inline-block font-sans text-xs uppercase tracking-widest pb-1 border-b transition-opacity hover:opacity-70" style="border-color: currentColor;">
-                                    {{ card.button_text }}
-                                </a>
+                                {% include 'components.custom.special_button' with {
+                                    text: card.button_text,
+                                    url: card.button_url|default('#'),
+                                    class: 'inline-block font-sans text-xs uppercase tracking-widest'
+                                } %}
                             </div>
                         {% endif %}
                         

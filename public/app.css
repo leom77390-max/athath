@@ -2205,6 +2205,9 @@ input:where([type='file']):focus{
 .whitespace-nowrap{
     white-space: nowrap;
 }
+.whitespace-pre-line{
+    white-space: pre-line;
+}
 .text-wrap{
     text-wrap: wrap;
 }
@@ -38965,6 +38968,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
+    .md\:text-7xl{
+        font-size: 4.5rem;
+        line-height: 1;
+    }
     .md\:text-\[0\.95rem\]{
         font-size: 0.95rem;
     }
@@ -39303,6 +39310,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 3.75rem;
         line-height: 1;
     }
+    .lg\:text-8xl{
+        font-size: 6rem;
+        line-height: 1;
+    }
     .lg\:text-sm{
         font-size: 0.875rem;
         line-height: 1.25rem;
@@ -39330,6 +39341,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .xl\:text-6xl{
         font-size: 3.75rem;
+        line-height: 1;
+    }
+    .xl\:text-9xl{
+        font-size: 8rem;
         line-height: 1;
     }
 }
