@@ -8967,11 +8967,8 @@
         {
           "id": "overlay_opacity",
           "type": "number",
-          "format": "range",
+          "format": "number",
           "label": "درجة تغميق الخلفية",
-          "min": 0,
-          "max": 80,
-          "step": 5,
           "value": 35
         },
         {
@@ -8986,11 +8983,8 @@
         {
           "id": "marquee_speed",
           "type": "number",
-          "format": "range",
+          "format": "number",
           "label": "سرعة الشريط (بالثانية)",
-          "min": 10,
-          "max": 60,
-          "step": 5,
           "value": 25
         },
         {
