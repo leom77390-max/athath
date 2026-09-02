@@ -2801,6 +2801,10 @@ input:where([type='file']):focus{
 .text-end{
     text-align: right;
 }
+.font-sans{
+    font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
+    font-family: var(--font-main), -apple-system, BlinkMacSystemFont;
+}
 .text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -2998,6 +3002,9 @@ input:where([type='file']):focus{
 .leading-tight{
     line-height: 1.25;
 }
+.leading-snug{
+    line-height: 1.375;
+}
 .tracking-\[0px\]{
     letter-spacing: 0px;
 }
@@ -3018,6 +3025,9 @@ input:where([type='file']):focus{
 }
 .tracking-widest{
     letter-spacing: 0.1em;
+}
+.tracking-\[0\.15em\]{
+    letter-spacing: 0.15em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -38444,6 +38454,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:opacity-90:hover{
     opacity: 0.9;
 }
+.hover\:opacity-70:hover{
+    opacity: 0.7;
+}
 .hover\:shadow-default:hover{
     --tw-shadow: 5px 10px 30px #2B2D340D;;
     --tw-shadow-colored: 5px 10px 30px var(--tw-shadow-color);
@@ -38759,6 +38772,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:hidden{
         display: none;
     }
+    .md\:aspect-\[4\/5\]{
+        aspect-ratio: 4/5;
+    }
     .md\:h-12{
         height: 3rem;
     }
@@ -38861,6 +38877,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-8{
         gap: 2rem;
     }
+    .md\:gap-6{
+        gap: 1.5rem;
+    }
     .md\:space-y-0 > :not([hidden]) ~ :not([hidden]){
         --tw-space-y-reverse: 0;
         margin-top: calc(0px * (1 - 0));
@@ -38918,6 +38937,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-\[40px\]{
         padding-top: 40px;
         padding-bottom: 40px;
+    }
+    .md\:py-16{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
     .md\:pb-20{
         padding-bottom: 5rem;
@@ -39073,6 +39096,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:hidden{
         display: none;
     }
+    .lg\:aspect-\[3\/4\]{
+        aspect-ratio: 3/4;
+    }
     .lg\:h-5{
         height: 1.25rem;
     }
@@ -39208,6 +39234,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:p-8{
         padding: 2rem;
     }
+    .lg\:p-12{
+        padding: 3rem;
+    }
     .lg\:\!py-4{
         padding-top: 1rem !important;
         padding-bottom: 1rem !important;
@@ -39276,6 +39305,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:text-title-size{
         font-size: 42px;
+    }
+    .lg\:text-sm{
+        font-size: 0.875rem;
+        line-height: 1.25rem;
     }
     .lg\:leading-\[24px\]{
         line-height: 24px;

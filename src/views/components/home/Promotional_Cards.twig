@@ -1,0 +1,59 @@
+{% set pc = component %}
+
+<section class="w-full py-8 md:py-16 bg-white">
+    <div class="container mx-auto px-4 md:px-8">
+        {% if pc.cards %}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+                {% for card in pc.cards %}
+                    
+                    {# Dynamic classes based on schema settings #}
+                    {% set align_class = 'text-' ~ card.text_align|default('center') %}
+                    {% set justify_class = 'justify-' ~ card.vertical_align|default('between') %}
+                    {% set is_image_bg = card.bg_type == 'image' %}
+                    {% set overlay_opacity = card.overlay_opacity is defined ? card.overlay_opacity / 100 : 0.15 %}
+                    
+                    <div class="relative w-full aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] flex flex-col {{ align_class }} {{ justify_class }} p-8 lg:p-12 overflow-hidden group"
+                         style="background-color: {{ not is_image_bg ? card.bg_color|default('#6b3c1b') : 'transparent' }}; color: {{ card.text_color|default('#ffffff') }};">
+                        
+                        {# Background Image #}
+                        {% if is_image_bg and card.bg_image %}
+                            <img src="{{ card.bg_image }}" alt="{{ card.heading|striptags }}" class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-1000 group-hover:scale-105" loading="lazy">
+                            {# Overlay #}
+                            <div class="absolute inset-0 bg-black z-0" style="opacity: {{ overlay_opacity }};"></div>
+                        {% endif %}
+                        
+                        {# Card Content (Top or Centered) #}
+                        <div class="relative z-10 flex flex-col gap-3 w-full">
+                            {% if card.subheading %}
+                                <span class="font-sans text-xs lg:text-sm uppercase tracking-[0.15em] opacity-90">{{ card.subheading }}</span>
+                            {% endif %}
+                            
+                            {% if card.heading %}
+                                <h3 class="font-serif text-3xl md:text-4xl lg:text-5xl leading-snug" 
+                                    style="{{ card.heading_color ? 'color: ' ~ card.heading_color ~ ';' : '' }}">
+                                    {{ card.heading|nl2br }}
+                                </h3>
+                            {% endif %}
+                            
+                            {% if card.description %}
+                                <p class="font-sans text-xs lg:text-sm opacity-80 mt-2 leading-relaxed">
+                                    {{ card.description|nl2br }}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        {# Card Action (Bottom or following content) #}
+                        {% if card.button_text %}
+                            <div class="relative z-10 {% if card.vertical_align != 'between' %}mt-8{% endif %} w-full">
+                                <a href="{{ card.button_url|default('#') }}" class="inline-block font-sans text-xs uppercase tracking-widest pb-1 border-b transition-opacity hover:opacity-70" style="border-color: currentColor;">
+                                    {{ card.button_text }}
+                                </a>
+                            </div>
+                        {% endif %}
+                        
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>

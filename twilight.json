@@ -9264,7 +9264,186 @@
             },
             "icon": "sicon-store",
             "path": "home.Promotional_Cards",
-            "fields": []
+            "fields": [
+                {
+                    "id": "cards",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات الترويجية (Promo Cards)",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 3,
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "cards.bg_type",
+                            "type": "string",
+                            "format": "dropdown-list",
+                            "label": "نوع الخلفية",
+                            "options": [
+                                { "label": "صورة", "value": "image" },
+                                { "label": "لون ثابت", "value": "color" }
+                            ],
+                            "value": "image"
+                        },
+                        {
+                            "id": "cards.bg_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الخلفية",
+                            "value": "",
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "image"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون الخلفية (Solid Color)",
+                            "value": "#6b3c1b",
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "color"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.overlay_opacity",
+                            "type": "number",
+                            "format": "number",
+                            "label": "درجة تعتيم الصورة 0-100 (اختياري)",
+                            "value": 15,
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "image"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.text_align",
+                            "type": "string",
+                            "format": "dropdown-list",
+                            "label": "المحاذاة الأفقية للنص (Text Align)",
+                            "options": [
+                                { "label": "يمين", "value": "right" },
+                                { "label": "وسط", "value": "center" },
+                                { "label": "يسار", "value": "left" }
+                            ],
+                            "value": "center"
+                        },
+                        {
+                            "id": "cards.vertical_align",
+                            "type": "string",
+                            "format": "dropdown-list",
+                            "label": "المحاذاة العمودية (Vertical Justify)",
+                            "options": [
+                                { "label": "توزيع (أعلى وأسفل)", "value": "between" },
+                                { "label": "وسط (Center)", "value": "center" },
+                                { "label": "أعلى (Top)", "value": "start" },
+                                { "label": "أسفل (Bottom)", "value": "end" }
+                            ],
+                            "value": "between"
+                        },
+                        {
+                            "id": "cards.text_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون النصوص (Text Color)",
+                            "value": "#ffffff"
+                        },
+                        {
+                            "id": "cards.subheading",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "العنوان الفرعي (Subheading)",
+                            "value": { "en": "SEASON SALE COLLECTIONS", "ar": "تشكيلة تخفيضات الموسم" }
+                        },
+                        {
+                            "id": "cards.heading",
+                            "type": "string",
+                            "format": "textarea",
+                            "multilanguage": true,
+                            "label": "العنوان الرئيسي (Heading)",
+                            "value": { "en": "SALE 30%\nOFF", "ar": "خصم\n30%" }
+                        },
+                        {
+                            "id": "cards.heading_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون العنوان الرئيسي المميز (اختياري)",
+                            "value": ""
+                        },
+                        {
+                            "id": "cards.description",
+                            "type": "string",
+                            "format": "textarea",
+                            "multilanguage": true,
+                            "label": "الوصف (Description)",
+                            "value": { "en": "", "ar": "" }
+                        },
+                        {
+                            "id": "cards.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "نص الزر (Button Text)",
+                            "value": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                        },
+                        {
+                            "id": "cards.button_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الزر",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "cards.bg_type": "image",
+                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "between",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": { "en": "BUY SET OF 3 AND SAVE 10%", "ar": "اشتري 3 ووفر 10%" },
+                            "cards.heading": { "en": "BUNDLE &\nSAVE", "ar": "باقة التوفير" },
+                            "cards.button_text": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                        },
+                        {
+                            "cards.bg_type": "color",
+                            "cards.bg_color": "#652C16",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "center",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": { "en": "SEASON SALE COLLECTIONS", "ar": "تشكيلة الموسم" },
+                            "cards.heading": { "en": "SALE 30%\nOFF", "ar": "خصم 30%" },
+                            "cards.heading_color": "#E6EDA4",
+                            "cards.description": { "en": "Save extra on our sale collection\n*Runs until 14:00pm PST", "ar": "وفر أكثر مع تشكيلة التخفيضات" },
+                            "cards.button_text": { "en": "SHOP THE SALE", "ar": "تسوق العروض" }
+                        },
+                        {
+                            "cards.bg_type": "image",
+                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "between",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": { "en": "DESIGN FOR LIVING", "ar": "تصاميم للحياة" },
+                            "cards.heading": { "en": "RENOVATE\nYOUR HOME", "ar": "جدد منزلك" },
+                            "cards.button_text": { "en": "SHOP NOW", "ar": "تسوق الآن" }
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
