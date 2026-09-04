@@ -9592,6 +9592,55 @@
                     "value": "#f9f6f0"
                 },
                 {
+                    "id": "gtl_source_mode",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر الإطلالات (Source)",
+                    "description": "اختر يدوي لإدخال العناصر يدوياً، أو تلقائي لجلب التصنيفات من لوحة التحكم.",
+                    "icon": "sicon-category",
+                    "selected": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        },
+                        {
+                            "label": "تلقائي من لوحة التحكم (Auto from Dashboard)",
+                            "value": "auto",
+                            "key": "gtl-src-auto-key-002"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "gtl_categories_list",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر التصنيفات من المتجر",
+                    "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["auto"]
+                        }
+                    ]
+                },
+                {
                     "id": "looks",
                     "type": "collection",
                     "format": "collection",
@@ -9621,9 +9670,32 @@
                             "id": "looks.slider_image",
                             "type": "string",
                             "format": "image",
-                            "label": "صورة العرض",
+                            "label": "الصورة الرئيسية للعرض",
                             "value": "",
                             "required": true
+                        },
+                        {
+                            "id": "looks.extra_images",
+                            "type": "collection",
+                            "format": "collection",
+                            "label": "صور إضافية (للتمرير / Pagination)",
+                            "description": "أضف صوراً إضافية لهذه الإطلالة، ستظهر أزرار التنقل بين الصور تلقائياً.",
+                            "item_label": "صورة",
+                            "icon": "sicon-image",
+                            "minLength": 0,
+                            "maxLength": 8,
+                            "required": false,
+                            "fields": [
+                                {
+                                    "id": "looks.extra_images.image",
+                                    "type": "string",
+                                    "format": "image",
+                                    "label": "الصورة",
+                                    "value": "",
+                                    "required": true
+                                }
+                            ],
+                            "value": []
                         },
                         {
                             "id": "looks.overlay_title",
