@@ -9628,8 +9628,7 @@
                     "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [],
-                    "options": [],
-                    "source": "Categories",
+                    "source": "categories",
                     "multichoice": true,
                     "searchable": true,
                     "required": false,
@@ -9676,27 +9675,37 @@
                             "required": true
                         },
                         {
-                            "id": "looks.extra_images",
-                            "type": "collection",
-                            "format": "collection",
-                            "label": "صور إضافية (للتمرير / Pagination)",
-                            "description": "أضف صوراً إضافية لهذه الإطلالة، ستظهر أزرار التنقل بين الصور تلقائياً.",
-                            "item_label": "صورة",
-                            "icon": "sicon-image",
-                            "minLength": 0,
-                            "maxLength": 8,
-                            "required": false,
-                            "fields": [
-                                {
-                                    "id": "looks.extra_images.image",
-                                    "type": "string",
-                                    "format": "image",
-                                    "label": "الصورة",
-                                    "value": "",
-                                    "required": true
-                                }
-                            ],
-                            "value": []
+                            "id": "looks.image_2",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة إضافية 2 (اختياري)",
+                            "description": "تُضاف لشريط الصور — يظهر زر التنقل تلقائياً",
+                            "value": "",
+                            "required": false
+                        },
+                        {
+                            "id": "looks.image_3",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة إضافية 3 (اختياري)",
+                            "value": "",
+                            "required": false
+                        },
+                        {
+                            "id": "looks.image_4",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة إضافية 4 (اختياري)",
+                            "value": "",
+                            "required": false
+                        },
+                        {
+                            "id": "looks.image_5",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة إضافية 5 (اختياري)",
+                            "value": "",
+                            "required": false
                         },
                         {
                             "id": "looks.overlay_title",

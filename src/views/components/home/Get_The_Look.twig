@@ -70,18 +70,15 @@
             {# ── MANUAL MODE PANELS ── #}
             {% if source_mode == 'manual' and gl.looks %}
                 {% for look in gl.looks %}
-                    {# Build full image list: main image + extra_images #}
+                    {# Build full image list: main + up to 4 extra flat image fields #}
                     {% set all_images = [] %}
                     {% if look.slider_image %}
                         {% set all_images = all_images | merge([look.slider_image]) %}
                     {% endif %}
-                    {% if look.extra_images %}
-                        {% for ei in look.extra_images %}
-                            {% if ei.image %}
-                                {% set all_images = all_images | merge([ei.image]) %}
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                    {% if look.image_2 %}{% set all_images = all_images | merge([look.image_2]) %}{% endif %}
+                    {% if look.image_3 %}{% set all_images = all_images | merge([look.image_3]) %}{% endif %}
+                    {% if look.image_4 %}{% set all_images = all_images | merge([look.image_4]) %}{% endif %}
+                    {% if look.image_5 %}{% set all_images = all_images | merge([look.image_5]) %}{% endif %}
 
                     <div class="gtl-panel {% if loop.first %}is-active{% endif %}"
                          data-panel-index="{{ loop.index0 }}"
