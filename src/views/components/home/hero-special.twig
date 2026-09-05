@@ -150,25 +150,30 @@
 	   Text entrance
 	───────────────────────────── */
 
-	.hs-wrap-{{ component.id }} .hs-text-box {
-		opacity: 0;
-		transform: translateX(
-			{% if store.dir == 'rtl' %}
-				60px
-			{% else %}
-				-60px
-			{% endif %}
-		);
+```css
+/* ─────────────────────────────
+   Simple content entrance
+   ───────────────────────────── */
 
-		transition:
-			opacity .7s cubic-bezier(.2,.8,.2,1),
-			transform .9s cubic-bezier(.2,.8,.2,1);
-	}
+.hs-wrap-{{ component.id }} .hs-text-box {
+	opacity: 0;
+	transform: translate3d(
+		{% if store.dir == 'rtl' %}
+			50px
+		{% else %}
+			-50px
+		{% endif %}
+	, 0, 0);
 
-	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
-		opacity: 1;
-		transform: translate3d(0,0,0);
-	}
+	transition:
+		opacity .65s ease,
+		transform .8s cubic-bezier(.22,.61,.36,1);
+}
+
+.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
+	opacity: 1;
+	transform: translate3d(0,0,0);
+}
 
 
 	/* ─────────────────────────────
