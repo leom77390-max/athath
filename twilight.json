@@ -9592,6 +9592,38 @@
                     "value": "#f9f6f0"
                 },
                 {
+                    "id": "gtl_subheading_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان الفرعي (Subheading Color)",
+                    "value": "#111111"
+                },
+                {
+                    "id": "gtl_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون عناوين القائمة (List Title Color)",
+                    "value": "#111111"
+                },
+                {
+                    "id": "gtl_title_active_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان عند التحديد (Active Title Color)",
+                    "value": "#111111"
+                },
+                {
+                    "id": "gtl_border_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون الفواصل / الخطوط (Border Color)",
+                    "value": "#111111"
+                },
+                {
                     "id": "gtl_source_mode",
                     "type": "items",
                     "format": "dropdown-list",

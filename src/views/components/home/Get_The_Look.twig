@@ -333,6 +333,7 @@ html[dir="rtl"] .get-the-look-section .gtl-pagination {
     letter-spacing: 0.22em;
     opacity: 0.55;
     margin-bottom: 3rem;
+    color: {{ gl.gtl_subheading_color | default('#111111') }};
 }
 
 /* ── List ──────────────────────────────────────────── */
@@ -342,10 +343,10 @@ html[dir="rtl"] .get-the-look-section .gtl-pagination {
     margin: 0;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid {{ gl.gtl_border_color | default('#111111') }}1a;
 }
 .get-the-look-section .gtl-list-item {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid {{ gl.gtl_border_color | default('#111111') }}1a;
 }
 
 /* ── Trigger button ────────────────────────────────── */
@@ -366,7 +367,7 @@ html[dir="rtl"] .get-the-look-section .gtl-pagination {
     font-family: var(--font-serif, Georgia, serif);
     font-size: clamp(2.2rem, 4.5vw, 4.5rem);
     line-height: 1;
-    color: #111;
+    color: {{ gl.gtl_title_color | default('#111111') }};
     opacity: 0.28;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateX(0);
@@ -376,6 +377,7 @@ html[dir="rtl"] .get-the-look-section .gtl-title-text { transform: translateX(0)
 .get-the-look-section .gtl-trigger:hover .gtl-title-text,
 .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
     opacity: 1;
+    color: {{ gl.gtl_title_active_color | default('#111111') }};
     transform: translateX(0.5rem);
 }
 html[dir="rtl"] .get-the-look-section .gtl-trigger:hover .gtl-title-text,
@@ -402,7 +404,7 @@ html[dir="rtl"] .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
     left: 0;
     height: 2px;
     width: 0;
-    background: #111;
+    background: {{ gl.gtl_border_color | default('#111111') }};
     transition: width 0.5s ease;
 }
 html[dir="rtl"] .get-the-look-section .gtl-underline {
