@@ -7287,15 +7287,6 @@
                     "value": true
                 },
                 {
-                    "id": "text_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص والزر",
-                    "icon": "sicon-format-color-text",
-                    "value": "#18181b"
-                },
-                {
                     "id": "title_alignment",
                     "type": "items",
                     "label": "محاذاة النص",
@@ -7352,7 +7343,7 @@
                             "images.image": "https://cdn.files.salla.network/homepage/1010819922/de65eca4-d688-4d8d-a459-123be6005d3e-original.webp"
                         },
                         {
-                            "images.image": "https://cdn.files.salla.network/homepage/1010819922/ced96c89-1f94-4591-954c-7f1810552d92-original.webp"
+                            "images.image": "https://cdn.files.salla.network/homepage/1010819922/bd5ce15c-e8d0-4668-8816-68581e9949ee-original.webp"
                         },
                         {
                             "images.image": "https://cdn.files.salla.network/homepage/1010819922/6576a09f-c4ca-45b2-9f69-8946853f8bb4-original.webp"
