@@ -7260,15 +7260,28 @@
                     ]
                 },
                 {
-                    "id": "button_url",
-                    "type": "string",
-                    "format": "url",
-                    "inputType": "url",
-                    "label": "رابط حساب الانستقرام",
-                    "placeholder": "https://instagram.com/your_store",
+                    "type": "items",
                     "icon": "sicon-link",
-                    "value": "",
-                    "required": true
+                    "label": "رابط حساب الانستقرام",
+                    "id": "button_url",
+                    "value": null,
+                    "description": null,
+                    "required": true,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        { "label": "منتج", "key": "products", "value": "products" },
+                        { "label": "تصنيف", "key": "categories", "value": "categories" },
+                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                    ]
                 },
                 {
                     "id": "bg_color",
@@ -7481,11 +7494,28 @@
                     "required": false
                 },
                 {
-                    "id": "button_url",
-                    "type": "string",
-                    "format": "url",
+                    "type": "items",
+                    "icon": "sicon-link",
                     "label": "رابط الزر",
-                    "required": false
+                    "id": "button_url",
+                    "value": null,
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        { "label": "منتج", "key": "products", "value": "products" },
+                        { "label": "تصنيف", "key": "categories", "value": "categories" },
+                        { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+                        { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+                        { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+                        { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+                        { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+                        { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+                        { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+                        { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                    ]
                 },
                 {
                     "id": "button_color",
@@ -7946,11 +7976,28 @@
                             }
                         },
                         {
-                            "id": "cards.button_url",
-                            "type": "string",
-                            "format": "url",
+                            "type": "items",
+                            "icon": "sicon-link",
                             "label": "رابط الزر",
-                            "value": ""
+                            "id": "cards.button_url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                { "label": "منتج", "key": "products", "value": "products" },
+                                { "label": "تصنيف", "key": "categories", "value": "categories" },
+                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                            ]
                         }
                     ],
                     "value": [
@@ -8203,11 +8250,28 @@
                             "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
                         },
                         {
-                            "id": "looks.button_url",
-                            "type": "string",
-                            "format": "url",
+                            "type": "items",
+                            "icon": "sicon-link",
                             "label": "رابط الزر",
-                            "value": ""
+                            "id": "looks.button_url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                { "label": "منتج", "key": "products", "value": "products" },
+                                { "label": "تصنيف", "key": "categories", "value": "categories" },
+                                { "label": "ماركة تجارية", "key": "brands", "value": "brands" },
+                                { "label": "صفحة تعريفية", "key": "pages", "value": "pages" },
+                                { "label": "مقالة", "key": "blog_articles", "value": "blog_articles" },
+                                { "label": "تصنيف ضمن المدونة", "key": "blog_categories", "value": "blog_categories" },
+                                { "label": "التخفيضات", "key": "offers_link", "value": "offers_link" },
+                                { "label": "الماركات التجارية", "key": "brands_link", "value": "brands_link" },
+                                { "label": "المدونة", "key": "blog_link", "value": "blog_link" },
+                                { "label": "رابط خارجي", "key": "custom", "value": "custom" }
+                            ]
                         },
                         {
                             "id": "looks.content_pos_y",
