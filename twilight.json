@@ -8322,6 +8322,21 @@
       "value": true
     },
     {
+      "type": "string",
+      "id": "hs_pagination_color",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون نقاط التنقل",
+      "value": "#ffffff",
+      "conditions": [
+        {
+          "id": "hs_show_pagination",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
       "type": "static",
       "format": "title",
       "id": "group_slides",
@@ -8497,6 +8512,30 @@
           "multilanguage": true
         },
         {
+          "type": "boolean",
+          "id": "hero_slideshow_slides.use_custom_color",
+          "label": "استخدام لون نص مخصص",
+          "format": "switch",
+          "value": false
+        },
+        {
+          "type": "string",
+          "id": "hero_slideshow_slides.custom_text_color",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون النص المخصص",
+          "value": "#ffffff",
+          "conditions": [
+            {
+              "id": "hero_slideshow_slides.use_custom_color",
+              "operation": "=",
+              "value": true,
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
+          ]
+        },
+        {
           "type": "items",
           "id": "hero_slideshow_slides.text_scheme",
           "label": "لون النص",
@@ -8507,6 +8546,15 @@
           ],
           "selected": [
             { "label": "فاتح", "value": "light" }
+          ],
+          "conditions": [
+            {
+              "id": "hero_slideshow_slides.use_custom_color",
+              "operation": "=",
+              "value": false,
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         },
         {

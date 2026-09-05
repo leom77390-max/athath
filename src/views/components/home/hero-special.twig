@@ -173,31 +173,30 @@
 	}
 
 	/* ── Pagination ── */
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { display: none !important; }
+	{% set pag_color = component.hs_pagination_color|default('#ffffff') %}
+	
+	.hs-wrap-{{ component.id }} {
+		--swiper-pagination-color: {{ pag_color }};
+		--swiper-pagination-bullet-inactive-color: {{ pag_color }};
+		--swiper-pagination-bullet-inactive-opacity: 0.5;
+	}
 
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
-		position: absolute;
-		z-index: 10;
-		bottom: 20px;
-		left: 0;
-		right: 0;
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { 
+		bottom: 20px; 
 		display: flex;
 		justify-content: center;
 		gap: 6px;
-		pointer-events: none;
 	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet {
-		pointer-events: all;
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
 		width: 8px;
 		height: 8px;
-		background: rgba(255,255,255,.5);
+		background: {{ pag_color }};
+		opacity: 0.5;
 		border-radius: 99px;
-		cursor: pointer;
-		transition: background .3s, width .3s;
-		display: inline-block;
+		transition: opacity .3s, width .3s;
 	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet-active {
-		background: #fff;
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet-active) {
+		opacity: 1;
 		width: 24px;
 	}
 
@@ -214,7 +213,7 @@
 		type="carousel"
 		auto-play="{{ component.hs_enable_autoplay ? 'true' : 'false' }}"
 		show-controls="false"
-		pagination="false"
+		pagination="{{ component.hs_show_pagination ? 'true' : 'false' }}"
 		slides-per-view="1"
 		speed="{{ transition_speed }}"
 		class="w-full h-full"
@@ -229,13 +228,6 @@
 				"delay": {{ autoplay_speed }},
 				"disableOnInteraction": false,
 				"pauseOnMouseEnter": true
-			},
-			{% endif %}
-			{% if component.hs_show_pagination %}
-			"pagination": {
-				"el": ".hs-pagination-wrap-{{ component.id }}",
-				"clickable": true,
-				"type": "bullets"
 			},
 			{% endif %}
 			"on": {}
@@ -269,7 +261,15 @@
 
 				{% set scheme_v = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
 				{% set scheme   = scheme_v is iterable ? scheme_v|first : scheme_v %}
-				{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
+				
+				{% set use_custom_color_v = slide.use_custom_color.value|default(slide.use_custom_color|default(false)) %}
+				{% set use_custom_color = use_custom_color_v is iterable ? use_custom_color_v|first : use_custom_color_v %}
+				
+				{% if use_custom_color %}
+					{% set text_color = slide.custom_text_color|default('#ffffff') %}
+				{% else %}
+					{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
+				{% endif %}
 
 				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
 				{% set h_pos   = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
@@ -377,8 +377,6 @@
 
 	</salla-slider>
 
-	{% if component.hs_show_pagination %}
-		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}"></div>
-	{% endif %}
+
 
 </section>
