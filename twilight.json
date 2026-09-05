@@ -8323,21 +8323,6 @@
       "value": true
     },
     {
-      "type": "string",
-      "id": "hs_pagination_color",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون نقاط التنقل",
-      "value": "#ffffff",
-      "conditions": [
-        {
-          "id": "hs_show_pagination",
-          "operation": "=",
-          "value": true
-        }
-      ]
-    },
-    {
       "type": "static",
       "format": "title",
       "id": "group_slides",
