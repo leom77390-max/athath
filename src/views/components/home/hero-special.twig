@@ -22,7 +22,6 @@
 {% set anim_enable = component.hs_content_anim_enable|default(true) %}
 {% set anim_dir_v = component.hs_content_anim_direction.value|default(component.hs_content_anim_direction|default('right')) %}
 {% set anim_dir = anim_dir_v is iterable ? anim_dir_v|first : anim_dir_v %}
-{% set anim_delay = component.hs_content_anim_delay|default(300) %}
 
 <style>
 	/* ─── Wrapper heights ─── */
@@ -125,7 +124,6 @@
 		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box.hs-anim-active {
 			opacity: 1;
 			transform: translate(0, 0);
-			transition-delay: {{ anim_delay }}ms;
 		}
 	{% endif %}
 
