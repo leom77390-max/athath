@@ -199,8 +199,9 @@
 		--pagination-bottom: 20px;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination) {
-		bottom: 20px;
-		text-align: center;
+		bottom: 20px !important;
+		left: 50% !important;
+		transform: translateX(-50%) !important;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
 		width: 8px;
