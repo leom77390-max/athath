@@ -292,8 +292,8 @@
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
-				{% set media_type_v = slide.media_type.value|default(slide.media_type|default('image')) %}
-				{% set media_type = media_type_v is iterable ? media_type_v|first : media_type_v %}
+				{% set media_type_v = slide.media_type.value|default(slide.media_type|default(false)) %}
+				{% set is_video = (media_type_v == true or media_type_v == 'true' or media_type_v == 'video') %}
 
 				{% set _video_url = slide.video_url|default('')|trim %}
 				{% set _video_url = _video_url is iterable ? _video_url|first : _video_url %}
@@ -308,7 +308,7 @@
 						data-swiper-parallax="-18%"
 						data-swiper-parallax-duration="{{ transition_speed }}"
 					>
-						{% if media_type == 'video' and _video_url %}
+						{% if is_video and _video_url %}
 							<video
 								class="hs-slide-bg-video"
 								src="{{ _video_url }}"

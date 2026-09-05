@@ -8340,7 +8340,7 @@
       "maxLength": 8,
       "value": [
         {
-          "hero_slideshow_slides.media_type": "image",
+          "hero_slideshow_slides.media_type": false,
           "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.video_url": "",
@@ -8358,7 +8358,7 @@
           "hero_slideshow_slides.btn_style": "underline"
         },
         {
-          "hero_slideshow_slides.media_type": "image",
+          "hero_slideshow_slides.media_type": false,
           "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.video_url": "",
@@ -8376,7 +8376,7 @@
           "hero_slideshow_slides.btn_style": "solid"
         },
         {
-          "hero_slideshow_slides.media_type": "image",
+          "hero_slideshow_slides.media_type": false,
           "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
           "hero_slideshow_slides.video_url": "",
@@ -8396,17 +8396,12 @@
       ],
       "fields": [
         {
-          "type": "items",
+          "type": "boolean",
           "id": "hero_slideshow_slides.media_type",
-          "label": "نوع الوسائط",
-          "format": "dropdown-list",
-          "options": [
-            { "label": "صورة", "value": "image" },
-            { "label": "فيديو", "value": "video" }
-          ],
-          "selected": [
-            { "label": "صورة", "value": "image" }
-          ]
+          "label": "فيديو كخلفية",
+          "format": "switch",
+          "value": false,
+          "description": "فعّل لاستخدام فيديو بدلاً من صورة كخلفية للشريحة."
         },
         {
           "type": "string",
@@ -8415,7 +8410,7 @@
           "format": "image",
           "value": "",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "image" }
+            { "id": "hero_slideshow_slides.media_type", "operation": "!=", "value": true }
           ]
         },
         {
@@ -8425,7 +8420,7 @@
           "format": "image",
           "value": "",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "image" }
+            { "id": "hero_slideshow_slides.media_type", "operation": "!=", "value": true }
           ]
         },
         {
@@ -8437,7 +8432,7 @@
           "value": "",
           "description": "رابط مباشر لملف فيديو MP4.",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "video" }
+            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": true }
           ]
         },
         {
@@ -8447,7 +8442,7 @@
           "format": "switch",
           "value": true,
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "video" }
+            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": true }
           ]
         },
         {
