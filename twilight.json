@@ -8321,16 +8321,6 @@
       "format": "switch",
       "value": true
     },
-
-    {
-      "type": "boolean",
-      "id": "hs_section_media_type",
-      "label": "خلفية القسم: فيديو",
-      "format": "switch",
-      "value": false,
-      "description": "فعّل لعرض فيديو كخلفية لكل شرائح القسم. أوقفه لعرض صور."
-    },
-
     {
       "type": "static",
       "format": "title",
@@ -8338,7 +8328,6 @@
       "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>الشرائح</h3>",
       "variant": "h6"
     },
-
     {
       "id": "hero_slideshow_slides",
       "type": "collection",
