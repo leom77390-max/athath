@@ -397,40 +397,79 @@
 
 <script>
 (function() {
-	const wrapper = document.querySelector('.hs-wrap-{{ component.id }}');
+	var wrapper = document.querySelector('.hs-wrap-{{ component.id }}');
 	if (!wrapper) return;
-	const slider = wrapper.querySelector('#hs-slider-{{ component.id }}');
-	const dots = wrapper.querySelectorAll('.hs-pagination-wrap .hs-dot');
+	var slider = wrapper.querySelector('#hs-slider-{{ component.id }}');
+	var dots = wrapper.querySelectorAll('.hs-pagination-wrap .hs-dot');
 	if (!slider || !dots.length) return;
 
-	function waitForSwiper() {
-		const sw = slider.swiper || (slider.shadowRoot && slider.shadowRoot.querySelector('.swiper') && slider.shadowRoot.querySelector('.swiper').swiper);
-		if (sw) {
-			initDots(sw);
-		} else {
-			setTimeout(waitForSwiper, 200);
+	function getSwiper() {
+		// Try direct property
+		if (slider.swiper) return slider.swiper;
+		// Try shadow DOM
+		if (slider.shadowRoot) {
+			var containers = slider.shadowRoot.querySelectorAll('.swiper, .swiper-container, [class*="swiper"]');
+			for (var i = 0; i < containers.length; i++) {
+				if (containers[i].swiper) return containers[i].swiper;
+			}
 		}
+		return null;
 	}
 
 	function initDots(sw) {
+		// Set initial state
+		var idx = sw.realIndex || 0;
+		dots.forEach(function(d, i) {
+			d.classList.toggle('active', i === idx);
+		});
+
+		// Listen for slide changes
 		sw.on('slideChange', function() {
-			const idx = sw.realIndex;
+			var currentIdx = sw.realIndex;
 			dots.forEach(function(d, i) {
-				d.classList.toggle('active', i === idx);
+				d.classList.toggle('active', i === currentIdx);
 			});
 		});
+
+		sw.on('slideChangeTransitionEnd', function() {
+			var currentIdx = sw.realIndex;
+			dots.forEach(function(d, i) {
+				d.classList.toggle('active', i === currentIdx);
+			});
+		});
+
+		// Click handlers
 		dots.forEach(function(dot) {
 			dot.addEventListener('click', function() {
-				sw.slideToLoop(parseInt(dot.dataset.index));
+				var targetIndex = parseInt(dot.dataset.index);
+				sw.slideToLoop(targetIndex);
 			});
 		});
 	}
 
-	if (document.readyState === 'complete') {
-		setTimeout(waitForSwiper, 300);
-	} else {
-		window.addEventListener('load', function() { setTimeout(waitForSwiper, 300); });
+	var attempts = 0;
+	function tryInit() {
+		var sw = getSwiper();
+		if (sw) {
+			initDots(sw);
+			return;
+		}
+		attempts++;
+		if (attempts < 50) {
+			setTimeout(tryInit, 200);
+		}
 	}
+
+	// Also listen for salla-slider custom events
+	slider.addEventListener('ready', function() { setTimeout(tryInit, 100); });
+	slider.addEventListener('init', function() { setTimeout(tryInit, 100); });
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', function() { setTimeout(tryInit, 500); });
+	} else {
+		setTimeout(tryInit, 500);
+	}
+	window.addEventListener('load', function() { setTimeout(tryInit, 1000); });
 })();
 </script>
 
