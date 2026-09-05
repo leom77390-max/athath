@@ -55,9 +55,10 @@
 	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
 		position: absolute;
 		inset: 0;
-		width: 100%;
+		width: 120%;
 		height: 110%;
 		top: -5%;
+		left: -10%;
 		object-fit: cover;
 		object-position: center;
 		will-change: transform;
@@ -394,7 +395,7 @@
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
 				<div class="swiper-slide">
-					<picture class="absolute inset-0 w-full h-full block">
+					<picture class="absolute inset-0 w-full h-full block" data-swiper-parallax="20%">
 						{% if _mob_img %}
 							<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
 						{% endif %}
@@ -408,10 +409,9 @@
 
 					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
 
-					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
+					<div class="hs-content flex {{ justify_class }} {{ items_class }}" data-swiper-parallax="{% if store.dir == 'rtl' %}-300{% else %}300{% endif %}" data-swiper-parallax-opacity="0">
 						<div
 							class="hs-text-box {{ text_align_cls }}{% if anim_enable %} hs-anim-active{% endif %}"
-							data-swiper-parallax="{% if store.dir == 'rtl' %}-300{% else %}300{% endif %}"
 							style="color: {{ text_color }};"
 						>
 							{% if _heading %}
