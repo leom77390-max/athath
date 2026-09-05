@@ -2424,13 +2424,13 @@
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
             "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p",
+            "image": "https://cdn.files.salla.network/other/1010819922/a4180de6-2191-4b7a-acd8-c79e9e78ccd2-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "with-bg",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/a4180de6-2191-4b7a-acd8-c79e9e78ccd2-original.webp'></div>"
                 },
                 {
                     "id": "customize_color",
@@ -2737,14 +2737,14 @@
                 "ar": "تصنيفات - اثاثي"
             },
             "icon": "sicon-store",
-            "image": "https://a.top4top.io/p_3829nrx8m1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/3912d8c0-6b67-4616-ab40-134900a247f4-original.webp",
             "path": "home.SK_categorie_slide",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://a.top4top.io/p_3829nrx8m1.png'></div>"
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/3912d8c0-6b67-4616-ab40-134900a247f4-original.webp'></div>"
                 },
                 {
                     "id": "bg_color",
@@ -2947,13 +2947,13 @@
             "is_default": true,
             "icon": "sicon-store",
             "path": "home.SK-Products-banner",
-            "image": "https://c.top4top.io/p_3829hlmov1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/0336a777-01c8-46a6-8c16-c7fcbbf84402-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_3829hlmov1.png'></div>"
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/0336a777-01c8-46a6-8c16-c7fcbbf84402-original.webp'></div>"
                 },
                 {
                     "id": "block_title",
@@ -3114,13 +3114,13 @@
             "icon": "sicon-gold-badge",
             "path": "home.SK_features",
             "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp",
+            "image": "https://cdn.files.salla.network/other/1010819922/77b786a8-327f-46b4-b46b-fe606ddb0e1f-original.webp?_s_uploader_cache_bust=preview-xfxuolm66",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/77b786a8-327f-46b4-b46b-fe606ddb0e1f-original.webp?_s_uploader_cache_bust=preview-xfxuolm66'></div>"
                 },
                 {
                     "id": "use_custom_colors",
@@ -3492,13 +3492,13 @@
             "icon": "sicon-hierarchy",
             "path": "home.SK_category_banner",
             "is_default": true,
-            "image": "https://c.top4top.io/p_3829uranl1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/a92a2f59-bdd7-4bd6-8b5f-588c0da1e034-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://c.top4top.io/p_3829uranl1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/a92a2f59-bdd7-4bd6-8b5f-588c0da1e034-original.webp'></div>"
                 },
                 {
                     "id": "use_custom_colors",
@@ -4290,14 +4290,14 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
-            "image": "https://b.top4top.io/p_3829a4iqb1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/921f588d-8490-4ab4-a94b-6b8472fc0909-original.webp",
             "is_default": true,
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://b.top4top.io/p_3829a4iqb1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/921f588d-8490-4ab4-a94b-6b8472fc0909-original.webp'></div>"
                 },
                 {
                     "id": "product_title",
@@ -4626,7 +4626,7 @@
                 "ar": " منتجات مميزة - اثاثي"
             },
             "icon": "sicon-store",
-            "image": "https://g.top4top.io/p_3829vzv2c1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/5f01473c-21d6-4cb3-ad09-f5f0b5520a03-original.webp",
             "path": "home.SK_featured-products",
             "is_default": true,
             "fields": [
@@ -4634,7 +4634,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://g.top4top.io/p_3829vzv2c1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/5f01473c-21d6-4cb3-ad09-f5f0b5520a03-original.webp'></div>"
                 },
                 {
                     "type": "boolean",
@@ -8620,7 +8620,14 @@
             },
             "icon": "sicon-instagram2",
             "path": "home.instagram_collage",
+            "image": "https://cdn.files.salla.network/other/1010819922/3519752d-8a3f-45cd-9457-6626f58e15e1-original.webp",
             "fields": [
+                   {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/3519752d-8a3f-45cd-9457-6626f58e15e1-original.webp'></div>"
+                },
                 {
                     "type": "static",
                     "format": "title",
@@ -8633,9 +8640,15 @@
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الفرعي (Subheading)",
-                    "placeholder": "RENOVATE YOUR HOME",
+                    "placeholder": {
+                        "ar": "جدد منزلك",
+                        "en": "RENOVATE YOUR HOME"
+                    },
                     "icon": "sicon-format-text-alt",
-                    "value": "RENOVATE YOUR HOME",
+                    "value": {
+                        "ar": "جدد منزلك",
+                        "en": "RENOVATE YOUR HOME"
+                    },
                     "multilanguage": true,
                     "required": false
                 },
@@ -8644,9 +8657,15 @@
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الرئيسي (Heading)",
-                    "placeholder": "WE'RE ON GRAM",
+                    "placeholder": {
+                        "ar": "تابعنا على انستقرام",
+                        "en": "WE'RE ON GRAM"
+                    },
                     "icon": "sicon-format-color-text",
-                    "value": "WE'RE ON GRAM",
+                    "value": {
+                        "ar": "تابعنا على انستقرام",
+                        "en": "WE'RE ON GRAM"
+                    },
                     "multilanguage": true,
                     "required": true
                 },
@@ -8655,9 +8674,15 @@
                     "type": "string",
                     "format": "text",
                     "label": "نص الزر (Button Text)",
-                    "placeholder": "@YOUR_STORE",
+                    "placeholder": {
+                        "ar": "@متجرك",
+                        "en": "@YOUR_STORE"
+                    },
                     "icon": "sicon-cursor-click",
-                    "value": "@YOUR_STORE",
+                    "value": {
+                        "ar": "@متجرك",
+                        "en": "@YOUR_STORE"
+                    },
                     "multilanguage": true,
                     "required": true
                 },
@@ -8789,7 +8814,11 @@
                             "format": "text",
                             "label": "النص البديل (Alt text)",
                             "icon": "sicon-text-align-right",
-                            "value": "",
+                            "value": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "multilanguage": true,
                             "required": false
                         }
                     ]
