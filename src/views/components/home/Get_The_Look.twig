@@ -120,7 +120,9 @@
 
                         <div class="gtl-panel-gradient"></div>
 
-                        <div class="gtl-panel-content">
+                        {% set pos_y = look.content_pos_y | default('center') %}
+                        {% set pos_x = look.content_pos_x | default('center') %}
+                        <div class="gtl-panel-content" style="justify-content: {{ pos_y }}; align-items: {{ pos_x }};">
                             {% if look.overlay_title %}
                                 <h3 class="gtl-panel-title">{{ look.overlay_title }}</h3>
                             {% endif %}
@@ -182,7 +184,7 @@
     flex-direction: column-reverse;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .get-the-look-section #{{ section_id }}-wrapper {
         flex-direction: row;
         min-height: 600px;
@@ -217,7 +219,7 @@
     flex-shrink: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .get-the-look-section .gtl-right {
         width: 50%;
         height: auto;

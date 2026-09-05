@@ -9973,6 +9973,30 @@
                             "format": "url",
                             "label": "رابط الزر",
                             "value": ""
+                        },
+                        {
+                            "id": "looks.content_pos_y",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة المحتوى عمودياً (Vertical)",
+                            "options": [
+                                { "label": "أعلى (Top)", "value": "flex-start" },
+                                { "label": "وسط (Center)", "value": "center" },
+                                { "label": "أسفل (Bottom)", "value": "flex-end" }
+                            ],
+                            "value": "center"
+                        },
+                        {
+                            "id": "looks.content_pos_x",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة المحتوى أفقياً (Horizontal)",
+                            "options": [
+                                { "label": "يمين (Right)", "value": "flex-start" },
+                                { "label": "وسط (Center)", "value": "center" },
+                                { "label": "يسار (Left)", "value": "flex-end" }
+                            ],
+                            "value": "center"
                         }
                     ],
                     "value": [
