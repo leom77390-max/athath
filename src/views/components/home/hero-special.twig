@@ -246,6 +246,11 @@
 				"pauseOnMouseEnter": true
 			},
 			{% endif %}
+			{% if component.hs_show_pagination %}
+			"pagination": {
+				"clickable": true
+			},
+			{% endif %}
 			"on": {}
 		}'
 	>
