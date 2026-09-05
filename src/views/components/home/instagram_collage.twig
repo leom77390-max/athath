@@ -40,17 +40,18 @@
 
             <div class="ig-collage__text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[420px] flex flex-col gap-5 z-10 {{ align_class }}">
                 {% if ig.subheading %}
-                    <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
+                    <p class="text-xs tracking-[3px] uppercase m-0" style="{{ ig.use_custom_colors ? 'color: ' ~ ig.subheading_color ~ ';' : 'color: inherit; opacity: 0.8;' }}">{{ ig.subheading }}</p>
                 {% endif %}
 
-                <h2 class="ig-collage__heading font-serif text-5xl lg:text-6xl leading-[1.05] text-current m-0">
+                <h2 class="ig-collage__heading font-serif text-5xl lg:text-6xl leading-[1.05] m-0" style="{{ ig.use_custom_colors ? 'color: ' ~ ig.heading_color ~ ';' : 'color: inherit;' }}">
                     {{ ig.heading }}
                 </h2>
 
                 {% if ig.button_text and ig.button_url %}
                     <a href="{{ ig.button_url }}"
                        {% if ig.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                       class="inline-block mt-2 px-8 py-3 border border-current text-xs tracking-[2px] uppercase hover:bg-black hover:text-white transition-colors duration-300">
+                       class="inline-block mt-2 px-8 py-3 border {{ ig.use_custom_colors ? '' : 'border-current hover:bg-black hover:text-white' }} text-xs tracking-[2px] uppercase transition-colors duration-300"
+                       style="{{ ig.use_custom_colors ? 'color: ' ~ ig.button_text_color ~ '; background-color: ' ~ ig.button_bg_color ~ '; border-color: ' ~ ig.button_text_color ~ ';' : '' }}">
                         {{ ig.button_text }}
                     </a>
                 {% endif %}
@@ -82,17 +83,18 @@
             <!-- Text Content -->
             <div class="flex flex-col gap-4 py-12 px-4 w-full {{ align_class }}">
                 {% if ig.subheading %}
-                    <p class="text-xs tracking-[3px] uppercase text-current/80 m-0">{{ ig.subheading }}</p>
+                    <p class="text-xs tracking-[3px] uppercase m-0" style="{{ ig.use_custom_colors ? 'color: ' ~ ig.subheading_color ~ ';' : 'color: inherit; opacity: 0.8;' }}">{{ ig.subheading }}</p>
                 {% endif %}
 
-                <h2 class="ig-collage__heading font-serif text-4xl leading-tight text-current m-0">
+                <h2 class="ig-collage__heading font-serif text-4xl leading-tight m-0" style="{{ ig.use_custom_colors ? 'color: ' ~ ig.heading_color ~ ';' : 'color: inherit;' }}">
                     {{ ig.heading }}
                 </h2>
 
                 {% if ig.button_text and ig.button_url %}
                     <a href="{{ ig.button_url }}"
                        {% if ig.open_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
-                       class="inline-block mt-1 px-7 py-2.5 border border-current text-xs tracking-[2px] uppercase">
+                       class="inline-block mt-1 px-7 py-2.5 border {{ ig.use_custom_colors ? '' : 'border-current' }} text-xs tracking-[2px] uppercase"
+                       style="{{ ig.use_custom_colors ? 'color: ' ~ ig.button_text_color ~ '; background-color: ' ~ ig.button_bg_color ~ '; border-color: ' ~ ig.button_text_color ~ ';' : '' }}">
                         {{ ig.button_text }}
                     </a>
                 {% endif %}

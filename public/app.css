@@ -3080,9 +3080,6 @@ input:where([type='file']):focus{
     color: rgba(59, 130, 246, 1);
     color: rgba(59, 130, 246, var(--tw-text-opacity, 1));
 }
-.text-current{
-    color: currentColor;
-}
 .text-danger{
     --tw-text-opacity: 1;
     color: rgba(174, 10, 10, 1);
