@@ -1,43 +1,50 @@
+```html
 {% set slides = component.hero_slideshow_slides|default([]) %}
 
-{# ── Safe iterable helpers ── #}
-{% set effect_v      = component.hs_transition_effect.value|default(component.hs_transition_effect|default('fade')) %}
-{% set effect        = effect_v is iterable ? effect_v|first : effect_v %}
+{% set effect_v = component.hs_transition_effect.value|default(component.hs_transition_effect|default('fade')) %}
+{% set effect = effect_v is iterable ? effect_v|first : effect_v %}
 
-{% set pag_style_v   = component.hs_pagination_style.value|default(component.hs_pagination_style|default('bullets')) %}
-{% set pag_style     = pag_style_v is iterable ? pag_style_v|first : pag_style_v %}
+{% set pag_style_v = component.hs_pagination_style.value|default(component.hs_pagination_style|default('bullets')) %}
+{% set pag_style = pag_style_v is iterable ? pag_style_v|first : pag_style_v %}
 
 {% set pag_pos_v = component.hs_pagination_position %}
-{% set pag_pos   = pag_pos_v.value ?? (pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v) %}
-{% set pag_pos   = pag_pos.value ?? pag_pos %}
-{% set pag_pos   = pag_pos ?: 'bottom-center' %}
+{% set pag_pos = pag_pos_v.value ?? (pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v) %}
+{% set pag_pos = pag_pos.value ?? pag_pos %}
+{% set pag_pos = pag_pos ?: 'bottom-center' %}
 
-{% set arr_vis_v     = component.hs_arrows_visibility.value|default(component.hs_arrows_visibility|default('desktop')) %}
-{% set arr_vis       = arr_vis_v is iterable ? arr_vis_v|first : arr_vis_v %}
+{% set arr_vis_v = component.hs_arrows_visibility.value|default(component.hs_arrows_visibility|default('desktop')) %}
+{% set arr_vis = arr_vis_v is iterable ? arr_vis_v|first : arr_vis_v %}
 
-{% set autoplay_speed    = component.hs_autoplay_speed|default(4000) %}
-{% set transition_speed  = component.hs_transition_speed|default(700) %}
+{% set autoplay_speed = component.hs_autoplay_speed|default(4000) %}
+{% set transition_speed = component.hs_transition_speed|default(900) %}
 
-
-{% set anim_enable = component.hs_content_anim_enable|default(true) %}
-{% set anim_dir_v = component.hs_content_anim_direction.value|default(component.hs_content_anim_direction|default('right')) %}
-{% set anim_dir = anim_dir_v is iterable ? anim_dir_v|first : anim_dir_v %}
 
 <style>
-	/* ─── Wrapper heights ─── */
+
+	/* ─────────────────────────────
+	   Wrapper
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} {
 		height: {{ component.hs_mobile_height | default('620px') }};
 	}
+
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} {
 			height: {{ component.hs_tablet_height | default('500px') }};
 		}
 	}
+
 	@media(min-width: 1024px) {
 		.hs-wrap-{{ component.id }} {
 			height: {{ component.hs_desktop_height | default('620px') }};
 		}
 	}
+
+
+	/* ─────────────────────────────
+	   Slider dimensions
+	───────────────────────────── */
 
 	.hs-wrap-{{ component.id }} salla-slider,
 	.hs-wrap-{{ component.id }} .swiper,
@@ -50,41 +57,73 @@
 		overflow: hidden;
 	}
 
-	/* ─── Background image + Ken Burns ─── */
-	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
+
+	/* ─────────────────────────────
+	   BACKGROUND
+	   Important:
+	   Parallax needs extra room.
+	───────────────────────────── */
+
+	.hs-wrap-{{ component.id }} .hs-slide-bg {
 		position: absolute;
-		inset: 0;
+		inset: -8%;
+		width: 116%;
+		height: 116%;
+		overflow: hidden;
+		z-index: 0;
+		will-change: transform;
+	}
+
+	.hs-wrap-{{ component.id }} .hs-slide-bg picture {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
+		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
-		will-change: transform;
-		transform: scale(1.12) translateX(0);
-		transition: transform {{ transition_speed }}ms ease;
-		{% if component.hs_enable_zoom_animation %}
-			transform: scale(1.12);
-		{% endif %}
-	}
-	/* Active slide image: zoom in to normal and push back */
-	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
-		{% if component.hs_enable_zoom_animation %}
-			transform: scale(1.04);
-		{% else %}
-			transform: scale(1.08) translateX(-2%);
-		{% endif %}
-		transition: transform {{ (autoplay_speed + transition_speed)|default(4700) }}ms ease-out;
 	}
 
-	/* ─── Overlay ─── */
+
+	/* ─────────────────────────────
+	   Optional Ken Burns
+	───────────────────────────── */
+
+	{% if component.hs_enable_zoom_animation %}
+
+	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
+		transform: scale(1.06);
+		transition: transform {{ autoplay_speed + transition_speed }}ms ease-out;
+	}
+
+	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
+		transform: scale(1);
+	}
+
+	{% endif %}
+
+
+	/* ─────────────────────────────
+	   Overlay
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} .hs-overlay {
 		position: absolute;
 		inset: 0;
-		background-color: #000000;
+		background: #000;
 		pointer-events: none;
 		z-index: 1;
 	}
 
-	/* ─── Content wrapper ─── */
+
+	/* ─────────────────────────────
+	   Content
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} .hs-content {
 		position: absolute;
 		inset: 0;
@@ -92,42 +131,50 @@
 		flex-direction: column;
 		padding: 24px;
 		z-index: 2;
+		pointer-events: none;
 	}
+
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} .hs-content {
 			padding: 64px;
 		}
 	}
 
-	/* ─── Text box (parallax target) ─── */
 	.hs-wrap-{{ component.id }} .hs-text-box {
 		max-width: 640px;
+		pointer-events: auto;
 	}
 
-	/* ─── Content Animation (CSS-only parallax on slide change) ─── */
-	{% if anim_enable %}
-		.hs-wrap-{{ component.id }} .hs-text-box {
-			opacity: 0;
-			{% if anim_dir == 'right' %}
-				transform: translateX(60px);
-			{% elseif anim_dir == 'left' %}
-				transform: translateX(-60px);
-			{% elseif anim_dir == 'top' %}
-				transform: translateY(-60px);
-			{% elseif anim_dir == 'bottom' %}
-				transform: translateY(60px);
-			{% else %}
-				transform: translateX(60px);
-			{% endif %}
-			transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
-		}
-		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
-			opacity: 1;
-			transform: translate(0, 0);
-		}
-	{% endif %}
 
-	/* ─── Heading ─── */
+	/* ─────────────────────────────
+	   Text entrance
+	───────────────────────────── */
+
+	.hs-wrap-{{ component.id }} .hs-text-box {
+		opacity: 0;
+		transform: translateX(
+			{% if store.dir == 'rtl' %}
+				60px
+			{% else %}
+				-60px
+			{% endif %}
+		);
+
+		transition:
+			opacity .7s cubic-bezier(.2,.8,.2,1),
+			transform .9s cubic-bezier(.2,.8,.2,1);
+	}
+
+	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
+		opacity: 1;
+		transform: translate3d(0,0,0);
+	}
+
+
+	/* ─────────────────────────────
+	   Heading
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} .hs-heading {
 		font-family: var(--font-serif, Georgia, serif);
 		font-size: clamp(2rem, 6vw, 5rem);
@@ -137,31 +184,41 @@
 		margin-bottom: 1rem;
 	}
 
-	/* ─── Description ─── */
+
+	/* ─────────────────────────────
+	   Description
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} .hs-desc {
-		font-size: clamp(0.9rem, 1.5vw, 1.125rem);
+		font-size: clamp(.9rem,1.5vw,1.125rem);
 		line-height: 1.65;
-		opacity: 0.88;
+		opacity: .88;
 		margin-bottom: 1.75rem;
 		max-width: 480px;
 	}
 
-	/* ─── Buttons ─── */
+
+	/* ─────────────────────────────
+	   Buttons
+	───────────────────────────── */
+
 	.hs-wrap-{{ component.id }} .hs-btn {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 13px;
-		letter-spacing: 0.15em;
+		letter-spacing: .15em;
 		text-transform: uppercase;
 		font-weight: 600;
 		text-decoration: none;
 		transition: opacity .25s ease;
 	}
+
 	.hs-wrap-{{ component.id }} .hs-btn--underline {
 		position: relative;
 		padding-bottom: 4px;
 	}
+
 	.hs-wrap-{{ component.id }} .hs-btn--underline::after {
 		content: '';
 		position: absolute;
@@ -171,27 +228,19 @@
 		height: 1.5px;
 		background: currentColor;
 	}
-	.hs-wrap-{{ component.id }} .hs-btn--underline:hover { opacity: 0.65; }
-	.hs-wrap-{{ component.id }} .hs-btn--underline:hover::after {
-		animation: hsBorderSlide-{{ component.id }} 0.65s cubic-bezier(0.77, 0, 0.175, 1) forwards;
-	}
-	@keyframes hsBorderSlide-{{ component.id }} {
-		0%   { transform-origin: right; transform: scaleX(1); }
-		49%  { transform-origin: right; transform: scaleX(0); }
-		50%  { transform-origin: left;  transform: scaleX(0); }
-		100% { transform-origin: left;  transform: scaleX(1); }
-	}
-	.hs-wrap-{{ component.id }} .hs-btn--solid { padding: 12px 28px; }
-	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-light { background-color: #fff; color: #000; }
-	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-dark  { background-color: #000; color: #fff; }
-	.hs-wrap-{{ component.id }} .hs-btn--outline {
-		padding: 12px 28px;
-		border: 1px solid currentColor;
-		background: transparent;
+
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover {
+		opacity: .65;
 	}
 
-	/* ─── Pagination ─── */
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { display: none !important; }
+
+	/* ─────────────────────────────
+	   Pagination
+	───────────────────────────── */
+
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) {
+		display: none !important;
+	}
 
 	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
 		position: absolute;
@@ -202,66 +251,14 @@
 		display: flex;
 		gap: 6px;
 		pointer-events: none;
-		{% if pag_pos == 'bottom-start' %}
-			{% if store.dir == 'rtl' %}
-				justify-content: flex-end;
-			{% else %}
-				justify-content: flex-start;
-			{% endif %}
-			padding: 0 2rem;
-		{% elseif pag_pos == 'bottom-end' %}
-			{% if store.dir == 'rtl' %}
-				justify-content: flex-start;
-			{% else %}
-				justify-content: flex-end;
-			{% endif %}
-			padding: 0 2rem;
-		{% else %}
-			justify-content: center;
-		{% endif %}
+		justify-content: center;
 	}
 
-	{% if pag_style == 'bullets' %}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet {
-		pointer-events: all;
-		width: 8px;
-		height: 8px;
-		background: rgba(255,255,255,0.55);
-		border-radius: 99px;
-		cursor: pointer;
-		transition: background .3s, width .3s;
-		display: inline-block;
-	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet-active {
-		background: #fff;
-		width: 24px;
-	}
-	{% endif %}
 
-	{% if pag_style == 'fraction' %}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
-		font-size: 13px;
-		font-weight: 600;
-		color: #fff;
-		letter-spacing: 0.1em;
-	}
-	{% endif %}
+	/* ─────────────────────────────
+	   Navigation
+	───────────────────────────── */
 
-	{% if pag_style == 'progressbar' %}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
-		bottom: 0;
-		height: 3px;
-		gap: 0;
-		padding: 0;
-	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-progressbar-fill {
-		background: #fff;
-		height: 100%;
-		display: block;
-	}
-	{% endif %}
-
-	/* ─── Nav arrows ─── */
 	.hs-wrap-{{ component.id }} .hs-prev,
 	.hs-wrap-{{ component.id }} .hs-next {
 		position: absolute;
@@ -277,37 +274,23 @@
 		border: none;
 		cursor: pointer;
 	}
-	.hs-wrap-{{ component.id }} .hs-prev { inset-inline-start: 1rem; }
-	.hs-wrap-{{ component.id }} .hs-next { inset-inline-end: 1rem; }
 
-	{% if component.hs_show_arrows %}
-		{% if arr_vis == 'desktop' %}
-			@media(max-width: 1023px) {
-				.hs-wrap-{{ component.id }} .hs-prev,
-				.hs-wrap-{{ component.id }} .hs-next { display: none !important; }
-			}
-		{% endif %}
-	{% else %}
-		.hs-wrap-{{ component.id }} .hs-prev,
-		.hs-wrap-{{ component.id }} .hs-next { display: none !important; }
-	{% endif %}
+	.hs-wrap-{{ component.id }} .hs-prev {
+		inset-inline-start: 1rem;
+	}
 
-	/* ─── Visibility overrides ─── */
-	{% if component.hs_hide_on_desktop %}
-		@media(min-width: 1024px) { .hs-wrap-{{ component.id }} { display: none !important; } }
-	{% endif %}
-	{% if component.hs_hide_on_tablet %}
-		@media(min-width: 768px) and (max-width: 1023px) { .hs-wrap-{{ component.id }} { display: none !important; } }
-	{% endif %}
-	{% if component.hs_hide_on_mobile %}
-		@media(max-width: 767px) { .hs-wrap-{{ component.id }} { display: none !important; } }
-	{% endif %}
+	.hs-wrap-{{ component.id }} .hs-next {
+		inset-inline-end: 1rem;
+	}
+
 </style>
+
 
 <section
 	id="{{ component.hs_section_id }}"
 	class="hs-wrap-{{ component.id }} relative w-full {{ component.hs_custom_css_class }}"
 >
+
 	<salla-slider
 		id="hs-slider-{{ component.id }}"
 		type="carousel"
@@ -317,12 +300,18 @@
 		slides-per-view="1"
 		speed="{{ transition_speed }}"
 		class="w-full h-full"
+
 		slider-config='{
 			"slidesPerView": 1,
-			"effect": "{{ effect }}",
-			"fadeEffect": { "crossFade": true },
+
+			"effect": "{{ effect == 'parallax' ? 'slide' : effect }}",
+
 			"speed": {{ transition_speed }},
+
 			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
+
+			"parallax": true,
+
 			{% if component.hs_enable_autoplay %}
 			"autoplay": {
 				"delay": {{ autoplay_speed }},
@@ -330,6 +319,7 @@
 				"pauseOnMouseEnter": true
 			},
 			{% endif %}
+
 			{% if component.hs_show_pagination %}
 			"pagination": {
 				"el": ".hs-pagination-wrap-{{ component.id }}",
@@ -337,116 +327,215 @@
 				"type": "{{ pag_style }}"
 			},
 			{% endif %}
+
 			{% if component.hs_show_arrows %}
 			"navigation": {
 				"nextEl": ".hs-next-{{ component.id }}",
 				"prevEl": ".hs-prev-{{ component.id }}"
-			},
+			}
 			{% endif %}
-			"on": {}
 		}'
 	>
+
 		<div slot="items">
+
 			{% for slide in slides %}
 
-				{# ── images ── #}
 				{% set _desk_img = slide.desktop_image|default('')|trim %}
 				{% set _desk_img = _desk_img is iterable ? _desk_img|first : _desk_img %}
-				{% set _mob_img  = slide.mobile_image|default(_desk_img)|trim %}
-				{% set _mob_img  = _mob_img is iterable ? _mob_img|first : _mob_img %}
 
-				{# ── multilang text ── #}
+				{% set _mob_img = slide.mobile_image|default(_desk_img)|trim %}
+				{% set _mob_img = _mob_img is iterable ? _mob_img|first : _mob_img %}
+
+
 				{% set _heading = slide.heading %}
-				{% set _heading = _heading is iterable ? (_heading[store.locale]|default(_heading['ar']|default(_heading|first))) : _heading %}
+				{% set _heading = _heading is iterable
+					? (_heading[store.locale]|default(_heading['ar']|default(_heading|first)))
+					: _heading
+				%}
+
 
 				{% set _desc = slide.description %}
-				{% set _desc = _desc is iterable ? (_desc[store.locale]|default(_desc['ar']|default(_desc|first))) : _desc %}
+				{% set _desc = _desc is iterable
+					? (_desc[store.locale]|default(_desc['ar']|default(_desc|first)))
+					: _desc
+				%}
+
 
 				{% set _btn_text = slide.btn_text %}
-				{% set _btn_text = _btn_text is iterable ? (_btn_text[store.locale]|default(_btn_text['ar']|default(_btn_text|first))) : _btn_text %}
+				{% set _btn_text = _btn_text is iterable
+					? (_btn_text[store.locale]|default(_btn_text['ar']|default(_btn_text|first)))
+					: _btn_text
+				%}
 
-				{# ── scheme / colors ── #}
-				{% set scheme_v   = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
-				{% set scheme     = scheme_v is iterable ? scheme_v|first : scheme_v %}
+
+				{% set scheme_v = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
+				{% set scheme = scheme_v is iterable ? scheme_v|first : scheme_v %}
+
 				{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
 
-				{# ── positioning ── #}
+
 				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
-				{% set h_pos   = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
+				{% set h_pos = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
+
 				{% set v_pos_v = slide.vertical_position.value|default(slide.vertical_position|default('end')) %}
-				{% set v_pos   = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
+				{% set v_pos = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
+
 				{% set align_v = slide.text_alignment.value|default(slide.text_alignment|default('start')) %}
-				{% set align   = align_v is iterable ? align_v|first : align_v %}
+				{% set align = align_v is iterable ? align_v|first : align_v %}
 
-				{% set justify_class  = (v_pos == 'start') ? 'justify-start' : (v_pos == 'center' ? 'justify-center' : 'justify-end') %}
-				{% set items_class    = (h_pos == 'start') ? 'items-start' : (h_pos == 'center' ? 'items-center' : 'items-end') %}
-				{% set text_align_cls = (align == 'center') ? 'text-center' : (align == 'end' ? 'text-end' : 'text-start') %}
 
-				{# ── button ── #}
-				{% set _btn_val       = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
+				{% set justify_class =
+					(v_pos == 'start')
+						? 'justify-start'
+						: (v_pos == 'center' ? 'justify-center' : 'justify-end')
+				%}
+
+				{% set items_class =
+					(h_pos == 'start')
+						? 'items-start'
+						: (h_pos == 'center' ? 'items-center' : 'items-end')
+				%}
+
+				{% set text_align_cls =
+					(align == 'center')
+						? 'text-center'
+						: (align == 'end' ? 'text-end' : 'text-start')
+				%}
+
+
+				{% set _btn_val = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
 				{% set _slide_btn_url = _btn_val.url|default(_btn_val|default('#')) %}
 
 				{% set btn_style_v = slide.btn_style.value|default(slide.btn_style|default('underline')) %}
-				{% set btn_style   = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
+				{% set btn_style = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
-				<div class="swiper-slide">
-					<picture class="absolute inset-0 w-full h-full block">
-						{% if _mob_img %}
-							<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
-						{% endif %}
-						<img
-							class="hs-slide-bg-img"
-							src="{{ _desk_img }}"
-							alt="{{ slide.alt_text|default('') }}"
-							loading="{{ loop.first ? 'eager' : 'lazy' }}"
-						>
-					</picture>
 
-					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
+				<div class="swiper-slide">
+
+					<!--
+						IMPORTANT:
+						Parallax target.
+						The image moves opposite to slide movement.
+					-->
+
+					<div
+						class="hs-slide-bg"
+						data-swiper-parallax="-18%"
+						data-swiper-parallax-duration="{{ transition_speed }}"
+					>
+
+						<picture class="block w-full h-full">
+
+							{% if _mob_img %}
+								<source
+									media="(max-width: 767px)"
+									srcset="{{ _mob_img }}"
+								>
+							{% endif %}
+
+							<img
+								class="hs-slide-bg-img"
+								src="{{ _desk_img }}"
+								alt="{{ slide.alt_text|default('') }}"
+								loading="{{ loop.first ? 'eager' : 'lazy' }}"
+							>
+
+						</picture>
+
+					</div>
+
+
+					<div
+						class="hs-overlay"
+						style="opacity: {{ overlay_opacity / 100 }};"
+					></div>
+
 
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
+
 						<div
 							class="hs-text-box {{ text_align_cls }}"
 							style="color: {{ text_color }};"
+							data-swiper-parallax="80"
+							data-swiper-parallax-duration="{{ transition_speed }}"
 						>
+
 							{% if _heading %}
-								<h2 class="hs-heading">{{ _heading }}</h2>
+								<h2
+									class="hs-heading"
+									data-swiper-parallax="120"
+									data-swiper-parallax-duration="{{ transition_speed }}"
+								>
+									{{ _heading }}
+								</h2>
 							{% endif %}
+
+
 							{% if _desc %}
-								<p class="hs-desc">{{ _desc }}</p>
+								<p
+									class="hs-desc"
+									data-swiper-parallax="180"
+									data-swiper-parallax-duration="{{ transition_speed }}"
+								>
+									{{ _desc }}
+								</p>
 							{% endif %}
+
+
 							{% if _btn_text %}
-								<a href="{{ _slide_btn_url }}"
-								   class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
-								   style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}">
+
+								<a
+									href="{{ _slide_btn_url }}"
+									class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
+									style="{{ btn_style == 'underline' or btn_style == 'outline'
+										? 'color:' ~ text_color ~ ';'
+										: ''
+									}}"
+								>
 									{{ _btn_text }}
 								</a>
+
 							{% endif %}
+
 						</div>
+
 					</div>
+
 				</div>
 
 			{% endfor %}
+
 		</div>
+
 	</salla-slider>
 
-	{# ── Pagination ── #}
+
 	{% if component.hs_show_pagination %}
 		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}"></div>
 	{% endif %}
 
-	{# ── Arrows ── #}
+
 	{% if component.hs_show_arrows %}
-		<button type="button" class="hs-prev hs-prev-{{ component.id }}" aria-label="Previous">
+
+		<button
+			type="button"
+			class="hs-prev hs-prev-{{ component.id }}"
+			aria-label="Previous"
+		>
 			<span class="sicon-arrow-{% if store.dir == 'rtl' %}right{% else %}left{% endif %}"></span>
 		</button>
-		<button type="button" class="hs-next hs-next-{{ component.id }}" aria-label="Next">
+
+		<button
+			type="button"
+			class="hs-next hs-next-{{ component.id }}"
+			aria-label="Next"
+		>
 			<span class="sicon-arrow-{% if store.dir == 'rtl' %}left{% else %}right{% endif %}"></span>
 		</button>
+
 	{% endif %}
 
 </section>
-
-

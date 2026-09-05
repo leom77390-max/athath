@@ -8321,32 +8321,6 @@
                     "description": "تكبير بسيط لصورة الخلفية أثناء عرض الشريحة (Ken Burns effect)."
                 },
                 {
-                    "type": "boolean",
-                    "id": "hs_content_anim_enable",
-                    "label": "حركة دخول المحتوى (Animation)",
-                    "format": "switch",
-                    "value": true,
-                    "description": "تحريك النص والزر عند ظهور الشريحة."
-                },
-                {
-                    "type": "items",
-                    "id": "hs_content_anim_direction",
-                    "label": "اتجاه حركة المحتوى",
-                    "format": "dropdown-list",
-                    "options": [
-                        { "label": "من اليمين (Right)", "value": "right" },
-                        { "label": "من اليسار (Left)", "value": "left" },
-                        { "label": "من الأسفل (Bottom)", "value": "bottom" },
-                        { "label": "من الأعلى (Top)", "value": "top" }
-                    ],
-                    "conditions": [
-                        { "id": "hs_content_anim_enable", "operation": "=", "value": true }
-                    ],
-                    "selected": [
-                        { "label": "من اليمين (Right)", "value": "right" }
-                    ]
-                },
-                {
                     "type": "static",
                     "format": "title",
                     "id": "group_controls",
