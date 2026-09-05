@@ -7776,7 +7776,12 @@
                                     "value": "color"
                                 }
                             ],
-                            "value": "image"
+                            "selected": [
+                                {
+                                    "label": "صورة",
+                                    "value": "image"
+                                }
+                            ]
                         },
                         {
                             "id": "cards.bg_image",
@@ -7787,8 +7792,10 @@
                             "conditions": [
                                 {
                                     "id": "cards.bg_type",
+                                    "collection_id": "cards",
                                     "operation": "=",
-                                    "value": "image"
+                                    "value": ["image"],
+                                    "value_index": "."
                                 }
                             ]
                         },
@@ -7801,8 +7808,10 @@
                             "conditions": [
                                 {
                                     "id": "cards.bg_type",
+                                    "collection_id": "cards",
                                     "operation": "=",
-                                    "value": "color"
+                                    "value": ["color"],
+                                    "value_index": "."
                                 }
                             ]
                         },
@@ -7815,8 +7824,10 @@
                             "conditions": [
                                 {
                                     "id": "cards.bg_type",
+                                    "collection_id": "cards",
                                     "operation": "=",
-                                    "value": "image"
+                                    "value": ["image"],
+                                    "value_index": "."
                                 }
                             ]
                         },
@@ -7839,7 +7850,12 @@
                                     "value": "left"
                                 }
                             ],
-                            "value": "center"
+                            "selected": [
+                                {
+                                    "label": "وسط",
+                                    "value": "center"
+                                }
+                            ]
                         },
                         {
                             "id": "cards.vertical_align",
@@ -7864,7 +7880,12 @@
                                     "value": "end"
                                 }
                             ],
-                            "value": "between"
+                            "selected": [
+                                {
+                                    "label": "توزيع (أعلى وأسفل)",
+                                    "value": "between"
+                                }
+                            ]
                         },
                         {
                             "id": "cards.text_color",
