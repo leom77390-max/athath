@@ -309,11 +309,11 @@
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 1rem;
-    color: #fff;
+    color: {{ gl.gtl_panel_title_color | default('#ffffff') }};
 }
 .get-the-look-section .gtl-panel-btn {
-    color: #ffffff !important;
-    border-color: rgba(255,255,255,0.5) !important;
+    color: {{ gl.gtl_panel_btn_color | default('#ffffff') }} !important;
+    border-color: {{ gl.gtl_panel_btn_border | default('rgba(255,255,255,0.5)') }} !important;
 }
 
 /* ── Pagination dots ───────────────────────────────── */

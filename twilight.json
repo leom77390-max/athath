@@ -10115,6 +10115,39 @@
                     "conditions": [
                         { "id": "gtl_enable_colors", "operation": "=", "value": true }
                     ]
+                },
+                {
+                    "id": "gtl_panel_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان على الصورة",
+                    "value": "#ffffff",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_panel_btn_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون نص الزر على الصورة",
+                    "value": "#ffffff",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_panel_btn_border",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون إطار/خلفية الزر",
+                    "value": "#ffffff",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
                 }
 
             ]
