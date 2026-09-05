@@ -154,14 +154,35 @@
 		content: '';
 		position: absolute;
 		bottom: 0;
-		{% if store.dir == 'rtl' %}right: 0;{% else %}left: 0;{% endif %}
-		width: 0;
+		left: 0;
+		width: 100%;
 		height: 1.5px;
 		background: currentColor;
-		transition: width .3s ease-out;
+		transform-origin: {% if store.dir == 'rtl' %}left{% else %}right{% endif %};
+		transform: scaleX(1);
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 	.hs-wrap-{{ component.id }} .hs-btn:hover::after {
-		width: 100%;
+		animation: hs-line-sweep-{{ component.id }} 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+	}
+
+	@keyframes hs-line-sweep-{{ component.id }} {
+		0% { 
+			transform-origin: {% if store.dir == 'rtl' %}left{% else %}right{% endif %}; 
+			transform: scaleX(1); 
+		}
+		45% { 
+			transform-origin: {% if store.dir == 'rtl' %}left{% else %}right{% endif %}; 
+			transform: scaleX(0); 
+		}
+		50% { 
+			transform-origin: {% if store.dir == 'rtl' %}right{% else %}left{% endif %}; 
+			transform: scaleX(0); 
+		}
+		100% { 
+			transform-origin: {% if store.dir == 'rtl' %}right{% else %}left{% endif %}; 
+			transform: scaleX(1); 
+		}
 	}
 
 	/* ── Pagination ── */
