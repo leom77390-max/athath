@@ -9129,39 +9129,6 @@
                             "required": true
                         },
                         {
-                            "id": "looks.image_2",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 2 (اختياري)",
-                            "description": "تُضاف لشريط الصور — يظهر زر التنقل تلقائياً",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_3",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 3 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_4",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 4 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_5",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 5 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
                             "id": "looks.overlay_title",
                             "type": "string",
                             "format": "text",
@@ -9939,39 +9906,6 @@
                             "required": true
                         },
                         {
-                            "id": "looks.image_2",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 2 (اختياري)",
-                            "description": "تُضاف لشريط الصور — يظهر زر التنقل تلقائياً",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_3",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 3 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_4",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 4 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "looks.image_5",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة إضافية 5 (اختياري)",
-                            "value": "",
-                            "required": false
-                        },
-                        {
                             "id": "looks.overlay_title",
                             "type": "string",
                             "format": "text",
@@ -10133,17 +10067,6 @@
                     "format": "color",
                     "icon": "sicon-format-fill",
                     "label": "لون نص الزر على الصورة",
-                    "value": "#ffffff",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_panel_btn_border",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون إطار/خلفية الزر",
                     "value": "#ffffff",
                     "conditions": [
                         { "id": "gtl_enable_colors", "operation": "=", "value": true }
