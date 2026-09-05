@@ -196,12 +196,12 @@
 
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { 
 		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
+		left: 50% !important;
+		transform: translateX(-50%) !important;
 		display: flex;
 		justify-content: center;
 		gap: 6px;
-		width: auto;
+		width: auto !important;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
 		width: 8px;
