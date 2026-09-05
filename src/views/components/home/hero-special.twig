@@ -1,51 +1,26 @@
-```html
 {% set slides = component.hero_slideshow_slides|default([]) %}
 
-{% set effect_v = component.hs_transition_effect.value|default(component.hs_transition_effect|default('fade')) %}
-{% set effect = effect_v is iterable ? effect_v|first : effect_v %}
-
-{% set pag_style_v = component.hs_pagination_style.value|default(component.hs_pagination_style|default('bullets')) %}
-{% set pag_style = pag_style_v is iterable ? pag_style_v|first : pag_style_v %}
-
-{% set pag_pos_v = component.hs_pagination_position %}
-{% set pag_pos = pag_pos_v.value ?? (pag_pos_v is iterable ? pag_pos_v|first : pag_pos_v) %}
-{% set pag_pos = pag_pos.value ?? pag_pos %}
-{% set pag_pos = pag_pos ?: 'bottom-center' %}
-
-{% set arr_vis_v = component.hs_arrows_visibility.value|default(component.hs_arrows_visibility|default('desktop')) %}
-{% set arr_vis = arr_vis_v is iterable ? arr_vis_v|first : arr_vis_v %}
-
-{% set autoplay_speed = component.hs_autoplay_speed|default(4000) %}
+{% set autoplay_speed   = component.hs_autoplay_speed|default(4000) %}
 {% set transition_speed = component.hs_transition_speed|default(900) %}
-
 
 <style>
 
-	/* ─────────────────────────────
-	   Wrapper
-	───────────────────────────── */
-
+	/* ── Wrapper heights ── */
 	.hs-wrap-{{ component.id }} {
-		height: {{ component.hs_mobile_height | default('620px') }};
+		height: {{ component.hs_mobile_height|default('620px') }};
 	}
-
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} {
-			height: {{ component.hs_tablet_height | default('500px') }};
+			height: {{ component.hs_tablet_height|default('500px') }};
 		}
 	}
-
 	@media(min-width: 1024px) {
 		.hs-wrap-{{ component.id }} {
-			height: {{ component.hs_desktop_height | default('620px') }};
+			height: {{ component.hs_desktop_height|default('620px') }};
 		}
 	}
 
-
-	/* ─────────────────────────────
-	   Slider dimensions
-	───────────────────────────── */
-
+	/* ── Slider fill ── */
 	.hs-wrap-{{ component.id }} salla-slider,
 	.hs-wrap-{{ component.id }} .swiper,
 	.hs-wrap-{{ component.id }} .swiper-wrapper {
@@ -57,13 +32,7 @@
 		overflow: hidden;
 	}
 
-
-	/* ─────────────────────────────
-	   BACKGROUND
-	   Important:
-	   Parallax needs extra room.
-	───────────────────────────── */
-
+	/* ── Background (oversized for parallax headroom) ── */
 	.hs-wrap-{{ component.id }} .hs-slide-bg {
 		position: absolute;
 		inset: -8%;
@@ -88,29 +57,18 @@
 		object-position: center;
 	}
 
-
-	/* ─────────────────────────────
-	   Optional Ken Burns
-	───────────────────────────── */
-
+	/* ── Ken Burns (optional) ── */
 	{% if component.hs_enable_zoom_animation %}
-
 	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
 		transform: scale(1.06);
 		transition: transform {{ autoplay_speed + transition_speed }}ms ease-out;
 	}
-
 	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
 		transform: scale(1);
 	}
-
 	{% endif %}
 
-
-	/* ─────────────────────────────
-	   Overlay
-	───────────────────────────── */
-
+	/* ── Overlay ── */
 	.hs-wrap-{{ component.id }} .hs-overlay {
 		position: absolute;
 		inset: 0;
@@ -119,11 +77,7 @@
 		z-index: 1;
 	}
 
-
-	/* ─────────────────────────────
-	   Content
-	───────────────────────────── */
-
+	/* ── Content ── */
 	.hs-wrap-{{ component.id }} .hs-content {
 		position: absolute;
 		inset: 0;
@@ -133,7 +87,6 @@
 		z-index: 2;
 		pointer-events: none;
 	}
-
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} .hs-content {
 			padding: 64px;
@@ -145,41 +98,18 @@
 		pointer-events: auto;
 	}
 
+	/* ── Content entrance animation ── */
+	.hs-wrap-{{ component.id }} .hs-text-box {
+		opacity: 0;
+		transform: translate3d({% if store.dir == 'rtl' %}-50px{% else %}50px{% endif %}, 0, 0);
+		transition: opacity .65s ease, transform .8s cubic-bezier(.22,.61,.36,1);
+	}
+	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
 
-	/* ─────────────────────────────
-	   Text entrance
-	───────────────────────────── */
-
-```css
-/* ─────────────────────────────
-   Simple content entrance
-   ───────────────────────────── */
-
-.hs-wrap-{{ component.id }} .hs-text-box {
-	opacity: 0;
-	transform: translate3d(
-		{% if store.dir == 'rtl' %}
-			50px
-		{% else %}
-			-50px
-		{% endif %}
-	, 0, 0);
-
-	transition:
-		opacity .65s ease,
-		transform .8s cubic-bezier(.22,.61,.36,1);
-}
-
-.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
-	opacity: 1;
-	transform: translate3d(0,0,0);
-}
-
-
-	/* ─────────────────────────────
-	   Heading
-	───────────────────────────── */
-
+	/* ── Heading ── */
 	.hs-wrap-{{ component.id }} .hs-heading {
 		font-family: var(--font-serif, Georgia, serif);
 		font-size: clamp(2rem, 6vw, 5rem);
@@ -189,24 +119,16 @@
 		margin-bottom: 1rem;
 	}
 
-
-	/* ─────────────────────────────
-	   Description
-	───────────────────────────── */
-
+	/* ── Description ── */
 	.hs-wrap-{{ component.id }} .hs-desc {
-		font-size: clamp(.9rem,1.5vw,1.125rem);
+		font-size: clamp(.9rem, 1.5vw, 1.125rem);
 		line-height: 1.65;
 		opacity: .88;
 		margin-bottom: 1.75rem;
 		max-width: 480px;
 	}
 
-
-	/* ─────────────────────────────
-	   Buttons
-	───────────────────────────── */
-
+	/* ── Buttons ── */
 	.hs-wrap-{{ component.id }} .hs-btn {
 		display: inline-flex;
 		align-items: center;
@@ -218,12 +140,10 @@
 		text-decoration: none;
 		transition: opacity .25s ease;
 	}
-
 	.hs-wrap-{{ component.id }} .hs-btn--underline {
 		position: relative;
 		padding-bottom: 4px;
 	}
-
 	.hs-wrap-{{ component.id }} .hs-btn--underline::after {
 		content: '';
 		position: absolute;
@@ -233,19 +153,18 @@
 		height: 1.5px;
 		background: currentColor;
 	}
-
-	.hs-wrap-{{ component.id }} .hs-btn--underline:hover {
-		opacity: .65;
+	.hs-wrap-{{ component.id }} .hs-btn--underline:hover { opacity: .65; }
+	.hs-wrap-{{ component.id }} .hs-btn--solid { padding: 12px 28px; }
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-light { background: #fff; color: #000; }
+	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-dark  { background: #000; color: #fff; }
+	.hs-wrap-{{ component.id }} .hs-btn--outline {
+		padding: 12px 28px;
+		border: 1px solid currentColor;
+		background: transparent;
 	}
 
-
-	/* ─────────────────────────────
-	   Pagination
-	───────────────────────────── */
-
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination) {
-		display: none !important;
-	}
+	/* ── Pagination ── */
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { display: none !important; }
 
 	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
 		position: absolute;
@@ -254,38 +173,23 @@
 		left: 0;
 		right: 0;
 		display: flex;
+		justify-content: center;
 		gap: 6px;
 		pointer-events: none;
-		justify-content: center;
 	}
-
-
-	/* ─────────────────────────────
-	   Navigation
-	───────────────────────────── */
-
-	.hs-wrap-{{ component.id }} .hs-prev,
-	.hs-wrap-{{ component.id }} .hs-next {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 10;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 44px;
-		height: 44px;
-		background: rgba(255,255,255,.8);
-		border: none;
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet {
+		pointer-events: all;
+		width: 8px;
+		height: 8px;
+		background: rgba(255,255,255,.5);
+		border-radius: 99px;
 		cursor: pointer;
+		transition: background .3s, width .3s;
+		display: inline-block;
 	}
-
-	.hs-wrap-{{ component.id }} .hs-prev {
-		inset-inline-start: 1rem;
-	}
-
-	.hs-wrap-{{ component.id }} .hs-next {
-		inset-inline-end: 1rem;
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet-active {
+		background: #fff;
+		width: 24px;
 	}
 
 </style>
@@ -305,18 +209,12 @@
 		slides-per-view="1"
 		speed="{{ transition_speed }}"
 		class="w-full h-full"
-
 		slider-config='{
 			"slidesPerView": 1,
-
-			"effect": "{{ effect == 'parallax' ? 'slide' : effect }}",
-
+			"effect": "slide",
 			"speed": {{ transition_speed }},
-
 			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
-
 			"parallax": true,
-
 			{% if component.hs_enable_autoplay %}
 			"autoplay": {
 				"delay": {{ autoplay_speed }},
@@ -324,21 +222,14 @@
 				"pauseOnMouseEnter": true
 			},
 			{% endif %}
-
 			{% if component.hs_show_pagination %}
 			"pagination": {
 				"el": ".hs-pagination-wrap-{{ component.id }}",
 				"clickable": true,
-				"type": "{{ pag_style }}"
+				"type": "bullets"
 			},
 			{% endif %}
-
-			{% if component.hs_show_arrows %}
-			"navigation": {
-				"nextEl": ".hs-next-{{ component.id }}",
-				"prevEl": ".hs-prev-{{ component.id }}"
-			}
-			{% endif %}
+			"on": {}
 		}'
 	>
 
@@ -352,161 +243,100 @@
 				{% set _mob_img = slide.mobile_image|default(_desk_img)|trim %}
 				{% set _mob_img = _mob_img is iterable ? _mob_img|first : _mob_img %}
 
-
 				{% set _heading = slide.heading %}
 				{% set _heading = _heading is iterable
 					? (_heading[store.locale]|default(_heading['ar']|default(_heading|first)))
-					: _heading
-				%}
-
+					: _heading %}
 
 				{% set _desc = slide.description %}
 				{% set _desc = _desc is iterable
 					? (_desc[store.locale]|default(_desc['ar']|default(_desc|first)))
-					: _desc
-				%}
-
+					: _desc %}
 
 				{% set _btn_text = slide.btn_text %}
 				{% set _btn_text = _btn_text is iterable
 					? (_btn_text[store.locale]|default(_btn_text['ar']|default(_btn_text|first)))
-					: _btn_text
-				%}
-
+					: _btn_text %}
 
 				{% set scheme_v = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
-				{% set scheme = scheme_v is iterable ? scheme_v|first : scheme_v %}
-
+				{% set scheme   = scheme_v is iterable ? scheme_v|first : scheme_v %}
 				{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
 
-
 				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
-				{% set h_pos = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
+				{% set h_pos   = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
 
 				{% set v_pos_v = slide.vertical_position.value|default(slide.vertical_position|default('end')) %}
-				{% set v_pos = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
+				{% set v_pos   = v_pos_v is iterable ? v_pos_v|first : v_pos_v %}
 
 				{% set align_v = slide.text_alignment.value|default(slide.text_alignment|default('start')) %}
-				{% set align = align_v is iterable ? align_v|first : align_v %}
+				{% set align   = align_v is iterable ? align_v|first : align_v %}
 
+				{% set justify_class  = (v_pos == 'start') ? 'justify-start' : (v_pos == 'center' ? 'justify-center' : 'justify-end') %}
+				{% set items_class    = (h_pos == 'start') ? 'items-start' : (h_pos == 'center' ? 'items-center' : 'items-end') %}
+				{% set text_align_cls = (align == 'center') ? 'text-center' : (align == 'end' ? 'text-end' : 'text-start') %}
 
-				{% set justify_class =
-					(v_pos == 'start')
-						? 'justify-start'
-						: (v_pos == 'center' ? 'justify-center' : 'justify-end')
-				%}
-
-				{% set items_class =
-					(h_pos == 'start')
-						? 'items-start'
-						: (h_pos == 'center' ? 'items-center' : 'items-end')
-				%}
-
-				{% set text_align_cls =
-					(align == 'center')
-						? 'text-center'
-						: (align == 'end' ? 'text-end' : 'text-start')
-				%}
-
-
-				{% set _btn_val = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
+				{% set _btn_val       = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
 				{% set _slide_btn_url = _btn_val.url|default(_btn_val|default('#')) %}
 
 				{% set btn_style_v = slide.btn_style.value|default(slide.btn_style|default('underline')) %}
-				{% set btn_style = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
+				{% set btn_style   = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
 
 				<div class="swiper-slide">
 
-					<!--
-						IMPORTANT:
-						Parallax target.
-						The image moves opposite to slide movement.
-					-->
-
 					<div
 						class="hs-slide-bg"
 						data-swiper-parallax="-18%"
 						data-swiper-parallax-duration="{{ transition_speed }}"
 					>
-
 						<picture class="block w-full h-full">
-
 							{% if _mob_img %}
-								<source
-									media="(max-width: 767px)"
-									srcset="{{ _mob_img }}"
-								>
+								<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
 							{% endif %}
-
 							<img
 								class="hs-slide-bg-img"
 								src="{{ _desk_img }}"
 								alt="{{ slide.alt_text|default('') }}"
 								loading="{{ loop.first ? 'eager' : 'lazy' }}"
 							>
-
 						</picture>
-
 					</div>
 
-
-					<div
-						class="hs-overlay"
-						style="opacity: {{ overlay_opacity / 100 }};"
-					></div>
-
+					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
 
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
-
 						<div
 							class="hs-text-box {{ text_align_cls }}"
 							style="color: {{ text_color }};"
 							data-swiper-parallax="80"
 							data-swiper-parallax-duration="{{ transition_speed }}"
 						>
-
 							{% if _heading %}
 								<h2
 									class="hs-heading"
 									data-swiper-parallax="120"
 									data-swiper-parallax-duration="{{ transition_speed }}"
-								>
-									{{ _heading }}
-								</h2>
+								>{{ _heading }}</h2>
 							{% endif %}
-
 
 							{% if _desc %}
 								<p
 									class="hs-desc"
 									data-swiper-parallax="180"
 									data-swiper-parallax-duration="{{ transition_speed }}"
-								>
-									{{ _desc }}
-								</p>
+								>{{ _desc }}</p>
 							{% endif %}
 
-
 							{% if _btn_text %}
-
 								<a
 									href="{{ _slide_btn_url }}"
 									class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
-									style="{{ btn_style == 'underline' or btn_style == 'outline'
-										? 'color:' ~ text_color ~ ';'
-										: ''
-									}}"
-								>
-									{{ _btn_text }}
-								</a>
-
+									style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}"
+								>{{ _btn_text }}</a>
 							{% endif %}
-
 						</div>
-
 					</div>
 
 				</div>
@@ -517,30 +347,8 @@
 
 	</salla-slider>
 
-
 	{% if component.hs_show_pagination %}
 		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}"></div>
-	{% endif %}
-
-
-	{% if component.hs_show_arrows %}
-
-		<button
-			type="button"
-			class="hs-prev hs-prev-{{ component.id }}"
-			aria-label="Previous"
-		>
-			<span class="sicon-arrow-{% if store.dir == 'rtl' %}right{% else %}left{% endif %}"></span>
-		</button>
-
-		<button
-			type="button"
-			class="hs-next hs-next-{{ component.id }}"
-			aria-label="Next"
-		>
-			<span class="sicon-arrow-{% if store.dir == 'rtl' %}left{% else %}right{% endif %}"></span>
-		</button>
-
 	{% endif %}
 
 </section>
