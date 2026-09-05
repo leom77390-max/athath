@@ -7726,7 +7726,14 @@
             },
             "icon": "sicon-store",
             "path": "home.Promotional_Cards",
+            "image":"https://cdn.files.salla.network/other/1010819922/be780812-4e81-4fa4-888f-4d3632beac1c-original.webp",
             "fields": [
+                   {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/be780812-4e81-4fa4-888f-4d3632beac1c-original.webp'></div>"
+                },
                 {
                     "id": "enable_marquee",
                     "type": "boolean",
@@ -7807,7 +7814,7 @@
                                 }
                             ],
                             "selected": [
-                                {
+                                { 
                                     "label": "صورة",
                                     "value": "image"
                                 }
@@ -8003,7 +8010,7 @@
                     "value": [
                         {
                             "cards.bg_type": "image",
-                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.bg_image": "https://cdn.files.salla.network/other/1010819922/35ddcb48-7382-4309-9a21-7d84d8be0afb-original.webp",
                             "cards.text_align": "center",
                             "cards.vertical_align": "between",
                             "cards.text_color": "#ffffff",
@@ -8022,7 +8029,7 @@
                         },
                         {
                             "cards.bg_type": "color",
-                            "cards.bg_color": "#652C16",
+                              "cards.bg_image": "https://cdn.files.salla.network/other/1010819922/bc848579-7b6d-48f0-acc7-d14832c627d5-original.webp",
                             "cards.text_align": "center",
                             "cards.vertical_align": "center",
                             "cards.text_color": "#ffffff",
@@ -8046,7 +8053,7 @@
                         },
                         {
                             "cards.bg_type": "image",
-                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.bg_image": "https://cdn.files.salla.network/other/1010819922/35ddcb48-7382-4309-9a21-7d84d8be0afb-original.webp",
                             "cards.text_align": "center",
                             "cards.vertical_align": "between",
                             "cards.text_color": "#ffffff",
