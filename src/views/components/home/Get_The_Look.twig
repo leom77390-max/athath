@@ -120,8 +120,10 @@
 
                         <div class="gtl-panel-gradient"></div>
 
-                        {% set pos_y = look.content_pos_y | default('center') %}
-                        {% set pos_x = look.content_pos_x | default('center') %}
+                        {% set pos_y = look.content_pos_y is iterable ? look.content_pos_y|first : look.content_pos_y %}
+                        {% set pos_y = pos_y ?: 'center' %}
+                        {% set pos_x = look.content_pos_x is iterable ? look.content_pos_x|first : look.content_pos_x %}
+                        {% set pos_x = pos_x ?: 'center' %}
                         <div class="gtl-panel-content" style="justify-content: {{ pos_y }}; align-items: {{ pos_x }};">
                             {% if look.overlay_title %}
                                 <h3 class="gtl-panel-title">{{ look.overlay_title }}</h3>
