@@ -8082,7 +8082,14 @@
             },
             "icon": "sicon-store",
             "path": "home.Get_The_Look",
+            "image":"https://cdn.files.salla.network/other/1010819922/f65aa78a-bd9a-4622-b629-b7a3b7188a2b-original.webp",
             "fields": [
+                     {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/f65aa78a-bd9a-4622-b629-b7a3b7188a2b-original.webp'></div>"
+                },
 
                 {
                     "type": "static",
