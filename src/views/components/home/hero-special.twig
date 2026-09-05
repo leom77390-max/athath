@@ -68,6 +68,15 @@
 	}
 	{% endif %}
 
+	/* ── Video background ── */
+	.hs-wrap-{{ component.id }} .hs-slide-bg-video {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
 	/* ── Overlay ── */
 	.hs-wrap-{{ component.id }} .hs-overlay {
 		position: absolute;
@@ -283,6 +292,14 @@
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
+				{% set media_type_v = slide.media_type.value|default(slide.media_type|default('image')) %}
+				{% set media_type = media_type_v is iterable ? media_type_v|first : media_type_v %}
+
+				{% set _video_url = slide.video_url|default('')|trim %}
+				{% set _video_url = _video_url is iterable ? _video_url|first : _video_url %}
+
+				{% set video_muted = slide.video_muted is not defined ? true : slide.video_muted %}
+
 
 				<div class="swiper-slide">
 
@@ -291,17 +308,29 @@
 						data-swiper-parallax="-18%"
 						data-swiper-parallax-duration="{{ transition_speed }}"
 					>
-						<picture class="block w-full h-full">
-							{% if _mob_img %}
-								<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
-							{% endif %}
-							<img
-								class="hs-slide-bg-img"
-								src="{{ _desk_img }}"
-								alt="{{ slide.alt_text|default('') }}"
-								loading="{{ loop.first ? 'eager' : 'lazy' }}"
+						{% if media_type == 'video' and _video_url %}
+							<video
+								class="hs-slide-bg-video"
+								src="{{ _video_url }}"
+								autoplay
+								loop
+								playsinline
+								{% if video_muted %}muted{% endif %}
 							>
-						</picture>
+							</video>
+						{% else %}
+							<picture class="block w-full h-full">
+								{% if _mob_img %}
+									<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
+								{% endif %}
+								<img
+									class="hs-slide-bg-img"
+									src="{{ _desk_img }}"
+									alt="{{ slide.alt_text|default('') }}"
+									loading="{{ loop.first ? 'eager' : 'lazy' }}"
+								>
+							</picture>
+						{% endif %}
 					</div>
 
 					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
