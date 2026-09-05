@@ -204,17 +204,17 @@
 		transform: translateX(-50%) !important;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
-		width: 8px;
-		height: 8px;
-		background: {{ pag_color }};
-		opacity: 0.5;
-		border-radius: 99px;
+		width: 8px !important;
+		height: 8px !important;
+		background: {{ pag_color }} !important;
+		opacity: 0.5 !important;
+		border-radius: 99px !important;
 		transition: opacity .3s, width .3s;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet-active) {
-		opacity: 1;
-		width: 24px;
-		background: {{ pag_color }};
+		opacity: 1 !important;
+		width: 24px !important;
+		background: {{ pag_color }} !important;
 	}
 
 </style>

@@ -8193,7 +8193,7 @@
             "key": "d7542ac2-98bf-4fe6-aac9-1efe3035eae9",
             "title": {
                 "en": "special-hero",
-                "ar": "هيرو مميز"
+                "ar": " هيرو مميز - اثاثي"
             },
             "icon": "sicon-packed-box",
             "path": "home.hero-special",
@@ -8321,21 +8321,6 @@
       "label": "إظهار نقاط التنقل",
       "format": "switch",
       "value": true
-    },
-    {
-      "type": "string",
-      "id": "hs_pagination_color",
-      "format": "color",
-      "inputType": "color",
-      "label": "لون نقاط التنقل",
-      "value": "#ffffff",
-      "conditions": [
-        {
-          "id": "hs_show_pagination",
-          "operation": "=",
-          "value": true
-        }
-      ]
     },
     {
       "type": "static",
