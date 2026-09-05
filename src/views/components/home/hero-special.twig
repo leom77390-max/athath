@@ -147,29 +147,21 @@
 		text-transform: uppercase;
 		font-weight: 600;
 		text-decoration: none;
-		transition: opacity .25s ease;
-	}
-	.hs-wrap-{{ component.id }} .hs-btn--underline {
 		position: relative;
 		padding-bottom: 4px;
 	}
-	.hs-wrap-{{ component.id }} .hs-btn--underline::after {
+	.hs-wrap-{{ component.id }} .hs-btn::after {
 		content: '';
 		position: absolute;
 		bottom: 0;
-		left: 0;
-		width: 100%;
+		{% if store.dir == 'rtl' %}right: 0;{% else %}left: 0;{% endif %}
+		width: 0;
 		height: 1.5px;
 		background: currentColor;
+		transition: width .3s ease-out;
 	}
-	.hs-wrap-{{ component.id }} .hs-btn--underline:hover { opacity: .65; }
-	.hs-wrap-{{ component.id }} .hs-btn--solid { padding: 12px 28px; }
-	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-light { background: #fff; color: #000; }
-	.hs-wrap-{{ component.id }} .hs-btn--solid.hs-scheme-dark  { background: #000; color: #fff; }
-	.hs-wrap-{{ component.id }} .hs-btn--outline {
-		padding: 12px 28px;
-		border: 1px solid currentColor;
-		background: transparent;
+	.hs-wrap-{{ component.id }} .hs-btn:hover::after {
+		width: 100%;
 	}
 
 	/* ── Pagination ── */
@@ -265,7 +257,6 @@
 				{% set heading_color = slide.heading_color|default('#ffffff') %}
 				{% set description_color = slide.description_color|default('#ffffff') %}
 				{% set btn_text_color = slide.btn_text_color|default('#000000') %}
-				{% set btn_bg_color = slide.btn_bg_color|default('#ffffff') %}
 
 				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
 				{% set h_pos   = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
@@ -282,9 +273,6 @@
 
 				{% set _btn_val       = slide.btn_url is iterable ? slide.btn_url|first : slide.btn_url %}
 				{% set _slide_btn_url = _btn_val.url|default(_btn_val|default('#')) %}
-
-				{% set btn_style_v = slide.btn_style.value|default(slide.btn_style|default('underline')) %}
-				{% set btn_style   = btn_style_v is iterable ? btn_style_v|first : btn_style_v %}
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
@@ -359,8 +347,8 @@
 							{% if _btn_text %}
 								<a
 									href="{{ _slide_btn_url }}"
-									class="hs-btn hs-btn--{{ btn_style }}"
-									style="{% if btn_style == 'solid' %}background-color: {{ btn_bg_color }}; color: {{ btn_text_color }}; border-color: {{ btn_bg_color }};{% else %}color: {{ btn_text_color }}; border-color: {{ btn_text_color }};{% endif %}"
+									class="hs-btn"
+									style="color: {{ btn_text_color }};"
 								>{{ _btn_text }}</a>
 							{% endif %}
 						</div>
