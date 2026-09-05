@@ -54,23 +54,26 @@
 	.hs-wrap-{{ component.id }} .hs-slide-bg-img {
 		position: absolute;
 		inset: 0;
-		width: 120%;
-		height: 110%;
-		top: -5%;
-		left: -10%;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 		object-position: center;
 		will-change: transform;
+		transform: scale(1.12) translateX(0);
+		transition: transform {{ transition_speed }}ms ease;
 		{% if component.hs_enable_zoom_animation %}
-			transform: scale(1);
-			transition: transform {{ (autoplay_speed + transition_speed) }}ms ease-out;
+			transform: scale(1.12);
 		{% endif %}
 	}
-	{% if component.hs_enable_zoom_animation %}
-		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
-			transform: scale(1.08);
-		}
-	{% endif %}
+	/* Active slide image: zoom in to normal and push back */
+	.hs-wrap-{{ component.id }} .swiper-slide-active .hs-slide-bg-img {
+		{% if component.hs_enable_zoom_animation %}
+			transform: scale(1.04);
+		{% else %}
+			transform: scale(1.08) translateX(-2%);
+		{% endif %}
+		transition: transform {{ (autoplay_speed + transition_speed)|default(4700) }}ms ease-out;
+	}
 
 	/* ─── Overlay ─── */
 	.hs-wrap-{{ component.id }} .hs-overlay {
@@ -89,9 +92,6 @@
 		flex-direction: column;
 		padding: 24px;
 		z-index: 2;
-		{% if enable_parallax %}
-			perspective: 1000px;
-		{% endif %}
 	}
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} .hs-content {
@@ -104,24 +104,24 @@
 		max-width: 640px;
 	}
 
-	/* ─── Content Animation ─── */
+	/* ─── Content Animation (CSS-only parallax on slide change) ─── */
 	{% if anim_enable %}
-		.hs-wrap-{{ component.id }} .hs-text-box.hs-anim-active {
+		.hs-wrap-{{ component.id }} .hs-text-box {
 			opacity: 0;
-			transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+			{% if anim_dir == 'right' %}
+				transform: translateX(60px);
+			{% elseif anim_dir == 'left' %}
+				transform: translateX(-60px);
+			{% elseif anim_dir == 'top' %}
+				transform: translateY(-60px);
+			{% elseif anim_dir == 'bottom' %}
+				transform: translateY(60px);
+			{% else %}
+				transform: translateX(60px);
+			{% endif %}
+			transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 		}
-		{% if anim_dir == 'right' %}
-			.hs-wrap-{{ component.id }} .hs-text-box.hs-anim-active { transform: translateX(50px); }
-		{% elseif anim_dir == 'left' %}
-			.hs-wrap-{{ component.id }} .hs-text-box.hs-anim-active { transform: translateX(-50px); }
-		{% elseif anim_dir == 'top' %}
-			.hs-wrap-{{ component.id }} .hs-text-box.hs-anim-active { transform: translateY(-50px); }
-		{% elseif anim_dir == 'bottom' %}
-			.hs-wrap-{{ component.id }} .hs-text-box.hs-anim-active { transform: translateY(50px); }
-		{% endif %}
-
-		/* When slide is active, animate in */
-		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box.hs-anim-active {
+		.hs-wrap-{{ component.id }} .swiper-slide-active .hs-text-box {
 			opacity: 1;
 			transform: translate(0, 0);
 		}
@@ -323,7 +323,6 @@
 			"fadeEffect": { "crossFade": true },
 			"speed": {{ transition_speed }},
 			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
-			"parallax": true,
 			{% if component.hs_enable_autoplay %}
 			"autoplay": {
 				"delay": {{ autoplay_speed }},
@@ -393,7 +392,7 @@
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
 				<div class="swiper-slide">
-					<picture class="absolute inset-0 w-full h-full block" data-swiper-parallax="20%">
+					<picture class="absolute inset-0 w-full h-full block">
 						{% if _mob_img %}
 							<source media="(max-width: 767px)" srcset="{{ _mob_img }}">
 						{% endif %}
@@ -407,9 +406,9 @@
 
 					<div class="hs-overlay" style="opacity: {{ overlay_opacity / 100 }};"></div>
 
-					<div class="hs-content flex {{ justify_class }} {{ items_class }}" data-swiper-parallax="{% if store.dir == 'rtl' %}-300{% else %}300{% endif %}" data-swiper-parallax-opacity="0">
+					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
 						<div
-							class="hs-text-box {{ text_align_cls }}{% if anim_enable %} hs-anim-active{% endif %}"
+							class="hs-text-box {{ text_align_cls }}"
 							style="color: {{ text_color }};"
 						>
 							{% if _heading %}
