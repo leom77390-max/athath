@@ -8766,7 +8766,7 @@
                     "label": "قوة تأثير البارالاكس",
                     "value": "20",
                     "step": "5",
-                    "minimum": "5",
+                    "minimum": "0",
                     "maximum": "60",
                     "conditions": [
                         {
