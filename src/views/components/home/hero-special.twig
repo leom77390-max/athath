@@ -17,8 +17,7 @@
 
 {% set autoplay_speed    = component.hs_autoplay_speed|default(4000) %}
 {% set transition_speed  = component.hs_transition_speed|default(700) %}
-{% set enable_parallax   = component.hs_enable_parallax %}
-{% set parallax_strength = component.hs_parallax_strength|default(20) %}
+
 
 {% set anim_enable = component.hs_content_anim_enable|default(true) %}
 {% set anim_dir_v = component.hs_content_anim_direction.value|default(component.hs_content_anim_direction|default('right')) %}
@@ -325,9 +324,7 @@
 			"fadeEffect": { "crossFade": true },
 			"speed": {{ transition_speed }},
 			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
-			{% if enable_parallax %}
 			"parallax": true,
-			{% endif %}
 			{% if component.hs_enable_autoplay %}
 			"autoplay": {
 				"delay": {{ autoplay_speed }},
@@ -414,7 +411,7 @@
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
 						<div
 							class="hs-text-box {{ text_align_cls }}{% if anim_enable %} hs-anim-active{% endif %}"
-							{% if enable_parallax %} data-swiper-parallax="{% if store.dir == 'rtl' %}{{ parallax_strength * -10 }}{% else %}{{ parallax_strength * 10 }}{% endif %}" {% endif %}
+							data-swiper-parallax="{% if store.dir == 'rtl' %}-300{% else %}300{% endif %}"
 							style="color: {{ text_color }};"
 						>
 							{% if _heading %}
