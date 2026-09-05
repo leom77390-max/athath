@@ -2424,13 +2424,13 @@
             "icon": "sicon-hierarchy",
             "path": "home.SK_categories_products",
             "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p",
+            "image": "https://cdn.files.salla.network/other/1010819922/a4180de6-2191-4b7a-acd8-c79e9e78ccd2-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "with-bg",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/f29dc9bd-9e80-4f09-bb39-6b3b66a090ea.webp?_s_uploader_cache_bust=preview-jcdj7bx1p'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/a4180de6-2191-4b7a-acd8-c79e9e78ccd2-original.webp'></div>"
                 },
                 {
                     "id": "customize_color",
@@ -2737,14 +2737,14 @@
                 "ar": "تصنيفات - اثاثي"
             },
             "icon": "sicon-store",
-            "image": "https://a.top4top.io/p_3829nrx8m1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/3912d8c0-6b67-4616-ab40-134900a247f4-original.webp",
             "path": "home.SK_categorie_slide",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://a.top4top.io/p_3829nrx8m1.png'></div>"
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/3912d8c0-6b67-4616-ab40-134900a247f4-original.webp'></div>"
                 },
                 {
                     "id": "bg_color",
@@ -2947,13 +2947,13 @@
             "is_default": true,
             "icon": "sicon-store",
             "path": "home.SK-Products-banner",
-            "image": "https://c.top4top.io/p_3829hlmov1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/0336a777-01c8-46a6-8c16-c7fcbbf84402-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div ><img class='w-full' src='https://c.top4top.io/p_3829hlmov1.png'></div>"
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/0336a777-01c8-46a6-8c16-c7fcbbf84402-original.webp'></div>"
                 },
                 {
                     "id": "block_title",
@@ -3114,13 +3114,13 @@
             "icon": "sicon-gold-badge",
             "path": "home.SK_features",
             "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp",
+            "image": "https://cdn.files.salla.network/other/1010819922/77b786a8-327f-46b4-b46b-fe606ddb0e1f-original.webp?_s_uploader_cache_bust=preview-xfxuolm66",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/82e0d980-3dc6-4991-9457-2315f88d1906_1398x290.webp'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/77b786a8-327f-46b4-b46b-fe606ddb0e1f-original.webp?_s_uploader_cache_bust=preview-xfxuolm66'></div>"
                 },
                 {
                     "id": "use_custom_colors",
@@ -3492,13 +3492,13 @@
             "icon": "sicon-hierarchy",
             "path": "home.SK_category_banner",
             "is_default": true,
-            "image": "https://c.top4top.io/p_3829uranl1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/a92a2f59-bdd7-4bd6-8b5f-588c0da1e034-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://c.top4top.io/p_3829uranl1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/a92a2f59-bdd7-4bd6-8b5f-588c0da1e034-original.webp'></div>"
                 },
                 {
                     "id": "use_custom_colors",
@@ -4290,14 +4290,14 @@
             },
             "icon": "sicon-store",
             "path": "home.SK_Slider_Product",
-            "image": "https://b.top4top.io/p_3829a4iqb1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/921f588d-8490-4ab4-a94b-6b8472fc0909-original.webp",
             "is_default": true,
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://b.top4top.io/p_3829a4iqb1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/921f588d-8490-4ab4-a94b-6b8472fc0909-original.webp'></div>"
                 },
                 {
                     "id": "product_title",
@@ -4626,7 +4626,7 @@
                 "ar": " منتجات مميزة - اثاثي"
             },
             "icon": "sicon-store",
-            "image": "https://g.top4top.io/p_3829vzv2c1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/5f01473c-21d6-4cb3-ad09-f5f0b5520a03-original.webp",
             "path": "home.SK_featured-products",
             "is_default": true,
             "fields": [
@@ -4634,7 +4634,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "CA_pros_section_img",
-                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://g.top4top.io/p_3829vzv2c1.png'></div>"
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/5f01473c-21d6-4cb3-ad09-f5f0b5520a03-original.webp'></div>"
                 },
                 {
                     "type": "boolean",
@@ -7139,6 +7139,1331 @@
             ]
         },
         {
+            "key": "3d8f3ff5-36cf-4d17-b5f1-80374ba5654a",
+            "title": {
+                "en": "Instagram Collage",
+                "ar": "كولاج انستقرام"
+            },
+            "icon": "sicon-instagram2",
+            "path": "home.instagram_collage",
+            "image": "https://cdn.files.salla.network/other/1010819922/3519752d-8a3f-45cd-9457-6626f58e15e1-original.webp",
+            "fields": [
+                   {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/3519752d-8a3f-45cd-9457-6626f58e15e1-original.webp'></div>"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "group_general",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "subheading",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي (Subheading)",
+                    "placeholder": {
+                        "ar": "جدد منزلك",
+                        "en": "RENOVATE YOUR HOME"
+                    },
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "جدد منزلك",
+                        "en": "RENOVATE YOUR HOME"
+                    },
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي (Heading)",
+                    "placeholder": {
+                        "ar": "تابعنا على انستقرام",
+                        "en": "WE'RE ON GRAM"
+                    },
+                    "icon": "sicon-format-color-text",
+                    "value": {
+                        "ar": "تابعنا على انستقرام",
+                        "en": "WE'RE ON GRAM"
+                    },
+                    "multilanguage": true,
+                    "required": true
+                },
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر (Button Text)",
+                    "placeholder": {
+                        "ar": "@متجرك",
+                        "en": "@YOUR_STORE"
+                    },
+                    "icon": "sicon-cursor-click",
+                    "value": {
+                        "ar": "@متجرك",
+                        "en": "@YOUR_STORE"
+                    },
+                    "multilanguage": true,
+                    "required": true
+                },
+                {
+                    "id": "button_url",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط حساب الانستقرام",
+                    "placeholder": "https://instagram.com/your_store",
+                    "icon": "sicon-link",
+                    "value": "",
+                    "required": true
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية القسم",
+                    "icon": "sicon-format-fill",
+                    "value": "#f3efe9"
+                },
+                {
+                    "id": "open_new_tab",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "فتح الرابط في صفحة جديدة",
+                    "value": true
+                },
+                {
+                    "id": "text_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص والزر",
+                    "icon": "sicon-format-color-text",
+                    "value": "#18181b"
+                },
+                {
+                    "id": "section_width",
+                    "type": "items",
+                    "label": "عرض القسم",
+                    "format": "dropdown-list",
+                    "options": [
+                        {
+                            "label": "داخل حاوية (Container)",
+                            "value": "container"
+                        },
+                        {
+                            "label": "عرض كامل (Full width)",
+                            "value": "wide"
+                        }
+                    ],
+                    "value": "wide"
+                },
+                {
+                    "id": "title_alignment",
+                    "type": "items",
+                    "label": "محاذاة النص",
+                    "format": "dropdown-list",
+                    "options": [
+                        {
+                            "label": "بداية",
+                            "value": "start"
+                        },
+                        {
+                            "label": "وسط",
+                            "value": "center"
+                        },
+                        {
+                            "label": "نهاية",
+                            "value": "end"
+                        }
+                    ],
+                    "value": "center"
+                },
+                {
+                    "type": "static",
+                    "format": "title",
+                    "id": "group_images",
+                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>صور الكولاج</h3>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "enable_floating_animation",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل حركة صعود ونزول للصور بشكل لانهائي",
+                    "value": false
+                },
+                {
+                    "id": "images",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الصور",
+                    "item_label": "صورة",
+                    "icon": "sicon-image-gallery",
+                    "minLength": 4,
+                    "maxLength": 5,
+                    "value": [
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        },
+                        {
+                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
+                        }
+                    ],
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "images.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "images.alt",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص البديل (Alt text)",
+                            "icon": "sicon-text-align-right",
+                            "value": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "multilanguage": true,
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "bf52b425-b15b-4ed4-862f-14deaf7b9c7a",
+            "title": {
+                "en": "Animated Featured Section",
+                "ar": "قسم مميز متحرك"
+            },
+            "icon": "sicon-store",
+            "path": "home.Animated_Featured_Section",
+            "fields": [
+                {
+                    "id": "special_colors_condition",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الألوان المخصصة (Special Colors)",
+                    "value": false
+                },
+                {
+                    "id": "background_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة الخلفية",
+                    "required": true
+                },
+                {
+                    "id": "overlay_opacity",
+                    "type": "number",
+                    "format": "number",
+                    "label": "درجة تغميق الخلفية",
+                    "value": 35
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_layout",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>⚙️ إعدادات التخطيط</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "subheading",
+                    "type": "string",
+                    "format": "text",
+                    "multilanguage": true,
+                    "label": "العنوان الفرعي (Subheading)",
+                    "icon": "sicon-title",
+                    "value": { "en": "GET THE LOOK", "ar": "تسوق الإطلالة" }
+                },
+                {
+                    "id": "right_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون خلفية جانب القائمة",
+                    "value": "#f9f6f0"
+                },
+                {
+                    "id": "gtl_flip_layout",
+                    "type": "boolean",
+                    "format": "switch",
+                    "icon": "sicon-swap",
+                    "label": "عكس ترتيب العناصر (القائمة يمين ← الصورة يسار)",
+                    "description": "فعّل لتبديل موضع القائمة والصورة — القائمة تنتقل لليمين والصورة لليسار.",
+                    "value": false
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_source",
+                    "format": "line"
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_source_title",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>📂 مصدر البيانات</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "gtl_source_mode",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر الإطلالات",
+                    "description": "يدوي: تُدخل العناصر بنفسك — تلقائي: يجلب التصنيفات من لوحة التحكم.",
+                    "icon": "sicon-category",
+                    "selected": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        },
+                        {
+                            "label": "تلقائي من لوحة التحكم (Auto from Dashboard)",
+                            "value": "auto",
+                            "key": "gtl-src-auto-key-002"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "gtl_categories_list",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر التصنيفات من المتجر",
+                    "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["auto"]
+                        }
+                    ]
+                },
+                {
+                    "id": "looks",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "عناصر الإطلالة (Lookbook Items)",
+                    "item_label": "إطلالة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["manual"]
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "looks.list_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "عنوان القائمة (مثال: Living Room)",
+                            "value": { "en": "Living Room", "ar": "غرفة المعيشة" }
+                        },
+                        {
+                            "id": "looks.list_number",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الرقم الجانبي (مثال: 03)",
+                            "value": "01"
+                        },
+                        {
+                            "id": "looks.slider_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة الرئيسية للعرض",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "looks.overlay_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "العنوان على الصورة",
+                            "value": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" }
+                        },
+                        {
+                            "id": "looks.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "نص الزر",
+                            "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "id": "looks.button_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الزر",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "looks.list_title": { "en": "Living Room", "ar": "غرفة المعيشة" },
+                            "looks.list_number": "03",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Workspace", "ar": "مساحة العمل" },
+                            "looks.list_number": "12",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "WORKSPACE", "ar": "مساحة العمل" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Sofa Living", "ar": "كنب المعيشة" },
+                            "looks.list_number": "07",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "كنب المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Lounge", "ar": "ردهة الاستراحة" },
+                            "looks.list_number": "15",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "LOUNGE", "ar": "الردهة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        }
+                    ]
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_colors_divider",
+                    "format": "line"
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_colors_title",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>🎨 الألوان المخصصة</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "gtl_enable_colors",
+                    "type": "boolean",
+                    "format": "switch",
+                    "icon": "sicon-toggle-off",
+                    "label": "تفعيل الألوان المخصصة",
+                    "description": "فعّل لإظهار خيارات تخصيص ألوان العناوين والفواصل.",
+                    "value": false
+                },
+                {
+                    "id": "gtl_subheading_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان الفرعي",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون عناوين القائمة",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_title_active_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان عند التحديد / التمرير",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_border_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون الفواصل والخطوط",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "9d146fd5-ad94-46b9-bb2a-e753bfbda7ae",
+            "title": {
+                "en": "Staggered Features Grid",
+                "ar": "شبكة الميزات المتداخلة"
+            },
+            "icon": "sicon-store",
+            "path": "home.Staggered_Features_Grid",
+            "fields": [
+                {
+                    "id": "heading",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "العنوان الرئيسي (Main Heading)",
+                    "placeholder": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
+                    "value": {
+                        "en": "Change the look of your house,\nchange the perspective of others",
+                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
+                    },
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "special_colors_condition",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الألوان المخصصة (Special Colors)",
+                    "value": false
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون الخلفية",
+                    "value": "#ffffff",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "heading_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "value": "#111827",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "title_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون عناوين الميزات",
+                    "value": "#111827",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "desc_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون وصف الميزات",
+                    "value": "#4b5563",
+                    "conditions": [
+                        {
+                            "id": "special_colors_condition",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "features",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "الميزات (Features)",
+                    "item_label": "ميزة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "value": [
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Showroom",
+                                "ar": "صالة العرض"
+                            },
+                            "features.description": {
+                                "en": "Experience design for living at our flagship showroom.",
+                                "ar": "اكتشف تصاميم الحياة العصرية في صالة العرض الرئيسية لدينا."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Interior work",
+                                "ar": "أعمال داخلية"
+                            },
+                            "features.description": {
+                                "en": "Designing spaces with precision, curated materials, and aesthetic execution.",
+                                "ar": "تصميم المساحات بدقة مع مواد منتقاة وتنفيذ هادف وجمالي."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Authentic design",
+                                "ar": "تصميم أصيل"
+                            },
+                            "features.description": {
+                                "en": "We offer authentic, lasting pieces—chosen for their timeless aesthetic appeal.",
+                                "ar": "نقدم قطعاً أصيلة تدوم طويلاً، اخترناها بعناية لجودتها العالية وجاذبيتها الخالدة."
+                            }
+                        },
+                        {
+                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.title": {
+                                "en": "Custom additions",
+                                "ar": "إضافات مخصصة"
+                            },
+                            "features.description": {
+                                "en": "Crafting refined interiors through tailored elements and craftsmanship.",
+                                "ar": "نصنع تصميمات داخلية راقية من خلال عناصر مصممة خصيصاً وحرفية عالية."
+                            }
+                        }
+                    ],
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "features.image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الميزة",
+                            "icon": "sicon-image",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "features.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان (Title)",
+                            "icon": "sicon-format-color-text",
+                            "multilanguage": true,
+                            "value": "",
+                            "required": false
+                        },
+                        {
+                            "id": "features.description",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "الوصف (Description)",
+                            "icon": "sicon-text-align-right",
+                            "multilanguage": true,
+                            "value": "",
+                            "required": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "43eb7dc4-6b40-4b64-9ae9-1bc0565f47ef",
+            "title": {
+                "en": "Promotional Cards",
+                "ar": "بطاقات العروض"
+            },
+            "icon": "sicon-store",
+            "path": "home.Promotional_Cards",
+            "fields": [
+                {
+                    "id": "enable_marquee",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل الشريط المتحرك (Marquee)",
+                    "value": true
+                },
+                {
+                    "id": "marquee_text",
+                    "type": "string",
+                    "format": "text",
+                    "multilanguage": true,
+                    "label": "نص الشريط المتحرك",
+                    "value": {
+                        "en": "DESIGN FOR LIVING * UNIQUE FURNITURE *",
+                        "ar": "تصاميم للحياة * أثاث فريد *"
+                    },
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "marquee_color",
+                    "type": "string",
+                    "format": "color",
+                    "label": "لون الشريط المتحرك",
+                    "value": "#d1d5db",
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "marquee_speed",
+                    "type": "number",
+                    "format": "number",
+                    "label": "سرعة الشريط (بالثانية)",
+                    "value": 20,
+                    "conditions": [
+                        {
+                            "id": "enable_marquee",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "cards",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البطاقات الترويجية (Promo Cards)",
+                    "item_label": "بطاقة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 3,
+                    "required": true,
+                    "fields": [
+                        {
+                            "id": "cards.bg_type",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "نوع الخلفية",
+                            "options": [
+                                {
+                                    "label": "صورة",
+                                    "value": "image"
+                                },
+                                {
+                                    "label": "لون ثابت",
+                                    "value": "color"
+                                }
+                            ],
+                            "value": "image"
+                        },
+                        {
+                            "id": "cards.bg_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الخلفية",
+                            "value": "",
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "image"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.bg_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون الخلفية (Solid Color)",
+                            "value": "#6b3c1b",
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "color"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.overlay_opacity",
+                            "type": "number",
+                            "format": "number",
+                            "label": "درجة تعتيم الصورة 0-100 (اختياري)",
+                            "value": 15,
+                            "conditions": [
+                                {
+                                    "id": "cards.bg_type",
+                                    "operation": "=",
+                                    "value": "image"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cards.text_align",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "المحاذاة الأفقية للنص (Text Align)",
+                            "options": [
+                                {
+                                    "label": "يمين",
+                                    "value": "right"
+                                },
+                                {
+                                    "label": "وسط",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "يسار",
+                                    "value": "left"
+                                }
+                            ],
+                            "value": "center"
+                        },
+                        {
+                            "id": "cards.vertical_align",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "المحاذاة العمودية (Vertical Justify)",
+                            "options": [
+                                {
+                                    "label": "توزيع (أعلى وأسفل)",
+                                    "value": "between"
+                                },
+                                {
+                                    "label": "وسط (Center)",
+                                    "value": "center"
+                                },
+                                {
+                                    "label": "أعلى (Top)",
+                                    "value": "start"
+                                },
+                                {
+                                    "label": "أسفل (Bottom)",
+                                    "value": "end"
+                                }
+                            ],
+                            "value": "between"
+                        },
+                        {
+                            "id": "cards.text_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون النصوص (Text Color)",
+                            "value": "#ffffff"
+                        },
+                        {
+                            "id": "cards.subheading",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "العنوان الفرعي (Subheading)",
+                            "value": {
+                                "en": "SEASON SALE COLLECTIONS",
+                                "ar": "تشكيلة تخفيضات الموسم"
+                            }
+                        },
+                        {
+                            "id": "cards.heading",
+                            "type": "string",
+                            "format": "textarea",
+                            "multilanguage": true,
+                            "label": "العنوان الرئيسي (Heading)",
+                            "value": {
+                                "en": "SALE 30%\nOFF",
+                                "ar": "خصم\n30%"
+                            }
+                        },
+                        {
+                            "id": "cards.heading_color",
+                            "type": "string",
+                            "format": "color",
+                            "label": "لون العنوان الرئيسي المميز (اختياري)",
+                            "value": ""
+                        },
+                        {
+                            "id": "cards.description",
+                            "type": "string",
+                            "format": "textarea",
+                            "multilanguage": true,
+                            "label": "الوصف (Description)",
+                            "value": {
+                                "en": "",
+                                "ar": ""
+                            }
+                        },
+                        {
+                            "id": "cards.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "نص الزر (Button Text)",
+                            "value": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
+                        },
+                        {
+                            "id": "cards.button_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الزر",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "cards.bg_type": "image",
+                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "between",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": {
+                                "en": "BUY SET OF 3 AND SAVE 10%",
+                                "ar": "اشتري 3 ووفر 10%"
+                            },
+                            "cards.heading": {
+                                "en": "BUNDLE &\nSAVE",
+                                "ar": "باقة التوفير"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
+                        },
+                        {
+                            "cards.bg_type": "color",
+                            "cards.bg_color": "#652C16",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "center",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": {
+                                "en": "SEASON SALE COLLECTIONS",
+                                "ar": "تشكيلة الموسم"
+                            },
+                            "cards.heading": {
+                                "en": "SALE 30%\nOFF",
+                                "ar": "خصم 30%"
+                            },
+                            "cards.heading_color": "#E6EDA4",
+                            "cards.description": {
+                                "en": "Save extra on our sale collection\n*Runs until 14:00pm PST",
+                                "ar": "وفر أكثر مع تشكيلة التخفيضات"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP THE SALE",
+                                "ar": "تسوق العروض"
+                            }
+                        },
+                        {
+                            "cards.bg_type": "image",
+                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "cards.text_align": "center",
+                            "cards.vertical_align": "between",
+                            "cards.text_color": "#ffffff",
+                            "cards.subheading": {
+                                "en": "DESIGN FOR LIVING",
+                                "ar": "تصاميم للحياة"
+                            },
+                            "cards.heading": {
+                                "en": "RENOVATE\nYOUR HOME",
+                                "ar": "جدد منزلك"
+                            },
+                            "cards.button_text": {
+                                "en": "SHOP NOW",
+                                "ar": "تسوق الآن"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "bf47a5f0-f4aa-4e49-a79f-7d08803f11c3",
+            "title": {
+                "en": "Get The Look",
+                "ar": "تسوق الإطلالة"
+            },
+            "icon": "sicon-store",
+            "path": "home.Get_The_Look",
+            "fields": [
+
+                {
+                    "type": "static",
+                    "id": "gtl_sec_layout",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>⚙️ إعدادات التخطيط</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "subheading",
+                    "type": "string",
+                    "format": "text",
+                    "multilanguage": true,
+                    "icon": "sicon-title",
+                    "label": "العنوان الفرعي (Subheading)",
+                    "value": { "en": "GET THE LOOK", "ar": "تسوق الإطلالة" }
+                },
+                {
+                    "id": "right_bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون خلفية جانب القائمة",
+                    "value": "#f9f6f0"
+                },
+                {
+                    "id": "gtl_flip_layout",
+                    "type": "boolean",
+                    "format": "switch",
+                    "icon": "sicon-swap",
+                    "label": "عكس ترتيب العناصر (القائمة يمين ← الصورة يسار)",
+                    "description": "فعّل لتبديل موضع القائمة والصورة — القائمة تنتقل لليمين والصورة لليسار.",
+                    "value": false
+                },
+
+                {
+                    "type": "static",
+                    "id": "gtl_sec_source_line",
+                    "format": "line"
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_source_title",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>📂 مصدر البيانات</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "gtl_source_mode",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "مصدر الإطلالات",
+                    "description": "يدوي: تُدخل العناصر بنفسك — تلقائي: يجلب التصنيفات من لوحة التحكم.",
+                    "icon": "sicon-category",
+                    "selected": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "يدوي (Manual)",
+                            "value": "manual",
+                            "key": "gtl-src-manual-key-001"
+                        },
+                        {
+                            "label": "تلقائي من لوحة التحكم (Auto from Dashboard)",
+                            "value": "auto",
+                            "key": "gtl-src-auto-key-002"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "gtl_categories_list",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر التصنيفات من المتجر",
+                    "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "categories",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["auto"]
+                        }
+                    ]
+                },
+                {
+                    "id": "gtl_auto_show_title",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار عنوان التصنيف على الصورة (Auto)",
+                    "value": true,
+                    "conditions": [
+                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
+                    ]
+                },
+                {
+                    "id": "gtl_auto_show_button",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر على الصورة (Auto)",
+                    "value": true,
+                    "conditions": [
+                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
+                    ]
+                },
+                {
+                    "id": "looks",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "عناصر الإطلالة (Lookbook Items)",
+                    "item_label": "إطلالة",
+                    "icon": "sicon-list",
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["manual"]
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "id": "looks.list_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "عنوان القائمة (مثال: Living Room)",
+                            "value": { "en": "Living Room", "ar": "غرفة المعيشة" }
+                        },
+                        {
+                            "id": "looks.list_number",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الرقم الجانبي (مثال: 03)",
+                            "value": "01"
+                        },
+                        {
+                            "id": "looks.slider_image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الصورة الرئيسية للعرض",
+                            "value": "",
+                            "required": true
+                        },
+                        {
+                            "id": "looks.overlay_title",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "العنوان على الصورة",
+                            "value": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" }
+                        },
+                        {
+                            "id": "looks.button_text",
+                            "type": "string",
+                            "format": "text",
+                            "multilanguage": true,
+                            "label": "نص الزر",
+                            "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "id": "looks.button_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الزر",
+                            "value": ""
+                        },
+                        {
+                            "id": "looks.content_pos_y",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة المحتوى عمودياً (Vertical)",
+                            "options": [
+                                { "label": "أعلى (Top)", "value": "flex-start" },
+                                { "label": "وسط (Center)", "value": "center" },
+                                { "label": "أسفل (Bottom)", "value": "flex-end" }
+                            ],
+                            "value": "center"
+                        },
+                        {
+                            "id": "looks.content_pos_x",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة المحتوى أفقياً (Horizontal)",
+                            "options": [
+                                { "label": "يمين (Right)", "value": "flex-start" },
+                                { "label": "وسط (Center)", "value": "center" },
+                                { "label": "يسار (Left)", "value": "flex-end" }
+                            ],
+                            "value": "center"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "looks.list_title": { "en": "Living Room", "ar": "غرفة المعيشة" },
+                            "looks.list_number": "03",
+                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/8f02de87-847f-4108-8d27-cd7dc89a61bd-original.webp?_s_uploader_cache_bust=preview-ino0jtdj2",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Workspace", "ar": "مساحة العمل" },
+                            "looks.list_number": "12",
+                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/473bc879-59b7-419a-ab92-9351766d8492-original.webp?_s_uploader_cache_bust=preview-xta60usd6",
+                            "looks.overlay_title": { "en": "WORKSPACE", "ar": "مساحة العمل" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Sofa Living", "ar": "كنب المعيشة" },
+                            "looks.list_number": "07",
+                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "كنب المعيشة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        },
+                        {
+                            "looks.list_title": { "en": "Lounge", "ar": "ردهة الاستراحة" },
+                            "looks.list_number": "15",
+                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/f7c73058-7866-44ac-9ee9-55bcaeba48f4-original.webp?_s_uploader_cache_bust=preview-rd7ceyfj5",
+                            "looks.overlay_title": { "en": "LOUNGE", "ar": "الردهة" },
+                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
+                        }
+                    ]
+                },
+
+                {
+                    "type": "static",
+                    "id": "gtl_sec_colors_line",
+                    "format": "line"
+                },
+                {
+                    "type": "static",
+                    "id": "gtl_sec_colors_title",
+                    "format": "title",
+                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>🎨 الألوان المخصصة</div>",
+                    "variant": "h6"
+                },
+                {
+                    "id": "gtl_enable_colors",
+                    "type": "boolean",
+                    "format": "switch",
+                    "icon": "sicon-toggle-off",
+                    "label": "تفعيل الألوان المخصصة",
+                    "description": "فعّل لإظهار خيارات تخصيص ألوان العناوين والفواصل.",
+                    "value": false
+                },
+                {
+                    "id": "gtl_subheading_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان الفرعي",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون عناوين القائمة",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_title_active_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان عند التحديد / التمرير",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_border_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون الفواصل والخطوط",
+                    "value": "#111111",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_panel_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون العنوان على الصورة",
+                    "value": "#ffffff",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                },
+                {
+                    "id": "gtl_panel_btn_color",
+                    "type": "string",
+                    "format": "color",
+                    "icon": "sicon-format-fill",
+                    "label": "لون نص الزر على الصورة",
+                    "value": "#ffffff",
+                    "conditions": [
+                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
+                    ]
+                }
+
+            ]
+        },
+        {
             "key": "5d2cfb15-b108-48a9-acae-59de79403dc7",
             "title": {
                 "en": "Featured",
@@ -8611,1302 +9936,6 @@
       "description": "أضف حتى 8 شرائح. يمكن أن تكون صورة أو فيديو."
     }
   ]
-        },
-        {
-            "key": "3d8f3ff5-36cf-4d17-b5f1-80374ba5654a",
-            "title": {
-                "en": "Instagram Collage",
-                "ar": "كولاج انستقرام"
-            },
-            "icon": "sicon-instagram2",
-            "path": "home.instagram_collage",
-            "fields": [
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "group_general",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عامة</h3>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "subheading",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي (Subheading)",
-                    "placeholder": "RENOVATE YOUR HOME",
-                    "icon": "sicon-format-text-alt",
-                    "value": "RENOVATE YOUR HOME",
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي (Heading)",
-                    "placeholder": "WE'RE ON GRAM",
-                    "icon": "sicon-format-color-text",
-                    "value": "WE'RE ON GRAM",
-                    "multilanguage": true,
-                    "required": true
-                },
-                {
-                    "id": "button_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الزر (Button Text)",
-                    "placeholder": "@YOUR_STORE",
-                    "icon": "sicon-cursor-click",
-                    "value": "@YOUR_STORE",
-                    "multilanguage": true,
-                    "required": true
-                },
-                {
-                    "id": "button_url",
-                    "type": "string",
-                    "format": "url",
-                    "inputType": "url",
-                    "label": "رابط حساب الانستقرام",
-                    "placeholder": "https://instagram.com/your_store",
-                    "icon": "sicon-link",
-                    "value": "",
-                    "required": true
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون خلفية القسم",
-                    "icon": "sicon-format-fill",
-                    "value": "#f3efe9"
-                },
-                {
-                    "id": "open_new_tab",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "فتح الرابط في صفحة جديدة",
-                    "value": true
-                },
-                {
-                    "id": "text_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص والزر",
-                    "icon": "sicon-format-color-text",
-                    "value": "#18181b"
-                },
-                {
-                    "id": "section_width",
-                    "type": "items",
-                    "label": "عرض القسم",
-                    "format": "dropdown-list",
-                    "options": [
-                        {
-                            "label": "داخل حاوية (Container)",
-                            "value": "container"
-                        },
-                        {
-                            "label": "عرض كامل (Full width)",
-                            "value": "wide"
-                        }
-                    ],
-                    "value": "wide"
-                },
-                {
-                    "id": "title_alignment",
-                    "type": "items",
-                    "label": "محاذاة النص",
-                    "format": "dropdown-list",
-                    "options": [
-                        {
-                            "label": "بداية",
-                            "value": "start"
-                        },
-                        {
-                            "label": "وسط",
-                            "value": "center"
-                        },
-                        {
-                            "label": "نهاية",
-                            "value": "end"
-                        }
-                    ],
-                    "value": "center"
-                },
-                {
-                    "type": "static",
-                    "format": "title",
-                    "id": "group_images",
-                    "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>صور الكولاج</h3>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "enable_floating_animation",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل حركة صعود ونزول للصور بشكل لانهائي",
-                    "value": false
-                },
-                {
-                    "id": "images",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الصور",
-                    "item_label": "صورة",
-                    "icon": "sicon-image-gallery",
-                    "minLength": 4,
-                    "maxLength": 5,
-                    "value": [
-                        {
-                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
-                        },
-                        {
-                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
-                        },
-                        {
-                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
-                        },
-                        {
-                            "images.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png"
-                        }
-                    ],
-                    "required": true,
-                    "fields": [
-                        {
-                            "id": "images.image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة",
-                            "icon": "sicon-image",
-                            "value": "",
-                            "required": true
-                        },
-                        {
-                            "id": "images.alt",
-                            "type": "string",
-                            "format": "text",
-                            "label": "النص البديل (Alt text)",
-                            "icon": "sicon-text-align-right",
-                            "value": "",
-                            "required": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "bf52b425-b15b-4ed4-862f-14deaf7b9c7a",
-            "title": {
-                "en": "Animated Featured Section",
-                "ar": "قسم مميز متحرك"
-            },
-            "icon": "sicon-store",
-            "path": "home.Animated_Featured_Section",
-            "fields": [
-                {
-                    "id": "special_colors_condition",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل الألوان المخصصة (Special Colors)",
-                    "value": false
-                },
-                {
-                    "id": "background_image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة الخلفية",
-                    "required": true
-                },
-                {
-                    "id": "overlay_opacity",
-                    "type": "number",
-                    "format": "number",
-                    "label": "درجة تغميق الخلفية",
-                    "value": 35
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_layout",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>⚙️ إعدادات التخطيط</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "subheading",
-                    "type": "string",
-                    "format": "text",
-                    "multilanguage": true,
-                    "label": "العنوان الفرعي (Subheading)",
-                    "icon": "sicon-title",
-                    "value": { "en": "GET THE LOOK", "ar": "تسوق الإطلالة" }
-                },
-                {
-                    "id": "right_bg_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون خلفية جانب القائمة",
-                    "value": "#f9f6f0"
-                },
-                {
-                    "id": "gtl_flip_layout",
-                    "type": "boolean",
-                    "format": "switch",
-                    "icon": "sicon-swap",
-                    "label": "عكس ترتيب العناصر (القائمة يمين ← الصورة يسار)",
-                    "description": "فعّل لتبديل موضع القائمة والصورة — القائمة تنتقل لليمين والصورة لليسار.",
-                    "value": false
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_source",
-                    "format": "line"
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_source_title",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>📂 مصدر البيانات</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "gtl_source_mode",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "مصدر الإطلالات",
-                    "description": "يدوي: تُدخل العناصر بنفسك — تلقائي: يجلب التصنيفات من لوحة التحكم.",
-                    "icon": "sicon-category",
-                    "selected": [
-                        {
-                            "label": "يدوي (Manual)",
-                            "value": "manual",
-                            "key": "gtl-src-manual-key-001"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "يدوي (Manual)",
-                            "value": "manual",
-                            "key": "gtl-src-manual-key-001"
-                        },
-                        {
-                            "label": "تلقائي من لوحة التحكم (Auto from Dashboard)",
-                            "value": "auto",
-                            "key": "gtl-src-auto-key-002"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
-                },
-                {
-                    "id": "gtl_categories_list",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "اختر التصنيفات من المتجر",
-                    "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "source": "categories",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "gtl_source_mode",
-                            "operation": "=",
-                            "value": ["auto"]
-                        }
-                    ]
-                },
-                {
-                    "id": "looks",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "عناصر الإطلالة (Lookbook Items)",
-                    "item_label": "إطلالة",
-                    "icon": "sicon-list",
-                    "minLength": 1,
-                    "maxLength": 6,
-                    "required": true,
-                    "conditions": [
-                        {
-                            "id": "gtl_source_mode",
-                            "operation": "=",
-                            "value": ["manual"]
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "id": "looks.list_title",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "عنوان القائمة (مثال: Living Room)",
-                            "value": { "en": "Living Room", "ar": "غرفة المعيشة" }
-                        },
-                        {
-                            "id": "looks.list_number",
-                            "type": "string",
-                            "format": "text",
-                            "label": "الرقم الجانبي (مثال: 03)",
-                            "value": "01"
-                        },
-                        {
-                            "id": "looks.slider_image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة الرئيسية للعرض",
-                            "value": "",
-                            "required": true
-                        },
-                        {
-                            "id": "looks.overlay_title",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "العنوان على الصورة",
-                            "value": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" }
-                        },
-                        {
-                            "id": "looks.button_text",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "نص الزر",
-                            "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "id": "looks.button_url",
-                            "type": "string",
-                            "format": "url",
-                            "label": "رابط الزر",
-                            "value": ""
-                        }
-                    ],
-                    "value": [
-                        {
-                            "looks.list_title": { "en": "Living Room", "ar": "غرفة المعيشة" },
-                            "looks.list_number": "03",
-                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Workspace", "ar": "مساحة العمل" },
-                            "looks.list_number": "12",
-                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "looks.overlay_title": { "en": "WORKSPACE", "ar": "مساحة العمل" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Sofa Living", "ar": "كنب المعيشة" },
-                            "looks.list_number": "07",
-                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "كنب المعيشة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Lounge", "ar": "ردهة الاستراحة" },
-                            "looks.list_number": "15",
-                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "looks.overlay_title": { "en": "LOUNGE", "ar": "الردهة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        }
-                    ]
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_colors_divider",
-                    "format": "line"
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_colors_title",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>🎨 الألوان المخصصة</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "gtl_enable_colors",
-                    "type": "boolean",
-                    "format": "switch",
-                    "icon": "sicon-toggle-off",
-                    "label": "تفعيل الألوان المخصصة",
-                    "description": "فعّل لإظهار خيارات تخصيص ألوان العناوين والفواصل.",
-                    "value": false
-                },
-                {
-                    "id": "gtl_subheading_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون العنوان الفرعي",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون عناوين القائمة",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_title_active_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون العنوان عند التحديد / التمرير",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_border_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون الفواصل والخطوط",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "9d146fd5-ad94-46b9-bb2a-e753bfbda7ae",
-            "title": {
-                "en": "Staggered Features Grid",
-                "ar": "شبكة الميزات المتداخلة"
-            },
-            "icon": "sicon-store",
-            "path": "home.Staggered_Features_Grid",
-            "fields": [
-                {
-                    "id": "heading",
-                    "type": "string",
-                    "format": "textarea",
-                    "label": "العنوان الرئيسي (Main Heading)",
-                    "placeholder": {
-                        "en": "Change the look of your house,\nchange the perspective of others",
-                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
-                    },
-                    "value": {
-                        "en": "Change the look of your house,\nchange the perspective of others",
-                        "ar": "غيّر مظهر منزلك،\nوغيّر نظرة الآخرين"
-                    },
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "special_colors_condition",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل الألوان المخصصة (Special Colors)",
-                    "value": false
-                },
-                {
-                    "id": "bg_color",
-                    "type": "string",
-                    "format": "color",
-                    "label": "لون الخلفية",
-                    "value": "#ffffff",
-                    "conditions": [
-                        {
-                            "id": "special_colors_condition",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "heading_color",
-                    "type": "string",
-                    "format": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "value": "#111827",
-                    "conditions": [
-                        {
-                            "id": "special_colors_condition",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "title_color",
-                    "type": "string",
-                    "format": "color",
-                    "label": "لون عناوين الميزات",
-                    "value": "#111827",
-                    "conditions": [
-                        {
-                            "id": "special_colors_condition",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "desc_color",
-                    "type": "string",
-                    "format": "color",
-                    "label": "لون وصف الميزات",
-                    "value": "#4b5563",
-                    "conditions": [
-                        {
-                            "id": "special_colors_condition",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "features",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "الميزات (Features)",
-                    "item_label": "ميزة",
-                    "icon": "sicon-list",
-                    "minLength": 1,
-                    "maxLength": 4,
-                    "value": [
-                        {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": {
-                                "en": "Showroom",
-                                "ar": "صالة العرض"
-                            },
-                            "features.description": {
-                                "en": "Experience design for living at our flagship showroom.",
-                                "ar": "اكتشف تصاميم الحياة العصرية في صالة العرض الرئيسية لدينا."
-                            }
-                        },
-                        {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": {
-                                "en": "Interior work",
-                                "ar": "أعمال داخلية"
-                            },
-                            "features.description": {
-                                "en": "Designing spaces with precision, curated materials, and aesthetic execution.",
-                                "ar": "تصميم المساحات بدقة مع مواد منتقاة وتنفيذ هادف وجمالي."
-                            }
-                        },
-                        {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": {
-                                "en": "Authentic design",
-                                "ar": "تصميم أصيل"
-                            },
-                            "features.description": {
-                                "en": "We offer authentic, lasting pieces—chosen for their timeless aesthetic appeal.",
-                                "ar": "نقدم قطعاً أصيلة تدوم طويلاً، اخترناها بعناية لجودتها العالية وجاذبيتها الخالدة."
-                            }
-                        },
-                        {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "features.title": {
-                                "en": "Custom additions",
-                                "ar": "إضافات مخصصة"
-                            },
-                            "features.description": {
-                                "en": "Crafting refined interiors through tailored elements and craftsmanship.",
-                                "ar": "نصنع تصميمات داخلية راقية من خلال عناصر مصممة خصيصاً وحرفية عالية."
-                            }
-                        }
-                    ],
-                    "required": true,
-                    "fields": [
-                        {
-                            "id": "features.image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة الميزة",
-                            "icon": "sicon-image",
-                            "value": "",
-                            "required": true
-                        },
-                        {
-                            "id": "features.title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان (Title)",
-                            "icon": "sicon-format-color-text",
-                            "multilanguage": true,
-                            "value": "",
-                            "required": false
-                        },
-                        {
-                            "id": "features.description",
-                            "type": "string",
-                            "format": "textarea",
-                            "label": "الوصف (Description)",
-                            "icon": "sicon-text-align-right",
-                            "multilanguage": true,
-                            "value": "",
-                            "required": false
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "43eb7dc4-6b40-4b64-9ae9-1bc0565f47ef",
-            "title": {
-                "en": "Promotional Cards",
-                "ar": "بطاقات العروض"
-            },
-            "icon": "sicon-store",
-            "path": "home.Promotional_Cards",
-            "fields": [
-                {
-                    "id": "enable_marquee",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل الشريط المتحرك (Marquee)",
-                    "value": true
-                },
-                {
-                    "id": "marquee_text",
-                    "type": "string",
-                    "format": "text",
-                    "multilanguage": true,
-                    "label": "نص الشريط المتحرك",
-                    "value": {
-                        "en": "DESIGN FOR LIVING * UNIQUE FURNITURE *",
-                        "ar": "تصاميم للحياة * أثاث فريد *"
-                    },
-                    "conditions": [
-                        {
-                            "id": "enable_marquee",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "marquee_color",
-                    "type": "string",
-                    "format": "color",
-                    "label": "لون الشريط المتحرك",
-                    "value": "#d1d5db",
-                    "conditions": [
-                        {
-                            "id": "enable_marquee",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "marquee_speed",
-                    "type": "number",
-                    "format": "number",
-                    "label": "سرعة الشريط (بالثانية)",
-                    "value": 20,
-                    "conditions": [
-                        {
-                            "id": "enable_marquee",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
-                {
-                    "id": "cards",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "البطاقات الترويجية (Promo Cards)",
-                    "item_label": "بطاقة",
-                    "icon": "sicon-list",
-                    "minLength": 1,
-                    "maxLength": 3,
-                    "required": true,
-                    "fields": [
-                        {
-                            "id": "cards.bg_type",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "نوع الخلفية",
-                            "options": [
-                                {
-                                    "label": "صورة",
-                                    "value": "image"
-                                },
-                                {
-                                    "label": "لون ثابت",
-                                    "value": "color"
-                                }
-                            ],
-                            "value": "image"
-                        },
-                        {
-                            "id": "cards.bg_image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "صورة الخلفية",
-                            "value": "",
-                            "conditions": [
-                                {
-                                    "id": "cards.bg_type",
-                                    "operation": "=",
-                                    "value": "image"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "cards.bg_color",
-                            "type": "string",
-                            "format": "color",
-                            "label": "لون الخلفية (Solid Color)",
-                            "value": "#6b3c1b",
-                            "conditions": [
-                                {
-                                    "id": "cards.bg_type",
-                                    "operation": "=",
-                                    "value": "color"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "cards.overlay_opacity",
-                            "type": "number",
-                            "format": "number",
-                            "label": "درجة تعتيم الصورة 0-100 (اختياري)",
-                            "value": 15,
-                            "conditions": [
-                                {
-                                    "id": "cards.bg_type",
-                                    "operation": "=",
-                                    "value": "image"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "cards.text_align",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "المحاذاة الأفقية للنص (Text Align)",
-                            "options": [
-                                {
-                                    "label": "يمين",
-                                    "value": "right"
-                                },
-                                {
-                                    "label": "وسط",
-                                    "value": "center"
-                                },
-                                {
-                                    "label": "يسار",
-                                    "value": "left"
-                                }
-                            ],
-                            "value": "center"
-                        },
-                        {
-                            "id": "cards.vertical_align",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "المحاذاة العمودية (Vertical Justify)",
-                            "options": [
-                                {
-                                    "label": "توزيع (أعلى وأسفل)",
-                                    "value": "between"
-                                },
-                                {
-                                    "label": "وسط (Center)",
-                                    "value": "center"
-                                },
-                                {
-                                    "label": "أعلى (Top)",
-                                    "value": "start"
-                                },
-                                {
-                                    "label": "أسفل (Bottom)",
-                                    "value": "end"
-                                }
-                            ],
-                            "value": "between"
-                        },
-                        {
-                            "id": "cards.text_color",
-                            "type": "string",
-                            "format": "color",
-                            "label": "لون النصوص (Text Color)",
-                            "value": "#ffffff"
-                        },
-                        {
-                            "id": "cards.subheading",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "العنوان الفرعي (Subheading)",
-                            "value": {
-                                "en": "SEASON SALE COLLECTIONS",
-                                "ar": "تشكيلة تخفيضات الموسم"
-                            }
-                        },
-                        {
-                            "id": "cards.heading",
-                            "type": "string",
-                            "format": "textarea",
-                            "multilanguage": true,
-                            "label": "العنوان الرئيسي (Heading)",
-                            "value": {
-                                "en": "SALE 30%\nOFF",
-                                "ar": "خصم\n30%"
-                            }
-                        },
-                        {
-                            "id": "cards.heading_color",
-                            "type": "string",
-                            "format": "color",
-                            "label": "لون العنوان الرئيسي المميز (اختياري)",
-                            "value": ""
-                        },
-                        {
-                            "id": "cards.description",
-                            "type": "string",
-                            "format": "textarea",
-                            "multilanguage": true,
-                            "label": "الوصف (Description)",
-                            "value": {
-                                "en": "",
-                                "ar": ""
-                            }
-                        },
-                        {
-                            "id": "cards.button_text",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "نص الزر (Button Text)",
-                            "value": {
-                                "en": "SHOP NOW",
-                                "ar": "تسوق الآن"
-                            }
-                        },
-                        {
-                            "id": "cards.button_url",
-                            "type": "string",
-                            "format": "url",
-                            "label": "رابط الزر",
-                            "value": ""
-                        }
-                    ],
-                    "value": [
-                        {
-                            "cards.bg_type": "image",
-                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "cards.text_align": "center",
-                            "cards.vertical_align": "between",
-                            "cards.text_color": "#ffffff",
-                            "cards.subheading": {
-                                "en": "BUY SET OF 3 AND SAVE 10%",
-                                "ar": "اشتري 3 ووفر 10%"
-                            },
-                            "cards.heading": {
-                                "en": "BUNDLE &\nSAVE",
-                                "ar": "باقة التوفير"
-                            },
-                            "cards.button_text": {
-                                "en": "SHOP NOW",
-                                "ar": "تسوق الآن"
-                            }
-                        },
-                        {
-                            "cards.bg_type": "color",
-                            "cards.bg_color": "#652C16",
-                            "cards.text_align": "center",
-                            "cards.vertical_align": "center",
-                            "cards.text_color": "#ffffff",
-                            "cards.subheading": {
-                                "en": "SEASON SALE COLLECTIONS",
-                                "ar": "تشكيلة الموسم"
-                            },
-                            "cards.heading": {
-                                "en": "SALE 30%\nOFF",
-                                "ar": "خصم 30%"
-                            },
-                            "cards.heading_color": "#E6EDA4",
-                            "cards.description": {
-                                "en": "Save extra on our sale collection\n*Runs until 14:00pm PST",
-                                "ar": "وفر أكثر مع تشكيلة التخفيضات"
-                            },
-                            "cards.button_text": {
-                                "en": "SHOP THE SALE",
-                                "ar": "تسوق العروض"
-                            }
-                        },
-                        {
-                            "cards.bg_type": "image",
-                            "cards.bg_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "cards.text_align": "center",
-                            "cards.vertical_align": "between",
-                            "cards.text_color": "#ffffff",
-                            "cards.subheading": {
-                                "en": "DESIGN FOR LIVING",
-                                "ar": "تصاميم للحياة"
-                            },
-                            "cards.heading": {
-                                "en": "RENOVATE\nYOUR HOME",
-                                "ar": "جدد منزلك"
-                            },
-                            "cards.button_text": {
-                                "en": "SHOP NOW",
-                                "ar": "تسوق الآن"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "bf47a5f0-f4aa-4e49-a79f-7d08803f11c3",
-            "title": {
-                "en": "Get The Look",
-                "ar": "تسوق الإطلالة"
-            },
-            "icon": "sicon-store",
-            "path": "home.Get_The_Look",
-            "fields": [
-
-                {
-                    "type": "static",
-                    "id": "gtl_sec_layout",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>⚙️ إعدادات التخطيط</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "subheading",
-                    "type": "string",
-                    "format": "text",
-                    "multilanguage": true,
-                    "icon": "sicon-title",
-                    "label": "العنوان الفرعي (Subheading)",
-                    "value": { "en": "GET THE LOOK", "ar": "تسوق الإطلالة" }
-                },
-                {
-                    "id": "right_bg_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون خلفية جانب القائمة",
-                    "value": "#f9f6f0"
-                },
-                {
-                    "id": "gtl_flip_layout",
-                    "type": "boolean",
-                    "format": "switch",
-                    "icon": "sicon-swap",
-                    "label": "عكس ترتيب العناصر (القائمة يمين ← الصورة يسار)",
-                    "description": "فعّل لتبديل موضع القائمة والصورة — القائمة تنتقل لليمين والصورة لليسار.",
-                    "value": false
-                },
-
-                {
-                    "type": "static",
-                    "id": "gtl_sec_source_line",
-                    "format": "line"
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_source_title",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>📂 مصدر البيانات</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "gtl_source_mode",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "مصدر الإطلالات",
-                    "description": "يدوي: تُدخل العناصر بنفسك — تلقائي: يجلب التصنيفات من لوحة التحكم.",
-                    "icon": "sicon-category",
-                    "selected": [
-                        {
-                            "label": "يدوي (Manual)",
-                            "value": "manual",
-                            "key": "gtl-src-manual-key-001"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "يدوي (Manual)",
-                            "value": "manual",
-                            "key": "gtl-src-manual-key-001"
-                        },
-                        {
-                            "label": "تلقائي من لوحة التحكم (Auto from Dashboard)",
-                            "value": "auto",
-                            "key": "gtl-src-auto-key-002"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
-                },
-                {
-                    "id": "gtl_categories_list",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "اختر التصنيفات من المتجر",
-                    "description": "اختر التصنيفات التي تظهر في قسم Get The Look.",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "source": "categories",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "gtl_source_mode",
-                            "operation": "=",
-                            "value": ["auto"]
-                        }
-                    ]
-                },
-                {
-                    "id": "gtl_auto_show_title",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار عنوان التصنيف على الصورة (Auto)",
-                    "value": true,
-                    "conditions": [
-                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
-                    ]
-                },
-                {
-                    "id": "gtl_auto_show_button",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار الزر على الصورة (Auto)",
-                    "value": true,
-                    "conditions": [
-                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
-                    ]
-                },
-                {
-                    "id": "looks",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "عناصر الإطلالة (Lookbook Items)",
-                    "item_label": "إطلالة",
-                    "icon": "sicon-list",
-                    "minLength": 1,
-                    "maxLength": 6,
-                    "required": true,
-                    "conditions": [
-                        {
-                            "id": "gtl_source_mode",
-                            "operation": "=",
-                            "value": ["manual"]
-                        }
-                    ],
-                    "fields": [
-                        {
-                            "id": "looks.list_title",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "عنوان القائمة (مثال: Living Room)",
-                            "value": { "en": "Living Room", "ar": "غرفة المعيشة" }
-                        },
-                        {
-                            "id": "looks.list_number",
-                            "type": "string",
-                            "format": "text",
-                            "label": "الرقم الجانبي (مثال: 03)",
-                            "value": "01"
-                        },
-                        {
-                            "id": "looks.slider_image",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الصورة الرئيسية للعرض",
-                            "value": "",
-                            "required": true
-                        },
-                        {
-                            "id": "looks.overlay_title",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "العنوان على الصورة",
-                            "value": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" }
-                        },
-                        {
-                            "id": "looks.button_text",
-                            "type": "string",
-                            "format": "text",
-                            "multilanguage": true,
-                            "label": "نص الزر",
-                            "value": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "id": "looks.button_url",
-                            "type": "string",
-                            "format": "url",
-                            "label": "رابط الزر",
-                            "value": ""
-                        },
-                        {
-                            "id": "looks.content_pos_y",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة المحتوى عمودياً (Vertical)",
-                            "options": [
-                                { "label": "أعلى (Top)", "value": "flex-start" },
-                                { "label": "وسط (Center)", "value": "center" },
-                                { "label": "أسفل (Bottom)", "value": "flex-end" }
-                            ],
-                            "value": "center"
-                        },
-                        {
-                            "id": "looks.content_pos_x",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "محاذاة المحتوى أفقياً (Horizontal)",
-                            "options": [
-                                { "label": "يمين (Right)", "value": "flex-start" },
-                                { "label": "وسط (Center)", "value": "center" },
-                                { "label": "يسار (Left)", "value": "flex-end" }
-                            ],
-                            "value": "center"
-                        }
-                    ],
-                    "value": [
-                        {
-                            "looks.list_title": { "en": "Living Room", "ar": "غرفة المعيشة" },
-                            "looks.list_number": "03",
-                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/8f02de87-847f-4108-8d27-cd7dc89a61bd-original.webp?_s_uploader_cache_bust=preview-ino0jtdj2",
-                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "أريكة المعيشة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Workspace", "ar": "مساحة العمل" },
-                            "looks.list_number": "12",
-                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/473bc879-59b7-419a-ab92-9351766d8492-original.webp?_s_uploader_cache_bust=preview-xta60usd6",
-                            "looks.overlay_title": { "en": "WORKSPACE", "ar": "مساحة العمل" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Sofa Living", "ar": "كنب المعيشة" },
-                            "looks.list_number": "07",
-                            "looks.slider_image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
-                            "looks.overlay_title": { "en": "SOFA LIVING", "ar": "كنب المعيشة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        },
-                        {
-                            "looks.list_title": { "en": "Lounge", "ar": "ردهة الاستراحة" },
-                            "looks.list_number": "15",
-                            "looks.slider_image": "https://cdn.files.salla.network/homepage/1010819922/f7c73058-7866-44ac-9ee9-55bcaeba48f4-original.webp?_s_uploader_cache_bust=preview-rd7ceyfj5",
-                            "looks.overlay_title": { "en": "LOUNGE", "ar": "الردهة" },
-                            "looks.button_text": { "en": "SHOP COLLECTION", "ar": "تسوق التشكيلة" }
-                        }
-                    ]
-                },
-
-                {
-                    "type": "static",
-                    "id": "gtl_sec_colors_line",
-                    "format": "line"
-                },
-                {
-                    "type": "static",
-                    "id": "gtl_sec_colors_title",
-                    "format": "title",
-                    "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>🎨 الألوان المخصصة</div>",
-                    "variant": "h6"
-                },
-                {
-                    "id": "gtl_enable_colors",
-                    "type": "boolean",
-                    "format": "switch",
-                    "icon": "sicon-toggle-off",
-                    "label": "تفعيل الألوان المخصصة",
-                    "description": "فعّل لإظهار خيارات تخصيص ألوان العناوين والفواصل.",
-                    "value": false
-                },
-                {
-                    "id": "gtl_subheading_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون العنوان الفرعي",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون عناوين القائمة",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_title_active_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون العنوان عند التحديد / التمرير",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_border_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون الفواصل والخطوط",
-                    "value": "#111111",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_panel_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون العنوان على الصورة",
-                    "value": "#ffffff",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                },
-                {
-                    "id": "gtl_panel_btn_color",
-                    "type": "string",
-                    "format": "color",
-                    "icon": "sicon-format-fill",
-                    "label": "لون نص الزر على الصورة",
-                    "value": "#ffffff",
-                    "conditions": [
-                        { "id": "gtl_enable_colors", "operation": "=", "value": true }
-                    ]
-                }
-
-            ]
         }
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
