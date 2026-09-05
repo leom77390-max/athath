@@ -187,37 +187,35 @@
 
 	/* ── Pagination ── */
 	{% set pag_color = component.hs_pagination_color|default('#ffffff') %}
-	
-	.hs-wrap-{{ component.id }} {
-		--swiper-pagination-color: {{ pag_color }};
-		--swiper-pagination-bullet-inactive-color: {{ pag_color }};
-		--swiper-pagination-bullet-inactive-opacity: 0.5;
-	}
 
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap { 
+	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { display: none !important; }
+
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap {
 		position: absolute;
 		bottom: 20px;
-		left: 50% !important;
-		transform: translateX(-50%) !important;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 10;
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		gap: 6px;
-		width: auto !important;
-		z-index: 10;
 		pointer-events: none;
 	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet {
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .hs-dot {
 		pointer-events: all;
 		width: 8px;
 		height: 8px;
 		background: {{ pag_color }};
 		opacity: 0.5;
 		border-radius: 99px;
-		transition: opacity .3s, width .3s;
 		cursor: pointer;
+		transition: opacity .3s, width .3s;
 		display: inline-block;
+		border: none;
+		padding: 0;
 	}
-	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet-active {
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .hs-dot.active {
 		opacity: 1;
 		width: 24px;
 	}
@@ -235,7 +233,7 @@
 		type="carousel"
 		auto-play="{{ component.hs_enable_autoplay ? 'true' : 'false' }}"
 		show-controls="false"
-		pagination="{{ component.hs_show_pagination ? 'true' : 'false' }}"
+		pagination="false"
 		slides-per-view="1"
 		speed="{{ transition_speed }}"
 		class="w-full h-full"
@@ -250,12 +248,6 @@
 				"delay": {{ autoplay_speed }},
 				"disableOnInteraction": false,
 				"pauseOnMouseEnter": true
-			},
-			{% endif %}
-			{% if component.hs_show_pagination %}
-			"pagination": {
-				"el": ".hs-pagination-wrap-{{ component.id }}",
-				"clickable": true
 			},
 			{% endif %}
 			"on": {}
@@ -396,6 +388,50 @@
 	</salla-slider>
 
 	{% if component.hs_show_pagination %}
-		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}"></div>
+		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}">
+			{% for slide in slides %}
+				<button class="hs-dot {{ loop.first ? 'active' : '' }}" data-index="{{ loop.index0 }}"></button>
+			{% endfor %}
+		</div>
 	{% endif %}
+
+<script>
+(function() {
+	const wrapper = document.querySelector('.hs-wrap-{{ component.id }}');
+	if (!wrapper) return;
+	const slider = wrapper.querySelector('#hs-slider-{{ component.id }}');
+	const dots = wrapper.querySelectorAll('.hs-pagination-wrap .hs-dot');
+	if (!slider || !dots.length) return;
+
+	function waitForSwiper() {
+		const sw = slider.swiper || (slider.shadowRoot && slider.shadowRoot.querySelector('.swiper') && slider.shadowRoot.querySelector('.swiper').swiper);
+		if (sw) {
+			initDots(sw);
+		} else {
+			setTimeout(waitForSwiper, 200);
+		}
+	}
+
+	function initDots(sw) {
+		sw.on('slideChange', function() {
+			const idx = sw.realIndex;
+			dots.forEach(function(d, i) {
+				d.classList.toggle('active', i === idx);
+			});
+		});
+		dots.forEach(function(dot) {
+			dot.addEventListener('click', function() {
+				sw.slideToLoop(parseInt(dot.dataset.index));
+			});
+		});
+	}
+
+	if (document.readyState === 'complete') {
+		setTimeout(waitForSwiper, 300);
+	} else {
+		window.addEventListener('load', function() { setTimeout(waitForSwiper, 300); });
+	}
+})();
+</script>
+
 </section>
