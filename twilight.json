@@ -7506,12 +7506,19 @@
         {
             "key": "9d146fd5-ad94-46b9-bb2a-e753bfbda7ae",
             "title": {
-                "en": "Staggered Features Grid",
-                "ar": "شبكة الميزات المتداخلة"
+                "en": "Staggered Features Grid - Firniture",
+                "ar": "شبكة الميزات المتداخلة  - اثاث"
             },
             "icon": "sicon-store",
             "path": "home.Staggered_Features_Grid",
+            "image": "https://cdn.files.salla.network/other/1010819922/76f9c303-8938-4a18-a3df-61eb12c1ae62-original.webp",
             "fields": [
+                    {
+                    "type": "static",
+                    "format": "description",
+                    "id": "CA_pros_section_img",
+                    "value": "<div ><h6 >معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/76f9c303-8938-4a18-a3df-61eb12c1ae62-original.webp'></div>"
+                },
                 {
                     "id": "heading",
                     "type": "string",
@@ -7602,7 +7609,7 @@
                     "maxLength": 4,
                     "value": [
                         {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.image": "https://cdn.files.salla.network/homepage/1010819922/c4cd1703-f6ce-4376-a491-5f889a59795a-original.webp?_s_uploader_cache_bust=preview-o8kai65oz",
                             "features.title": {
                                 "en": "Showroom",
                                 "ar": "صالة العرض"
@@ -7613,7 +7620,7 @@
                             }
                         },
                         {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.image": "https://cdn.files.salla.network/homepage/1010819922/39aaf13c-3b08-4905-9ff7-966fabe78a73-original.webp?_s_uploader_cache_bust=preview-joz8ouzlo",
                             "features.title": {
                                 "en": "Interior work",
                                 "ar": "أعمال داخلية"
@@ -7624,7 +7631,7 @@
                             }
                         },
                         {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.image": "https://cdn.files.salla.network/homepage/1010819922/ada0a7ce-c19b-4029-84e9-049efa172af4-original.webp?_s_uploader_cache_bust=preview-fapqh8upz",
                             "features.title": {
                                 "en": "Authentic design",
                                 "ar": "تصميم أصيل"
@@ -7635,7 +7642,7 @@
                             }
                         },
                         {
-                            "features.image": "https://cdn.salla.network/images/themes/raed/preview-images/placeholder.png",
+                            "features.image": "https://cdn.files.salla.network/homepage/1010819922/98783c11-aa2d-42a2-a36c-85289ef8ef1c-original.webp?_s_uploader_cache_bust=preview-p2euom7gv",
                             "features.title": {
                                 "en": "Custom additions",
                                 "ar": "إضافات مخصصة"
