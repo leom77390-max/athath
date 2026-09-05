@@ -9650,6 +9650,13 @@
                     "minLength": 1,
                     "maxLength": 6,
                     "required": true,
+                    "conditions": [
+                        {
+                            "id": "gtl_source_mode",
+                            "operation": "=",
+                            "value": ["manual"]
+                        }
+                    ],
                     "fields": [
                         {
                             "id": "looks.list_title",
