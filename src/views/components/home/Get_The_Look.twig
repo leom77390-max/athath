@@ -1,10 +1,12 @@
 {% set gl = component %}
 {% set section_id = 'gtl-' ~ component.id %}
+{% set flip_layout = gl.gtl_flip_layout | default(false) %}
 
 {#
     gtl_source_mode: dropdown-list → "manual" or "auto"
     If "auto", categories come from component.gtl_categories_list (Salla source: categories)
     Each manual look can also have extra_images for image pagination.
+    gtl_flip_layout: boolean switch → reverses column order (list right, image left)
 #}
 {% set _mode_raw   = gl.gtl_source_mode %}
 {% set source_mode = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
@@ -12,7 +14,7 @@
 
 <section class="get-the-look-section w-full" id="{{ section_id }}">
 
-    <div class="gtl-wrapper" id="{{ section_id }}-wrapper">
+    <div class="gtl-wrapper{% if flip_layout %} is-flipped{% endif %}" id="{{ section_id }}-wrapper">
 
         {# ── LEFT: Text List ─────────────────────────────── #}
         <div class="gtl-left" style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
@@ -180,6 +182,9 @@
     .get-the-look-section #{{ section_id }}-wrapper {
         flex-direction: row;
         min-height: 600px;
+    }
+    .get-the-look-section #{{ section_id }}-wrapper.is-flipped {
+        flex-direction: row-reverse;
     }
 }
 
