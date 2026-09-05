@@ -103,10 +103,6 @@
 	/* ─── Text box (parallax target) ─── */
 	.hs-wrap-{{ component.id }} .hs-text-box {
 		max-width: 640px;
-		{% if enable_parallax %}
-			will-change: transform;
-			transition: transform 0.1s linear;
-		{% endif %}
 	}
 
 	/* ─── Content Animation ─── */
@@ -329,6 +325,9 @@
 			"fadeEffect": { "crossFade": true },
 			"speed": {{ transition_speed }},
 			"loop": {{ component.hs_enable_loop ? "true" : "false" }},
+			{% if enable_parallax %}
+			"parallax": true,
+			{% endif %}
 			{% if component.hs_enable_autoplay %}
 			"autoplay": {
 				"delay": {{ autoplay_speed }},
@@ -414,7 +413,8 @@
 
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
 						<div
-							class="hs-text-box {{ text_align_cls }}{% if enable_parallax %} hs-parallax-box{% endif %}{% if anim_enable %} hs-anim-active{% endif %}"
+							class="hs-text-box {{ text_align_cls }}{% if anim_enable %} hs-anim-active{% endif %}"
+							{% if enable_parallax %} data-swiper-parallax="{% if store.dir == 'rtl' %}{{ parallax_strength * -10 }}{% else %}{{ parallax_strength * 10 }}{% endif %}" {% endif %}
 							style="color: {{ text_color }};"
 						>
 							{% if _heading %}
@@ -455,28 +455,4 @@
 
 </section>
 
-{% if enable_parallax %}
-<script>
-(function() {
-	var wrap = document.querySelector('.hs-wrap-{{ component.id }}');
-	if (!wrap) return;
-	var strength = {{ parallax_strength }};
 
-	wrap.addEventListener('mousemove', function(e) {
-		var boxes = wrap.querySelectorAll('.hs-parallax-box');
-		var rect  = wrap.getBoundingClientRect();
-		var xRel  = ((e.clientX - rect.left) / rect.width  - 0.5) * 2;
-		var yRel  = ((e.clientY - rect.top)  / rect.height - 0.5) * 2;
-		boxes.forEach(function(box) {
-			box.style.transform = 'translate(' + (xRel * strength * -1) + 'px, ' + (yRel * strength * -1) + 'px)';
-		});
-	});
-
-	wrap.addEventListener('mouseleave', function() {
-		wrap.querySelectorAll('.hs-parallax-box').forEach(function(box) {
-			box.style.transform = 'translate(0,0)';
-		});
-	});
-})();
-</script>
-{% endif %}
