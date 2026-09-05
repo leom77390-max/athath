@@ -7388,7 +7388,14 @@
             },
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
+            "image": "https://cdn.files.salla.network/other/1010819922/6ee7a39d-f457-419b-9cfb-2602c3d5b0f2-original.webp",
             "fields": [
+                  {
+                    "type": "static",
+                    "format": "description",
+                    "id": "static-desc",
+                    "value": "<div ><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/6ee7a39d-f457-419b-9cfb-2602c3d5b0f2-original.webp'></div>"
+                },
                 {
                     "id": "special_colors_condition",
                     "type": "boolean",
@@ -7401,7 +7408,8 @@
                     "type": "string",
                     "format": "image",
                     "label": "صورة الخلفية",
-                    "required": true
+                    "required": true,
+                    "value": "https://cdn.files.salla.network/homepage/1010819922/7e27aecf-effd-4bcd-9fb0-4865b353b6b8-original.webp"    
                 },
                 {
                     "id": "overlay_opacity",
@@ -7438,7 +7446,7 @@
                     "type": "number",
                     "format": "number",
                     "label": "سرعة الشريط (بالثانية)",
-                    "value": 25
+                    "value": 5
                 },
                 {
                     "id": "subheading",
