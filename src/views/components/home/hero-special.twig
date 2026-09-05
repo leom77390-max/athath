@@ -292,8 +292,7 @@
 
 				{% set overlay_opacity = slide.overlay_opacity|default(10) %}
 
-				{% set media_type_v = slide.media_type.value|default(slide.media_type|default(false)) %}
-				{% set is_video = (media_type_v == true or media_type_v == 'true' or media_type_v == 'video') %}
+				{% set is_video = component.hs_section_media_type %}
 
 				{% set _video_url = slide.video_url|default('')|trim %}
 				{% set _video_url = _video_url is iterable ? _video_url|first : _video_url %}

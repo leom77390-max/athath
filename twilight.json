@@ -8323,6 +8323,15 @@
     },
 
     {
+      "type": "boolean",
+      "id": "hs_section_media_type",
+      "label": "خلفية القسم: فيديو",
+      "format": "switch",
+      "value": false,
+      "description": "فعّل لعرض فيديو كخلفية لكل شرائح القسم. أوقفه لعرض صور."
+    },
+
+    {
       "type": "static",
       "format": "title",
       "id": "group_slides",
@@ -8396,32 +8405,18 @@
       ],
       "fields": [
         {
-          "type": "boolean",
-          "id": "hero_slideshow_slides.media_type",
-          "label": "فيديو كخلفية",
-          "format": "switch",
-          "value": false,
-          "description": "فعّل لاستخدام فيديو بدلاً من صورة كخلفية للشريحة."
-        },
-        {
           "type": "string",
           "id": "hero_slideshow_slides.desktop_image",
           "label": "صورة سطح المكتب",
           "format": "image",
-          "value": "",
-          "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "!=", "value": true }
-          ]
+          "value": ""
         },
         {
           "type": "string",
           "id": "hero_slideshow_slides.mobile_image",
           "label": "صورة الجوال",
           "format": "image",
-          "value": "",
-          "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "!=", "value": true }
-          ]
+          "value": ""
         },
         {
           "type": "string",
