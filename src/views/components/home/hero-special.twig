@@ -182,10 +182,13 @@
 	}
 
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { 
-		bottom: 20px; 
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
 		display: flex;
 		justify-content: center;
 		gap: 6px;
+		width: auto;
 	}
 	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
 		width: 8px;
@@ -259,17 +262,10 @@
 					? (_btn_text[store.locale]|default(_btn_text['ar']|default(_btn_text|first)))
 					: _btn_text %}
 
-				{% set scheme_v = slide.text_scheme.value|default(slide.text_scheme|default('light')) %}
-				{% set scheme   = scheme_v is iterable ? scheme_v|first : scheme_v %}
-				
-				{% set use_custom_color_v = slide.use_custom_color.value|default(slide.use_custom_color|default(false)) %}
-				{% set use_custom_color = use_custom_color_v is iterable ? use_custom_color_v|first : use_custom_color_v %}
-				
-				{% if use_custom_color %}
-					{% set text_color = slide.custom_text_color|default('#ffffff') %}
-				{% else %}
-					{% set text_color = (scheme == 'dark') ? '#18181b' : '#ffffff' %}
-				{% endif %}
+				{% set heading_color = slide.heading_color|default('#ffffff') %}
+				{% set description_color = slide.description_color|default('#ffffff') %}
+				{% set btn_text_color = slide.btn_text_color|default('#000000') %}
+				{% set btn_bg_color = slide.btn_bg_color|default('#ffffff') %}
 
 				{% set h_pos_v = slide.horizontal_position.value|default(slide.horizontal_position|default('start')) %}
 				{% set h_pos   = h_pos_v is iterable ? h_pos_v|first : h_pos_v %}
@@ -339,13 +335,13 @@
 					<div class="hs-content flex {{ justify_class }} {{ items_class }}">
 						<div
 							class="hs-text-box {{ text_align_cls }}"
-							style="color: {{ text_color }};"
 							data-swiper-parallax="80"
 							data-swiper-parallax-duration="{{ transition_speed }}"
 						>
 							{% if _heading %}
 								<h2
 									class="hs-heading"
+									style="color: {{ heading_color }};"
 									data-swiper-parallax="120"
 									data-swiper-parallax-duration="{{ transition_speed }}"
 								>{{ _heading }}</h2>
@@ -354,6 +350,7 @@
 							{% if _desc %}
 								<p
 									class="hs-desc"
+									style="color: {{ description_color }};"
 									data-swiper-parallax="180"
 									data-swiper-parallax-duration="{{ transition_speed }}"
 								>{{ _desc }}</p>
@@ -362,8 +359,8 @@
 							{% if _btn_text %}
 								<a
 									href="{{ _slide_btn_url }}"
-									class="hs-btn hs-btn--{{ btn_style }} hs-scheme-{{ scheme }}"
-									style="{{ btn_style == 'underline' or btn_style == 'outline' ? 'color:' ~ text_color ~ ';' : '' }}"
+									class="hs-btn hs-btn--{{ btn_style }}"
+									style="{% if btn_style == 'solid' %}background-color: {{ btn_bg_color }}; color: {{ btn_text_color }}; border-color: {{ btn_bg_color }};{% else %}color: {{ btn_text_color }}; border-color: {{ btn_text_color }};{% endif %}"
 								>{{ _btn_text }}</a>
 							{% endif %}
 						</div>

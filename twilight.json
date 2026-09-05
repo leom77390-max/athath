@@ -8363,7 +8363,10 @@
           "hero_slideshow_slides.description": { "ar": "اكتشف منتجات مصممة بعناية لكل لحظة", "en": "Discover products crafted for every moment" },
           "hero_slideshow_slides.btn_text": { "ar": "تسوق الآن", "en": "Shop Now" },
           "hero_slideshow_slides.btn_url": null,
-          "hero_slideshow_slides.text_scheme": "light",
+          "hero_slideshow_slides.heading_color": "#ffffff",
+          "hero_slideshow_slides.description_color": "#ffffff",
+          "hero_slideshow_slides.btn_text_color": "#000000",
+          "hero_slideshow_slides.btn_bg_color": "#ffffff",
           "hero_slideshow_slides.overlay_opacity": "20",
           "hero_slideshow_slides.horizontal_position": "start",
           "hero_slideshow_slides.vertical_position": "end",
@@ -8381,7 +8384,10 @@
           "hero_slideshow_slides.description": { "ar": "أسلوب حياة راقٍ يبدأ من هنا", "en": "A premium lifestyle starts here" },
           "hero_slideshow_slides.btn_text": { "ar": "اكتشف المجموعة", "en": "Explore Collection" },
           "hero_slideshow_slides.btn_url": null,
-          "hero_slideshow_slides.text_scheme": "light",
+          "hero_slideshow_slides.heading_color": "#ffffff",
+          "hero_slideshow_slides.description_color": "#ffffff",
+          "hero_slideshow_slides.btn_text_color": "#000000",
+          "hero_slideshow_slides.btn_bg_color": "#ffffff",
           "hero_slideshow_slides.overlay_opacity": "20",
           "hero_slideshow_slides.horizontal_position": "center",
           "hero_slideshow_slides.vertical_position": "center",
@@ -8399,7 +8405,10 @@
           "hero_slideshow_slides.description": { "ar": "منتجات تجمع بين الجمال والعملية في كل تفصيلة", "en": "Products that blend beauty and practicality" },
           "hero_slideshow_slides.btn_text": { "ar": "تعرف على المزيد", "en": "Learn More" },
           "hero_slideshow_slides.btn_url": null,
-          "hero_slideshow_slides.text_scheme": "light",
+          "hero_slideshow_slides.heading_color": "#ffffff",
+          "hero_slideshow_slides.description_color": "#ffffff",
+          "hero_slideshow_slides.btn_text_color": "#000000",
+          "hero_slideshow_slides.btn_bg_color": "#ffffff",
           "hero_slideshow_slides.overlay_opacity": "20",
           "hero_slideshow_slides.horizontal_position": "end",
           "hero_slideshow_slides.vertical_position": "end",
@@ -8505,6 +8514,14 @@
         },
         {
           "type": "string",
+          "id": "hero_slideshow_slides.heading_color",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان",
+          "value": "#ffffff"
+        },
+        {
+          "type": "string",
           "id": "hero_slideshow_slides.description",
           "label": "الوصف",
           "format": "textarea",
@@ -8512,51 +8529,14 @@
           "multilanguage": true
         },
         {
-          "type": "boolean",
-          "id": "hero_slideshow_slides.use_custom_color",
-          "label": "استخدام لون نص مخصص",
-          "format": "switch",
-          "value": false
-        },
-        {
           "type": "string",
-          "id": "hero_slideshow_slides.custom_text_color",
+          "id": "hero_slideshow_slides.description_color",
           "format": "color",
           "inputType": "color",
-          "label": "لون النص المخصص",
-          "value": "#ffffff",
-          "conditions": [
-            {
-              "id": "hero_slideshow_slides.use_custom_color",
-              "operation": "=",
-              "value": true,
-              "value_index": ".",
-              "collection_id": "hero_slideshow_slides"
-            }
-          ]
+          "label": "لون الوصف",
+          "value": "#ffffff"
         },
-        {
-          "type": "items",
-          "id": "hero_slideshow_slides.text_scheme",
-          "label": "لون النص",
-          "format": "dropdown-list",
-          "options": [
-            { "label": "فاتح", "value": "light" },
-            { "label": "داكن", "value": "dark" }
-          ],
-          "selected": [
-            { "label": "فاتح", "value": "light" }
-          ],
-          "conditions": [
-            {
-              "id": "hero_slideshow_slides.use_custom_color",
-              "operation": "=",
-              "value": false,
-              "value_index": ".",
-              "collection_id": "hero_slideshow_slides"
-            }
-          ]
-        },
+
         {
           "type": "number",
           "id": "hero_slideshow_slides.overlay_opacity",
@@ -8651,6 +8631,31 @@
           ],
           "selected": [
             { "label": "خط سفلي", "value": "underline" }
+          ]
+        },
+        {
+          "type": "string",
+          "id": "hero_slideshow_slides.btn_text_color",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون نص الزر",
+          "value": "#000000"
+        },
+        {
+          "type": "string",
+          "id": "hero_slideshow_slides.btn_bg_color",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون خلفية الزر",
+          "value": "#ffffff",
+          "conditions": [
+            {
+              "id": "hero_slideshow_slides.btn_style",
+              "operation": "=",
+              "value": "solid",
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         }
       ],
