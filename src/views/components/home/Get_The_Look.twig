@@ -1,9 +1,20 @@
 {% set gl = component %}
 {% set section_id = 'gtl-' ~ component.id %}
+{% set flip_layout = gl.gtl_flip_layout | default(false) %}
+
+{#
+    gtl_source_mode: dropdown-list → "manual" or "auto"
+    If "auto", categories come from component.gtl_categories_list (Salla source: categories)
+    Each manual look can also have extra_images for image pagination.
+    gtl_flip_layout: boolean switch → reverses column order (list right, image left)
+#}
+{% set _mode_raw   = gl.gtl_source_mode %}
+{% set source_mode = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
+{% set source_mode = source_mode | default('manual') %}
 
 <section class="get-the-look-section w-full" id="{{ section_id }}">
 
-    <div class="gtl-wrapper" id="{{ section_id }}-wrapper">
+    <div class="gtl-wrapper{% if flip_layout %} is-flipped{% endif %}" id="{{ section_id }}-wrapper">
 
         {# ── LEFT: Text List ─────────────────────────────── #}
         <div class="gtl-left" style="background-color: {{ gl.right_bg_color|default('#f9f6f0') }};">
@@ -12,7 +23,8 @@
                 <span class="gtl-subheading">{{ gl.subheading }}</span>
             {% endif %}
 
-            {% if gl.looks %}
+            {# ── MANUAL MODE ── #}
+            {% if source_mode == 'manual' and gl.looks %}
                 <ul class="gtl-list">
                     {% for look in gl.looks %}
                         <li class="gtl-list-item">
@@ -22,36 +34,97 @@
                                 data-index="{{ loop.index0 }}"
                                 data-section="{{ section_id }}"
                             >
-                                <span class="gtl-title-text">{{ look.list_title }}</span>
+                                <span class="gtl-title-text">
+                                    {{ look.list_title }}
+                                    <span class="gtl-underline"></span>
+                                </span>
                                 {% if look.list_number %}
                                     <sup class="gtl-number">{{ look.list_number }}</sup>
                                 {% endif %}
-                                <span class="gtl-underline"></span>
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {# ── AUTO MODE ── #}
+            {% elseif source_mode == 'auto' and gl.gtl_categories_list %}
+                <ul class="gtl-list">
+                    {% for cat in gl.gtl_categories_list %}
+                        <li class="gtl-list-item">
+                            <button
+                                type="button"
+                                class="gtl-trigger {% if loop.first %}is-active{% endif %}"
+                                data-index="{{ loop.index0 }}"
+                                data-section="{{ section_id }}"
+                            >
+                                <span class="gtl-title-text">
+                                    {{ cat.name }}
+                                    <span class="gtl-underline"></span>
+                                </span>
+                                <sup class="gtl-number">{{ '%02d'|format(loop.index) }}</sup>
                             </button>
                         </li>
                     {% endfor %}
                 </ul>
             {% endif %}
+
         </div>
 
         {# ── RIGHT: Image Panel ───────────────────────────── #}
         <div class="gtl-right">
-            {% if gl.looks %}
+
+            {# ── MANUAL MODE PANELS ── #}
+            {% if source_mode == 'manual' and gl.looks %}
                 {% for look in gl.looks %}
+                    {# Build full image list: main + up to 4 extra flat image fields #}
+                    {% set all_images = [] %}
+                    {% if look.slider_image %}
+                        {% set all_images = all_images | merge([look.slider_image]) %}
+                    {% endif %}
+                    {% if look.image_2 %}{% set all_images = all_images | merge([look.image_2]) %}{% endif %}
+                    {% if look.image_3 %}{% set all_images = all_images | merge([look.image_3]) %}{% endif %}
+                    {% if look.image_4 %}{% set all_images = all_images | merge([look.image_4]) %}{% endif %}
+                    {% if look.image_5 %}{% set all_images = all_images | merge([look.image_5]) %}{% endif %}
+
                     <div class="gtl-panel {% if loop.first %}is-active{% endif %}"
                          data-panel-index="{{ loop.index0 }}"
                          data-section="{{ section_id }}">
 
-                        {% if look.slider_image %}
-                            <img src="{{ look.slider_image }}"
-                                 alt="{{ look.overlay_title|striptags }}"
-                                 class="gtl-panel-img"
-                                 loading="lazy">
+                        {# Pagination image slides #}
+                        {% if all_images | length > 0 %}
+                            <div class="gtl-slides" data-slide-current="0">
+                                {% for img in all_images %}
+                                    <div class="gtl-slide {% if loop.first %}is-active{% endif %}" data-slide-index="{{ loop.index0 }}">
+                                        <img src="{{ img }}"
+                                             alt="{{ look.overlay_title|striptags }}"
+                                             class="gtl-panel-img"
+                                             loading="lazy">
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            {# Pagination dots — only if more than 1 image #}
+                            {% if all_images | length > 1 %}
+                                <div class="gtl-pagination">
+                                    {% for img in all_images %}
+                                        <button
+                                            type="button"
+                                            class="gtl-dot {% if loop.first %}is-active{% endif %}"
+                                            aria-label="Slide {{ loop.index }}"
+                                            data-dot="{{ loop.index0 }}"
+                                        ></button>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                         {% endif %}
 
                         <div class="gtl-panel-gradient"></div>
 
-                        <div class="gtl-panel-content">
+                        {% set pos_y = look.content_pos_y is iterable ? look.content_pos_y|first : look.content_pos_y %}
+                        {% set pos_y = pos_y ?: 'center' %}
+                        {% set pos_x = look.content_pos_x is iterable ? look.content_pos_x|first : look.content_pos_x %}
+                        {% set pos_x = pos_x ?: 'center' %}
+                        <div class="gtl-panel-content" style="justify-content: {{ pos_y }}; align-items: {{ pos_x }};">
                             {% if look.overlay_title %}
                                 <h3 class="gtl-panel-title">{{ look.overlay_title }}</h3>
                             {% endif %}
@@ -64,9 +137,46 @@
                                 } %}
                             {% endif %}
                         </div>
+
+                    </div>
+                {% endfor %}
+
+            {# ── AUTO MODE PANELS ── #}
+            {% elseif source_mode == 'auto' and gl.gtl_categories_list %}
+                {% for cat in gl.gtl_categories_list %}
+                    <div class="gtl-panel {% if loop.first %}is-active{% endif %}"
+                         data-panel-index="{{ loop.index0 }}"
+                         data-section="{{ section_id }}">
+
+                        {% if cat.image %}
+                            <div class="gtl-slides" data-slide-current="0">
+                                <div class="gtl-slide is-active" data-slide-index="0">
+                                    <img src="{{ cat.image }}"
+                                         alt="{{ cat.name }}"
+                                         class="gtl-panel-img"
+                                         loading="lazy">
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="gtl-panel-gradient"></div>
+
+                        <div class="gtl-panel-content" style="justify-content: flex-start; align-items: center;">
+                            {% if gl.gtl_auto_show_title != false and gl.gtl_auto_show_title != '0' %}
+                                <h3 class="gtl-panel-title">{{ cat.name }}</h3>
+                            {% endif %}
+                            
+                            {% if gl.gtl_auto_show_button != false and gl.gtl_auto_show_button != '0' %}
+                                <a href="{{ cat.url | default('#') }}" class="gtl-panel-btn special-btn">
+                                    {{ gl.subheading ? gl.subheading : 'SHOP COLLECTION' }}
+                                </a>
+                            {% endif %}
+                        </div>
+
                     </div>
                 {% endfor %}
             {% endif %}
+
         </div>
 
     </div>
@@ -78,13 +188,16 @@
     display: flex;
     width: 100%;
     min-height: 500px;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .get-the-look-section #{{ section_id }}-wrapper {
         flex-direction: row;
         min-height: 600px;
+    }
+    .get-the-look-section #{{ section_id }}-wrapper.is-flipped {
+        flex-direction: row-reverse;
     }
 }
 
@@ -107,16 +220,18 @@
 .get-the-look-section .gtl-right {
     position: relative;
     width: 100%;
-    height: 60vw;
+    height: 90vw;
+    max-height: 450px;
     overflow: hidden;
     flex-shrink: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
     .get-the-look-section .gtl-right {
         width: 50%;
-        height: auto;       /* height is now driven by the flex row */
-        align-self: stretch; /* stretch to match left column height */
+        height: auto;
+        max-height: none;
+        align-self: stretch;
     }
 }
 
@@ -134,6 +249,24 @@
     opacity: 1;
     z-index: 1;
 }
+
+/* ── Slides (image pagination inside each panel) ──── */
+.get-the-look-section .gtl-slides {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.get-the-look-section .gtl-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+.get-the-look-section .gtl-slide.is-active {
+    opacity: 1;
+}
+
 .get-the-look-section .gtl-panel-img {
     position: absolute;
     inset: 0;
@@ -143,7 +276,7 @@
     transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: scale(1);
 }
-.get-the-look-section .gtl-panel.is-active .gtl-panel-img {
+.get-the-look-section .gtl-panel.is-active .gtl-slide.is-active .gtl-panel-img {
     transform: scale(1.06);
 }
 .get-the-look-section .gtl-panel-gradient {
@@ -154,14 +287,19 @@
 }
 .get-the-look-section .gtl-panel-content {
     position: absolute;
-    bottom: 2.5rem;
-    left: 2.5rem;
-    right: 2.5rem;
+    inset: 0;
+    padding: 2.5rem;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
     color: #fff;
     transition: opacity 0.7s ease, transform 0.7s ease;
     opacity: 0;
     transform: translateY(1.25rem);
+    pointer-events: none;
+}
+.get-the-look-section .gtl-panel-content > * {
+    pointer-events: auto;
 }
 .get-the-look-section .gtl-panel.is-active .gtl-panel-content {
     opacity: 1;
@@ -173,22 +311,54 @@
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 1rem;
-    color: #fff;
+    color: {{ gl.gtl_panel_title_color | default('#ffffff') }};
 }
 .get-the-look-section .gtl-panel-btn {
-    color: #ffffff !important;
-    border-color: rgba(255,255,255,0.5) !important;
+    color: {{ gl.gtl_panel_btn_color | default('#ffffff') }} !important;
+    border-color: {{ gl.gtl_panel_btn_border | default('rgba(255,255,255,0.5)') }} !important;
+}
+
+/* ── Pagination dots ───────────────────────────────── */
+.get-the-look-section .gtl-pagination {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.5rem;
+    z-index: 4;
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+}
+html[dir="rtl"] .get-the-look-section .gtl-pagination {
+    right: auto;
+    left: 1.5rem;
+}
+.get-the-look-section .gtl-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    border: 1.5px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s, width 0.3s;
+    flex-shrink: 0;
+}
+.get-the-look-section .gtl-dot.is-active {
+    background: #fff;
+    width: 20px;
+    border-radius: 4px;
 }
 
 /* ── Subheading ────────────────────────────────────── */
 .get-the-look-section .gtl-subheading {
     display: block;
     font-family: var(--font-sans, sans-serif);
-    font-size: 0.7rem;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.22em;
     opacity: 0.55;
     margin-bottom: 3rem;
+    color: {{ gl.gtl_subheading_color | default('#111111') }};
 }
 
 /* ── List ──────────────────────────────────────────── */
@@ -198,10 +368,9 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid rgba(0,0,0,0.1);
 }
 .get-the-look-section .gtl-list-item {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    /* No borders */
 }
 
 /* ── Trigger button ────────────────────────────────── */
@@ -210,7 +379,7 @@
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
-    padding: 1.5rem 0 1.75rem;
+    padding: 1.5rem 0;
     width: 100%;
     text-align: start;
     background: none;
@@ -219,10 +388,11 @@
 }
 
 .get-the-look-section .gtl-title-text {
+    position: relative;
     font-family: var(--font-serif, Georgia, serif);
-    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
-    line-height: 1;
-    color: #111;
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    line-height: 1.1;
+    color: {{ gl.gtl_title_color | default('#111111') }};
     opacity: 0.28;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateX(0);
@@ -232,6 +402,7 @@ html[dir="rtl"] .get-the-look-section .gtl-title-text { transform: translateX(0)
 .get-the-look-section .gtl-trigger:hover .gtl-title-text,
 .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
     opacity: 1;
+    color: {{ gl.gtl_title_active_color | default('#111111') }};
     transform: translateX(0.5rem);
 }
 html[dir="rtl"] .get-the-look-section .gtl-trigger:hover .gtl-title-text,
@@ -258,7 +429,7 @@ html[dir="rtl"] .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
     left: 0;
     height: 2px;
     width: 0;
-    background: #111;
+    background: {{ gl.gtl_border_color | default('#111111') }};
     transition: width 0.5s ease;
 }
 html[dir="rtl"] .get-the-look-section .gtl-underline {
@@ -280,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var triggers  = section.querySelectorAll('.gtl-trigger[data-section="' + sectionId + '"]');
         var panels    = section.querySelectorAll('.gtl-panel[data-section="' + sectionId + '"]');
 
+        /* ── Trigger hover → switch panel ── */
         triggers.forEach(function (trigger) {
             trigger.addEventListener('mouseenter', function () {
                 var index = parseInt(this.dataset.index, 10);
@@ -295,6 +467,60 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             });
+        });
+
+        /* ── Pagination dots inside each panel ── */
+        panels.forEach(function (panel) {
+            var dots   = panel.querySelectorAll('.gtl-dot');
+            var slides = panel.querySelectorAll('.gtl-slide');
+
+            if (!dots.length || !slides.length) return;
+
+            function goToSlide(idx) {
+                slides.forEach(function (s, i) {
+                    s.classList.toggle('is-active', i === idx);
+                });
+                dots.forEach(function (d, i) {
+                    d.classList.toggle('is-active', i === idx);
+                });
+            }
+
+            dots.forEach(function (dot) {
+                dot.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    goToSlide(parseInt(this.dataset.dot, 10));
+                });
+            });
+
+            /* Auto-play slides every 4 seconds when panel is active */
+            var timer = null;
+
+            function startAutoPlay() {
+                if (slides.length <= 1) return;
+                timer = setInterval(function () {
+                    var current = 0;
+                    slides.forEach(function (s, i) { if (s.classList.contains('is-active')) current = i; });
+                    goToSlide((current + 1) % slides.length);
+                }, 4000);
+            }
+
+            function stopAutoPlay() {
+                if (timer) { clearInterval(timer); timer = null; }
+            }
+
+            /* Watch active class changes on panel to start/stop auto-play */
+            var observer = new MutationObserver(function () {
+                if (panel.classList.contains('is-active')) {
+                    startAutoPlay();
+                } else {
+                    stopAutoPlay();
+                    goToSlide(0); /* reset to first slide when leaving */
+                }
+            });
+            observer.observe(panel, { attributes: true, attributeFilter: ['class'] });
+
+            /* Start immediately if first panel */
+            if (panel.classList.contains('is-active')) startAutoPlay();
         });
     });
 });
