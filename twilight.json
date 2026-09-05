@@ -8424,7 +8424,13 @@
           "format": "image",
           "value": "",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "image" }
+            {
+              "id": "hero_slideshow_slides.media_type",
+              "operation": "=",
+              "value": "image",
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         },
         {
@@ -8434,7 +8440,13 @@
           "format": "image",
           "value": "",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "image" }
+            {
+              "id": "hero_slideshow_slides.media_type",
+              "operation": "=",
+              "value": "image",
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         },
         {
@@ -8446,7 +8458,13 @@
           "value": "",
           "description": "رابط مباشر لملف فيديو MP4.",
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "video" }
+            {
+              "id": "hero_slideshow_slides.media_type",
+              "operation": "=",
+              "value": "video",
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         },
         {
@@ -8456,7 +8474,13 @@
           "format": "switch",
           "value": true,
           "conditions": [
-            { "id": "hero_slideshow_slides.media_type", "operation": "=", "value": "video" }
+            {
+              "id": "hero_slideshow_slides.media_type",
+              "operation": "=",
+              "value": "video",
+              "value_index": ".",
+              "collection_id": "hero_slideshow_slides"
+            }
           ]
         },
         {
