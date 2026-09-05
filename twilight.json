@@ -8197,12 +8197,13 @@
             },
             "icon": "sicon-packed-box",
             "path": "home.hero-special",
+            "image": "https://cdn.files.salla.network/other/1010819922/ee616a2f-61a6-4a7b-893c-cd9d1c5862c1-original.webp?_s_uploader_cache_bust=preview-5t7rs1aew",
             "fields": [
     {
       "type": "static",
       "format": "description",
       "id": "hero_slideshow_preview",
-      "value": "<div><h6>معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/910400828/2404b8ee-4de7-412b-b019-fc9dabb494b9_1440x642.webp'></div>"
+      "value": "<div><h6>معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/ee616a2f-61a6-4a7b-893c-cd9d1c5862c1-original.webp?_s_uploader_cache_bust=preview-5t7rs1aew'></div>"
     },
 
     {
@@ -8354,8 +8355,8 @@
       "value": [
         {
           "hero_slideshow_slides.media_type": "image",
-          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
-          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
+          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/1010819922/4eaba0df-345e-4a8e-ae3a-7bb39b7ca527-original.webp?_s_uploader_cache_bust=preview-jlh93yzbs",
+          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/1010819922/4eaba0df-345e-4a8e-ae3a-7bb39b7ca527-original.webp?_s_uploader_cache_bust=preview-jlh93yzbs",
           "hero_slideshow_slides.video_url": "",
           "hero_slideshow_slides.video_muted": true,
           "hero_slideshow_slides.alt_text": "سليك موديفا - الشريحة الأولى",
@@ -8373,8 +8374,8 @@
         },
         {
           "hero_slideshow_slides.media_type": "image",
-          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
-          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
+          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/1010819922/b5ae49c9-90f6-44f3-84d4-3c2a8fffae36-original.webp",
+          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/1010819922/b5ae49c9-90f6-44f3-84d4-3c2a8fffae36-original.webp",
           "hero_slideshow_slides.video_url": "",
           "hero_slideshow_slides.video_muted": true,
           "hero_slideshow_slides.alt_text": "سليك موديفا - الشريحة الثانية",
@@ -8392,8 +8393,8 @@
         },
         {
           "hero_slideshow_slides.media_type": "image",
-          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
-          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/910400828/ae75f452-cb81-4550-9cf7-39de67c4b820_1440x714.webp",
+          "hero_slideshow_slides.desktop_image": "https://cdn.files.salla.network/homepage/1010819922/7814203d-56db-4e63-a5d2-5848de29a4c1-original.webp",
+          "hero_slideshow_slides.mobile_image": "https://cdn.files.salla.network/homepage/1010819922/7814203d-56db-4e63-a5d2-5848de29a4c1-original.webp",
           "hero_slideshow_slides.video_url": "",
           "hero_slideshow_slides.video_muted": true,
           "hero_slideshow_slides.alt_text": "سليك موديفا - الشريحة الثالثة",
