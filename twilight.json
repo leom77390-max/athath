@@ -9878,6 +9878,26 @@
                     ]
                 },
                 {
+                    "id": "gtl_auto_show_title",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار عنوان التصنيف على الصورة (Auto)",
+                    "value": true,
+                    "conditions": [
+                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
+                    ]
+                },
+                {
+                    "id": "gtl_auto_show_button",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر على الصورة (Auto)",
+                    "value": true,
+                    "conditions": [
+                        { "id": "gtl_source_mode", "operation": "=", "value": ["auto"] }
+                    ]
+                },
+                {
                     "id": "looks",
                     "type": "collection",
                     "format": "collection",

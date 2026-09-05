@@ -159,11 +159,16 @@
 
                         <div class="gtl-panel-gradient"></div>
 
-                        <div class="gtl-panel-content">
-                            <h3 class="gtl-panel-title">{{ cat.name }}</h3>
-                            <a href="{{ cat.url | default('#') }}" class="gtl-panel-btn special-btn">
-                                {{ gl.subheading ? gl.subheading : 'SHOP COLLECTION' }}
-                            </a>
+                        <div class="gtl-panel-content" style="justify-content: flex-start; align-items: center;">
+                            {% if gl.gtl_auto_show_title | default(true) %}
+                                <h3 class="gtl-panel-title">{{ cat.name }}</h3>
+                            {% endif %}
+                            
+                            {% if gl.gtl_auto_show_button | default(true) %}
+                                <a href="{{ cat.url | default('#') }}" class="gtl-panel-btn special-btn">
+                                    {{ gl.subheading ? gl.subheading : 'SHOP COLLECTION' }}
+                                </a>
+                            {% endif %}
                         </div>
 
                     </div>
