@@ -194,7 +194,8 @@
 		--swiper-pagination-bullet-inactive-opacity: 0.5;
 	}
 
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination) { 
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap { 
+		position: absolute;
 		bottom: 20px;
 		left: 50% !important;
 		transform: translateX(-50%) !important;
@@ -202,16 +203,21 @@
 		justify-content: center;
 		gap: 6px;
 		width: auto !important;
+		z-index: 10;
+		pointer-events: none;
 	}
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet) {
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet {
+		pointer-events: all;
 		width: 8px;
 		height: 8px;
 		background: {{ pag_color }};
 		opacity: 0.5;
 		border-radius: 99px;
 		transition: opacity .3s, width .3s;
+		cursor: pointer;
+		display: inline-block;
 	}
-	.hs-wrap-{{ component.id }} salla-slider::part(pagination-bullet-active) {
+	.hs-wrap-{{ component.id }} .hs-pagination-wrap .swiper-pagination-bullet-active {
 		opacity: 1;
 		width: 24px;
 	}
@@ -248,6 +254,7 @@
 			{% endif %}
 			{% if component.hs_show_pagination %}
 			"pagination": {
+				"el": ".hs-pagination-wrap-{{ component.id }}",
 				"clickable": true
 			},
 			{% endif %}
@@ -388,6 +395,7 @@
 
 	</salla-slider>
 
-
-
+	{% if component.hs_show_pagination %}
+		<div class="hs-pagination-wrap hs-pagination-wrap-{{ component.id }}"></div>
+	{% endif %}
 </section>
