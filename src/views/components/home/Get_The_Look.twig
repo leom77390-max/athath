@@ -13,6 +13,9 @@
 {% set source_mode = source_mode | default('manual') %}
 
 <section class="get-the-look-section w-full" id="{{ section_id }}">
+    {% if gl.gtl_is_container %}
+        <div class="container">
+    {% endif %}
 
     <div class="gtl-wrapper{% if flip_layout %} is-flipped{% endif %}" id="{{ section_id }}-wrapper">
 
@@ -180,6 +183,9 @@
         </div>
 
     </div>
+    {% if gl.gtl_is_container %}
+        </div>
+    {% endif %}
 </section>
 
 <style>

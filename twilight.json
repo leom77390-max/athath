@@ -8522,6 +8522,14 @@
                     "variant": "h6"
                 },
                 {
+                    "id": "gtl_is_container",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض داخل حاوية (Container)",
+                    "description": "فعّل هذا الخيار لتقييد عرض القسم، أو عطّله لجعله يمتد على كامل الشاشة.",
+                    "value": false
+                },
+                {
                     "id": "subheading",
                     "type": "string",
                     "format": "text",
