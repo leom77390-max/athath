@@ -81,7 +81,7 @@
             "type": "static",
             "format": "title",
             "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3 mb-7 text-center font-bold text-lg' style='background: #21636d;padding: 4px;color: #010101;border-radius: 20px;margin-bottom: 10px;'  >ألـوان الثـيم</div>",
+            "value": "<div class='flex-center p-3 mb-7 text-center font-bold text-lg' style='background: #21636d;padding: 4px;color: #ffffff;border-radius: 20px;margin-bottom: 10px;'  >ألـوان الثـيم</div>",
             "variant": "h6"
         },
         {
@@ -131,6 +131,36 @@
             "id": "section-header-options",
             "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة </h6></div>",
             "variant": "h6"
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "دمج الهيدر مع القسم الأول (Hero)",
+            "description": "يجعل الهيدر شفافاً ويدمجه مع الصورة في القسم الأول (فقط في الصفحة الرئيسية).",
+            "id": "absolute_header",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "id": "absolute_header_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الهيدر عند التمرير",
+            "description": "اختر اللون الذي يظهر خلف الهيدر عند النزول للأسفل.",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "absolute_header",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
         },
         {
             "type": "boolean",
