@@ -7564,8 +7564,8 @@
         {
             "key": "3d8f3ff5-36cf-4d17-b5f1-80374ba5654a",
             "title": {
-                "en": "Instagram Collage",
-                "ar": "كولاج انستقرام"
+                "en": "Instagram Collage - Furniture",
+                "ar": "كولاج انستقرام - اثاثي"
             },
             "icon": "sicon-instagram2",
             "path": "home.instagram_collage",
@@ -7819,8 +7819,8 @@
         {
             "key": "bf52b425-b15b-4ed4-862f-14deaf7b9c7a",
             "title": {
-                "en": "Animated Featured Section",
-                "ar": "قسم مميز متحرك"
+                "en": "Animated Featured Section - Furniture",
+                "ar": "قسم مميز متحرك - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.Animated_Featured_Section",
@@ -8144,8 +8144,8 @@
         {
             "key": "43eb7dc4-6b40-4b64-9ae9-1bc0565f47ef",
             "title": {
-                "en": "Promotional Cards",
-                "ar": "بطاقات العروض"
+                "en": "Promotional Cards - Furniture",
+                "ar": "بطاقات العروض - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.Promotional_Cards",
@@ -8500,8 +8500,8 @@
         {
             "key": "bf47a5f0-f4aa-4e49-a79f-7d08803f11c3",
             "title": {
-                "en": "Get The Look",
-                "ar": "تسوق الإطلالة"
+                "en": "Get The Look - Furniture",
+                "ar": "تسوق الإطلالة - اثاثي"
             },
             "icon": "sicon-store",
             "path": "home.Get_The_Look",
@@ -8520,6 +8520,14 @@
                     "format": "title",
                     "value": "<div style='background:#1a1a2e;color:#fff;padding:6px 14px;border-radius:10px;font-weight:700;font-size:13px;margin-bottom:4px;'>⚙️ إعدادات التخطيط</div>",
                     "variant": "h6"
+                },
+                {
+                    "id": "gtl_is_container",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "عرض داخل حاوية (Container)",
+                    "description": "فعّل هذا الخيار لتقييد عرض القسم، أو عطّله لجعله يمتد على كامل الشاشة.",
+                    "value": false
                 },
                 {
                     "id": "subheading",

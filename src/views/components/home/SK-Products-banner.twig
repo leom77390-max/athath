@@ -68,7 +68,7 @@
                     <!-- ADD ALL BUTTON -->
     
                     <button
-                        class="bundle-add-cart-btn mt-6 max-w-[270px] bg-primary text-background w-[75%] mx-auto px-6 py-3  transition hover:opacity-80"
+                        class="bundle-add-cart-btn mt-6 max-w-[270px] bg-primary !rounded-none text-background w-[75%] mx-auto px-6 py-3  transition hover:opacity-80"
                         data-label-default="{{ user.language.code == 'ar' ? 'إضافة الجميع' : 'Add all to cart' }}"
                         data-label-success="{{ user.language.code == 'ar' ? 'تمت إضافة المنتجات' : 'Added Successfully' }}"
                         data-label-error="{{ user.language.code == 'ar' ? 'حدث خطأ' : 'Something went wrong' }}"
@@ -122,6 +122,7 @@
 .hotspot span{
 	width:16px;
 	height:16px;
+	border-radius: 999px;
 	display:block;
 	background:#fff;
 	border:2px solid #000;
@@ -142,6 +143,7 @@
 .hotspot.active span{
 	width:42px;
 	height:42px;
+	border-radius: 9999px;
 }
 
 .hotspot.active small{

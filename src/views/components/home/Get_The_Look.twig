@@ -13,6 +13,9 @@
 {% set source_mode = source_mode | default('manual') %}
 
 <section class="get-the-look-section w-full" id="{{ section_id }}">
+    {% if gl.gtl_is_container %}
+        <div class="container">
+    {% endif %}
 
     <div class="gtl-wrapper{% if flip_layout %} is-flipped{% endif %}" id="{{ section_id }}-wrapper">
 
@@ -180,6 +183,9 @@
         </div>
 
     </div>
+    {% if gl.gtl_is_container %}
+        </div>
+    {% endif %}
 </section>
 
 <style>
@@ -379,7 +385,7 @@ html[dir="rtl"] .get-the-look-section .gtl-pagination {
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;
-    padding: 1.5rem 0;
+    padding: 10px 0;
     width: 100%;
     text-align: start;
     background: none;
@@ -392,6 +398,7 @@ html[dir="rtl"] .get-the-look-section .gtl-pagination {
     font-family: var(--font-serif, Georgia, serif);
     font-size: clamp(2.5rem, 4.5vw, 4rem);
     line-height: 1.1;
+    padding-bottom: 12px;
     color: {{ gl.gtl_title_color | default('#111111') }};
     opacity: 0.28;
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -422,23 +429,32 @@ html[dir="rtl"] .get-the-look-section .gtl-trigger.is-active .gtl-title-text {
     opacity: 1;
 }
 
-/* Underline */
+/* Underline Sweep Animation */
 .get-the-look-section .gtl-underline {
     position: absolute;
     bottom: 0;
     left: 0;
     height: 2px;
-    width: 0;
+    width: 100%;
     background: {{ gl.gtl_border_color | default('#111111') }};
-    transition: width 0.5s ease;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 html[dir="rtl"] .get-the-look-section .gtl-underline {
     left: auto;
     right: 0;
+    transform-origin: left;
 }
+
 .get-the-look-section .gtl-trigger:hover .gtl-underline,
 .get-the-look-section .gtl-trigger.is-active .gtl-underline {
-    width: 100%;
+    transform: scaleX(1);
+    transform-origin: left;
+}
+html[dir="rtl"] .get-the-look-section .gtl-trigger:hover .gtl-underline,
+html[dir="rtl"] .get-the-look-section .gtl-trigger.is-active .gtl-underline {
+    transform-origin: right;
 }
 </style>
 
