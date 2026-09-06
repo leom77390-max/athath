@@ -6,7 +6,7 @@
 {% set loop           = c.enable_loop is not same as(false) %}
 {% set controls       = c.enable_controls is not same as(false) %}
 
-<section class="categories-slide mx-auto py-10" id="categories-section-{{position}}" {% if c.bg_color %}style="background-color: {{ c.bg_color }};"{% endif %}>
+<section class="categories-slide mx-auto py-10" id="categories-section-{{position}}" {% if c.bg_color %} style="background-color: {{ c.bg_color }};" {% endif %}>
 
 	<div class="categories-slide-wrapper mx-auto w-[90%]">
 
@@ -14,32 +14,32 @@
 		<div class="categories-slide__content">
 
 			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="{{ loop ? 'true' : 'false' }}" slider-config='{
-										"slidesPerView": {{ slides_mobile }},
-										"spaceBetween": 20,
-										"breakpoints": {
-											"0": {
-												"slidesPerView": {{ slides_mobile }}
-											},
-											"640": {
-												"slidesPerView": {{ slides_tablet }}
-											},
-											"1024": {
-												"slidesPerView": {{ slides_desktop }}
-											}
-										}
-										{% if controls %},
-										"navigation": {
-											"nextEl": ".categories-next-{{position}}",
-											"prevEl": ".categories-prev-{{position}}"
-										}
-										{% endif %}
-										{% if autoplay %},
-										"autoplay": {
-											"delay": 3000,
-											"disableOnInteraction": false
-										}
-										{% endif %}
-									}'>
+															"slidesPerView": {{ slides_mobile }},
+															"spaceBetween": 20,
+															"breakpoints": {
+																"0": {
+																	"slidesPerView": {{ slides_mobile }}
+																},
+																"640": {
+																	"slidesPerView": {{ slides_tablet }}
+																},
+																"1024": {
+																	"slidesPerView": {{ slides_desktop }}
+																}
+															}
+															{% if controls %},
+															"navigation": {
+																"nextEl": ".categories-next-{{position}}",
+																"prevEl": ".categories-prev-{{position}}"
+															}
+															{% endif %}
+															{% if autoplay %},
+															"autoplay": {
+																"delay": 3000,
+																"disableOnInteraction": false
+															}
+															{% endif %}
+														}'>
 
 				<div slot="items" class="swiper-wrapper">
 
@@ -120,35 +120,35 @@
 
 				{% endif %}
 
-				
-			{% if controls %}
-			<div class="categories-slide__nav">
+
+				{% if controls %}
+					<div class="categories-slide__nav">
 
 
-					<button class="categories-next-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 -full transition-all duration-300 hover:bg-black">
+						<button class="categories-next-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 -full transition-all duration-300 hover:bg-black">
 
 
-					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
+							<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
 
 
-					<i class="relative z-10 sicon-caret-left transition-colors duration-300 group-hover:text-white"></i>
+							<i class="relative z-10 sicon-caret-left transition-colors duration-300 group-hover:text-white"></i>
 
 
-				</button>
+						</button>
 
 
-				<button class="categories-prev-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 -full transition-all duration-300 hover:bg-black">
+						<button class="categories-prev-{{position}} group relative overflow-hidden flex items-center justify-center border border-black p-3 -full transition-all duration-300 hover:bg-black">
 
-					<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
-
-
-					<i class="relative z-10 sicon-caret-right transition-colors duration-300 group-hover:text-white"></i>
-
-				</button>
+							<span class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700"></span>
 
 
-			</div>
-			{% endif %}
+							<i class="relative z-10 sicon-caret-right transition-colors duration-300 group-hover:text-white"></i>
+
+						</button>
+
+
+					</div>
+				{% endif %}
 
 
 			</div>
@@ -168,16 +168,16 @@
 	}
 
 
-.categories-slide-wrapper {
-	display: flex;
-	align-items: center;
-	gap: 40px;
-	direction: ltr;
-	flex-direction: row-reverse;
-}
+	.categories-slide-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 40px;
+		direction: ltr;
+		flex-direction: row-reverse;
+	}
 
 
-/* [dir="ltr"] .categories-slide-wrapper {
+	/* [dir="ltr"] .categories-slide-wrapper {
 	flex-direction: row;
 }
 
@@ -208,6 +208,7 @@
 
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		gap: 1rem;
 
 	}
@@ -299,7 +300,7 @@
 
 	.categories-slide__item-info {
 
-		padding: 18px 0 ;
+		padding: 18px 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
