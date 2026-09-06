@@ -144,25 +144,6 @@
             "selected": false
         },
         {
-            "id": "absolute_header_bg",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون خلفية الهيدر عند التمرير",
-            "description": "اختر اللون الذي يظهر خلف الهيدر عند النزول للأسفل.",
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#ffffff",
-            "required": false,
-            "conditions": [
-                {
-                    "id": "absolute_header",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "عرض الشريط الترويجي أعلى الصفحة",
