@@ -38,7 +38,7 @@
 {% set logo_size_lg = theme.settings.get('logo_size_lg') %}
 {% set below_logo_menu = theme.settings.get('below_logo_menu') %}
 {% set absolute_header = theme.settings.get('absolute_header') %}
-{% set absolute_header_bg = theme.settings.get('absolute_header_bg') %}
+
 <header class="store-header Sleek-header relative z-50 ">
 <style>
     @media (max-width: 1023px) {
@@ -425,9 +425,20 @@
     }
     
     .main-nav-container.fixed-header .inner {
-        background-color: {{ absolute_header_bg | default('#ffffff') }} !important;
+        background-color: {{ add_header_colors and topnav_bg ? topnav_bg : 'var(--color-background)' }} !important;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1) !important;
         transition: background-color 0.3s ease;
+    }
+    
+    .main-nav-container.fixed-header .inner *,
+    .main-nav-container.fixed-header .button-style i,
+    .main-nav-container.fixed-header .custom-cart-summary i {
+        color: {{ add_header_colors and topnav_text_colors ? topnav_text_colors : 'var(--color-text)' }} !important;
+        stroke: {{ add_header_colors and topnav_text_colors ? topnav_text_colors : 'var(--color-text)' }} !important;
+    }
+    
+    .main-nav-container.fixed-header .inner .s-cart-summary-count {
+        color: {{ add_header_colors and topnav_bg ? topnav_bg : 'var(--color-background)' }} !important;
     }
     {% endif %}
 
