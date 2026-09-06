@@ -2217,6 +2217,9 @@ input:where([type='file']):focus{
 .\!rounded-3xl{
     border-radius: 1.5rem !important;
 }
+.\!rounded-none{
+    border-radius: 0px !important;
+}
 .rounded{
     border-radius: .75rem;
 }
