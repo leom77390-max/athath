@@ -8,6 +8,14 @@
 	/* ── Wrapper heights ── */
 	.hs-wrap-{{ component.id }} {
 		height: {{ component.hs_mobile_height|default('620px') }};
+
+salla-slider[type]:not(.hydrated) > div, salla-slider[type]:not(.hydrated) .swiper > div > div, .carousel-slider .swiper{
+	margin:0 !important;
+	padding:0 !important;
+}
+salla-slider[type]:not(.hydrated) > div:where([dir="rtl"], [dir="rtl"] *), salla-slider[type]:not(.hydrated) .swiper > div > div:where([dir="rtl"], [dir="rtl"] *), .carousel-slider .swiper:where([dir="rtl"], [dir="rtl"] *) {
+    padding-left: 0 !important;
+}
 	}
 	@media(min-width: 768px) {
 		.hs-wrap-{{ component.id }} {
