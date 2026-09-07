@@ -37,11 +37,7 @@
 {% set logo_size_sm = theme.settings.get('logo_size_sm') %}
 {% set logo_size_lg = theme.settings.get('logo_size_lg') %}
 {% set below_logo_menu = theme.settings.get('below_logo_menu') %}
-
-
-
-
-
+{% set absolute_header = theme.settings.get('absolute_header') %}
 
 <header class="store-header Sleek-header relative z-50 ">
 <style>
@@ -412,7 +408,67 @@
         }
     {% endif %}
 
-		
+    {% if absolute_header and page.slug == 'index' %}
+    /* Merge header with hero section */
+    .Sleek-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: transparent !important;
+    }
+    .Sleek-header .promo-bar,
+    .Sleek-header .top-navbar,
+    .Sleek-header .inner {
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+    
+    .main-nav-container.fixed-header .inner {
+        background-color: {{ add_header_colors and topnav_bg ? topnav_bg : 'var(--color-background)' }} !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1) !important;
+        transition: background-color 0.3s ease;
+    }
+    
+    .main-nav-container.fixed-header .inner *,
+    .main-nav-container.fixed-header .button-style i,
+    .main-nav-container.fixed-header .custom-cart-summary i {
+        color: {{ add_header_colors and topnav_text_colors ? topnav_text_colors : 'var(--color-text)' }} !important;
+        stroke: {{ add_header_colors and topnav_text_colors ? topnav_text_colors : 'var(--color-text)' }} !important;
+    }
+    
+    .main-nav-container.fixed-header .inner .s-cart-summary-count {
+        color: {{ add_header_colors and topnav_bg ? topnav_bg : 'var(--color-background)' }} !important;
+    }
+    {% endif %}
+
+    /* Hover sweep underline for main menu links */
+    .main-menu li > a {
+        position: relative;
+    }
+    .main-menu li > a::before {
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease;
+    }
+    html[dir="rtl"] .main-menu li > a::before {
+        transform-origin: left;
+    }
+    .main-menu li > a:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    html[dir="rtl"] .main-menu li > a:hover::before {
+        transform-origin: right;
+    }
+
 </style>
 
 <script>
