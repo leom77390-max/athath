@@ -3202,8 +3202,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "اعتنِ ببشرتك",
-                        "en": "Care for your skin"
+                        "ar": "تصنيفات حديثه",
+                        "en": " Latest Categories"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -3219,7 +3219,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#18181b",
+                    "value": "#ffffff",
                     "required": false
                 },
                 {
@@ -3232,8 +3232,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "منتجات العناية الذاتية الطبيعية",
-                        "en": "Natural self care products"
+                        "ar": "اثاث طبيعي",
+                        "en": "Natural Furniture"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -3249,7 +3249,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#18181b",
+                    "value": "#ffffff",
                     "required": false
                 },
                 {
@@ -3262,8 +3262,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "نبتكر منتجات آمنة وفعالة حقاً، ومصممة لتمنحك شعوراً رائعاً.",
-                        "en": "We create safe products that really work and are designed to make you feel good"
+                        "ar": " نبتكر منتجات آمنة وفعالة حقاً، ومصممة لتمنحك شعوراً رائعاً.",
+                        "en": " We create furniture that is safe, effective and designed to make you feel good."
                     },
                     "multilanguage": true,
                     "required": false,
@@ -3279,7 +3279,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#18181b",
+                    "value": "#ffffff",
                     "required": false
                 },
                 {
@@ -5129,8 +5129,8 @@
                     "placeholder": "اكتب العنوان الرئيسي",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "العملاء يستمتعون برحلتهم كل يوم",
-                        "en": "Customers enjoy their journey everyday"
+                        "ar": " أثاث يُصنع ليدوم.. ويسعد يومك",
+                        "en": " Furniture made to last.. and make your day"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -5147,8 +5147,8 @@
                     "placeholder": "اكتب العنوان الفرعي",
                     "icon": "sicon-format-text",
                     "value": {
-                        "ar": "صور وفيديوهات",
-                        "en": "Photos & Videos"
+                        "ar": "إلهام وتجارب حقيقية",
+                        "en": "Real inspirations &  experiences"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -5165,8 +5165,8 @@
                     "placeholder": "اكتب وصف القسم",
                     "icon": "sicon-file-text",
                     "value": {
-                        "ar": "شاهد تجارب العملاء الحقيقية من خلال الصور والفيديوهات.",
-                        "en": "Discover real customer experiences through photos and videos."
+                        "ar": "استعرض كيف تضفي القطع لمسة من الدفء والأناقة على منازل عملائنا من خلال الصور والفيديوهات.",
+                        "en": "See how our pieces add a touch of warmth and elegance to our customers' homes through photos and videos."
                     },
                     "multilanguage": true,
                     "required": false,
@@ -5210,34 +5210,34 @@
                         {
                             "tabs.tab_id": "t1",
                             "tabs.title": {
-                                "ar": "آمن للبشرة الحساسة",
-                                "en": "Safe for Sensitive Skin"
+                                "ar": "غرفة المعيشة",
+                                "en": "Living Room"
                             },
                             "tabs.description": {
-                                "ar": "نحرص بعناية على اختيار المكونات التي تدخل في منتجاتنا، ونستبعد كل ما قد يسبب تهيجًا للبشرة الحساسة، لتمنحك عناية آمنة وفعالة كل يوم.",
-                                "en": "We’re strict about what goes into our products (and what stays out). Our therapist calls it setting healthy boundaries."
+                                "ar": "اكتشف تشكيلتنا الواسعة من أثاث غرفة المعيشة الذي يجمع بين الراحة والأناقة ليناسب ذوقك.",
+                                "en": "Discover our wide collection of living room furniture that combines comfort and elegance to suit your taste."
                             }
                         },
                         {
                             "tabs.tab_id": "t2",
                             "tabs.title": {
-                                "ar": "آمن للبشرة الجافة",
-                                "en": "Safe for Dry Skin"
+                                "ar": "غرفة النوم",
+                                "en": "Bedroom"
                             },
                             "tabs.description": {
-                                "ar": "اكتشف فوائد استخدام منتجات مصممة خصيصًا لترطيب البشرة الجافة وتغذيتها بعمق، لتمنحها النعومة والحيوية التي تستحقها.",
-                                "en": "Explore the Benefits of Using Safe-for-Dry Products in Your Everyday Life."
+                                "ar": "استمتع بنوم هادئ ومريح مع مجموعة غرف النوم المصممة بعناية لتوفير أقصى درجات الاسترخاء.",
+                                "en": "Enjoy a peaceful and comfortable sleep with our bedroom collection carefully designed for maximum relaxation."
                             }
                         },
                         {
                             "tabs.tab_id": "t3",
                             "tabs.title": {
-                                "ar": "العناية الطبيعية بالبشرة",
-                                "en": "Organic Skincare"
+                                "ar": "غرفة الطعام",
+                                "en": "Dining Room"
                             },
                             "tabs.description": {
-                                "ar": "استمتع بقوة المكونات الطبيعية مع حلول فعالة للعناية بالبشرة، تمنحك إشراقة صحية وجمالًا يدوم.",
-                                "en": "Unlock the Power of Nature with Effective Organic Skincare Solutions."
+                                "ar": "اجعل أوقات الطعام أكثر تميزاً مع طاولات وكراسي غرف الطعام العصرية والأنيقة.",
+                                "en": "Make meal times more special with our modern and elegant dining room tables and chairs."
                             }
                         }
                     ],
@@ -5336,7 +5336,7 @@
                             "tabs_products.media_type": [
                                 "video"
                             ],
-                            "tabs_products.video_url": "https://furniture-theme-demo.myshopify.com/cdn/shop/videos/c/vp/ca6fc5e2b28c4b3e8edf0c0998b3704a/ca6fc5e2b28c4b3e8edf0c0998b3704a.HD-1080p-7.2Mbps-29795286.mp4?v=0",
+                            "tabs_products.video_url": "https://cdn.files.salla.network/homepage/1010819922/bd3101a9-a81c-4218-a347-5f31e33fdf39-original.webp?_s_uploader_cache_bust=preview-mec5j6by0",
                             "tabs_products.image": ""
                         },
                         {
@@ -5344,7 +5344,7 @@
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/e95a94f9-c9e4-41ab-9478-32aaced4d958.webp",
+                            "tabs_products.image": "https://cdn.files.salla.network/homepage/1010819922/afef5006-a43c-457f-98fd-af6f08eec20f-original.webp?_s_uploader_cache_bust=preview-jb5q4maf2",
                             "tabs_products.video_url": ""
                         },
                         {
@@ -5352,23 +5352,15 @@
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/2fc01c0e-1a15-4949-95fb-f936f56466be.webp",
-                            "tabs_products.video_url": ""
-                        },
-                        {
-                            "tabs_products.tab_id": "t1",
-                            "tabs_products.media_type": [
-                                "video"
-                            ],
-                            "tabs_products.video_url": "https://furniture-theme-demo.myshopify.com/cdn/shop/videos/c/vp/4dfe47ac17be4153886bf3935e13b99b/4dfe47ac17be4153886bf3935e13b99b.HD-1080p-7.2Mbps-29795339.mp4?v=0",
-                            "tabs_products.image": ""
+                            "tabs_products.image": "",
+                            "tabs_products.video_url": "https://cdn.files.salla.network/homepage/1010819922/aaa41eac-30cb-4f58-b291-aee29cdabbef-video.mp4"
                         },
                         {
                             "tabs_products.tab_id": "t2",
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/4ff45f90-5ed2-49ac-8630-4e3fb7e685e7.webp",
+                            "tabs_products.image": "https://cdn.files.salla.network/homepage/1010819922/9c8ab118-0f5f-4df8-ac3e-9f8282157d89-original.webp?_s_uploader_cache_bust=preview-68meo1yog",
                             "tabs_products.video_url": ""
                         },
                         {
@@ -5376,7 +5368,7 @@
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/c6579225-3b14-431e-83df-8e3991ba90b2.webp",
+                            "tabs_products.image": "https://cdn.files.salla.network/homepage/1010819922/ff2610da-2033-492d-ba4c-dcd3752c8c13-original.webp?_s_uploader_cache_bust=preview-545icgype",
                             "tabs_products.video_url": ""
                         },
                         {
@@ -5384,7 +5376,7 @@
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/5a62235f-58b1-4a95-8688-f4b9174046c1.webp",
+                            "tabs_products.image": "https://cdn.files.salla.network/homepage/1010819922/f662eebb-ff06-4dc0-8402-30d5005b591c-original.webp?_s_uploader_cache_bust=preview-u7qxcunva",
                             "tabs_products.video_url": ""
                         },
                         {
@@ -5392,7 +5384,7 @@
                             "tabs_products.media_type": [
                                 "image"
                             ],
-                            "tabs_products.image": "https://cdn.files.salla.network/homepage/930809644/807a744d-7ae0-4b73-8acc-9818900a93bf_686x564.webp",
+                            "tabs_products.image": "https://cdn.files.salla.network/homepage/1010819922/dfe8045d-cd32-4b77-b427-6b160e3fe30f-original.webp?_s_uploader_cache_bust=preview-yx8bfvrhx",
                             "tabs_products.video_url": ""
                         }
                     ],
