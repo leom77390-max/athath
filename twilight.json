@@ -4441,6 +4441,13 @@
             "image": "https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp",
             "fields": [
                 {
+                    "type": "boolean",
+                    "format": "switch",
+                    "id": "full_width",
+                    "label": "عرض كامل الشاشة (Full Width)",
+                    "value": false
+                },
+                {
                     "type": "static",
                     "format": "description",
                     "id": "preview",
