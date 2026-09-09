@@ -3853,15 +3853,15 @@
                     "value": [
                         {
                             "store_pros.block_title": {
-                                "ar": "نقاء الطبيعة",
-                                "en": "Purity of Nature"
+                                "ar": "جودة وتصميم عصري",
+                                "en": "Quality & Modern Design"
                             },
                             "store_pros.subtext": {
-                                "ar": "منتجاتنا مصنوعة من مستخلصات نباتية نقية؛ لنقدم لكم تشكيلة من منتجات التجميل الأصلية التابعة لأبرز العلامات التجارية العالمية الموثوقة.",
-                                "en": "Our products are crafted from pure botanical extracts, offering you a curated selection of authentic beauty products from the most prominent and trusted global brands."
+                                "ar": "نقدم لك أثاثاً يجمع بين الحرفية العالية والتصميم العصري ليناسب ذوقك الرفيع.",
+                                "en": "We offer you furniture that combines high craftsmanship and modern design to suit your refined taste."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/5e450987-18b9-4be1-adef-15d264aeb872_300x164.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/1010819922/c1b1d141-fb06-40ca-90da-0fd0d0ff7f23-original.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -3873,15 +3873,15 @@
                         },
                         {
                             "store_pros.block_title": {
-                                "ar": "ضمان الأصالة والجودة",
-                                "en": "Authenticity & Quality Guaranteed"
+                                "ar": "ضمان المتانة",
+                                "en": "Durability Guaranteed"
                             },
                             "store_pros.subtext": {
-                                "ar": "نوفر لكم منتجات تجميل أصلية ومضمونة، مختارة بعناية من أفضل العلامات التجارية العالمية الموثوقة.",
-                                "en": "We offer you original and guaranteed beauty products, carefully selected from the best trusted international brands."
+                                "ar": "صُممت منتجاتنا لتدوم طويلاً، باستخدام أفضل المواد وأجود أنواع الأخشاب.",
+                                "en": "Our products are built to last, using the best materials and the finest types of wood."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/f26a9982-61bc-431f-8149-63a4291b7697_300x164.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/1010819922/e72ad6a2-3e97-4142-8829-67ed4b443431-original.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -3893,15 +3893,35 @@
                         },
                         {
                             "store_pros.block_title": {
-                                "ar": "الوجهة الأولى للجمال",
-                                "en": "Your Destination for Beauty"
+                                "ar": "راحة لا مثيل لها",
+                                "en": "Unmatched Comfort"
                             },
                             "store_pros.subtext": {
-                                "ar": "وجهتكم الأولى لمنتجات التجميل الأصلية، والمستمدة مباشرة من كبرى العلامات التجارية العالمية الموثوقة.",
-                                "en": "Your go-to destination for authentic beauty products, sourced directly from top global brands."
+                                "ar": "استمتع بتجربة جلوس استثنائية مع تشكيلتنا الواسعة من الكنب والمقاعد المريحة.",
+                                "en": "Enjoy an exceptional seating experience with our wide selection of comfortable sofas and chairs."
                             },
                             "store_pros.animated_icon_id": "jeuxydnh",
-                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/686931608/1824ddec-59f1-41f9-afa4-e2d74457c654_300x164.webp",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/1010819922/7e4cf95f-b04d-42a8-ad32-d4963f6f84ae-original.webp",
+                            "store_pros.icon_list": [
+                                "image_icon"
+                            ],
+                            "store_pros.icon_color": "#000000",
+                            "store_pros.salla_icon": "sicon-store",
+                            "store_pros.subtext_color": "#333333",
+                            "store_pros.blocktitle_color": "#000000",
+                            "store_pros.animated_icon_title": "<span><span>اختيار الأيقونة <a href='https://lordicon.com/icons/wired/outline' target='_blank'>: من هنا</a></span></span>"
+                        },
+                        {
+                            "store_pros.block_title": {
+                                "ar": "أسلوب حياة أنيق",
+                                "en": "Elegant Lifestyle"
+                            },
+                            "store_pros.subtext": {
+                                "ar": "اجعل منزلك يعكس شخصيتك مع قطع أثاث متفردة تضفي لمسة من الفخامة.",
+                                "en": "Make your home reflect your personality with unique furniture pieces that add a touch of luxury."
+                            },
+                            "store_pros.animated_icon_id": "jeuxydnh",
+                            "store_pros.img_icon": "https://cdn.files.salla.network/homepage/1010819922/86447b52-e0d0-4a60-b7d9-8c1f5a04c2ec-original.webp",
                             "store_pros.icon_list": [
                                 "image_icon"
                             ],
@@ -4208,7 +4228,7 @@
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/930809644/69aab835-aba9-4c41-ada0-b08eb1c97815_699x900.webp",
+                    "value": "https://cdn.files.salla.network/homepage/1010819922/7c3aca6a-7c03-42af-b3c7-921f67604b6a-original.webp?_s_uploader_cache_bust=preview-zwbu5c0pz",
                     "required": false,
                     "conditions": [
                         {
