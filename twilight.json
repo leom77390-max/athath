@@ -4455,6 +4455,13 @@
                 },
                 {
                     "type": "boolean",
+                    "format": "switch",
+                    "id": "reverse_layout",
+                    "label": "عكس اتجاه القسم (Reverse Layout)",
+                    "value": false
+                },
+                {
+                    "type": "boolean",
                     "icon": "sicon-toggle-off",
                     "label": "تخصيص ألوان المحتوى ",
                     "id": "customize_content_colors",
