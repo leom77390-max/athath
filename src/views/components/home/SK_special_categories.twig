@@ -36,13 +36,14 @@
 
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
-	{% if main_title or main_description %}
+	{% set show_header = component.show_header is same as(false) ? false : true %}
+	{% if show_header and (main_title or main_description) %}
 		<div class="sk-header">
 			{% if main_title %}
-				<h2>{{ main_title }}</h2>
+				<h2 style="color: {{ component.customize_colors ? component.main_title_color | default('#18181b') : '#18181b' }}">{{ main_title }}</h2>
 			{% endif %}
 			{% if main_description %}
-				<p>{{ main_description }}</p>
+				<p style="color: {{ component.customize_colors ? component.main_description_color | default('#666666') : '#666666' }}">{{ main_description }}</p>
 			{% endif %}
 		</div>
 	{% endif %}
@@ -115,8 +116,8 @@
 						{% endfor %}
 
 					{% else %}
-						{% set title_color  = component.categories_title_color | default('#ffffff') %}
-						{% set shadow_color = component.shadow_card_color      | default('#18181b') %}
+						{% set title_color  = component.customize_colors ? component.categories_title_color | default('#ffffff') : '#ffffff' %}
+						{% set shadow_color = component.customize_colors ? component.shadow_card_color      | default('#18181b') : '#18181b' %}
 
 						{% for cat in component.categories_list %}
 							<div class="sk-slide-item">
@@ -168,8 +169,8 @@
 					{% endfor %}
 
 				{% else %}
-					{% set title_color  = component.categories_title_color | default('#ffffff') %}
-					{% set shadow_color = component.shadow_card_color      | default('#18181b') %}
+					{% set title_color  = component.customize_colors ? component.categories_title_color | default('#ffffff') : '#ffffff' %}
+					{% set shadow_color = component.customize_colors ? component.shadow_card_color      | default('#18181b') : '#18181b' %}
 
 					{% for cat in component.categories_list %}
 						<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
@@ -214,12 +215,10 @@
 		font-weight: 600;
 		margin-bottom: 12px;
 		letter-spacing: -0.5px;
-		color: {{ component.main_title_color | default('#18181b') }};
 	}
 
 	.SK_special_categories_{{position}} .sk-header p {
 		font-size: 1.1rem;
-		color: {{ component.main_description_color | default('#666666') }};
 	}
 
 	.SK_special_categories_{{position}} .sk-container {
@@ -301,28 +300,41 @@
 		z-index: 1;
 	}
 
-	.SK_special_categories_{{position}} .sk-card-overlay {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 60%);
-		transition: background 0.4s ease-in-out;
-		z-index: 2;
-		/* pointer-events: none so it does NOT block link clicks or slider touch events */
-		pointer-events: none;
-	}
-
 	.SK_special_categories_{{position}} .sk-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 10px 20px -10px var(--shadow-color, #18181b);
+		transform: none !important;
+		box-shadow: none !important;
 	}
 
 	.SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
 		transform: scale(1.06);
 	}
 
-	.SK_special_categories_{{position}} .sk-card:hover .sk-card-overlay {
-		background: linear-gradient(to top, var(--shadow-color, #18181b) -20%, transparent 80%);
-		transition-delay: 0.15s;
+	/* Layer that comes from the bottom on hover */
+	.SK_special_categories_{{position}} .sk-card::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		/* Gradient that starts dense at bottom and fades to transparent */
+		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 100%);
+		opacity: 0.9;
+		transform: scaleY(0); /* Start scaled down at the bottom */
+		transform-origin: bottom; /* Anchor the spread to the bottom */
+		transition: transform 0.4s ease-in-out;
+		z-index: 2;
+		pointer-events: none;
+	}
+
+	.SK_special_categories_{{position}} .sk-card:hover::after {
+		transform: scaleY(1); /* Spreads upwards */
+	}
+
+	/* Keep base gradient minimal just for title readability */
+	.SK_special_categories_{{position}} .sk-card-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 20%);
+		z-index: 1;
+		pointer-events: none;
 	}
 
 	.SK_special_categories_{{position}} .sk-card-title {

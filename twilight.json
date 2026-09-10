@@ -7624,6 +7624,13 @@
                     "value": "<h3 style='font-size:16px;font-weight:bold;color:#18181b;margin-top:20px;padding:8px;border-right:4px solid #18181b;'>إعدادات عنوان القسم</h3>"
                 },
                 {
+                    "id": "show_header",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار عنوان القسم",
+                    "value": true
+                },
+                {
                     "id": "main_title",
                     "type": "string",
                     "format": "textarea",
@@ -7638,7 +7645,14 @@
                         }
                     ],
                     "multilanguage": true,
-                    "required": false
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "show_header",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
                 },
                 {
                     "id": "main_title_color",
@@ -7651,6 +7665,11 @@
                     "conditions": [
                         {
                             "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "show_header",
                             "operation": "=",
                             "value": true
                         }
@@ -7671,7 +7690,14 @@
                         }
                     ],
                     "multilanguage": true,
-                    "required": false
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "show_header",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
                 },
                 {
                     "id": "main_description_color",
@@ -7684,6 +7710,11 @@
                     "conditions": [
                         {
                             "id": "customize_colors",
+                            "operation": "=",
+                            "value": true
+                        },
+                        {
+                            "id": "show_header",
                             "operation": "=",
                             "value": true
                         }
