@@ -7172,8 +7172,8 @@
         {
             "key": "9fdf7adf-eb88-489c-80d3-71e9c2b31b04",
             "title": {
-                "en": "special_categories",
-                "ar": "تصنيفات خاصة"
+                "en": "special_categories - furniture",
+                "ar": "تصنيفات خاصة - اثاثي"
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
@@ -7313,6 +7313,40 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "card_shape",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "شكل البطاقة",
+                    "description": "اختر شكل البطاقة (مربع، دائري، أو حواف دائرية).",
+                    "icon": "sicon-layout-grid",
+                    "selected": [
+                        {
+                            "label": "حواف دائرية",
+                            "value": "rounded",
+                            "key": "shape_rounded"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "مربع",
+                            "value": "square",
+                            "key": "shape_square"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "circle",
+                            "key": "shape_circle"
+                        },
+                        {
+                            "label": "حواف دائرية",
+                            "value": "rounded",
+                            "key": "shape_rounded"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": false
                 },
                 {
                     "type": "static",

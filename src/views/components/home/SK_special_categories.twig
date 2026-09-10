@@ -9,6 +9,10 @@
 	{% set source_mode  = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
 	{% set source_mode  = source_mode | default('manual') %}
 
+	{% set _shape_raw   = component.card_shape %}
+	{% set card_shape   = _shape_raw is iterable ? _shape_raw | first : _shape_raw %}
+	{% set card_shape   = card_shape | default('rounded') %}
+
 	{% set items_count  = source_mode == 'manual' ? component.card|length : component.categories_list|length %}
 	{% set desktop_cols = items_count > 0 and items_count < 5 ? items_count : 5 %}
 	{% set tablet_cols  = items_count > 0 and items_count < 3 ? items_count : 3 %}
@@ -128,13 +132,25 @@
 
 	.SK_special_categories_{{position}} .sk-card {
 		position: relative;
-		height: 140px;
+		{% if card_shape == 'square' %}
+			border-radius: 0;
+			aspect-ratio: 1 / 1;
+			height: auto;
+		{% elseif card_shape == 'circle' %}
+			border-radius: 50%;
+			aspect-ratio: 1 / 1;
+			height: auto;
+		{% else %}
+			border-radius: 16px;
+			height: 140px;
+		{% endif %}
 		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
 		text-decoration: none;
+		transition: all 0.4s ease-in-out;
 	}
 
 	.SK_special_categories_{{position}} .sk-card-image {
@@ -155,6 +171,11 @@
 		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 60%);
 		transition: background 0.4s ease-in-out;
 		z-index: 2;
+	}
+
+	.SK_special_categories_{{position}} .sk-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 20px -10px var(--shadow-color, #18181b);
 	}
 
 	.SK_special_categories_{{position}} .sk-card:hover .sk-card-image {
