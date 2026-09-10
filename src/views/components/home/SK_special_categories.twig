@@ -57,7 +57,15 @@
 
 	<div class="sk-container">
 
-		{% if layout_type == 'slider' %}
+		<!-- SK-DEBUG layout_type="{{ layout_type }}" | raw="{{ component.layout_type }}" -->
+
+		{# Broad condition: match 'slider' regardless of whether Salla returns the value
+		   string ("slider"), the key string ("layout_slider"), or a JSON-encoded object #}
+		{% set is_slider = (layout_type == 'slider')
+			or (layout_type == 'layout_slider')
+			or ('slider' in (layout_type | string)) %}
+
+		{% if is_slider %}
 
 			{# ── SLIDER MODE ─────────────────────────────────────────────────────── #}
 			{#
