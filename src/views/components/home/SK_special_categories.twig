@@ -36,6 +36,9 @@
 	{% set c_height_tablet   = component.card_height_tablet | default('140px') %}
 	{% set c_height_mobile   = component.card_height_mobile | default('140px') %}
 
+	{# Page direction — matches the rest of the theme #}
+	{% set page_dir = user.language.code == 'ar' ? 'rtl' : 'ltr' %}
+
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
 	{% if main_title or main_description %}
@@ -50,19 +53,107 @@
 	{% endif %}
 
 	<div class="sk-container">
-		{% set items_html %}
-			{% if source_mode == 'manual' %}
-				{% for item in component.card %}
-					{% set wrapper_class = layout_type == 'slider' ? 'swiper-slide sk-card-wrapper' : 'sk-card-wrapper' %}
-					{% set bg_image    = item.bg_image            | default('') %}
-					{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
-					{% set is_image    = item.background_is_image %}
-					{% set title       = item.title               | default('') %}
-					{% set title_color = item.title_color         | default('#ffffff') %}
-					{% set shadow_color= item.shadow_color        | default('#18181b') %}
-					{% set btn_url     = item.btn_url             | default('#') %}
 
-					<div class="{{ wrapper_class }}">
+		{% if layout_type == 'slider' %}
+
+			{# ── SLIDER MODE ─────────────────────────────────────────────────────── #}
+			{#
+			   salla-slider uses its own slot mechanism.
+			   Rules for correct initialisation:
+			   - slot="items" div must NOT have class="swiper-wrapper"
+			   - Direct children of slot="items" are each rendered as one slide
+			   - Do NOT add class="swiper-slide" to those children; the web component handles it
+			   - dir must match page direction
+			#}
+			<salla-slider
+				id="sk-special-cats-slider-{{ position }}"
+				class="sk-special-cats-slider"
+				dir="{{ page_dir }}"
+				type="carousel"
+				show-controls="false"
+				loop="{{ loop ? 'true' : 'false' }}"
+				slider-config='{
+					"slidesPerView": {{ slider_mobile }},
+					"spaceBetween": 16,
+					"breakpoints": {
+						"0":    { "slidesPerView": {{ slider_mobile }}, "spaceBetween": 12 },
+						"640":  { "slidesPerView": {{ slider_tablet }}, "spaceBetween": 16 },
+						"1024": { "slidesPerView": {{ slider_desktop }}, "spaceBetween": 16 }
+					}
+					{% if autoplay %},
+					"autoplay": {
+						"delay": {{ autoplay_speed }},
+						"disableOnInteraction": false
+					}
+					{% endif %}
+				}'>
+
+				<div slot="items">
+
+					{% if source_mode == 'manual' %}
+						{% for item in component.card %}
+							{% set bg_image    = item.bg_image     | default('') %}
+							{% set bg_color    = item.bg_color     | default('#f5f0eb') %}
+							{% set title       = item.title        | default('') %}
+							{% set title_color = item.title_color  | default('#ffffff') %}
+							{% set shadow_color= item.shadow_color | default('#18181b') %}
+							{% set btn_url     = item.btn_url      | default('#') %}
+
+							<div class="sk-slide-item">
+								<a href="{{ btn_url }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
+									<div class="sk-card-image" style="
+										{% if bg_image %}
+										  background-image: url('{{ bg_image }}');
+										{% else %}
+										  background-color: {{ bg_color }};
+										{% endif %}
+									"></div>
+									<div class="sk-card-overlay"></div>
+									<span class="sk-card-title" style="color: {{ title_color }};">
+										{{ title }}
+									</span>
+								</a>
+							</div>
+						{% endfor %}
+
+					{% else %}
+						{% set title_color  = component.categories_title_color | default('#ffffff') %}
+						{% set shadow_color = component.shadow_card_color      | default('#18181b') %}
+
+						{% for cat in component.categories_list %}
+							<div class="sk-slide-item">
+								<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
+									<div class="sk-card-image" style="
+										{% if cat.image %}
+										  background-image: url('{{ cat.image }}');
+										{% else %}
+										  background-color: #f5f0eb;
+										{% endif %}
+									"></div>
+									<div class="sk-card-overlay"></div>
+									<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
+								</a>
+							</div>
+						{% endfor %}
+					{% endif %}
+
+				</div>
+			</salla-slider>
+
+		{% else %}
+
+			{# ── GRID MODE ────────────────────────────────────────────────────────── #}
+			<div class="sk-grid">
+
+				{% if source_mode == 'manual' %}
+					{% for item in component.card %}
+						{% set bg_image    = item.bg_image     | default('') %}
+						{% set bg_color    = item.bg_color     | default('#f5f0eb') %}
+						{% set title       = item.title        | default('') %}
+						{% set title_color = item.title_color  | default('#ffffff') %}
+						{% set shadow_color= item.shadow_color | default('#18181b') %}
+						{% set btn_url     = item.btn_url      | default('#') %}
+
 						<a href="{{ btn_url }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
 							<div class="sk-card-image" style="
 								{% if bg_image %}
@@ -76,15 +167,13 @@
 								{{ title }}
 							</span>
 						</a>
-					</div>
-				{% endfor %}
-			{% else %}
-				{% set title_color = component.categories_title_color | default('#ffffff') %}
-				{% set shadow_color= component.shadow_card_color      | default('#18181b') %}
+					{% endfor %}
 
-				{% for cat in component.categories_list %}
-					{% set wrapper_class = layout_type == 'slider' ? 'swiper-slide sk-card-wrapper' : 'sk-card-wrapper' %}
-					<div class="{{ wrapper_class }}">
+				{% else %}
+					{% set title_color  = component.categories_title_color | default('#ffffff') %}
+					{% set shadow_color = component.shadow_card_color      | default('#18181b') %}
+
+					{% for cat in component.categories_list %}
 						<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
 							<div class="sk-card-image" style="
 								{% if cat.image %}
@@ -96,35 +185,11 @@
 							<div class="sk-card-overlay"></div>
 							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
 						</a>
-					</div>
-				{% endfor %}
-			{% endif %}
-		{% endset %}
-
-		{% if layout_type == 'slider' %}
-			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="{{ loop ? 'true' : 'false' }}" slider-config='{
-				"slidesPerView": {{ slider_mobile }},
-				"spaceBetween": 16,
-				"breakpoints": {
-					"0": { "slidesPerView": {{ slider_mobile }} },
-					"640": { "slidesPerView": {{ slider_tablet }} },
-					"1024": { "slidesPerView": {{ slider_desktop }} }
-				}
-				{% if autoplay %},
-				"autoplay": {
-					"delay": {{ autoplay_speed }},
-					"disableOnInteraction": false
-				}
+					{% endfor %}
 				{% endif %}
-			}'>
-				<div slot="items" class="swiper-wrapper">
-					{{ items_html }}
-				</div>
-			</salla-slider>
-		{% else %}
-			<div class="sk-grid">
-				{{ items_html }}
+
 			</div>
+
 		{% endif %}
 
 	</div>
@@ -132,7 +197,7 @@
 </section>
 
 <style>
-	.SK_special_categories_{{position}}{
+	.SK_special_categories_{{position}} {
 		padding: 60px 20px;
 		display: flex;
 		flex-direction: column;
@@ -143,6 +208,7 @@
 	.SK_special_categories_{{position}} .sk-header {
 		text-align: center;
 		margin-bottom: 40px;
+		width: 100%;
 	}
 
 	.SK_special_categories_{{position}} .sk-header h2 {
@@ -166,37 +232,47 @@
 		{% endif %}
 	}
 
+	/* ── GRID layout ─────────────────────────────── */
 	.SK_special_categories_{{position}} .sk-grid {
 		display: grid;
 		grid-template-columns: repeat({{ grid_desktop }}, 1fr);
 		gap: 16px;
 		width: 100%;
-		justify-content: center;
 	}
 
-	.SK_special_categories_{{position}} .sk-card-wrapper {
+	/* ── SLIDER layout ───────────────────────────── */
+	.SK_special_categories_{{position}} .sk-special-cats-slider {
 		width: 100%;
 		display: block;
 	}
 
+	/* Slide item wrapper — fills the slide allocated by salla-slider */
+	.SK_special_categories_{{position}} .sk-slide-item {
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
+	/* ── CARD ─────────────────────────────────────── */
 	.SK_special_categories_{{position}} .sk-card {
 		position: relative;
-		{% if control_card_size %}
-			width: {{ c_width_desktop }};
-			height: {{ c_height_desktop }};
-			margin-inline: auto;
-		{% endif %}
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		cursor: pointer;
+		text-decoration: none;
+		width: 100%;
+		/* Shape */
 		{% if card_shape == 'square' %}
 			border-radius: 0;
 			{% if not control_card_size %}
 			aspect-ratio: 1 / 1;
-			height: auto;
 			{% endif %}
 		{% elseif card_shape == 'circle' %}
 			border-radius: 50%;
 			{% if not control_card_size %}
 			aspect-ratio: 1 / 1;
-			height: auto;
 			{% endif %}
 		{% else %}
 			border-radius: 16px;
@@ -204,13 +280,15 @@
 			height: 140px;
 			{% endif %}
 		{% endif %}
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		text-decoration: none;
-		transition: all 0.4s ease-in-out;
+		/* Custom height (desktop default) */
+		{% if control_card_size %}
+		height: {{ c_height_desktop }};
+		{% endif %}
+		/*
+		  Use specific properties only — "transition: all" breaks slider drag
+		  because it transitions "width" and "transform" mid-swipe.
+		*/
+		transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 	}
 
 	.SK_special_categories_{{position}} .sk-card-image {
@@ -231,6 +309,8 @@
 		background: linear-gradient(to top, var(--shadow-color, #18181b) 0%, transparent 60%);
 		transition: background 0.4s ease-in-out;
 		z-index: 2;
+		/* pointer-events: none so it does NOT block link clicks or slider touch events */
+		pointer-events: none;
 	}
 
 	.SK_special_categories_{{position}} .sk-card:hover {
@@ -257,13 +337,13 @@
 		text-align: center;
 	}
 
+	/* ── RESPONSIVE ─────────────────────────────── */
 	@media(max-width: 950px) {
 		.SK_special_categories_{{position}} .sk-grid {
 			grid-template-columns: repeat({{ grid_tablet }}, 1fr);
 		}
 		{% if control_card_size %}
 		.SK_special_categories_{{position}} .sk-card {
-			width: {{ c_width_tablet }};
 			height: {{ c_height_tablet }};
 		}
 		{% endif %}
@@ -275,7 +355,6 @@
 		}
 		{% if control_card_size %}
 		.SK_special_categories_{{position}} .sk-card {
-			width: {{ c_width_mobile }};
 			height: {{ c_height_mobile }};
 		}
 		{% endif %}
