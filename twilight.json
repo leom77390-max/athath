@@ -7388,7 +7388,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "grid"
+                                "grid_cat"
                             ]
                         }
                     ]
@@ -7404,7 +7404,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "grid"
+                                "grid_cat"
                             ]
                         }
                     ]
@@ -7420,7 +7420,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "grid"
+                                "grid_cat"
                             ]
                         }
                     ]
@@ -7436,7 +7436,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         }
                     ]
@@ -7452,7 +7452,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         }
                     ]
@@ -7468,7 +7468,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         }
                     ]
@@ -7484,7 +7484,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         }
                     ]
@@ -7500,7 +7500,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         },
                         {
@@ -7521,7 +7521,7 @@
                             "id": "layout_type",
                             "operation": "=",
                             "value": [
-                                "slider"
+                                "slider_cat"
                             ]
                         }
                     ]
