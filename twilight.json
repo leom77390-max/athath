@@ -7373,7 +7373,9 @@
                             "value": "slider",
                             "key": "layout_slider"
                         }
-                    ]
+                    ],
+                    "source": "Manual",
+                    "required": true
                 },
                 {
                     "id": "grid_desktop_cols",
