@@ -4,24 +4,21 @@
 	  All three fields below are type:"items" format:"dropdown-list".
 	  Salla returns them as an array of selected option objects:
 	    [ { "label": "...", "value": "slider", "key": "..." } ]
-	  "|first" gives the full object — we MUST access .value to get the string.
-	  Without .value the comparison `layout_type == 'slider'` is always false
-	  because we'd be comparing an object to a string.
+	  After |first we get the object. Access .value to extract the string.
+	  If Salla ever returns a plain string instead, .value is null and
+	  |default() falls back to the raw first value transparently.
 	#}
-	{% set _mode_raw    = component.categories_is_manual %}
-	{% set _mode_obj    = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
-	{% set source_mode  = _mode_obj is mapping ? _mode_obj.value : _mode_obj %}
-	{% set source_mode  = source_mode | default('manual') %}
+	{% set _mode_raw   = component.categories_is_manual %}
+	{% set _mode_first = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
+	{% set source_mode = _mode_first.value | default(_mode_first) | default('manual') %}
 
 	{% set _shape_raw   = component.card_shape %}
-	{% set _shape_obj   = _shape_raw is iterable ? _shape_raw | first : _shape_raw %}
-	{% set card_shape   = _shape_obj is mapping ? _shape_obj.value : _shape_obj %}
-	{% set card_shape   = card_shape | default('rounded') %}
+	{% set _shape_first = _shape_raw is iterable ? _shape_raw | first : _shape_raw %}
+	{% set card_shape   = _shape_first.value | default(_shape_first) | default('rounded') %}
 
 	{% set _layout_raw  = component.layout_type %}
-	{% set _layout_obj  = _layout_raw is iterable ? _layout_raw | first : _layout_raw %}
-	{% set layout_type  = _layout_obj is mapping ? _layout_obj.value : _layout_obj %}
-	{% set layout_type  = layout_type | default('grid') %}
+	{% set _layout_first = _layout_raw is iterable ? _layout_raw | first : _layout_raw %}
+	{% set layout_type   = _layout_first.value | default(_layout_first) | default('grid') %}
 
 	{% set grid_desktop    = component.grid_desktop_cols | default(5) %}
 	{% set grid_tablet     = component.grid_tablet_cols | default(3) %}
