@@ -7172,8 +7172,8 @@
         {
             "key": "9fdf7adf-eb88-489c-80d3-71e9c2b31b04",
             "title": {
-                "en": "special_categories",
-                "ar": "تصنيفات خاصة"
+                "en": "special_categories - furniture",
+                "ar": "تصنيفات خاصة - اثاثي"
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
@@ -7311,6 +7311,309 @@
                             "value": [
                                 "categories"
                             ]
+                        }
+                    ]
+                },
+                {
+                    "id": "card_shape",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "شكل البطاقة",
+                    "description": "اختر شكل البطاقة (مربع، دائري، أو حواف دائرية).",
+                    "icon": "sicon-layout-grid",
+                    "selected": [
+                        {
+                            "label": "حواف دائرية",
+                            "value": "rounded",
+                            "key": "shape_rounded"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "مربع",
+                            "value": "square",
+                            "key": "shape_square"
+                        },
+                        {
+                            "label": "دائري",
+                            "value": "circle",
+                            "key": "shape_circle"
+                        },
+                        {
+                            "label": "حواف دائرية",
+                            "value": "rounded",
+                            "key": "shape_rounded"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": false
+                },
+                {
+                    "id": "layout_type",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نوع العرض (Layout)",
+                    "description": "اختر طريقة عرض البطاقات (شبكة أو شريط تمرير).",
+                    "icon": "sicon-layout",
+                    "selected": [
+                      {
+                            "label": "شريط تمرير (Slider)",
+                            "value": "slider_cat",
+                            "key": "layout_slider"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "شبكة (Grid)",
+                            "value": "grid_cat",
+                            "key": "layout_grid"
+                        },
+                        {
+                            "label": "شريط تمرير (Slider)",
+                            "value": "slider_cat",
+                            "key": "layout_slider"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "grid_desktop_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الكمبيوتر)",
+                    "value": 5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "grid_tablet_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الجهاز اللوحي)",
+                    "value": 3,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "grid_mobile_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الجوال)",
+                    "value": 2,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_desktop_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الكمبيوتر)",
+                    "value": 4.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_tablet_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الجهاز اللوحي)",
+                    "value": 3.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_mobile_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الجوال)",
+                    "value": 1.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "التشغيل التلقائي للسلايدر",
+                    "value": true,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_autoplay_speed",
+                    "type": "number",
+                    "format": "number",
+                    "label": "سرعة التشغيل التلقائي (أجزاء من الثانية)",
+                    "value": 3000,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        },
+                        {
+                            "id": "slider_autoplay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تكرار السلايدر (Loop)",
+                    "value": true,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider_cat"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "control_card_size",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "التحكم في حجم البطاقة",
+                    "value": false
+                },
+                {
+                    "id": "card_width_desktop",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الكمبيوتر)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_width_tablet",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الجهاز اللوحي)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_width_mobile",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الجوال)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_desktop",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الكمبيوتر)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_tablet",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الجهاز اللوحي)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_mobile",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الجوال)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
                         }
                     ]
                 },
