@@ -28,6 +28,14 @@
 	{% set loop            = component.slider_loop is not same as(false) %}
 	{% set autoplay_speed  = component.slider_autoplay_speed | default(3000) %}
 
+	{% set control_card_size = component.control_card_size is same as(true) %}
+	{% set c_width_desktop   = component.card_width_desktop | default('100%') %}
+	{% set c_width_tablet    = component.card_width_tablet | default('100%') %}
+	{% set c_width_mobile    = component.card_width_mobile | default('100%') %}
+	{% set c_height_desktop  = component.card_height_desktop | default('140px') %}
+	{% set c_height_tablet   = component.card_height_tablet | default('140px') %}
+	{% set c_height_mobile   = component.card_height_mobile | default('140px') %}
+
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
 	{% if main_title or main_description %}
@@ -173,17 +181,28 @@
 
 	.SK_special_categories_{{position}} .sk-card {
 		position: relative;
+		{% if control_card_size %}
+			width: {{ c_width_desktop }};
+			height: {{ c_height_desktop }};
+			margin-inline: auto;
+		{% endif %}
 		{% if card_shape == 'square' %}
 			border-radius: 0;
+			{% if not control_card_size %}
 			aspect-ratio: 1 / 1;
 			height: auto;
+			{% endif %}
 		{% elseif card_shape == 'circle' %}
 			border-radius: 50%;
+			{% if not control_card_size %}
 			aspect-ratio: 1 / 1;
 			height: auto;
+			{% endif %}
 		{% else %}
 			border-radius: 16px;
+			{% if not control_card_size %}
 			height: 140px;
+			{% endif %}
 		{% endif %}
 		overflow: hidden;
 		display: flex;
@@ -242,11 +261,23 @@
 		.SK_special_categories_{{position}} .sk-grid {
 			grid-template-columns: repeat({{ grid_tablet }}, 1fr);
 		}
+		{% if control_card_size %}
+		.SK_special_categories_{{position}} .sk-card {
+			width: {{ c_width_tablet }};
+			height: {{ c_height_tablet }};
+		}
+		{% endif %}
 	}
 
 	@media(max-width: 600px) {
 		.SK_special_categories_{{position}} .sk-grid {
 			grid-template-columns: repeat({{ grid_mobile }}, 1fr);
 		}
+		{% if control_card_size %}
+		.SK_special_categories_{{position}} .sk-card {
+			width: {{ c_width_mobile }};
+			height: {{ c_height_mobile }};
+		}
+		{% endif %}
 	}
 </style>

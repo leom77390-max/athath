@@ -7525,6 +7525,97 @@
                     ]
                 },
                 {
+                    "id": "control_card_size",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "التحكم في حجم البطاقة",
+                    "value": false
+                },
+                {
+                    "id": "card_width_desktop",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الكمبيوتر)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_width_tablet",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الجهاز اللوحي)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_width_mobile",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عرض البطاقة (الجوال)",
+                    "value": "100%",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_desktop",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الكمبيوتر)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_tablet",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الجهاز اللوحي)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "card_height_mobile",
+                    "type": "string",
+                    "format": "text",
+                    "label": "ارتفاع البطاقة (الجوال)",
+                    "value": "140px",
+                    "conditions": [
+                        {
+                            "id": "control_card_size",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",
