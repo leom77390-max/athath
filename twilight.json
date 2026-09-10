@@ -4438,13 +4438,13 @@
             "icon": "sicon-store",
             "path": "home.SK_split_hero",
             "is_default": true,
-            "image": "https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp",
+            "image": "https://cdn.files.salla.network/other/1010819922/b9c21f49-07dc-43a9-86ff-18f31f9c6fa6-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "preview",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/930809644/bdfaf08a-dc37-44c3-9961-3258bbb06f41_1440x628.webp'></div>"
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/b9c21f49-07dc-43a9-86ff-18f31f9c6fa6-original.webp'></div>"
                 },
                     {
                     "type": "boolean",
@@ -4615,7 +4615,7 @@
                     "format": "image",
                     "label": "صورة الجانب الأيمن",
                     "required": false,
-                    "value": "https://cdn.files.salla.network/homepage/686931608/78903152-8ed4-45ce-8cab-1079dfbdd1bd-original.webp?_s_uploader_cache_bust=preview-rk43draob",
+                    "value": "https://cdn.files.salla.network/other/1010819922/35ddcb48-7382-4309-9a21-7d84d8be0afb-original.webp",
                     "conditions": [
                         {
                             "id": "media_type",
@@ -4631,6 +4631,7 @@
                     "inputType": "url",
                     "label": "رابط الفيديو",
                     "placeholder": "https://...",
+                    "value": "https://cdn.files.salla.network/homepage/1010819922/aaa41eac-30cb-4f58-b291-aee29cdabbef-video.mp4",
                     "required": false,
                     "conditions": [
                         {
@@ -4647,8 +4648,8 @@
                     "label": "النص العلوي الصغير",
                     "multilanguage": true,
                     "value": {
-                        "ar": "لطيف وآمن",
-                        "en": "Gentle And Safe"
+                        "ar": " خامات طبيعية ورائعة",
+                        "en": "Natural And Fantastic Materials"
                     }
                 },
                 {
@@ -4658,8 +4659,8 @@
                     "label": "العنوان الرئيسي",
                     "multilanguage": true,
                     "value": {
-                        "ar": "مصمم خصيصًا للبشرة الحساسة",
-                        "en": "Made for sensitive skin"
+                        "ar": " صُممت خصيصًا لمساحتك الخاصة  ",
+                        "en": "Designed specifically for your private space"
                     }
                 },
                 {
@@ -4669,8 +4670,8 @@
                     "label": "الوصف",
                     "multilanguage": true,
                     "value": {
-                        "ar": "نبتكر منتجات آمنة وفعّالة، مصممة بعناية لتمنحك العناية التي تستحقها وتجعلك تشعرين بالثقة والجمال كل يوم.",
-                        "en": "We create safe products that really work and are designed to make you feel good"
+                        "ar": "نقدم أثاثاً وديكورات مريحة وعالية الجودة مصممة بعناية، تضفي على بيتك دفئاً وأناقة وتمنحك شعوراً بالراحة والجمال في كل لحظة.",
+                        "en": "We offer comfortable, high-quality furniture and decor designed with care. They add warmth and elegance to your home, making you feel cozy and beautiful at all times."
                     }
                 },
                 {
@@ -5745,7 +5746,7 @@
                 "ar": "الأسئلة الشائعة - اثاثي"
             },
             "icon": "sicon-books-pencil",
-            "image": "https://d.top4top.io/p_3829gbckn1.png",
+            "image": "https://cdn.files.salla.network/other/1010819922/6052c6db-88ba-4af4-8547-c5ac27ec9b7e-original.webp",
             "is_default": true,
             "path": "home.SK_faq_section",
             "fields": [
@@ -5753,7 +5754,7 @@
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://b.top4top.io/p_3829gbckn1.png'></div>"
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/6052c6db-88ba-4af4-8547-c5ac27ec9b7e-original.webp'></div>"
                 },
                 {
                     "type": "boolean",
@@ -5825,10 +5826,10 @@
                     "description": "اختر الطريقة التي تريد عرض قسم الأسئلة الشائعة بها.",
                     "icon": "sicon-layout",
                     "selected": [
-                        {
-                            "label": "شجرة ثلاثية الأعمدة (نص + صورة + أكورديون)",
-                            "value": "three_column",
-                            "key": "layout-three-column"
+                         {
+                            "label": "أكورديون فقط — عرض مبسّط",
+                            "value": "accordion_only",
+                            "key": "layout-accordion-only"
                         }
                     ],
                     "options": [
