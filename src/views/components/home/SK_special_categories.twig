@@ -8,17 +8,9 @@
 	  If Salla ever returns a plain string instead, .value is null and
 	  |default() falls back to the raw first value transparently.
 	#}
-	{% set _mode_raw   = component.categories_is_manual %}
-	{% set _mode_first = _mode_raw is iterable ? _mode_raw | first : _mode_raw %}
-	{% set source_mode = _mode_first.value | default(_mode_first) | default('manual') %}
-
-	{% set _shape_raw   = component.card_shape %}
-	{% set _shape_first = _shape_raw is iterable ? _shape_raw | first : _shape_raw %}
-	{% set card_shape   = _shape_first.value | default(_shape_first) | default('rounded') %}
-
-	{% set _layout_raw  = component.layout_type %}
-	{% set _layout_first = _layout_raw is iterable ? _layout_raw | first : _layout_raw %}
-	{% set layout_type   = _layout_first.value | default(_layout_first) | default('grid') %}
+	{% set source_mode = component.categories_is_manual %}
+	{% set card_shape  = component.card_shape %}
+	{% set layout_type = component.layout_type %}
 
 	{% set grid_desktop    = component.grid_desktop_cols | default(5) %}
 	{% set grid_tablet     = component.grid_tablet_cols | default(3) %}
@@ -58,7 +50,9 @@
 	<div class="sk-container">
 
 
-		{% if layout_type == 'slider' or layout_type == 'layout_slider' %}
+
+
+		{% if layout_type == 'slider_cat' %}
 
 			{# ── SLIDER MODE ─────────────────────────────────────────────────────── #}
 			{#

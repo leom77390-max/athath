@@ -7358,19 +7358,19 @@
                     "selected": [
                       {
                             "label": "شريط تمرير (Slider)",
-                            "value": "slider",
+                            "value": "slider_cat",
                             "key": "layout_slider"
                         }
                     ],
                     "options": [
                         {
                             "label": "شبكة (Grid)",
-                            "value": "grid",
+                            "value": "grid_cat",
                             "key": "layout_grid"
                         },
                         {
                             "label": "شريط تمرير (Slider)",
-                            "value": "slider",
+                            "value": "slider_cat",
                             "key": "layout_slider"
                         }
                     ],
