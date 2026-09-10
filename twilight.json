@@ -7177,13 +7177,13 @@
             },
             "icon": "sicon-star2",
             "path": "home.SK_special_categories",
-            "image": "https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1",
+            "image": "https://cdn.files.salla.network/other/1010819922/566e77b8-5ea9-48f9-ba2a-d1a6d0ff265e-original.webp",
             "fields": [
                 {
                     "type": "static",
                     "format": "description",
                     "id": "static-desc",
-                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/homepage/686931608/db1aba7a-6184-4977-b2fa-977a41842db5_1440x335.webp?_s_uploader_cache_bust=preview-ln72lfkb1'></div>"
+                    "value": "<div><img class='w-full' src='https://cdn.files.salla.network/other/1010819922/566e77b8-5ea9-48f9-ba2a-d1a6d0ff265e-original.webp'></div>"
                 },
                 {
                     "type": "static",
@@ -7640,8 +7640,8 @@
                     "icon": "sicon-layout",
                     "value": [
                         {
-                            "ar": "اكتشف أحدث التصنيفات",
-                            "en": "Discover the latest categories"
+                            "ar": " تصفح مجموعاتنا المميزة",
+                            "en": "Discover our featured collections"
                         }
                     ],
                     "multilanguage": true,
@@ -7685,8 +7685,8 @@
                     "icon": "sicon-layout",
                     "value": [
                         {
-                            "ar": "تصفح أبرز التصنيفات واعثر على ما يناسبك",
-                            "en": "Browse the latest categories and find what suits you"
+                            "ar": "اكتشف تشكيلتنا الواسعة من الأثاث والإكسسوارات المصممة لراحتك.",
+                            "en": "Discover our wide collection of furniture and accessories designed for your comfort."
                         }
                     ],
                     "multilanguage": true,
