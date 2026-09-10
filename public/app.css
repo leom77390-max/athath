@@ -38856,6 +38856,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:flex-row{
         flex-direction: row;
     }
+    .md\:flex-row-reverse{
+        flex-direction: row-reverse;
+    }
     .md\:items-start{
         align-items: flex-start;
     }
