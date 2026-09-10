@@ -7356,10 +7356,10 @@
                     "description": "اختر طريقة عرض البطاقات (شبكة أو شريط تمرير).",
                     "icon": "sicon-layout",
                     "selected": [
-                        {
-                            "label": "شبكة (Grid)",
-                            "value": "grid",
-                            "key": "layout_grid"
+                      {
+                            "label": "شريط تمرير (Slider)",
+                            "value": "slider",
+                            "key": "layout_slider"
                         }
                     ],
                     "options": [
