@@ -13,10 +13,20 @@
 	{% set card_shape   = _shape_raw is iterable ? _shape_raw | first : _shape_raw %}
 	{% set card_shape   = card_shape | default('rounded') %}
 
-	{% set items_count  = source_mode == 'manual' ? component.card|length : component.categories_list|length %}
-	{% set desktop_cols = items_count > 0 and items_count < 5 ? items_count : 5 %}
-	{% set tablet_cols  = items_count > 0 and items_count < 3 ? items_count : 3 %}
-	{% set mobile_cols  = items_count > 0 and items_count < 2 ? items_count : 2 %}
+	{% set layout_type_raw = component.layout_type %}
+	{% set layout_type     = layout_type_raw is iterable ? layout_type_raw | first : layout_type_raw %}
+	{% set layout_type     = layout_type | default('grid') %}
+
+	{% set grid_desktop    = component.grid_desktop_cols | default(5) %}
+	{% set grid_tablet     = component.grid_tablet_cols | default(3) %}
+	{% set grid_mobile     = component.grid_mobile_cols | default(2) %}
+
+	{% set slider_desktop  = component.slider_desktop_cols | default(4.5) %}
+	{% set slider_tablet   = component.slider_tablet_cols | default(3.5) %}
+	{% set slider_mobile   = component.slider_mobile_cols | default(1.5) %}
+	{% set autoplay        = component.slider_autoplay is same as(true) %}
+	{% set loop            = component.slider_loop is not same as(false) %}
+	{% set autoplay_speed  = component.slider_autoplay_speed | default(3000) %}
 
 	{% set main_title       = component.main_title %}
 	{% set main_description = component.main_description %}
@@ -32,56 +42,82 @@
 	{% endif %}
 
 	<div class="sk-container">
-
-		<div class="sk-grid">
-
+		{% set items_html %}
 			{% if source_mode == 'manual' %}
 				{% for item in component.card %}
+					{% set wrapper_class = layout_type == 'slider' ? 'swiper-slide sk-card-wrapper' : 'sk-card-wrapper' %}
 					{% set bg_image    = item.bg_image            | default('') %}
 					{% set bg_color    = item.bg_color            | default('#f5f0eb') %}
 					{% set is_image    = item.background_is_image %}
 					{% set title       = item.title               | default('') %}
 					{% set title_color = item.title_color         | default('#ffffff') %}
-					{% set radius      = item.corner_rounded      | default(16) %}
 					{% set shadow_color= item.shadow_color        | default('#18181b') %}
 					{% set btn_url     = item.btn_url             | default('#') %}
 
-					<a href="{{ btn_url }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
-						<div class="sk-card-image" style="
-							{% if bg_image %}
-							  background-image: url('{{ bg_image }}');
-							{% else %}
-							  background-color: {{ bg_color }};
-							{% endif %}
-						"></div>
-						<div class="sk-card-overlay"></div>
-						<span class="sk-card-title" style="color: {{ title_color }};">
-							{{ title }}
-						</span>
-					</a>
+					<div class="{{ wrapper_class }}">
+						<a href="{{ btn_url }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
+							<div class="sk-card-image" style="
+								{% if bg_image %}
+								  background-image: url('{{ bg_image }}');
+								{% else %}
+								  background-color: {{ bg_color }};
+								{% endif %}
+							"></div>
+							<div class="sk-card-overlay"></div>
+							<span class="sk-card-title" style="color: {{ title_color }};">
+								{{ title }}
+							</span>
+						</a>
+					</div>
 				{% endfor %}
-
 			{% else %}
-				{% set radius      = component.corner_rounded         | default(16) %}
 				{% set title_color = component.categories_title_color | default('#ffffff') %}
 				{% set shadow_color= component.shadow_card_color      | default('#18181b') %}
 
 				{% for cat in component.categories_list %}
-					<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
-						<div class="sk-card-image" style="
-							{% if cat.image %}
-							  background-image: url('{{ cat.image }}');
-							{% else %}
-							  background-color: #f5f0eb;
-							{% endif %}
-						"></div>
-						<div class="sk-card-overlay"></div>
-						<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
-					</a>
+					{% set wrapper_class = layout_type == 'slider' ? 'swiper-slide sk-card-wrapper' : 'sk-card-wrapper' %}
+					<div class="{{ wrapper_class }}">
+						<a href="{{ cat.url | default('#') }}" class="sk-card" style="--shadow-color: {{ shadow_color }};">
+							<div class="sk-card-image" style="
+								{% if cat.image %}
+								  background-image: url('{{ cat.image }}');
+								{% else %}
+								  background-color: #f5f0eb;
+								{% endif %}
+							"></div>
+							<div class="sk-card-overlay"></div>
+							<span class="sk-card-title" style="color: {{ title_color }};">{{ cat.name }}</span>
+						</a>
+					</div>
 				{% endfor %}
 			{% endif %}
+		{% endset %}
 
-		</div>
+		{% if layout_type == 'slider' %}
+			<salla-slider id="categories-slider-{{position}}" class="categories-slider" dir="rtl" type="carousel" show-controls="false" loop="{{ loop ? 'true' : 'false' }}" slider-config='{
+				"slidesPerView": {{ slider_mobile }},
+				"spaceBetween": 16,
+				"breakpoints": {
+					"0": { "slidesPerView": {{ slider_mobile }} },
+					"640": { "slidesPerView": {{ slider_tablet }} },
+					"1024": { "slidesPerView": {{ slider_desktop }} }
+				}
+				{% if autoplay %},
+				"autoplay": {
+					"delay": {{ autoplay_speed }},
+					"disableOnInteraction": false
+				}
+				{% endif %}
+			}'>
+				<div slot="items" class="swiper-wrapper">
+					{{ items_html }}
+				</div>
+			</salla-slider>
+		{% else %}
+			<div class="sk-grid">
+				{{ items_html }}
+			</div>
+		{% endif %}
 
 	</div>
 
@@ -124,10 +160,15 @@
 
 	.SK_special_categories_{{position}} .sk-grid {
 		display: grid;
-		grid-template-columns: repeat({{ desktop_cols }}, 1fr);
+		grid-template-columns: repeat({{ grid_desktop }}, 1fr);
 		gap: 16px;
 		width: 100%;
 		justify-content: center;
+	}
+
+	.SK_special_categories_{{position}} .sk-card-wrapper {
+		width: 100%;
+		display: block;
 	}
 
 	.SK_special_categories_{{position}} .sk-card {
@@ -199,13 +240,13 @@
 
 	@media(max-width: 950px) {
 		.SK_special_categories_{{position}} .sk-grid {
-			grid-template-columns: repeat({{ tablet_cols }}, 1fr);
+			grid-template-columns: repeat({{ grid_tablet }}, 1fr);
 		}
 	}
 
 	@media(max-width: 600px) {
 		.SK_special_categories_{{position}} .sk-grid {
-			grid-template-columns: repeat({{ mobile_cols }}, 1fr);
+			grid-template-columns: repeat({{ grid_mobile }}, 1fr);
 		}
 	}
 </style>

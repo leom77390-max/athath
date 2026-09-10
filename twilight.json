@@ -7349,6 +7349,182 @@
                     "required": false
                 },
                 {
+                    "id": "layout_type",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نوع العرض (Layout)",
+                    "description": "اختر طريقة عرض البطاقات (شبكة أو شريط تمرير).",
+                    "icon": "sicon-layout",
+                    "selected": [
+                        {
+                            "label": "شبكة (Grid)",
+                            "value": "grid",
+                            "key": "layout_grid"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "شبكة (Grid)",
+                            "value": "grid",
+                            "key": "layout_grid"
+                        },
+                        {
+                            "label": "شريط تمرير (Slider)",
+                            "value": "slider",
+                            "key": "layout_slider"
+                        }
+                    ]
+                },
+                {
+                    "id": "grid_desktop_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الكمبيوتر)",
+                    "value": 5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "grid_tablet_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الجهاز اللوحي)",
+                    "value": 3,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "grid_mobile_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات في الصف (الجوال)",
+                    "value": 2,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "grid"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_desktop_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الكمبيوتر)",
+                    "value": 4.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_tablet_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الجهاز اللوحي)",
+                    "value": 3.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_mobile_cols",
+                    "type": "number",
+                    "format": "number",
+                    "label": "عدد البطاقات المعروضة (الجوال)",
+                    "value": 1.5,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "التشغيل التلقائي للسلايدر",
+                    "value": true,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_autoplay_speed",
+                    "type": "number",
+                    "format": "number",
+                    "label": "سرعة التشغيل التلقائي (أجزاء من الثانية)",
+                    "value": 3000,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        },
+                        {
+                            "id": "slider_autoplay",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "slider_loop",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تكرار السلايدر (Loop)",
+                    "value": true,
+                    "conditions": [
+                        {
+                            "id": "layout_type",
+                            "operation": "=",
+                            "value": [
+                                "slider"
+                            ]
+                        }
+                    ]
+                },
+                {
                     "type": "static",
                     "format": "title",
                     "id": "header_section_text",
