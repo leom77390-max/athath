@@ -1,12 +1,12 @@
 <style>
     @keyframes marquee-scroll {
         0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-50% - 1rem)); }
+        100% { transform: translateX(-50%); }
     }
     .animate-marquee {
         display: flex;
         width: max-content;
-        animation: marquee-scroll 30s linear infinite;
+        animation: marquee-scroll linear infinite;
     }
     .rtl .animate-marquee {
         animation-direction: reverse;
@@ -35,16 +35,20 @@
     {% if component.show_marquee %}
         <div class="mb-10 md:mb-16 overflow-hidden flex items-center pointer-events-none" 
              style="color: {{ component.marquee_color|default('#EFEFEF') }}; opacity: {{ (component.marquee_opacity|default(40)) / 100 }};">
-            <div class="animate-marquee flex items-center gap-8 md:gap-12 whitespace-nowrap">
-                {% for i in 1..4 %}
-                    {% for item in component.marquee_items %}
-                        <div class="flex items-center gap-8 md:gap-12 px-4">
-                            <span class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-widest uppercase">{{ item.text }}</span>
-                            {% if item.icon %}
-                                <i class="{{ item.icon }} text-2xl md:text-3xl"></i>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+            <div class="animate-marquee flex items-center whitespace-nowrap" style="animation-duration: {{ component.marquee_speed|default(30) }}s;">
+                {% for i in 1..2 %}
+                    <div class="flex items-center shrink-0">
+                        {% for j in 1..4 %}
+                            {% for item in component.marquee_items %}
+                                <div class="flex items-center gap-8 md:gap-12 px-4 md:px-6">
+                                    <span class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-widest uppercase">{{ item.text }}</span>
+                                    {% if item.icon %}
+                                        <i class="{{ item.icon }} text-2xl md:text-3xl"></i>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </div>
         </div>

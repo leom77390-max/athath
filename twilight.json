@@ -9473,6 +9473,24 @@
             ]
         },
         {
+            "id": "marquee_speed",
+            "type": "number",
+            "format": "slider",
+            "inputType": "range",
+            "label": "سرعة الشريط المتحرك (بالثواني، أقل يعني أسرع)",
+            "value": 30,
+            "minimum": 5,
+            "maximum": 120,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_marquee",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
             "id": "marquee_items",
             "type": "collection",
             "format": "collection",
