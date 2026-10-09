@@ -1,0 +1,157 @@
+<style>
+    @keyframes marquee-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - 1rem)); }
+    }
+    .animate-marquee {
+        display: flex;
+        width: max-content;
+        animation: marquee-scroll 30s linear infinite;
+    }
+    .rtl .animate-marquee {
+        animation-direction: reverse;
+    }
+    
+    /* مظهر أداة السحب */
+    .ba-handle {
+        touch-action: pan-y;
+    }
+    .ba-handle::before, .ba-handle::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 12px;
+        background-color: #666;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .ba-handle::before { left: 12px; }
+    .ba-handle::after { right: 12px; }
+</style>
+
+<section class="py-12 md:py-20 overflow-hidden" style="background-color: {{ component.bg_color|default('#7B3F2A') }};">
+    
+    {# الشريط المتحرك العلوي #}
+    {% if component.show_marquee %}
+        <div class="mb-10 md:mb-16 overflow-hidden flex items-center pointer-events-none" 
+             style="color: {{ component.marquee_color|default('#EFEFEF') }}; opacity: {{ (component.marquee_opacity|default(40)) / 100 }};">
+            <div class="animate-marquee flex items-center gap-8 md:gap-12 whitespace-nowrap">
+                {% for i in 1..4 %}
+                    {% for item in component.marquee_items %}
+                        <div class="flex items-center gap-8 md:gap-12 px-4">
+                            <span class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-widest uppercase">{{ item.text }}</span>
+                            {% if item.icon %}
+                                <i class="{{ item.icon }} text-2xl md:text-3xl"></i>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="{% if component.apply_container %} container mx-auto px-4 {% else %} w-full px-6 {% endif %}">
+        
+        {# أداة مقارنة الصور #}
+        <div class="relative w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-video bg-black overflow-hidden shadow-2xl select-none" 
+             id="ba-slider-{{ component.id }}" dir="ltr"> {# استخدمنا dir=ltr لضمان صحة حسابات الماوس دائماً #}
+            
+            {# الصورة الخلفية (بعد) #}
+            <img src="{{ component.image_after }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="After">
+            
+            {% if component.label_after %}
+                <span class="absolute top-4 right-4 bg-white text-black px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-10">
+                    {{ component.label_after }}
+                </span>
+            {% endif %}
+
+            {# الطبقة العلوية المقطوعة (قبل) #}
+            <div class="ba-before-panel absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 border-white z-20">
+                <img src="{{ component.image_before }}" class="ba-before-img absolute inset-0 h-full object-cover pointer-events-none" alt="Before" style="max-width: none;">
+                
+                {% if component.label_before %}
+                    <span class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-30">
+                        {{ component.label_before }}
+                    </span>
+                {% endif %}
+            </div>
+
+            {# مقبض السحب #}
+            <div class="ba-handle absolute inset-y-0 left-1/2 w-0 z-30 cursor-ew-resize flex items-center justify-center">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg relative -ml-5"></div>
+            </div>
+            
+        </div>
+
+        {# النصوص السفلية #}
+        <div class="text-center mt-12 md:mt-16 flex flex-col items-center">
+            {% if component.bottom_title %}
+                <h2 class="text-2xl md:text-4xl font-serif leading-snug md:leading-normal mb-6" style="color: {{ component.bottom_title_color|default('#FFFFFF') }};">
+                    {{ component.bottom_title|nl2br }}
+                </h2>
+            {% endif %}
+
+            {% if component.bottom_link_text %}
+                <a href="{{ component.bottom_link_url }}" class="text-xs md:text-sm font-bold tracking-widest uppercase border-b border-current pb-1 transition-opacity hover:opacity-75" style="color: {{ component.bottom_link_color|default('#EFEFEF') }};">
+                    {{ component.bottom_link_text }}
+                </a>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('ba-slider-{{ component.id }}');
+        if (!container) return;
+
+        const beforePanel = container.querySelector('.ba-before-panel');
+        const beforeImg = container.querySelector('.ba-before-img');
+        const handle = container.querySelector('.ba-handle');
+        let isDragging = false;
+
+        // مطابقة عرض الصورة العلوية مع عرض الحاوية الأصلية
+        function updateImgWidth() {
+            beforeImg.style.width = container.offsetWidth + 'px';
+        }
+        updateImgWidth();
+        window.addEventListener('resize', updateImgWidth);
+
+        // وظيفة حساب وتحديث مكان الفاصل
+        function moveSlider(pageX) {
+            const rect = container.getBoundingClientRect();
+            let x = pageX - rect.left;
+            x = Math.max(0, Math.min(x, rect.width)); // التأكد من عدم الخروج عن حدود الصورة
+            let percent = (x / rect.width) * 100;
+            
+            beforePanel.style.width = percent + '%';
+            handle.style.left = percent + '%';
+        }
+
+        // أحداث الماوس واللمس
+        const startDrag = (e) => { 
+            isDragging = true; 
+            container.classList.add('cursor-ew-resize');
+        };
+        const endDrag = (e) => { 
+            isDragging = false; 
+            container.classList.remove('cursor-ew-resize');
+        };
+        const onDrag = (e) => {
+            if (!isDragging) return;
+            e.preventDefault(); // منع تحديد النصوص أثناء السحب
+            let pageX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            moveSlider(pageX);
+        };
+
+        container.addEventListener('mousedown', startDrag);
+        container.addEventListener('touchstart', startDrag, {passive: true});
+        
+        window.addEventListener('mouseup', endDrag);
+        window.addEventListener('touchend', endDrag);
+        
+        window.addEventListener('mousemove', onDrag);
+        window.addEventListener('touchmove', onDrag, {passive: false});
+    });
+</script>

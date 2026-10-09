@@ -9393,7 +9393,230 @@
                     ]
                 }
             ]
+        },
+        {
+    "key": "ba12c3d4-e5f6-7a8b-9c0d-beforeafter1",
+    "title": {
+        "ar": "مقارنة الصور (قبل وبعد) - جلوي",
+        "en": "Before & After Slider - Glowy"
+    },
+    "icon": "sicon-image-compare",
+    "path": "home.before-after",
+    "is_default": false,
+    "fields": [
+        {
+            "id": "apply_container",
+            "type": "boolean",
+            "format": "switch",
+            "label": "إضافة القسم داخل حدود (Container)",
+            "value": true,
+            "selected": false,
+            "required": false
+        },
+        {
+            "id": "bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية القسم",
+            "value": "#7B3F2A",
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "marquee_title",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>الشريط المتحرك العلوي</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "show_marquee",
+            "type": "boolean",
+            "format": "switch",
+            "label": "إظهار الشريط المتحرك",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
+        {
+            "id": "marquee_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص الشريط المتحرك",
+            "value": "#EFEFEF",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_marquee",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "marquee_opacity",
+            "type": "number",
+            "format": "slider",
+            "inputType": "range",
+            "label": "شفافية نص الشريط المتحرك (%)",
+            "value": 40,
+            "minimum": 10,
+            "maximum": 100,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "show_marquee",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "marquee_items",
+            "type": "collection",
+            "format": "collection",
+            "label": "عناصر الشريط",
+            "minLength": 1,
+            "maxLength": 10,
+            "conditions": [
+                {
+                    "id": "show_marquee",
+                    "operation": "=",
+                    "value": true
+                }
+            ],
+            "fields": [
+                {
+                    "id": "marquee_items.text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "النص",
+                    "multilanguage": true,
+                    "required": true
+                },
+                {
+                    "id": "marquee_items.icon",
+                    "type": "string",
+                    "format": "icon",
+                    "label": "الأيقونة الفاصلة",
+                    "icon": "sicon-star",
+                    "required": false,
+                    "value": "sicon-asterisk"
+                }
+            ],
+            "value": [
+                {
+                    "marquee_items.text": {"ar": "ابحث عن الإلهام", "en": "FIND INSPIRATION"},
+                    "marquee_items.icon": "sicon-asterisk"
+                },
+                {
+                    "marquee_items.text": {"ar": "تصميم للحياة", "en": "DESIGN FOR LIVING"},
+                    "marquee_items.icon": "sicon-asterisk"
+                },
+                {
+                    "marquee_items.text": {"ar": "فريد من نوعه", "en": "UNIQUE"},
+                    "marquee_items.icon": "sicon-asterisk"
+                }
+            ]
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "images_title",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>صور المقارنة</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "image_before",
+            "type": "string",
+            "format": "image",
+            "label": "صورة (قبل)",
+            "required": true
+        },
+        {
+            "id": "label_before",
+            "type": "string",
+            "format": "text",
+            "label": "نص علامة (قبل)",
+            "multilanguage": true,
+            "value": {"ar": "قبل", "en": "Before"},
+            "required": false
+        },
+        {
+            "id": "image_after",
+            "type": "string",
+            "format": "image",
+            "label": "صورة (بعد)",
+            "required": true
+        },
+        {
+            "id": "label_after",
+            "type": "string",
+            "format": "text",
+            "label": "نص علامة (بعد)",
+            "multilanguage": true,
+            "value": {"ar": "بعد", "en": "After"},
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "bottom_title_schema",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>النصوص السفلية</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "bottom_title",
+            "type": "string",
+            "format": "textarea",
+            "label": "العنوان السفلي",
+            "multilanguage": true,
+            "value": {"ar": "تحويل منزلك إلى\nمكان أفضل للعيش", "en": "Converting home into a\nBETTER PLACE to live"},
+            "required": false
+        },
+        {
+            "id": "bottom_title_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون العنوان السفلي",
+            "value": "#FFFFFF",
+            "required": false
+        },
+        {
+            "id": "bottom_link_text",
+            "type": "string",
+            "format": "text",
+            "label": "نص الرابط السفلي",
+            "multilanguage": true,
+            "value": {"ar": "ابحث عن الإلهام لمنزلك", "en": "FIND INSPIRATION FOR YOUR HOME"},
+            "required": false
+        },
+        {
+            "type": "items",
+            "id": "bottom_link_url",
+            "format": "variable-list",
+            "label": "الرابط",
+            "searchable": true,
+            "source": "custom",
+            "sources": [
+                { "label": "رابط خارجي", "key": "custom", "value": "custom" },
+                { "label": "تصنيف", "key": "categories", "value": "categories" }
+            ],
+            "required": false
+        },
+        {
+            "id": "bottom_link_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون الرابط",
+            "value": "#EFEFEF",
+            "required": false
         }
+    ]
+}
     
     ],
     "support_url": "https://tafrahdigital.vercel.app/",
