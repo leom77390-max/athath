@@ -9461,7 +9461,7 @@
             "inputType": "range",
             "label": "شفافية نص الشريط المتحرك (%)",
             "value": 40,
-            "minimum": 10,
+            "minimum": 0,
             "maximum": 100,
             "required": false,
             "conditions": [
