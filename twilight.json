@@ -9580,6 +9580,49 @@
         {
             "type": "static",
             "format": "title",
+            "id": "colors_title_schema_ba",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>ألوان السلايدر والعلامات</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "label_bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية العلامات (قبل/بعد)",
+            "value": "#FFFFFF",
+            "required": false
+        },
+        {
+            "id": "label_text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص العلامات (قبل/بعد)",
+            "value": "#000000",
+            "required": false
+        },
+        {
+            "id": "slider_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون فاصل المقارنة والدائرة",
+            "value": "#FFFFFF",
+            "required": false
+        },
+        {
+            "id": "slider_icon_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون أيقونة السحب (الخطوط)",
+            "value": "#666666",
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
             "id": "bottom_title_schema",
             "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>النصوص السفلية</div>",
             "variant": "h6"

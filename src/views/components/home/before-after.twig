@@ -16,12 +16,13 @@
     .ba-handle {
         touch-action: pan-y;
     }
-    .ba-handle::before, .ba-handle::after {
+    #ba-slider-{{ component.id }} .ba-handle::before, 
+    #ba-slider-{{ component.id }} .ba-handle::after {
         content: '';
         position: absolute;
         width: 2px;
         height: 12px;
-        background-color: #666;
+        background-color: {{ component.slider_icon_color|default('#666666') }};
         top: 50%;
         transform: translateY(-50%);
     }
@@ -64,17 +65,20 @@
             <img src="{{ component.image_after }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="After">
             
             {% if component.label_after %}
-                <span class="absolute top-4 right-4 bg-white text-black px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-10">
+                <span class="absolute top-4 right-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-10"
+                      style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};">
                     {{ component.label_after }}
                 </span>
             {% endif %}
 
             {# الطبقة العلوية المقطوعة (قبل) #}
-            <div class="ba-before-panel absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 border-white z-20">
+            <div class="ba-before-panel absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 z-20"
+                 style="border-color: {{ component.slider_color|default('#FFFFFF') }};">
                 <img src="{{ component.image_before }}" class="ba-before-img absolute inset-0 h-full object-cover pointer-events-none" alt="Before" style="max-width: none;">
                 
                 {% if component.label_before %}
-                    <span class="absolute top-4 left-4 bg-white text-black px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-30">
+                    <span class="absolute top-4 left-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-30"
+                          style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};">
                         {{ component.label_before }}
                     </span>
                 {% endif %}
@@ -82,7 +86,8 @@
 
             {# مقبض السحب #}
             <div class="ba-handle absolute inset-y-0 left-1/2 w-0 z-30 cursor-ew-resize flex items-center justify-center">
-                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg relative -ml-5"></div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-lg relative -ml-5"
+                     style="background-color: {{ component.slider_color|default('#FFFFFF') }};"></div>
             </div>
             
         </div>
