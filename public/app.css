@@ -2379,11 +2379,6 @@ input:where([type='file']):focus{
 .border-transparent{
     border-color: transparent;
 }
-.border-white{
-    --tw-border-opacity: 1;
-    border-color: rgba(255, 255, 255, 1);
-    border-color: rgba(255, 255, 255, var(--tw-border-opacity, 1));
-}
 .border-zinc-900{
     --tw-border-opacity: 1;
     border-color: rgba(24, 24, 27, 1);
@@ -3096,11 +3091,6 @@ input:where([type='file']):focus{
 }
 .text-background{
     color: var(--color-background);
-}
-.text-black{
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, 1);
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .text-blue-500{
     --tw-text-opacity: 1;

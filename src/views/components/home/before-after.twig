@@ -1,7 +1,7 @@
 <style>
     @keyframes marquee-scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% { transform: translateX(50%); }
+        100% { transform: translateX(0); }
     }
     .animate-marquee {
         display: flex;
@@ -34,8 +34,10 @@
     
     {# الشريط المتحرك العلوي #}
     {% if component.show_marquee %}
-        <div class="mb-10 md:mb-16 overflow-hidden flex items-center pointer-events-none" 
-             style="color: {{ component.marquee_color|default('#EFEFEF') }}; opacity: {{ (component.marquee_opacity|default(40)) / 100 }};">
+        <div
+            class="mb-10 md:mb-16 py-3 overflow-hidden flex items-center pointer-events-none"
+            style="color: {{ component.marquee_color|default('#EFEFEF') }}; opacity: {{ (component.marquee_opacity|default(40)) / 100 }};"
+        >
             <div class="animate-marquee flex items-center whitespace-nowrap" style="animation-duration: {{ component.marquee_speed|default(30) }}s;">
                 {% for i in 1..2 %}
                     <div class="flex items-center shrink-0">
@@ -58,27 +60,36 @@
     <div class="{% if component.apply_container %} container mx-auto px-4 {% else %} w-full px-6 {% endif %}">
         
         {# أداة مقارنة الصور #}
-        <div class="relative w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-video bg-black overflow-hidden shadow-2xl select-none" 
-             id="ba-slider-{{ component.id }}" dir="ltr"> {# استخدمنا dir=ltr لضمان صحة حسابات الماوس دائماً #}
+        <div
+            class="relative w-full max-w-5xl mx-auto aspect-[4/3] md:aspect-video bg-black overflow-hidden shadow-2xl select-none"
+            id="ba-slider-{{ component.id }}"
+            dir="ltr"
+        > {# استخدمنا dir=ltr لضمان صحة حسابات الماوس دائماً #}
             
             {# الصورة الخلفية (بعد) #}
             <img src="{{ component.image_after }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="After">
             
             {% if component.label_after %}
-                <span class="absolute top-4 right-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-10"
-                      style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};">
+                <span
+                    class="absolute top-4 right-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-10"
+                    style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};"
+                >
                     {{ component.label_after }}
                 </span>
             {% endif %}
 
             {# الطبقة العلوية المقطوعة (قبل) #}
-            <div class="ba-before-panel absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 z-20"
-                 style="border-color: {{ component.slider_color|default('#FFFFFF') }};">
+            <div
+                class="ba-before-panel absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 z-20"
+                style="border-color: {{ component.slider_color|default('#FFFFFF') }};"
+            >
                 <img src="{{ component.image_before }}" class="ba-before-img absolute inset-0 h-full object-cover pointer-events-none" alt="Before" style="max-width: none;">
                 
                 {% if component.label_before %}
-                    <span class="absolute top-4 left-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-30"
-                          style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};">
+                    <span
+                        class="absolute top-4 left-4 px-3 py-1 text-xs md:text-sm font-bold shadow-sm z-30"
+                        style="background-color: {{ component.label_bg_color|default('#FFFFFF') }}; color: {{ component.label_text_color|default('#000000') }};"
+                    >
                         {{ component.label_before }}
                     </span>
                 {% endif %}
@@ -86,8 +97,10 @@
 
             {# مقبض السحب #}
             <div class="ba-handle absolute inset-y-0 left-1/2 w-0 z-30 cursor-ew-resize flex items-center justify-center">
-                <div class="w-10 h-10 rounded-full flex items-center justify-center shadow-lg relative -ml-5"
-                     style="background-color: {{ component.slider_color|default('#FFFFFF') }};"></div>
+                <div
+                    class="w-10 h-10 rounded-lg flex items-center justify-center shadow-lg relative -ml-5"
+                    style="background-color: {{ component.slider_color|default('#FFFFFF') }};"
+                ></div>
             </div>
             
         </div>
@@ -101,7 +114,7 @@
             {% endif %}
 
             {% if component.bottom_link_text %}
-                <a href="{{ component.bottom_link_url }}" class="text-xs md:text-sm font-bold tracking-widest uppercase border-b border-current pb-1 transition-opacity hover:opacity-75" style="color: {{ component.bottom_link_color|default('#EFEFEF') }};">
+                <a href="{{ component.bottom_link_url }}" class="special-btn text-xs md:text-sm font-bold tracking-widest uppercase transition-opacity hover:opacity-75" style="color: {{ component.bottom_link_color|default('#EFEFEF') }};">
                     {{ component.bottom_link_text }}
                 </a>
             {% endif %}
@@ -111,21 +124,21 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const container = document.getElementById('ba-slider-{{ component.id }}');
+    document.addEventListener("DOMContentLoaded", function () {
+        const container = document.getElementById("ba-slider-{{ component.id }}");
         if (!container) return;
 
-        const beforePanel = container.querySelector('.ba-before-panel');
-        const beforeImg = container.querySelector('.ba-before-img');
-        const handle = container.querySelector('.ba-handle');
+        const beforePanel = container.querySelector(".ba-before-panel");
+        const beforeImg = container.querySelector(".ba-before-img");
+        const handle = container.querySelector(".ba-handle");
         let isDragging = false;
 
         // مطابقة عرض الصورة العلوية مع عرض الحاوية الأصلية
         function updateImgWidth() {
-            beforeImg.style.width = container.offsetWidth + 'px';
+            beforeImg.style.width = container.offsetWidth + "px";
         }
         updateImgWidth();
-        window.addEventListener('resize', updateImgWidth);
+        window.addEventListener("resize", updateImgWidth);
 
         // وظيفة حساب وتحديث مكان الفاصل
         function moveSlider(pageX) {
@@ -133,34 +146,34 @@
             let x = pageX - rect.left;
             x = Math.max(0, Math.min(x, rect.width)); // التأكد من عدم الخروج عن حدود الصورة
             let percent = (x / rect.width) * 100;
-            
-            beforePanel.style.width = percent + '%';
-            handle.style.left = percent + '%';
+
+            beforePanel.style.width = percent + "%";
+            handle.style.left = percent + "%";
         }
 
         // أحداث الماوس واللمس
-        const startDrag = (e) => { 
-            isDragging = true; 
-            container.classList.add('cursor-ew-resize');
+        const startDrag = (e) => {
+            isDragging = true;
+            container.classList.add("cursor-ew-resize");
         };
-        const endDrag = (e) => { 
-            isDragging = false; 
-            container.classList.remove('cursor-ew-resize');
+        const endDrag = (e) => {
+            isDragging = false;
+            container.classList.remove("cursor-ew-resize");
         };
         const onDrag = (e) => {
             if (!isDragging) return;
             e.preventDefault(); // منع تحديد النصوص أثناء السحب
-            let pageX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            let pageX = e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
             moveSlider(pageX);
         };
 
-        container.addEventListener('mousedown', startDrag);
-        container.addEventListener('touchstart', startDrag, {passive: true});
-        
-        window.addEventListener('mouseup', endDrag);
-        window.addEventListener('touchend', endDrag);
-        
-        window.addEventListener('mousemove', onDrag);
-        window.addEventListener('touchmove', onDrag, {passive: false});
+        container.addEventListener("mousedown", startDrag);
+        container.addEventListener("touchstart", startDrag, { passive: true });
+
+        window.addEventListener("mouseup", endDrag);
+        window.addEventListener("touchend", endDrag);
+
+        window.addEventListener("mousemove", onDrag);
+        window.addEventListener("touchmove", onDrag, { passive: false });
     });
 </script>
