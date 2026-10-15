@@ -9707,15 +9707,6 @@
             "required": false
         },
         {
-            "id": "text_color",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون النصوص العامة",
-            "value": "#18181B",
-            "required": false
-        },
-        {
             "type": "static",
             "format": "title",
             "id": "main_title_sec_header",
@@ -9735,12 +9726,73 @@
             "required": true
         },
         {
+            "type": "static",
+            "format": "title",
+            "id": "colors_sec_header",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>تخصيص الألوان</div>",
+            "variant": "h6"
+        },
+        {
             "id": "title_color",
             "type": "string",
             "format": "color",
             "inputType": "color",
             "label": "لون العنوان الرئيسي",
             "value": "#18181B",
+            "required": false
+        },
+        {
+            "id": "quote_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص الاقتباس",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "id": "author_name_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون اسم الكاتب",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "id": "author_sub_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون الموقع أو التوضيح",
+            "value": "#71717A",
+            "required": false
+        },
+        {
+            "id": "nav_arrows_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون أسهم التنقل",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "id": "nav_arrows_border_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون إطار أزرار التنقل",
+            "value": "#D1CDC7",
+            "required": false
+        },
+        {
+            "id": "nav_arrows_bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية أزرار التنقل",
+            "value": "transparent",
             "required": false
         },
         {

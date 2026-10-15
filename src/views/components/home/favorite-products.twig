@@ -22,59 +22,41 @@
     {% set title_val = c.title[user.language.code]|default(c.title.ar|default(c.title.en|default('منتجاتنا المفضلة'))) %}
 {% endif %}
 
-{# Default Slides Data (Arabic first, perfectly matching the design) #}
-{% set default_slides = [
-    {
-        'lifestyle_image': 'images/fav_scene_dining.jpg' | asset,
-        'quote': 'طاولة وكرسي بتصميم خشبي عصري ومتقن. نظراً لطبيعة المواد المستخدمة، فإن درجات الخشب الطبيعي تضفي دفئاً وسحراً استثنائياً على المكان...',
-        'author_name': 'جيني ويلسون',
-        'author_sub': 'نيو مكسيكو',
-        'product_img': 'images/fav_prod_chair1.jpg' | asset,
-        'product_cat': 'كنب ومقاعد',
-        'product_title': 'كرسي استرخاء هيجي',
-        'product_price': '999 ر.س'
-    },
-    {
-        'lifestyle_image': 'images/fav_scene_kitchen.jpg' | asset,
-        'quote': 'التصميم الأنيق ينسجم بشكل رائع مع ديكور المنزل العصري. جودة التصنيع فائقة والتفاصيل متقنة لأبعد حد، مساحته مريحة وواسعة جداً لستة أشخاص.',
-        'author_name': 'ديفيد ر.',
-        'author_sub': 'لوس أنجلوس',
-        'product_img': 'images/fav_prod_chair2.jpg' | asset,
-        'product_cat': 'كنب ومقاعد',
-        'product_title': 'كرسي بارلور كلوب',
-        'product_price': '1,250 ر.س'
-    }
-] %}
+{# Dynamic Color Settings from Schema #}
+{% set bg_color = c.bg_color|default('#FAF8F5') %}
+{% set title_color = c.title_color|default('#18181B') %}
+{% set quote_color = c.quote_color|default('#18181B') %}
+{% set author_color = c.author_name_color|default('#18181B') %}
+{% set author_sub_color = c.author_sub_color|default('#71717A') %}
+{% set nav_arrows_color = c.nav_arrows_color|default('#18181B') %}
+{% set nav_arrows_border_color = c.nav_arrows_border_color|default('#D1CDC7') %}
+{% set nav_arrows_bg_color = c.nav_arrows_bg_color|default('transparent') %}
 
 {% set slides = c.slides|default([]) %}
-{% if slides|length == 0 %}
-    {% set slides = default_slides %}
-{% endif %}
-
-{# Google Fonts for high-end luxury editorial serif typography (Arabic & English) #}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
 <section
-    class="fav-products-section py-16 md:py-24 overflow-hidden relative"
+    class="fav-products-section{{ position }} py-16 md:py-24 overflow-hidden relative"
     id="{{ section_id }}"
-    style="background-color: {{ c.bg_color|default('#FAF8F5') }}; color: {{ c.text_color|default('#18181B') }};"
+    style="background-color: {{ bg_color }};"
 >
     <div class="{% if c.apply_container is not defined or c.apply_container %} container mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 {% else %} w-full px-5 sm:px-8 {% endif %}">
         
         {# ================== TOP HEADER ROW ================== #}
         <div class="flex items-center justify-between mb-8 sm:mb-12 lg:mb-14">
             {# Main Fixed Title #}
-            <h2 class="fav-section-title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-normal tracking-tight text-[#18181B]">
+            <h2
+                class="fav-section-title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-normal tracking-tight"
+                style="color: {{ title_color }};"
+            >
                 {{ title_val }}
             </h2>
 
-            {# Top Navigation Controls: Prev / Next buttons matching screenshot #}
+            {# Top Navigation Controls: Prev / Next buttons #}
             <div class="fav-nav-arrows flex items-center gap-3">
                 <button
                     type="button"
-                    class="fav-nav-prev w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D1CDC7] hover:border-[#18181B] bg-transparent hover:bg-white text-[#18181B] flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    class="fav-nav-prev w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    style="border: 1px solid {{ nav_arrows_border_color }}; background-color: {{ nav_arrows_bg_color }}; color: {{ nav_arrows_color }};"
                     aria-label="{{ is_ar ? 'السابق' : 'Previous slide' }}"
                 >
                     <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +65,8 @@
                 </button>
                 <button
                     type="button"
-                    class="fav-nav-next w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#D1CDC7] hover:border-[#18181B] bg-transparent hover:bg-white text-[#18181B] flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    class="fav-nav-next w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    style="border: 1px solid {{ nav_arrows_border_color }}; background-color: {{ nav_arrows_bg_color }}; color: {{ nav_arrows_color }};"
                     aria-label="{{ is_ar ? 'التالي' : 'Next slide' }}"
                 >
                     <svg class="w-4 h-4 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,180 +77,157 @@
         </div>
 
         {# ================== SLIDER VIEWPORT ================== #}
-        <div class="fav-slider-viewport relative overflow-hidden">
-            <div class="fav-slider-track flex transition-transform duration-500 ease-out">
-                
-                {% for slide in slides %}
-                    {% set default_data = default_slides[loop.index0 % default_slides|length] %}
+        {% if slides|length > 0 %}
+            <div class="fav-slider-viewport relative overflow-hidden">
+                <div class="fav-slider-track flex transition-transform duration-500 ease-out">
+                    
+                    {% for slide in slides %}
+                        {# Resolve Lifestyle Scene Image directly from Schema #}
+                        {% set scene_img = slide.lifestyle_image|default(slide['slides.lifestyle_image']) %}
 
-                    {# Resolve Lifestyle Scene Image #}
-                    {% set scene_img = slide.lifestyle_image|default(slide['slides.lifestyle_image']) %}
-                    {% if not scene_img or ('fav_scene_' in scene_img) %}
-                        {% set scene_img = default_data.lifestyle_image %}
-                    {% endif %}
+                        {# Resolve Quote (Multilanguage support from Schema) #}
+                        {% set slide_quote = slide.quote|default(slide['slides.quote']) %}
+                        {% if slide_quote is iterable %}
+                            {% set slide_quote = slide_quote[user.language.code]|default(slide_quote.ar|default(slide_quote.en)) %}
+                        {% endif %}
 
-                    {# Resolve Quote (Multilanguage support with Arabic default) #}
-                    {% set slide_quote = slide.quote|default(slide['slides.quote']) %}
-                    {% if slide_quote is iterable %}
-                        {% set slide_quote = slide_quote[user.language.code]|default(slide_quote.ar|default(slide_quote.en)) %}
-                    {% endif %}
-                    {% if not slide_quote %}
-                        {% set slide_quote = default_data.quote %}
-                    {% endif %}
+                        {# Resolve Author Name (Multilanguage support from Schema) #}
+                        {% set slide_author = slide.author_name|default(slide['slides.author_name']) %}
+                        {% if slide_author is iterable %}
+                            {% set slide_author = slide_author[user.language.code]|default(slide_author.ar|default(slide_author.en)) %}
+                        {% endif %}
 
-                    {# Resolve Author Name #}
-                    {% set slide_author = slide.author_name|default(slide['slides.author_name']) %}
-                    {% if slide_author is iterable %}
-                        {% set slide_author = slide_author[user.language.code]|default(slide_author.ar|default(slide_author.en)) %}
-                    {% endif %}
-                    {% if not slide_author %}
-                        {% set slide_author = default_data.author_name %}
-                    {% endif %}
+                        {# Resolve Subtitle / Location (Multilanguage support from Schema) #}
+                        {% set slide_sub = slide.author_sub|default(slide['slides.author_sub']) %}
+                        {% if slide_sub is iterable %}
+                            {% set slide_sub = slide_sub[user.language.code]|default(slide_sub.ar|default(slide_sub.en)) %}
+                        {% endif %}
 
-                    {# Resolve Subtitle / Location #}
-                    {% set slide_sub = slide.author_sub|default(slide['slides.author_sub']) %}
-                    {% if slide_sub is iterable %}
-                        {% set slide_sub = slide_sub[user.language.code]|default(slide_sub.ar|default(slide_sub.en)) %}
-                    {% endif %}
-                    {% if not slide_sub %}
-                        {% set slide_sub = default_data.author_sub %}
-                    {% endif %}
+                        {# Extract Selected Store Product IDs from Schema #}
+                        {% set slide_raw_prod = slide.products|default(slide['slides.products']) %}
+                        {% set slide_prod_ids = [] %}
 
-                    {# Extract Selected Store Product IDs #}
-                    {% set slide_raw_prod = slide.products|default(slide['slides.products']) %}
-                    {% set slide_prod_ids = [] %}
-
-                    {% if slide_raw_prod is iterable %}
-                        {% for p in slide_raw_prod %}
-                            {% if p.id is defined %}
-                                {% set slide_prod_ids = slide_prod_ids|merge([p.id]) %}
-                            {% elseif p is not empty %}
+                        {% if slide_raw_prod is iterable %}
+                            {% for p in slide_raw_prod %}
+                                {% if p.id is defined %}
+                                    {% set slide_prod_ids = slide_prod_ids|merge([p.id]) %}
+                                {% elseif p is not empty %}
+                                    {% set slide_prod_ids = slide_prod_ids|merge([p]) %}
+                                {% endif %}
+                            {% endfor %}
+                        {% elseif slide_raw_prod.value is defined and slide_raw_prod.value is iterable %}
+                            {% for p in slide_raw_prod.value %}
                                 {% set slide_prod_ids = slide_prod_ids|merge([p]) %}
-                            {% endif %}
-                        {% endfor %}
-                    {% elseif slide_raw_prod.value is defined and slide_raw_prod.value is iterable %}
-                        {% for p in slide_raw_prod.value %}
-                            {% set slide_prod_ids = slide_prod_ids|merge([p]) %}
-                        {% endfor %}
-                    {% elseif slide_raw_prod is not empty %}
-                        {% set slide_prod_ids = [slide_raw_prod] %}
-                    {% endif %}
+                            {% endfor %}
+                        {% elseif slide_raw_prod is not empty %}
+                            {% set slide_prod_ids = [slide_raw_prod] %}
+                        {% endif %}
 
-                    <div
-                        class="fav-slide w-full shrink-0"
-                        data-slide-index="{{ loop.index0 }}"
-                    >
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 xl:gap-20 items-stretch">
-                            
-                            {# ================= LEFT COLUMN (DESKTOP: col-span-5 | MOBILE: order-2) ================= #}
-                            <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-between py-1 lg:py-2">
+                        <div
+                            class="fav-slide w-full shrink-0"
+                            data-slide-index="{{ loop.index0 }}"
+                        >
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 xl:gap-20 items-stretch">
                                 
-                                {# Top: Quote + Author Meta #}
-                                <div class="fav-quote-group mb-8 sm:mb-12 lg:mb-16">
-                                    <blockquote class="fav-quote-text text-xl sm:text-2xl lg:text-[28px] xl:text-[30px] font-normal leading-[1.38] text-[#18181B] mb-5 sm:mb-6">
-                                        “{{ slide_quote }}”
-                                    </blockquote>
+                                {# ================= LEFT COLUMN (DESKTOP: col-span-5 | MOBILE: order-2) ================= #}
+                                <div class="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-between py-1 lg:py-2">
+                                    
+                                    {# Top: Quote + Author Meta #}
+                                    <div class="fav-quote-group mb-8 sm:mb-12 lg:mb-16">
+                                        {% if slide_quote %}
+                                            <blockquote
+                                                class="fav-quote-text text-xl sm:text-2xl lg:text-[28px] xl:text-[30px] font-normal leading-[1.38] mb-5 sm:mb-6"
+                                                style="color: {{ quote_color }};"
+                                            >
+                                                “{{ slide_quote }}”
+                                            </blockquote>
+                                        {% endif %}
 
-                                    <div class="fav-author-meta">
-                                        <p class="fav-author-name text-sm font-medium text-[#18181B] tracking-wide">
-                                            {{ slide_author }}
-                                        </p>
-                                        {% if slide_sub %}
-                                            <p class="fav-author-sub text-[11px] uppercase tracking-[0.2em] text-[#71717A] font-medium mt-1">
-                                                {{ slide_sub }}
-                                            </p>
+                                        {% if slide_author or slide_sub %}
+                                            <div class="fav-author-meta">
+                                                {% if slide_author %}
+                                                    <p
+                                                        class="fav-author-name text-sm font-medium tracking-wide"
+                                                        style="color: {{ author_color }};"
+                                                    >
+                                                        {{ slide_author }}
+                                                    </p>
+                                                {% endif %}
+                                                {% if slide_sub %}
+                                                    <p
+                                                        class="fav-author-sub text-[11px] uppercase tracking-[0.2em] font-medium mt-1"
+                                                        style="color: {{ author_sub_color }};"
+                                                    >
+                                                        {{ slide_sub }}
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    {# Bottom: Product Card Loaded Directly via Salla Products Slider #}
+                                    <div class="fav-product-card-wrap w-full max-w-[260px] sm:max-w-[280px] lg:max-w-[270px] xl:max-w-[290px]">
+                                        <div class="fav-salla-slider-box">
+                                            {% if slide_prod_ids|length > 0 %}
+                                                <salla-products-slider
+                                                    source="selected"
+                                                    source-value="[{{ slide_prod_ids|join(',') }}]"
+                                                    slider-id="fav-prod-slider-{{ position|default(1) }}-{{ loop.index }}"
+                                                    block-title=" "
+                                                    slider-config='{
+                                                        "slidesPerView": 1,
+                                                        "spaceBetween": 16,
+                                                        "speed": 600
+                                                    }'
+                                                ></salla-products-slider>
+                                            {% else %}
+                                                <salla-products-slider
+                                                    source="latest"
+                                                    limit="1"
+                                                    slider-id="fav-prod-slider-{{ position|default(1) }}-{{ loop.index }}"
+                                                    block-title=" "
+                                                    slider-config='{
+                                                        "slidesPerView": 1,
+                                                        "spaceBetween": 16,
+                                                        "speed": 600
+                                                    }'
+                                                ></salla-products-slider>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                {# ================= RIGHT COLUMN (DESKTOP: col-span-7 | MOBILE: order-1) ================= #}
+                                {# Large Lifestyle Scene Image - CLEAN RECTANGLE #}
+                                <div class="order-1 lg:order-2 lg:col-span-7">
+                                    <div class="fav-lifestyle-frame w-full h-[360px] sm:h-[480px] lg:h-full min-h-[420px] lg:min-h-[560px] xl:min-h-[640px] overflow-hidden bg-[#ECE8E1]">
+                                        {% if scene_img %}
+                                            <img
+                                                src="{{ scene_img }}"
+                                                alt="{{ slide_author|default(title_val) }}"
+                                                loading="lazy"
+                                                class="w-full h-full object-cover"
+                                            >
                                         {% endif %}
                                     </div>
                                 </div>
 
-                                {# Bottom: Product Card (Minimal, matching screenshot) #}
-                                <div class="fav-product-card-wrap w-full max-w-[260px] sm:max-w-[280px] lg:max-w-[270px] xl:max-w-[290px]">
-                                    
-                                    {% if slide_prod_ids|length > 0 %}
-                                        {# Store product fetched via Salla products slider with clean minimal styling #}
-                                        <div class="fav-salla-slider-box">
-                                            <salla-products-slider
-                                                source="selected"
-                                                source-value="[{{ slide_prod_ids|join(',') }}]"
-                                                slider-id="fav-prod-slider-{{ position|default(1) }}-{{ loop.index }}"
-                                                block-title=" "
-                                                slider-config='{
-                                                    "slidesPerView": 1,
-                                                    "spaceBetween": 16,
-                                                    "speed": 600
-                                                }'
-                                            ></salla-products-slider>
-                                        </div>
-                                    {% else %}
-                                        {# Default Product Card matching screenshot with Arabic content #}
-                                        <div class="fav-product-item group block">
-                                            <div class="fav-prod-media-box relative bg-[#F5F3EF] aspect-[4/5] sm:aspect-square overflow-hidden mb-3">
-                                                <img
-                                                    src="{{ default_data.product_img }}"
-                                                    alt="{{ default_data.product_title }}"
-                                                    loading="lazy"
-                                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                                >
-                                            </div>
-                                            <div class="fav-prod-info flex flex-col">
-                                                <span class="fav-prod-category text-[10px] sm:text-[11px] uppercase font-bold tracking-wider text-[#A1A1AA] mb-0.5">
-                                                    {{ default_data.product_cat }}
-                                                </span>
-                                                <h3 class="fav-prod-title text-sm sm:text-base font-medium text-[#18181B] line-clamp-1 hover:text-[#52525B] transition-colors">
-                                                    {{ default_data.product_title }}
-                                                </h3>
-                                                <span class="fav-prod-price text-sm sm:text-base font-semibold text-[#18181B] mt-0.5">
-                                                    {{ default_data.product_price }}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                </div>
-
                             </div>
-
-                            {# ================= RIGHT COLUMN (DESKTOP: col-span-7 | MOBILE: order-1) ================= #}
-                            {# Large Lifestyle Scene Image - CLEAN RECTANGLE MATCHING SCREENSHOT #}
-                            <div class="order-1 lg:order-2 lg:col-span-7">
-                                <div class="fav-lifestyle-frame w-full h-[360px] sm:h-[480px] lg:h-full min-h-[420px] lg:min-h-[560px] xl:min-h-[640px] overflow-hidden bg-[#ECE8E1]">
-                                    <img
-                                        src="{{ scene_img }}"
-                                        alt="{{ slide_author }}"
-                                        loading="lazy"
-                                        class="w-full h-full object-cover"
-                                    >
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
 
+                </div>
             </div>
-        </div>
+        {% endif %}
 
     </div>
 </section>
 
 {# ============================== COMPONENT STYLES ============================== #}
 <style>
-    /* Typography matching editorial serif aesthetic in screenshot */
-    #{{ section_id }} .fav-section-title {
-        font-family: 'Playfair Display', 'Amiri', Georgia, 'Times New Roman', serif;
-    }
-
-    #{{ section_id }} .fav-quote-text {
-        font-family: 'Playfair Display', 'Amiri', Georgia, 'Times New Roman', serif;
-    }
-
-    /* Clean lifestyle frame rectangle - no arched top cutoffs */
+    /* Clean lifestyle frame rectangle */
     #{{ section_id }} .fav-lifestyle-frame {
-        border-radius: 0;
-    }
-
-    /* Product card image wrapper */
-    #{{ section_id }} .fav-prod-media-box {
         border-radius: 0;
     }
 
