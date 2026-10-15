@@ -9792,7 +9792,7 @@
             "format": "color",
             "inputType": "color",
             "label": "لون خلفية أزرار التنقل",
-            "value": "transparent",
+            "value": "#D1CDC7",
             "required": false
         },
         {
@@ -9818,7 +9818,7 @@
             "inputType": "range",
             "label": "سرعة التشغيل التلقائي (بالثواني)",
             "value": 5,
-            "minimum": 2,
+            "minimum": 0,
             "maximum": 20,
             "required": false,
             "conditions": [

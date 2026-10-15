@@ -1192,9 +1192,6 @@ input:where([type='file']):focus{
 .mb-0{
     margin-bottom: 0px;
 }
-.mb-0\.5{
-    margin-bottom: 0.125rem;
-}
 .mb-1{
     margin-bottom: 0.25rem;
 }
@@ -2344,11 +2341,6 @@ input:where([type='file']):focus{
 .border-\[\#4D4D4D26\]{
     border-color: rgba(77,77,77,0.14902);
 }
-.border-\[\#D1CDC7\]{
-    --tw-border-opacity: 1;
-    border-color: rgba(209, 205, 199, 1);
-    border-color: rgba(209, 205, 199, var(--tw-border-opacity, 1));
-}
 .border-\[\#E4E4E7\]{
     --tw-border-opacity: 1;
     border-color: rgba(228, 228, 231, 1);
@@ -2447,11 +2439,6 @@ input:where([type='file']):focus{
     --tw-bg-opacity: 1;
     background-color: rgba(243, 243, 243, 1);
     background-color: rgba(243, 243, 243, var(--tw-bg-opacity, 1));
-}
-.bg-\[\#F5F3EF\]{
-    --tw-bg-opacity: 1;
-    background-color: rgba(245, 243, 239, 1);
-    background-color: rgba(245, 243, 239, var(--tw-bg-opacity, 1));
 }
 .bg-\[\#F7F7F8\]{
     --tw-bg-opacity: 1;
@@ -3117,11 +3104,6 @@ input:where([type='file']):focus{
     color: rgba(255, 255, 255, 1) !important;
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1)) !important;
 }
-.text-\[\#18181B\]{
-    --tw-text-opacity: 1;
-    color: rgba(24, 24, 27, 1);
-    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
-}
 .text-\[\#18181b\]{
     --tw-text-opacity: 1;
     color: rgba(24, 24, 27, 1);
@@ -3136,16 +3118,6 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(37, 211, 102, 1);
     color: rgba(37, 211, 102, var(--tw-text-opacity, 1));
-}
-.text-\[\#71717A\]{
-    --tw-text-opacity: 1;
-    color: rgba(113, 113, 122, 1);
-    color: rgba(113, 113, 122, var(--tw-text-opacity, 1));
-}
-.text-\[\#A1A1AA\]{
-    --tw-text-opacity: 1;
-    color: rgba(161, 161, 170, 1);
-    color: rgba(161, 161, 170, var(--tw-text-opacity, 1));
 }
 .text-amber-400{
     --tw-text-opacity: 1;
@@ -38446,11 +38418,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(1.05) scaleY(1.05);
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.hover\:border-\[\#18181B\]:hover{
-    --tw-border-opacity: 1;
-    border-color: rgba(24, 24, 27, 1);
-    border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
-}
 .hover\:border-black:hover{
     --tw-border-opacity: 1;
     border-color: rgba(0, 0, 0, 1);
@@ -38492,20 +38459,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:bg-secondary:hover{
     background-color: var(--color-secondary);
 }
-.hover\:bg-white:hover{
-    --tw-bg-opacity: 1;
-    background-color: rgba(255, 255, 255, 1);
-    background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
-}
 .hover\:bg-zinc-900:hover{
     --tw-bg-opacity: 1;
     background-color: rgba(24, 24, 27, 1);
     background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
-}
-.hover\:text-\[\#52525B\]:hover{
-    --tw-text-opacity: 1;
-    color: rgba(82, 82, 91, 1);
-    color: rgba(82, 82, 91, var(--tw-text-opacity, 1));
 }
 .hover\:text-background:hover{
     color: var(--color-background);
@@ -38738,9 +38695,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:grid{
         display: grid;
     }
-    .sm\:aspect-square{
-        aspect-ratio: 1 / 1;
-    }
     .sm\:h-10{
         height: 2.5rem;
     }
@@ -38839,13 +38793,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:text-3xl{
         font-size: 1.875rem;
         line-height: 2.25rem;
-    }
-    .sm\:text-\[11px\]{
-        font-size: 11px;
-    }
-    .sm\:text-base{
-        font-size: 1rem;
-        line-height: 1.5rem;
     }
 }
 @media (min-width: 768px){
