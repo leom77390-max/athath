@@ -1,0 +1,461 @@
+{#
+| Variable                          | Type       | Description                                              |
+|-----------------------------------|------------|----------------------------------------------------------|
+| component                         | object     | Component configuration from twilight.json               |
+| component.title                   | string     | Main fixed section title                                 |
+| component.slides                  | array      | Array of slides in the collection                        |
+| component.slides[].lifestyle_image| string     | Large lifestyle scene image                              |
+| component.slides[].quote          | string     | Quote / review text above product                        |
+| component.slides[].author_name    | string     | Author / reviewer name                                   |
+| component.slides[].author_sub     | string     | Author location or subtitle                              |
+| component.slides[].products       | array/int  | Salla product dropdown                                   |
+| position                          | int        | Block position index                                     |
+#}
+
+{% set c = component %}
+{% set section_id = 'fav-products-' ~ (position|default(random(1000, 9999))) %}
+{% set slides = c.slides|default([]) %}
+{% set is_ar = user.language.code == 'ar' %}
+
+{# صور تجريبية بديلة في حال عدم رفع صور مخصصة #}
+{% set default_scenes = [
+    'images/fav_scene_dining.jpg' | asset,
+    'images/fav_scene_kitchen.jpg' | asset
+] %}
+{% set default_products = [
+    'images/fav_prod_chair1.jpg' | asset,
+    'images/fav_prod_chair2.jpg' | asset
+] %}
+
+<section
+    class="fav-products-section py-12 md:py-20 overflow-hidden relative"
+    id="{{ section_id }}"
+    style="background-color: {{ c.bg_color|default('#FAF8F5') }}; color: {{ c.text_color|default('#18181B') }};"
+>
+    <div class="{% if c.apply_container is not defined or c.apply_container %} container mx-auto px-4 sm:px-6 lg:px-8 {% else %} w-full px-4 sm:px-8 {% endif %}">
+        
+        {# ================== HEADER ROW (DESKTOP & MOBILE) ================== #}
+        <div class="flex items-center justify-between mb-8 md:mb-12">
+            {# Main Fixed Title #}
+            <h2
+                class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-normal tracking-tight"
+                style="color: {{ c.title_color|default('#18181B') }};"
+            >
+                {{ c.title|default(is_ar ? 'منتجاتنا المفضلة' : 'Our favorite products') }}
+            </h2>
+
+            {# Desktop Top-Right Navigation Controls #}
+            <div class="hidden lg:flex items-center gap-2.5">
+                <button
+                    type="button"
+                    class="fav-nav-prev w-9 h-9 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-700 bg-white shadow-sm hover:border-zinc-900 hover:text-black transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    aria-label="{{ is_ar ? 'السابق' : 'Previous slide' }}"
+                >
+                    <i class="sicon-keyboard_arrow_left rtl:rotate-180 text-sm"></i>
+                </button>
+                <button
+                    type="button"
+                    class="fav-nav-next w-9 h-9 rounded-full border border-zinc-300 flex items-center justify-center text-zinc-700 bg-white shadow-sm hover:border-zinc-900 hover:text-black transition-all duration-200 active:scale-95 disabled:opacity-30 disabled:pointer-events-none"
+                    aria-label="{{ is_ar ? 'التالي' : 'Next slide' }}"
+                >
+                    <i class="sicon-keyboard_arrow_right rtl:rotate-180 text-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        {# ================== SLIDER WRAPPER ================== #}
+        {% if slides|length > 0 %}
+            <div class="fav-slider-container relative overflow-hidden">
+                <div class="fav-slider-track flex transition-transform duration-500 ease-out">
+                    
+                    {% for slide in slides %}
+                        {% set scene_img = slide.lifestyle_image and not ('fav_scene_' in slide.lifestyle_image) ? slide.lifestyle_image : (default_scenes[loop.index0 % 2]) %}
+                        {% set prod_img = slide.product_image and not ('fav_prod_' in slide.product_image) ? slide.product_image : (default_products[loop.index0 % 2]) %}
+                        {% set raw_prod_id = slide.products.value ? slide.products.value[0] : (slide.products[0]|default(null)) %}
+
+                        <div
+                            class="fav-slide w-full shrink-0"
+                            data-slide-index="{{ loop.index0 }}"
+                            data-product-id="{{ raw_prod_id }}"
+                        >
+                            {# ==================== DESKTOP LAYOUT (2 COLUMNS) ==================== #}
+                            <div class="hidden lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-16 items-center">
+                                
+                                {# Left Column: Quote + Author + Product Card (lg:col-span-5) #}
+                                <div class="lg:col-span-5 flex flex-col justify-between h-full py-4 pr-0 rtl:pl-0 rtl:pr-0">
+                                    
+                                    {# Content upper of product (Quote + Author) #}
+                                    <div class="fav-quote-block mb-8 xl:mb-12">
+                                        {% if slide.quote %}
+                                            <blockquote class="font-serif text-2xl xl:text-3xl font-normal leading-snug text-zinc-900 tracking-normal">
+                                                “{{ slide.quote }}”
+                                            </blockquote>
+                                        {% endif %}
+
+                                        {% if slide.author_name or slide.author_sub %}
+                                            <div class="mt-5">
+                                                {% if slide.author_name %}
+                                                    <p class="text-sm font-semibold text-zinc-900 tracking-wide">
+                                                        {{ slide.author_name }}
+                                                    </p>
+                                                {% endif %}
+                                                {% if slide.author_sub %}
+                                                    <p class="text-[11px] uppercase tracking-widest text-zinc-500 mt-1 font-medium">
+                                                        {{ slide.author_sub }}
+                                                    </p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                    {# Desktop Product Card (Matching Image 1) #}
+                                    <div class="fav-product-card-desktop w-full max-w-[270px] xl:max-w-[290px] group">
+                                        <div class="relative bg-[#F5F3EF] overflow-hidden aspect-square mb-3.5">
+                                            
+                                            {# Product Image #}
+                                            <a href="{{ slide.product_url|default('#') }}" class="fav-prod-link block w-full h-full">
+                                                <img
+                                                    src="{{ prod_img }}"
+                                                    alt="{{ slide.product_name|default('Product') }}"
+                                                    loading="lazy"
+                                                    class="fav-prod-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                >
+                                            </a>
+
+                                            {# Quick View Button (Top Right) #}
+                                            <button
+                                                type="button"
+                                                class="fav-quickview-btn absolute top-3 right-3 w-8 h-8 rounded-full bg-white/95 shadow-md flex items-center justify-center text-zinc-800 hover:bg-black hover:text-white transition-all duration-200 z-10"
+                                                title="{{ is_ar ? 'نظرة سريعة' : 'Quick view' }}"
+                                            >
+                                                <i class="sicon-search text-xs"></i>
+                                            </button>
+
+                                            {# Choose Options Overlay Bar (Bottom) #}
+                                            <div class="absolute bottom-3 inset-x-3 z-10 transition-all duration-300">
+                                                <a
+                                                    href="{{ slide.product_url|default('#') }}"
+                                                    class="fav-prod-btn block w-full text-center bg-white/95 text-zinc-900 text-[11px] font-bold tracking-widest uppercase py-2.5 shadow-sm hover:bg-black hover:text-white transition-colors"
+                                                >
+                                                    {{ is_ar ? 'اختيار الخيارات' : 'CHOOSE OPTIONS' }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        {# Product Details #}
+                                        <div class="fav-prod-details flex flex-col">
+                                            <span class="fav-prod-cat text-[10px] uppercase font-bold tracking-wider text-zinc-400 mb-1">
+                                                {{ slide.product_category|default('SOFA') }}
+                                            </span>
+                                            <h3 class="fav-prod-title text-sm font-semibold text-zinc-900 line-clamp-1 hover:text-zinc-600 transition-colors">
+                                                <a href="{{ slide.product_url|default('#') }}">
+                                                    {{ slide.product_name|default('Hygge Lounge Chair') }}
+                                                </a>
+                                            </h3>
+                                            <div class="fav-prod-price-wrap flex items-center gap-2 mt-1">
+                                                <span class="fav-prod-price text-sm font-bold text-zinc-900">
+                                                    {{ slide.product_price|default('$449.00') }}
+                                                </span>
+                                                {% if slide.product_regular_price %}
+                                                    <span class="fav-prod-reg-price text-xs text-zinc-400 line-through">
+                                                        {{ slide.product_regular_price }}
+                                                    </span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                {# Right Column: Big Lifestyle Scene Image (lg:col-span-7) #}
+                                <div class="lg:col-span-7">
+                                    <div class="w-full aspect-[3/4] xl:aspect-[4/5] max-h-[640px] overflow-hidden bg-zinc-100 shadow-sm">
+                                        <img
+                                            src="{{ scene_img }}"
+                                            alt="{{ slide.author_name|default(c.title) }}"
+                                            loading="lazy"
+                                            class="w-full h-full object-cover"
+                                        >
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {# ==================== MOBILE LAYOUT (VERTICAL STACK - Matching Image 2) ==================== #}
+                            <div class="block lg:hidden">
+                                
+                                {# 1. Big Lifestyle Image on Top #}
+                                <div class="w-full aspect-[4/5] max-h-[480px] overflow-hidden bg-zinc-100 shadow-sm mb-6">
+                                    <img
+                                        src="{{ scene_img }}"
+                                        alt="{{ slide.author_name|default(c.title) }}"
+                                        loading="lazy"
+                                        class="w-full h-full object-cover"
+                                    >
+                                </div>
+
+                                {# 2. Quote in Serif Typography #}
+                                {% if slide.quote %}
+                                    <blockquote class="font-serif text-xl sm:text-2xl font-normal leading-snug text-zinc-900 mb-4">
+                                        “{{ slide.quote }}”
+                                    </blockquote>
+                                {% endif %}
+
+                                {# 3. Author Name & Location #}
+                                {% if slide.author_name or slide.author_sub %}
+                                    <div class="mb-5">
+                                        {% if slide.author_name %}
+                                            <p class="text-base font-semibold text-zinc-900">
+                                                {{ slide.author_name }}
+                                            </p>
+                                        {% endif %}
+                                        {% if slide.author_sub %}
+                                            <p class="text-xs uppercase tracking-widest text-zinc-500 mt-0.5 font-medium">
+                                                {{ slide.author_sub }}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {# 4. Subtle Horizontal Divider #}
+                                <div class="w-full h-[1px] bg-zinc-200/80 my-5"></div>
+
+                                {# 5. Horizontal Product Card (Matching Image 2) #}
+                                <div class="fav-product-card-mobile flex items-center justify-between gap-4 py-1">
+                                    
+                                    {# Left: Square Product Thumbnail #}
+                                    <a href="{{ slide.product_url|default('#') }}" class="fav-prod-link w-20 h-20 sm:w-24 sm:h-24 bg-[#F5F3EF] shrink-0 overflow-hidden block">
+                                        <img
+                                            src="{{ prod_img }}"
+                                            alt="{{ slide.product_name|default('Product') }}"
+                                            loading="lazy"
+                                            class="fav-prod-img w-full h-full object-cover"
+                                        >
+                                    </a>
+
+                                    {# Center: Product Info #}
+                                    <div class="fav-prod-details flex-1 min-w-0 pr-2 rtl:pl-2 rtl:pr-0">
+                                        <span class="fav-prod-cat text-[11px] font-bold uppercase tracking-wider text-zinc-400 block mb-0.5">
+                                            {{ slide.product_category|default('SOFA') }}
+                                        </span>
+                                        <h4 class="fav-prod-title text-sm sm:text-base font-semibold text-zinc-900 truncate">
+                                            <a href="{{ slide.product_url|default('#') }}">
+                                                {{ slide.product_name|default('Parlour Club Chair') }}
+                                            </a>
+                                        </h4>
+                                        <div class="fav-prod-price-wrap flex items-center gap-2 mt-1">
+                                            <span class="fav-prod-price text-sm sm:text-base font-bold text-red-600">
+                                                {{ slide.product_price|default('$699.00') }}
+                                            </span>
+                                            {% if slide.product_regular_price %}
+                                                <span class="fav-prod-reg-price text-xs text-zinc-400 line-through">
+                                                    {{ slide.product_regular_price }}
+                                                </span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                    {# Right: Circular Shopping Bag Icon Button #}
+                                    <div class="shrink-0">
+                                        <button
+                                            type="button"
+                                            class="fav-mobile-cart-btn w-12 h-12 rounded-full border border-zinc-200 bg-white flex items-center justify-center text-zinc-800 shadow-sm hover:bg-black hover:text-white transition-colors duration-200 active:scale-95"
+                                            aria-label="{{ is_ar ? 'إضافة للسلة' : 'Add to bag' }}"
+                                        >
+                                            <svg class="w-5 h-5 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            {# ================== MOBILE BOTTOM NAVIGATION (< 2/2 > - Matching Image 2) ================== #}
+            <div class="flex lg:hidden items-center justify-center gap-4 mt-8 pt-2">
+                <button
+                    type="button"
+                    class="fav-nav-prev-mobile p-2 text-zinc-700 hover:text-black transition-colors disabled:opacity-30 disabled:pointer-events-none"
+                    aria-label="{{ is_ar ? 'السابق' : 'Previous slide' }}"
+                >
+                    <i class="sicon-keyboard_arrow_left rtl:rotate-180 text-base"></i>
+                </button>
+
+                {# Slide Fraction Counter (e.g. 1/2, 2/2) #}
+                <span class="fav-mobile-counter text-xs tracking-widest font-semibold text-zinc-800">
+                    1/{{ slides|length }}
+                </span>
+
+                <button
+                    type="button"
+                    class="fav-nav-next-mobile p-2 text-zinc-700 hover:text-black transition-colors disabled:opacity-30 disabled:pointer-events-none"
+                    aria-label="{{ is_ar ? 'التالي' : 'Next slide' }}"
+                >
+                    <i class="sicon-keyboard_arrow_right rtl:rotate-180 text-base"></i>
+                </button>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+{# ================== INTERACTIVE JAVASCRIPT ================== #}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const section = document.getElementById("{{ section_id }}");
+        if (!section) return;
+
+        const track = section.querySelector(".fav-slider-track");
+        const slides = section.querySelectorAll(".fav-slide");
+        const totalSlides = slides.length;
+        if (totalSlides === 0) return;
+
+        let currentIndex = 0;
+        const isRtl = document.documentElement.dir === "rtl" || document.body.classList.contains("rtl");
+
+        // Buttons & indicators
+        const prevBtns = section.querySelectorAll(".fav-nav-prev, .fav-nav-prev-mobile");
+        const nextBtns = section.querySelectorAll(".fav-nav-next, .fav-nav-next-mobile");
+        const counterEl = section.querySelector(".fav-mobile-counter");
+
+        function updateSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+
+            // Slide position
+            const offset = currentIndex * 100;
+            const translateVal = isRtl ? offset : -offset;
+            track.style.transform = `translateX(${translateVal}%)`;
+
+            // Update mobile fraction counter
+            if (counterEl) {
+                counterEl.textContent = `${currentIndex + 1}/${totalSlides}`;
+            }
+        }
+
+        prevBtns.forEach(btn => btn.addEventListener("click", () => updateSlide(currentIndex - 1)));
+        nextBtns.forEach(btn => btn.addEventListener("click", () => updateSlide(currentIndex + 1)));
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        track.addEventListener("touchstart", (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        track.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    // Swipe right
+                    isRtl ? updateSlide(currentIndex + 1) : updateSlide(currentIndex - 1);
+                } else {
+                    // Swipe left
+                    isRtl ? updateSlide(currentIndex - 1) : updateSlide(currentIndex + 1);
+                }
+            }
+        }, { passive: true });
+
+        // Autoplay if enabled
+        {% if c.autoplay %}
+            const autoplayInterval = {{ (c.autoplay_speed|default(5)) * 1000 }};
+            setInterval(() => {
+                updateSlide(currentIndex + 1);
+            }, autoplayInterval);
+        {% endif %}
+
+        // Load real Salla product details if selected in dashboard
+        async function fetchProductDetails(slideEl) {
+            const rawId = slideEl.dataset.productId;
+            if (!rawId || rawId === "null" || rawId === "") return;
+
+            try {
+                if (typeof salla !== "undefined" && salla.api && salla.api.product) {
+                    const res = await salla.api.product.getDetails(rawId);
+                    const prod = res && res.data ? res.data : null;
+                    if (!prod) return;
+
+                    // Update titles
+                    slideEl.querySelectorAll(".fav-prod-title a").forEach(el => el.textContent = prod.name);
+                    // Update links
+                    slideEl.querySelectorAll(".fav-prod-link, .fav-prod-btn, .fav-prod-title a").forEach(el => el.href = prod.url);
+                    // Update images
+                    if (prod.image && prod.image.url) {
+                        slideEl.querySelectorAll(".fav-prod-img").forEach(el => {
+                            el.src = prod.image.url;
+                            el.alt = prod.name;
+                        });
+                    }
+                    // Update category
+                    if (prod.category && prod.category.name) {
+                        slideEl.querySelectorAll(".fav-prod-cat").forEach(el => el.textContent = prod.category.name);
+                    }
+                    // Update prices
+                    const formattedPrice = typeof salla.money === "function" ? salla.money(prod.price) : `${prod.price}`;
+                    slideEl.querySelectorAll(".fav-prod-price").forEach(el => el.textContent = formattedPrice);
+
+                    if (prod.regular_price && prod.regular_price > prod.price) {
+                        const formattedReg = typeof salla.money === "function" ? salla.money(prod.regular_price) : `${prod.regular_price}`;
+                        slideEl.querySelectorAll(".fav-prod-reg-price").forEach(el => {
+                            el.textContent = formattedReg;
+                            el.style.display = "inline";
+                        });
+                    }
+
+                    // Add to cart buttons
+                    slideEl.querySelectorAll(".fav-mobile-cart-btn, .fav-prod-btn").forEach(btn => {
+                        btn.addEventListener("click", async (e) => {
+                            if (prod.has_options || (prod.options && prod.options.length > 0)) {
+                                window.location.href = prod.url;
+                                return;
+                            }
+                            e.preventDefault();
+                            if (salla.cart && typeof salla.cart.addItem === "function") {
+                                btn.classList.add("opacity-50", "pointer-events-none");
+                                try {
+                                    await salla.cart.addItem({ id: prod.id, quantity: 1 });
+                                    if (typeof salla.notify === "object" && salla.notify.success) {
+                                        salla.notify.success("{{ is_ar ? 'تمت الإضافة للسلة بنجاح' : 'Added to bag' }}");
+                                    }
+                                } catch (err) {
+                                    console.error(err);
+                                } finally {
+                                    btn.classList.remove("opacity-50", "pointer-events-none");
+                                }
+                            } else {
+                                window.location.href = prod.url;
+                            }
+                        });
+                    });
+
+                    // Quick view button
+                    slideEl.querySelectorAll(".fav-quickview-btn").forEach(btn => {
+                        btn.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            if (typeof salla !== "undefined" && salla.quickView && typeof salla.quickView.open === "function") {
+                                salla.quickView.open(prod.id);
+                            } else {
+                                window.location.href = prod.url;
+                            }
+                        });
+                    });
+                }
+            } catch (err) {
+                console.error("Error fetching Salla product details:", err);
+            }
+        }
+
+        // Initialize products
+        slides.forEach(slideEl => fetchProductDetails(slideEl));
+    });
+</script>

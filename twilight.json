@@ -9677,6 +9677,262 @@
             "required": false
         }
     ]
+},
+{
+    "key": "d4e5f6a7-8901-4b23-c456-789012345678",
+    "title": {
+        "ar": "منتجاتنا المفضلة مع قصة - سلايدر",
+        "en": "Our Favorite Products - Story Slider"
+    },
+    "icon": "sicon-star",
+    "path": "home.favorite-products",
+    "is_default": false,
+    "fields": [
+        {
+            "id": "apply_container",
+            "type": "boolean",
+            "format": "switch",
+            "label": "إضافة القسم داخل حدود (Container)",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
+        {
+            "id": "bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية القسم",
+            "value": "#FAF8F5",
+            "required": false
+        },
+        {
+            "id": "text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون النصوص العامة",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "main_title_sec_header",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>العنوان الرئيسي (ثابت)</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "title",
+            "type": "string",
+            "format": "text",
+            "label": "العنوان الرئيسي للقسم",
+            "multilanguage": true,
+            "value": {
+                "ar": "منتجاتنا المفضلة",
+                "en": "Our favorite products"
+            },
+            "required": true
+        },
+        {
+            "id": "title_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون العنوان الرئيسي",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "slider_options_sec_header",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>إعدادات السلايدر</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "autoplay",
+            "type": "boolean",
+            "format": "switch",
+            "label": "التشغيل التلقائي للسلايدر",
+            "value": false,
+            "selected": false,
+            "required": false
+        },
+        {
+            "id": "autoplay_speed",
+            "type": "number",
+            "format": "slider",
+            "inputType": "range",
+            "label": "سرعة التشغيل التلقائي (بالثواني)",
+            "value": 5,
+            "minimum": 2,
+            "maximum": 20,
+            "required": false,
+            "conditions": [
+                {
+                    "id": "autoplay",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "slides_collection_sec_header",
+            "value": "<div style='margin: 20px 0 10px; font-weight: bold; color: #CE5A67;'>الشرائح (قصص المنتجات والصور)</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "slides",
+            "type": "collection",
+            "format": "collection",
+            "label": "الشرائح",
+            "minLength": 1,
+            "maxLength": 10,
+            "fields": [
+                {
+                    "id": "slides.lifestyle_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة المشهد / الديكور (Lifestyle Image)",
+                    "required": true
+                },
+                {
+                    "id": "slides.quote",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "نص الاقتباس أو التقييم (المحتوى فوق المنتج)",
+                    "multilanguage": true,
+                    "required": true
+                },
+                {
+                    "id": "slides.author_name",
+                    "type": "string",
+                    "format": "text",
+                    "label": "اسم العميل / الكاتب",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "slides.author_sub",
+                    "type": "string",
+                    "format": "text",
+                    "label": "الموقع أو التوضيح (مثال: LOS ANGELES)",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "slides.products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختر المنتج من المتجر",
+                    "source": "products",
+                    "multichoice": false,
+                    "searchable": true,
+                    "required": false
+                },
+                {
+                    "id": "slides.product_name",
+                    "type": "string",
+                    "format": "text",
+                    "label": "اسم المنتج (بديل في حال عدم اختيار منتج)",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "slides.product_category",
+                    "type": "string",
+                    "format": "text",
+                    "label": "تصنيف المنتج (مثال: SOFA)",
+                    "multilanguage": true,
+                    "required": false
+                },
+                {
+                    "id": "slides.product_price",
+                    "type": "string",
+                    "format": "text",
+                    "label": "سعر المنتج الحالي (مثال: $449.00 أو 449 ر.س)",
+                    "required": false
+                },
+                {
+                    "id": "slides.product_regular_price",
+                    "type": "string",
+                    "format": "text",
+                    "label": "السعر السابق قبل الخصم (اختياري - مثال: $699.00)",
+                    "required": false
+                },
+                {
+                    "id": "slides.product_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة المنتج (بديل)",
+                    "required": false
+                },
+                {
+                    "id": "slides.product_url",
+                    "type": "string",
+                    "format": "url",
+                    "label": "رابط المنتج (اختياري)",
+                    "required": false
+                }
+            ],
+            "value": [
+                {
+                    "slides.lifestyle_image": "https://cdn.files.salla.network/other/1010819922/fav_scene_dining.jpg",
+                    "slides.quote": {
+                        "en": "Rectangular elm wood bench. Due to the origin of the materials, the colour may vary slightly...",
+                        "ar": "طاولة وكرسي بتصميم خشبي عصري ومتقن، ألوان المواد الطبيعية تضفي دفئاً استثنائياً على المكان..."
+                    },
+                    "slides.author_name": {
+                        "en": "Jenny Wilson",
+                        "ar": "جيني ويلسون"
+                    },
+                    "slides.author_sub": {
+                        "en": "NEW MEXICO",
+                        "ar": "نيو مكسيكو"
+                    },
+                    "slides.product_name": {
+                        "en": "Hygge Lounge Chair",
+                        "ar": "كرسي استرخاء هيجي"
+                    },
+                    "slides.product_category": {
+                        "en": "SOFA",
+                        "ar": "كنب ومقاعد"
+                    },
+                    "slides.product_price": "$449.00",
+                    "slides.product_image": "https://cdn.files.salla.network/other/1010819922/fav_prod_chair1.jpg"
+                },
+                {
+                    "slides.lifestyle_image": "https://cdn.files.salla.network/other/1010819922/fav_scene_kitchen.jpg",
+                    "slides.quote": {
+                        "en": "The sleek design of this table fits perfectly in our modern home. It's spacious enough for six people.",
+                        "ar": "التصميم الأنيق ينسجم بشكل رائع مع منزلنا العصري، مساحته مريحة وواسعة جداً لستة أشخاص."
+                    },
+                    "slides.author_name": {
+                        "en": "David R.",
+                        "ar": "ديفيد آر."
+                    },
+                    "slides.author_sub": {
+                        "en": "LOS ANGELES",
+                        "ar": "لوس أنجلوس"
+                    },
+                    "slides.product_name": {
+                        "en": "Parlour Club Chair",
+                        "ar": "كرسي بارلور كلوب"
+                    },
+                    "slides.product_category": {
+                        "en": "SOFA",
+                        "ar": "كنب ومقاعد"
+                    },
+                    "slides.product_price": "$699.00",
+                    "slides.product_regular_price": "$999.00",
+                    "slides.product_image": "https://cdn.files.salla.network/other/1010819922/fav_prod_chair2.jpg"
+                }
+            ]
+        }
+    ]
 }
     
     ],

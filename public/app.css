@@ -927,6 +927,10 @@ input:where([type='file']):focus{
     top: 0px;
     bottom: 0px;
 }
+.inset-x-3{
+    left: 0.75rem;
+    right: 0.75rem;
+}
 .\!bottom-\[90px\]{
     bottom: 90px !important;
 }
@@ -1062,6 +1066,12 @@ input:where([type='file']):focus{
 .top-full{
     top: 100%;
 }
+.bottom-3{
+    bottom: 0.75rem;
+}
+.top-3{
+    top: 0.75rem;
+}
 .-z-1{
     z-index: -1;
 }
@@ -1164,6 +1174,10 @@ input:where([type='file']):focus{
 .my-3{
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
+}
+.my-5{
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 .\!mt-0{
     margin-top: 0px !important;
@@ -1290,6 +1304,9 @@ input:where([type='file']):focus{
 }
 .mt-auto{
     margin-top: auto;
+}
+.mb-0\.5{
+    margin-bottom: 0.125rem;
 }
 .box-border{
     box-sizing: border-box;
@@ -1512,6 +1529,12 @@ input:where([type='file']):focus{
 }
 .max-h-full{
     max-height: 100%;
+}
+.max-h-\[480px\]{
+    max-height: 480px;
+}
+.max-h-\[640px\]{
+    max-height: 640px;
 }
 .\!min-h-fit{
     min-height: -moz-fit-content !important;
@@ -2381,6 +2404,16 @@ input:where([type='file']):focus{
     border-color: rgba(24, 24, 27, 1);
     border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
 }
+.border-zinc-200{
+    --tw-border-opacity: 1;
+    border-color: rgba(228, 228, 231, 1);
+    border-color: rgba(228, 228, 231, var(--tw-border-opacity, 1));
+}
+.border-zinc-300{
+    --tw-border-opacity: 1;
+    border-color: rgba(212, 212, 216, 1);
+    border-color: rgba(212, 212, 216, var(--tw-border-opacity, 1));
+}
 .border-b-\[\#8B8B8B\]{
     --tw-border-opacity: 1;
     border-bottom-color: rgba(139, 139, 139, 1);
@@ -2522,6 +2555,22 @@ input:where([type='file']):focus{
     --tw-bg-opacity: 1;
     background-color: rgba(24, 24, 27, 1);
     background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
+}
+.bg-\[\#F5F3EF\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(245, 243, 239, 1);
+    background-color: rgba(245, 243, 239, var(--tw-bg-opacity, 1));
+}
+.bg-white\/95{
+    background-color: rgba(255, 255, 255, 0.95);
+}
+.bg-zinc-100{
+    --tw-bg-opacity: 1;
+    background-color: rgba(244, 244, 245, 1);
+    background-color: rgba(244, 244, 245, var(--tw-bg-opacity, 1));
+}
+.bg-zinc-200\/80{
+    background-color: rgba(228, 228, 231, 0.8);
 }
 .bg-gradient-to-r{
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -2806,6 +2855,12 @@ input:where([type='file']):focus{
 .pt-8{
     padding-top: 2rem;
 }
+.pr-0{
+    padding-right: 0px;
+}
+.pr-2{
+    padding-right: 0.5rem;
+}
 .text-left{
     text-align: left;
 }
@@ -2929,6 +2984,9 @@ input:where([type='file']):focus{
 .text-xxs{
     font-size: 10px;
 }
+.text-\[11px\]{
+    font-size: 11px;
+}
 .font-bold{
     font-weight: 700;
 }
@@ -3045,6 +3103,9 @@ input:where([type='file']):focus{
 }
 .tracking-widest{
     letter-spacing: 0.1em;
+}
+.tracking-tight{
+    letter-spacing: -0.025em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -3215,6 +3276,16 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(24, 24, 27, 1);
     color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
+}
+.text-zinc-700{
+    --tw-text-opacity: 1;
+    color: rgba(63, 63, 70, 1);
+    color: rgba(63, 63, 70, var(--tw-text-opacity, 1));
+}
+.text-zinc-800{
+    --tw-text-opacity: 1;
+    color: rgba(39, 39, 42, 1);
+    color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -38395,6 +38466,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     border-color: rgba(156, 163, 175, 1);
     border-color: rgba(156, 163, 175, var(--tw-border-opacity, 1));
 }
+.hover\:border-zinc-900:hover{
+    --tw-border-opacity: 1;
+    border-color: rgba(24, 24, 27, 1);
+    border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
+}
 .hover\:bg-black:hover{
     --tw-bg-opacity: 1;
     background-color: rgba(0, 0, 0, 1);
@@ -38455,6 +38531,16 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+}
+.hover\:text-black:hover{
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
+}
+.hover\:text-zinc-600:hover{
+    --tw-text-opacity: 1;
+    color: rgba(82, 82, 91, 1);
+    color: rgba(82, 82, 91, var(--tw-text-opacity, 1));
 }
 .hover\:underline:hover{
     text-decoration-line: underline;
@@ -38527,6 +38613,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-scale-y: .95;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(.95) scaleY(.95);
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.disabled\:pointer-events-none:disabled{
+    pointer-events: none;
+}
+.disabled\:opacity-30:disabled{
+    opacity: 0.3;
 }
 .group:hover .group-hover\:bottom-6{
     bottom: 1.5rem;
@@ -38654,11 +38746,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:h-full{
         height: 100%;
     }
+    .sm\:h-24{
+        height: 6rem;
+    }
     .sm\:\!w-\[220px\]{
         width: 220px !important;
     }
     .sm\:w-\[460px\]{
         width: 460px;
+    }
+    .sm\:w-24{
+        width: 6rem;
     }
     .sm\:grow-0{
         flex-grow: 0;
@@ -38708,6 +38806,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 4rem;
         padding-bottom: 4rem;
     }
+    .sm\:px-6{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .sm\:px-8{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
     .sm\:pb-0{
         padding-bottom: 0px;
     }
@@ -38719,6 +38825,18 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:pt-20{
         padding-top: 5rem;
+    }
+    .sm\:text-2xl{
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .sm\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+    .sm\:text-base{
+        font-size: 1rem;
+        line-height: 1.5rem;
     }
 }
 @media (min-width: 768px){
@@ -38764,6 +38882,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:mt-16{
         margin-top: 4rem;
+    }
+    .md\:mb-12{
+        margin-bottom: 3rem;
     }
     .md\:line-clamp-3{
         overflow: hidden;
@@ -39077,6 +39198,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:col-span-6{
         grid-column: span 6 / span 6;
     }
+    .lg\:col-span-7{
+        grid-column: span 7 / span 7;
+    }
     .lg\:mx-0{
         margin-left: 0px;
         margin-right: 0px;
@@ -39131,6 +39255,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:flex{
         display: flex;
+    }
+    .lg\:grid{
+        display: grid;
     }
     .lg\:\!hidden{
         display: none !important;
@@ -39215,6 +39342,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-12{
+        grid-template-columns: repeat(12, minmax(0, 1fr));
     }
     .lg\:flex-row{
         flex-direction: row;
@@ -39356,6 +39486,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-title-size{
         font-size: 42px;
     }
+    .lg\:text-\[40px\]{
+        font-size: 40px;
+    }
     .lg\:leading-\[24px\]{
         line-height: 24px;
     }
@@ -39367,8 +39500,20 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 1280px){
+    .xl\:mb-12{
+        margin-bottom: 3rem;
+    }
+    .xl\:aspect-\[4\/5\]{
+        aspect-ratio: 4/5;
+    }
+    .xl\:max-w-\[290px\]{
+        max-width: 290px;
+    }
     .xl\:gap-8{
         gap: 2rem;
+    }
+    .xl\:gap-16{
+        gap: 4rem;
     }
     .xl\:px-0{
         padding-left: 0px;
@@ -39381,6 +39526,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .xl\:text-9xl{
         font-size: 8rem;
         line-height: 1;
+    }
+    .xl\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
     }
 }
 @media (min-width: 480px){
@@ -39665,6 +39814,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:pr-5:where([dir="rtl"], [dir="rtl"] *){
     padding-right: 1.25rem;
+}
+.rtl\:pl-2:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 0.5rem;
+}
+.rtl\:pr-0:where([dir="rtl"], [dir="rtl"] *){
+    padding-right: 0px;
 }
 .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *){
     text-align: left;

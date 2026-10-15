@@ -1,7 +1,11 @@
 <style>
     @keyframes marquee-scroll {
-        0% { transform: translateX(50%); }
-        100% { transform: translateX(0); }
+        0% {
+            transform: translateX(50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
     .animate-marquee {
         display: flex;
@@ -11,7 +15,13 @@
     .rtl .animate-marquee {
         animation-direction: reverse;
     }
-    
+
+    .animate-marquee,
+    .animate-marquee span,
+    .animate-marquee i {
+        color: {{ component.marquee_color|default(marquee_color)|default('#EFEFEF') }} !important;
+    }
+
     /* مظهر أداة السحب */
     .ba-handle {
         touch-action: none;
@@ -27,19 +37,23 @@
     
     {# الشريط المتحرك العلوي #}
     {% if component.show_marquee %}
+        {% set marquee_text_color = component.marquee_color|default(marquee_color)|default('#EFEFEF') %}
         <div
             class="mb-10 md:mb-16 py-3 overflow-hidden flex items-center pointer-events-none"
-            style="color: {{ component.marquee_color|default('#EFEFEF') }}; opacity: {{ (component.marquee_opacity|default(40)) / 100 }};"
+            style="color: {{ marquee_text_color }} !important; {% if component.marquee_opacity is defined and component.marquee_opacity != '' %}opacity: {{ (component.marquee_opacity / 100) }};{% else %}opacity: 1;{% endif %}"
         >
-            <div class="animate-marquee flex items-center whitespace-nowrap" style="animation-duration: {{ component.marquee_speed|default(30) }}s;">
+            <div
+                class="animate-marquee flex items-center whitespace-nowrap"
+                style="color: {{ marquee_text_color }} !important; animation-duration: {{ component.marquee_speed|default(30) }}s;"
+            >
                 {% for i in 1..2 %}
                     <div class="flex items-center shrink-0">
                         {% for j in 1..4 %}
                             {% for item in component.marquee_items %}
                                 <div class="flex items-center gap-8 md:gap-12 px-4 md:px-6">
-                                    <span class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-widest uppercase">{{ item.text }}</span>
+                                    <span class="text-3xl md:text-5xl lg:text-6xl font-serif tracking-widest uppercase" style="color: {{ marquee_text_color }} !important;">{{ item.text }}</span>
                                     {% if item.icon %}
-                                        <i class="{{ item.icon }} text-2xl md:text-3xl"></i>
+                                        <i class="{{ item.icon }} text-2xl md:text-3xl" style="color: {{ marquee_text_color }} !important;"></i>
                                     {% endif %}
                                 </div>
                             {% endfor %}
@@ -96,9 +110,9 @@
                     aria-label="Drag slider handle"
                 >
                     <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="pointer-events-none select-none">
-                        <rect x="0" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}" />
-                        <rect x="5" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}" />
-                        <rect x="10" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}" />
+                        <rect x="0" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}"/>
+                        <rect x="5" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}"/>
+                        <rect x="10" y="0" width="2" height="16" rx="0.75" fill="{{ component.slider_icon_color|default('#222222') }}"/>
                     </svg>
                 </div>
             </div>
