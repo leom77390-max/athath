@@ -9827,54 +9827,12 @@
                     "id": "slides.products",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "اختر المنتج من المتجر",
+                    "label": "المنتجات",
+                    "description": "اختر المنتج من المتجر",
+                    "icon": "sicon-keyboard_arrow_down",
                     "source": "products",
-                    "multichoice": false,
+                    "multichoice": true,
                     "searchable": true,
-                    "required": false
-                },
-                {
-                    "id": "slides.product_name",
-                    "type": "string",
-                    "format": "text",
-                    "label": "اسم المنتج (بديل في حال عدم اختيار منتج)",
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "slides.product_category",
-                    "type": "string",
-                    "format": "text",
-                    "label": "تصنيف المنتج (مثال: SOFA)",
-                    "multilanguage": true,
-                    "required": false
-                },
-                {
-                    "id": "slides.product_price",
-                    "type": "string",
-                    "format": "text",
-                    "label": "سعر المنتج الحالي (مثال: $449.00 أو 449 ر.س)",
-                    "required": false
-                },
-                {
-                    "id": "slides.product_regular_price",
-                    "type": "string",
-                    "format": "text",
-                    "label": "السعر السابق قبل الخصم (اختياري - مثال: $699.00)",
-                    "required": false
-                },
-                {
-                    "id": "slides.product_image",
-                    "type": "string",
-                    "format": "image",
-                    "label": "صورة المنتج (بديل)",
-                    "required": false
-                },
-                {
-                    "id": "slides.product_url",
-                    "type": "string",
-                    "format": "url",
-                    "label": "رابط المنتج (اختياري)",
                     "required": false
                 }
             ],
@@ -9892,17 +9850,7 @@
                     "slides.author_sub": {
                         "en": "NEW MEXICO",
                         "ar": "نيو مكسيكو"
-                    },
-                    "slides.product_name": {
-                        "en": "Hygge Lounge Chair",
-                        "ar": "كرسي استرخاء هيجي"
-                    },
-                    "slides.product_category": {
-                        "en": "SOFA",
-                        "ar": "كنب ومقاعد"
-                    },
-                    "slides.product_price": "$449.00",
-                    "slides.product_image": "https://cdn.files.salla.network/other/1010819922/fav_prod_chair1.jpg"
+                    }
                 },
                 {
                     "slides.lifestyle_image": "https://cdn.files.salla.network/other/1010819922/fav_scene_kitchen.jpg",
@@ -9917,18 +9865,7 @@
                     "slides.author_sub": {
                         "en": "LOS ANGELES",
                         "ar": "لوس أنجلوس"
-                    },
-                    "slides.product_name": {
-                        "en": "Parlour Club Chair",
-                        "ar": "كرسي بارلور كلوب"
-                    },
-                    "slides.product_category": {
-                        "en": "SOFA",
-                        "ar": "كنب ومقاعد"
-                    },
-                    "slides.product_price": "$699.00",
-                    "slides.product_regular_price": "$999.00",
-                    "slides.product_image": "https://cdn.files.salla.network/other/1010819922/fav_prod_chair2.jpg"
+                    }
                 }
             ]
         }

@@ -923,13 +923,13 @@ input:where([type='file']):focus{
     left: 0px;
     right: 0px;
 }
-.inset-y-0{
-    top: 0px;
-    bottom: 0px;
-}
 .inset-x-3{
     left: 0.75rem;
     right: 0.75rem;
+}
+.inset-y-0{
+    top: 0px;
+    bottom: 0px;
 }
 .\!bottom-\[90px\]{
     bottom: 90px !important;
@@ -942,6 +942,9 @@ input:where([type='file']):focus{
 }
 .bottom-1{
     bottom: 0.25rem;
+}
+.bottom-3{
+    bottom: 0.75rem;
 }
 .bottom-6{
     bottom: 1.5rem;
@@ -1024,6 +1027,9 @@ input:where([type='file']):focus{
 .top-24{
     top: 6rem;
 }
+.top-3{
+    top: 0.75rem;
+}
 .top-4{
     top: 1rem;
 }
@@ -1065,12 +1071,6 @@ input:where([type='file']):focus{
 }
 .top-full{
     top: 100%;
-}
-.bottom-3{
-    bottom: 0.75rem;
-}
-.top-3{
-    top: 0.75rem;
 }
 .-z-1{
     z-index: -1;
@@ -1131,6 +1131,12 @@ input:where([type='file']):focus{
 }
 .z-\[9999\]{
     z-index: 9999;
+}
+.order-1{
+    order: 1;
+}
+.order-2{
+    order: 2;
 }
 .col-span-2{
     grid-column: span 2 / span 2;
@@ -1193,6 +1199,9 @@ input:where([type='file']):focus{
 }
 .mb-0{
     margin-bottom: 0px;
+}
+.mb-0\.5{
+    margin-bottom: 0.125rem;
 }
 .mb-1{
     margin-bottom: 0.25rem;
@@ -1304,9 +1313,6 @@ input:where([type='file']):focus{
 }
 .mt-auto{
     margin-top: auto;
-}
-.mb-0\.5{
-    margin-bottom: 0.125rem;
 }
 .box-border{
     box-sizing: border-box;
@@ -1524,17 +1530,20 @@ input:where([type='file']):focus{
 .max-h-\[300px\]{
     max-height: 300px;
 }
+.max-h-\[480px\]{
+    max-height: 480px;
+}
+.max-h-\[640px\]{
+    max-height: 640px;
+}
 .max-h-\[90vh\]{
     max-height: 90vh;
 }
 .max-h-full{
     max-height: 100%;
 }
-.max-h-\[480px\]{
-    max-height: 480px;
-}
-.max-h-\[640px\]{
-    max-height: 640px;
+.max-h-\[460px\]{
+    max-height: 460px;
 }
 .\!min-h-fit{
     min-height: -moz-fit-content !important;
@@ -2301,6 +2310,10 @@ input:where([type='file']):focus{
     border-top-left-radius: 0.375rem;
     border-top-right-radius: 0.375rem;
 }
+.rounded-t-\[120px\]{
+    border-top-left-radius: 120px;
+    border-top-right-radius: 120px;
+}
 .\!border-0{
     border-width: 0px !important;
 }
@@ -2399,11 +2412,6 @@ input:where([type='file']):focus{
 .border-transparent{
     border-color: transparent;
 }
-.border-zinc-900{
-    --tw-border-opacity: 1;
-    border-color: rgba(24, 24, 27, 1);
-    border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
-}
 .border-zinc-200{
     --tw-border-opacity: 1;
     border-color: rgba(228, 228, 231, 1);
@@ -2413,6 +2421,11 @@ input:where([type='file']):focus{
     --tw-border-opacity: 1;
     border-color: rgba(212, 212, 216, 1);
     border-color: rgba(212, 212, 216, var(--tw-border-opacity, 1));
+}
+.border-zinc-900{
+    --tw-border-opacity: 1;
+    border-color: rgba(24, 24, 27, 1);
+    border-color: rgba(24, 24, 27, var(--tw-border-opacity, 1));
 }
 .border-b-\[\#8B8B8B\]{
     --tw-border-opacity: 1;
@@ -2446,6 +2459,11 @@ input:where([type='file']):focus{
     --tw-bg-opacity: 1;
     background-color: rgba(243, 243, 243, 1);
     background-color: rgba(243, 243, 243, var(--tw-bg-opacity, 1));
+}
+.bg-\[\#F5F3EF\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(245, 243, 239, 1);
+    background-color: rgba(245, 243, 239, var(--tw-bg-opacity, 1));
 }
 .bg-\[\#F7F7F8\]{
     --tw-bg-opacity: 1;
@@ -2551,16 +2569,6 @@ input:where([type='file']):focus{
 .bg-white\/20{
     background-color: rgba(255, 255, 255, 0.2);
 }
-.bg-zinc-900{
-    --tw-bg-opacity: 1;
-    background-color: rgba(24, 24, 27, 1);
-    background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
-}
-.bg-\[\#F5F3EF\]{
-    --tw-bg-opacity: 1;
-    background-color: rgba(245, 243, 239, 1);
-    background-color: rgba(245, 243, 239, var(--tw-bg-opacity, 1));
-}
 .bg-white\/95{
     background-color: rgba(255, 255, 255, 0.95);
 }
@@ -2571,6 +2579,16 @@ input:where([type='file']):focus{
 }
 .bg-zinc-200\/80{
     background-color: rgba(228, 228, 231, 0.8);
+}
+.bg-zinc-900{
+    --tw-bg-opacity: 1;
+    background-color: rgba(24, 24, 27, 1);
+    background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
+}
+.bg-zinc-300{
+    --tw-bg-opacity: 1;
+    background-color: rgba(212, 212, 216, 1);
+    background-color: rgba(212, 212, 216, var(--tw-bg-opacity, 1));
 }
 .bg-gradient-to-r{
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -2819,11 +2837,17 @@ input:where([type='file']):focus{
 .pl-5{
     padding-left: 1.25rem;
 }
+.pr-0{
+    padding-right: 0px;
+}
 .pr-10{
     padding-right: 2.5rem;
 }
 .pr-14{
     padding-right: 3.5rem;
+}
+.pr-2{
+    padding-right: 0.5rem;
 }
 .pt-0{
     padding-top: 0px;
@@ -2854,12 +2878,6 @@ input:where([type='file']):focus{
 }
 .pt-8{
     padding-top: 2rem;
-}
-.pr-0{
-    padding-right: 0px;
-}
-.pr-2{
-    padding-right: 0.5rem;
 }
 .text-left{
     text-align: left;
@@ -2906,6 +2924,9 @@ input:where([type='file']):focus{
 }
 .text-\[10px\]{
     font-size: 10px;
+}
+.text-\[11px\]{
+    font-size: 11px;
 }
 .text-\[13\.5px\]{
     font-size: 13.5px;
@@ -2983,9 +3004,6 @@ input:where([type='file']):focus{
 }
 .text-xxs{
     font-size: 10px;
-}
-.text-\[11px\]{
-    font-size: 11px;
 }
 .font-bold{
     font-weight: 700;
@@ -3095,6 +3113,9 @@ input:where([type='file']):focus{
 .tracking-normal{
     letter-spacing: 0em;
 }
+.tracking-tight{
+    letter-spacing: -0.025em;
+}
 .tracking-wide{
     letter-spacing: 0.025em;
 }
@@ -3103,9 +3124,6 @@ input:where([type='file']):focus{
 }
 .tracking-widest{
     letter-spacing: 0.1em;
-}
-.tracking-tight{
-    letter-spacing: -0.025em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -3272,11 +3290,6 @@ input:where([type='file']):focus{
     color: rgba(82, 82, 91, 1);
     color: rgba(82, 82, 91, var(--tw-text-opacity, 1));
 }
-.text-zinc-900{
-    --tw-text-opacity: 1;
-    color: rgba(24, 24, 27, 1);
-    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
-}
 .text-zinc-700{
     --tw-text-opacity: 1;
     color: rgba(63, 63, 70, 1);
@@ -3286,6 +3299,11 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(39, 39, 42, 1);
     color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
+}
+.text-zinc-900{
+    --tw-text-opacity: 1;
+    color: rgba(24, 24, 27, 1);
+    color: rgba(24, 24, 27, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -38502,8 +38520,18 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     background-color: rgba(24, 24, 27, 1);
     background-color: rgba(24, 24, 27, var(--tw-bg-opacity, 1));
 }
+.hover\:bg-zinc-500:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgba(113, 113, 122, 1);
+    background-color: rgba(113, 113, 122, var(--tw-bg-opacity, 1));
+}
 .hover\:text-background:hover{
     color: var(--color-background);
+}
+.hover\:text-black:hover{
+    --tw-text-opacity: 1;
+    color: rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .hover\:text-dark:hover{
     --tw-text-opacity: 1;
@@ -38531,11 +38559,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.hover\:text-black:hover{
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, 1);
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
 }
 .hover\:text-zinc-600:hover{
     --tw-text-opacity: 1;
@@ -38740,23 +38763,32 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:grid{
         display: grid;
     }
+    .sm\:aspect-\[3\/4\]{
+        aspect-ratio: 3/4;
+    }
+    .sm\:h-24{
+        height: 6rem;
+    }
     .sm\:h-auto{
         height: auto;
     }
     .sm\:h-full{
         height: 100%;
     }
-    .sm\:h-24{
-        height: 6rem;
+    .sm\:max-h-\[520px\]{
+        max-height: 520px;
     }
     .sm\:\!w-\[220px\]{
         width: 220px !important;
     }
+    .sm\:w-24{
+        width: 6rem;
+    }
     .sm\:w-\[460px\]{
         width: 460px;
     }
-    .sm\:w-24{
-        width: 6rem;
+    .sm\:max-w-\[340px\]{
+        max-width: 340px;
     }
     .sm\:grow-0{
         flex-grow: 0;
@@ -38796,15 +38828,15 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:gap-8{
         gap: 2rem;
     }
+    .sm\:rounded-t-\[160px\]{
+        border-top-left-radius: 160px;
+        border-top-right-radius: 160px;
+    }
     .sm\:p-1{
         padding: 0.25rem;
     }
     .sm\:p-6{
         padding: 1.5rem;
-    }
-    .sm\:py-16{
-        padding-top: 4rem;
-        padding-bottom: 4rem;
     }
     .sm\:px-6{
         padding-left: 1.5rem;
@@ -38813,6 +38845,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:px-8{
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+    .sm\:py-16{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
     }
     .sm\:pb-0{
         padding-bottom: 0px;
@@ -38868,6 +38904,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-10{
         margin-bottom: 2.5rem;
     }
+    .md\:mb-12{
+        margin-bottom: 3rem;
+    }
     .md\:mb-16{
         margin-bottom: 4rem;
     }
@@ -38883,8 +38922,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mt-16{
         margin-top: 4rem;
     }
-    .md\:mb-12{
-        margin-bottom: 3rem;
+    .md\:mt-10{
+        margin-top: 2.5rem;
     }
     .md\:line-clamp-3{
         overflow: hidden;
@@ -39189,6 +39228,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:top-40{
         top: 10rem;
     }
+    .lg\:order-1{
+        order: 1;
+    }
+    .lg\:order-2{
+        order: 2;
+    }
     .lg\:col-span-3{
         grid-column: span 3 / span 3;
     }
@@ -39268,11 +39313,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:aspect-\[3\/4\]{
         aspect-ratio: 3/4;
     }
+    .lg\:aspect-\[4\/5\]{
+        aspect-ratio: 4/5;
+    }
     .lg\:h-5{
         height: 1.25rem;
     }
     .lg\:h-\[680px\]{
         height: 680px;
+    }
+    .lg\:max-h-\[620px\]{
+        max-height: 620px;
     }
     .lg\:min-h-12{
         min-height: 3rem;
@@ -39325,8 +39376,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:max-w-\[360px\]{
         max-width: 360px;
     }
+    .lg\:max-w-\[300px\]{
+        max-width: 300px;
+    }
     .lg\:flex-1{
         flex: 1 1 0%;
+    }
+    .lg\:grid-cols-12{
+        grid-template-columns: repeat(12, minmax(0, 1fr));
     }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -39343,9 +39400,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
     }
-    .lg\:grid-cols-12{
-        grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
     .lg\:flex-row{
         flex-direction: row;
     }
@@ -39357,6 +39411,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:items-start{
         align-items: flex-start;
+    }
+    .lg\:items-center{
+        align-items: center;
     }
     .lg\:justify-start{
         justify-content: flex-start;
@@ -39396,6 +39453,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:overflow-visible{
         overflow: visible;
+    }
+    .lg\:rounded-t-\[220px\]{
+        border-top-left-radius: 220px;
+        border-top-right-radius: 220px;
     }
     .lg\:border-t{
         border-top-width: 1px;
@@ -39479,6 +39540,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 6rem;
         line-height: 1;
     }
+    .lg\:text-\[40px\]{
+        font-size: 40px;
+    }
     .lg\:text-sm{
         font-size: 0.875rem;
         line-height: 1.25rem;
@@ -39486,8 +39550,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-title-size{
         font-size: 42px;
     }
-    .lg\:text-\[40px\]{
-        font-size: 40px;
+    .lg\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
     }
     .lg\:leading-\[24px\]{
         line-height: 24px;
@@ -39509,15 +39574,22 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .xl\:max-w-\[290px\]{
         max-width: 290px;
     }
-    .xl\:gap-8{
-        gap: 2rem;
+    .xl\:max-w-\[320px\]{
+        max-width: 320px;
     }
     .xl\:gap-16{
         gap: 4rem;
     }
+    .xl\:gap-8{
+        gap: 2rem;
+    }
     .xl\:px-0{
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .xl\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
     }
     .xl\:text-6xl{
         font-size: 3.75rem;
@@ -39526,10 +39598,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .xl\:text-9xl{
         font-size: 8rem;
         line-height: 1;
-    }
-    .xl\:text-3xl{
-        font-size: 1.875rem;
-        line-height: 2.25rem;
     }
 }
 @media (min-width: 480px){
@@ -39800,6 +39868,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:pl-10:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 2.5rem;
 }
+.rtl\:pl-2:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 0.5rem;
+}
 .rtl\:pl-3:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 0.75rem;
 }
@@ -39809,17 +39880,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:pl-px:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 1px;
 }
+.rtl\:pr-0:where([dir="rtl"], [dir="rtl"] *){
+    padding-right: 0px;
+}
 .rtl\:pr-11:where([dir="rtl"], [dir="rtl"] *){
     padding-right: 2.75rem;
 }
 .rtl\:pr-5:where([dir="rtl"], [dir="rtl"] *){
     padding-right: 1.25rem;
-}
-.rtl\:pl-2:where([dir="rtl"], [dir="rtl"] *){
-    padding-left: 0.5rem;
-}
-.rtl\:pr-0:where([dir="rtl"], [dir="rtl"] *){
-    padding-right: 0px;
 }
 .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *){
     text-align: left;
